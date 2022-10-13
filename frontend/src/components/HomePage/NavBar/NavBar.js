@@ -2,7 +2,7 @@ import './NavBar.css'
 import linkedin from './imgs/Li.png'
 import github from './imgs/GitHub.png'
 import profilePic from './imgs/blank.png'
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import ProfilePicModal from "./ProfilePicModal"
 import SearchBar from './SearchBar'
 import { useSelector } from 'react-redux'
@@ -33,7 +33,7 @@ function NavBar() {
                     <img src={github} alt="github" className="github"  onClick={() => window.open("https://github.com/lokisk1155/FaceOok")}></img>
                 
                     <div className="navbar-profile-modal">
-                        <img src={profilePic} className="profile-pic-modal" onClick={() => {setToggle(!toggle)
+                        <img src={profilePic} alt="profile-pic" className="profile-pic-modal" onClick={() => {setToggle(!toggle)
                             setProfileModal(toggle)}}/>
                         {profileModal && <ProfilePicModal user={user}/>}
                     </div>

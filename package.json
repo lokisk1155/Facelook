@@ -1,22 +1,14 @@
 {
-  "name": "actualfullstack",
+  "name": "railsbackend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+
   "scripts": {
     "build": "npm install --prefix frontend && npm run build --prefix frontend"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lokisk1155/FaceOok.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/lokisk1155/FaceOok/issues"
-  },
-  "homepage": "https://github.com/lokisk1155/FaceOok#readme",
   "engines": {
     "node": "16.x"
   }
