@@ -8,7 +8,7 @@ class Api::UsersController < ApplicationController
       login!(@user)
       render :show
     else
-      render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: @user.errors.full_messages }
     end
   end
 
@@ -18,20 +18,21 @@ class Api::UsersController < ApplicationController
   end 
 
   def update 
-    @user = User.new(special_user_params)
+    @user = User.new(user_params)
     if @user.id == current_user.id  
-        @poem.update
-        render :show 
-    end 
+        @user.update
+        render :show
+      else
+        render json: @user.errors.full_messages, status: 401
+    end
+
 end 
 
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :first_name, :last_name, :gender, :day, :month, :year)
+    params.require(:user).permit(:email, :password, :first_name, :last_name, :gender, :day, :month, :year, :bio, :featured, :location, :education, :work, :relationship, :phone_number)
   end
 
-  def special_user_params 
-    params.require(:user).permit(:email, :password, :first_name, :last_name, :gender, :day, :month, :year)
-  end 
 end
+

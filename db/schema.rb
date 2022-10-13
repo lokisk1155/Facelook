@@ -52,6 +52,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_10_011456) do
     t.string "month", null: false
     t.string "year", null: false
     t.string "gender", null: false
+    t.text "bio"
+    t.boolean "featured"
+    t.string "location"
+    t.string "education"
+    t.string "work"
+    t.string "relationship"
+    t.string "phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"

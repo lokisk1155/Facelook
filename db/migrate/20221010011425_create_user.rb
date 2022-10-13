@@ -10,6 +10,13 @@ class CreateUser < ActiveRecord::Migration[7.0]
       t.string :month, null: false 
       t.string :year, null: false 
       t.string :gender, null: false 
+      t.text :bio
+      t.boolean :featured
+      t.string :location 
+      t.string :education 
+      t.string :work
+      t.string :relationship
+      t.string :phone_number
       t.timestamps
     end
     add_index :users, :email, unique: true
