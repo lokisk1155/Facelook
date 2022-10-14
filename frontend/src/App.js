@@ -7,6 +7,7 @@ import CreateAccountForm from './components/UserLogin/CreateAccountForm';
 import ForgotPassword from './components/UserLogin/ForgotPassword';
 import LoginPage from './components/UserLogin/LoginPage';
 import RecentLogins from './components/UserLogin/RecentLogins';
+import ProfileIndex from './components/ProfilePage/ProfileIndex';
 
 function App() {
   return (
@@ -28,8 +29,7 @@ function App() {
         <ForgotPassword />
       </Route>
       <Route exact path="/ProfilePage/:id">
-        <NavBar />
-        <Posts />
+        <ProfileIndex />
       </Route>
     </Switch>
     </div>
