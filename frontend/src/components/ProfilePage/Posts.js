@@ -6,11 +6,11 @@ import { useDispatch } from "react-redux"
 import { getCurrent } from "../../store/user"
 import Featured from "./Featured"
 import EditDetails from "./EditDetails"
-import './ProfilePage.css'
+import './Posts.css'
 
 
 
-function ProfilePage() {
+function Posts() {
     const dispatch = useDispatch()
 
     const { id } = useParams() 
@@ -32,6 +32,13 @@ function ProfilePage() {
     let antiToggle = !toggleBio
 
     let bioHeader;
+
+    let placeHolderLocation; 
+
+
+    if (location.length > 1) {
+        placeHolderLocation = location
+    }
 
     if (bio.length < 1) {
         bioHeader = 'Add Bio'
@@ -64,20 +71,17 @@ function ProfilePage() {
         <div className="intro-container">
             <h2 className="intro-header">Intro </h2>
             <div>
-            <h4>{bio}</h4>
+            <h4 className="actual-bio">{bio}</h4>
             {antiToggle && <button className="add-bio-button" onClick={(() => {setCustomBio(!customBio)
                 setToggleBio(customBio)})}>{bioHeader || 'Edit Bio'}</button>}
-                <div>
-                    
-                    {toggleBio && <textarea defaultValue="Describe who you are" onChange={(e) => setBio(e.target.value)}>
+                <div className="edit-bio-container">   
+                    {toggleBio && <textarea className="text-area-bio" defaultValue="Describe who you are" onChange={(e) => setBio(e.target.value)}>
                         </textarea>}
                     <div>
                         <div>
-                        {toggleBio && <button onClick={handleBioSubmit}>Save</button>}
-                        </div>
-                        <div>
-                        {toggleBio && <button onClick={(() => {setCustomBio(!customBio)
+                        {toggleBio && <button className="bio-cancel-button" onClick={(() => {setCustomBio(!customBio)
                             setToggleBio(customBio)})}>Cancel</button>}
+                        {toggleBio && <button className="bio-save-button" onClick={handleBioSubmit}>Save</button>}
                         </div>
                     </div>
                     
@@ -85,10 +89,14 @@ function ProfilePage() {
             </div>
 
             <div>
+                {placeHolderLocation && <p>From {location}</p>}
+            </div>
+
+            <div>
                     <button className="edit-details-button" onClick={(() => {setCustomEdit(!customEdit)
                     setDetails(customEdit)})}>Edit Details</button>
 
-                    {details && <EditDetails />}
+                    {details && <EditDetails currentUser={currentUser}/>}
             </div>
             <div>
             <div>
@@ -106,7 +114,7 @@ function ProfilePage() {
     )
 }
 
-export default ProfilePage
+export default Posts
 
 {/* <li>{`${user[2]} ${user[3]}`}</li>
 <li>{user[1]}</li>

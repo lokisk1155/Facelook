@@ -25873,3 +25873,870 @@ Processing by Api::UsersController#show as JSON
 Completed 200 OK in 11ms (Views: 1.5ms | ActiveRecord: 0.6ms | Allocations: 1147)
 
 
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:26:52 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.4ms | Allocations: 174)
+Completed 200 OK in 9ms (Views: 1.5ms | ActiveRecord: 1.0ms | Allocations: 1129)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:27:04 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.5ms | Allocations: 174)
+Completed 200 OK in 4ms (Views: 0.8ms | ActiveRecord: 0.4ms | Allocations: 1144)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:27:16 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 12.1ms | Allocations: 174)
+Completed 200 OK in 19ms (Views: 12.8ms | ActiveRecord: 0.6ms | Allocations: 1138)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:30:47 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 174)
+Completed 200 OK in 6ms (Views: 1.0ms | ActiveRecord: 0.4ms | Allocations: 1138)
+
+
+Started DELETE "/api/session" for 127.0.0.1 at 2022-10-14 14:30:47 -0400
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (4.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `current_user'
+  [1m[36mUser Exists? (1.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:34:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:27:in `reset_session_token!'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ooo@aol.com"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:27:in `reset_session_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:27:in `reset_session_token!'
+  [1m[36mUser Update (4.7ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2022-10-14 18:30:48.015851"], ["id", 2]]
+  ↳ app/models/user.rb:27:in `reset_session_token!'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:27:in `reset_session_token!'
+Completed 200 OK in 73ms (Views: 2.1ms | ActiveRecord: 12.4ms | Allocations: 4875)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2022-10-14 14:30:49 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"credential"=>"ooo@aol.com", "password"=>"[FILTERED]", "session"=>{"credential"=>"ooo@aol.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ooo@aol.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:21:in `find_by_credentials'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:34:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:27:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ooo@aol.com"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:27:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:27:in `reset_session_token!'
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2022-10-14 18:30:49.432905"], ["id", 2]]
+  ↳ app/models/user.rb:27:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:27:in `reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.1ms | Allocations: 174)
+Completed 200 OK in 271ms (Views: 3.3ms | ActiveRecord: 1.8ms | Allocations: 5160)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:30:52 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 174)
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 0.3ms | Allocations: 1129)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:37:53 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.8ms | Allocations: 174)
+Completed 200 OK in 79ms (Views: 1.5ms | ActiveRecord: 21.8ms | Allocations: 4006)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:38:07 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 174)
+Completed 200 OK in 3ms (Views: 0.4ms | ActiveRecord: 0.8ms | Allocations: 1132)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:38:12 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.1ms | Allocations: 174)
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.3ms | Allocations: 1135)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:38:15 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 3.6ms | Allocations: 174)
+Completed 200 OK in 7ms (Views: 4.0ms | ActiveRecord: 0.5ms | Allocations: 1123)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:38:16 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 174)
+Completed 200 OK in 18ms (Views: 0.4ms | ActiveRecord: 0.7ms | Allocations: 1141)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:38:19 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 174)
+Completed 200 OK in 3ms (Views: 0.6ms | ActiveRecord: 0.6ms | Allocations: 1138)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:38:23 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.4ms | Allocations: 174)
+Completed 200 OK in 5ms (Views: 0.8ms | ActiveRecord: 0.3ms | Allocations: 1147)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:38:31 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 1.0ms | Allocations: 174)
+Completed 200 OK in 13ms (Views: 2.1ms | ActiveRecord: 0.8ms | Allocations: 1132)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:38:45 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 174)
+Completed 200 OK in 6ms (Views: 0.7ms | ActiveRecord: 0.2ms | Allocations: 1147)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:38:48 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 174)
+Completed 200 OK in 3ms (Views: 0.6ms | ActiveRecord: 0.3ms | Allocations: 1171)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:38:50 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 174)
+Completed 200 OK in 3ms (Views: 0.6ms | ActiveRecord: 0.3ms | Allocations: 1147)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:39:05 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.4ms | Allocations: 174)
+Completed 200 OK in 7ms (Views: 0.9ms | ActiveRecord: 0.6ms | Allocations: 1135)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:39:23 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 174)
+Completed 200 OK in 6ms (Views: 0.8ms | ActiveRecord: 0.3ms | Allocations: 1135)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:39:43 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.6ms | Allocations: 174)
+Completed 200 OK in 7ms (Views: 1.6ms | ActiveRecord: 1.1ms | Allocations: 1157)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:40:45 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 1.0ms | Allocations: 174)
+Completed 200 OK in 12ms (Views: 1.8ms | ActiveRecord: 0.5ms | Allocations: 1129)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:41:36 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 4.3ms | Allocations: 174)
+Completed 200 OK in 10ms (Views: 4.7ms | ActiveRecord: 0.5ms | Allocations: 1135)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:42:17 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.7ms | Allocations: 174)
+Completed 200 OK in 12ms (Views: 1.5ms | ActiveRecord: 0.4ms | Allocations: 1129)
+
+
+Started PUT "/api/users/2" for 127.0.0.1 at 2022-10-14 14:51:33 -0400
+Processing by Api::UsersController#update as JSON
+  Parameters: {"user"=>{"id"=>2, "email"=>"ooo@aol.com", "password"=>"[FILTERED]", "first_name"=>"shawn", "last_name"=>"nicholas", "gender"=>"fuck me", "day"=>"6", "month"=>"5", "year"=>"2020", "bio"=>"\n", "featured"=>false, "location"=>"", "education"=>nil, "work"=>nil, "relationship"=>nil, "phone_number"=>nil}, "id"=>"2"}
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:21:in `update'
+[31mUnpermitted parameters: :id, :password. Context: { controller: Api::UsersController, action: update, request: #<ActionDispatch::Request:0x0000000108a1f028>, params: {"user"=>{"id"=>2, "email"=>"ooo@aol.com", "password"=>"[FILTERED]", "first_name"=>"shawn", "last_name"=>"nicholas", "gender"=>"fuck me", "day"=>"6", "month"=>"5", "year"=>"2020", "bio"=>"\n", "featured"=>false, "location"=>"", "education"=>nil, "work"=>nil, "relationship"=>nil, "phone_number"=>nil}, "format"=>:json, "controller"=>"api/users", "action"=>"update", "id"=>"2"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  [1m[36mUser Exists? (2.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ooo@aol.com"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.6ms | Allocations: 174)
+Completed 200 OK in 103ms (Views: 3.9ms | ActiveRecord: 25.2ms | Allocations: 7228)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:52:18 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 2.5ms | Allocations: 174)
+Completed 200 OK in 7ms (Views: 3.0ms | ActiveRecord: 0.9ms | Allocations: 1138)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:52:22 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 174)
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 0.3ms | Allocations: 1129)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:52:27 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 2.0ms | Allocations: 174)
+Completed 200 OK in 13ms (Views: 4.8ms | ActiveRecord: 0.5ms | Allocations: 1114)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:52:42 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.4ms | Allocations: 174)
+Completed 200 OK in 17ms (Views: 1.2ms | ActiveRecord: 1.1ms | Allocations: 1144)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:52:53 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 174)
+Completed 200 OK in 4ms (Views: 0.6ms | ActiveRecord: 1.1ms | Allocations: 1126)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:53:00 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.7ms | Allocations: 174)
+Completed 200 OK in 15ms (Views: 1.6ms | ActiveRecord: 0.7ms | Allocations: 1141)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:53:13 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.4ms | Allocations: 174)
+Completed 200 OK in 9ms (Views: 0.9ms | ActiveRecord: 0.4ms | Allocations: 1144)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:53:23 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 2.8ms | Allocations: 174)
+Completed 200 OK in 14ms (Views: 3.8ms | ActiveRecord: 0.6ms | Allocations: 1156)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:53:39 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 174)
+Completed 200 OK in 8ms (Views: 1.7ms | ActiveRecord: 1.8ms | Allocations: 1135)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:53:41 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 174)
+Completed 200 OK in 9ms (Views: 1.3ms | ActiveRecord: 0.3ms | Allocations: 1141)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:54:05 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 174)
+Completed 200 OK in 11ms (Views: 0.5ms | ActiveRecord: 0.3ms | Allocations: 1126)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:54:10 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.1ms | Allocations: 174)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 1144)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:54:15 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 174)
+Completed 200 OK in 3ms (Views: 0.7ms | ActiveRecord: 0.3ms | Allocations: 1120)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:55:16 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.5ms | Allocations: 174)
+Completed 200 OK in 15ms (Views: 1.1ms | ActiveRecord: 0.6ms | Allocations: 1132)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:55:49 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 174)
+Completed 200 OK in 8ms (Views: 0.7ms | ActiveRecord: 0.4ms | Allocations: 1138)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:55:59 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 174)
+Completed 200 OK in 4ms (Views: 1.3ms | ActiveRecord: 0.4ms | Allocations: 1141)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:56:03 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 174)
+Completed 200 OK in 4ms (Views: 0.5ms | ActiveRecord: 1.7ms | Allocations: 1135)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:56:05 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 174)
+Completed 200 OK in 7ms (Views: 4.4ms | ActiveRecord: 0.2ms | Allocations: 1144)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:56:08 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.4ms | Allocations: 174)
+Completed 200 OK in 7ms (Views: 0.8ms | ActiveRecord: 0.3ms | Allocations: 1141)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:56:18 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.5ms | Allocations: 174)
+Completed 200 OK in 5ms (Views: 1.1ms | ActiveRecord: 0.4ms | Allocations: 1118)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:57:42 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.6ms | Allocations: 174)
+Completed 200 OK in 12ms (Views: 1.7ms | ActiveRecord: 1.4ms | Allocations: 1144)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 14:59:09 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.9ms | Allocations: 174)
+Completed 200 OK in 25ms (Views: 2.5ms | ActiveRecord: 0.9ms | Allocations: 1135)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 15:00:10 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 174)
+Completed 200 OK in 6ms (Views: 0.8ms | ActiveRecord: 2.1ms | Allocations: 1150)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 15:00:27 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.5ms | Allocations: 174)
+Completed 200 OK in 6ms (Views: 1.1ms | ActiveRecord: 0.4ms | Allocations: 1138)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 15:00:39 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 4.2ms | Allocations: 174)
+Completed 200 OK in 9ms (Views: 5.0ms | ActiveRecord: 0.5ms | Allocations: 1129)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 15:01:07 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.7ms | Allocations: 174)
+Completed 200 OK in 10ms (Views: 1.6ms | ActiveRecord: 0.5ms | Allocations: 1141)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 15:01:16 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.6ms | Allocations: 174)
+Completed 200 OK in 5ms (Views: 1.3ms | ActiveRecord: 0.4ms | Allocations: 1132)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 15:03:59 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.4ms | Allocations: 174)
+Completed 200 OK in 6ms (Views: 1.2ms | ActiveRecord: 0.3ms | Allocations: 1147)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 15:04:15 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.4ms | Allocations: 174)
+Completed 200 OK in 13ms (Views: 1.1ms | ActiveRecord: 0.5ms | Allocations: 1126)
+
+
+Started PUT "/api/users/2" for 127.0.0.1 at 2022-10-14 15:05:06 -0400
+Processing by Api::UsersController#update as JSON
+  Parameters: {"user"=>{"id"=>2, "email"=>"ooo@aol.com", "password"=>"[FILTERED]", "first_name"=>"shawn", "last_name"=>"nicholas", "gender"=>"fuck me", "day"=>"6", "month"=>"5", "year"=>"2020", "bio"=>"my bio!", "featured"=>false, "location"=>"", "education"=>nil, "work"=>nil, "relationship"=>nil, "phone_number"=>nil}, "id"=>"2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:21:in `update'
+[31mUnpermitted parameters: :id, :password. Context: { controller: Api::UsersController, action: update, request: #<ActionDispatch::Request:0x00000001094fcf40>, params: {"user"=>{"id"=>2, "email"=>"ooo@aol.com", "password"=>"[FILTERED]", "first_name"=>"shawn", "last_name"=>"nicholas", "gender"=>"fuck me", "day"=>"6", "month"=>"5", "year"=>"2020", "bio"=>"my bio!", "featured"=>false, "location"=>"", "education"=>nil, "work"=>nil, "relationship"=>nil, "phone_number"=>nil}, "format"=>:json, "controller"=>"api/users", "action"=>"update", "id"=>"2"} }[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  [1m[36mUser Exists? (5.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ooo@aol.com"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  [1m[36mUser Update (6.2ms)[0m  [1m[33mUPDATE "users" SET "bio" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["bio", "my bio!"], ["updated_at", "2022-10-14 19:05:06.496622"], ["id", 2]]
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 174)
+Completed 200 OK in 50ms (Views: 0.8ms | ActiveRecord: 15.3ms | Allocations: 4999)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 15:05:28 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.9ms | Allocations: 174)
+Completed 200 OK in 7ms (Views: 1.5ms | ActiveRecord: 0.7ms | Allocations: 1126)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 15:05:42 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.5ms | Allocations: 174)
+Completed 200 OK in 22ms (Views: 1.2ms | ActiveRecord: 0.7ms | Allocations: 1150)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 15:05:53 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.4ms | Allocations: 174)
+Completed 200 OK in 11ms (Views: 1.0ms | ActiveRecord: 0.4ms | Allocations: 1132)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 15:06:13 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (4.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.5ms | Allocations: 174)
+Completed 200 OK in 10ms (Views: 1.0ms | ActiveRecord: 4.2ms | Allocations: 1126)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 15:06:26 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.4ms | Allocations: 174)
+Completed 200 OK in 12ms (Views: 3.8ms | ActiveRecord: 0.4ms | Allocations: 1132)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 15:06:58 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.7ms | Allocations: 174)
+Completed 200 OK in 13ms (Views: 1.4ms | ActiveRecord: 1.3ms | Allocations: 1141)
+
+
+Started PUT "/api/users/2" for 127.0.0.1 at 2022-10-14 15:07:21 -0400
+Processing by Api::UsersController#update as JSON
+  Parameters: {"user"=>{"id"=>2, "email"=>"ooo@aol.com", "password"=>"[FILTERED]", "first_name"=>"shawn", "last_name"=>"nicholas", "gender"=>"fuck me", "day"=>"6", "month"=>"5", "year"=>"2020", "bio"=>"oof\n", "featured"=>false, "location"=>"", "education"=>nil, "work"=>nil, "relationship"=>nil, "phone_number"=>nil}, "id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:21:in `update'
+[31mUnpermitted parameters: :id, :password. Context: { controller: Api::UsersController, action: update, request: #<ActionDispatch::Request:0x000000010994eff8>, params: {"user"=>{"id"=>2, "email"=>"ooo@aol.com", "password"=>"[FILTERED]", "first_name"=>"shawn", "last_name"=>"nicholas", "gender"=>"fuck me", "day"=>"6", "month"=>"5", "year"=>"2020", "bio"=>"oof\n", "featured"=>false, "location"=>"", "education"=>nil, "work"=>nil, "relationship"=>nil, "phone_number"=>nil}, "format"=>:json, "controller"=>"api/users", "action"=>"update", "id"=>"2"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ooo@aol.com"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "bio" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["bio", "oof\n"], ["updated_at", "2022-10-14 19:07:21.229912"], ["id", 2]]
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 174)
+Completed 200 OK in 33ms (Views: 0.8ms | ActiveRecord: 2.3ms | Allocations: 5014)
+
+
+Started PUT "/api/users/2" for 127.0.0.1 at 2022-10-14 15:07:49 -0400
+Processing by Api::UsersController#update as JSON
+  Parameters: {"user"=>{"id"=>2, "email"=>"ooo@aol.com", "password"=>"[FILTERED]", "first_name"=>"shawn", "last_name"=>"nicholas", "gender"=>"fuck me", "day"=>"6", "month"=>"5", "year"=>"2020", "bio"=>"yo yo yo yo yo yo yo yo yoyoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo\n", "featured"=>false, "location"=>"", "education"=>nil, "work"=>nil, "relationship"=>nil, "phone_number"=>nil}, "id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:21:in `update'
+[31mUnpermitted parameters: :id, :password. Context: { controller: Api::UsersController, action: update, request: #<ActionDispatch::Request:0x00000001099ef0c0>, params: {"user"=>{"id"=>2, "email"=>"ooo@aol.com", "password"=>"[FILTERED]", "first_name"=>"shawn", "last_name"=>"nicholas", "gender"=>"fuck me", "day"=>"6", "month"=>"5", "year"=>"2020", "bio"=>"yo yo yo yo yo yo yo yo yoyoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo\n", "featured"=>false, "location"=>"", "education"=>nil, "work"=>nil, "relationship"=>nil, "phone_number"=>nil}, "format"=>:json, "controller"=>"api/users", "action"=>"update", "id"=>"2"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ooo@aol.com"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  [1m[36mUser Update (1.3ms)[0m  [1m[33mUPDATE "users" SET "bio" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["bio", "yo yo yo yo yo yo yo yo yoyoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo\n"], ["updated_at", "2022-10-14 19:07:49.884859"], ["id", 2]]
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 174)
+Completed 200 OK in 20ms (Views: 0.9ms | ActiveRecord: 2.7ms | Allocations: 5024)
+
+
+Started PUT "/api/users/2" for 127.0.0.1 at 2022-10-14 15:07:57 -0400
+Processing by Api::UsersController#update as JSON
+  Parameters: {"user"=>{"id"=>2, "email"=>"ooo@aol.com", "password"=>"[FILTERED]", "first_name"=>"shawn", "last_name"=>"nicholas", "gender"=>"fuck me", "day"=>"6", "month"=>"5", "year"=>"2020", "bio"=>"Describe who youare\n", "featured"=>false, "location"=>"", "education"=>nil, "work"=>nil, "relationship"=>nil, "phone_number"=>nil}, "id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:21:in `update'
+[31mUnpermitted parameters: :id, :password. Context: { controller: Api::UsersController, action: update, request: #<ActionDispatch::Request:0x0000000109a6cca0>, params: {"user"=>{"id"=>2, "email"=>"ooo@aol.com", "password"=>"[FILTERED]", "first_name"=>"shawn", "last_name"=>"nicholas", "gender"=>"fuck me", "day"=>"6", "month"=>"5", "year"=>"2020", "bio"=>"Describe who youare\n", "featured"=>false, "location"=>"", "education"=>nil, "work"=>nil, "relationship"=>nil, "phone_number"=>nil}, "format"=>:json, "controller"=>"api/users", "action"=>"update", "id"=>"2"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ooo@aol.com"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "bio" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["bio", "Describe who youare\n"], ["updated_at", "2022-10-14 19:07:57.177951"], ["id", 2]]
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 3.3ms | Allocations: 174)
+Completed 200 OK in 120ms (Views: 4.6ms | ActiveRecord: 1.4ms | Allocations: 5010)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 15:08:48 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.8ms | Allocations: 174)
+Completed 200 OK in 6ms (Views: 1.8ms | ActiveRecord: 0.6ms | Allocations: 1135)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 15:11:30 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 11.1ms | Allocations: 174)
+Completed 200 OK in 25ms (Views: 11.6ms | ActiveRecord: 0.4ms | Allocations: 1141)
+
+
+Started DELETE "/api/session" for 127.0.0.1 at 2022-10-14 15:11:32 -0400
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `current_user'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:34:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:27:in `reset_session_token!'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ooo@aol.com"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:27:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:27:in `reset_session_token!'
+  [1m[36mUser Update (2.5ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2022-10-14 19:11:32.865424"], ["id", 2]]
+  ↳ app/models/user.rb:27:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:27:in `reset_session_token!'
+Completed 200 OK in 41ms (Views: 0.9ms | ActiveRecord: 5.1ms | Allocations: 4856)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2022-10-14 15:11:33 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"credential"=>"ooo@aol.com", "password"=>"[FILTERED]", "session"=>{"credential"=>"ooo@aol.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ooo@aol.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:21:in `find_by_credentials'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:34:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:27:in `reset_session_token!'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ooo@aol.com"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:27:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:27:in `reset_session_token!'
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2022-10-14 19:11:34.222748"], ["id", 2]]
+  ↳ app/models/user.rb:27:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:27:in `reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.1ms | Allocations: 174)
+Completed 200 OK in 271ms (Views: 0.7ms | ActiveRecord: 2.3ms | Allocations: 5137)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-14 15:11:37 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:16:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 174)
+Completed 200 OK in 3ms (Views: 0.7ms | ActiveRecord: 0.2ms | Allocations: 1144)
+
+
+Started PUT "/api/users/2" for 127.0.0.1 at 2022-10-14 15:11:40 -0400
+Processing by Api::UsersController#update as JSON
+  Parameters: {"user"=>{"id"=>2, "email"=>"ooo@aol.com", "password"=>"[FILTERED]", "first_name"=>"shawn", "last_name"=>"nicholas", "gender"=>"fuck me", "day"=>"6", "month"=>"5", "year"=>"2020", "bio"=>"ooooof", "featured"=>false, "location"=>"", "education"=>nil, "work"=>nil, "relationship"=>nil, "phone_number"=>nil}, "id"=>"2"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:21:in `update'
+[31mUnpermitted parameters: :id, :password. Context: { controller: Api::UsersController, action: update, request: #<ActionDispatch::Request:0x0000000107ba5f60>, params: {"user"=>{"id"=>2, "email"=>"ooo@aol.com", "password"=>"[FILTERED]", "first_name"=>"shawn", "last_name"=>"nicholas", "gender"=>"fuck me", "day"=>"6", "month"=>"5", "year"=>"2020", "bio"=>"ooooof", "featured"=>false, "location"=>"", "education"=>nil, "work"=>nil, "relationship"=>nil, "phone_number"=>nil}, "format"=>:json, "controller"=>"api/users", "action"=>"update", "id"=>"2"} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ooo@aol.com"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "bio" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["bio", "ooooof"], ["updated_at", "2022-10-14 19:11:40.371030"], ["id", 2]]
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 174)
+Completed 200 OK in 20ms (Views: 0.5ms | ActiveRecord: 3.3ms | Allocations: 5005)
+
+
+Started PUT "/api/users/2" for 127.0.0.1 at 2022-10-14 15:11:43 -0400
+Processing by Api::UsersController#update as JSON
+  Parameters: {"user"=>{"id"=>2, "email"=>"ooo@aol.com", "password"=>"[FILTERED]", "first_name"=>"shawn", "last_name"=>"nicholas", "gender"=>"fuck me", "day"=>"6", "month"=>"5", "year"=>"2020", "bio"=>"ooooof", "featured"=>false, "location"=>"", "education"=>nil, "work"=>nil, "relationship"=>nil, "phone_number"=>nil}, "id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:21:in `update'
+[31mUnpermitted parameters: :id, :password. Context: { controller: Api::UsersController, action: update, request: #<ActionDispatch::Request:0x0000000107c3db58>, params: {"user"=>{"id"=>2, "email"=>"ooo@aol.com", "password"=>"[FILTERED]", "first_name"=>"shawn", "last_name"=>"nicholas", "gender"=>"fuck me", "day"=>"6", "month"=>"5", "year"=>"2020", "bio"=>"ooooof", "featured"=>false, "location"=>"", "education"=>nil, "work"=>nil, "relationship"=>nil, "phone_number"=>nil}, "format"=>:json, "controller"=>"api/users", "action"=>"update", "id"=>"2"} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ooo@aol.com"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 174)
+Completed 200 OK in 24ms (Views: 0.6ms | ActiveRecord: 1.8ms | Allocations: 4399)
+
+
+Started PUT "/api/users/2" for 127.0.0.1 at 2022-10-14 15:11:45 -0400
+Processing by Api::UsersController#update as JSON
+  Parameters: {"user"=>{"id"=>2, "email"=>"ooo@aol.com", "password"=>"[FILTERED]", "first_name"=>"shawn", "last_name"=>"nicholas", "gender"=>"fuck me", "day"=>"6", "month"=>"5", "year"=>"2020", "bio"=>"ooooof", "featured"=>false, "location"=>"", "education"=>nil, "work"=>nil, "relationship"=>nil, "phone_number"=>nil}, "id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:21:in `update'
+[31mUnpermitted parameters: :id, :password. Context: { controller: Api::UsersController, action: update, request: #<ActionDispatch::Request:0x0000000107cef2b8>, params: {"user"=>{"id"=>2, "email"=>"ooo@aol.com", "password"=>"[FILTERED]", "first_name"=>"shawn", "last_name"=>"nicholas", "gender"=>"fuck me", "day"=>"6", "month"=>"5", "year"=>"2020", "bio"=>"ooooof", "featured"=>false, "location"=>"", "education"=>nil, "work"=>nil, "relationship"=>nil, "phone_number"=>nil}, "format"=>:json, "controller"=>"api/users", "action"=>"update", "id"=>"2"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ooo@aol.com"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 174)
+Completed 200 OK in 20ms (Views: 0.6ms | ActiveRecord: 1.4ms | Allocations: 4359)
+
+
+Started PUT "/api/users/2" for 127.0.0.1 at 2022-10-14 15:11:47 -0400
+Processing by Api::UsersController#update as JSON
+  Parameters: {"user"=>{"id"=>2, "email"=>"ooo@aol.com", "password"=>"[FILTERED]", "first_name"=>"shawn", "last_name"=>"nicholas", "gender"=>"fuck me", "day"=>"6", "month"=>"5", "year"=>"2020", "bio"=>"Describe who you are!", "featured"=>false, "location"=>"", "education"=>nil, "work"=>nil, "relationship"=>nil, "phone_number"=>nil}, "id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:21:in `update'
+[31mUnpermitted parameters: :id, :password. Context: { controller: Api::UsersController, action: update, request: #<ActionDispatch::Request:0x0000000107d8f1a0>, params: {"user"=>{"id"=>2, "email"=>"ooo@aol.com", "password"=>"[FILTERED]", "first_name"=>"shawn", "last_name"=>"nicholas", "gender"=>"fuck me", "day"=>"6", "month"=>"5", "year"=>"2020", "bio"=>"Describe who you are!", "featured"=>false, "location"=>"", "education"=>nil, "work"=>nil, "relationship"=>nil, "phone_number"=>nil}, "format"=>:json, "controller"=>"api/users", "action"=>"update", "id"=>"2"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ooo@aol.com"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "bio" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["bio", "Describe who you are!"], ["updated_at", "2022-10-14 19:11:47.948721"], ["id", 2]]
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/users_controller.rb:22:in `update'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 174)
+Completed 200 OK in 19ms (Views: 0.7ms | ActiveRecord: 4.7ms | Allocations: 5014)
+
+

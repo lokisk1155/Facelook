@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import HomePage from './components/HomePage/HomePage';
 import NavBar from './components/HomePage/NavBar/NavBar';
-import ProfilePage from './components/ProfilePage/ProfilePage';
+import Posts from './components/ProfilePage/Posts';
 import CreateAccountForm from './components/UserLogin/CreateAccountForm';
 import ForgotPassword from './components/UserLogin/ForgotPassword';
 import LoginPage from './components/UserLogin/LoginPage';
@@ -29,7 +29,7 @@ function App() {
       </Route>
       <Route exact path="/ProfilePage/:id">
         <NavBar />
-        <ProfilePage />
+        <Posts />
       </Route>
     </Switch>
     </div>

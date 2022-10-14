@@ -3,11 +3,12 @@
     border: 1px solid black;
     height: 325px;
     width: 500px;
-    margin-left: 110px;
-    margin-top: 150px; 
+    margin-left: 115px;
+    margin-top: 10px;
     background-color: white;   
     border-radius: 10px;
     background-color: white;
+
 }
 
 .intro-container {
@@ -44,6 +45,35 @@
     width: 500px;
     align-self: center;
     border-radius: 7px;
-    background-color: #f0f2f5;
+    resize: none;
     border: none;
+    background-color: #f0f2f5;
+}
+
+.edit-bio-container {
+    width: 200px;
+}
+
+.bio-save-button {
+    flex-direction: row;
+}
+
+.bio-cancel-button {
+    align-self: flex-end;
+    justify-content: flex-end
+}
+
+.text-area-bio {
+    resize: none;
+    width: 500px;
+    height: 65px;
+    border: blue;
+    resize: none;
+    background-color: #f0f2f5;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.actual-bio {
+    text-align: center;
 }
