@@ -2,7 +2,7 @@ class User < ApplicationRecord
     has_secure_password
     validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true, length: { in: 3..255 }
     validates :session_token, presence: true, uniqueness: true
-    validates :password, length: { minimum: 6, allow_nil: true }
+    validates :password, length: { minimum: 6 }, allow_nil: true 
     validates :first_name, :last_name, :gender, :day, :month, :year, presence: true
 
   
