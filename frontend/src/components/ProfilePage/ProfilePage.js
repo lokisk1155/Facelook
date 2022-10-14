@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux"
 import { getCurrent } from "../../store/user"
 import Featured from "./Featured"
 import EditDetails from "./EditDetails"
+import './ProfilePage.css'
 
 
 
@@ -20,11 +21,22 @@ function ProfilePage() {
     const [month, setMonth] = useState('')
     const [year, setYear] = useState('')
     const [bio, setBio] = useState('')
+    const [toggleBio, setToggleBio] = useState(false)
     const [details, setDetails] = useState(false)
     const [featured, setFeatured] = useState(false)
     const [location, setLocation] = useState('')
     const [customFeatured, setCustomFeatured] = useState(true)
     const [customEdit, setCustomEdit] = useState(true)
+    const [customBio, setCustomBio] = useState(true)
+
+    let antiToggle = !toggleBio
+
+    let bioHeader;
+
+    if (bio.length < 1) {
+        bioHeader = 'Add Bio'
+    } 
+
     useEffect(() => {
         setTimeout(() => {
             dispatch(fetchUser(id))
@@ -36,42 +48,51 @@ function ProfilePage() {
         return <h1>Fetching...</h1>;
     } 
 
-    const handleSubmit = (e) => {
+    const handleBioSubmit = (e) => {
         e.preventDefault() 
+        setCustomBio(!customBio)
+        setToggleBio(customBio)
         const user = {
-            ...currentUser, bio, location, featured
+            ...currentUser, bio
         }
         user.password = currentUser.password
         dispatch(updateUser(user))
     }
 
-    const handleClick = (e) => {
-        e.preventDefault(0)
-        setCustomFeatured(!customFeatured)
-        setFeatured(customFeatured)
-    }
 
     return (
-        <div>
-            <h1>Hi {currentUser.first_name} {currentUser.last_name}</h1>
-            <h3>Add bio</h3>
-            <p>{currentUser.bio}</p>
-            <form onSubmit={handleSubmit}>
+        <div className="intro-container">
+            <h2 className="intro-header">Intro </h2>
+            <div>
+            <h4>{bio}</h4>
+            {antiToggle && <button className="add-bio-button" onClick={(() => {setCustomBio(!customBio)
+                setToggleBio(customBio)})}>{bioHeader || 'Edit Bio'}</button>}
                 <div>
-                    <input type="text" onChange={((e) => setBio(e.target.value))} />
+                    
+                    {toggleBio && <textarea defaultValue="Describe who you are" onChange={(e) => setBio(e.target.value)}>
+                        </textarea>}
+                    <div>
+                        <div>
+                        {toggleBio && <button onClick={handleBioSubmit}>Save</button>}
+                        </div>
+                        <div>
+                        {toggleBio && <button onClick={(() => {setCustomBio(!customBio)
+                            setToggleBio(customBio)})}>Cancel</button>}
+                        </div>
+                    </div>
+                    
                 </div>
-                <input type="submit" value="submit changes"></input>
-            </form>
+            </div>
 
             <div>
-                    <button onClick={(() => {setCustomEdit(!customEdit)
+                    <button className="edit-details-button" onClick={(() => {setCustomEdit(!customEdit)
                     setDetails(customEdit)})}>Edit Details</button>
 
                     {details && <EditDetails />}
             </div>
             <div>
             <div>
-                <button onClick={(() => {setCustomFeatured(!customFeatured)
+                <button className="add-featured-button" onClick={(() => {setCustomFeatured(!customFeatured)
                             setFeatured(customFeatured)})}>Add featured</button>
             </div>
             <div>

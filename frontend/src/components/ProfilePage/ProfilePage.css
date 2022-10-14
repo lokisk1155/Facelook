@@ -1,0 +1,49 @@
+.intro-container {
+    display: block;
+    border: 1px solid black;
+    height: 325px;
+    width: 500px;
+    margin-left: 110px;
+    margin-top: 150px; 
+    background-color: white;   
+    border-radius: 10px;
+    background-color: white;
+}
+
+.intro-container {
+    padding: 10px;
+    
+}
+
+.add-bio-button {
+    padding: 5px;
+    margin: 5px;
+    height: 35px;
+    width: 500px;
+    align-self: center;
+    border-radius: 7px;
+    background-color: #f0f2f5;
+    border: none;
+}
+
+.edit-details-button {
+    padding: 5px;
+    margin: 5px;
+    height: 35px;
+    width: 500px;
+    align-self: center;
+    border-radius: 7px;
+    background-color: #f0f2f5;
+    border: none;
+}
+
+.add-featured-button {
+    padding: 5px;
+    margin: 5px;
+    height: 35px;
+    width: 500px;
+    align-self: center;
+    border-radius: 7px;
+    background-color: #f0f2f5;
+    border: none;
+}
