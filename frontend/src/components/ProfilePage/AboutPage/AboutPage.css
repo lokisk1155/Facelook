@@ -1,0 +1,20 @@
+.about-page-container { 
+    display: block;
+    border: 1px solid black;
+    height: 400px;
+    width: 1200px;
+    margin-left: 125px;
+    margin-top: 10px;
+    background-color: white;   
+    border-radius: 10px;
+    background-color: white;
+}
+
+.about-page-button-container {
+
+}
+
+.about-page-component-container {
+
+    
+}

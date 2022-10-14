@@ -1,0 +1,20 @@
+.profile-selectors {
+    margin: 20px;
+    padding: 20px;
+}
+
+.posts-selector-button {
+    margin: 10px;
+    padding: 10px;
+    border: none;
+    background-color: #f0f2f5;
+
+}
+
+.about-selector-button {
+    margin: 10px;
+    padding: 10px;
+    border: none;
+    background-color: #f0f2f5;
+
+}

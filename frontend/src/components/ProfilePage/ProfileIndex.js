@@ -10,7 +10,7 @@ function ProfileIndex() {
        <div>
             <NavBar />
             <ProfileHeader />
-            <Posts /> 
+            
         </div>
     )
 
