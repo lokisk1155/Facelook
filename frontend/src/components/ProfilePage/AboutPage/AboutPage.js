@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react'
+import { Component, useEffect, useState } from 'react'
 import './AboutPage.css'
 import Overview from './Overview'
 import PlacesLived from './PlacesLived'
 import WorkEd from './WorkEd'
 
-function AboutPage({ renderString }) {
+function AboutPage() {
 
-    const [overview, setOverview] = useState(true)
+    const [overview, setOverview] = useState(false)
     const [customOverview, setCustomOverview] = useState(false)
 
     const [placesLived, setPlacesLived] = useState(false)
@@ -15,54 +15,57 @@ function AboutPage({ renderString }) {
     const [workEd, setWorkEd] = useState(false)
     const [customWorkEd, setCustomWorkEd] = useState(false)
 
+    const componentArray = [overview, placesLived, workEd]
 
-    // if (renderString === 'overview') {
-    //     overview = true 
-    //     placesLived = false 
-    // } else if (renderString === 'placesLived') {
-    //     overview = false 
-    //     placesLived = true 
-    // }
+    const [emergencyKey, setEmergencyKey] = useState('')
 
-    // const preventDoubleRender = (state, func) => {
-    //     func(!state)
-    // }
+    const [emergencyOverview, setEmergencyOverview] = useState(false)
+    const [emergencyPlacesLived, setEmergencyPlacesLived] = useState(false)
+    const [emergencyWorkEd, setEmergencyWorkEd] = useState(false)
 
-    // const handleRender = (action) => {
-    //     let value;
-    //     switch (action) {
-    //         case "overview":
-    //             value = <PlacesLived />
-    //             return
-    //         case "placesLived":
-    //             value = <Overview />
-    //             return
-    //     }
-    //     return value 
-    // }
 
-   
+    function fireEmergency() {
+        if (emergencyKey === "overview") console.log('hi overfiew')
+        if (emergencyKey === "placesLived") console.log('hi ____places')
+        if (emergencyKey === "workEd") console.log('hi worked')
 
-   
-    function altOverview() {
+    }
+
+    const altOverview = (e) => {
+        e.preventDefault()
+        setEmergencyKey("overview")
+        setCustomOverview(!customOverview)
+        setOverview(customOverview)
         setCustomPlacesLived(false)
         setPlacesLived(false)
         setCustomWorkEd(false)
         setWorkEd(false)
+        return fireEmergency()
+        
     }
 
-    function altWorkEd() {
+    const altWorkEd = (e) => {
+        e.preventDefault()
+        setCustomWorkEd(true)
+        setWorkEd(customWorkEd)
+        setEmergencyKey("workEd")
         setCustomPlacesLived(false)
         setPlacesLived(false)
         setCustomOverview(false)
         setOverview(false)
+        return fireEmergency()
     }
 
-    function altPlacesLived() {
+    const altPlacesLived = (e) => {
+        e.preventDefault()
+        setCustomPlacesLived(!customPlacesLived)
+        setPlacesLived(customPlacesLived)
+        setEmergencyKey("placesLived")
         setCustomOverview(false)
         setOverview(false)
         setCustomWorkEd(false)
         setWorkEd(false)
+        return fireEmergency()
     }
 
 
@@ -70,27 +73,18 @@ function AboutPage({ renderString }) {
         <div className="about-page-container" >
             <div className='about-page-block'>
                 <div className='about-page-button-container'>
-                    <button tabIndex="1" className='about-page-button-style' onClick={(() => {
-                        setCustomOverview(!customOverview)
-                        setOverview(customOverview)
-                        altOverview()
-                    })}>Overview</button>
-                    <button tabIndex="2" className='about-page-button-style' onClick={(() => {
-                        setCustomWorkEd(!customWorkEd)
-                        setWorkEd(customWorkEd)
-                        altWorkEd()
-
-                    })}>Work and Education</button>
-                    <button tabIndex="3" className='about-page-button-style' onClick={(() => {
-                        setCustomPlacesLived(!customPlacesLived)
-                        setPlacesLived(customPlacesLived)
-                        altPlacesLived() 
-                    })}>Places Lived</button>
+                    <button tabIndex="1" className='about-page-button-style' onClick={altOverview}>Overview</button>
+                    <button tabIndex="2" className='about-page-button-style' onClick={altWorkEd}>Work and Education</button>
+                    <button tabIndex="3" className='about-page-button-style' onClick={altPlacesLived}>Places Lived</button>
                     <button tabIndex="4" className='about-page-button-style'>Contact Info</button>
                     <button tabIndex="5" className='about-page-button-style'>Family and Relationships</button>
 
                 </div>
                     <div className='about-page-component-selector'>
+                        {emergencyOverview && <Overview />}
+                        {emergencyPlacesLived && <PlacesLived />}
+                        {emergencyWorkEd && <WorkEd />}
+
                         {overview && <Overview />}
                         {placesLived && <PlacesLived />}
                         {workEd && <WorkEd />}
