@@ -18,3 +18,18 @@
     background-color: #f0f2f5;
 
 }
+
+.about-page-button-style {
+    padding: 5px;
+    margin: 5px;
+    height: 35px;
+    width: 150px;
+    align-self: flex-start;
+    border-radius: 7px;
+    resize: none;
+    border: none;
+}
+
+.about-page-button-style:focus {
+    background-color: blue;
+}

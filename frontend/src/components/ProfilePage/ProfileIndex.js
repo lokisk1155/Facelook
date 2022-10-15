@@ -3,7 +3,10 @@ import Posts from "./Posts";
 import NavBar from "../HomePage/NavBar/NavBar";
 import './ProfileIndex.css'
 
+
 function ProfileIndex() {
+
+
 
 
     return (

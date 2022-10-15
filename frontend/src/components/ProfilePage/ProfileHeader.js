@@ -2,6 +2,8 @@ import './ProfileHeaders.css'
 import { useState } from 'react'
 import Posts from './Posts'
 import AboutPage from './AboutPage/AboutPage'
+import Overview from "./AboutPage/Overview";
+import PlacesLived from "./AboutPage/PlacesLived";
 
 function ProfileHeader() {
 
@@ -11,8 +13,6 @@ function ProfileHeader() {
 
     const [showAbout, setShowAbout] = useState(false)
     const [customAbout, setCustomAbout] = useState(false)
-
-
 
     return (
         <div>
