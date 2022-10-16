@@ -1,13 +1,11 @@
-function WorkEd({ func }) {
+function WorkEd({ }) {
 
 
-    function handleDisposal() {
-        return func(false)
-    }
+
 
     return (
         
-        <p onLoad={() => handleDisposal}>work and education</p>
+        <p>work and education</p>
     )
 }
 

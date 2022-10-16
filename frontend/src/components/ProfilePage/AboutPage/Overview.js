@@ -1,11 +1,8 @@
-function Overview({ func }) {
+function Overview({  }) {
 
-
-    function handleDisposal() {
-        return func(false)
-    }
+    
     return (
-        <p onLoad={() => handleDisposal}>overview</p>
+        <p>overview</p>
     )
 
 }

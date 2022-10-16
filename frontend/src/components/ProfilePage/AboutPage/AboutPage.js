@@ -4,31 +4,27 @@ import Overview from './Overview'
 import PlacesLived from './PlacesLived'
 import WorkEd from './WorkEd'
 
-function AboutPage() {
-
-    const falsey = false
+function AboutPage({ renderString }) {
 
     const [overview, setOverview] = useState(true)
-    const [customOverview, setCustomOverview] = useState(falsey)
+    const [customOverview, setCustomOverview] = useState(false)
 
-    const [placesLived, setPlacesLived] = useState(falsey)
-    const [customPlacesLived, setCustomPlacesLived] = useState(falsey)
+    const [placesLived, setPlacesLived] = useState(false)
+    const [customPlacesLived, setCustomPlacesLived] = useState(false)
 
-    const [workEd, setWorkEd] = useState(falsey)
-    const [customWorkEd, setCustomWorkEd] = useState(falsey)
+    const [workEd, setWorkEd] = useState(false)
+    const [customWorkEd, setCustomWorkEd] = useState(false)
 
     const componentArray = [overview, placesLived, workEd]
 
     const [emergencyKey, setEmergencyKey] = useState('')
 
-
     useEffect(() => {
         fireEmergency()
-    },[overview, placesLived, emergencyKey, workEd])
+    },[overview, placesLived, workEd])
 
 
     function fireEmergency() {
-        console.log(emergencyKey)
         switch (emergencyKey) {
             case "overview" :
                 setOverview(true)
@@ -52,57 +48,36 @@ function AboutPage() {
     const altOverview = (e) => {
         e.preventDefault()
         setEmergencyKey("overview")
-        setCustomOverview(true)
+        setCustomOverview(!customOverview)
         setOverview(customOverview)
         setCustomPlacesLived(false)
         setPlacesLived(false)
         setCustomWorkEd(false)
         setWorkEd(false)
-        let counter = 0
-        componentArray.forEach((component) => {
-            if (!component) counter += 1
-        })
-        if (counter === 3) {
-            return fireEmergency()
-        } 
-        return null
+        return 
     }
 
     const altWorkEd = (e) => {
         e.preventDefault()
-        setCustomWorkEd(true)
+        setCustomWorkEd(!customWorkEd)
         setWorkEd(customWorkEd)
         setEmergencyKey("workEd")
         setCustomPlacesLived(false)
         setPlacesLived(false)
         setCustomOverview(false)
         setOverview(false)
-        let counter = 0
-        componentArray.forEach((component) => {
-            if (!component) counter += 1
-        })
-        if (counter === 3) {
-            return fireEmergency()
-        }
         return 
     }
 
     const altPlacesLived = (e) => {
         e.preventDefault()
-        setCustomPlacesLived(true)
+        setCustomPlacesLived(!customPlacesLived)
         setPlacesLived(customPlacesLived)
         setEmergencyKey("placesLived")
         setCustomOverview(false)
         setOverview(false)
         setCustomWorkEd(false)
         setWorkEd(false)
-        let counter = 0
-        componentArray.forEach((component) => {
-            if (!component) counter += 1
-        })
-        if (counter === 3) {
-            return fireEmergency()
-        }
         return 
     }
 
@@ -119,9 +94,9 @@ function AboutPage() {
 
                 </div>
                     <div className='about-page-component-selector'>
-                        {overview && <Overview func={setOverview}/>}
-                        {placesLived && <PlacesLived func={setPlacesLived} />}
-                        {workEd && <WorkEd func={setWorkEd} />}
+                        {overview && <Overview />}
+                        {placesLived && <PlacesLived />}
+                        {workEd && <WorkEd />}
                 </div>
             </div>
 

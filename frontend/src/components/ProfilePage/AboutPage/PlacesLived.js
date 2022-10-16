@@ -1,12 +1,10 @@
-function PlacesLived({ func }) {
+function PlacesLived({ }) {
 
 
-    function handleDisposal() {
-        return func(false)
-    }
+
 
     return (
-        <p onLoad={() => handleDisposal}>PlacesLived</p>
+        <p>placesLived</p>
     )
 
 }
