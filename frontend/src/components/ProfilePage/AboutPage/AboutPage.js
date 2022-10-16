@@ -6,42 +6,66 @@ import WorkEd from './WorkEd'
 
 function AboutPage() {
 
-    const [overview, setOverview] = useState(false)
-    const [customOverview, setCustomOverview] = useState(false)
+    const falsey = false
 
-    const [placesLived, setPlacesLived] = useState(false)
-    const [customPlacesLived, setCustomPlacesLived] = useState(false)
+    const [overview, setOverview] = useState(true)
+    const [customOverview, setCustomOverview] = useState(falsey)
 
-    const [workEd, setWorkEd] = useState(false)
-    const [customWorkEd, setCustomWorkEd] = useState(false)
+    const [placesLived, setPlacesLived] = useState(falsey)
+    const [customPlacesLived, setCustomPlacesLived] = useState(falsey)
+
+    const [workEd, setWorkEd] = useState(falsey)
+    const [customWorkEd, setCustomWorkEd] = useState(falsey)
 
     const componentArray = [overview, placesLived, workEd]
 
     const [emergencyKey, setEmergencyKey] = useState('')
 
-    const [emergencyOverview, setEmergencyOverview] = useState(false)
-    const [emergencyPlacesLived, setEmergencyPlacesLived] = useState(false)
-    const [emergencyWorkEd, setEmergencyWorkEd] = useState(false)
+
+    useEffect(() => {
+        fireEmergency()
+    },[overview, placesLived, emergencyKey, workEd])
 
 
     function fireEmergency() {
-        if (emergencyKey === "overview") console.log('hi overfiew')
-        if (emergencyKey === "placesLived") console.log('hi ____places')
-        if (emergencyKey === "workEd") console.log('hi worked')
-
+        console.log(emergencyKey)
+        switch (emergencyKey) {
+            case "overview" :
+                setOverview(true)
+                setPlacesLived(false)
+                setWorkEd(false)
+                break
+            case "placesLived" :
+                setPlacesLived(true)
+                setOverview(false)
+                setWorkEd(false)
+                break
+            case "workEd":
+                setWorkEd(true)
+                setOverview(false)
+                setPlacesLived(false)
+                break
+        }
+        return 
     }
 
     const altOverview = (e) => {
         e.preventDefault()
         setEmergencyKey("overview")
-        setCustomOverview(!customOverview)
+        setCustomOverview(true)
         setOverview(customOverview)
         setCustomPlacesLived(false)
         setPlacesLived(false)
         setCustomWorkEd(false)
         setWorkEd(false)
-        return fireEmergency()
-        
+        let counter = 0
+        componentArray.forEach((component) => {
+            if (!component) counter += 1
+        })
+        if (counter === 3) {
+            return fireEmergency()
+        } 
+        return null
     }
 
     const altWorkEd = (e) => {
@@ -53,19 +77,33 @@ function AboutPage() {
         setPlacesLived(false)
         setCustomOverview(false)
         setOverview(false)
-        return fireEmergency()
+        let counter = 0
+        componentArray.forEach((component) => {
+            if (!component) counter += 1
+        })
+        if (counter === 3) {
+            return fireEmergency()
+        }
+        return 
     }
 
     const altPlacesLived = (e) => {
         e.preventDefault()
-        setCustomPlacesLived(!customPlacesLived)
+        setCustomPlacesLived(true)
         setPlacesLived(customPlacesLived)
         setEmergencyKey("placesLived")
         setCustomOverview(false)
         setOverview(false)
         setCustomWorkEd(false)
         setWorkEd(false)
-        return fireEmergency()
+        let counter = 0
+        componentArray.forEach((component) => {
+            if (!component) counter += 1
+        })
+        if (counter === 3) {
+            return fireEmergency()
+        }
+        return 
     }
 
 
@@ -81,15 +119,9 @@ function AboutPage() {
 
                 </div>
                     <div className='about-page-component-selector'>
-                        {emergencyOverview && <Overview />}
-                        {emergencyPlacesLived && <PlacesLived />}
-                        {emergencyWorkEd && <WorkEd />}
-
-                        {overview && <Overview />}
-                        {placesLived && <PlacesLived />}
-                        {workEd && <WorkEd />}
-                        
-  
+                        {overview && <Overview func={setOverview}/>}
+                        {placesLived && <PlacesLived func={setPlacesLived} />}
+                        {workEd && <WorkEd func={setWorkEd} />}
                 </div>
             </div>
 
