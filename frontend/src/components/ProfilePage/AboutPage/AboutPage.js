@@ -15,8 +15,6 @@ function AboutPage({ renderString }) {
     const [workEd, setWorkEd] = useState(false)
     const [customWorkEd, setCustomWorkEd] = useState(false)
 
-    const componentArray = [overview, placesLived, workEd]
-
     const [emergencyKey, setEmergencyKey] = useState('')
 
     useEffect(() => {
@@ -42,6 +40,7 @@ function AboutPage({ renderString }) {
                 setPlacesLived(false)
                 break
         }
+
         return 
     }
 

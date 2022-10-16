@@ -3,12 +3,16 @@ import './EditDetails.css'
 import { updateUser } from '../../store/user'
 import { useDispatch } from 'react-redux'
 
-function EditDetails({ currentUser }) {
+function EditDetails({ currentUser, redirect }) {
     const dispatch = useDispatch() 
 
     const self = currentUser
 
+    console.log(redirect, 'edit details')
+
     const [location, setLocation] = useState('')
+
+    const [renderString, setRenderString] = useState('')
 
 
     if (self.location) {
@@ -21,9 +25,8 @@ function EditDetails({ currentUser }) {
             ...self, location 
         }
         dispatch(updateUser(user))
+        return redirect(false, renderString)
     }
-    
-
 
     return (
         <div className="edit-details-modal" >

@@ -4,6 +4,7 @@ import Posts from './Posts'
 import AboutPage from './AboutPage/AboutPage'
 import Overview from "./AboutPage/Overview";
 import PlacesLived from "./AboutPage/PlacesLived";
+import { useEffect } from 'react';
 
 function ProfileHeader() {
 
@@ -14,26 +15,67 @@ function ProfileHeader() {
     const [showAbout, setShowAbout] = useState(false)
     const [customAbout, setCustomAbout] = useState(false)
 
+    const [renderString, setRenderString] = useState('')
+
+
+    useEffect(() => {
+        fireEmergency() 
+    }, [showPosts, showAbout])
+
+    function fireEmergency() {
+
+    }
+
+    function redirect(header, component) {
+        console.log('we hit')
+        if (!header) {
+            setShowAbout(true)
+            setShowPosts(false)
+            setCustomPosts(false)
+            fireEmergency()
+        } else {
+            setShowAbout(false)
+            setShowPosts(true)
+            setCustomPosts(false)
+            fireEmergency()
+        }
+
+        switch(component) {
+            case "overview":
+                setRenderString('overview')
+                break 
+            case "workEd":
+                setRenderString('wordEd')
+                break 
+            case "placesLived":
+                setRenderString("placesLived")
+                break 
+        }
+        return 
+    }
+    
     return (
         <div>
 
         <div className="profile-selectors" >
             <button className="posts-selector-button" onClick={(() => {setCustomPosts(!customPosts)
-                setShowPosts(customPosts)
+                setShowPosts(true)
                 setShowAbout(false)
                 setCustomAbout(false)
+                fireEmergency()
                 
                 })}>Posts</button>
 
             <button className="about-selector-button" onClick={(() => {setCustomAbout(!customAbout)
-                setShowAbout(customAbout)
+                setShowAbout(true)
                 setShowPosts(false)
                 setCustomPosts(false)
+                fireEmergency()
                 })}>About</button>
         </div>
 
-        {showPosts && <Posts />}
-        {showAbout && <AboutPage />}
+        {showPosts && <Posts redirect={redirect}/>}
+        {showAbout && <AboutPage renderString={renderString}/>}
 
 
         </div>

@@ -10,7 +10,7 @@ import './Posts.css'
 
 
 
-function Posts() {
+function Posts({ redirect }) {
     const dispatch = useDispatch()
 
     const { id } = useParams() 
@@ -66,6 +66,8 @@ function Posts() {
         dispatch(updateUser(user))
     }
 
+   
+
 
     return (
         <div className="intro-container">
@@ -96,7 +98,7 @@ function Posts() {
                     <button className="edit-details-button" onClick={(() => {setCustomEdit(!customEdit)
                     setDetails(customEdit)})}>Edit Details</button>
 
-                    {details && <EditDetails currentUser={currentUser}/>}
+                    {details && <EditDetails redirect={redirect} currentUser={currentUser}/>}
             </div>
             <div>
             <div>
