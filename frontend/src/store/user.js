@@ -29,7 +29,6 @@ export const updateUser = user => async dispatch => {
   })
 
   const data = await res.json()
-  console.log(data, 'data')
   dispatch(setCurrentProfile(data.user))
 }
 

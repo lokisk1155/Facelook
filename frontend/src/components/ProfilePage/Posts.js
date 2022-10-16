@@ -98,7 +98,7 @@ function Posts({ redirect }) {
                     <button className="edit-details-button" onClick={(() => {setCustomEdit(!customEdit)
                     setDetails(customEdit)})}>Edit Details</button>
 
-                    {details && <EditDetails redirect={redirect} currentUser={currentUser}/>}
+                    {details && <EditDetails closeForm={setDetails} redirect={redirect} currentUser={currentUser}/>}
             </div>
             <div>
             <div>

@@ -3,7 +3,7 @@ import './EditDetails.css'
 import { updateUser } from '../../store/user'
 import { useDispatch } from 'react-redux'
 
-function EditDetails({ currentUser, redirect }) {
+function EditDetails({ currentUser, redirect, closeForm }) {
     const dispatch = useDispatch() 
 
     const self = currentUser
@@ -28,9 +28,21 @@ function EditDetails({ currentUser, redirect }) {
         return redirect(false, renderString)
     }
 
+    const handleCloseForm = (e) => {
+        e.preventDefault() 
+        return closeForm(false)
+    }
+
+    const handleLocation = (e) => {
+        e.preventDefault() 
+        return redirect(false, "placesLived")
+    }
+
     return (
         <div className="edit-details-modal" >
             <p>...work in prog...</p>
+            <button onClick={handleCloseForm}>X</button>
+            <button onClick={handleLocation}>lets go to location in about</button>
             <form onSubmit={handleSubmit}>
 
 

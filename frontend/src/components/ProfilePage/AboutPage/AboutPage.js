@@ -1,4 +1,5 @@
 import { Component, useEffect, useState } from 'react'
+import { render } from 'react-dom'
 import './AboutPage.css'
 import Overview from './Overview'
 import PlacesLived from './PlacesLived'
@@ -17,13 +18,37 @@ function AboutPage({ renderString }) {
 
     const [emergencyKey, setEmergencyKey] = useState('')
 
-    useEffect(() => {
-        fireEmergency()
-    },[overview, placesLived, workEd])
+        useEffect(() => {
+            handleRenderString()
+            fireEmergency()
+        },[overview, placesLived, workEd])
 
+   
 
-    function fireEmergency() {
-        switch (emergencyKey) {
+        function fireEmergency() {
+            switch (emergencyKey) {
+                case "overview" :
+                    setOverview(true)
+                    setPlacesLived(false)
+                    setWorkEd(false)
+                    break
+                case "placesLived" :
+                    setPlacesLived(true)
+                    setOverview(false)
+                    setWorkEd(false)
+                    break
+                case "workEd":
+                    setWorkEd(true)
+                    setOverview(false)
+                    setPlacesLived(false)
+                    break
+            }
+
+        return 
+    }
+
+    function handleRenderString() {
+        switch (renderString) {
             case "overview" :
                 setOverview(true)
                 setPlacesLived(false)
@@ -41,7 +66,6 @@ function AboutPage({ renderString }) {
                 break
         }
 
-        return 
     }
 
     const altOverview = (e) => {
@@ -66,6 +90,7 @@ function AboutPage({ renderString }) {
         setCustomOverview(false)
         setOverview(false)
         return 
+
     }
 
     const altPlacesLived = (e) => {
