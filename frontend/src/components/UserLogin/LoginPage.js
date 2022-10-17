@@ -14,10 +14,6 @@ function LoginPage() {
     const [errors, setErrors] = useState([]);
     const [createFormOpen, setCreateFormOpen] = useState(false)
     const history = useHistory()
-    // if (sessionUser) {
-    //     return <Redirect to="/"/>;
-    // }
-
 
     const handleSubmit = (e) => {
         e.preventDefault();

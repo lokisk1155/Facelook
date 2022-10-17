@@ -1,10 +1,9 @@
 import { useDispatch } from 'react-redux'
-import { signup } from '../../store/session'
 import './CreateAccountForm.css'
 import { useState } from 'react'
 import * as sessionActions from '../../store/session';
 import './CreateAccountForm.css'
-import { Redirect, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 function CreateAccountForm({ closeForm }) {
     const dispatch = useDispatch()
@@ -46,9 +45,9 @@ function CreateAccountForm({ closeForm }) {
             <form onSubmit={handleSubmit}>
                 <ul>
                     {errors && errors.map((error) => {
-                        return <div className="create-account-error">
+                        return <li className="create-account-error">
                             {error}
-                        </div>
+                        </li>
                     })}
                 </ul>
                 <input type="text" placeholder='Email' onChange={(e) => setEmail(e.target.value)}></input>

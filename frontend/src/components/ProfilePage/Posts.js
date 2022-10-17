@@ -10,12 +10,10 @@ import './Posts.css'
 
 
 
-function Posts({ redirect }) {
+function Posts({ redirect, currentUser }) {
     const dispatch = useDispatch()
 
-    const { id } = useParams() 
-
-    const currentUser = useSelector(getCurrent(id));
+ 
 
     const [day, setDay] = useState('')
     const [month, setMonth] = useState('')
@@ -23,49 +21,40 @@ function Posts({ redirect }) {
     const [bio, setBio] = useState('')
     const [toggleBio, setToggleBio] = useState(false)
     const [details, setDetails] = useState(false)
-    const [featured, setFeatured] = useState(false)
+    const [featured, setFeatured] = useState('')
     const [location, setLocation] = useState('')
     const [customFeatured, setCustomFeatured] = useState(true)
     const [customEdit, setCustomEdit] = useState(true)
     const [customBio, setCustomBio] = useState(true)
 
-    const [work, setWork] = useState(null)
+    const [work, setWork] = useState('')
+
 
     function checkUser() {
         if (currentUser) {
-            if (currentUser.work) {
-                setWork(currentUser.work)
-            }
+            setDay(currentUser.day)
+            setMonth(currentUser.month)
+            setYear(currentUser.year)
+            setBio(currentUser.bio)
+            setFeatured(currentUser.featured)
+            setLocation(currentUser.location)
+            setWork(currentUser.work)
         }
-        return 
+
     }
 
     let antiToggle = !toggleBio
 
     let bioHeader;
 
-    let placeHolderLocation; 
-
-
-    if (location.length > 1) {
-        placeHolderLocation = location
-    }
-
-    if (bio.length < 1) {
-        bioHeader = 'Add Bio'
-    } 
+ 
 
     useEffect(() => {
         checkUser()
-        setTimeout(() => {
-            dispatch(fetchUser(id))
-        }, 100);
-    }, [id])
+    })
 
    
-    if (!currentUser) {
-        return <h1>Fetching...</h1>;
-    } 
+  
 
     const handleBioSubmit = (e) => {
         e.preventDefault() 
@@ -87,7 +76,7 @@ function Posts({ redirect }) {
             <div>
             <h4 className="actual-bio">{bio}</h4>
             {antiToggle && <button className="add-bio-button" onClick={(() => {setCustomBio(!customBio)
-                setToggleBio(customBio)})}>{bioHeader || 'Edit Bio'}</button>}
+                setToggleBio(customBio)})}>{'Edit Bio'}</button>}
                 <div className="edit-bio-container">   
                     {toggleBio && <textarea className="text-area-bio" defaultValue="Describe who you are" onChange={(e) => setBio(e.target.value)}>
                         </textarea>}
@@ -101,7 +90,8 @@ function Posts({ redirect }) {
                     
                 </div>
             </div>
-                    {work && <h3>{work}</h3>}
+                    {work && <h3>Works at {work}</h3>}
+                    {location && <h3>Lives at {location}</h3>}
             <div>
                 
             </div>

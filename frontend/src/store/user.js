@@ -1,5 +1,4 @@
 import csrfFetch from './csrf';
-import { SET_CURRENT_USER } from './session';
 
 export const SET_CURRENT_PROFILE = "users/SET_CURRENT_PROFILE"
 
@@ -22,24 +21,19 @@ export const getCurrent = id => state => {
 }
 
 export const updateUser = user => async dispatch => {
-  console.log(user)
-  const { id } = user 
-  const res = await csrfFetch(`/api/users/${id}`, {
+  const res = await csrfFetch(`/api/users/${user.id}`, {
     method: "PUT",
     body: JSON.stringify({user})
   })
-
   const data = await res.json()
   dispatch(setCurrentProfile(data.user))
+  return data
 }
 
 
 const userReducer = (previousState = {}, action) => {
     let newState = {...previousState}
       switch(action.type) {
-        case SET_CURRENT_USER:
-          newState = {...previousState, [action.payload.id]: action.payload}
-          return newState;
         case SET_CURRENT_PROFILE: 
             newState = {...previousState, [action.payload.id]: action.payload}
             return newState 

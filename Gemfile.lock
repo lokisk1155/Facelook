@@ -69,6 +69,22 @@ GEM
     annotate (3.2.0)
       activerecord (>= 3.2, < 8.0)
       rake (>= 10.4, < 14.0)
+    aws-eventstream (1.2.0)
+    aws-partitions (1.646.0)
+    aws-sdk-core (3.160.0)
+      aws-eventstream (~> 1, >= 1.0.2)
+      aws-partitions (~> 1, >= 1.525.0)
+      aws-sigv4 (~> 1.1)
+      jmespath (~> 1, >= 1.6.1)
+    aws-sdk-kms (1.58.0)
+      aws-sdk-core (~> 3, >= 3.127.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-s3 (1.114.0)
+      aws-sdk-core (~> 3, >= 3.127.0)
+      aws-sdk-kms (~> 1)
+      aws-sigv4 (~> 1.4)
+    aws-sigv4 (1.5.2)
+      aws-eventstream (~> 1, >= 1.0.2)
     bcrypt (3.1.18)
     better_errors (2.9.1)
       coderay (>= 1.0.0)
@@ -94,6 +110,7 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    jmespath (1.6.1)
     loofah (2.19.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -115,9 +132,7 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.8-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.13.8-x86_64-linux)
-      racc (~> 1.4)
-    pg (1.4.3)
+    pg (1.4.4)
     pry (0.14.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -167,10 +182,10 @@ GEM
 
 PLATFORMS
   arm64-darwin-21
-  x86_64-linux
 
 DEPENDENCIES
   annotate
+  aws-sdk-s3
   bcrypt
   better_errors
   binding_of_caller

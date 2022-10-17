@@ -4,8 +4,7 @@ class User < ApplicationRecord
     validates :session_token, presence: true, uniqueness: true
     validates :password, length: { minimum: 6 }, allow_nil: true 
     validates :first_name, :last_name, :gender, :day, :month, :year, presence: true
-
-  
+      
     before_validation :ensure_session_token
   
     has_many :posts,

@@ -9,6 +9,7 @@ gem "bcrypt"
 gem "jbuilder"
 gem "faker"
 gem "pry-rails"
+gem "aws-sdk-s3"
 
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"

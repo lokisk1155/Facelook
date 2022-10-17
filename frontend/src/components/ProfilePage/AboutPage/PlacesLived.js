@@ -8,25 +8,9 @@ import { useParams } from "react-router-dom"
 
 
 
-function PlacesLived({ }) {
-    const dispatch = useDispatch()
+function PlacesLived({ currentUser }) {
 
-    const { id } = useParams() 
 
-    const currentUser = useSelector(getCurrent(id));
-
-    console.log(currentUser, 'places')
-   
-    useEffect(() => {
-        setTimeout(() => {
-            dispatch(fetchUser(id))
-        }, 100);
-    }, [id])
-
-   
-    if (!currentUser) {
-        return <h1>Fetching...</h1>;
-    } 
 
 
     return (

@@ -1,32 +1,28 @@
 import { useDispatch } from "react-redux"
 import { updateUser } from "../../../store/user"
-import { useParams } from "react-router-dom"
-import { useSelector } from "react-redux"
-import { getCurrent } from "../../../store/user"
-import { fetchUser } from "../../../store/user"
-import { useEffect } from "react"
-import { useState } from "react"
 
-function WorkEd({ }) {
+import { useEffect, useState } from "react"
+
+function WorkEd({ currentUser }) {
     const dispatch = useDispatch()
 
-    const { id } = useParams() 
-
-    const currentUser = useSelector(getCurrent(id));
-
-    const [works, setWork] = useState(currentUser.work)
+    const [works, setWorks] = useState(null)
     const [toggleWork, setToggleWork] = useState(false)
     const [fakeWork, setFakeWork] = useState('')
 
+    
     useEffect(() => {
-        handleSubmit() 
-        dispatch(fetchUser(id))
+        checkUser()
+    })
 
-    }, [])
-
-
+    function checkUser() {
+        if (currentUser){
+            setWorks(currentUser.work)
+        }
+    }
 
     const handleSubmit = () => {
+        setWorks(fakeWork)
         let work = fakeWork
         const user = {
             ...currentUser, work
@@ -39,13 +35,14 @@ function WorkEd({ }) {
         <div>
             <div>
                 <h4>Work</h4>
+                
                 {works && <p>{works}</p> || <button onClick={(() => {
                     setToggleWork(!toggleWork)
                 })}>Add a workplace</button>}
                 {toggleWork && !works &&
                 <form onSubmit={handleSubmit}>
-
-                    <button type="submit" />
+                    <input type="text" onChange={((e) => setFakeWork(e.target.value))}/>
+                    <input type="submit" />
                 </form>}
             </div>
             

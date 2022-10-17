@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import './EditDetails.css'
-import { updateUser } from '../../store/user'
 import { useDispatch } from 'react-redux'
 
 function EditDetails({ currentUser, redirect, closeForm }) {

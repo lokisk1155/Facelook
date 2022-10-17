@@ -1,9 +1,8 @@
 class Api::UsersController < ApplicationController
-  wrap_parameters include: User.attribute_names + ['password']
+  wrap_parameters include: User.attribute_names + ['password', 'id']
 
   def create
-    @user = User.new(user_params)
-
+    @user = User.new(create_params)
     if @user.save
       login!(@user)
       render :show
@@ -19,7 +18,7 @@ class Api::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    update = @user.update(user_params)
+    update = @user.update!(user_params)
     if update
       render :show
     else
@@ -29,8 +28,12 @@ class Api::UsersController < ApplicationController
 
   private
 
+  def create_params
+    params.require(:user).permit(:email, :password, :first_name, :last_name, :gender, :day, :month, :year)
+  end
+
   def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :gender, :day, :month, :year, :bio, :featured, :location, :education, :work, :relationship, :phone_number)
+    params.require(:user).permit(:email, :id, :first_name, :last_name, :gender, :day, :month, :year, :bio, :featured, :work, :location, :education, :relationship, :phone_number, :created_at)
   end
 
 end

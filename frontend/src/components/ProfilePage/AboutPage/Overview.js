@@ -7,32 +7,36 @@ import { fetchUser } from "../../../store/user"
 import { useEffect, useState } from "react"
 
 
-function Overview() {
+function Overview({ currentUser }) {
     const dispatch = useDispatch()
 
-    const { id } = useParams() 
-
-    const currentUser = useSelector(getCurrent(id));
-
-    const [workPlace, setWorkPlace] = useState(currentUser.work)
+    const [workPlace, setWorkPlace] = useState('')
     const [toggleWork, setToggleWork] = useState(false)
     const [fakeWork, setFakeWork] = useState('')
     const [toggleWorkEdit, setToggleWorkEdit] = useState(false)
 
-    const [education, setEducation] = useState(currentUser.education)
+    const [education, setEducation] = useState('')
     const [toggleEducation, setToggleEducation] = useState(false)
 
-    const [location, setLocation] = useState(currentUser.location)
+    const [location, setLocation] = useState('')
     const [toggleLocation, setToggleLocation] = useState(false)
 
-    const [relationship, setRelationShip] = useState(currentUser.relationship)
+    const [relationship, setRelationShip] = useState('')
     const [toggleRelationship, setToggleRelationship] = useState(false)
 
-    console.log(currentUser, 'overview')
+    useEffect(() => {
+        checkParams()
+    }, [])
+
+    function checkParams() {
+        if (currentUser) {
+            setWorkPlace(currentUser.work)
+        }
+    }
+
 
     const handleSubmit = () => {
         setWorkPlace(fakeWork)
-        console.log(workPlace)
         let work = fakeWork
         const user = {
             ...currentUser, work
@@ -43,17 +47,6 @@ function Overview() {
     function handleClick() {
         return setToggleWorkEdit(true)
     }
-
-    useEffect(() => {
-        handleSubmit() 
-        setTimeout(() => {
-            dispatch(fetchUser(id))
-        }, 100);
-    }, [id])
-
-    if (!currentUser) {
-        return <h1>Fetching...</h1>;
-    } 
 
 
     return (

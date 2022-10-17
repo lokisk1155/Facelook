@@ -5,8 +5,13 @@ import AboutPage from './AboutPage/AboutPage'
 import Overview from "./AboutPage/Overview";
 import PlacesLived from "./AboutPage/PlacesLived";
 import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCurrent } from '../../store/user';
+import { fetchUser } from '../../store/user';
 
 function ProfileHeader() {
+    const dispatch = useDispatch() 
 
 
     const [showPosts, setShowPosts] = useState(true)
@@ -17,10 +22,15 @@ function ProfileHeader() {
 
     const [renderString, setRenderString] = useState('')
 
+    const { id } = useParams() 
+
+    const currentUser = useSelector(getCurrent(id));
 
     useEffect(() => {
         fireEmergency() 
-    }, [showPosts, showAbout])
+        dispatch(fetchUser(id))
+    }, [showPosts, showAbout, id])
+
 
     function fireEmergency() {
 
@@ -42,6 +52,7 @@ function ProfileHeader() {
 
         switch(component) {
             case "overview":
+                setRenderString('overview')
                 break 
             case "workEd":
                 setRenderString('workEd')
@@ -73,8 +84,8 @@ function ProfileHeader() {
                 })}>About</button>
         </div>
 
-        {showPosts && <Posts redirect={redirect}/>}
-        {showAbout && <AboutPage renderString={renderString}/>}
+        {showPosts && <Posts currentUser={currentUser} redirect={redirect}/>}
+        {showAbout && <AboutPage currentUser={currentUser} renderString={renderString}/>}
 
 
         </div>

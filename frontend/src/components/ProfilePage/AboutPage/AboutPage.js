@@ -5,7 +5,7 @@ import Overview from './Overview'
 import PlacesLived from './PlacesLived'
 import WorkEd from './WorkEd'
 
-function AboutPage({ renderString }) {
+function AboutPage({ renderString, currentUser }) {
 
     const [overview, setOverview] = useState(true)
     const [customOverview, setCustomOverview] = useState(false)
@@ -118,9 +118,9 @@ function AboutPage({ renderString }) {
 
                 </div>
                     <div className='about-page-component-selector'>
-                        {overview && <Overview />}
-                        {placesLived && <PlacesLived />}
-                        {workEd && <WorkEd />}
+                        {overview && <Overview currentUser={currentUser}/>}
+                        {placesLived && <PlacesLived currentUser={currentUser}/>}
+                        {workEd && <WorkEd currentUser={currentUser}/>}
                 </div>
             </div>
 
