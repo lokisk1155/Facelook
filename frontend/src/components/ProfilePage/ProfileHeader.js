@@ -27,7 +27,7 @@ function ProfileHeader() {
     }
 
     function redirect(header, component) {
-        console.log('we hit')
+        
         if (!header) {
             setShowAbout(true)
             setShowPosts(false)
@@ -42,10 +42,9 @@ function ProfileHeader() {
 
         switch(component) {
             case "overview":
-                setRenderString('overview')
                 break 
             case "workEd":
-                setRenderString('wordEd')
+                setRenderString('workEd')
                 break 
             case "placesLived":
                 setRenderString("placesLived")

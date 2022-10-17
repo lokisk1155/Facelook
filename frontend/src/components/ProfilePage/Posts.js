@@ -29,6 +29,17 @@ function Posts({ redirect }) {
     const [customEdit, setCustomEdit] = useState(true)
     const [customBio, setCustomBio] = useState(true)
 
+    const [work, setWork] = useState(null)
+
+    function checkUser() {
+        if (currentUser) {
+            if (currentUser.work) {
+                setWork(currentUser.work)
+            }
+        }
+        return 
+    }
+
     let antiToggle = !toggleBio
 
     let bioHeader;
@@ -45,9 +56,10 @@ function Posts({ redirect }) {
     } 
 
     useEffect(() => {
+        checkUser()
         setTimeout(() => {
             dispatch(fetchUser(id))
-        }, 1500);
+        }, 100);
     }, [id])
 
    
@@ -89,9 +101,9 @@ function Posts({ redirect }) {
                     
                 </div>
             </div>
-
+                    {work && <h3>{work}</h3>}
             <div>
-                {placeHolderLocation && <p>From {location}</p>}
+                
             </div>
 
             <div>

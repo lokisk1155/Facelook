@@ -22,6 +22,7 @@ export const getCurrent = id => state => {
 }
 
 export const updateUser = user => async dispatch => {
+  console.log(user)
   const { id } = user 
   const res = await csrfFetch(`/api/users/${id}`, {
     method: "PUT",

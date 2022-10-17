@@ -8,8 +8,6 @@ function EditDetails({ currentUser, redirect, closeForm }) {
 
     const self = currentUser
 
-    console.log(redirect, 'edit details')
-
     const [location, setLocation] = useState('')
 
     const [renderString, setRenderString] = useState('')
@@ -19,14 +17,6 @@ function EditDetails({ currentUser, redirect, closeForm }) {
         setLocation(self.location)
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        const user = {
-            ...self, location 
-        }
-        dispatch(updateUser(user))
-        return redirect(false, renderString)
-    }
 
     const handleCloseForm = (e) => {
         e.preventDefault() 
@@ -38,17 +28,57 @@ function EditDetails({ currentUser, redirect, closeForm }) {
         return redirect(false, "placesLived")
     }
 
+    const handleWorkEd = (e) => {
+        e.preventDefault() 
+        return redirect(false, "workEd")
+    }
+
+    const handleOverview = (e) => {
+        e.preventDefault() 
+        return redirect(false, "overview")
+    }
+
+
+
     return (
-        <div className="edit-details-modal" >
-            <p>...work in prog...</p>
-            <button onClick={handleCloseForm}>X</button>
-            <button onClick={handleLocation}>lets go to location in about</button>
-            <form onSubmit={handleSubmit}>
+    <div className="edit-details-modal">
+
+    <div className="edit-details-container" >
+        <h2 className='edit-details-header'>Edit details</h2> 
+        <button className='edit-details-header' onClick={handleCloseForm}>X</button>
+            <h3>Customize your intro</h3>
+                <p>details will be set to public</p>
+                <div className='edit-details-work'>
+                    <h4>Work</h4>
+                    <button onClick={handleWorkEd}>add a work place</button>
+                </div>
 
 
+                <div>
+                    <h4>Current City</h4>
+                    <button onClick={handleLocation}>Lives in {self.location || 'Add your current city'}</button>
+                </div>
+                <div>
+                    <h4>Hometown</h4>
+                    <button onClick={handleLocation}>From {self.location || 'Add your hometown'}</button>
+                </div>
 
-                <input type="submit" ></input>
-            </form>
+                <div>
+                    <h4>Relationship</h4>
+                    <button>Add a relationship status</button>
+                </div>
+
+                <div>
+                    <h4>Joined Facebook</h4>
+                    <p>Joined on {self.created_at}</p>
+                </div>
+            
+                <div>
+                <button onClick={handleOverview}>Update your information</button>
+                <button onClick={handleCloseForm}>Cancel</button>
+                <button onClick={handleCloseForm}>Save</button>
+                </div>
+            </div>
         </div>
     )
 

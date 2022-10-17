@@ -60,8 +60,8 @@ function AboutPage({ renderString }) {
                 setWorkEd(false)
                 break
             case "workEd":
-                setWorkEd(true)
                 setOverview(false)
+                setWorkEd(true)
                 setPlacesLived(false)
                 break
         }

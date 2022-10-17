@@ -1,4 +1,29 @@
 .edit-details-modal {
+    position:absolute; 
+    left: 0;
+    top: 0;
+    width: 100vw; 
+    height: 100vh; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4);
+}
+.edit-details-container { 
+    position:absolute;
+    top: 10vh;
+    left: 27.5vw;
+    background: white;
+    padding: 10px;
+    height: 650px;
+    width: 650px;
+    border-radius: 10px;    
+    align-items: flex-end;
+}
 
+.edit-details-header {
+    display: flex;
+
+}
+
+.edit-details-work {
     
 }
