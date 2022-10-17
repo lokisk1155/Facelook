@@ -8,38 +8,45 @@ import { useEffect } from "react"
 import { useState } from "react"
 
 function WorkEd({ }) {
-    const dispatch = useDispatch
+    const dispatch = useDispatch()
 
     const { id } = useParams() 
 
     const currentUser = useSelector(getCurrent(id));
 
-    const [workPlace, setWorkPlace] = useState(currentUser.work)
-    const [education, setEducation] = useState(currentUser.education)
+    const [works, setWork] = useState(currentUser.work)
+    const [toggleWork, setToggleWork] = useState(false)
+    const [fakeWork, setFakeWork] = useState('')
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
+    useEffect(() => {
+        handleSubmit() 
+        dispatch(fetchUser(id))
+
+    }, [])
+
+
+
+    const handleSubmit = () => {
+        let work = fakeWork
         const user = {
-            ...currentUser
+            ...currentUser, work
         }
         return dispatch(updateUser(user))
     }
 
+    
     return (
         <div>
             <div>
                 <h4>Work</h4>
-                {workPlace || <button>Add a workplace</button>}
-            </div>
+                {works && <p>{works}</p> || <button onClick={(() => {
+                    setToggleWork(!toggleWork)
+                })}>Add a workplace</button>}
+                {toggleWork && !works &&
+                <form onSubmit={handleSubmit}>
 
-            <div>
-                <h4>College</h4>
-                {education || <button>Add College</button>}
-            </div>
-
-            <div>
-                <h4>Highschool</h4>
-                {education || <button>Add College</button>}
+                    <button type="submit" />
+                </form>}
             </div>
             
         </div>

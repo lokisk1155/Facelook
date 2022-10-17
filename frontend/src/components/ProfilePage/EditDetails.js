@@ -50,7 +50,7 @@ function EditDetails({ currentUser, redirect, closeForm }) {
                 <p>details will be set to public</p>
                 <div className='edit-details-work'>
                     <h4>Work</h4>
-                    <button onClick={handleWorkEd}>add a work place</button>
+                    {currentUser.work || <button onClick={handleWorkEd}>add a work place</button>}
                 </div>
 
 

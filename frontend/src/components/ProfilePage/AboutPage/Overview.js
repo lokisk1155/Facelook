@@ -28,6 +28,8 @@ function Overview() {
     const [relationship, setRelationShip] = useState(currentUser.relationship)
     const [toggleRelationship, setToggleRelationship] = useState(false)
 
+    console.log(currentUser, 'overview')
+
     const handleSubmit = () => {
         setWorkPlace(fakeWork)
         console.log(workPlace)
@@ -44,7 +46,14 @@ function Overview() {
 
     useEffect(() => {
         handleSubmit() 
-    }, [])
+        setTimeout(() => {
+            dispatch(fetchUser(id))
+        }, 100);
+    }, [id])
+
+    if (!currentUser) {
+        return <h1>Fetching...</h1>;
+    } 
 
 
     return (
