@@ -14,7 +14,6 @@ export const receivePosts = posts => ({
 })
 
 export const fetchtPosts = () => async dispatch => {
-    debugger
     const res = await csrfFetch(`/api/posts`);
 
     if (res.ok) {
@@ -25,12 +24,10 @@ export const fetchtPosts = () => async dispatch => {
 
 
 export const createPost = post => async dispatch => {
-    debugger
     const res = await csrfFetch('/api/posts', {
         method: "POST",
         body: JSON.stringify(post)
     })
-    debugger
     if (res.ok) {
         const data = await res.json();
         dispatch(receivePosts(data));

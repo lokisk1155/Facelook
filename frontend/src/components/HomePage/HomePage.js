@@ -13,20 +13,15 @@ function HomePage() {
 
     const user = useSelector(state => state.session.user);
     const posts = useSelector(state => {
-            console.log(state, 'this is satte')
-            if (state.post)
-        return Object.values(state.post)
-        else {
-            return []
-        }
-    }
-        )
+            if (state.post) {
+                return Object.values(state.post)
+            } else {
+                return []
+            }
+    })
 
     const [content, setContent] = useState('')
     const [user_id, setUser_id] = useState('')
-
-    console.log(posts, 'homepage')
-
 
     useEffect(() => {
         loadUser()

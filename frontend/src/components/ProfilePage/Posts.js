@@ -6,12 +6,21 @@ import { useDispatch } from "react-redux"
 import { getCurrent } from "../../store/user"
 import Featured from "./Featured"
 import EditDetails from "./EditDetails"
+import { fetchtPosts } from "../../store/post"
 import './Posts.css'
 
 
 
 function Posts({ redirect, currentUser }) {
     const dispatch = useDispatch()
+
+    const posts = useSelector(state => {
+        if (state.post) {
+            return Object.values(state.post)
+        } else {
+            return []
+        }
+})
 
  
 
@@ -45,13 +54,10 @@ function Posts({ redirect, currentUser }) {
 
     let antiToggle = !toggleBio
 
-    let bioHeader;
-
- 
-
     useEffect(() => {
         checkUser()
-    })
+        dispatch(fetchtPosts())
+    }, [])
 
    
   
@@ -71,6 +77,7 @@ function Posts({ redirect, currentUser }) {
 
 
     return (
+    <div className="omega-profile-page-container">
         <div className="intro-container">
             <h2 className="intro-header">Intro </h2>
             <div>
@@ -110,11 +117,12 @@ function Posts({ redirect, currentUser }) {
             <div>
                 {featured && <Featured />}
             </div>
-
-
-
             </div>
         </div>
+        <div className="posts-container">
+            {posts && <p>{posts.map(post => <div>{post.content}</div>)}</p>}
+        </div>
+    </div>
     )
 }
 
