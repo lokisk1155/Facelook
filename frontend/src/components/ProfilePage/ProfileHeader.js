@@ -33,7 +33,7 @@ function ProfileHeader() {
 
 
     function fireEmergency() {
-
+        return 
     }
 
     function redirect(header, component) {
