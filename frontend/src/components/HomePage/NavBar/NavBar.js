@@ -17,6 +17,10 @@ function NavBar() {
     const [toggle, setToggle] = useState(true)  
     const history = useHistory()
 
+    function closeModal() {
+        return setProfileModal(!toggle)
+    }
+
 
     if (!user) {
         return <Redirect to="/login_page" />
@@ -35,7 +39,7 @@ function NavBar() {
                     <div className="navbar-profile-modal">
                         <img src={profilePic} alt="profile-pic" className="profile-pic-modal" onClick={() => {setToggle(!toggle)
                             setProfileModal(toggle)}}/>
-                        {profileModal && <ProfilePicModal user={user}/>}
+                        {profileModal && <ProfilePicModal closeModal={closeModal} user={user}/>}
                     </div>
                 </div>
         </div>

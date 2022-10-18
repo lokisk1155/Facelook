@@ -54,14 +54,18 @@ function HomePage() {
             <   NavBar user={user} />
             </div>
 
-            <div>
-            <p>Home Page!</p>
-            <form onSubmit={handleSubmit}>
-                <input type="text" placeholder="post content here!" onChange={((e) => setContent(e.target.value))}></input>
-                <input type="submit" />
-            </form>
+            <div className="omega-home-page-container">
+                <div className="left-nav-bar-container"></div>
+                <div className="middle-nav-bar-container">
+                    <form onSubmit={handleSubmit}>
+                        <input type="text" placeholder="post content here!" onChange={((e) => setContent(e.target.value))}></input>
+                        <input type="submit" />
+                    </form>
 
-            {posts && <p>{posts.map(post => <div>{post.content}</div>)}</p>}
+                    {posts && <p>{posts.map(post => <div>{post.content}</div>)}</p>}
+                </div>
+                <div className="right-nav-bar-container"></div>
+            
 
             </div>
         </div>

@@ -7,6 +7,7 @@ import { getCurrent } from "../../store/user"
 import Featured from "./Featured"
 import EditDetails from "./EditDetails"
 import { fetchtPosts } from "../../store/post"
+import { createPost } from "../../store/post"
 import './Posts.css'
 
 
@@ -20,8 +21,10 @@ function Posts({ redirect, currentUser }) {
         } else {
             return []
         }
-})
+    })
 
+    const [content, setContent] = useState('')
+    const [user_id, setUser_id] = useState('')
  
 
     const [day, setDay] = useState('')
@@ -41,6 +44,7 @@ function Posts({ redirect, currentUser }) {
 
     function checkUser() {
         if (currentUser) {
+            setUser_id(currentUser.id)
             setDay(currentUser.day)
             setMonth(currentUser.month)
             setYear(currentUser.year)
@@ -71,6 +75,12 @@ function Posts({ redirect, currentUser }) {
         }
         user.password = currentUser.password
         dispatch(updateUser(user))
+    }
+
+    function handlePostSubmit(e) {
+        e.preventDefault()
+        let post = {content, user_id}
+        dispatch(createPost(post))
     }
 
    
@@ -120,7 +130,13 @@ function Posts({ redirect, currentUser }) {
             </div>
         </div>
         <div className="posts-container">
-            {posts && <p>{posts.map(post => <div>{post.content}</div>)}</p>}
+        <   form onSubmit={handlePostSubmit}>
+                <input type="text" placeholder="post content here!" onChange={((e) => setContent(e.target.value))}></input>
+                <input type="submit" />
+            </form>
+            <div>
+                {posts && <p>{posts.map(post => <div>{post.content}</div>)}</p>}
+            </div>
         </div>
     </div>
     )
@@ -128,8 +144,3 @@ function Posts({ redirect, currentUser }) {
 
 export default Posts
 
-{/* <li>{`${user[2]} ${user[3]}`}</li>
-<li>{user[1]}</li>
-<li>{`${user[4]}/${user[5]}/${user[6]}`}</li>
-<li>{user[7]}</li>
-<li>{user[8]}</li> */}

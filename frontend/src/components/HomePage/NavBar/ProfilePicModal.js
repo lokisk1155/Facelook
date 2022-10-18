@@ -1,16 +1,19 @@
 import { Link } from "react-router-dom"
 import { logout } from "../../../store/session"
 import { useDispatch, useSelector } from "react-redux"
+import './profilePicModal.css'
 
 
-function ProfilePicModal() {
+function ProfilePicModal({ closeModal }) {
     const dispatch = useDispatch() 
     const user = useSelector(state => state.session.user)
 
     return (
-        <div>
-            <Link to={`/ProfilePage/${user.id}`} className="navItem">Profile Page!</Link>
-            <button onClick={() => dispatch(logout())} className="navItem">Sign Out</button>
+        <div className="omega-profile-modal-container">
+            <div className="profile-pic-modal-container">
+                <Link className="link-to-profile-page" to={`/ProfilePage/${user.id}`}>Profile Page!</Link>
+                <button className="logout-button" onClick={() => dispatch(logout())}>Sign Out</button>
+            </div>
         </div>
     )
 

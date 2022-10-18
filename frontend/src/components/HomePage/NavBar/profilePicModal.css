@@ -1,0 +1,27 @@
+.omega-profile-modal-container {
+    position:absolute; 
+    left: 0;
+    top: 0;
+    /* width: 100vw;  */
+    /* height: 100vh;  */
+}
+.profile-pic-modal-container { 
+    position:absolute;
+    top: 7vh;
+    left: 74vw;
+    background: white;
+    padding: 10px;
+    height: 375px;
+    width: 350px;
+    border-radius: 10px;    
+    align-items: flex-end;
+}
+
+.link-to-profile-page {
+
+}
+
+.logout-button {
+
+
+}

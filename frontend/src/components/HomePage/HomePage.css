@@ -1,0 +1,22 @@
+.omega-home-page-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.left-nav-bar-container {
+    padding: 20px;
+    height: 800px;
+    width: 250px;
+}
+
+.middle-nav-bar-container {
+    padding: 20px;
+    height: 800px;
+    width: 250px;
+}
+
+.right-nav-bar-container {
+    padding: 25px;
+    height: 800px;
+    width: 250px;
+}
