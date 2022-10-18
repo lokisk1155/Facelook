@@ -47149,3 +47149,3024 @@ Processing by Api::UsersController#show as JSON
 Completed 200 OK in 7ms (Views: 0.8ms | ActiveRecord: 0.5ms | Allocations: 1146)
 
 
+Started GET "/api/users/5" for 127.0.0.1 at 2022-10-18 11:30:20 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (6.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 1.7ms | Allocations: 364)
+Completed 200 OK in 112ms (Views: 4.5ms | ActiveRecord: 7.0ms | Allocations: 7042)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 11:39:26 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"I love app academy", "user_id"=>5, "post"=>{"content"=>"I love app academy", "user_id"=>5}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mPost Create (9.9ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "I love app academy"], ["created_at", "2022-10-18 15:39:26.978752"], ["updated_at", "2022-10-18 15:39:26.978752"], ["user_id", 5]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  Rendering api/posts/index.json.jbuilder
+  Rendered api/posts/index.json.jbuilder (Duration: 26.4ms | Allocations: 2812)
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 0.8ms | Allocations: 166)
+
+ActionView::Template::Error - undefined method `each' for nil:NilClass:
+	app/views/api/posts/index.json.jbuilder:1
+	app/controllers/api/posts_controller.rb:10:in `create'
+
+Completed 500 Internal Server Error in 144ms (Views: 1.6ms | ActiveRecord: 51.7ms | Allocations: 14062)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 11:42:51 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"yo yo yo", "user_id"=>5, "post"=>{"content"=>"yo yo yo", "user_id"=>5}}
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:10:in `create'
+  [1m[36mUser Load (4.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:10:in `create'
+  [1m[36mPost Create (4.3ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "yo yo yo"], ["created_at", "2022-10-18 15:43:22.814758"], ["updated_at", "2022-10-18 15:43:22.814758"], ["user_id", 5]]
+  ↳ app/controllers/api/posts_controller.rb:10:in `create'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:10:in `create'
+  Rendering api/posts/index.json.jbuilder
+  Rendered api/posts/index.json.jbuilder (Duration: 58.3ms | Allocations: 806226)
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 18.2ms | Allocations: 18959)
+
+ActionView::Template::Error - undefined method `each' for nil:NilClass:
+	app/views/api/posts/index.json.jbuilder:1
+	app/controllers/api/posts_controller.rb:11:in `create'
+
+Completed 500 Internal Server Error in 54173ms (Views: 32.7ms | ActiveRecord: 42.1ms | Allocations: 4443929)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 11:44:22 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"oooof ", "user_id"=>5, "post"=>{"content"=>"oooof ", "user_id"=>5}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:10:in `create'
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:10:in `create'
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "oooof "], ["created_at", "2022-10-18 15:45:18.483761"], ["updated_at", "2022-10-18 15:45:18.483761"], ["user_id", 5]]
+  ↳ app/controllers/api/posts_controller.rb:10:in `create'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:10:in `create'
+  Rendering api/posts/index.json.jbuilder
+  Rendered api/posts/index.json.jbuilder (Duration: 2.9ms | Allocations: 3000)
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 0.4ms | Allocations: 215)
+
+ActionView::Template::Error - undefined method `each' for nil:NilClass:
+	app/views/api/posts/index.json.jbuilder:1
+	app/controllers/api/posts_controller.rb:11:in `create'
+
+Completed 500 Internal Server Error in 55702ms (Views: 0.9ms | ActiveRecord: 21.7ms | Allocations: 80621)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 11:45:25 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"yoyoyoyo", "user_id"=>5, "post"=>{"content"=>"yoyoyoyo", "user_id"=>5}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:10:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:10:in `create'
+  [1m[36mPost Create (1.7ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "yoyoyoyo"], ["created_at", "2022-10-18 15:45:25.323057"], ["updated_at", "2022-10-18 15:45:25.323057"], ["user_id", 5]]
+  ↳ app/controllers/api/posts_controller.rb:10:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:10:in `create'
+  Rendering api/posts/index.json.jbuilder
+  Rendered api/posts/index.json.jbuilder (Duration: 1.6ms | Allocations: 2470)
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 0.3ms | Allocations: 151)
+
+ActionView::Template::Error - undefined method `each' for nil:NilClass:
+	app/views/api/posts/index.json.jbuilder:1
+	app/controllers/api/posts_controller.rb:11:in `create'
+
+Completed 500 Internal Server Error in 27ms (Views: 0.7ms | ActiveRecord: 10.0ms | Allocations: 17734)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 11:45:40 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"yoyoyooy", "user_id"=>5, "post"=>{"content"=>"yoyoyooy", "user_id"=>5}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:10:in `create'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:10:in `create'
+  [1m[36mPost Create (0.9ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "yoyoyooy"], ["created_at", "2022-10-18 15:45:41.020159"], ["updated_at", "2022-10-18 15:45:41.020159"], ["user_id", 5]]
+  ↳ app/controllers/api/posts_controller.rb:10:in `create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:10:in `create'
+  Rendering api/posts/index.json.jbuilder
+  Rendered api/posts/index.json.jbuilder (Duration: 1.5ms | Allocations: 3002)
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 0.3ms | Allocations: 215)
+
+ActionView::Template::Error - undefined method `each' for nil:NilClass:
+	app/views/api/posts/index.json.jbuilder:1
+	app/controllers/api/posts_controller.rb:11:in `create'
+
+Completed 500 Internal Server Error in 27ms (Views: 0.5ms | ActiveRecord: 12.5ms | Allocations: 30620)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 11:45:58 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"fsfsdfsdfs", "user_id"=>5, "post"=>{"content"=>"fsfsdfsdfs", "user_id"=>5}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "fsfsdfsdfs"], ["created_at", "2022-10-18 15:45:58.909618"], ["updated_at", "2022-10-18 15:45:58.909618"], ["user_id", 5]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  Rendering api/posts/index.json.jbuilder
+  Rendered api/posts/index.json.jbuilder (Duration: 61756.8ms | Allocations: 51200)
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 1.7ms | Allocations: 235)
+
+ActionView::Template::Error - undefined method `each' for nil:NilClass:
+	app/views/api/posts/index.json.jbuilder:2
+	app/controllers/api/posts_controller.rb:10:in `create'
+
+Completed 500 Internal Server Error in 61800ms (Views: 7.9ms | ActiveRecord: 9.8ms | Allocations: 66909)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 11:47:00 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"fdsfsdfsfsf", "user_id"=>5, "post"=>{"content"=>"fdsfsdfsfsf", "user_id"=>5}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mPost Create (0.7ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "fdsfsdfsfsf"], ["created_at", "2022-10-18 15:47:00.707228"], ["updated_at", "2022-10-18 15:47:00.707228"], ["user_id", 5]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  Rendering api/posts/index.json.jbuilder
+  Rendered api/posts/index.json.jbuilder (Duration: 2.2ms | Allocations: 2543)
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 0.3ms | Allocations: 151)
+
+ActionView::Template::Error - undefined method `each' for nil:NilClass:
+	app/views/api/posts/index.json.jbuilder:1
+	app/controllers/api/posts_controller.rb:10:in `create'
+
+Completed 500 Internal Server Error in 14ms (Views: 0.7ms | ActiveRecord: 2.2ms | Allocations: 7438)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 11:47:04 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"dsadsadada", "user_id"=>5, "post"=>{"content"=>"dsadsadada", "user_id"=>5}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mPost Create (1.8ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "dsadsadada"], ["created_at", "2022-10-18 15:47:04.742142"], ["updated_at", "2022-10-18 15:47:04.742142"], ["user_id", 5]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  Rendering api/posts/index.json.jbuilder
+  Rendered api/posts/index.json.jbuilder (Duration: 1.9ms | Allocations: 2424)
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 0.1ms | Allocations: 69)
+
+ActionView::Template::Error - undefined method `each' for nil:NilClass:
+	app/views/api/posts/index.json.jbuilder:1
+	app/controllers/api/posts_controller.rb:10:in `create'
+
+Completed 500 Internal Server Error in 13ms (Views: 0.3ms | ActiveRecord: 3.1ms | Allocations: 6630)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-18 11:48:16 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `current_user'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.6ms | Allocations: 656)
+Completed 200 OK in 21ms (Views: 2.8ms | ActiveRecord: 7.4ms | Allocations: 19592)
+
+
+Started DELETE "/api/session" for 127.0.0.1 at 2022-10-18 11:48:20 -0400
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `current_user'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:33:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "asdasdada@aol.com"], ["id", 5], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 5], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Update (1.9ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2022-10-18 15:48:20.901607"], ["id", 5]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+Completed 200 OK in 18ms (Views: 0.1ms | ActiveRecord: 5.1ms | Allocations: 6950)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2022-10-18 11:50:17 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"credential"=>"ooo@aol.com", "password"=>"[FILTERED]", "session"=>{"credential"=>"ooo@aol.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ooo@aol.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20:in `find_by_credentials'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:33:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ooo@aol.com"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2022-10-18 15:50:18.140688"], ["id", 2]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 1.7ms | Allocations: 203)
+Completed 200 OK in 254ms (Views: 3.0ms | ActiveRecord: 3.2ms | Allocations: 5327)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 11:50:25 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"yoooooo", "user_id"=>2, "post"=>{"content"=>"yoooooo", "user_id"=>2}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mPost Create (5.7ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "yoooooo"], ["created_at", "2022-10-18 15:50:25.845759"], ["updated_at", "2022-10-18 15:50:25.845759"], ["user_id", 2]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  Rendering api/posts/index.json.jbuilder
+  Rendered api/posts/index.json.jbuilder (Duration: 4.7ms | Allocations: 2860)
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 1.0ms | Allocations: 174)
+
+ActionView::Template::Error - undefined method `each' for nil:NilClass:
+	app/views/api/posts/index.json.jbuilder:1
+	app/controllers/api/posts_controller.rb:10:in `create'
+
+Completed 500 Internal Server Error in 45ms (Views: 1.5ms | ActiveRecord: 14.2ms | Allocations: 12855)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 11:51:25 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"dasdasdad", "user_id"=>2, "post"=>{"content"=>"dasdasdad", "user_id"=>2}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mPost Create (1.6ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "dasdasdad"], ["created_at", "2022-10-18 15:51:25.241882"], ["updated_at", "2022-10-18 15:51:25.241882"], ["user_id", 2]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  Rendering api/posts/index.json.jbuilder
+  Rendered api/posts/index.json.jbuilder (Duration: 17144.1ms | Allocations: 110644)
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 1.0ms | Allocations: 14980)
+
+ActionView::Template::Error - Input/output error - read:
+	app/controllers/api/posts_controller.rb:10:in `create'
+
+Completed 500 Internal Server Error in 17183ms (Views: 7.8ms | ActiveRecord: 4.2ms | Allocations: 381317)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 11:58:55 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"casdasfasFSaf", "user_id"=>2, "post"=>{"content"=>"casdasfasFSaf", "user_id"=>2}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:14:in `create'
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:14:in `create'
+  [1m[36mPost Create (2.4ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "casdasfasFSaf"], ["created_at", "2022-10-18 15:58:56.024796"], ["updated_at", "2022-10-18 15:58:56.024796"], ["user_id", 2]]
+  ↳ app/controllers/api/posts_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:14:in `create'
+  Rendering api/posts/index.json.jbuilder
+  Rendered api/posts/index.json.jbuilder (Duration: 1.5ms | Allocations: 3003)
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 0.3ms | Allocations: 215)
+
+ActionView::Template::Error - undefined method `each' for nil:NilClass:
+	app/views/api/posts/index.json.jbuilder:1
+	app/controllers/api/posts_controller.rb:15:in `create'
+
+Completed 500 Internal Server Error in 36ms (Views: 0.6ms | ActiveRecord: 17.4ms | Allocations: 30596)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 11:59:08 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"fsadsad", "user_id"=>2, "post"=>{"content"=>"fsadsad", "user_id"=>2}}
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:15:in `create'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:15:in `create'
+  [1m[36mPost Create (0.8ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "fsadsad"], ["created_at", "2022-10-18 15:59:18.432360"], ["updated_at", "2022-10-18 15:59:18.432360"], ["user_id", 2]]
+  ↳ app/controllers/api/posts_controller.rb:15:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:15:in `create'
+  Rendering api/posts/index.json.jbuilder
+  Rendered api/posts/index.json.jbuilder (Duration: 34800.0ms | Allocations: 58642)
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 1.4ms | Allocations: 152)
+
+ActionView::Template::Error - undefined method `each' for nil:NilClass:
+	app/views/api/posts/index.json.jbuilder:2
+	app/controllers/api/posts_controller.rb:16:in `create'
+
+Completed 500 Internal Server Error in 83366ms (Views: 7.3ms | ActiveRecord: 24.4ms | Allocations: 2383691)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 12:00:32 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"sadfdasd", "user_id"=>2, "post"=>{"content"=>"sadfdasd", "user_id"=>2}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:15:in `create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:15:in `create'
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "sadfdasd"], ["created_at", "2022-10-18 16:00:32.617470"], ["updated_at", "2022-10-18 16:00:32.617470"], ["user_id", 2]]
+  ↳ app/controllers/api/posts_controller.rb:15:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:15:in `create'
+  Rendering api/posts/index.json.jbuilder
+  Rendered api/posts/index.json.jbuilder (Duration: 1.3ms | Allocations: 2471)
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 0.2ms | Allocations: 151)
+
+ActionView::Template::Error - undefined method `each' for nil:NilClass:
+	app/views/api/posts/index.json.jbuilder:1
+	app/controllers/api/posts_controller.rb:16:in `create'
+
+Completed 500 Internal Server Error in 23ms (Views: 0.5ms | ActiveRecord: 14.3ms | Allocations: 17775)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 12:00:36 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"j jhjbjbb", "user_id"=>2, "post"=>{"content"=>"j jhjbjbb", "user_id"=>2}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:15:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:15:in `create'
+  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "j jhjbjbb"], ["created_at", "2022-10-18 16:00:36.301351"], ["updated_at", "2022-10-18 16:00:36.301351"], ["user_id", 2]]
+  ↳ app/controllers/api/posts_controller.rb:15:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:15:in `create'
+  Rendering api/posts/index.json.jbuilder
+  Rendered api/posts/index.json.jbuilder (Duration: 2.0ms | Allocations: 2426)
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 0.1ms | Allocations: 69)
+
+ActionView::Template::Error - undefined method `each' for nil:NilClass:
+	app/views/api/posts/index.json.jbuilder:1
+	app/controllers/api/posts_controller.rb:16:in `create'
+
+Completed 500 Internal Server Error in 12ms (Views: 0.3ms | ActiveRecord: 1.2ms | Allocations: 6629)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 12:01:45 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"asdad", "user_id"=>2, "post"=>{"content"=>"asdad", "user_id"=>2}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:14:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:14:in `create'
+  [1m[36mPost Create (0.9ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "asdad"], ["created_at", "2022-10-18 16:01:45.189508"], ["updated_at", "2022-10-18 16:01:45.189508"], ["user_id", 2]]
+  ↳ app/controllers/api/posts_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:14:in `create'
+  Rendering api/posts/index.json.jbuilder
+  Rendered api/posts/index.json.jbuilder (Duration: 1.5ms | Allocations: 2384)
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 0.1ms | Allocations: 95)
+
+ActionView::Template::Error - undefined method `each' for nil:NilClass:
+	app/views/api/posts/index.json.jbuilder:1
+	app/controllers/api/posts_controller.rb:15:in `create'
+
+Completed 500 Internal Server Error in 19ms (Views: 0.3ms | ActiveRecord: 9.6ms | Allocations: 17256)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 12:02:26 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"asdadad", "user_id"=>2, "post"=>{"content"=>"asdadad", "user_id"=>2}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:14:in `create'
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:14:in `create'
+  [1m[36mPost Create (1.7ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "asdadad"], ["created_at", "2022-10-18 16:02:26.075147"], ["updated_at", "2022-10-18 16:02:26.075147"], ["user_id", 2]]
+  ↳ app/controllers/api/posts_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:14:in `create'
+  Rendering api/posts/index.json.jbuilder
+  Rendered api/posts/index.json.jbuilder (Duration: 3.4ms | Allocations: 2545)
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 0.5ms | Allocations: 151)
+
+ActionView::Template::Error - undefined method `each' for nil:NilClass:
+	app/views/api/posts/index.json.jbuilder:1
+	app/controllers/api/posts_controller.rb:15:in `create'
+
+Completed 500 Internal Server Error in 24ms (Views: 1.1ms | ActiveRecord: 3.8ms | Allocations: 7387)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 12:02:55 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"asdada", "user_id"=>2, "post"=>{"content"=>"asdada", "user_id"=>2}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:14:in `create'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:14:in `create'
+  [1m[36mPost Create (0.8ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "asdada"], ["created_at", "2022-10-18 16:02:55.449905"], ["updated_at", "2022-10-18 16:02:55.449905"], ["user_id", 2]]
+  ↳ app/controllers/api/posts_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:14:in `create'
+  Rendering api/posts/index.json.jbuilder
+  Rendered api/posts/index.json.jbuilder (Duration: 2.6ms | Allocations: 2544)
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 0.5ms | Allocations: 151)
+
+ActionView::Template::Error - undefined method `each' for nil:NilClass:
+	app/views/api/posts/index.json.jbuilder:1
+	app/controllers/api/posts_controller.rb:15:in `create'
+
+Completed 500 Internal Server Error in 31ms (Views: 1.0ms | ActiveRecord: 2.0ms | Allocations: 7386)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 12:03:58 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"asdasada", "user_id"=>2, "post"=>{"content"=>"asdasada", "user_id"=>2}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:14:in `create'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:14:in `create'
+  [1m[36mPost Create (0.7ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "asdasada"], ["created_at", "2022-10-18 16:03:58.885328"], ["updated_at", "2022-10-18 16:03:58.885328"], ["user_id", 2]]
+  ↳ app/controllers/api/posts_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:14:in `create'
+  Rendering api/posts/index.json.jbuilder
+  Rendered api/posts/index.json.jbuilder (Duration: 3.1ms | Allocations: 2544)
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 0.4ms | Allocations: 151)
+
+ActionView::Template::Error - undefined method `each' for nil:NilClass:
+	app/views/api/posts/index.json.jbuilder:1
+	app/controllers/api/posts_controller.rb:15:in `create'
+
+Completed 500 Internal Server Error in 32ms (Views: 0.9ms | ActiveRecord: 2.2ms | Allocations: 7385)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 12:04:13 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"asdada", "user_id"=>2, "post"=>{"content"=>"asdada", "user_id"=>2}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:14:in `create'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:14:in `create'
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "asdada"], ["created_at", "2022-10-18 16:04:14.116667"], ["updated_at", "2022-10-18 16:04:14.116667"], ["user_id", 2]]
+  ↳ app/controllers/api/posts_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:14:in `create'
+  Rendering api/posts/index.json.jbuilder
+  Rendered api/posts/index.json.jbuilder (Duration: 1.4ms | Allocations: 2384)
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 0.1ms | Allocations: 95)
+
+ActionView::Template::Error - undefined method `each' for nil:NilClass:
+	app/views/api/posts/index.json.jbuilder:1
+	app/controllers/api/posts_controller.rb:15:in `create'
+
+Completed 500 Internal Server Error in 22ms (Views: 0.3ms | ActiveRecord: 10.4ms | Allocations: 17233)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 12:04:31 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"asdadad", "user_id"=>2, "post"=>{"content"=>"asdadad", "user_id"=>2}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:14:in `create'
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:14:in `create'
+  [1m[36mPost Create (1.1ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "asdadad"], ["created_at", "2022-10-18 16:04:32.026048"], ["updated_at", "2022-10-18 16:04:32.026048"], ["user_id", 2]]
+  ↳ app/controllers/api/posts_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:14:in `create'
+  Rendering api/posts/index.json.jbuilder
+  Rendered api/posts/index.json.jbuilder (Duration: 1.7ms | Allocations: 3006)
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 0.3ms | Allocations: 215)
+
+ActionView::Template::Error - undefined method `each' for nil:NilClass:
+	app/views/api/posts/index.json.jbuilder:1
+	app/controllers/api/posts_controller.rb:15:in `create'
+
+Completed 500 Internal Server Error in 35ms (Views: 0.6ms | ActiveRecord: 15.6ms | Allocations: 30591)
+
+
+  [1m[36mPost Load (1.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 12:15:08 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"dsafdfsa", "user_id"=>2, "post"=>{"content"=>"dsafdfsa", "user_id"=>2}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mPost Create (6.0ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "dsafdfsa"], ["created_at", "2022-10-18 16:15:08.611576"], ["updated_at", "2022-10-18 16:15:08.611576"], ["user_id", 2]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  Rendering api/posts/index.json.jbuilder
+  Rendered api/posts/index.json.jbuilder (Duration: 16675.1ms | Allocations: 87801)
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 1.4ms | Allocations: 15341)
+
+ActionView::Template::Error - Input/output error - read:
+	app/views/api/posts/index.json.jbuilder:2
+	app/controllers/api/posts_controller.rb:10:in `create'
+
+Completed 500 Internal Server Error in 16765ms (Views: 7.8ms | ActiveRecord: 32.5ms | Allocations: 409323)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 12:16:12 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"fdsafasdfasfa", "user_id"=>2, "post"=>{"content"=>"fdsafasdfasfa", "user_id"=>2}}
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT "posts".* FROM "posts" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/controllers/api/posts_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:11:in `create'
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:11:in `create'
+  [1m[36mPost Create (1.9ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "fdsafasdfasfa"], ["created_at", "2022-10-18 16:16:36.950339"], ["updated_at", "2022-10-18 16:16:36.950339"], ["user_id", 2]]
+  ↳ app/controllers/api/posts_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:11:in `create'
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 32.8ms | Allocations: 643013)
+Completed 200 OK in 4560717ms (Views: 39.4ms | ActiveRecord: 21.1ms | Allocations: 4373979)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 13:33:48 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"safasfasfasf", "user_id"=>2, "post"=>{"content"=>"safasfasfasf", "user_id"=>2}}
+  [1m[36mPost Load (14.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/controllers/api/posts_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:11:in `create'
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:11:in `create'
+  [1m[36mPost Create (5.0ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "safasfasfasf"], ["created_at", "2022-10-18 17:34:11.640071"], ["updated_at", "2022-10-18 17:34:11.640071"], ["user_id", 2]]
+  ↳ app/controllers/api/posts_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:11:in `create'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/controllers/api/posts_controller.rb:12:in `create'
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 53.9ms | Allocations: 808917)
+Completed 200 OK in 29454ms (Views: 63.7ms | ActiveRecord: 25.0ms | Allocations: 1192477)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 13:35:48 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"dasdasdsa", "user_id"=>2, "post"=>{"content"=>"dasdasdsa", "user_id"=>2}}
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:11:in `create'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:11:in `create'
+  [1m[36mPost Create (0.8ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "dasdasdsa"], ["created_at", "2022-10-18 17:35:52.247710"], ["updated_at", "2022-10-18 17:35:52.247710"], ["user_id", 2]]
+  ↳ app/controllers/api/posts_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:11:in `create'
+  Rendering api/posts/index.json.jbuilder
+  Rendered api/posts/index.json.jbuilder (Duration: 55.4ms | Allocations: 625857)
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 1.4ms | Allocations: 176)
+
+ActionView::Template::Error - undefined method `each' for nil:NilClass:
+	app/views/api/posts/index.json.jbuilder:1
+	app/controllers/api/posts_controller.rb:12:in `create'
+
+Completed 500 Internal Server Error in 14464ms (Views: 4.1ms | ActiveRecord: 33.7ms | Allocations: 2456816)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 13:37:02 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"fsafafsfasf", "user_id"=>2, "post"=>{"content"=>"fsafafsfasf", "user_id"=>2}}
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/controllers/api/posts_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:11:in `create'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:11:in `create'
+  [1m[36mPost Create (0.8ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "fsafafsfasf"], ["created_at", "2022-10-18 17:37:08.139169"], ["updated_at", "2022-10-18 17:37:08.139169"], ["user_id", 2]]
+  ↳ app/controllers/api/posts_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:11:in `create'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/controllers/api/posts_controller.rb:13:in `create'
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (1.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 53.0ms | Allocations: 555301)
+Completed 200 OK in 26415ms (Views: 56.0ms | ActiveRecord: 16.2ms | Allocations: 2377881)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:45:46 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (3.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 37.4ms | Allocations: 7318)
+Completed 200 OK in 42ms (Views: 38.0ms | ActiveRecord: 17.4ms | Allocations: 9664)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:45:47 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 2.8ms | Allocations: 2857)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.3ms | Allocations: 3382)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:46:20 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 22.2ms | Allocations: 4582)
+Completed 200 OK in 28ms (Views: 7.3ms | ActiveRecord: 16.3ms | Allocations: 6927)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:46:41 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 5.4ms | Allocations: 2857)
+Completed 200 OK in 12ms (Views: 5.6ms | ActiveRecord: 1.0ms | Allocations: 3386)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:46:41 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 5.0ms | Allocations: 2857)
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.3ms | Allocations: 3319)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:46:41 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 5.5ms | Allocations: 2857)
+Completed 200 OK in 7ms (Views: 5.7ms | ActiveRecord: 0.3ms | Allocations: 3301)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:46:41 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 7.6ms | Allocations: 2857)
+Completed 200 OK in 11ms (Views: 7.7ms | ActiveRecord: 0.4ms | Allocations: 3301)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:46:41 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 6.8ms | Allocations: 2857)
+Completed 200 OK in 9ms (Views: 7.1ms | ActiveRecord: 0.5ms | Allocations: 3322)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 13:46:43 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"yoooo", "user_id"=>2, "post"=>{"content"=>"yoooo", "user_id"=>2}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mUser Load (3.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mPost Create (3.9ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "yoooo"], ["created_at", "2022-10-18 17:46:43.444899"], ["updated_at", "2022-10-18 17:46:43.444899"], ["user_id", 2]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  Rendering api/posts/index.json.jbuilder
+  Rendered api/posts/index.json.jbuilder (Duration: 2.6ms | Allocations: 2376)
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 0.1ms | Allocations: 95)
+
+ActionView::Template::Error - undefined method `each' for nil:NilClass:
+	app/views/api/posts/index.json.jbuilder:1
+	app/controllers/api/posts_controller.rb:11:in `create'
+
+Completed 500 Internal Server Error in 89ms (Views: 0.7ms | ActiveRecord: 28.4ms | Allocations: 15907)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:46:43 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 3.5ms | Allocations: 2961)
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.4ms | Allocations: 3478)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:46:43 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 2.6ms | Allocations: 2949)
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.3ms | Allocations: 3408)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:47:47 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 5.8ms | Allocations: 2949)
+Completed 200 OK in 12ms (Views: 6.4ms | ActiveRecord: 0.8ms | Allocations: 3423)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:47:47 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 3.0ms | Allocations: 2949)
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.5ms | Allocations: 3423)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:47:48 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 6.5ms | Allocations: 2949)
+Completed 200 OK in 7ms (Views: 6.5ms | ActiveRecord: 0.3ms | Allocations: 3402)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:47:48 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 3.7ms | Allocations: 2949)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.3ms | Allocations: 3402)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:47:50 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 7.4ms | Allocations: 2949)
+Completed 200 OK in 10ms (Views: 7.8ms | ActiveRecord: 0.5ms | Allocations: 3408)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:47:50 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 4.7ms | Allocations: 2949)
+Completed 200 OK in 6ms (Views: 4.9ms | ActiveRecord: 0.3ms | Allocations: 3412)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:47:50 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 4.7ms | Allocations: 2949)
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.3ms | Allocations: 3408)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:47:51 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 5.5ms | Allocations: 2949)
+Completed 200 OK in 7ms (Views: 5.7ms | ActiveRecord: 0.3ms | Allocations: 3417)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:47:51 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 6.0ms | Allocations: 2949)
+Completed 200 OK in 8ms (Views: 6.4ms | ActiveRecord: 0.4ms | Allocations: 3432)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:47:51 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 14.3ms | Allocations: 2949)
+Completed 200 OK in 16ms (Views: 14.7ms | ActiveRecord: 0.3ms | Allocations: 3420)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:47:51 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 28.0ms | Allocations: 2949)
+Completed 200 OK in 35ms (Views: 34.3ms | ActiveRecord: 0.2ms | Allocations: 3402)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:47:51 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (4.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 15.3ms | Allocations: 2949)
+Completed 200 OK in 16ms (Views: 10.8ms | ActiveRecord: 4.7ms | Allocations: 3394)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:47:51 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 2.6ms | Allocations: 2949)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.3ms | Allocations: 3420)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:47:51 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 7.1ms | Allocations: 2949)
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 0.4ms | Allocations: 3414)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:47:51 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 4.8ms | Allocations: 2949)
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.2ms | Allocations: 3427)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:47:52 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 5.6ms | Allocations: 2949)
+Completed 200 OK in 7ms (Views: 5.7ms | ActiveRecord: 0.2ms | Allocations: 3412)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 13:47:52 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"yo what up g", "user_id"=>2, "post"=>{"content"=>"yo what up g", "user_id"=>2}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mPost Create (2.8ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "yo what up g"], ["created_at", "2022-10-18 17:47:52.890533"], ["updated_at", "2022-10-18 17:47:52.890533"], ["user_id", 2]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  Rendering api/posts/index.json.jbuilder
+  Rendered api/posts/index.json.jbuilder (Duration: 2.5ms | Allocations: 2424)
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 0.1ms | Allocations: 69)
+
+ActionView::Template::Error - undefined method `each' for nil:NilClass:
+	app/views/api/posts/index.json.jbuilder:1
+	app/controllers/api/posts_controller.rb:11:in `create'
+
+Completed 500 Internal Server Error in 16ms (Views: 0.4ms | ActiveRecord: 4.3ms | Allocations: 6397)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:47:53 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 4.7ms | Allocations: 3042)
+Completed 200 OK in 6ms (Views: 4.7ms | ActiveRecord: 0.3ms | Allocations: 3507)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:47:53 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 2.4ms | Allocations: 3041)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.3ms | Allocations: 3506)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:48:52 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 4.0ms | Allocations: 3041)
+Completed 200 OK in 8ms (Views: 5.1ms | ActiveRecord: 0.4ms | Allocations: 3500)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:48:54 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 3.6ms | Allocations: 3041)
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.3ms | Allocations: 3503)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:48:54 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 4.3ms | Allocations: 3041)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.6ms | Allocations: 3503)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:48:59 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 9.5ms | Allocations: 3041)
+Completed 200 OK in 12ms (Views: 9.9ms | ActiveRecord: 0.6ms | Allocations: 3512)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:14 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 5.1ms | Allocations: 3041)
+Completed 200 OK in 8ms (Views: 5.4ms | ActiveRecord: 0.6ms | Allocations: 3503)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:14 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 2.7ms | Allocations: 3041)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.3ms | Allocations: 3504)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:23 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 5.7ms | Allocations: 3041)
+Completed 200 OK in 8ms (Views: 6.1ms | ActiveRecord: 0.4ms | Allocations: 3524)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:43 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 3.8ms | Allocations: 3041)
+Completed 200 OK in 6ms (Views: 4.4ms | ActiveRecord: 0.3ms | Allocations: 3497)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:56 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 4.8ms | Allocations: 3041)
+Completed 200 OK in 7ms (Views: 5.4ms | ActiveRecord: 0.3ms | Allocations: 3494)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:56 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 3.2ms | Allocations: 3041)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.2ms | Allocations: 3494)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:56 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 8.6ms | Allocations: 3041)
+Completed 200 OK in 11ms (Views: 8.6ms | ActiveRecord: 0.4ms | Allocations: 3494)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:56 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 2.4ms | Allocations: 3041)
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.2ms | Allocations: 3494)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:56 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 3.5ms | Allocations: 3043)
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 0.3ms | Allocations: 3497)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:56 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 2.3ms | Allocations: 3041)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.2ms | Allocations: 3494)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:56 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 2.7ms | Allocations: 3041)
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.4ms | Allocations: 3494)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:56 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 4.1ms | Allocations: 3041)
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.8ms | Allocations: 3495)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:56 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 2.6ms | Allocations: 3042)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.3ms | Allocations: 3496)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:56 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 3.4ms | Allocations: 3041)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.3ms | Allocations: 3494)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:56 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 2.6ms | Allocations: 3042)
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.2ms | Allocations: 3495)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:56 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 3.9ms | Allocations: 3041)
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 1.0ms | Allocations: 3494)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:56 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 3.3ms | Allocations: 3041)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.3ms | Allocations: 3494)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:56 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 2.6ms | Allocations: 3041)
+Completed 200 OK in 6ms (Views: 2.5ms | ActiveRecord: 0.3ms | Allocations: 3494)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:56 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 2.9ms | Allocations: 3041)
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.6ms | Allocations: 3494)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:56 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 3.2ms | Allocations: 3041)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.2ms | Allocations: 3494)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:56 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 2.5ms | Allocations: 3041)
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.3ms | Allocations: 3494)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:56 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 2.5ms | Allocations: 3041)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.2ms | Allocations: 3495)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:56 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 1.8ms | Allocations: 3041)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.2ms | Allocations: 3494)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:56 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 3.3ms | Allocations: 3041)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.5ms | Allocations: 3494)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:56 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 3.4ms | Allocations: 3041)
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.3ms | Allocations: 3494)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:56 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 3.0ms | Allocations: 3041)
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.3ms | Allocations: 3494)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:56 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 2.6ms | Allocations: 3041)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.3ms | Allocations: 3494)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:57 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 3.4ms | Allocations: 3041)
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.2ms | Allocations: 3494)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:57 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 3.1ms | Allocations: 3043)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.2ms | Allocations: 3497)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:57 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 2.0ms | Allocations: 3043)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.2ms | Allocations: 3497)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:57 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 2.8ms | Allocations: 3041)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.3ms | Allocations: 3494)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:57 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 2.2ms | Allocations: 3041)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.2ms | Allocations: 3495)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:57 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 2.1ms | Allocations: 3041)
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.4ms | Allocations: 3494)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:57 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 2.0ms | Allocations: 3042)
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.3ms | Allocations: 3496)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:57 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 2.2ms | Allocations: 3041)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.2ms | Allocations: 3494)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:57 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 2.5ms | Allocations: 3045)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.2ms | Allocations: 3498)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:57 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 2.6ms | Allocations: 3041)
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.3ms | Allocations: 3494)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:57 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 2.3ms | Allocations: 3041)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.3ms | Allocations: 3494)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:57 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 2.1ms | Allocations: 3041)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.2ms | Allocations: 3494)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:57 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 2.3ms | Allocations: 3041)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.3ms | Allocations: 3494)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:57 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 4.7ms | Allocations: 3041)
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.5ms | Allocations: 3494)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:57 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 2.4ms | Allocations: 3041)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.3ms | Allocations: 3494)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:57 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 5.0ms | Allocations: 3041)
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.3ms | Allocations: 3495)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:57 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 2.0ms | Allocations: 3041)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.2ms | Allocations: 3494)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:57 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 2.4ms | Allocations: 3041)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.2ms | Allocations: 3494)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:57 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 1.9ms | Allocations: 3041)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.4ms | Allocations: 3494)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:57 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 2.0ms | Allocations: 3041)
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.2ms | Allocations: 3494)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:57 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 1.9ms | Allocations: 3041)
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.3ms | Allocations: 3494)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:57 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 3.4ms | Allocations: 3043)
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.5ms | Allocations: 3497)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:57 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 1.8ms | Allocations: 3041)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.2ms | Allocations: 3495)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:57 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 1.9ms | Allocations: 3043)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.2ms | Allocations: 3496)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:57 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 1.8ms | Allocations: 3041)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.3ms | Allocations: 3494)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:57 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 2.1ms | Allocations: 3041)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.4ms | Allocations: 3495)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:57 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 1.7ms | Allocations: 3041)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.2ms | Allocations: 3494)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:57 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 1.9ms | Allocations: 3042)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.3ms | Allocations: 3496)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:57 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 1.9ms | Allocations: 3042)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.2ms | Allocations: 3495)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:49:59 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 3.1ms | Allocations: 3041)
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.5ms | Allocations: 3497)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2022-10-18 13:50:01 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"credential"=>"ooo@aol.com", "password"=>"[FILTERED]", "session"=>{"credential"=>"ooo@aol.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (3.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ooo@aol.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20:in `find_by_credentials'
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:33:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Exists? (5.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ooo@aol.com"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Update (1.8ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2022-10-18 17:50:01.320482"], ["id", 2]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.9ms | Allocations: 347)
+Completed 200 OK in 267ms (Views: 1.8ms | ActiveRecord: 12.8ms | Allocations: 6922)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:50:01 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 3.2ms | Allocations: 3124)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.3ms | Allocations: 3668)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2022-10-18 13:50:02 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"credential"=>"ooo@aol.com", "password"=>"[FILTERED]", "session"=>{"credential"=>"ooo@aol.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ooo@aol.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20:in `find_by_credentials'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:33:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ooo@aol.com"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2022-10-18 17:50:02.558627"], ["id", 2]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 196)
+Completed 200 OK in 261ms (Views: 0.5ms | ActiveRecord: 2.0ms | Allocations: 5311)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:50:02 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 2.2ms | Allocations: 3041)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.3ms | Allocations: 3506)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2022-10-18 13:50:26 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"credential"=>"ooo@aol.com", "password"=>"[FILTERED]", "session"=>{"credential"=>"ooo@aol.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ooo@aol.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20:in `find_by_credentials'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:33:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ooo@aol.com"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2022-10-18 17:50:27.211948"], ["id", 2]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.4ms | Allocations: 196)
+Completed 200 OK in 257ms (Views: 4.2ms | ActiveRecord: 3.0ms | Allocations: 5185)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:50:27 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 7.1ms | Allocations: 3041)
+Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 0.3ms | Allocations: 3533)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:50:27 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 2.2ms | Allocations: 3041)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.2ms | Allocations: 3533)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:50:29 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 4.8ms | Allocations: 3041)
+Completed 200 OK in 6ms (Views: 4.6ms | ActiveRecord: 0.5ms | Allocations: 3527)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:50:29 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 7.8ms | Allocations: 3043)
+Completed 200 OK in 8ms (Views: 7.9ms | ActiveRecord: 0.2ms | Allocations: 3530)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:50:33 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 3.0ms | Allocations: 3041)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.2ms | Allocations: 3501)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:50:35 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 4.1ms | Allocations: 3043)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.4ms | Allocations: 3502)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:50:35 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 2.5ms | Allocations: 3041)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.3ms | Allocations: 3500)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:50:44 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 3.3ms | Allocations: 3041)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.3ms | Allocations: 3504)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:50:48 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 2.7ms | Allocations: 3041)
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.2ms | Allocations: 3488)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:50:54 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 7.4ms | Allocations: 3042)
+Completed 200 OK in 14ms (Views: 8.6ms | ActiveRecord: 0.3ms | Allocations: 3505)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:50:55 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 5.2ms | Allocations: 3042)
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.5ms | Allocations: 3507)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 13:51:00 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"yo g", "user_id"=>2, "post"=>{"content"=>"yo g", "user_id"=>2}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mPost Create (1.2ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "yo g"], ["created_at", "2022-10-18 17:51:00.761711"], ["updated_at", "2022-10-18 17:51:00.761711"], ["user_id", 2]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  Rendering api/posts/index.json.jbuilder
+  Rendered api/posts/index.json.jbuilder (Duration: 4.1ms | Allocations: 2444)
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 0.2ms | Allocations: 72)
+
+ActionView::Template::Error - undefined method `each' for nil:NilClass:
+	app/views/api/posts/index.json.jbuilder:1
+	app/controllers/api/posts_controller.rb:11:in `create'
+
+Completed 500 Internal Server Error in 23ms (Views: 0.6ms | ActiveRecord: 3.6ms | Allocations: 6453)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:51:00 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 2.7ms | Allocations: 3134)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.3ms | Allocations: 3605)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:51:11 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 8.3ms | Allocations: 3133)
+Completed 200 OK in 14ms (Views: 8.9ms | ActiveRecord: 0.5ms | Allocations: 3592)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:53:51 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 5.7ms | Allocations: 3133)
+Completed 200 OK in 8ms (Views: 6.1ms | ActiveRecord: 0.4ms | Allocations: 3592)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:53:51 -0400
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-18 13:53:51 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (3.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 5.9ms | Allocations: 3521)
+Completed 200 OK in 7ms (Views: 3.1ms | ActiveRecord: 3.6ms | Allocations: 3979)
+
+
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.7ms | Allocations: 264)
+Completed 200 OK in 8ms (Views: 2.7ms | ActiveRecord: 3.1ms | Allocations: 2508)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 13:53:55 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"yo", "user_id"=>2, "post"=>{"content"=>"yo", "user_id"=>2}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mPost Create (1.1ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "yo"], ["created_at", "2022-10-18 17:53:55.438182"], ["updated_at", "2022-10-18 17:53:55.438182"], ["user_id", 2]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  Rendering api/posts/index.json.jbuilder
+  Rendered api/posts/index.json.jbuilder (Duration: 2.8ms | Allocations: 2445)
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 0.1ms | Allocations: 72)
+
+ActionView::Template::Error - undefined method `each' for nil:NilClass:
+	app/views/api/posts/index.json.jbuilder:1
+	app/controllers/api/posts_controller.rb:11:in `create'
+
+Completed 500 Internal Server Error in 20ms (Views: 0.3ms | ActiveRecord: 2.4ms | Allocations: 6640)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:53:55 -0400
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-18 13:53:55 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 3.5ms | Allocations: 3236)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.3ms | Allocations: 3688)
+
+
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.4ms | Allocations: 202)
+Completed 200 OK in 3ms (Views: 0.7ms | ActiveRecord: 0.3ms | Allocations: 1165)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-18 13:54:25 -0400
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:54:25 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 202)
+Completed 200 OK in 21ms (Views: 0.7ms | ActiveRecord: 2.7ms | Allocations: 2606)
+
+
+  [1m[36mPost Load (2.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 37.6ms | Allocations: 7457)
+Completed 200 OK in 40ms (Views: 24.8ms | ActiveRecord: 14.5ms | Allocations: 7945)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:54:31 -0400
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-18 13:54:31 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 11.5ms | Allocations: 3239)
+Completed 200 OK in 16ms (Views: 14.7ms | ActiveRecord: 0.9ms | Allocations: 3737)
+
+
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.7ms | Allocations: 202)
+Completed 200 OK in 26ms (Views: 1.2ms | ActiveRecord: 2.9ms | Allocations: 5744)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:54:38 -0400
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-18 13:54:38 -0400
+Processing by Api::UsersController#show as JSON
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/users/show.json.jbuilder (Duration: 0.7ms | Allocations: 202)
+  Rendered api/posts/index.json.jbuilder (Duration: 9.4ms | Allocations: 4354)
+Completed 200 OK in 9ms (Views: 3.6ms | ActiveRecord: 0.5ms | Allocations: 4412)
+
+
+Completed 200 OK in 12ms (Views: 9.9ms | ActiveRecord: 0.3ms | Allocations: 4874)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:54:44 -0400
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-18 13:54:44 -0400
+Processing by Api::UsersController#show as JSON
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 3.4ms | Allocations: 3555)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.3ms | Allocations: 4144)
+
+
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 202)
+Completed 200 OK in 5ms (Views: 0.6ms | ActiveRecord: 0.8ms | Allocations: 4841)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 13:54:50 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"d", "user_id"=>2, "post"=>{"content"=>"d", "user_id"=>2}}
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mPost Create (1.7ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "d"], ["created_at", "2022-10-18 17:54:50.291494"], ["updated_at", "2022-10-18 17:54:50.291494"], ["user_id", 2]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  Rendering api/posts/index.json.jbuilder
+  Rendered api/posts/index.json.jbuilder (Duration: 2.3ms | Allocations: 2424)
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 0.1ms | Allocations: 69)
+
+ActionView::Template::Error - undefined method `each' for nil:NilClass:
+	app/views/api/posts/index.json.jbuilder:1
+	app/controllers/api/posts_controller.rb:11:in `create'
+
+Completed 500 Internal Server Error in 18ms (Views: 0.4ms | ActiveRecord: 3.4ms | Allocations: 6365)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:54:50 -0400
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-18 13:54:50 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.6ms | Allocations: 237)
+Completed 200 OK in 5ms (Views: 0.8ms | ActiveRecord: 1.2ms | Allocations: 1973)
+
+
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 6.3ms | Allocations: 4583)
+Completed 200 OK in 7ms (Views: 5.8ms | ActiveRecord: 0.8ms | Allocations: 5071)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:55:14 -0400
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-18 13:55:14 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mUser Load (4.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.9ms | Allocations: 202)
+  [1m[36mPost Load (1.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+Completed 200 OK in 11ms (Views: 1.5ms | ActiveRecord: 4.1ms | Allocations: 1653)
+
+
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 13.5ms | Allocations: 4552)
+Completed 200 OK in 16ms (Views: 13.7ms | ActiveRecord: 1.7ms | Allocations: 5077)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-18 13:55:15 -0400
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:55:15 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 202)
+  ↳ app/views/api/posts/index.json.jbuilder:1
+Completed 200 OK in 4ms (Views: 0.7ms | ActiveRecord: 0.3ms | Allocations: 2334)
+
+
+  Rendered api/posts/index.json.jbuilder (Duration: 4.3ms | Allocations: 4198)
+Completed 200 OK in 6ms (Views: 4.5ms | ActiveRecord: 0.7ms | Allocations: 5071)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 13:55:19 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"dude", "user_id"=>2, "post"=>{"content"=>"dude", "user_id"=>2}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mPost Create (2.3ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "dude"], ["created_at", "2022-10-18 17:55:19.864226"], ["updated_at", "2022-10-18 17:55:19.864226"], ["user_id", 2]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  Rendering api/posts/index.json.jbuilder
+  Rendered api/posts/index.json.jbuilder (Duration: 2.8ms | Allocations: 2424)
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 0.1ms | Allocations: 69)
+
+ActionView::Template::Error - undefined method `each' for nil:NilClass:
+	app/views/api/posts/index.json.jbuilder:1
+	app/controllers/api/posts_controller.rb:11:in `create'
+
+Completed 500 Internal Server Error in 16ms (Views: 0.8ms | ActiveRecord: 3.0ms | Allocations: 6397)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-18 13:55:19 -0400
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:55:19 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 202)
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.2ms | Allocations: 1197)
+
+
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 2.8ms | Allocations: 3410)
+Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.2ms | Allocations: 3903)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:55:43 -0400
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-18 13:55:43 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 7.8ms | Allocations: 3468)
+Completed 200 OK in 13ms (Views: 10.5ms | ActiveRecord: 0.5ms | Allocations: 3943)
+
+
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.5ms | Allocations: 202)
+Completed 200 OK in 11ms (Views: 3.1ms | ActiveRecord: 0.6ms | Allocations: 1176)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:55:45 -0400
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-18 13:55:45 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+Processing by Api::UsersController#show as JSON
+  [1m[36mPost Load (2.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Parameters: {"id"=>"2"}
+  Rendered api/posts/index.json.jbuilder (Duration: 5.4ms | Allocations: 3837)
+Completed 200 OK in 7ms (Views: 4.3ms | ActiveRecord: 2.1ms | Allocations: 4584)
+
+
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.5ms | Allocations: 202)
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.4ms | Allocations: 1623)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-18 13:55:46 -0400
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:55:46 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered api/posts/index.json.jbuilder (Duration: 9.0ms | Allocations: 3797)
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+Completed 200 OK in 12ms (Views: 10.0ms | ActiveRecord: 0.7ms | Allocations: 5095)
+
+
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 202)
+Completed 200 OK in 10ms (Views: 1.5ms | ActiveRecord: 1.2ms | Allocations: 5013)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 13:55:49 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"fdsfsfs", "user_id"=>2, "post"=>{"content"=>"fdsfsfs", "user_id"=>2}}
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mPost Create (1.5ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "fdsfsfs"], ["created_at", "2022-10-18 17:55:49.183335"], ["updated_at", "2022-10-18 17:55:49.183335"], ["user_id", 2]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  Rendering api/posts/index.json.jbuilder
+  Rendered api/posts/index.json.jbuilder (Duration: 2.7ms | Allocations: 2424)
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 0.2ms | Allocations: 69)
+
+ActionView::Template::Error - undefined method `each' for nil:NilClass:
+	app/views/api/posts/index.json.jbuilder:1
+	app/controllers/api/posts_controller.rb:11:in `create'
+
+Completed 500 Internal Server Error in 17ms (Views: 0.9ms | ActiveRecord: 4.2ms | Allocations: 6367)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:55:49 -0400
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-18 13:55:49 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.4ms | Allocations: 202)
+Completed 200 OK in 3ms (Views: 0.8ms | ActiveRecord: 0.2ms | Allocations: 1235)
+
+
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 4.1ms | Allocations: 3504)
+Completed 200 OK in 5ms (Views: 4.6ms | ActiveRecord: 0.3ms | Allocations: 3967)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:55:58 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 14.6ms | Allocations: 3501)
+Completed 200 OK in 32ms (Views: 16.4ms | ActiveRecord: 0.5ms | Allocations: 3966)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:58:37 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 9.8ms | Allocations: 3501)
+Completed 200 OK in 22ms (Views: 12.2ms | ActiveRecord: 0.5ms | Allocations: 3964)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:58:57 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 19.1ms | Allocations: 3501)
+Completed 200 OK in 22ms (Views: 19.2ms | ActiveRecord: 0.7ms | Allocations: 3966)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:59:04 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 7.1ms | Allocations: 3504)
+Completed 200 OK in 18ms (Views: 8.0ms | ActiveRecord: 0.5ms | Allocations: 3957)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:59:05 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 4.7ms | Allocations: 3502)
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.3ms | Allocations: 3955)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 13:59:11 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"dasdada", "user_id"=>2, "post"=>{"content"=>"dasdada", "user_id"=>2}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mPost Create (1.3ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "dasdada"], ["created_at", "2022-10-18 17:59:11.094071"], ["updated_at", "2022-10-18 17:59:11.094071"], ["user_id", 2]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  Rendering api/posts/index.json.jbuilder
+  Rendered api/posts/index.json.jbuilder (Duration: 7.1ms | Allocations: 2424)
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 0.2ms | Allocations: 69)
+
+ActionView::Template::Error - undefined method `each' for nil:NilClass:
+	app/views/api/posts/index.json.jbuilder:1
+	app/controllers/api/posts_controller.rb:11:in `create'
+
+Completed 500 Internal Server Error in 23ms (Views: 0.6ms | ActiveRecord: 2.6ms | Allocations: 6391)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:59:11 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 4.0ms | Allocations: 3594)
+Completed 200 OK in 6ms (Views: 4.7ms | ActiveRecord: 0.3ms | Allocations: 4080)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:59:23 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 20.5ms | Allocations: 3593)
+Completed 200 OK in 23ms (Views: 20.8ms | ActiveRecord: 0.5ms | Allocations: 4058)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:59:26 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 5.0ms | Allocations: 3594)
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.3ms | Allocations: 4045)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 13:59:47 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 8.0ms | Allocations: 3593)
+Completed 200 OK in 26ms (Views: 24.2ms | ActiveRecord: 0.4ms | Allocations: 4061)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 14:00:22 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 12.0ms | Allocations: 3593)
+Completed 200 OK in 19ms (Views: 13.8ms | ActiveRecord: 0.6ms | Allocations: 4034)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 14:00:26 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 4.2ms | Allocations: 3594)
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.3ms | Allocations: 4056)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 14:00:52 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 4.7ms | Allocations: 3601)
+Completed 200 OK in 25ms (Views: 21.1ms | ActiveRecord: 0.5ms | Allocations: 4061)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-18 14:01:11 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.4ms | Allocations: 202)
+Completed 200 OK in 4ms (Views: 0.7ms | ActiveRecord: 0.2ms | Allocations: 1168)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 14:01:25 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 8.7ms | Allocations: 3599)
+Completed 200 OK in 10ms (Views: 9.1ms | ActiveRecord: 0.3ms | Allocations: 4058)
+
+
+Started DELETE "/api/session" for 127.0.0.1 at 2022-10-18 14:01:27 -0400
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `current_user'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:33:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ooo@aol.com"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Update (1.8ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2022-10-18 18:01:27.519478"], ["id", 2]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+Completed 200 OK in 23ms (Views: 0.3ms | ActiveRecord: 3.8ms | Allocations: 5047)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2022-10-18 14:01:30 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"credential"=>"ooo@aol.com", "password"=>"[FILTERED]", "session"=>{"credential"=>"ooo@aol.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ooo@aol.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20:in `find_by_credentials'
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:33:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ooo@aol.com"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2022-10-18 18:01:30.286818"], ["id", 2]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.2ms | Allocations: 197)
+Completed 200 OK in 260ms (Views: 0.4ms | ActiveRecord: 2.6ms | Allocations: 5170)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 14:01:30 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 2.5ms | Allocations: 3596)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.2ms | Allocations: 4046)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-18 14:01:33 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.7ms | Allocations: 202)
+Completed 200 OK in 6ms (Views: 1.5ms | ActiveRecord: 0.3ms | Allocations: 1153)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 14:01:34 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 6.4ms | Allocations: 3593)
+Completed 200 OK in 8ms (Views: 6.7ms | ActiveRecord: 0.4ms | Allocations: 4055)
+
+
+Started DELETE "/api/session" for 127.0.0.1 at 2022-10-18 14:01:37 -0400
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `current_user'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:33:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ooo@aol.com"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2022-10-18 18:01:37.736867"], ["id", 2]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+Completed 200 OK in 14ms (Views: 0.2ms | ActiveRecord: 2.8ms | Allocations: 4866)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2022-10-18 14:02:18 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"credential"=>"ooo@aol.com", "password"=>"[FILTERED]", "session"=>{"credential"=>"ooo@aol.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (7.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ooo@aol.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20:in `find_by_credentials'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:33:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ooo@aol.com"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2022-10-18 18:02:19.147002"], ["id", 2]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 196)
+Completed 200 OK in 259ms (Views: 0.7ms | ActiveRecord: 9.3ms | Allocations: 5172)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 14:02:19 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 3.4ms | Allocations: 3597)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.2ms | Allocations: 4068)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 14:04:58 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (8.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 50.8ms | Allocations: 3594)
+Completed 200 OK in 75ms (Views: 51.9ms | ActiveRecord: 8.6ms | Allocations: 4050)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 14:05:05 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"sdadsadafsafa", "user_id"=>2, "post"=>{"content"=>"sdadsadafsafa", "user_id"=>2}}
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mUser Load (3.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mPost Create (4.9ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "sdadsadafsafa"], ["created_at", "2022-10-18 18:05:05.308260"], ["updated_at", "2022-10-18 18:05:05.308260"], ["user_id", 2]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  Rendering api/posts/index.json.jbuilder
+  Rendered api/posts/index.json.jbuilder (Duration: 6.7ms | Allocations: 2424)
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 0.5ms | Allocations: 69)
+
+ActionView::Template::Error - undefined method `each' for nil:NilClass:
+	app/views/api/posts/index.json.jbuilder:1
+	app/controllers/api/posts_controller.rb:11:in `create'
+
+Completed 500 Internal Server Error in 45ms (Views: 3.0ms | ActiveRecord: 12.5ms | Allocations: 6373)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 14:05:05 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 13.3ms | Allocations: 3687)
+Completed 200 OK in 15ms (Views: 14.6ms | ActiveRecord: 0.4ms | Allocations: 4153)
+
+
+Started GET "/api/session" for 127.0.0.1 at 2022-10-18 14:18:11 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::SessionsController#show as JSON
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `current_user'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.7ms | Allocations: 673)
+Completed 200 OK in 23ms (Views: 3.2ms | ActiveRecord: 9.8ms | Allocations: 19602)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 14:18:11 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (1.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 8.3ms | Allocations: 5993)
+Completed 200 OK in 12ms (Views: 4.1ms | ActiveRecord: 4.7ms | Allocations: 8409)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 14:18:18 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"dsadasda", "user_id"=>2, "post"=>{"content"=>"dsadasda", "user_id"=>2}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mPost Create (2.4ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "dsadasda"], ["created_at", "2022-10-18 18:18:18.914773"], ["updated_at", "2022-10-18 18:18:18.914773"], ["user_id", 2]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  Rendering api/posts/index.json.jbuilder
+  Rendered api/posts/index.json.jbuilder (Duration: 1.8ms | Allocations: 2767)
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 0.5ms | Allocations: 174)
+
+ActionView::Template::Error - undefined method `each' for nil:NilClass:
+	app/views/api/posts/index.json.jbuilder:1
+	app/controllers/api/posts_controller.rb:11:in `create'
+
+Completed 500 Internal Server Error in 19ms (Views: 1.0ms | ActiveRecord: 3.9ms | Allocations: 11873)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 14:18:19 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 3.3ms | Allocations: 3878)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.3ms | Allocations: 4406)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 14:19:03 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"hjvvhjvhjhjv", "user_id"=>2, "post"=>{"content"=>"hjvvhjvhjhjv", "user_id"=>2}}
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mPost Create (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "hjvvhjvhjhjv"], ["created_at", "2022-10-18 18:19:03.879818"], ["updated_at", "2022-10-18 18:19:03.879818"], ["user_id", 2]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  Rendering api/posts/index.json.jbuilder
+  Rendered api/posts/index.json.jbuilder (Duration: 2.1ms | Allocations: 2424)
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 1.4ms | Allocations: 69)
+
+ActionView::Template::Error - undefined method `each' for nil:NilClass:
+	app/views/api/posts/index.json.jbuilder:1
+	app/controllers/api/posts_controller.rb:11:in `create'
+
+Completed 500 Internal Server Error in 23ms (Views: 2.9ms | ActiveRecord: 1.9ms | Allocations: 6498)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 14:19:03 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 4.6ms | Allocations: 3870)
+Completed 200 OK in 5ms (Views: 4.6ms | ActiveRecord: 0.4ms | Allocations: 4335)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 14:20:23 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 4.9ms | Allocations: 3869)
+Completed 200 OK in 13ms (Views: 5.8ms | ActiveRecord: 0.4ms | Allocations: 4316)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 14:20:27 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"fd", "user_id"=>2, "post"=>{"content"=>"fd", "user_id"=>2}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mPost Create (1.3ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "fd"], ["created_at", "2022-10-18 18:20:27.711615"], ["updated_at", "2022-10-18 18:20:27.711615"], ["user_id", 2]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  Rendering api/posts/index.json.jbuilder
+  Rendered api/posts/index.json.jbuilder (Duration: 2.1ms | Allocations: 2425)
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 0.2ms | Allocations: 69)
+
+ActionView::Template::Error - undefined method `each' for nil:NilClass:
+	app/views/api/posts/index.json.jbuilder:1
+	app/controllers/api/posts_controller.rb:11:in `create'
+
+Completed 500 Internal Server Error in 19ms (Views: 0.8ms | ActiveRecord: 2.5ms | Allocations: 6360)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 14:20:27 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 3.3ms | Allocations: 3970)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.3ms | Allocations: 4428)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 14:23:32 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (1.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 11.6ms | Allocations: 3961)
+Completed 200 OK in 18ms (Views: 11.7ms | ActiveRecord: 1.7ms | Allocations: 4432)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 14:23:42 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"hi", "user_id"=>2, "post"=>{"content"=>"hi", "user_id"=>2}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mPost Create (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "hi"], ["created_at", "2022-10-18 18:23:42.810677"], ["updated_at", "2022-10-18 18:23:42.810677"], ["user_id", 2]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  Rendering api/posts/index.json.jbuilder
+  Rendered api/posts/index.json.jbuilder (Duration: 2.2ms | Allocations: 2424)
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 0.1ms | Allocations: 69)
+
+ActionView::Template::Error - undefined method `each' for nil:NilClass:
+	app/views/api/posts/index.json.jbuilder:1
+	app/controllers/api/posts_controller.rb:11:in `create'
+
+Completed 500 Internal Server Error in 13ms (Views: 0.3ms | ActiveRecord: 1.6ms | Allocations: 6356)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 14:23:42 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 3.0ms | Allocations: 4054)
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.4ms | Allocations: 4501)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 14:23:55 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 9.2ms | Allocations: 4053)
+Completed 200 OK in 12ms (Views: 8.9ms | ActiveRecord: 0.9ms | Allocations: 4509)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 14:24:00 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (4.9ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 10.6ms | Allocations: 4053)
+Completed 200 OK in 12ms (Views: 6.1ms | ActiveRecord: 4.9ms | Allocations: 4503)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 14:24:35 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 7.6ms | Allocations: 4053)
+Completed 200 OK in 9ms (Views: 7.5ms | ActiveRecord: 0.6ms | Allocations: 4518)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 14:24:43 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"daddy", "user_id"=>2, "post"=>{"content"=>"daddy", "user_id"=>2}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mPost Create (0.7ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "daddy"], ["created_at", "2022-10-18 18:24:43.308321"], ["updated_at", "2022-10-18 18:24:43.308321"], ["user_id", 2]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  Rendering api/posts/index.json.jbuilder
+  Rendered api/posts/index.json.jbuilder (Duration: 2.7ms | Allocations: 2424)
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 0.1ms | Allocations: 69)
+
+ActionView::Template::Error - undefined method `each' for nil:NilClass:
+	app/views/api/posts/index.json.jbuilder:1
+	app/controllers/api/posts_controller.rb:11:in `create'
+
+Completed 500 Internal Server Error in 19ms (Views: 0.4ms | ActiveRecord: 2.2ms | Allocations: 6370)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 14:24:43 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 2.6ms | Allocations: 4146)
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.3ms | Allocations: 4611)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 14:25:18 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 6.3ms | Allocations: 4145)
+Completed 200 OK in 10ms (Views: 6.4ms | ActiveRecord: 0.6ms | Allocations: 4610)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 14:25:21 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 34.5ms | Allocations: 4145)
+Completed 200 OK in 35ms (Views: 34.4ms | ActiveRecord: 0.4ms | Allocations: 4608)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 14:25:33 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (6.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 18.6ms | Allocations: 4145)
+Completed 200 OK in 26ms (Views: 13.5ms | ActiveRecord: 6.7ms | Allocations: 4604)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 14:25:34 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 8.0ms | Allocations: 4145)
+Completed 200 OK in 9ms (Views: 7.9ms | ActiveRecord: 0.3ms | Allocations: 4598)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 14:25:40 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"daddy2", "user_id"=>2, "post"=>{"content"=>"daddy2", "user_id"=>2}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "daddy2"], ["created_at", "2022-10-18 18:25:40.359570"], ["updated_at", "2022-10-18 18:25:40.359570"], ["user_id", 2]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  Rendering api/posts/index.json.jbuilder
+  Rendered api/posts/index.json.jbuilder (Duration: 1.8ms | Allocations: 2426)
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 0.1ms | Allocations: 69)
+
+ActionView::Template::Error - undefined method `each' for nil:NilClass:
+	app/views/api/posts/index.json.jbuilder:1
+	app/controllers/api/posts_controller.rb:11:in `create'
+
+Completed 500 Internal Server Error in 11ms (Views: 0.4ms | ActiveRecord: 1.6ms | Allocations: 6364)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 14:25:40 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 4.9ms | Allocations: 4238)
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.4ms | Allocations: 4691)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 14:25:57 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 4.7ms | Allocations: 4237)
+Completed 200 OK in 8ms (Views: 5.0ms | ActiveRecord: 0.4ms | Allocations: 4691)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 14:31:00 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 18.1ms | Allocations: 5986)
+Completed 200 OK in 22ms (Views: 5.0ms | ActiveRecord: 13.8ms | Allocations: 8354)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 14:31:06 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"test post", "user_id"=>2, "post"=>{"content"=>"test post", "user_id"=>2}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "test post"], ["created_at", "2022-10-18 18:31:06.563810"], ["updated_at", "2022-10-18 18:31:06.563810"], ["user_id", 2]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  Rendering api/posts/index.json.jbuilder
+  Rendered api/posts/index.json.jbuilder (Duration: 56.5ms | Allocations: 1167426)
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 0.5ms | Allocations: 95)
+
+ActionView::Template::Error - undefined method `each' for nil:NilClass:
+	app/views/api/posts/index.json.jbuilder:1
+	app/controllers/api/posts_controller.rb:11:in `create'
+
+Completed 500 Internal Server Error in 24239ms (Views: 1.9ms | ActiveRecord: 5.1ms | Allocations: 1316723)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 14:31:30 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 11.8ms | Allocations: 4446)
+Completed 200 OK in 13ms (Views: 11.2ms | ActiveRecord: 1.0ms | Allocations: 4976)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 14:33:53 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 11.0ms | Allocations: 4329)
+Completed 200 OK in 17ms (Views: 11.8ms | ActiveRecord: 0.5ms | Allocations: 4791)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 14:35:02 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 7.4ms | Allocations: 4329)
+Completed 200 OK in 12ms (Views: 8.8ms | ActiveRecord: 0.5ms | Allocations: 4803)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 14:35:06 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"dfghj", "user_id"=>2, "post"=>{"content"=>"dfghj", "user_id"=>2}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mPost Create (1.0ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "dfghj"], ["created_at", "2022-10-18 18:35:06.958617"], ["updated_at", "2022-10-18 18:35:06.958617"], ["user_id", 2]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  Rendering api/posts/index.json.jbuilder
+  Rendered api/posts/index.json.jbuilder (Duration: 10.3ms | Allocations: 2353)
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 0.3ms | Allocations: 69)
+
+ActionView::Template::Error - undefined method `each' for nil:NilClass:
+	app/views/api/posts/index.json.jbuilder:1
+	app/controllers/api/posts_controller.rb:11:in `create'
+
+Completed 500 Internal Server Error in 24135ms (Views: 1.6ms | ActiveRecord: 2.4ms | Allocations: 9968)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 14:36:03 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 6.0ms | Allocations: 4423)
+Completed 200 OK in 8ms (Views: 6.0ms | ActiveRecord: 0.4ms | Allocations: 4909)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 14:39:20 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 5.4ms | Allocations: 4421)
+Completed 200 OK in 8ms (Views: 5.6ms | ActiveRecord: 0.5ms | Allocations: 4883)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 14:39:23 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 7.8ms | Allocations: 4421)
+Completed 200 OK in 9ms (Views: 8.1ms | ActiveRecord: 0.4ms | Allocations: 4877)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 14:39:28 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 8.1ms | Allocations: 4421)
+Completed 200 OK in 10ms (Views: 8.7ms | ActiveRecord: 0.4ms | Allocations: 4883)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 14:39:40 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"dfg", "user_id"=>2, "post"=>{"content"=>"dfg", "user_id"=>2}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mPost Create (1.6ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "dfg"], ["created_at", "2022-10-18 18:39:40.953161"], ["updated_at", "2022-10-18 18:39:40.953161"], ["user_id", 2]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  Rendering api/posts/index.json.jbuilder
+  Rendered api/posts/index.json.jbuilder (Duration: 4.8ms | Allocations: 2352)
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 0.3ms | Allocations: 69)
+
+ActionView::Template::Error - undefined method `each' for nil:NilClass:
+	app/views/api/posts/index.json.jbuilder:1
+	app/controllers/api/posts_controller.rb:11:in `create'
+
+Completed 500 Internal Server Error in 76819ms (Views: 0.9ms | ActiveRecord: 2.6ms | Allocations: 9928)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 14:41:02 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 18.7ms | Allocations: 4514)
+Completed 200 OK in 22ms (Views: 18.5ms | ActiveRecord: 1.0ms | Allocations: 4976)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 14:41:05 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 6.7ms | Allocations: 4513)
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 0.3ms | Allocations: 4960)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 14:41:49 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 5.5ms | Allocations: 4513)
+Completed 200 OK in 14ms (Views: 9.3ms | ActiveRecord: 0.6ms | Allocations: 4984)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 14:41:56 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"sdfgh", "user_id"=>2, "post"=>{"content"=>"sdfgh", "user_id"=>2}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mPost Create (0.7ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "sdfgh"], ["created_at", "2022-10-18 18:41:56.655477"], ["updated_at", "2022-10-18 18:41:56.655477"], ["user_id", 2]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  Rendering api/posts/index.json.jbuilder
+  Rendered api/posts/index.json.jbuilder (Duration: 7.5ms | Allocations: 2352)
+  Rendering api/errors/internal_server_error.json.jbuilder
+  Rendered api/errors/internal_server_error.json.jbuilder (Duration: 0.4ms | Allocations: 69)
+
+ActionView::Template::Error - undefined method `each' for nil:NilClass:
+	app/views/api/posts/index.json.jbuilder:1
+	app/controllers/api/posts_controller.rb:11:in `create'
+
+Completed 500 Internal Server Error in 34795ms (Views: 1.3ms | ActiveRecord: 2.2ms | Allocations: 9902)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 14:44:10 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 20.7ms | Allocations: 6354)
+Completed 200 OK in 23ms (Views: 11.3ms | ActiveRecord: 9.9ms | Allocations: 8720)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 14:44:21 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 5.3ms | Allocations: 4605)
+Completed 200 OK in 7ms (Views: 5.3ms | ActiveRecord: 0.5ms | Allocations: 5142)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 14:44:26 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"dfgdfdgmmmmmm", "user_id"=>2, "post"=>{"content"=>"dfgdfdgmmmmmm", "user_id"=>2}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mPost Create (0.8ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "dfgdfdgmmmmmm"], ["created_at", "2022-10-18 18:44:27.042501"], ["updated_at", "2022-10-18 18:44:27.042501"], ["user_id", 2]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 5.5ms | Allocations: 4730)
+Completed 200 OK in 40ms (Views: 5.8ms | ActiveRecord: 11.7ms | Allocations: 17433)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 14:44:40 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"dfgdfdgmmmmmmgfg", "user_id"=>2, "post"=>{"content"=>"dfgdfdgmmmmmmgfg", "user_id"=>2}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mPost Create (1.3ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "dfgdfdgmmmmmmgfg"], ["created_at", "2022-10-18 18:44:40.051132"], ["updated_at", "2022-10-18 18:44:40.051132"], ["user_id", 2]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 6.3ms | Allocations: 4786)
+Completed 200 OK in 22ms (Views: 6.7ms | ActiveRecord: 3.0ms | Allocations: 8151)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2022-10-18 14:44:43 -0400
+Processing by Api::PostsController#create as JSON
+  Parameters: {"content"=>"dfgdfdgmmmmmmgfg", "user_id"=>2, "post"=>{"content"=>"dfgdfdgmmmmmmgfg", "user_id"=>2}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mPost Create (0.7ms)[0m  [1m[32mINSERT INTO "posts" ("content", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "dfgdfdgmmmmmmgfg"], ["created_at", "2022-10-18 18:44:43.296698"], ["updated_at", "2022-10-18 18:44:43.296698"], ["user_id", 2]]
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/posts_controller.rb:9:in `create'
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 8.8ms | Allocations: 4878)
+Completed 200 OK in 21ms (Views: 8.8ms | ActiveRecord: 2.3ms | Allocations: 8152)
+
+
+Started DELETE "/api/session" for 127.0.0.1 at 2022-10-18 14:52:34 -0400
+Processing by Api::SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `current_user'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:33:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ooo@aol.com"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Update (1.6ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2022-10-18 18:52:34.354437"], ["id", 2]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+Completed 200 OK in 41ms (Views: 0.2ms | ActiveRecord: 16.7ms | Allocations: 15572)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2022-10-18 15:00:28 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"credential"=>"ooo@aol.com", "password"=>"[FILTERED]", "session"=>{"credential"=>"ooo@aol.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (3.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ooo@aol.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20:in `find_by_credentials'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:33:in `generate_unique_session_token'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "ooo@aol.com"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "[FILTERED]"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Update (2.6ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "[FILTERED]"], ["updated_at", "2022-10-18 19:00:28.979173"], ["id", 2]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.3ms | Allocations: 268)
+Completed 200 OK in 275ms (Views: 3.2ms | ActiveRecord: 7.9ms | Allocations: 5671)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 15:00:29 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 7.3ms | Allocations: 6264)
+Completed 200 OK in 12ms (Views: 7.0ms | ActiveRecord: 0.8ms | Allocations: 8378)
+
+
+Started GET "/api/users/2" for 127.0.0.1 at 2022-10-18 15:00:35 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15:in `show'
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (Duration: 0.4ms | Allocations: 265)
+Completed 200 OK in 5ms (Views: 1.2ms | ActiveRecord: 0.3ms | Allocations: 2524)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2022-10-18 15:00:38 -0400
+Processing by Api::PostsController#index as JSON
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (Duration: 5.9ms | Allocations: 4983)
+Completed 200 OK in 22ms (Views: 21.1ms | ActiveRecord: 0.3ms | Allocations: 5510)
+
+

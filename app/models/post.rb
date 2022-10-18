@@ -6,5 +6,8 @@ class Post < ApplicationRecord
     has_many :comments
 
     has_many :likes
+
+    def user_posts(author_id)
+    end
   end
   
