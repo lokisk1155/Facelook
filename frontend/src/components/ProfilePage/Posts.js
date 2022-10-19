@@ -129,13 +129,21 @@ function Posts({ redirect, currentUser }) {
             </div>
             </div>
         </div>
-        <div className="posts-container">
+        <div className="omega-posts-container">
         <   form onSubmit={handlePostSubmit}>
                 <input type="text" placeholder="post content here!" onChange={((e) => setContent(e.target.value))}></input>
                 <input type="submit" />
             </form>
-            <div>
-                {posts && <p>{posts.map(post => <div>{post.content}</div>)}</p>}
+            <div className="post-feed-container">
+                {posts && <div>{posts.map(post => {
+                    return <div key={post.id}className="individual-post">
+                            <p>{post.content}</p>
+                        
+                        
+                        </div>
+                })}
+                </div>
+                }
             </div>
         </div>
     </div>
