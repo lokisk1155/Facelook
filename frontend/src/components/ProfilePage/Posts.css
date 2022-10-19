@@ -15,6 +15,7 @@
     background-color: white;   
     border-radius: 10px;
     background-color: white;
+    border: none;
 
 }
 
@@ -156,4 +157,22 @@
     justify-content: flex-start;
     color: gray;
     margin-right: 400px;
+}
+
+
+.post-header {
+  display: flex;
+  height: 50px;
+}
+
+.post-pic {
+    border-radius: 30px;
+    height: 40px;
+    align-self:center;
+    padding: 10px;
+}
+
+.post-content {
+    padding: 10px;
+    margin-left: 5px;
 }

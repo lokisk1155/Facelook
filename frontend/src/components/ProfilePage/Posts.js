@@ -36,6 +36,7 @@ function Posts({ redirect, currentUser }) {
     const [customFeatured, setCustomFeatured] = useState(true)
     const [customEdit, setCustomEdit] = useState(true)
     const [customBio, setCustomBio] = useState(true)
+    const [name, setName] = useState('')
 
     const [togglePost, setTogglePost] = useState(false)
     const [customPost, setCustomPost] = useState(false)
@@ -43,8 +44,12 @@ function Posts({ redirect, currentUser }) {
     const [work, setWork] = useState('')
 
 
+
+    const reversedArray = posts.reverse()
+
     function checkUser() {
         if (currentUser) {
+            setName(`${currentUser.first_name} ${currentUser.last_name}`)
             setDay(currentUser.day)
             setMonth(currentUser.month)
             setYear(currentUser.year)
@@ -139,14 +144,19 @@ function Posts({ redirect, currentUser }) {
                     </div>           
             </div>
                 
-                <div className="omega-posts">
-                    {posts && <div>{posts.map(post => {
+
+                    {posts && <div className="individual-post-container">{posts.map(post => {
                         return <div key={post.id}className="individual-post">
-                            <p>{post.content}</p>  
+                                <div className="post-header">
+                                    <img className="post-pic" src={profilePic}></img>
+                                        <h5 className="current-user-name">{name}</h5>
+                                </div>
+                                <p className="post-content">{post.content}</p>  
+                            
                             </div>})}
                         </div>
                     }
-                </div>
+            
 
                 </div>
 

@@ -2,6 +2,7 @@ import './createPostModal.css'
 import { useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { createPost } from '../../store/post'
+import profilePic from '../HomePage/NavBar/imgs/blank.png'
 
 
 function CreatePostModal({ currentUser, closeModal }) {
@@ -21,6 +22,7 @@ function CreatePostModal({ currentUser, closeModal }) {
         e.preventDefault()
         let post = {content, user_id}
         dispatch(createPost(post))
+        return closeModal(false)
     }
 
     function setUser() {
@@ -36,14 +38,20 @@ function CreatePostModal({ currentUser, closeModal }) {
             
         <form  className="actual-create-post-form" onSubmit={handlePostSubmit}>
             <div className='modal-header'>
-                <button className="close-button" onClick={(() => closeModal(false))}>X</button>
                 <h3>Create Post</h3>
-            </div>            
-            <textarea className="new-post-input" type="text" placeholder="post content here!" 
+                <button className="close-button" onClick={(() => closeModal(false))}>X</button>
+                
+            </div>          
+            <div className="pic-holder">
+                {<img className="profile-pic-inside-create-post" src={profilePic}></img>}
+
+                <p className='user-name-text'>{`${currentUser.first_name} ${currentUser.last_name}`}</p>
+            </div>  
+            <textarea className="new-post-input" type="text" placeholder="What's on your mind?" 
                     onChange={((e) => setContent(e.target.value))}>
 
             </textarea>
-            <input className="submit-post-button" type="submit" />
+            <input className="submit-post-button" value="post" type="submit" />
         </form>
 
         </div>
