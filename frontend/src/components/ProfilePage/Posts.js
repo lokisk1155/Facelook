@@ -10,6 +10,7 @@ import { fetchtPosts } from "../../store/post"
 import { createPost } from "../../store/post"
 import './Posts.css'
 import CreatePostModal from "./createPostModal"
+import profilePic from '../HomePage/NavBar/imgs/blank.png'
 
 
 
@@ -62,9 +63,6 @@ function Posts({ redirect, currentUser }) {
         dispatch(fetchtPosts())
     }, [])
 
-   
-  
-
     const handleBioSubmit = (e) => {
         e.preventDefault() 
         setCustomBio(!customBio)
@@ -75,6 +73,12 @@ function Posts({ redirect, currentUser }) {
         user.password = currentUser.password
         dispatch(updateUser(user))
     }
+
+    const handleNewPost = (e) => {
+        e.preventDefault()
+        return setTogglePost(true)
+    }
+    
 
     return (
     <div className="omega-profile-page-container">
@@ -122,17 +126,19 @@ function Posts({ redirect, currentUser }) {
         <div className="omega-posts-container">
             <div className="post-feed-container">
                 
-            <div className="create-post-modal"><button className="new-post-button"  placeholder="post content here!" onClick={(() => {
-                        setCustomPost(!customPost)
-                        setTogglePost(customPost)})}></button></div>
+            <div className="create-post-modal">
+                    <button className="new-post-button" onClick={handleNewPost}><label className="place-holder-text-new-post">What's on your mind?</label>
+                    </button>
 
-                        <div>
-                            {togglePost && <CreatePostModal />}
-                        </div>
+                    <div className="pic-holder">
+                        {<img className="profile-pic-inside-create-post" src={profilePic}></img>}
+                    </div>
 
+                    <div className="modal-holder">
+                        {togglePost && <CreatePostModal currentUser={currentUser} closeModal={setTogglePost}/>}
+                    </div>           
+            </div>
                 
-
-                        
                 <div className="omega-posts">
                     {posts && <div>{posts.map(post => {
                         return <div key={post.id}className="individual-post">

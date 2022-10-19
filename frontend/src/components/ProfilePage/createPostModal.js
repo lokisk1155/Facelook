@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { createPost } from '../../store/post'
 
 
-function CreatePostModal({ currentUser}) {
+function CreatePostModal({ currentUser, closeModal }) {
     const dispatch = useDispatch()
 
 
@@ -31,10 +31,22 @@ function CreatePostModal({ currentUser}) {
 
 
     return (
-        <form onSubmit={handlePostSubmit}>
-            <input className="new-post-input" type="text" placeholder="post content here!" onChange={((e) => setContent(e.target.value))}></input>
-            <input type="submit" />
+        <div className='omega-create-post-modal'>
+
+            
+        <form  className="actual-create-post-form" onSubmit={handlePostSubmit}>
+            <div className='modal-header'>
+                <button className="close-button" onClick={(() => closeModal(false))}>X</button>
+                <h3>Create Post</h3>
+            </div>            
+            <textarea className="new-post-input" type="text" placeholder="post content here!" 
+                    onChange={((e) => setContent(e.target.value))}>
+
+            </textarea>
+            <input className="submit-post-button" type="submit" />
         </form>
+
+        </div>
     )
 
 
