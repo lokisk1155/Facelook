@@ -1,36 +1,133 @@
-
-.profile-selectors {
-    margin: 20px;
-    padding: 20px;
-}
-
-.posts-selector-button {
-    margin: 10px;
-    padding: 10px;
-    border: none;
+.omega-profile-page-container {
+    height: 10000px;
+    width: 100vw;
+    display: flex;
     background-color: #f0f2f5;
+}
+
+.intro-container {
+    display: block;
+    border: 1px solid black;
+    height: 325px;
+    width: 500px;
+    margin-left: 115px;
+    margin-top: 10px;
+    background-color: white;   
+    border-radius: 10px;
+    background-color: white;
 
 }
 
-.about-selector-button {
-    margin: 10px;
+.intro-container {
     padding: 10px;
-    border: none;
-    background-color: #f0f2f5;
-
+    
 }
 
-.about-page-button-style {
+.posts-container {
+    padding: 10px;
+    margin: 10px;
+    flex-direction: column;
+}
+
+.add-bio-button {
     padding: 5px;
     margin: 5px;
     height: 35px;
-    width: 150px;
-    align-self: flex-start;
+    width: 500px;
+    align-self: center;
     border-radius: 7px;
-    resize: none;
+    background-color: #f0f2f5;
     border: none;
 }
 
-.about-page-button-style:focus {
-    background-color: blue;
+.edit-details-button {
+    padding: 5px;
+    margin: 5px;
+    height: 35px;
+    width: 500px;
+    align-self: center;
+    border-radius: 7px;
+    background-color: #f0f2f5;
+    border: none;
+}
+
+.add-featured-button {
+    padding: 5px;
+    margin: 5px;
+    height: 35px;
+    width: 500px;
+    align-self: center;
+    border-radius: 7px;
+    resize: none;
+    border: none;
+    background-color: #f0f2f5;
+}
+
+.edit-bio-container {
+    width: 200px;
+}
+
+.bio-save-button {
+    flex-direction: row;
+}
+
+.bio-cancel-button {
+    align-self: flex-end;
+    justify-content: flex-end
+}
+
+.text-area-bio {
+    resize: none;
+    width: 500px;
+    height: 65px;
+    border: blue;
+    resize: none;
+    background-color: #f0f2f5;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.actual-bio {
+    text-align: center;
+}
+
+
+.omega-posts-container {
+    display: flex;
+    width: 675px;
+    margin: 5px;
+    
+}
+
+.post-feed-container {
+    width: 675px;
+}
+
+
+.new-post-button {
+    height: 50px;
+    width: 550px;
+    padding: 10px;
+    margin-left: 10px;
+    border-radius: 40px;
+    border: none;
+    background-color: #f0f2f5;
+}
+
+.individual-post {
+    border: 1px;
+    padding: 10px;
+    margin: 10px;
+    background-color: white;
+    border-radius: 10px;
+
+}
+
+.create-post-modal {
+    background-color: white;
+    height: 75px;
+    padding: 10px;
+    border-radius: 15px;
+    margin: 10px;
+    border: 1px;
 }

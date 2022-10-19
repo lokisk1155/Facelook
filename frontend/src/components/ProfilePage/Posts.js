@@ -9,6 +9,7 @@ import EditDetails from "./EditDetails"
 import { fetchtPosts } from "../../store/post"
 import { createPost } from "../../store/post"
 import './Posts.css'
+import CreatePostModal from "./createPostModal"
 
 
 
@@ -23,10 +24,6 @@ function Posts({ redirect, currentUser }) {
         }
     })
 
-    const [content, setContent] = useState('')
-    const [user_id, setUser_id] = useState('')
- 
-
     const [day, setDay] = useState('')
     const [month, setMonth] = useState('')
     const [year, setYear] = useState('')
@@ -39,12 +36,14 @@ function Posts({ redirect, currentUser }) {
     const [customEdit, setCustomEdit] = useState(true)
     const [customBio, setCustomBio] = useState(true)
 
+    const [togglePost, setTogglePost] = useState(false)
+    const [customPost, setCustomPost] = useState(false)
+
     const [work, setWork] = useState('')
 
 
     function checkUser() {
         if (currentUser) {
-            setUser_id(currentUser.id)
             setDay(currentUser.day)
             setMonth(currentUser.month)
             setYear(currentUser.year)
@@ -76,15 +75,6 @@ function Posts({ redirect, currentUser }) {
         user.password = currentUser.password
         dispatch(updateUser(user))
     }
-
-    function handlePostSubmit(e) {
-        e.preventDefault()
-        let post = {content, user_id}
-        dispatch(createPost(post))
-    }
-
-   
-
 
     return (
     <div className="omega-profile-page-container">
@@ -130,21 +120,30 @@ function Posts({ redirect, currentUser }) {
             </div>
         </div>
         <div className="omega-posts-container">
-        <   form onSubmit={handlePostSubmit}>
-                <input type="text" placeholder="post content here!" onChange={((e) => setContent(e.target.value))}></input>
-                <input type="submit" />
-            </form>
             <div className="post-feed-container">
-                {posts && <div>{posts.map(post => {
-                    return <div key={post.id}className="individual-post">
-                            <p>{post.content}</p>
-                        
-                        
+                
+            <div className="create-post-modal"><button className="new-post-button"  placeholder="post content here!" onClick={(() => {
+                        setCustomPost(!customPost)
+                        setTogglePost(customPost)})}></button></div>
+
+                        <div>
+                            {togglePost && <CreatePostModal />}
                         </div>
-                })}
+
+                
+
+                        
+                <div className="omega-posts">
+                    {posts && <div>{posts.map(post => {
+                        return <div key={post.id}className="individual-post">
+                            <p>{post.content}</p>  
+                            </div>})}
+                        </div>
+                    }
                 </div>
-                }
-            </div>
+
+                </div>
+
         </div>
     </div>
     )
@@ -152,3 +151,5 @@ function Posts({ redirect, currentUser }) {
 
 export default Posts
 
+// const [togglePost, setTogglePost] = useState(false)
+// const [customPost, setCustomPost] = useState(false)
