@@ -33,7 +33,6 @@ function CreatePostModal({ currentUser, closeModal, postContent, header, type, p
             return closeModal(false)
         }
     }
-
     return (
         <div className='omega-create-post-modal'>
 

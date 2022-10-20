@@ -91,7 +91,6 @@ function Posts({ redirect, currentUser }) {
         setEditPost(true)
     }
 
-    
     return (
     <div className="omega-profile-page-container">
         <div className="intro-container">
