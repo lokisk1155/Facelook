@@ -56,7 +56,6 @@ function AboutPage({ renderString, currentUser }) {
                     setPlacesLived(false)
                     break
             }
-        return 
     }
 
     function handleRenderString() {
@@ -98,6 +97,8 @@ function AboutPage({ renderString, currentUser }) {
         setPlacesLived(false)
         setCustomWorkEd(false)
         setWorkEd(false)
+        setCustomRelationship(false)
+        setRelationship(false)
         return 
     }
 
@@ -110,6 +111,8 @@ function AboutPage({ renderString, currentUser }) {
         setPlacesLived(false)
         setCustomOverview(false)
         setOverview(false)
+        setCustomRelationship(false)
+        setRelationship(false)
         return 
 
     }
@@ -123,6 +126,8 @@ function AboutPage({ renderString, currentUser }) {
         setOverview(false)
         setCustomWorkEd(false)
         setWorkEd(false)
+        setCustomRelationship(false)
+        setRelationship(false)
         return 
     }
 
@@ -130,12 +135,13 @@ function AboutPage({ renderString, currentUser }) {
         e.preventDefault()
         setCustomRelationship(!customRelationship)
         setRelationship(customRelationship)
-        setPlacesLived(false)
         setEmergencyKey("relationship")
         setCustomOverview(false)
         setOverview(false)
         setCustomWorkEd(false)
         setWorkEd(false)
+        setCustomPlacesLived(false)
+        setPlacesLived(false)
         return 
     }
 
