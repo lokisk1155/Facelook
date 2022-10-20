@@ -37,7 +37,15 @@ function EditDetails({ currentUser, redirect, closeForm }) {
         return redirect(false, "overview")
     }
 
+    const handleEducation = (e) => {
+        e.preventDefault(0)
+        return redirect(false, "education")
+    }
 
+    const handleRelationship = (e) => {
+        e.preventDefault() 
+        return redirect(false, "relationship")
+    }
 
     return (
     <div className="edit-details-modal">
@@ -49,22 +57,29 @@ function EditDetails({ currentUser, redirect, closeForm }) {
                 <p>details will be set to public</p>
                 <div className='edit-details-work'>
                     <h4>Work</h4>
-                    {currentUser.work || <button onClick={handleWorkEd}>add a work place</button>}
+                    {<p>{currentUser.work}</p> ||<button onClick={handleWorkEd}>add a work place</button>}
+                </div>
+
+                <div>
+                    <h4>Education</h4>
+                    <button onClick={handleEducation}>From {self.high_school || 'Add your hometown'}</button>
+                    <button onClick={handleEducation}>From {self.college || 'Add your hometown'}</button>
+
                 </div>
 
 
                 <div>
                     <h4>Current City</h4>
-                    <button onClick={handleLocation}>Lives in {self.location || 'Add your current city'}</button>
+                    <button onClick={handleLocation}>Lives in {self.current_location || 'Add your current city'}</button>
                 </div>
                 <div>
                     <h4>Hometown</h4>
-                    <button onClick={handleLocation}>From {self.location || 'Add your hometown'}</button>
+                    <button onClick={handleLocation}>From {self.hometown || 'Add your hometown'}</button>
                 </div>
 
                 <div>
                     <h4>Relationship</h4>
-                    <button>Add a relationship status</button>
+                    <button onClick={handleRelationship}>From {self.relationship || 'Add your hometown'}</button>
                 </div>
 
                 <div>
@@ -84,3 +99,4 @@ function EditDetails({ currentUser, redirect, closeForm }) {
 }
 
 export default EditDetails
+
