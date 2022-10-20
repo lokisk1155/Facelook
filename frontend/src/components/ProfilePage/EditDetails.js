@@ -79,7 +79,7 @@ function EditDetails({ currentUser, redirect, closeForm }) {
 
                 <div>
                     <h4>Relationship</h4>
-                    <button onClick={handleRelationship}>From {self.relationship || 'Add your hometown'}</button>
+                    {<p>{self.relationship}</p> || <button onClick={handleRelationship}>Add your hometown</button>}
                 </div>
 
                 <div>

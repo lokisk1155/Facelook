@@ -37,6 +37,7 @@ function Posts({ redirect, currentUser }) {
     const [customEdit, setCustomEdit] = useState(true)
     const [customBio, setCustomBio] = useState(true)
     const [name, setName] = useState('')
+    const [relationship, setRelationShip] = useState('')
 
     const [togglePost, setTogglePost] = useState(false)
     const [customPost, setCustomPost] = useState(false)
@@ -57,6 +58,7 @@ function Posts({ redirect, currentUser }) {
             setFeatured(currentUser.featured)
             setLocation(currentUser.location)
             setWork(currentUser.work)
+            setRelationShip(currentUser.relationship)
         }
 
     }
@@ -64,9 +66,12 @@ function Posts({ redirect, currentUser }) {
     let antiToggle = !toggleBio
 
     useEffect(() => {
-        checkUser()
-        dispatch(fetchtPosts())
-    }, [])
+        setTimeout(() => {
+            checkUser()
+            dispatch(fetchtPosts())
+        }, 1500)
+    }, [relationship, work, bio])
+
 
     const handleBioSubmit = (e) => {
         e.preventDefault() 
@@ -106,8 +111,9 @@ function Posts({ redirect, currentUser }) {
                     
                 </div>
             </div>
-                    {work && <h3>Works at {work}</h3>}
-                    {location && <h3>Lives at {location}</h3>}
+                    {work && <p>Works at {work}</p>}
+                    {location && <p>Lives at {location}</p>}
+                    {relationship && <p>Relationship Status: {relationship}</p>}
             <div>
                 
             </div>

@@ -24,6 +24,7 @@ function Overview({ currentUser }) {
     const [relationship, setRelationShip] = useState('')
     const [toggleRelationship, setToggleRelationship] = useState(false)
 
+
     useEffect(() => {
         checkParams()
     }, [])
@@ -31,6 +32,7 @@ function Overview({ currentUser }) {
     function checkParams() {
         if (currentUser) {
             setWorkPlace(currentUser.work)
+            setRelationShip(currentUser.relationship)
         }
     }
 
