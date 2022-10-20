@@ -15,6 +15,8 @@
     width: 350px;
     border-radius: 10px;    
     align-items: flex-end;
+    border: none;
+    box-shadow: 1px 1px 2.5px 2.5px lightgray;
 }
 
 
@@ -26,6 +28,8 @@
     background-color: white;
     border: none;
     border-radius: 10px;
+    border: none;
+    box-shadow: 1px 1px 2.5px 2.5px lightgray;
 }
 
 .link-button:hover {

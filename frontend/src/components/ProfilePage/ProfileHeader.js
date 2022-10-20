@@ -9,6 +9,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCurrent } from '../../store/user';
 import { fetchUser } from '../../store/user';
+import { fetchtPosts } from '../../store/post';
 
 function ProfileHeader() {
     const dispatch = useDispatch() 
@@ -27,14 +28,14 @@ function ProfileHeader() {
     const currentUser = useSelector(getCurrent(id));
 
     useEffect(() => {
-        fireEmergency() 
+       // fireEmergency() 
         dispatch(fetchUser(id))
-    }, [showPosts, showAbout, id])
+    }, [])
 
 
-    function fireEmergency() {
-        return 
-    }
+    // function fireEmergency() {
+    //     return 
+    // }
 
     function redirect(header, component) {
         
@@ -42,12 +43,12 @@ function ProfileHeader() {
             setShowAbout(true)
             setShowPosts(false)
             setCustomPosts(false)
-            fireEmergency()
+            // fireEmergency()
         } else {
             setShowAbout(false)
             setShowPosts(true)
             setCustomPosts(false)
-            fireEmergency()
+            // fireEmergency()
         }
 
         switch(component) {
@@ -64,10 +65,13 @@ function ProfileHeader() {
                 setRenderString("relationship")
                 break
         }
+        
         return 
     }
-    
-    return (
+    if (!currentUser) {
+        return null 
+    }
+    return ( 
         <div>
 
         <div className="profile-selectors" >
@@ -75,7 +79,7 @@ function ProfileHeader() {
                 setShowPosts(true)
                 setShowAbout(false)
                 setCustomAbout(false)
-                fireEmergency()
+                // fireEmergency()
                 
                 })}>Posts</button>
 
@@ -83,7 +87,7 @@ function ProfileHeader() {
                 setShowAbout(true)
                 setShowPosts(false)
                 setCustomPosts(false)
-                fireEmergency()
+                // fireEmergency()
                 })}>About</button>
         </div>
 

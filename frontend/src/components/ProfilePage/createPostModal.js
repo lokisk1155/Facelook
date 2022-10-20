@@ -3,34 +3,36 @@ import { useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { createPost } from '../../store/post'
 import profilePic from '../HomePage/NavBar/imgs/blank.png'
+import { updatePost } from '../../store/post'
+import { useParams } from 'react-router-dom'
 
 
-function CreatePostModal({ currentUser, closeModal }) {
+function CreatePostModal({ currentUser, closeModal, postContent, header, type, postId }) {
     const dispatch = useDispatch()
 
+    const { id } = useParams()
 
     const [content, setContent] = useState('')
-    const [user_id, setUser_id] = useState('')
+    const [user_id, setUser_id] = useState(id)
 
+    const [title, setHeader] = useState(header)
+    const [placeHolder, setPlaceHolder] = useState(postContent)
 
-    useEffect(() => {
-        setUser() 
-    },[])
+    console.log(user_id)
+    console.log(postId)
 
-
-    function handlePostSubmit(e) {
+    const handlePostSubmit = (e) => {
         e.preventDefault()
-        let post = {content, user_id}
-        dispatch(createPost(post))
-        return closeModal(false)
-    }
-
-    function setUser() {
-        if (currentUser) {
-            setUser_id(currentUser.id)
+        if (type === "create") {
+            let post = {content, user_id}
+            dispatch(createPost(post))
+            return closeModal(false)
+        } else if (type === "update") {
+            let post = {content, id: postId}
+            dispatch(updatePost(post))
+            return closeModal(false)
         }
     }
-
 
     return (
         <div className='omega-create-post-modal'>
@@ -38,7 +40,7 @@ function CreatePostModal({ currentUser, closeModal }) {
             
         <form  className="actual-create-post-form" onSubmit={handlePostSubmit}>
             <div className='modal-header'>
-                <h3>Create Post</h3>
+                <h3>{title}</h3>
                 <button className="close-button" onClick={(() => closeModal(false))}>X</button>
                 
             </div>          
@@ -47,7 +49,7 @@ function CreatePostModal({ currentUser, closeModal }) {
 
                 <p className='user-name-text'>{`${currentUser.first_name} ${currentUser.last_name}`}</p>
             </div>  
-            <textarea className="new-post-input" type="text" placeholder="What's on your mind?" 
+            <textarea className="new-post-input" type="text" placeholder={placeHolder} 
                     onChange={((e) => setContent(e.target.value))}>
 
             </textarea>

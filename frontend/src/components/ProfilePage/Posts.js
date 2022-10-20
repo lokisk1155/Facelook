@@ -25,56 +25,42 @@ function Posts({ redirect, currentUser }) {
         }
     })
 
-    const [day, setDay] = useState('')
-    const [month, setMonth] = useState('')
-    const [year, setYear] = useState('')
-    const [bio, setBio] = useState('')
+    const [day, setDay] = useState(currentUser.day)
+    const [month, setMonth] = useState(currentUser.month)
+    const [year, setYear] = useState(currentUser.year)
+    const [bio, setBio] = useState(currentUser.bio)
     const [toggleBio, setToggleBio] = useState(false)
     const [details, setDetails] = useState(false)
-    const [featured, setFeatured] = useState('')
-    const [location, setLocation] = useState('')
+    const [featured, setFeatured] = useState(currentUser.featured)
+    const [location, setLocation] = useState(currentUser.location)
     const [customFeatured, setCustomFeatured] = useState(true)
     const [customEdit, setCustomEdit] = useState(true)
     const [customBio, setCustomBio] = useState(true)
-    const [name, setName] = useState('')
-    const [relationship, setRelationShip] = useState('')
+    const [name, setName] = useState(`${currentUser.first_name} ${currentUser.last_name}`)
+    const [relationship, setRelationShip] = useState(currentUser.relationship)
+    //day, month, year, bio, details, featured, location, name, relationship
 
     const [togglePost, setTogglePost] = useState(false)
     const [customPost, setCustomPost] = useState(false)
 
-    const [work, setWork] = useState('')
+    const [work, setWork] = useState(currentUser.work)
     const [content, setContent] = useState('ayeee')
 
     const reversedArray = posts.reverse()
 
-    function checkUser() {
-        if (currentUser) {
-            setName(`${currentUser.first_name} ${currentUser.last_name}`)
-            setDay(currentUser.day)
-            setMonth(currentUser.month)
-            setYear(currentUser.year)
-            setBio(currentUser.bio)
-            setFeatured(currentUser.featured)
-            setLocation(currentUser.location)
-            setWork(currentUser.work)
-            setRelationShip(currentUser.relationship)
-        }
-
-    }
-
     let antiToggle = !toggleBio
 
+    const [postDeleted, setPostDeleted] = useState(false)
+
+    const [editPost, setEditPost] = useState(false)
+    const [customEditPost, setCustomEditPost] = useState(false)
+
     useEffect(() => {
-        setTimeout(() => {
-            checkUser()
             dispatch(fetchtPosts())
-        }, 1500)
-    }, [relationship, work, bio])
-
-
-    function forceRender() {
-        return 
-    }
+            if (postDeleted) {
+                setPostDeleted(false)
+            }
+    }, [postDeleted])
 
     const handleBioSubmit = (e) => {
         e.preventDefault() 
@@ -90,19 +76,21 @@ function Posts({ redirect, currentUser }) {
 
     const handleNewPost = (e) => {
         e.preventDefault()
-        return setTogglePost(true)
+        setTogglePost(true)
     }
 
     function handleDeletePost(postId) {
+        console.log(postId)
         dispatch(deletePost(postId))
-        return forceRender() 
+        setPostDeleted(true)
+        return 
     }
 
-    function handleUpdatePost(id) {
-        let post = {content, id}
-        dispatch(updatePost(post))
-        return forceRender()
+    const handleEditPost = (e) => {
+        e.preventDefault()
+        setEditPost(true)
     }
+
     
     return (
     <div className="omega-profile-page-container">
@@ -160,7 +148,7 @@ function Posts({ redirect, currentUser }) {
                     </div>
 
                     <div className="modal-holder">
-                        {togglePost && <CreatePostModal currentUser={currentUser} closeModal={setTogglePost}/>}
+                        {togglePost && <CreatePostModal type={"create"} currentUser={currentUser} postContent={"What's on your mind?"} header={'Create post'} closeModal={setTogglePost}/>}
                     </div>           
             </div>
                 
@@ -173,7 +161,8 @@ function Posts({ redirect, currentUser }) {
                                 </div>
                                 <p className="post-content">{post.content}</p>  
                                 <button onClick={(() => handleDeletePost(post.id))}>Delete Post</button>
-                                <button onClick={(() => handleUpdatePost(post.id))}>Edit Post</button>
+                                <button onClick={handleEditPost}>Edit Post</button>
+                                {editPost && <CreatePostModal type={"update"} currentUser={currentUser} postId={post.id} postContent={post.content} header={'Edit post'} closeModal={setEditPost}/>}
                             
                             </div>})}
                         </div>
@@ -188,6 +177,8 @@ function Posts({ redirect, currentUser }) {
 }
 
 export default Posts
+
+// onClick={(() => handleUpdatePost(post.id))}>
 
 // const [togglePost, setTogglePost] = useState(false)
 // const [customPost, setCustomPost] = useState(false)
