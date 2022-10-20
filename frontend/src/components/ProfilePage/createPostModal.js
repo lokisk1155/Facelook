@@ -26,11 +26,11 @@ function CreatePostModal({ currentUser, closeModal, postContent, header, type, p
         if (type === "create") {
             let post = {content, user_id}
             dispatch(createPost(post))
-            return closeModal(false)
+            return closeModal(null)
         } else if (type === "update") {
             let post = {content, id: postId}
             dispatch(updatePost(post))
-            return closeModal(false)
+            return closeModal(null)
         }
     }
     return (
@@ -40,7 +40,7 @@ function CreatePostModal({ currentUser, closeModal, postContent, header, type, p
         <form  className="actual-create-post-form" onSubmit={handlePostSubmit}>
             <div className='modal-header'>
                 <h3>{title}</h3>
-                <button className="close-button" onClick={(() => closeModal(false))}>X</button>
+                <button className="close-button" onClick={(() => closeModal(null))}>X</button>
                 
             </div>          
             <div className="pic-holder">

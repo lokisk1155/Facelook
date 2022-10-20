@@ -52,7 +52,7 @@ function Posts({ redirect, currentUser }) {
 
     const [postDeleted, setPostDeleted] = useState(false)
 
-    const [editPost, setEditPost] = useState(false)
+    const [editPost, setEditPost] = useState(null)
     const [customEditPost, setCustomEditPost] = useState(false)
 
     useEffect(() => {
@@ -86,9 +86,9 @@ function Posts({ redirect, currentUser }) {
         return 
     }
 
-    const handleEditPost = (e) => {
+    const handleEditPost = (postId) => (e) => {
         e.preventDefault()
-        setEditPost(true)
+        setEditPost(postId)
     }
 
     return (
@@ -154,14 +154,14 @@ function Posts({ redirect, currentUser }) {
 
                     {posts && <div className="individual-post-container">{posts.map(post => {
                         return <div key={post.id}className="individual-post">
-                                <div className="post-header">
-                                    <img className="post-pic" src={profilePic}></img>
-                                        <h5 className="current-user-name">{name}</h5>
-                                </div>
-                                <p className="post-content">{post.content}</p>  
-                                <button onClick={(() => handleDeletePost(post.id))}>Delete Post</button>
-                                <button onClick={handleEditPost}>Edit Post</button>
-                                {editPost && <CreatePostModal type={"update"} currentUser={currentUser} postId={post.id} postContent={post.content} header={'Edit post'} closeModal={setEditPost}/>}
+                                    <div className="post-header">
+                                        <img className="post-pic" src={profilePic}></img>
+                                            <h5 className="current-user-name">{name}</h5>
+                                    </div>
+                                    <p className="post-content">{post.content}</p>  
+                                    <button onClick={(() => handleDeletePost(post.id))}>Delete Post</button>
+                                    <button onClick={handleEditPost(post.id)}>Edit Post</button>
+                                    {editPost === post.id && <CreatePostModal type="update" currentUser={currentUser} postId={post.id} postContent={post.content} header={'Edit post'} closeModal={setEditPost}/>}
                             
                             </div>})}
                         </div>
