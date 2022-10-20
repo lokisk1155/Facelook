@@ -70,16 +70,14 @@ function EditDetails({ currentUser, redirect, closeForm }) {
 
                 <div>
                     <h4>Current City</h4>
-                    <button onClick={handleLocation}>Lives in {self.current_location || 'Add your current city'}</button>
+                    <button onClick={handleLocation}>Lives in {self.location || 'Add your current city'}</button>
                 </div>
-                <div>
-                    <h4>Hometown</h4>
-                    <button onClick={handleLocation}>From {self.hometown || 'Add your hometown'}</button>
-                </div>
+              
+
 
                 <div>
                     <h4>Relationship</h4>
-                    <button onClick={handleRelationship}>From {self.relationship || 'Add your hometown'}</button>
+                    <button onClick={handleRelationship}> {self.relationship || 'Add Relationship status'}</button>
                 </div>
 
                 <div>

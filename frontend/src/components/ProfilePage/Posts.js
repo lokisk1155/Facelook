@@ -6,12 +6,12 @@ import { useDispatch } from "react-redux"
 import { getCurrent } from "../../store/user"
 import Featured from "./Featured"
 import EditDetails from "./EditDetails"
-import { fetchtPosts } from "../../store/post"
+import { fetchtPosts, updatePost } from "../../store/post"
 import { createPost } from "../../store/post"
 import './Posts.css'
 import CreatePostModal from "./createPostModal"
 import profilePic from '../HomePage/NavBar/imgs/blank.png'
-
+import { deletePost } from "../../store/post"
 
 
 function Posts({ redirect, currentUser }) {
@@ -42,8 +42,7 @@ function Posts({ redirect, currentUser }) {
     const [customPost, setCustomPost] = useState(false)
 
     const [work, setWork] = useState('')
-
-
+    const [content, setContent] = useState('ayeee')
 
     const reversedArray = posts.reverse()
 
@@ -68,6 +67,10 @@ function Posts({ redirect, currentUser }) {
         dispatch(fetchtPosts())
     }, [])
 
+    function forceRender() {
+        return 
+    }
+
     const handleBioSubmit = (e) => {
         e.preventDefault() 
         setCustomBio(!customBio)
@@ -79,12 +82,23 @@ function Posts({ redirect, currentUser }) {
         dispatch(updateUser(user))
     }
 
+
     const handleNewPost = (e) => {
         e.preventDefault()
         return setTogglePost(true)
     }
-    
 
+    function handleDeletePost(postId) {
+        dispatch(deletePost(postId))
+        return forceRender() 
+    }
+
+    function handleUpdatePost(id) {
+        let post = {content, id}
+        dispatch(updatePost(post))
+        return forceRender()
+    }
+    
     return (
     <div className="omega-profile-page-container">
         <div className="intro-container">
@@ -152,6 +166,8 @@ function Posts({ redirect, currentUser }) {
                                         <h5 className="current-user-name">{name}</h5>
                                 </div>
                                 <p className="post-content">{post.content}</p>  
+                                <button onClick={(() => handleDeletePost(post.id))}>Delete Post</button>
+                                <button onClick={(() => handleUpdatePost(post.id))}>Edit Post</button>
                             
                             </div>})}
                         </div>

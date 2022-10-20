@@ -31,6 +31,7 @@ function Overview({ currentUser }) {
     function checkParams() {
         if (currentUser) {
             setWorkPlace(currentUser.work)
+            setRelationShip(currentUser.relationship)
         }
     }
 

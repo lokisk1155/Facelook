@@ -60,6 +60,9 @@ function ProfileHeader() {
             case "placesLived":
                 setRenderString("placesLived")
                 break 
+            case "relationship":
+                setRenderString("relationship")
+                break
         }
         return 
     }
