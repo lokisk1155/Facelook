@@ -7,24 +7,28 @@ import { updatePost } from '../../store/post'
 import { useParams } from 'react-router-dom'
 
 
-function CreatePostModal({ currentUser, closeModal, postContent, header, type, postId }) {
+function CreatePostModal({ currentUser, closeModal, postContent, header, type, postId, userId }) {
     const dispatch = useDispatch()
 
     const { id } = useParams()
 
     const [content, setContent] = useState('')
-    const [user_id, setUser_id] = useState(id)
+
+    
 
     const [title, setHeader] = useState(header)
     const [placeHolder, setPlaceHolder] = useState(postContent)
 
-    console.log(user_id)
-    console.log(postId)
-
     const handlePostSubmit = (e) => {
         e.preventDefault()
         if (type === "create") {
-            let post = {content, user_id}
+            let post;
+            if (userId) {
+                post = {content, user_id: userId}
+            } else if (id) {
+                post = {content, user_id: id}
+            }
+            
             dispatch(createPost(post))
             return closeModal(null)
         } else if (type === "update") {

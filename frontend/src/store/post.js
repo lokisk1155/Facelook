@@ -21,11 +21,9 @@ export const removePost = postId => ({
 
 export const fetchtPosts = () => async dispatch => {
     const res = await csrfFetch(`/api/posts`);
-
-    if (res.ok) {
         const data = await res.json();
         dispatch(receivePosts(data));
-    }
+
 }
 
 export const createPost = post => async dispatch => {

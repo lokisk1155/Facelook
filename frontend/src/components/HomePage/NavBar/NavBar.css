@@ -45,8 +45,9 @@
 .profile-pic-modal {
     height: 35px;
     width: 35px;
-    margin: 10px;
     align-self: baseline;
     border-radius: 30px;
+    margin: 9px;
+    margin-right: 15px;
 
 }

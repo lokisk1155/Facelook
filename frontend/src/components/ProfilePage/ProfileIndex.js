@@ -11,7 +11,7 @@ function ProfileIndex() {
 
     return (
        <div>
-            <NavBar />
+  
             <ProfileHeader />
             
         </div>

@@ -6,12 +6,15 @@ import { useEffect, useState } from "react";
 import { createPost } from "../../store/post";
 import { fetchtPosts } from "../../store/post";
 import { getPosts } from "../../store/post";
+import CreatePostModal from "../ProfilePage/createPostModal";
+import { deletePost } from "../../store/post";
+import profilePic from './NavBar/imgs/blank.png'
 
 
 function HomePage() {
     const dispatch = useDispatch()
 
-    const user = useSelector(state => state.session.user);
+    const currentUser = useSelector(state => state.session.user);
     const posts = useSelector(state => {
             if (state.post) {
                 return Object.values(state.post)
@@ -20,54 +23,75 @@ function HomePage() {
             }
     })
 
-    const [content, setContent] = useState('')
-    const [user_id, setUser_id] = useState('')
+    const [postDeleted, setPostDeleted] = useState(false)
+    const [editPost, setEditPost] = useState(null)
+    const [togglePost, setTogglePost] = useState(false)
 
+  
     useEffect(() => {
-        loadUser()
         dispatch(fetchtPosts())
-    }, [])
+        if (postDeleted) {
+            setPostDeleted(false)
+        }
+    }, [postDeleted])
 
-    if (!user) {
-        return <Redirect to="/login_page" />;
-    }
 
-    function loadUser() {
-        if (user) {
-            setUser_id(user.id)
-        } 
-    }
-
-   
-
-    function handleSubmit(e) {
+    const handleNewPost = (e) => {
         e.preventDefault()
-        let post = {content, user_id}
-        dispatch(createPost(post))
+        setTogglePost(true)
     }
 
+    function handleDeletePost(postId) {
+        dispatch(deletePost(postId))
+        setPostDeleted(true)
+        return 
+    }
 
+    const handleEditPost = (postId) => (e) => {
+        e.preventDefault()
+        setEditPost(postId)
+    }
+
+    if (!posts) {
+        return null 
+    }
 
     return (
-        <div>
-            <div>
-            <   NavBar user={user} />
+        <div className="omega-posts-container">
+            <div className="post-feed-container-homepage">
+                
+            <div className="create-post-modal">
+                    <button className="new-post-button" onClick={handleNewPost}><label className="place-holder-text-new-post">What's on your mind?</label>
+                    </button>
+
+                    <div className="pic-holder">
+                        {<img className="profile-pic-inside-create-post" src={profilePic}></img>}
+                    </div>
+
+                    <div className="modal-holder">
+                        {togglePost && <CreatePostModal type={"create"} currentUser={currentUser} postContent={"What's on your mind?"} header={'Create post'} closeModal={setTogglePost} userId={currentUser.id}/>}
+                    </div>           
             </div>
+                
 
-            <div className="omega-home-page-container">
-                <div className="left-nav-bar-container"></div>
-                <div className="middle-nav-bar-container">
-                    <form onSubmit={handleSubmit}>
-                        <input type="text" placeholder="post content here!" onChange={((e) => setContent(e.target.value))}></input>
-                        <input type="submit" />
-                    </form>
-
-                    {posts && <p>{posts.map(post => <div>{post.content}</div>)}</p>}
-                </div>
-                <div className="right-nav-bar-container"></div>
+                    {posts && <div className="individual-post-container">{posts.map(post => {
+                        return <div key={post.id}className="individual-post">
+                                    <div key={post.id} className="post-header">
+                                        <img key={post.id} className="post-pic" src={profilePic}></img>
+                                            <h5 key={post.id} className="current-user-name">name</h5>
+                                    </div>
+                                    <p key={post.id} className="post-content">{post.content}</p>  
+                                    <button onClick={(() => handleDeletePost(post.id))}>Delete Post</button>
+                                    <button onClick={handleEditPost(post.id)}>Edit Post</button>
+                                    {editPost === post.id && <CreatePostModal type="update" currentUser={currentUser} postId={post.id} postContent={post.content} header={'Edit post'} closeModal={setEditPost}/>}
+                            
+                            </div>}).reverse()}
+                        </div>
+                    }
             
 
-            </div>
+                </div>
+
         </div>
     
     )

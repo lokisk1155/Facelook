@@ -12,6 +12,7 @@ import ProfileIndex from './components/ProfilePage/ProfileIndex';
 function App() {
   return (
     <div className="omega-container">
+      <NavBar />
     <Switch>
       <Route exact path="/">
         <HomePage />

@@ -80,7 +80,6 @@ function Posts({ redirect, currentUser }) {
     }
 
     function handleDeletePost(postId) {
-        console.log(postId)
         dispatch(deletePost(postId))
         setPostDeleted(true)
         return 
@@ -163,7 +162,7 @@ function Posts({ redirect, currentUser }) {
                                     <button onClick={handleEditPost(post.id)}>Edit Post</button>
                                     {editPost === post.id && <CreatePostModal type="update" currentUser={currentUser} postId={post.id} postContent={post.content} header={'Edit post'} closeModal={setEditPost}/>}
                             
-                            </div>})}
+                            </div>}).reverse()}
                         </div>
                     }
             
