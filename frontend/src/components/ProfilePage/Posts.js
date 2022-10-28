@@ -151,8 +151,8 @@ function Posts({ redirect, currentUser }) {
             </div>
                 
 
-                    {posts && <div className="individual-post-container">{posts.map(post => {
-                        return <div key={post.id}className="individual-post">
+                    {posts && <div className="individual-post-container">{posts.map((post, index) => {
+                        return <div key={index} className="individual-post">
                                     <div className="post-header">
                                         <img className="post-pic" src={profilePic}></img>
                                             <h5 className="current-user-name">{name}</h5>

@@ -24,7 +24,7 @@ function HomePage() {
     })
 
     const [postDeleted, setPostDeleted] = useState(false)
-    const [editPost, setEditPost] = useState(null)
+    const [checkPost, setEditPost] = useState(null)
     const [togglePost, setTogglePost] = useState(false)
 
   
@@ -49,7 +49,7 @@ function HomePage() {
 
     const handleEditPost = (postId) => (e) => {
         e.preventDefault()
-        setEditPost(postId)
+        setCheckPost(postId)
     }
 
     if (!posts) {
@@ -83,7 +83,7 @@ function HomePage() {
                                     <p key={post.id} className="post-content">{post.content}</p>  
                                     <button onClick={(() => handleDeletePost(post.id))}>Delete Post</button>
                                     <button onClick={handleEditPost(post.id)}>Edit Post</button>
-                                    {editPost === post.id && <CreatePostModal type="update" currentUser={currentUser} postId={post.id} postContent={post.content} header={'Edit post'} closeModal={setEditPost}/>}
+                                    {checkPost === post.id && <CreatePostModal type="update" currentUser={currentUser} postId={post.id} postContent={post.content} header={'Edit post'} closeModal={setEditPost}/>}
                             
                             </div>}).reverse()}
                         </div>
