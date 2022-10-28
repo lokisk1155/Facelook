@@ -47,7 +47,7 @@ function HomePage() {
         return 
     }
 
-    const handleEditPost = (postId) => (e) => {
+    const handleCheckPost = (postId) => (e) => {
         e.preventDefault()
         setCheckPost(postId)
     }
@@ -83,7 +83,7 @@ function HomePage() {
                                     <p key={post.id} className="post-content">{post.content}</p>  
                                     <button onClick={(() => handleDeletePost(post.id))}>Delete Post</button>
                                     <button onClick={handleCheckPost(post.id)}>Edit Post</button>
-                                    {checkPost === post.id && <CreatePostModal type="update" currentUser={currentUser} postId={post.id} postContent={post.content} header={'Edit post'} closeModal={setEditPost}/>}
+                                    {checkPost === post.id && <CreatePostModal type="update" currentUser={currentUser} postId={post.id} postContent={post.content} header={'Edit post'} closeModal={setCheckPost}/>}
                             
                             </div>}).reverse()}
                         </div>
