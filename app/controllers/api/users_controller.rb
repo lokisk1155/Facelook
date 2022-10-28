@@ -13,6 +13,8 @@ class Api::UsersController < ApplicationController
 
     def show 
       @user = User.find(params[:id])
+      p @user 
+      p '------- this --------'
       render :show 
     end 
 
