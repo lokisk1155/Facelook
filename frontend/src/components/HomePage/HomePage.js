@@ -24,7 +24,7 @@ function HomePage() {
     })
 
     const [postDeleted, setPostDeleted] = useState(false)
-    const [checkPost, setEditPost] = useState(null)
+    const [checkPost, setCheckPost] = useState(null)
     const [togglePost, setTogglePost] = useState(false)
 
   
