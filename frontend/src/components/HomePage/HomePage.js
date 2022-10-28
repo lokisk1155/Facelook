@@ -82,7 +82,7 @@ function HomePage() {
                                     </div>
                                     <p key={post.id} className="post-content">{post.content}</p>  
                                     <button onClick={(() => handleDeletePost(post.id))}>Delete Post</button>
-                                    <button onClick={handleEditPost(post.id)}>Edit Post</button>
+                                    <button onClick={handleCheckPost(post.id)}>Edit Post</button>
                                     {checkPost === post.id && <CreatePostModal type="update" currentUser={currentUser} postId={post.id} postContent={post.content} header={'Edit post'} closeModal={setEditPost}/>}
                             
                             </div>}).reverse()}
