@@ -2,9 +2,9 @@ class Api::SessionsController < ApplicationController
   def show
     if current_user
       @user = current_user
-      render :show 
+      render 'api/users/show'
     else
-      render json: { }
+      render json: { user: nil }
     end
   end
 
@@ -13,7 +13,7 @@ class Api::SessionsController < ApplicationController
 
     if @user
       login!(@user)
-      render :show
+      render 'api/users/show'
     else
       render json: { errors: ['The provided credentials were invalid.'] }, 
         status: :unauthorized
