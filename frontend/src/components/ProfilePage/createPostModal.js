@@ -21,19 +21,23 @@ function CreatePostModal({ currentUser, closeModal, postContent, header, type, p
 
     const handlePostSubmit = (e) => {
         e.preventDefault()
-        if (type === "create") {
-            let post;
-            if (userId) {
-                post = {content, user_id: userId}
-            } else if (id) {
-                post = {content, user_id: id}
+
+        if (content.length < 1) {
+            if (type === "create") {
+                let post;
+                if (userId) {
+                    post = {content, user_id: userId}
+                } else if (id) {
+                 post = {content, user_id: id}
+                }
+                dispatch(createPost(post))
+                return closeModal(null)
+            } else if (type === "update") {
+                let post = {content, id: postId}
+                dispatch(updatePost(post))
+                return closeModal(null)
             }
-            
-            dispatch(createPost(post))
-            return closeModal(null)
-        } else if (type === "update") {
-            let post = {content, id: postId}
-            dispatch(updatePost(post))
+        } else {
             return closeModal(null)
         }
     }
