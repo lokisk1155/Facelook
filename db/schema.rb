@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_28_202758) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_31_194619) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_28_202758) do
     t.bigint "post_id"
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "friends", force: :cascade do |t|
+    t.bigint "sender_id", null: false
+    t.bigint "receiver_id", null: false
+    t.boolean "status", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["receiver_id"], name: "index_friends_on_receiver_id"
+    t.index ["sender_id"], name: "index_friends_on_sender_id"
   end
 
   create_table "likes", force: :cascade do |t|
