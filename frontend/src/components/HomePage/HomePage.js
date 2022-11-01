@@ -9,6 +9,7 @@ import { getPosts } from "../../store/post";
 import CreatePostModal from "../ProfilePage/createPostModal";
 import { deletePost } from "../../store/post";
 import profilePic from './NavBar/imgs/blank.png'
+import { fetchUsers } from "../../store/user";
 
 
 function HomePage() {
@@ -30,10 +31,11 @@ function HomePage() {
   
     useEffect(() => {
         dispatch(fetchtPosts())
+        dispatch(fetchUsers())
         if (postDeleted) {
             setPostDeleted(false)
         }
-    }, [])
+    }, [postDeleted])
 
 
     const handleNewPost = (e) => {
