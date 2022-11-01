@@ -56,11 +56,12 @@ function Posts({ redirect, currentUser }) {
     const [editPost, setEditPost] = useState(null)
     const [customEditPost, setCustomEditPost] = useState(false)
 
+    if (postDeleted) {
+        setPostDeleted(false)
+    }
+
     useEffect(() => {
             dispatch(fetchtPosts())
-            if (postDeleted) {
-                setPostDeleted(false)
-            }
     }, [postDeleted])
 
     const handleBioSubmit = (e) => {

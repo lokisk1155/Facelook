@@ -24,14 +24,23 @@ function HomePage() {
             }
     })
 
+    const users = useSelector(state => {
+        if (state.user) {
+            return state.user
+        } else {
+            return []
+        }
+    })
+
     const [postDeleted, setPostDeleted] = useState(false)
     const [checkPost, setCheckPost] = useState(null)
     const [togglePost, setTogglePost] = useState(false)
+    const [tempName, setTempName] = useState('')
+    const [lock, setLock] = useState(false)
 
   
     useEffect(() => {
-        dispatch(fetchtPosts())
-        dispatch(fetchUsers())
+        dispatch(fetchUsers()).then((data) => dispatch(fetchtPosts()))
         if (postDeleted) {
             setPostDeleted(false)
         }
@@ -80,7 +89,7 @@ function HomePage() {
                         return <div key={post.id}className="individual-post">
                                     <div key={post.id} className="post-header">
                                         <img key={post.id} className="post-pic" src={profilePic}></img>
-                                            <h5 key={post.id} className="current-user-name">name</h5>
+                                            <h5 key={post.id} className="current-user-name">{`${users[post.user_id].first_name} ${users[post.user_id].last_name}`}</h5>
                                     </div>
                                     <p key={post.id} className="post-content">{post.content}</p>  
                                     <button onClick={(() => handleDeletePost(post.id))}>Delete Post</button>

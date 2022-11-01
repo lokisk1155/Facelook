@@ -1,11 +1,13 @@
 class Api::PostsController < ApplicationController
 
-    def index # (passed in from frontend, type and author_id)
+        # (passed in from frontend, type and author_id)
         # if type = home page
         # then @posts = Post.all
         # else if type = prof page
         # @posts = Post.find(by an author_id) (1 way)
         # @posts = Post.user_posts
+
+    def index 
         @posts = Post.all
         render :index
     end
