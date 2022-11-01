@@ -19,7 +19,8 @@ function Posts({ redirect, currentUser }) {
 
     const posts = useSelector(state => {
         if (state.post) {
-            return Object.values(state.post)
+            let unSorted = Object.values(state.post)
+            return unSorted.filter((post) => post.user_id == currentUser.id)
         } else {
             return []
         }

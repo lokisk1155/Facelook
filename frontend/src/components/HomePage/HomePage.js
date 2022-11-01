@@ -33,7 +33,7 @@ function HomePage() {
         if (postDeleted) {
             setPostDeleted(false)
         }
-    }, [postDeleted])
+    }, [])
 
 
     const handleNewPost = (e) => {
