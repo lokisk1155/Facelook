@@ -56,12 +56,11 @@ function Posts({ redirect, currentUser }) {
     const [editPost, setEditPost] = useState(null)
     const [customEditPost, setCustomEditPost] = useState(false)
 
-    if (postDeleted) {
-        setPostDeleted(false)
-    }
-
     useEffect(() => {
             dispatch(fetchtPosts())
+            if (postDeleted) {
+                setPostDeleted(false)
+            }
     }, [postDeleted])
 
     const handleBioSubmit = (e) => {
@@ -81,9 +80,12 @@ function Posts({ redirect, currentUser }) {
         setTogglePost(true)
     }
 
-    function handleDeletePost(postId) {
-        dispatch(deletePost(postId))
-        setPostDeleted(true)
+    function handleDeletePost(post) {
+        if (post.user_id === currentUser.id) {
+            dispatch(deletePost(post.id))
+            setPostDeleted(true)
+            return 
+        }
         return 
     }
 
@@ -160,7 +162,7 @@ function Posts({ redirect, currentUser }) {
                                             <h5 className="current-user-name">{name}</h5>
                                     </div>
                                     <p className="post-content">{post.content}</p>  
-                                    <button onClick={(() => handleDeletePost(post.id))}>Delete Post</button>
+                                    <button onClick={(() => handleDeletePost(post))}>Delete Post</button>
                                     <button onClick={handleEditPost(post.id)}>Edit Post</button>
                                     {editPost === post.id && <CreatePostModal type="update" currentUser={currentUser} postId={post.id} postContent={post.content} header={'Edit post'} closeModal={setEditPost}/>}
                             

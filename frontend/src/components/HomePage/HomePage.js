@@ -35,9 +35,6 @@ function HomePage() {
     const [postDeleted, setPostDeleted] = useState(false)
     const [checkPost, setCheckPost] = useState(null)
     const [togglePost, setTogglePost] = useState(false)
-    const [tempName, setTempName] = useState('')
-    const [lock, setLock] = useState(false)
-
   
     useEffect(() => {
         dispatch(fetchUsers()).then((data) => dispatch(fetchtPosts()))
@@ -52,9 +49,12 @@ function HomePage() {
         setTogglePost(true)
     }
 
-    function handleDeletePost(postId) {
-        dispatch(deletePost(postId))
-        setPostDeleted(true)
+    function handleDeletePost(post) {
+        if (post.user_id === currentUser.id) {
+            dispatch(deletePost(post.id))
+            setPostDeleted(true)
+            return 
+        }
         return 
     }
 
@@ -89,10 +89,10 @@ function HomePage() {
                         return <div key={post.id}className="individual-post">
                                     <div key={post.id} className="post-header">
                                         <img key={post.id} className="post-pic" src={profilePic}></img>
-                                            <h5 key={post.id} className="current-user-name">{`${users[post.user_id].first_name} ${users[post.user_id].last_name}`}</h5>
+                                            <h5 key={post.id} className="current-user-name">{`${users[post.user_id].first_name} ${users[post.user_id].last_name}` || 'name'}</h5>
                                     </div>
                                     <p key={post.id} className="post-content">{post.content}</p>  
-                                    <button onClick={(() => handleDeletePost(post.id))}>Delete Post</button>
+                                    <button onClick={(() => handleDeletePost(post))}>Delete Post</button>
                                     <button onClick={handleCheckPost(post.id)}>Edit Post</button>
                                     {checkPost === post.id && <CreatePostModal type="update" currentUser={currentUser} postId={post.id} postContent={post.content} header={'Edit post'} closeModal={setCheckPost}/>}
                             
