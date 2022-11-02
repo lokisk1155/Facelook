@@ -30,7 +30,7 @@ function ProfileHeader() {
     useEffect(() => {
        // fireEmergency() 
         dispatch(fetchUser(id))
-    }, [])
+    }, [id])
 
 
     // function fireEmergency() {

@@ -5,11 +5,11 @@ import NavBar from "./NavBar/NavBar";
 import { useEffect, useState } from "react";
 import { createPost } from "../../store/post";
 import { fetchtPosts } from "../../store/post";
-import { getPosts } from "../../store/post";
 import CreatePostModal from "../ProfilePage/createPostModal";
 import { deletePost } from "../../store/post";
 import profilePic from './NavBar/imgs/blank.png'
 import { fetchUsers } from "../../store/user";
+import { Link } from "react-router-dom";
 
 
 function HomePage() {
@@ -37,7 +37,10 @@ function HomePage() {
     const [togglePost, setTogglePost] = useState(false)
   
     useEffect(() => {
-        dispatch(fetchUsers()).then((data) => dispatch(fetchtPosts()))
+        dispatch(fetchUsers()).then(() => {
+            dispatch(fetchtPosts())
+        })
+
         if (postDeleted) {
             setPostDeleted(false)
         }
@@ -63,10 +66,6 @@ function HomePage() {
         setCheckPost(postId)
     }
 
-    if (!posts) {
-        return null 
-    }
-
     return (
         <div className="omega-posts-container">
             <div className="post-feed-container-homepage">
@@ -88,8 +87,10 @@ function HomePage() {
                     {posts && <div className="individual-post-container">{posts.map(post => {
                         return <div key={post.id}className="individual-post">
                                     <div key={post.id} className="post-header">
-                                        <img key={post.id} className="post-pic" src={profilePic}></img>
-                                            <h5 key={post.id} className="current-user-name">{`${users[post.user_id].first_name} ${users[post.user_id].last_name}` || 'name'}</h5>
+                                        <Link to={`/ProfilePage/${post.user_id}`}>
+                                            <img key={post.id} className="post-pic" src={profilePic}></img>
+                                        </Link>
+                                            <h5 key={post.id} className="current-user-name">{`${users[post.user_id].first_name} ${users[post.user_id].last_name}`}</h5>
                                     </div>
                                     <p key={post.id} className="post-content">{post.content}</p>  
                                     <button onClick={(() => handleDeletePost(post))}>Delete Post</button>

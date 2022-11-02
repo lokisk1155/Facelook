@@ -1,8 +1,11 @@
 class API::FriendsController < ApplicationController
     def create 
         @friend = Friend.new(friends_params)
-
+        
         if @friend.save 
+            @sender = User.find(friends_params(:sender_id))
+            @receiver = User.find(friends_params(:receiver_id))
+            @friendship = [@sender, @receiver]
             render :show 
         else 
             render json: @friend.errors.full_messages
@@ -11,7 +14,6 @@ class API::FriendsController < ApplicationController
 
     def update 
         @friend = Friend.find(params[:id])
-
         if @friend.save 
             render :show 
         else 
@@ -31,8 +33,8 @@ class API::FriendsController < ApplicationController
     end 
 
     def index 
-        @friends = Friend.all 
-        render :index 
+        @user = User.find(params[:user_id])
+        render :index
     end 
 
     private 
