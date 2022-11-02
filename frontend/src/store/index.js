@@ -1,5 +1,6 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
+import friendReducer from './friend';
 import postsReducer from './post';
 import sessionReducer from './session';
 import userReducer from './user';
@@ -7,7 +8,8 @@ import userReducer from './user';
 export const rootReducer = combineReducers({
     session: sessionReducer,
     user: userReducer,
-    post: postsReducer
+    post: postsReducer,
+    friend: friendReducer
 })
 
 let enhancer;

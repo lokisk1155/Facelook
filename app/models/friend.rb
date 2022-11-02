@@ -1,5 +1,5 @@
 class Friend < ApplicationRecord
-    validates :sender_id :receiver_id, presence: true
+    validates :sender_id, :receiver_id, presence: true
     
     belongs_to :user,
         foreign_key: :sender_id,
@@ -8,4 +8,5 @@ class Friend < ApplicationRecord
     belongs_to :friend,
         foreign_key: :receiver_id,
         class_name: :User
+
 end

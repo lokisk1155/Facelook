@@ -15,6 +15,19 @@ class User < ApplicationRecord
 
     has_many :comments,
       dependent: :destroy 
+
+    def friends 
+      friend_1 = Friend.where(sender_id: self.id).pluck(:receiver_id)
+      friend_2 = Friend.where(receiver_id: self.id).pluck(:sender_id)
+      friend_ids = friend_1 + friend_2
+      User.where(id: friend_ids)
+    end 
+
+    def friend_ids 
+      self.friends.map do |friend|
+        friend.id 
+      end 
+    end 
   
     def self.find_by_credentials(email, password)
       user = User.find_by(email: email)

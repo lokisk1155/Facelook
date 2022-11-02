@@ -33,3 +33,7 @@
 .about-page-button-style:focus {
     background-color: blue;
 }
+
+.profile-top-container {
+    height: 500px;
+}

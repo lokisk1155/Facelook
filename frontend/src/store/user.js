@@ -1,4 +1,5 @@
 import csrfFetch from './csrf';
+import { RECEIVE_FRIEND, REMOVE_FRIEND } from './friend';
 
 export const SET_CURRENT_PROFILE = "users/SET_CURRENT_PROFILE"
 export const RECEIVE_USERS = "users/RECEIVE_USERS"
@@ -14,6 +15,7 @@ export const receiveUsers = users => ({
   type: RECEIVE_USERS,
   payload: users
 })
+
 
 export const fetchUsers = () => async dispatch => {
   const res = await csrfFetch(`api/users`)
@@ -43,6 +45,8 @@ export const updateUser = user => async dispatch => {
 }
 
 
+
+
 const userReducer = (previousState = {}, action) => {
     let newState = {...previousState}
       switch(action.type) {
@@ -51,6 +55,11 @@ const userReducer = (previousState = {}, action) => {
             return newState 
         case RECEIVE_USERS:
             return { ...previousState, ...action.payload};
+        case RECEIVE_FRIEND:
+          return { ...previousState, ...action.payload.user};
+        // case REMOVE_FRIEND:
+        //   debugger;
+
         default:
             return previousState
     }

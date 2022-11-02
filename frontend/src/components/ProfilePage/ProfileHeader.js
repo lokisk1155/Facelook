@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getCurrent } from '../../store/user';
 import { fetchUser } from '../../store/user';
 import { fetchtPosts } from '../../store/post';
+import ProfileTop from './ProfileTop';
 
 function ProfileHeader() {
     const dispatch = useDispatch() 
@@ -29,7 +30,7 @@ function ProfileHeader() {
     const currentUser = useSelector(getCurrent(id));
 
     const sessionUser = useSelector(state => {
-        return state.session.user.id
+        return state.session.user
     })
 
     useEffect(() => {
@@ -76,7 +77,9 @@ function ProfileHeader() {
     }
     return ( 
         <div>
-
+            <div className='profile-top-container'>
+                <ProfileTop currentUser={currentUser} sessionUser={sessionUser}/>
+            </div>
         <div className="profile-selectors" >
             <button className="posts-selector-button" onClick={(() => {setCustomPosts(!customPosts)
                 setShowPosts(true)
@@ -93,7 +96,7 @@ function ProfileHeader() {
                 // fireEmergency()
                 })}>About</button>
         </div>
-
+        
         {showPosts && <Posts currentUser={currentUser} sessionUser={sessionUser} redirect={redirect}/>}
         {showAbout && <AboutPage currentUser={currentUser} sessionUser={sessionUser} renderString={renderString}/>}
 

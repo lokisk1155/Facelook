@@ -3,6 +3,9 @@ class Api::UsersController < ApplicationController
 
     def index 
       @users = User.all 
+      # params.has_key?(:user_ids) # boolean checking for presence of user_ids key in params
+      # /api/users?userIds=[1, 5, 7]
+      # @users = User.find(params[:user_ids])
       render :index
     end 
 
