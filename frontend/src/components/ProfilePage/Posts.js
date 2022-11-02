@@ -26,6 +26,14 @@ function Posts({ redirect, currentUser }) {
         }
     })
 
+    const [displayEditDelete, setDisplayEditDelete] = useState(false)
+
+    const sessionUser = useSelector(state => {
+        return state.session.user.id
+    })
+
+   
+
     const [day, setDay] = useState(currentUser.day)
     const [month, setMonth] = useState(currentUser.month)
     const [year, setYear] = useState(currentUser.year)
@@ -61,6 +69,9 @@ function Posts({ redirect, currentUser }) {
             if (postDeleted) {
                 setPostDeleted(false)
             }
+            if (sessionUser === currentUser.id) {
+                setDisplayEditDelete(true)
+            }         
     }, [postDeleted])
 
     const handleBioSubmit = (e) => {
@@ -162,8 +173,8 @@ function Posts({ redirect, currentUser }) {
                                             <h5 className="current-user-name">{name}</h5>
                                     </div>
                                     <p className="post-content">{post.content}</p>  
-                                    <button onClick={(() => handleDeletePost(post))}>Delete Post</button>
-                                    <button onClick={handleEditPost(post.id)}>Edit Post</button>
+                                    {displayEditDelete && <button onClick={(() => handleDeletePost(post))}>Delete Post</button>}
+                                    {displayEditDelete && <button onClick={handleEditPost(post.id)}>Edit Post</button>}
                                     {editPost === post.id && <CreatePostModal type="update" currentUser={currentUser} postId={post.id} postContent={post.content} header={'Edit post'} closeModal={setEditPost}/>}
                             
                             </div>}).reverse()}
