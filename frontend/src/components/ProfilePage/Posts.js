@@ -14,7 +14,7 @@ import profilePic from '../HomePage/NavBar/imgs/blank.png'
 import { deletePost } from "../../store/post"
 
 
-function Posts({ redirect, currentUser }) {
+function Posts({ redirect, currentUser, sessionUser }) {
     const dispatch = useDispatch()
 
     const posts = useSelector(state => {
@@ -27,12 +27,6 @@ function Posts({ redirect, currentUser }) {
     })
 
     const [displayEditDelete, setDisplayEditDelete] = useState(false)
-
-    const sessionUser = useSelector(state => {
-        return state.session.user.id
-    })
-
-   
 
     const [day, setDay] = useState(currentUser.day)
     const [month, setMonth] = useState(currentUser.month)

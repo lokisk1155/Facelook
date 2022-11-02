@@ -28,6 +28,10 @@ function ProfileHeader() {
 
     const currentUser = useSelector(getCurrent(id));
 
+    const sessionUser = useSelector(state => {
+        return state.session.user.id
+    })
+
     useEffect(() => {
        // fireEmergency() 
         dispatch(fetchUser(id))
@@ -90,8 +94,8 @@ function ProfileHeader() {
                 })}>About</button>
         </div>
 
-        {showPosts && <Posts currentUser={currentUser} redirect={redirect}/>}
-        {showAbout && <AboutPage currentUser={currentUser} renderString={renderString}/>}
+        {showPosts && <Posts currentUser={currentUser} sessionUser={sessionUser} redirect={redirect}/>}
+        {showAbout && <AboutPage currentUser={currentUser} sessionUser={sessionUser} renderString={renderString}/>}
 
 
         </div>

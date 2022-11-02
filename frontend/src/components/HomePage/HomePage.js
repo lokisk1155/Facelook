@@ -99,8 +99,8 @@ function HomePage() {
                                             <h5 key={post.id} className="current-user-name">{`${users[post.user_id].first_name} ${users[post.user_id].last_name}`}</h5>
                                     </div>
                                     <p key={post.id} className="post-content">{post.content}</p>  
-                                    <button onClick={(() => handleDeletePost(post))}>Delete Post</button>
-                                    <button onClick={handleCheckPost(post.id)}>Edit Post</button>
+                                    {currentUser.id === post.user_id ? <button onClick={(() => handleDeletePost(post))}>Delete Post</button> : <div />}
+                                    {currentUser.id === post.user_id ? <button onClick={handleCheckPost(post.id)}>Edit Post</button> : <div />}
                                     {checkPost === post.id && <CreatePostModal type="update" currentUser={currentUser} postId={post.id} postContent={post.content} header={'Edit post'} closeModal={setCheckPost}/>}
                             
                             </div>}).reverse()}
