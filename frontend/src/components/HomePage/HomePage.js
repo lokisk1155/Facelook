@@ -24,6 +24,7 @@ function HomePage() {
             }
     })
 
+
     const users = useSelector(state => {
         if (state.user) {
             return state.user
@@ -37,7 +38,7 @@ function HomePage() {
     const [togglePost, setTogglePost] = useState(false)
   
     useEffect(() => {
-        dispatch(fetchUsers()).then(() => {
+        dispatch(fetchUsers()).then((data) => {
             dispatch(fetchtPosts())
         })
 
@@ -64,6 +65,11 @@ function HomePage() {
     const handleCheckPost = (postId) => (e) => {
         e.preventDefault()
         setCheckPost(postId)
+    }
+
+    const temp = users[1]
+    if (!temp) {
+        return null
     }
 
     return (

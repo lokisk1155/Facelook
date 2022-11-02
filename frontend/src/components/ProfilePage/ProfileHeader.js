@@ -25,6 +25,7 @@ function ProfileHeader() {
 
     const { id } = useParams() 
 
+
     const currentUser = useSelector(getCurrent(id));
 
     useEffect(() => {
@@ -33,9 +34,7 @@ function ProfileHeader() {
     }, [id])
 
 
-    // function fireEmergency() {
-    //     return 
-    // }
+    
 
     function redirect(header, component) {
         
