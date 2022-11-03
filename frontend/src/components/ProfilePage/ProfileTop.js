@@ -27,11 +27,7 @@ function ProfileTop({ sessionUser, currentUser }) {
     }
     
     const handleDelete = (e) => {
-        // let temp = Object.values(currentUser.friends)
-        // if (temp.includes(sessionUser.id)) {
-        //     let friendship = {id: 2}
-        //     return dispatch(deleteFriend(friendship))
-        // }
+        e.preventDefault()
         if (is_friend) {
             const friendshipId = friend[0].id;
             dispatch(deleteFriend(friendshipId)).then(() => {

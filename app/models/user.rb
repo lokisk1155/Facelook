@@ -6,6 +6,8 @@ class User < ApplicationRecord
     validates :first_name, :last_name, :gender, :day, :month, :year, presence: true
       
     before_validation :ensure_session_token
+
+    has_one_attached :photo
   
     has_many :posts,
       dependent: :destroy
