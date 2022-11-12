@@ -19,6 +19,10 @@ export const fetchFriend = (userId) => async dispatch => {
     }
 };
 
+export const fetchFriends = (id) => async dispatch => {
+    const res = await csrfFetch(`/api/friends`)
+}
+
 export const addFriend = (friendRequest) => async dispatch => {
     const res = await csrfFetch(`/api/friends`, {
         method: "POST",

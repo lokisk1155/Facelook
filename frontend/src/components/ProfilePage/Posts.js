@@ -16,7 +16,7 @@ import { deletePost } from "../../store/post"
 
 function Posts({ redirect, currentUser, sessionUser }) {
     const dispatch = useDispatch()
-
+ 
     const posts = useSelector(state => {
         if (state.post) {
             let unSorted = Object.values(state.post)
@@ -27,6 +27,8 @@ function Posts({ redirect, currentUser, sessionUser }) {
     })
 
     const [displayEditDelete, setDisplayEditDelete] = useState(false)
+
+    console.log(currentUser, 'current user')
 
     const [day, setDay] = useState(currentUser.day)
     const [month, setMonth] = useState(currentUser.month)
@@ -63,9 +65,10 @@ function Posts({ redirect, currentUser, sessionUser }) {
             if (postDeleted) {
                 setPostDeleted(false)
             }
-            if (sessionUser === currentUser.id) {
+            if (sessionUser.id === currentUser.id) {
                 setDisplayEditDelete(true)
             }         
+            setName(`${currentUser.first_name} ${currentUser.last_name}`)
     }, [postDeleted])
 
     const handleBioSubmit = (e) => {
@@ -164,7 +167,7 @@ function Posts({ redirect, currentUser, sessionUser }) {
                         return <div key={index} className="individual-post">
                                     <div className="post-header">
                                         <img className="post-pic" src={profilePic}></img>
-                                            <h5 className="current-user-name">{name}</h5>
+                                            <h5 className="current-user-name">{`${currentUser.first_name} ${currentUser.last_name}`}</h5>
                                     </div>
                                     <p className="post-content">{post.content}</p>  
                                     {displayEditDelete && <button onClick={(() => handleDeletePost(post))}>Delete Post</button>}

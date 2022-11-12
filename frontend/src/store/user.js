@@ -51,7 +51,7 @@ const userReducer = (previousState = {}, action) => {
     let newState = {...previousState}
       switch(action.type) {
         case SET_CURRENT_PROFILE: 
-            newState = {[action.payload.id]: action.payload}
+            newState = {...previousState, [action.payload.id]: action.payload}
             return newState 
         case RECEIVE_USERS:
             return { ...previousState, ...action.payload};

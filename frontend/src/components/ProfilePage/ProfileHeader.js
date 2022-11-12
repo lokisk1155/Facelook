@@ -11,6 +11,8 @@ import { getCurrent } from '../../store/user';
 import { fetchUser } from '../../store/user';
 import { fetchtPosts } from '../../store/post';
 import ProfileTop from './ProfileTop';
+import Friends from './Friends';
+import { fetchFriend } from '../../store/friend';
 
 function ProfileHeader() {
     const dispatch = useDispatch() 
@@ -21,6 +23,8 @@ function ProfileHeader() {
 
     const [showAbout, setShowAbout] = useState(false)
     const [customAbout, setCustomAbout] = useState(false)
+
+    const [showFriends, setShowFriends] = useState(false)
 
     const [renderString, setRenderString] = useState('')
 
@@ -33,13 +37,14 @@ function ProfileHeader() {
         return state.session.user
     })
 
+    const friends = useSelector(state => {
+        return state.friend
+    })
+
     useEffect(() => {
        // fireEmergency() 
-        dispatch(fetchUser(id))
+        dispatch(fetchUser(id)).then(() => dispatch(fetchFriend(currentUser.id)))
     }, [id])
-
-
-    
 
     function redirect(header, component) {
         
@@ -47,6 +52,7 @@ function ProfileHeader() {
             setShowAbout(true)
             setShowPosts(false)
             setCustomPosts(false)
+            setShowFriends(false)
             // fireEmergency()
         } else {
             setShowAbout(false)
@@ -85,6 +91,7 @@ function ProfileHeader() {
                 setShowPosts(true)
                 setShowAbout(false)
                 setCustomAbout(false)
+                setShowFriends(false)
                 // fireEmergency()
                 
                 })}>Posts</button>
@@ -93,12 +100,23 @@ function ProfileHeader() {
                 setShowAbout(true)
                 setShowPosts(false)
                 setCustomPosts(false)
+                setShowFriends(false)
                 // fireEmergency()
                 })}>About</button>
+
+            <button className="about-selector-button" onClick={(() => {setShowFriends(!showFriends)
+                setShowFriends(true)
+                setShowAbout(false)
+                setShowPosts(false)
+                setCustomPosts(false)
+                // fireEmergency()
+                })}>Friends</button>  
         </div>
         
         {showPosts && <Posts currentUser={currentUser} sessionUser={sessionUser} redirect={redirect}/>}
         {showAbout && <AboutPage currentUser={currentUser} sessionUser={sessionUser} renderString={renderString}/>}
+        {showFriends && <Friends currentUser={currentUser} sessionUser={sessionUser}/> }
+        
 
 
         </div>

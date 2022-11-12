@@ -1,5 +1,5 @@
 class Api::UsersController < ApplicationController
-    wrap_parameters include: User.attribute_names + ['password', 'id']
+    wrap_parameters include: User.attribute_names + ['password', 'id', 'profilePic']
 
     def index 
       @users = User.all 
@@ -26,14 +26,19 @@ class Api::UsersController < ApplicationController
 
     def update
       @user = User.find(params[:id])
-      if params.has_key?(:profile_pic) then @user.profile_pic.attach(params[:profile_pic])
-      update = @user.update!(update_params)
+      result = false
       
-      if update
-          render :show
-        end 
+      if params.has_key?(:profile_pic)
+        @user.profile_pic.attach(params[:profile_pic])
+        result = @user.save
+      else 
+        result = @user.update(user_params)
+      end
+  
+      if result
+        render :show
       else
-        render json: { errors: @user.errors.full_messages }
+        render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
       end
     end
 
