@@ -6,9 +6,10 @@ import { useEffect, useState } from "react"
 function WorkEd({ currentUser }) {
     const dispatch = useDispatch()
 
-    const [works, setWorks] = useState(null)
+    const [work, setWork] = useState(null)
     const [toggleWork, setToggleWork] = useState(false)
     const [fakeWork, setFakeWork] = useState('')
+    const [toggleWorkEdit, setToggleWorkEdit] = useState(false)
 
     
     useEffect(() => {
@@ -17,12 +18,12 @@ function WorkEd({ currentUser }) {
 
     function checkUser() {
         if (currentUser){
-            setWorks(currentUser.work)
+            setWork(currentUser.work)
         }
     }
 
     const handleSubmit = () => {
-        setWorks(fakeWork)
+        setWork(fakeWork)
         let work = fakeWork
         const user = {
             ...currentUser, work
@@ -36,13 +37,20 @@ function WorkEd({ currentUser }) {
             <div>
                 <h4>Work</h4>
                 
-                {works && <p>{works}</p> || <button onClick={(() => {
+                {work || <button onClick={(() => {
                     setToggleWork(!toggleWork)
                 })}>Add a workplace</button>}
-                {toggleWork && !works &&
+                {toggleWork && !work &&
                 <form onSubmit={handleSubmit}>
                     <input type="text" onChange={((e) => setFakeWork(e.target.value))}/>
                     <input type="submit" />
+                </form>}
+
+                {work && <button onClick={(() => setToggleWorkEdit(true))}>Edit Work</button>}
+                {toggleWorkEdit && <form onSubmit={handleSubmit}>
+                    <input type="text" placeholder="Company" onChange={((e) => setFakeWork(e.target.value))}></input>
+                    <button onClick={(() => setToggleWorkEdit(false))}>cancel</button>
+                    <input type="submit" value="save"/>
                 </form>}
             </div>
             
