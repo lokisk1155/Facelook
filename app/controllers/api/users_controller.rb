@@ -32,7 +32,7 @@ class Api::UsersController < ApplicationController
         @user.profile_pic.attach(params[:profile_pic])
         result = @user.save
       else 
-        result = @user.update(user_params)
+        result = @user.update(update_params)
       end
   
       if result
