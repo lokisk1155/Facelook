@@ -67,8 +67,7 @@ function HomePage() {
         setCheckPost(postId)
     }
 
-    const temp = users[1]
-    if (!temp) {
+    if (!users) {
         return null
     }
 
@@ -96,7 +95,7 @@ function HomePage() {
                                         <Link to={`/ProfilePage/${post.user_id}`}>
                                             <img key={post.id} className="post-pic" src={profilePic}></img>
                                         </Link>
-                                            <h5 key={post.id} className="current-user-name">{`${users[post.user_id].first_name} ${users[post.user_id].last_name}`}</h5>
+                                            <h5 key={post.id} className="current-user-name">{typeof(users[post.user_id]) !== 'undefined' ? `${users[post.user_id].first_name} ${users[post.user_id].last_name}` : 'temp'}</h5>
                                     </div>
                                     <p key={post.id} className="post-content">{post.content}</p>  
                                     {currentUser.id === post.user_id ? <button onClick={(() => handleDeletePost(post))}>Delete Post</button> : <div />}

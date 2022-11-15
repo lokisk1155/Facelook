@@ -11,12 +11,6 @@ function EditDetails({ currentUser, redirect, closeForm }) {
 
     const [renderString, setRenderString] = useState('')
 
-
-    if (self.location) {
-        setLocation(self.location)
-    }
-
-
     const handleCloseForm = (e) => {
         e.preventDefault() 
         return closeForm(false)
