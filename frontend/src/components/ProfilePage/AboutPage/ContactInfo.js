@@ -1,15 +1,40 @@
 import { useEffect } from "react"
 import { setCurrentProfile } from "../../../store/user"
 import { useState } from "react"
+import { updateUser } from "../../../store/user"
+import { useDispatch } from "react-redux"
 
 
 function ContactInfo({ currentUser }) {
+    const dispatch = useDispatch()
 
-    const [monthName, setMonthName] = useState('')
+    const [phoneNumber, setPhoneNumber] = useState(false)
+    const [togglePhone, setTogglePhone] = useState(false)
+    const [togglePhoneEdit, setTogglePhoneEdit] = useState(false)
+    const [fakePhoneNumber, setFakePhoneNumber] = useState('')
+
+    const [email, setEmail] = useState(currentUser.email)
+    const [toggleEmailEdit, setToggleEmailEdit] = useState(false)
+    const [fakeEmail, setFakeEmail] = useState('')
+
+    const [gender, setGender] = useState(currentUser.gender)
+    const [toggleEditGender, setToggleEditGender] = useState(false)
+    const [fakeGender, setFakeGender] = useState('')
+    const [customGender, setCustomGender] = useState(false)
+
+    const [monthName, setMonthName] = useState(null)
 
     useEffect(() => {
-        setMonth() 
+        setMonth()
+        checkUser()
     }, [])
+
+
+    function checkUser() {
+        if (currentUser.phone_number) {
+            setPhoneNumber(currentUser.phone_number)
+        }
+    }
 
 
     function setMonth() {
@@ -41,16 +66,94 @@ function ContactInfo({ currentUser }) {
             default:
                 return setMonthName("default")
         }
-        return 
+
     }
 
+    const handlePhoneNumber = () => {
+        setTogglePhone(false)
+        setTogglePhoneEdit(false)
+        setPhoneNumber(fakePhoneNumber)
+        let phone_number = fakePhoneNumber
+        const user = {
+            ...currentUser, phone_number
+        }
+        return dispatch(updateUser(user))
+    }
 
+    const handleEmail = () => {
+        setToggleEmailEdit(false)
+        setEmail(fakeEmail)
+        let email = fakeEmail
+        const user = {
+            ...currentUser, email 
+        }
+        return dispatch(updateUser(user))
+    }
 
+    const handleGender = () => {
+        setToggleEditGender(false)
+        setGender(fakeGender)
+        let gender = fakeGender
+        const user = {
+            ...currentUser, gender
+        }
+        return dispatch(updateUser(user))
+    }
+
+    const handleWebsite = () => {
+
+    }
+
+    const handleSocialLink = () => {
+
+    }
     return (
         <div>
-            <p>{currentUser.email}</p>
-            <p>phone number</p>
-            <p>{currentUser.gender}</p>
+            <div>
+                <p>{email}</p>
+                {email && <button onClick={(() => setToggleEmailEdit(true) )}>Edit Email</button>}
+                {toggleEmailEdit && <form onSubmit={handleEmail}>
+                    <input type="text" onChange={((e) => setFakeEmail(e.target.value))}default="Email"></input>
+                    <button onClick={(() => setToggleEmailEdit(false))}>Cancel</button>
+                    <button type="submit">Submit</button>
+                </form>}
+            </div>
+                
+            <div>
+                {phoneNumber ? <p>{phoneNumber}</p> : <button onClick={(() => setTogglePhone(true))}>Add Phone</button>}
+                {togglePhone && <form onSubmit={handlePhoneNumber}>
+                    <input type="text" onChange={((e) => setFakePhoneNumber(e.target.value))}default="Phone Number"></input>
+                    <button onClick={(() => setTogglePhone(false))}>Cancel</button>
+                    <button type="submit">Submit</button>
+                    </form>}
+                {phoneNumber && <button onClick={(() => setTogglePhoneEdit(true) )}>Edit Phone Number</button>}
+                {togglePhoneEdit && <form onSubmit={handlePhoneNumber}>
+                    <input type="text" onChange={((e) => setFakePhoneNumber(e.target.value))}default="Phone Number"></input>
+                    <button onClick={(() => setTogglePhone(false))}>Cancel</button>
+                    <button type="submit">Submit</button>
+                    </form>}
+            </div>
+            
+            <p>{gender}</p>
+            <button onClick={(() => setToggleEditGender(true))}>Edit Gender</button>
+            {toggleEditGender && <form onSubmit={handleGender}>
+                <div>
+                    <label >
+                        Female
+                    <input type="radio" name="gender" value="female" onClick={() => setFakeGender('female')} />
+                    </label>
+                    <label>
+                        Male
+                    <input type="radio" name="gender" value="male" onClick={() => setFakeGender('male')} />
+                    </label>
+                    <input placeholder="Custom gender here" onChange={((e) => setFakeGender(e.target.value))}></input>
+                    <input type="submit" placeholder="submit"/>
+                </div>
+                </form>}
+            <div>
+   
+            </div>
+
             <p>birth date: {`${monthName} ${currentUser.day}`}</p>
             <p>birth year: {currentUser.year}</p>
         </div>
