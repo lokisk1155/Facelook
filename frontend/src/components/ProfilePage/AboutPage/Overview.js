@@ -40,20 +40,7 @@ function Overview({ currentUser }) {
             setWorkPlace(currentUser.work)
             setRelationShip(currentUser.relationship)
             setEducation(currentUser.education)
-
-            if (currentUser.location) {
-                let splitString = currentUser.location.split(" ")
-                let firstLocation = [] 
-                console.log(splitString)
-                for (let i = 0; i < splitString.length; i++) { 
-                    if (splitString[i] === "*") {
-                        break
-                    } else {
-                        firstLocation.push(splitString[i])
-                    }
-                }
-                setLocation(firstLocation.join(" "))
-            }
+            setLocation(currentUser.location)
         }
     }
 

@@ -8,7 +8,7 @@ function Relationship({ currentUser }) {
 
     const [relationship, setRelationship] = useState(null) 
     const [fakeRelationship, setFakeRelationship] = useState('')
-    const [toggleWork, setToggleWork] = useState(false)
+    const [toggleRelationship, setToggleRelationship] = useState(false)
     
     useEffect(() => {
         checkUser()
@@ -23,29 +23,23 @@ function Relationship({ currentUser }) {
     const handleSubmit = (e) => {
         e.preventDefault()
         setRelationship(fakeRelationship)
+        setToggleRelationship(false)
         let relationship = fakeRelationship
         const user = {
             ...currentUser, relationship
         }
         return dispatch(updateUser(user))
     }
-
-    const handleClick = (e) => {
-        e.preventDefault() 
-        return setToggleWork(false)
-
-    }
-
-    
+        
     return (
         <div>
             <div>
                 <h4>Relationship</h4>
                 
                 {relationship && <p>{relationship}</p> || <button onClick={(() => {
-                    setToggleWork(!toggleWork)
+                    setToggleRelationship(true)
                 })}>Add Relationship Status</button>}
-                {toggleWork && !relationship &&
+                {toggleRelationship && !relationship &&
                 <form onSubmit={handleSubmit}>
                     <select type="text" onChange={((e) => setFakeRelationship(e.target.value))}>
                             <option value="Single">Single</option>
@@ -62,8 +56,8 @@ function Relationship({ currentUser }) {
                     <input type="submit" />
                 </form>}
 
-                {relationship && <button onClick={handleClick}>Edit Post</button>}
-                    {!toggleWork && <form onSubmit={handleSubmit}>
+                {relationship && <button onClick={(() => setToggleRelationship(true))}>Edit Relationship Status</button>}
+                {toggleRelationship && <form onSubmit={handleSubmit}>
                     <select type="text" onChange={((e) => setFakeRelationship(e.target.value))}>
                             <option value="Single">Single</option>
                             <option value="In a relationship">In a relationship</option>
@@ -76,7 +70,7 @@ function Relationship({ currentUser }) {
                             <option value="Divorced">Divorced</option>
                             <option value="Widowed">Widowed</option>
                     </select>
-                    <button onClick={(() => setToggleWork(true))}>cancel</button>
+                    <button onClick={(() => setToggleRelationship(false))}>cancel</button>
                     <input type="submit" value="save"/>
                 </form>}
             </div>

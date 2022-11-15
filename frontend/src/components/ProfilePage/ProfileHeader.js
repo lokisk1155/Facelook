@@ -58,6 +58,7 @@ function ProfileHeader() {
             setShowAbout(false)
             setShowPosts(true)
             setCustomPosts(false)
+            setShowFriends(false)
             // fireEmergency()
         }
 

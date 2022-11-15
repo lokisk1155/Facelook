@@ -47,6 +47,8 @@ export const updateUser = user => async dispatch => {
 
 
 
+
+
 const userReducer = (previousState = {}, action) => {
     let newState = {...previousState}
       switch(action.type) {

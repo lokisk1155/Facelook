@@ -180,6 +180,7 @@ function AboutPage({ renderString, currentUser }) {
         setCustomPlacesLived(false)
         setPlacesLived(false)
         setCustomRelationship(false)
+        setRelationship(false)
     }
 
 
