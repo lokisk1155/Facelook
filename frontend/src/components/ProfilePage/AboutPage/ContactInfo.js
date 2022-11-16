@@ -3,6 +3,7 @@ import { setCurrentProfile } from "../../../store/user"
 import { useState } from "react"
 import { updateUser } from "../../../store/user"
 import { useDispatch } from "react-redux"
+import { Link } from "react-router-dom"
 
 
 function ContactInfo({ currentUser }) {
@@ -22,6 +23,17 @@ function ContactInfo({ currentUser }) {
     const [fakeGender, setFakeGender] = useState('')
     const [customGender, setCustomGender] = useState(false)
 
+    const [website, setWebsite] = useState(null)
+    const [fakeWebsite, setFakeWebsite] = useState('')
+    const [toggleWebsite, setTogggleWebsite] = useState(false)
+    const [toggleEditWebsite, setToggleEditWebsite] = useState(false)
+
+    const [sociallink, setSocialLink] = useState(null) 
+    const [fakeSocial, setFakeSocial] = useState('')
+    const [toggleSocial, setToggleSocial] = useState(false)
+    const [toggleEditSocial, setToggleEditSocial] = useState(false)
+
+
     const [monthName, setMonthName] = useState(null)
 
     useEffect(() => {
@@ -33,6 +45,10 @@ function ContactInfo({ currentUser }) {
     function checkUser() {
         if (currentUser.phone_number) {
             setPhoneNumber(currentUser.phone_number)
+        }
+
+        if (currentUser.website) {
+            setWebsite(currentUser.website)
         }
     }
 
@@ -101,12 +117,27 @@ function ContactInfo({ currentUser }) {
     }
 
     const handleWebsite = () => {
-
+        setTogggleWebsite(false)
+        setToggleEditWebsite(false)
+        setWebsite(fakeWebsite)
+        let website = fakeWebsite
+        const user = {
+            ...currentUser, website
+        }
+        return dispatch(updateUser(user))
     }
 
     const handleSocialLink = () => {
-
+        setToggleSocial(false)
+        setToggleEditSocial(false)
+        setSocialLink(fakeSocial)
+        let social_link = fakeSocial
+        let user = {
+            ...currentUser, social_link
+        }
+        return dispatch(updateUser(user))
     }
+
     return (
         <div>
             <div>
@@ -150,7 +181,41 @@ function ContactInfo({ currentUser }) {
                     <input type="submit" placeholder="submit"/>
                 </div>
                 </form>}
+
+                <div>
+                    {website ? <p>personal website: <a href={`http://${website}.html`} target="_blank" rel="noreferrer noopener">{website}</a></p> : <button onClick={(() => setTogggleWebsite(true))}>Add Website</button>}
+                        {toggleWebsite && <form onSubmit={handleWebsite}>
+                                <input type="text" onChange={((e) => setFakeWebsite(e.target.value))}default="Website"></input>
+                                <button onClick={(() => setTogggleWebsite(false))}>Cancel</button>
+                            <button type="submit">Submit</button>
+                        </form>}
+                    {website && <button onClick={(() => setToggleEditWebsite(true) )}>Edit Website</button>}
+                        {toggleEditWebsite && <form onSubmit={handleWebsite}>
+                                <input type="text" onChange={((e) => setFakeWebsite(e.target.value))}default="Phone Number"></input>
+                                <button onClick={(() => setToggleEditWebsite(false))}>Cancel</button>
+                            <button type="submit">Submit</button>
+                        </form>}
+                </div>
+
+                <div>
+                    {sociallink ? <p>Social Media: <a href={`http://${sociallink}.html`} target="_blank" rel="noreferrer noopener">{sociallink}</a></p> : <button onClick={(() => setToggleSocial(true))}>Add Social</button>}
+                        {toggleSocial && <form onSubmit={handleSocialLink}>
+                                <input type="text" onChange={((e) => setFakeSocial(e.target.value))}default="Website"></input>
+                                <button onClick={(() => setToggleSocial(false))}>Cancel</button>
+                            <button type="submit">Submit</button>
+                        </form>}
+                    {sociallink && <button onClick={(() => setToggleEditSocial(true) )}>Edit Social</button>}
+                        {toggleEditSocial && <form onSubmit={handleSocialLink}>
+                                <input type="text" onChange={((e) => setFakeSocial(e.target.value))}default="Phone Number"></input>
+                                <button onClick={(() => setToggleEditSocial(false))}>Cancel</button>
+                            <button type="submit">Submit</button>
+                        </form>}
+                </div>
+
+
+
             <div>
+
    
             </div>
 

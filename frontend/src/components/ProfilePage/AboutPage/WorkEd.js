@@ -22,6 +22,7 @@ function WorkEd({ currentUser }) {
     const [fakeHighschool, setFakeHighscool] = useState('')
     const [toggleHighscool, setToggleHighscool] = useState(false)
     const [toggleEditHighscool, setToggleEditHighschool] = useState(false)
+
  
 
     useEffect(() => {
@@ -70,6 +71,8 @@ function WorkEd({ currentUser }) {
         }
         return dispatch(updateUser(user))
     }
+
+
 
     const handleAddWork = () => {
         setWork(fakeWork)
