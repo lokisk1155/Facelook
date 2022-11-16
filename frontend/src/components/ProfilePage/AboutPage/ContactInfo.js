@@ -50,6 +50,10 @@ function ContactInfo({ currentUser }) {
         if (currentUser.website) {
             setWebsite(currentUser.website)
         }
+
+        if (currentUser.social_link) {
+            setSocialLink(currentUser.social_link)
+        }
     }
 
 
@@ -183,7 +187,7 @@ function ContactInfo({ currentUser }) {
                 </form>}
 
                 <div>
-                    {website ? <p>personal website: <a href={`http://${website}.html`} target="_blank" rel="noreferrer noopener">{website}</a></p> : <button onClick={(() => setTogggleWebsite(true))}>Add Website</button>}
+                    {website ? <p>personal website: <a href={`https://${website}`} target="_blank" rel="noreferrer noopener">{website.slice(0,-4)}</a></p> : <button onClick={(() => setTogggleWebsite(true))}>Add Website</button>}
                         {toggleWebsite && <form onSubmit={handleWebsite}>
                                 <input type="text" onChange={((e) => setFakeWebsite(e.target.value))}default="Website"></input>
                                 <button onClick={(() => setTogggleWebsite(false))}>Cancel</button>
@@ -198,7 +202,7 @@ function ContactInfo({ currentUser }) {
                 </div>
 
                 <div>
-                    {sociallink ? <p>Social Media: <a href={`http://${sociallink}.html`} target="_blank" rel="noreferrer noopener">{sociallink}</a></p> : <button onClick={(() => setToggleSocial(true))}>Add Social</button>}
+                    {sociallink ? <p>Social Media: <a href={`https://${sociallink}`} target="_blank" rel="noreferrer noopener">{sociallink.slice(0,-4)}</a></p> : <button onClick={(() => setToggleSocial(true))}>Add Social</button>}
                         {toggleSocial && <form onSubmit={handleSocialLink}>
                                 <input type="text" onChange={((e) => setFakeSocial(e.target.value))}default="Website"></input>
                                 <button onClick={(() => setToggleSocial(false))}>Cancel</button>
