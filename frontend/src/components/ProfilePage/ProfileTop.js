@@ -8,52 +8,19 @@ import csrfFetch from "../../store/csrf";
 
 function ProfileTop({ sessionUser, currentUser }) {
     const dispatch = useDispatch();
-
     const [profilePic, setProfilePic] = useState();
     const [profilePicUrl, setProfilePicUrl] = useState(null);
 
-
-    const friend = useSelector(({friend}) => {
-        const output = Object.values(friend).filter((f) => {
-            return (f.sender_id == sessionUser.id && f.receiver_id == currentUser.id) ||
-            (f.sender_id == currentUser.id && f.receiver_id == sessionUser.id);
-        });
-        return output;
-    });
-
-    const is_friend = currentUser.friends.includes(sessionUser.id);
-
-    useEffect(() => {
-        
-    }, [sessionUser.id]);
-
-
-    const handleAdd = (e) => {
-        e.preventDefault()
-        const friendRequest = {sender_id: sessionUser.id, receiver_id: currentUser.id }
-        return dispatch(addFriend(friendRequest))
-    }
-    
-    const handleDelete = (e) => {
-        e.preventDefault()
-        if (is_friend) {
-            const friendshipId = friend[0].id;
-            dispatch(deleteFriend(friendshipId)).then(() => {
-                dispatch(fetchUser(currentUser.id));
-            });
-        };
-    }
     const uploadPic = async e => {
-
         const formData = new FormData();
         if (profilePic) formData.append('user[profilePic]', profilePic);
-
+        debugger 
         const res = await csrfFetch(`/api/users/${currentUser.id}`, {
                 method: 'PUT',
                 body: formData
             });
         const data = await res.json();
-        return dispatch(setCurrentProfile(data.user));
+        dispatch(setCurrentProfile(data.user));
     }
 
     const handleFile = e => {
@@ -72,27 +39,73 @@ function ProfileTop({ sessionUser, currentUser }) {
         }
     }
 
-    const preview = profilePicUrl ? <img src={profilePicUrl} style={{width: "200px"}}/> : null
+    const preview = profilePicUrl ? <img src={profilePicUrl} style={{width: "200px"}}/> : null;
 
     return (
-        <div>
-        { is_friend ? 
-            <button onClick={handleDelete}>Delete Friend</button> : 
-            <button onClick={handleAdd}>Add Friend</button>
-        }
-        <form onSubmit={uploadPic}>
-            <input type="file" onChange={handleFile} />
-            <button type="submit">Submit</button>
-        </form>
-
-        <div id="img-preview" >
+        <>
+            <h2 id="h1">Upload profile picture</h2>
+            <hr />
+            <br></br>
+            <form onSubmit={uploadPic} id="submit-form">
+                <label id="upload-photo-button">
+                    Select photo
+                    <input type="file" onChange={handleFile} id="upload-photo-input"/>
+                </label>   
+                <button type="submit" id="submit-photo-button-dead">Upload</button>
+            </form>
+            <div id="img-preview" >
                 {preview && <h4>Image preview</h4>}
                 <br></br>
                 {preview}
             </div>
-        </div>
+        </>
     )
-
 }
 
 export default ProfileTop
+
+
+
+
+
+
+// const friend = useSelector(({friend}) => {
+//     const output = Object.values(friend).filter((f) => {
+//         return (f.sender_id == sessionUser.id && f.receiver_id == currentUser.id) ||
+//         (f.sender_id == currentUser.id && f.receiver_id == sessionUser.id);
+//     });
+//     return output;
+// });
+
+// const is_friend = currentUser.friends.includes(sessionUser.id);
+
+// useEffect(() => {
+    
+// }, [sessionUser.id]);
+
+
+// const handleAdd = (e) => {
+//     e.preventDefault()
+//     const friendRequest = {sender_id: sessionUser.id, receiver_id: currentUser.id }
+//     return dispatch(addFriend(friendRequest))
+// }
+
+// const handleDelete = (e) => {
+//     e.preventDefault()
+//     if (is_friend) {
+//         const friendshipId = friend[0].id;
+//         dispatch(deleteFriend(friendshipId)).then(() => {
+//             dispatch(fetchUser(currentUser.id));
+//         });
+//     };
+// }
+
+// { is_friend ? 
+//     <button onClick={handleDelete}>Delete Friend</button> : 
+//     <button onClick={handleAdd}>Add Friend</button>
+// }
+// <form onSubmit={uploadPic}>
+//     <input type="file" onChange={handleFile} />
+//     <button type="submit">Submit</button>
+// </form>
+

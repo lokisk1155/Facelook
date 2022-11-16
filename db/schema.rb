@@ -104,8 +104,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_14_192746) do
     t.string "language"
     t.string "website"
     t.string "social_link"
-    t.integer "places_lived", default: [], array: true
-    t.integer "places_worked", default: [], array: true
+    t.string "places_lived"
+    t.string "places_worked"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["session_token"], name: "index_users_on_session_token", unique: true
     t.index ["user_id"], name: "index_users_on_user_id"
