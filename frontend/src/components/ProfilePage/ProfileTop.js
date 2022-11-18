@@ -5,11 +5,30 @@ import { fetchUser } from '../../store/user';
 import { setCurrentProfile } from "../../store/user";
 import { useState } from "react";
 import csrfFetch from "../../store/csrf";
+import { fetchFriends } from "../../store/friend";
 
 function ProfileTop({ sessionUser, currentUser }) {
     const dispatch = useDispatch();
+
+    const [notSelf, setNotSelf] = useState(false)
+
     const [profilePic, setProfilePic] = useState();
     const [profilePicUrl, setProfilePicUrl] = useState(null);
+
+
+    const friend = useSelector(({friend}) => {
+        const output = Object.values(friend).filter((f) => {
+            return (f.sender_id == sessionUser.id && f.receiver_id == currentUser.id) ||
+            (f.sender_id == currentUser.id && f.receiver_id == sessionUser.id);
+        });
+        return output;
+    });
+    
+    const is_friend = currentUser.friends.includes(sessionUser.id);
+    
+    useEffect(() => {
+        dispatch(fetchFriend(currentUser.id))
+    }, [sessionUser.id]);
 
     const uploadPic = async e => {
         const formData = new FormData();
@@ -39,6 +58,21 @@ function ProfileTop({ sessionUser, currentUser }) {
         }
     }
 
+    const handleAdd = (e) => {
+        e.preventDefault()
+        const friendRequest = {sender_id: sessionUser.id, receiver_id: currentUser.id }
+        return dispatch(addFriend(friendRequest))
+    }
+
+    const handleDelete = (e) => {
+        e.preventDefault()
+        if (is_friend) {
+            const friendshipId = friend[0].id;
+            dispatch(deleteFriend(friendshipId)).then(() => {
+                dispatch(fetchUser(currentUser.id));});
+        };
+    }
+
     const preview = profilePicUrl ? <img src={profilePicUrl} style={{width: "200px"}}/> : null;
 
     return (
@@ -58,9 +92,15 @@ function ProfileTop({ sessionUser, currentUser }) {
                 <br></br>
                 {preview}
             </div>
+
+            {is_friend ? <button onClick={handleDelete}>Delete Friend</button> : 
+                          <button onClick={handleAdd}>Add Friend</button>
+            }
         </>
     )
 }
+
+
 
 export default ProfileTop
 
@@ -69,43 +109,10 @@ export default ProfileTop
 
 
 
-// const friend = useSelector(({friend}) => {
-//     const output = Object.values(friend).filter((f) => {
-//         return (f.sender_id == sessionUser.id && f.receiver_id == currentUser.id) ||
-//         (f.sender_id == currentUser.id && f.receiver_id == sessionUser.id);
-//     });
-//     return output;
-// });
-
-// const is_friend = currentUser.friends.includes(sessionUser.id);
-
-// useEffect(() => {
-    
-// }, [sessionUser.id]);
 
 
-// const handleAdd = (e) => {
-//     e.preventDefault()
-//     const friendRequest = {sender_id: sessionUser.id, receiver_id: currentUser.id }
-//     return dispatch(addFriend(friendRequest))
-// }
 
-// const handleDelete = (e) => {
-//     e.preventDefault()
-//     if (is_friend) {
-//         const friendshipId = friend[0].id;
-//         dispatch(deleteFriend(friendshipId)).then(() => {
-//             dispatch(fetchUser(currentUser.id));
-//         });
-//     };
-// }
 
-// { is_friend ? 
-//     <button onClick={handleDelete}>Delete Friend</button> : 
-//     <button onClick={handleAdd}>Add Friend</button>
-// }
-// <form onSubmit={uploadPic}>
-//     <input type="file" onChange={handleFile} />
-//     <button type="submit">Submit</button>
-// </form>
+
+
 

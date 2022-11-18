@@ -7,7 +7,7 @@
 /.bundle
 # Ignore all logfiles and tempfiles.
 /log/*
-/tmp/*
+/tmp
 !/log/.keep
 !/tmp/.keep
 # Ignore pidfiles, but keep the directory.

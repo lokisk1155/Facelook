@@ -1,6 +1,7 @@
 import csrfFetch from './csrf';
 export const REMOVE_FRIEND = "friends/REMOVE_FRIEND";
 export const RECEIVE_FRIEND = "friends/RECEIVE_FRIEND";
+export const RECEIVE_FRIENDS = "friends/RECEIVE_FRIENDS"
 
 export const removeFriend = (friendship) => ({
     type: REMOVE_FRIEND,
@@ -11,6 +12,11 @@ export const receiveFriend = payload => ({
     payload
 });
 
+export const receiveFriends = (friends) => ({
+    type: RECEIVE_FRIENDS,
+    payload: friends 
+})
+
 export const fetchFriend = (userId) => async dispatch => {
     const res = await csrfFetch(`/api/friends?userId=${userId}`);
     const data = await res.json();
@@ -19,8 +25,12 @@ export const fetchFriend = (userId) => async dispatch => {
     }
 };
 
-export const fetchFriends = (id) => async dispatch => {
-    const res = await csrfFetch(`/api/friends`)
+export const fetchFriends = (userId) => async dispatch => {
+    const res = await csrfFetch(`/api/friends?userId=${userId}`)
+    if (res.ok) {
+        const users = await res.json()
+        dispatch(receiveFriends({ users }))
+    }
 }
 
 export const addFriend = (friendRequest) => async dispatch => {
@@ -42,13 +52,18 @@ export const addFriend = (friendRequest) => async dispatch => {
 }
 
 const friendReducer = (previousState = {}, action) => {
-    let newState = {...previousState}
+    let newState = {}
     switch (action.type) {
         case RECEIVE_FRIEND:
-            return { ...previousState, ...action.payload.friend};
+            newState = { ...previousState, ...action.payload.friend};
+            return newState
         case REMOVE_FRIEND:
+            newState = {...previousState}
             delete newState[action.friendship.id];
             return newState;
+        case RECEIVE_FRIENDS: 
+            newState = {...action.payload}
+            return newState
         default:
             return previousState;
     }

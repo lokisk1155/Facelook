@@ -21,7 +21,7 @@ class Api::FriendsController < ApplicationController
         end 
     end 
 
-    def destroy  
+    def destroy   
         @friend = Friend.find(params[:id])
         if @friend
             @friend.destroy 
@@ -32,6 +32,36 @@ class Api::FriendsController < ApplicationController
     end 
 
     def index 
+        @sessionUserFriendIds = [] 
+        @userFriends = []
+
+        @friends = Friend.all
+        @users = User.all 
+
+        @friends.each do |friend| 
+            if friend.sender_id == params[:user_id] 
+                @sessionUserFriendIds << friend.receiver_id 
+            elsif friend.receiver_id == params[:user_id]
+                @sessionUserFriendIds << friend.sender_id
+            end 
+        end 
+
+        @users.each do |user| 
+            @sessionUserFriendIds.each do |id| 
+                if user.id == id 
+                    @userFriends << user 
+                end 
+            end 
+        end 
+
+        if @userFriends.length > 0 
+            render :index 
+        else 
+            render json: { errors: 'No Friends!'}
+        end 
+    end 
+
+    def show 
         @friend = Friend.find_by(sender_id: params[:user_id], receiver_id: current_user.id)
 
         unless @friend
@@ -50,6 +80,5 @@ class Api::FriendsController < ApplicationController
     def friends_params 
         params.require(:friend).permit(:id, :sender_id, :receiver_id)
     end 
-
 
 end 
