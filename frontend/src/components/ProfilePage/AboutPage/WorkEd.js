@@ -4,7 +4,7 @@ import { updateUser } from "../../../store/user"
 import { useEffect, useState } from "react"
 import { createPortal } from "react-dom"
 
-function WorkEd({ currentUser }) {
+function WorkEd({ currentUser, isUser }) {
     const dispatch = useDispatch()
 
     const [work, setWork] = useState(null)
@@ -88,8 +88,8 @@ function WorkEd({ currentUser }) {
         <div>
             <div>
                 <h4>Work</h4>
-                
-                {work || <button onClick={(() => {
+                <p>{work}</p>
+                {!work && isUser && <button onClick={(() => {
                     setToggleWork(!toggleWork)
                 })}>Add a workplace</button>}
                 {toggleWork && !work &&
@@ -98,14 +98,14 @@ function WorkEd({ currentUser }) {
                     <input type="submit" />
                 </form>}
 
-                {work && <button onClick={(() => setToggleWorkEdit(true))}>Edit Work</button>}
+                {isUser && work && <button onClick={(() => setToggleWorkEdit(true))}>Edit Work</button>}
                 {toggleWorkEdit && <form onSubmit={handleSubmit}>
                     <input type="text" placeholder="Company" onChange={((e) => setFakeWork(e.target.value))}></input>
                     <button onClick={(() => setToggleWorkEdit(false))}>cancel</button>
                     <input type="submit" value="save"/>
                 </form>}
 
-                <button onClick={(() => setToggleAddWork(true))}>Add Work</button>
+                {isUser && <button onClick={(() => setToggleAddWork(true))}>Add Work</button>}
                 {toggleAddWork && <form onSubmit={handleAddWork}>
                     <input type="text" placeholder="Company" onChange={((e) => setFakeWork(e.target.value))}></input>
                     <button onClick={(() => setToggleAddWork(false))}>cancel</button>
@@ -115,7 +115,8 @@ function WorkEd({ currentUser }) {
 
             <div>
                 <h4>College</h4>
-                {college || <button onClick={(() => {
+                <p>{college}</p>
+                {!college && isUser && <button onClick={(() => {
                     setToggleCollege(!toggleCollege)
                 })}>Add College</button>}
                 {toggleCollege && <form onSubmit={handleCollege}>
@@ -123,7 +124,7 @@ function WorkEd({ currentUser }) {
                     <button onClick={(() => setToggleCollege(false))}>cancel</button>
                     <input type="submit" value="save"/>
                 </form>}
-                {college && !toggleCollege && <button onClick={(() => {
+                {isUser && college && !toggleCollege && <button onClick={(() => {
                     setToggleEditCollege(true)
                 })}>Edit</button>}
                 
@@ -137,7 +138,8 @@ function WorkEd({ currentUser }) {
 
             <div>
                 <h4>Highschool</h4>
-                {highschool || <button onClick={(() => {
+                <p>{highschool}</p>
+                {!highschool && isUser && <button onClick={(() => {
                     setToggleHighscool(!toggleHighscool)
                 })}>Add highschool</button>}
                 {toggleHighscool && <form onSubmit={handleHighschool}>
@@ -145,10 +147,10 @@ function WorkEd({ currentUser }) {
                     <button onClick={(() => setToggleHighscool(false))}>cancel</button>
                     <input type="submit" value="save"/>
                 </form>}
-                {highschool && !toggleHighscool && <button onClick={(() => {
+                {isUser && highschool && !toggleHighscool && <button onClick={(() => {
                     setToggleEditHighschool(true)
                 })}>Edit</button>}
-                {toggleEditHighscool && <form onSubmit={handleHighschool}>
+                {isUser && toggleEditHighscool && <form onSubmit={handleHighschool}>
                     <input type="text" placeholder="Company" onChange={((e) => setFakeHighscool(e.target.value))}></input>
                     <button onClick={(() => setToggleEditHighschool(false))}>cancel</button>
                     <input type="submit" value="save"/>

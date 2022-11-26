@@ -3,7 +3,7 @@ import { updateUser } from "../../../store/user"
 
 import { useEffect, useState } from "react"
 
-function Relationship({ currentUser }) {
+function Relationship({ currentUser, isUser }) {
     const dispatch = useDispatch()
 
     const [relationship, setRelationship] = useState(null) 
@@ -36,10 +36,10 @@ function Relationship({ currentUser }) {
             <div>
                 <h4>Relationship</h4>
                 
-                {relationship && <p>{relationship}</p> || <button onClick={(() => {
+                {relationship && <p>{relationship}</p> || isUser && <button onClick={(() => {
                     setToggleRelationship(true)
                 })}>Add Relationship Status</button>}
-                {toggleRelationship && !relationship &&
+                {isUser && toggleRelationship && !relationship &&
                 <form onSubmit={handleSubmit}>
                     <select type="text" onChange={((e) => setFakeRelationship(e.target.value))}>
                             <option value="Single">Single</option>
@@ -56,7 +56,7 @@ function Relationship({ currentUser }) {
                     <input type="submit" />
                 </form>}
 
-                {relationship && <button onClick={(() => setToggleRelationship(true))}>Edit Relationship Status</button>}
+                {isUser && relationship && <button onClick={(() => setToggleRelationship(true))}>Edit Relationship Status</button>}
                 {toggleRelationship && <form onSubmit={handleSubmit}>
                     <select type="text" onChange={((e) => setFakeRelationship(e.target.value))}>
                             <option value="Single">Single</option>

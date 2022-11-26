@@ -7,7 +7,7 @@ import { fetchUser } from "../../../store/user"
 import { useEffect, useState } from "react"
 
 
-function Overview({ currentUser }) {
+function Overview({ currentUser, isUser }) {
     const dispatch = useDispatch()
 
     const [workPlace, setWorkPlace] = useState('')
@@ -89,7 +89,8 @@ function Overview({ currentUser }) {
     return (
         <div>
             <div>
-                {workPlace || <button onClick={(() => {
+                <p>{workPlace}</p>
+                {!workPlace && isUser && <button onClick={(() => {
                     setToggleWork(true)
                 })}>Add a workplace</button>}
                 {toggleWork && !workPlace &&
@@ -99,7 +100,7 @@ function Overview({ currentUser }) {
                     <input type="submit" value="save"/>
                 </form>}
 
-                {workPlace && <button onClick={handleClick}>Edit Post</button>}
+                {isUser && workPlace && <button onClick={handleClick}>Edit Post</button>}
                 {toggleWorkEdit && <form onSubmit={handleWork}>
                     <input type="text" placeholder="Company" onChange={((e) => setFakeWork(e.target.value))}></input>
                     <button onClick={(() => setToggleWorkEdit(false))}>cancel</button>
@@ -108,7 +109,8 @@ function Overview({ currentUser }) {
             </div>
 
             <div>
-                {education || <button onClick={(() => {
+                <p>{education}</p>
+                {!education && isUser && <button onClick={(() => {
                     setToggleEducation(true)
                 })}>Add Education</button>}
                 {toggleEducation && !education && 
@@ -118,7 +120,7 @@ function Overview({ currentUser }) {
                     <input type="submit" value="save"/>
                 </form>}
 
-                {education && <button onClick={(() => setToggleEducationEdit(true))}>Edit Education</button>}
+                {isUser && education && <button onClick={(() => setToggleEducationEdit(true))}>Edit Education</button>}
                 {toggleEducationEdit && <form onSubmit={handleEducation}>
                     <input type="text" placeholder="Institution" onChange={((e) => setFakeEducation(e.target.value))}></input>
                     <button onClick={(() => setToggleEducationEdit(false))}>cancel</button>
@@ -127,7 +129,8 @@ function Overview({ currentUser }) {
             </div>
 
             <div>
-                {location || <button onClick={(() => {
+                <p>{location}</p>
+                {!location && isUser && <button onClick={(() => {
                         setToggleLocation(true)
                     })}>Add Location</button>}
                     {toggleLocation && !location&& 
@@ -137,7 +140,7 @@ function Overview({ currentUser }) {
                         <input type="submit" value="save"/>
                     </form>}
 
-                    {location && <button onClick={(() => setToggleLocationEdit(true))}>Change Primary Location</button>}
+                    {isUser && location && <button onClick={(() => setToggleLocationEdit(true))}>Change Primary Location</button>}
                     {toggleLocationEdit && <form onSubmit={handleLocation}>
                         <input type="text" placeholder="Location" onChange={((e) => setFakeLocation(e.target.value))}></input>
                         <button onClick={(() => setToggleLocationEdit(false))}>cancel</button>
@@ -146,7 +149,8 @@ function Overview({ currentUser }) {
                 </div>
 
             <div>
-            {relationship || <button onClick={(() => {
+                <p>{relationship}</p>
+            {!relationship && isUser && <button onClick={(() => {
                     setToggleRelationship(!toggleRelationship)
                 })}>Add Relationship Status</button>}
                 {toggleRelationship && !relationship &&
@@ -166,7 +170,7 @@ function Overview({ currentUser }) {
                     <input type="submit" />
                 </form>}
 
-                {relationship && <button onClick={(() => setToggleRelationshipEdit(true))}>Edit Relationship Status</button>}
+                {isUser && relationship && <button onClick={(() => setToggleRelationshipEdit(true))}>Edit Relationship Status</button>}
                     {toggleRelationshipEdit && <form onSubmit={handleRelationship}>
                     <select type="text" onChange={((e) => setFakeRelationship(e.target.value))}>
                             <option value="Single">Single</option>

@@ -7,7 +7,9 @@ import WorkEd from './WorkEd'
 import Relationship from './relationship'
 import ContactInfo from './ContactInfo'
 
-function AboutPage({ renderString, currentUser }) {
+function AboutPage({ renderString, currentUser, sessionUser }) {
+
+    const isUser = currentUser.id === sessionUser.id 
 
     const [overview, setOverview] = useState(true)
     const [customOverview, setCustomOverview] = useState(false)
@@ -196,11 +198,11 @@ function AboutPage({ renderString, currentUser }) {
 
                 </div>
                     <div className='about-page-component-selector'>
-                        {overview && <Overview currentUser={currentUser}/>}
-                        {placesLived && <PlacesLived currentUser={currentUser}/>}
-                        {workEd && <WorkEd currentUser={currentUser}/>}
-                        {relationship && <Relationship currentUser={currentUser} />}
-                        {contactInfo && <ContactInfo currentUser={currentUser}/>}
+                        {overview && <Overview currentUser={currentUser} isUser={isUser} />}
+                        {placesLived && <PlacesLived currentUser={currentUser} isUser={isUser}/>}
+                        {workEd && <WorkEd currentUser={currentUser} isUser={isUser}/>}
+                        {relationship && <Relationship currentUser={currentUser} isUser={isUser}/>}
+                        {contactInfo && <ContactInfo currentUser={currentUser} isUser={isUser}/>}
                 </div>
             </div>
 
