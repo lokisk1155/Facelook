@@ -62,20 +62,7 @@ function ProfileHeader() {
             // fireEmergency()
         }
 
-        switch(component) {
-            case "overview":
-                setRenderString('overview')
-                break 
-            case "workEd":
-                setRenderString('workEd')
-                break 
-            case "placesLived":
-                setRenderString("placesLived")
-                break 
-            case "relationship":
-                setRenderString("relationship")
-                break
-        }
+        setRenderString(component)
         
         return 
     }
