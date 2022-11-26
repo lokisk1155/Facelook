@@ -1,77 +1,75 @@
 .omega-create-post-modal {
-    position:absolute; 
-    left: 0;
-    top: 0;
-    width: 100vw; 
-    height: 100vh; 
-    background-color: rgba(215, 213, 213, 0.426); 
-    background-color: rgba(193, 192, 192, 0.495);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(215, 213, 213, 0.426);
+  background-color: rgba(193, 192, 192, 0.495);
 }
 
 .actual-create-post-form {
-    display: block;
-    position:absolute;
-    top: 25vh;
-    left: 34vw;
-    background: white;
-    padding: 10px;
-    height: 375px;
-    width: 450px;
-    border-radius: 10px;   
-    align-items: flex-end;
-    border-color: black;
-   
+  display: block;
+  position: absolute;
+  top: 25vh;
+  left: 34vw;
+  background: white;
+  padding: 10px;
+  height: 375px;
+  width: 450px;
+  border-radius: 10px;
+  align-items: flex-end;
+  border-color: black;
 }
 
 .new-post-input {
-    padding: 10px;
+  padding: 10px;
 }
 
 .close-button {
-    height: 40px;
-    width: 40px;
-    margin: 15px;
-    border-radius: 30px;
-    position:absolute; 
-    top:0; 
-    right:0;
-    border: none;
-    font-size: 25px;
-    color: gray;
+  height: 40px;
+  width: 40px;
+  margin: 15px;
+  border-radius: 30px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: none;
+  font-size: 25px;
+  color: gray;
 }
 
 .submit-post-button {
-    width: 450px;
-    background-color: #17A9FD;
-    border: none;
-    height: 40px;
-    border-radius: 7px;
-    font-size: 20px;
-    color: white;
+  width: 450px;
+  background-color: #17a9fd;
+  border: none;
+  height: 40px;
+  border-radius: 7px;
+  font-size: 20px;
+  color: white;
 }
 
 .pic-holder {
-    padding: 5px;
-    display: flex;
+  padding: 5px;
+  display: flex;
 }
 
 .modal-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .user-name-text {
-    margin: 10px;
-    font-size: 15px;
+  margin: 10px;
+  font-size: 15px;
 }
 
 textarea {
-    width: 400px;
-    height: 150px;
-    resize: none;
-    border: none;
-    outline: none;
-    font-size: 25px;
+  width: 400px;
+  height: 150px;
+  resize: none;
+  border: none;
+  outline: none;
+  font-size: 25px;
 }
-

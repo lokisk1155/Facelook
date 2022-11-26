@@ -1,53 +1,51 @@
 .omega-navbar {
-    display: flex;
-    flex-direction:row;
-    align-items:flex-end;
-    justify-content:space-between;
-    align-self: center;
-    flex-wrap: nowrap;
-    flex-flow: nowrap;
-    height: 50px;
-    background-color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  align-self: center;
+  flex-wrap: nowrap;
+  flex-flow: nowrap;
+  height: 50px;
+  background-color: white;
 }
 
 .linkedin {
-    align-self: baseline;
-    height: 30px;
-    width: 35px;
-    margin: 5px;
-    padding: 5px;
+  align-self: baseline;
+  height: 30px;
+  width: 35px;
+  margin: 5px;
+  padding: 5px;
 }
 
 .github {
-    align-self: baseline;
-    height: 30px;
-    width: 30px;
-    margin: 5px;
-    padding: 5px;
+  align-self: baseline;
+  height: 30px;
+  width: 30px;
+  margin: 5px;
+  padding: 5px;
 }
 
 .navbar-search-bar {
-    display: flex;
-    align-self: flex-start;
+  display: flex;
+  align-self: flex-start;
 }
 
 .personal-plugs {
-    display: flex;
-    margin-bottom: auto;
-
+  display: flex;
+  margin-bottom: auto;
 }
 /* align-self ON THE CHILD, to control just one child */
 .search-bar {
-    align-self: flex-end;
-    margin-left: 10px;
+  align-self: flex-end;
+  margin-left: 10px;
 }
 
 .profile-pic-modal {
-    height: 35px;
-    width: 35px;
-    align-self: baseline;
-    border-radius: 30px;
-    margin: 9px;
-    margin-right: 15px;
-
+  height: 35px;
+  width: 35px;
+  align-self: baseline;
+  border-radius: 30px;
+  margin: 9px;
+  margin-right: 15px;
 }

@@ -181,7 +181,7 @@ function ContactInfo({ currentUser, isUser }) {
             <button type="submit">Submit</button>
           </form>
         )}
-        { isUser && phoneNumber && (
+        {isUser && phoneNumber && (
           <button onClick={() => setTogglePhoneEdit(true)}>
             Edit Phone Number
           </button>
@@ -200,7 +200,9 @@ function ContactInfo({ currentUser, isUser }) {
       </div>
 
       <p>{gender}</p>
-      {isUser && <button onClick={() => setToggleEditGender(true)}>Edit Gender</button>}
+      {isUser && (
+        <button onClick={() => setToggleEditGender(true)}>Edit Gender</button>
+      )}
       {toggleEditGender && (
         <form onSubmit={handleGender}>
           <div>
@@ -244,7 +246,9 @@ function ContactInfo({ currentUser, isUser }) {
             </a>
           </p>
         ) : (
-          isUser && <button onClick={() => setTogggleWebsite(true)}>Add Website</button>
+          isUser && (
+            <button onClick={() => setTogggleWebsite(true)}>Add Website</button>
+          )
         )}
         {toggleWebsite && (
           <form onSubmit={handleWebsite}>
@@ -288,7 +292,9 @@ function ContactInfo({ currentUser, isUser }) {
             </a>
           </p>
         ) : (
-          isUser && <button onClick={() => setToggleSocial(true)}>Add Social</button>
+          isUser && (
+            <button onClick={() => setToggleSocial(true)}>Add Social</button>
+          )
         )}
         {toggleSocial && (
           <form onSubmit={handleSocialLink}>

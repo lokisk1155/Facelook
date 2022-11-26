@@ -1,67 +1,66 @@
 .omega-profile-modal-container {
-    position:absolute; 
-    left: 0;
-    top: 0;
-    /* width: 100vw;  */
-    /* height: 100vh;  */
+  position: absolute;
+  left: 0;
+  top: 0;
+  /* width: 100vw;  */
+  /* height: 100vh;  */
 }
-.profile-pic-modal-container { 
-    position:absolute;
-    top: 7vh;
-    left: 74vw;
-    background: whitesmoke;
-    padding: 10px;
-    height: 150px;
-    width: 350px;
-    border-radius: 10px;    
-    align-items: flex-end;
-    border: none;
-    box-shadow: 1px 1px 2.5px 2.5px lightgray;
+.profile-pic-modal-container {
+  position: absolute;
+  top: 7vh;
+  left: 74vw;
+  background: whitesmoke;
+  padding: 10px;
+  height: 150px;
+  width: 350px;
+  border-radius: 10px;
+  align-items: flex-end;
+  border: none;
+  box-shadow: 1px 1px 2.5px 2.5px lightgray;
 }
-
 
 .link-button {
-    margin: 15px;
-    width: 325px;
-    height: 50px;
-    display: flex;
-    background-color: white;
-    border: none;
-    border-radius: 10px;
-    border: none;
-    box-shadow: 1px 1px 2.5px 2.5px lightgray;
+  margin: 15px;
+  width: 325px;
+  height: 50px;
+  display: flex;
+  background-color: white;
+  border: none;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 1px 1px 2.5px 2.5px lightgray;
 }
 
 .link-button:hover {
-    background-color: #DCDCDC;
+  background-color: #dcdcdc;
 }
 
 .link-profile-pic {
-    margin-top: 5px;
-    height: 35px;
-    border-radius: 30px;
+  margin-top: 5px;
+  height: 35px;
+  border-radius: 30px;
 }
 
 .link-user-name {
-    margin-top: 15px;
-    position: absolute;
-    margin-left: 50px;
+  margin-top: 15px;
+  position: absolute;
+  margin-left: 50px;
 }
 
 .logout-button {
-    width: 325px;
-    height: 50px;
-    margin-left: 15px;
-    margin-bottom: 15px;
-    border: none;
-    background-color: whitesmoke;
-    border-radius: 10px;
+  width: 325px;
+  height: 50px;
+  margin-left: 15px;
+  margin-bottom: 15px;
+  border: none;
+  background-color: whitesmoke;
+  border-radius: 10px;
 }
 
 .logout-button-text {
-    margin-right: 250px;
+  margin-right: 250px;
 }
 
 .logout-button:hover {
-    background-color: white;
-  }
+  background-color: white;
+}

@@ -1,41 +1,37 @@
-.about-page-container { 
-    display: block;
-    border: 1px solid black;
-    height: 400px;
-    width: 1200px;
-    margin-left: 125px;
-    margin-top: 10px;
-    background-color: white;   
-    background-color: white;
-    border-radius: 5px;
-    border-color: white;
+.about-page-container {
+  display: block;
+  border: 1px solid black;
+  height: 400px;
+  width: 1200px;
+  margin-left: 125px;
+  margin-top: 10px;
+  background-color: white;
+  background-color: white;
+  border-radius: 5px;
+  border-color: white;
 }
 
 .about-page-block {
-    display: flex;
+  display: flex;
 }
 
 .about-page-button-container {
-    display: block;
-    border: 1px solid black;
-    height: 400px;
-    width: 300px;
-    background-color: white;   
-    background-color: white;
-    border-color: grey;
-    border-top: none;
-    border-bottom: none;
-    border-left: none;
-    
-
+  display: block;
+  border: 1px solid black;
+  height: 400px;
+  width: 300px;
+  background-color: white;
+  background-color: white;
+  border-color: grey;
+  border-top: none;
+  border-bottom: none;
+  border-left: none;
 }
 
 .about-page-component-container {
-    display: block;
-    border: 1px solid black;
-    height: 400px;
-    width: 700px;
-    margin-left: 500px;
-
+  display: block;
+  border: 1px solid black;
+  height: 400px;
+  width: 700px;
+  margin-left: 500px;
 }
-

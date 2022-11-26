@@ -1,15 +1,13 @@
 /* TODO Add site wide styles */
 
 .omega-container {
-    background-color: #f0f2f5;
-    width: 100vw;
-    height: 100vh;
-
-
+  background-color: #f0f2f5;
+  width: 100vw;
+  height: 100vh;
 }
 
 .login-page-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
