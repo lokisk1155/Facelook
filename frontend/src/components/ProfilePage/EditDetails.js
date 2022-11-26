@@ -28,22 +28,22 @@ function EditDetails({ currentUser, redirect, closeForm }) {
 
                 <div>
                     <h4>Education</h4>
-                    <button onClick={(() => handleSubmit('education'))}>From {self.high_school || 'Add your hometown'}</button>
-                    <button onClick={(() => handleSubmit('education'))}>From {self.college || 'Add your hometown'}</button>
+                    <button onClick={((e) => handleSubmit(e, 'education'))}>From {self.high_school || 'Add your hometown'}</button>
+                    <button onClick={((e) => handleSubmit(e, 'education'))}>From {self.college || 'Add your hometown'}</button>
 
                 </div>
 
 
                 <div>
                     <h4>Current City</h4>
-                    <button onClick={(() => handleSubmit('placesLived'))}>Lives in {self.location || 'Add your current city'}</button>
+                    <button onClick={((e) => handleSubmit(e, 'placesLived'))}>Lives in {self.location || 'Add your current city'}</button>
                 </div>
               
 
 
                 <div>
                     <h4>Relationship</h4>
-                    <button onClick={(() => handleSubmit('relationship'))}> {self.relationship || 'Add Relationship status'}</button>
+                    <button onClick={((e) => handleSubmit(e, 'relationship'))}> {self.relationship || 'Add Relationship status'}</button>
                 </div>
 
                 <div>
@@ -52,7 +52,7 @@ function EditDetails({ currentUser, redirect, closeForm }) {
                 </div>
             
                 <div>
-                <button onClick={(() => handleSubmit('overview'))}>Update your information</button>
+                <button onClick={((e) => handleSubmit(e, 'overview'))}>Update your information</button>
                 <button onClick={handleCloseForm}>Cancel</button>
                 <button onClick={handleCloseForm}>Save</button>
                 </div>
