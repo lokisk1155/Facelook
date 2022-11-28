@@ -28,7 +28,7 @@ function CreatePostModal({
     e.preventDefault();
     console.log(content, "inside submit");
 
-    if (content.length > 1) {
+    if (content.length > 0) {
       console.log("in if ");
       if (type === "create") {
         let post;

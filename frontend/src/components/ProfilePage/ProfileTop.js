@@ -26,6 +26,7 @@ function ProfileTop({ sessionUser, currentUser }) {
   });
 
   const is_friend = currentUser.friends.includes(sessionUser.id);
+  const not_self = currentUser.id === sessionUser.id
 
   useEffect(() => {
     dispatch(fetchFriend(currentUser.id));
@@ -101,12 +102,15 @@ function ProfileTop({ sessionUser, currentUser }) {
         <br></br>
         {preview}
       </div>
-
-      {is_friend ? (
+      {not_self || <div>
+      {is_friend ? ( 
         <button onClick={handleDelete}>Delete Friend</button>
       ) : (
         <button onClick={handleAdd}>Add Friend</button>
-      )}
+      )
+  
+      }
+      </div>}
     </>
   );
 }
