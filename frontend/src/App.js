@@ -8,6 +8,7 @@ import ForgotPassword from "./components/UserLogin/ForgotPassword";
 import LoginPage from "./components/UserLogin/LoginPage";
 import RecentLogins from "./components/UserLogin/RecentLogins";
 import ProfileIndex from "./components/ProfilePage/ProfileIndex";
+import { ProfilePageRoutes } from "./routes/ProfilePageRoutes";
 
 function App() {
   return (
@@ -29,9 +30,7 @@ function App() {
         <Route exact path="/forgot_password">
           <ForgotPassword />
         </Route>
-        <Route exact path="/ProfilePage/:id">
-          <ProfileIndex />
-        </Route>
+        <ProfilePageRoutes />
       </Switch>
     </div>
   );

@@ -14,7 +14,7 @@ import ProfileTop from "./ProfileTop";
 import Friends from "./Friends";
 import { fetchFriend } from "../../store/friend";
 
-function ProfileHeader() {
+function ProfileHeader({ load }) {
   const dispatch = useDispatch();
 
   const [showPosts, setShowPosts] = useState(true);
@@ -38,6 +38,10 @@ function ProfileHeader() {
   const friends = useSelector((state) => {
     return state.friend;
   });
+
+  if (load) {
+    setRenderString(load)
+  }
 
   useEffect(() => {
     // fireEmergency()
