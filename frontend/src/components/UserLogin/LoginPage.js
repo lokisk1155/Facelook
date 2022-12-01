@@ -5,6 +5,7 @@ import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import CreateAccountForm from "./CreateAccountForm";
+import RecentLogins from "./RecentLogins";
 
 function LoginPage() {
   const dispatch = useDispatch();
@@ -38,6 +39,8 @@ function LoginPage() {
   };
 
   return (
+    <div className="login-page-container">
+      <RecentLogins />
     <div className="flexbox-container">
       <div className="login-form-container">
         <form className="login-form" onSubmit={handleSubmit}>
@@ -90,6 +93,7 @@ function LoginPage() {
         Create New Account
       </button>
       {createFormOpen && <CreateAccountForm closeForm={setCreateFormOpen} />}
+    </div>
     </div>
   );
 }
