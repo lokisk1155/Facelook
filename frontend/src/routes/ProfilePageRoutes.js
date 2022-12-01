@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux"
 import WorkEd from "../components/ProfilePage/AboutPage/WorkEd"
 import PlacesLived from "../components/ProfilePage/AboutPage/PlacesLived"
 import ContactInfo from "../components/ProfilePage/AboutPage/ContactInfo"
-import Relationship from "../components/ProfilePage/AboutPage/Relationship"
+import Relationship from "../components/ProfilePage/AboutPage/relationship"
 import Friends from "../components/ProfilePage/Friends"
 import { fetchUser } from "../store/user"
 
@@ -23,7 +23,7 @@ export function ProfilePageRoutes() {
                 <Route exact path="/ProfilePage/:id/about" render={() => <><ProfileTop/><AboutPage/><Overview /></>}/>
                 <Route exact path="/ProfilePage/:id/about/work_and_education" render={() => <><ProfileTop/><AboutPage/><WorkEd /></>} />
                 <Route exact path="/ProfilePage/:id/about/places_lived" render={() => <><ProfileTop/><AboutPage/><PlacesLived/></>}/>
-                <Route exact path="/ProfilePage/:id/about/contact_info" render={() => <><ProfileTop/><Posts/></>} /> 
+                <Route exact path="/ProfilePage/:id/about/contact_info" render={() => <><ProfileTop/><AboutPage/><ContactInfo/></>} /> 
                 <Route exact path="/ProfilePage/:id/about/family_and_relationships" render={() => <><ProfileTop/><AboutPage/><Relationship/></>} />
             </Switch>
         </>

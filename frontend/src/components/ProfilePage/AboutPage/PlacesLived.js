@@ -12,11 +12,16 @@ import { useParams } from "react-router-dom";
 import { setCurrentProfileArray } from "../../../store/user";
 import { useState } from "react";
 
-function PlacesLived({ currentUser }) {
+function PlacesLived() {
   const dispatch = useDispatch();
   const [placesLived, setPlacesLived] = useState(null);
   const [fakeCity, setFakeCity] = useState("");
   const [toggleAddCity, setToggleAddCity] = useState(false);
+
+  const { id } = useParams() 
+  const sessionUser = useSelector((state) => state.session.user)
+  const currentUser = useSelector(getCurrent(id))
+  const isUser = currentUser.id === sessionUser.id 
 
   function checkPlaces() {
     if (currentUser.places_worked) {

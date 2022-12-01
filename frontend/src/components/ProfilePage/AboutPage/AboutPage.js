@@ -4,7 +4,7 @@ import "./AboutPage.css";
 import Overview from "./Overview";
 import PlacesLived from "./PlacesLived";
 import WorkEd from "./WorkEd";
-import Relationship from "./Relationship";
+import Relationship from "./relationship";
 import ContactInfo from "./ContactInfo";
 import { Link, useParams } from "react-router-dom";
 import { getCurrent } from "../../../store/user";
@@ -191,13 +191,15 @@ function AboutPage({ }) {
     <div className="about-page-container">
       <div className="about-page-block">
         <div className="about-page-button-container">
+        <Link to={`/ProfilePage/${id}/about`}>
           <button
             tabIndex="1"
-            className="about-page-button-style"
-            
+            className="about-page-button-style"           
           >
             Overview
           </button>
+          </Link>
+
           <Link to={`/ProfilePage/${id}/about/work_and_education`}>
           <button
             tabIndex="2"
@@ -207,6 +209,8 @@ function AboutPage({ }) {
             Work and Education
           </button>
           </Link>
+
+          <Link to={`/ProfilePage/${id}/about/places_lived`}>
           <button
             tabIndex="3"
             className="about-page-button-style"
@@ -214,6 +218,8 @@ function AboutPage({ }) {
           >
             Places Lived
           </button>
+          </Link>
+          <Link to={`/ProfilePage/${id}/about/contact_info`}>
           <button
             tabIndex="4"
             className="about-page-button-style"
@@ -221,13 +227,15 @@ function AboutPage({ }) {
           >
             Contact Info
           </button>
+          </Link>
+          <Link to={`/ProfilePage/${id}/about/family_and_relationships`}>
           <button
             tabIndex="5"
-            className="about-page-button-style"
-            
+            className="about-page-button-style"    
           >
             Family and Relationships
           </button>
+          </Link>
         </div>
       </div>
     </div>

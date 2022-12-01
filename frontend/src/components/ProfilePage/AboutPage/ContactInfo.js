@@ -1,12 +1,17 @@
 import { useEffect } from "react";
-import { setCurrentProfile } from "../../../store/user";
+import { getCurrent, setCurrentProfile } from "../../../store/user";
 import { useState } from "react";
 import { updateUser } from "../../../store/user";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-function ContactInfo({ currentUser, isUser }) {
+function ContactInfo() {
   const dispatch = useDispatch();
+  const { id } = useParams() 
+  const sessionUser = useSelector((state) => state.session.user)
+  const currentUser = useSelector(getCurrent(id))
+  const isUser = currentUser.id === sessionUser.id 
 
   const [phoneNumber, setPhoneNumber] = useState(false);
   const [togglePhone, setTogglePhone] = useState(false);
