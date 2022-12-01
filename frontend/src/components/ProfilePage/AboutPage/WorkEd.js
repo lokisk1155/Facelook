@@ -3,9 +3,22 @@ import { updateUser } from "../../../store/user";
 
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import { getCurrent } from "../../../store/user";
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-function WorkEd({ currentUser, isUser }) {
+function WorkEd() {
   const dispatch = useDispatch();
+
+  const { id } = useParams()
+
+  const currentUser = useSelector(getCurrent(id));
+
+  const sessionUser = useSelector((state) => {
+    return state.session.user;
+  });
+
+  const isUser = sessionUser.id === currentUser.id 
 
   const [work, setWork] = useState(null);
   const [toggleWork, setToggleWork] = useState(false);

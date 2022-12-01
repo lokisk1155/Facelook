@@ -12,17 +12,13 @@ import PlacesLived from "../components/ProfilePage/AboutPage/PlacesLived"
 import ContactInfo from "../components/ProfilePage/AboutPage/ContactInfo"
 import Relationship from "../components/ProfilePage/AboutPage/Relationship"
 import Friends from "../components/ProfilePage/Friends"
+import { fetchUser } from "../store/user"
 
 export function ProfilePageRoutes() {
-
-    useEffect(() => {
-
-    })
-
     return (
         <> 
             <Switch>
-                <Route exact path="/ProfilePage/:id">
+                <Route exact path="/ProfilePage/:id/posts">
                     <ProfileTop />
                     <Posts />
                 </Route>

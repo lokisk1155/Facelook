@@ -6,8 +6,10 @@ import { setCurrentProfile } from "../../store/user";
 import { useState } from "react";
 import csrfFetch from "../../store/csrf";
 import { fetchFriends } from "../../store/friend";
+import { getCurrent } from "../../store/user";
+import { useParams } from "react-router-dom";
 
-function ProfileTop({ sessionUser, currentUser }) {
+function ProfileTop( ) {
   const dispatch = useDispatch();
 
   const [notSelf, setNotSelf] = useState(false);
@@ -15,34 +17,41 @@ function ProfileTop({ sessionUser, currentUser }) {
   const [profilePic, setProfilePic] = useState();
   const [profilePicUrl, setProfilePicUrl] = useState(null);
 
-  const friend = useSelector(({ friend }) => {
-    const output = Object.values(friend).filter((f) => {
-      return (
-        (f.sender_id == sessionUser.id && f.receiver_id == currentUser.id) ||
-        (f.sender_id == currentUser.id && f.receiver_id == sessionUser.id)
-      );
-    });
-    return output;
+  const { id } = useParams();
+
+  const currentUser = useSelector(getCurrent(id));
+
+  const sessionUser = useSelector((state) => {
+    return state.session.user;
   });
 
-  const is_friend = currentUser.friends.includes(sessionUser.id);
-  const not_self = currentUser.id === sessionUser.id
+
+
 
   useEffect(() => {
-    dispatch(fetchFriend(currentUser.id));
-  }, [sessionUser.id]);
+      dispatch(fetchUser(id)).then(() => {
+      dispatch(fetchFriend(id));
+      })
+  }, []);
 
-  const uploadPic = async (e) => {
-    const formData = new FormData();
-    if (profilePic) formData.append("user[profilePic]", profilePic);
-    debugger;
-    const res = await csrfFetch(`/api/users/${currentUser.id}`, {
-      method: "PUT",
-      body: formData,
-    });
-    const data = await res.json();
-    dispatch(setCurrentProfile(data.user));
-  };
+  // const friends = useSelector((state) => {
+  //   return state.friend;
+  // });
+
+  // const friend = useSelector(({ friend }) => {
+  //   const output = Object.values(friend).filter((f) => {
+  //     return (
+  //       (f.sender_id == sessionUser.id && f.receiver_id == currentUser.id) ||
+  //       (f.sender_id == currentUser.id && f.receiver_id == sessionUser.id)
+  //     );
+  //   });
+  //   return output;
+  // });
+
+
+  // const is_friend = currentUser.friends.includes(sessionUser.id);
+  // const not_self = currentUser.id === sessionUser.id
+
 
   const handleFile = (e) => {
     const file = e.target.files[0];
@@ -60,24 +69,24 @@ function ProfileTop({ sessionUser, currentUser }) {
     }
   };
 
-  const handleAdd = (e) => {
-    e.preventDefault();
-    const friendRequest = {
-      sender_id: sessionUser.id,
-      receiver_id: currentUser.id,
-    };
-    return dispatch(addFriend(friendRequest));
-  };
+  // const handleAdd = (e) => {
+  //   e.preventDefault();
+  //   const friendRequest = {
+  //     sender_id: sessionUser.id,
+  //     receiver_id: currentUser.id,
+  //   };
+  //   return dispatch(addFriend(friendRequest));
+  // };
 
-  const handleDelete = (e) => {
-    e.preventDefault();
-    if (is_friend) {
-      const friendshipId = friend[0].id;
-      dispatch(deleteFriend(friendshipId)).then(() => {
-        dispatch(fetchUser(currentUser.id));
-      });
-    }
-  };
+  // const handleDelete = (e) => {
+  //   e.preventDefault();
+  //   if (is_friend) {
+  //     const friendshipId = friend[0].id;
+  //     dispatch(deleteFriend(friendshipId)).then(() => {
+  //       dispatch(fetchUser(currentUser.id));
+  //     });
+  //   }
+  // };
 
   const preview = profilePicUrl ? (
     <img src={profilePicUrl} style={{ width: "200px" }} />
@@ -88,7 +97,7 @@ function ProfileTop({ sessionUser, currentUser }) {
       <h2 id="h1">Upload profile picture</h2>
       <hr />
       <br></br>
-      <form onSubmit={uploadPic} id="submit-form">
+      <form id="submit-form">
         <label id="upload-photo-button">
           Select photo
           <input type="file" onChange={handleFile} id="upload-photo-input" />
@@ -102,15 +111,41 @@ function ProfileTop({ sessionUser, currentUser }) {
         <br></br>
         {preview}
       </div>
-      {not_self || <div>
+      {/* {not_self || <div>
       {is_friend ? ( 
-        <button onClick={handleDelete}>Delete Friend</button>
-      ) : (
-        <button onClick={handleAdd}>Add Friend</button>
-      )
-  
+          <button onClick={handleDelete}>Delete Friend</button>
+        ) : (
+          <button onClick={handleAdd}>Add Friend</button>
+        )
       }
-      </div>}
+      </div>} */}
+      <div className="profile-selectors">
+        <button
+          className="posts-selector-button"
+          onClick={() => {
+
+          }}>
+          Posts
+        </button>
+
+        <button
+          className="about-selector-button"
+          onClick={() => {
+
+          }}
+        >
+          About
+        </button>
+
+        <button
+          className="about-selector-button"
+          onClick={() => {
+
+          }}
+        >
+          Friends
+        </button>
+      </div>
     </>
   );
 }

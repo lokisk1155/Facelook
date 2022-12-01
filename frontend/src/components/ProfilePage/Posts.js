@@ -13,8 +13,16 @@ import CreatePostModal from "./createPostModal";
 import profilePic from "../HomePage/NavBar/imgs/blank.png";
 import { deletePost } from "../../store/post";
 
-function Posts({ redirect, currentUser, sessionUser }) {
+function Posts() {
+  const { id } = useParams() 
   const dispatch = useDispatch();
+
+
+  const currentUser = useSelector(getCurrent(id))
+
+  const sessionUser = useSelector((state) => {
+    return state.session.user;
+  });
 
   const posts = useSelector((state) => {
     if (state.post) {
@@ -26,8 +34,6 @@ function Posts({ redirect, currentUser, sessionUser }) {
   });
 
   const [displayEditDelete, setDisplayEditDelete] = useState(false);
-
-  console.log(currentUser, "current user");
 
   const [day, setDay] = useState(currentUser.day);
   const [month, setMonth] = useState(currentUser.month);
@@ -169,7 +175,6 @@ function Posts({ redirect, currentUser, sessionUser }) {
           {details && (
             <EditDetails
               closeForm={setDetails}
-              redirect={redirect}
               currentUser={currentUser}
             />
           )}

@@ -15,75 +15,74 @@ import Friends from "./Friends";
 import { fetchFriend } from "../../store/friend";
 
 function ProfileHeader({ load }) {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const [showPosts, setShowPosts] = useState(true);
-  const [customPosts, setCustomPosts] = useState(false);
+  // const [showPosts, setShowPosts] = useState(true);
+  // const [customPosts, setCustomPosts] = useState(false);
 
-  const [showAbout, setShowAbout] = useState(false);
-  const [customAbout, setCustomAbout] = useState(false);
+  // const [showAbout, setShowAbout] = useState(false);
+  // const [customAbout, setCustomAbout] = useState(false);
 
-  const [showFriends, setShowFriends] = useState(false);
+  // const [showFriends, setShowFriends] = useState(false);
 
-  const [renderString, setRenderString] = useState("");
+  // const [renderString, setRenderString] = useState("");
 
-  const { id } = useParams();
+  // const { id } = useParams();
 
-  const currentUser = useSelector(getCurrent(id));
+  // const currentUser = useSelector(getCurrent(id));
 
-  const sessionUser = useSelector((state) => {
-    return state.session.user;
-  });
+  // const sessionUser = useSelector((state) => {
+  //   return state.session.user;
+  // });
 
-  const friends = useSelector((state) => {
-    return state.friend;
-  });
+  // const friends = useSelector((state) => {
+  //   return state.friend;
+  // });
 
-  if (load) {
-    setRenderString(load)
-  }
+  // if (load) {
+  //   setRenderString(load)
+  // }
 
-  useEffect(() => {
-    // fireEmergency()
-    dispatch(fetchUser(id)).then(() => dispatch(fetchFriend(currentUser.id)));
-  }, [id]);
+  // useEffect(() => {
+  //   dispatch(fetchUser(id)).then(() => dispatch(fetchFriend(currentUser.id)));
+  // }, [id]);9
 
-  function redirect(header, component) {
-    if (!header) {
-      setShowAbout(true);
-      setShowPosts(false);
-      setCustomPosts(false);
-      setShowFriends(false);
-      // fireEmergency()
-    } else {
-      setShowAbout(false);
-      setShowPosts(true);
-      setCustomPosts(false);
-      setShowFriends(false);
-      // fireEmergency()
-    }
+  // function redirect(header, component) {
+  //   if (!header) {
+  //     setShowAbout(true);
+  //     setShowPosts(false);
+  //     setCustomPosts(false);
+  //     setShowFriends(false);
+  //     // fireEmergency()
+  //   } else {
+  //     setShowAbout(false);
+  //     setShowPosts(true);
+  //     setCustomPosts(false);
+  //     setShowFriends(false);
+  //     // fireEmergency()
+  //   }
 
-    setRenderString(component);
+  //   setRenderString(component);
 
-    return;
-  }
-  if (!currentUser) {
-    return null;
-  }
+  //   return;
+  // }
+  // if (!currentUser) {
+  //   return null;
+  // }
   return (
     <div>
       <div className="profile-top-container">
-        <ProfileTop currentUser={currentUser} sessionUser={sessionUser} />
+        {/* <ProfileTop currentUser={currentUser} sessionUser={sessionUser} /> */}
       </div>
       <div className="profile-selectors">
         <button
           className="posts-selector-button"
           onClick={() => {
-            setCustomPosts(!customPosts);
-            setShowPosts(true);
-            setShowAbout(false);
-            setCustomAbout(false);
-            setShowFriends(false);
+            // setCustomPosts(!customPosts);
+            // setShowPosts(true);
+            // setShowAbout(false);
+            // setCustomAbout(false);
+            // setShowFriends(false);
             // fireEmergency()
           }}
         >
@@ -93,11 +92,11 @@ function ProfileHeader({ load }) {
         <button
           className="about-selector-button"
           onClick={() => {
-            setCustomAbout(!customAbout);
-            setShowAbout(true);
-            setShowPosts(false);
-            setCustomPosts(false);
-            setShowFriends(false);
+            // setCustomAbout(!customAbout);
+            // setShowAbout(true);
+            // setShowPosts(false);
+            // setCustomPosts(false);
+            // setShowFriends(false);
             // fireEmergency()
           }}
         >
@@ -107,11 +106,11 @@ function ProfileHeader({ load }) {
         <button
           className="about-selector-button"
           onClick={() => {
-            setShowFriends(!showFriends);
-            setShowFriends(true);
-            setShowAbout(false);
-            setShowPosts(false);
-            setCustomPosts(false);
+            // setShowFriends(!showFriends);
+            // setShowFriends(true);
+            // setShowAbout(false);
+            // setShowPosts(false);
+            // setCustomPosts(false);
             // fireEmergency()
           }}
         >
@@ -119,7 +118,7 @@ function ProfileHeader({ load }) {
         </button>
       </div>
 
-      {showPosts && (
+      {/* {showPosts && (
         <Posts
           currentUser={currentUser}
           sessionUser={sessionUser}
@@ -135,7 +134,7 @@ function ProfileHeader({ load }) {
       )}
       {showFriends && (
         <Friends currentUser={currentUser} sessionUser={sessionUser} />
-      )}
+      )} */}
     </div>
   );
 }
