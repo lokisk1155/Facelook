@@ -19,12 +19,12 @@ export function ProfilePageRoutes() {
         <> 
             <Switch>
                 <Route exact path="/ProfilePage/:id" render={() => <><ProfileTop/><Posts/></>} />
+                <Route exact path="/ProfilePage/:id/friends" render={() => <><ProfileTop/><Friends/></>}/>   
                 <Route exact path="/ProfilePage/:id/about" render={() => <><ProfileTop/><AboutPage/><Overview /></>}/>
                 <Route exact path="/ProfilePage/:id/about/work_and_education" render={() => <><ProfileTop/><AboutPage/><WorkEd /></>} />
                 <Route exact path="/ProfilePage/:id/about/places_lived" render={() => <><ProfileTop/><AboutPage/><PlacesLived/></>}/>
                 <Route exact path="/ProfilePage/:id/about/contact_info" render={() => <><ProfileTop/><Posts/></>} /> 
                 <Route exact path="/ProfilePage/:id/about/family_and_relationships" render={() => <><ProfileTop/><AboutPage/><Relationship/></>} />
-                <Route exact path="/ProfilePage/:id/friends" render={() => <><ProfileTop/><Friends/></>}/>   
             </Switch>
         </>
     )

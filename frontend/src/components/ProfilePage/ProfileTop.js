@@ -7,7 +7,7 @@ import { useState } from "react";
 import csrfFetch from "../../store/csrf";
 import { fetchFriends } from "../../store/friend";
 import { getCurrent } from "../../store/user";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 function ProfileTop( ) {
   const dispatch = useDispatch();
@@ -120,31 +120,30 @@ function ProfileTop( ) {
       }
       </div>} */}
       <div className="profile-selectors">
+        <Link to={`/ProfilePage/${id}`}>
         <button
           className="posts-selector-button"
-          onClick={() => {
-
-          }}>
+        >
           Posts
         </button>
+        </Link> 
 
+        <Link to={`/ProfilePage/${id}/about`}>
         <button
           className="about-selector-button"
-          onClick={() => {
-
-          }}
         >
           About
         </button>
+        </Link>
 
+
+        <Link to={`/ProfilePage/${id}/Friends`}>
         <button
           className="about-selector-button"
-          onClick={() => {
-
-          }}
         >
           Friends
         </button>
+        </Link>
       </div>
     </>
   );

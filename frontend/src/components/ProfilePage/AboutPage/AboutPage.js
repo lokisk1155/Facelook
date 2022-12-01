@@ -6,9 +6,15 @@ import PlacesLived from "./PlacesLived";
 import WorkEd from "./WorkEd";
 import Relationship from "./Relationship";
 import ContactInfo from "./ContactInfo";
-
-function AboutPage({ renderString, currentUser, sessionUser }) {
+import { Link, useParams } from "react-router-dom";
+import { getCurrent } from "../../../store/user";
+import { useSelector } from "react-redux";
+function AboutPage({ }) {
   //const isUser = currentUser.id === sessionUser.id;
+
+  const { id } = useParams() 
+
+  
 
   // const [overview, setOverview] = useState(true);
   // const [customOverview, setCustomOverview] = useState(false);
@@ -192,6 +198,7 @@ function AboutPage({ renderString, currentUser, sessionUser }) {
           >
             Overview
           </button>
+          <Link to={`/ProfilePage/${id}/about/work_and_education`}>
           <button
             tabIndex="2"
             className="about-page-button-style"
@@ -199,6 +206,7 @@ function AboutPage({ renderString, currentUser, sessionUser }) {
           >
             Work and Education
           </button>
+          </Link>
           <button
             tabIndex="3"
             className="about-page-button-style"
