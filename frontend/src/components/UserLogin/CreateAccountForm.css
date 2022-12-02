@@ -1,22 +1,215 @@
-.create-account-error {
-  color: red;
+.signup-modal-form {
+  min-height: 592px;
+  width: 431px;
 }
 
-.create-account-container {
-  position: absolute;
-  top: 25vh;
-  left: 25vw;
-  background: white;
-  padding: 10px;
-  border-radius: 10px;
+.signup-modal {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  border-radius: 4px;
 }
 
-.modal {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.4);
+.name-container {
+  display: flex;
+  justify-content: center;
+}
+.email-container {
+  display: flex;
+  justify-content: center;
+}
+.password-container {
+  display: flex;
+  justify-content: center;
+}
+.confirm-pw-container {
+  display: flex;
+  justify-content: center;
+}
+.birthday {
+  display: flex;
+  padding-left: 10px;
+}
+
+.birthday-container {
+  display: flex;
+  justify-content: center;
+}
+.gender {
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+  font-size: 12px;
+}
+.gender-container {
+  display: flex;
+}
+.gender-container1 {
+  border: 1px solid lightgray;
+  width: 121px;
+  height: 30px;
+  border-radius: 4px;
+}
+.gender-container2 {
+  border: 1px solid lightgray;
+  width: 121px;
+  height: 30px;
+  border-radius: 4px;
+}
+.gender-container3 {
+  border: 1px solid lightgray;
+  width: 121px;
+  height: 30px;
+  border-radius: 4px;
+}
+label[for="gender"] {
+  margin-left: 1px;
+  font-size: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+input[type="radio"] {
+  margin-left: 54px;
+  margin-top: 8px;
+}
+#firstname {
+  height: 30px;
+  width: 190px;
+  border-radius: 4px;
+  border: 1px solid lightgray;
+}
+#lastname {
+  height: 30px;
+  width: 190px;
+  border-radius: 4px;
+  border: 1px solid lightgray;
+}
+#email {
+  height: 30px;
+  width: 405px;
+  border-radius: 4px;
+  border: 1px solid lightgray;
+}
+#password {
+  height: 30px;
+  width: 405px;
+  border-radius: 4px;
+  border: 1px solid lightgray;
+}
+#confirm-password {
+  height: 30px;
+  width: 405px;
+  border-radius: 4px;
+  border: 1px solid lightgray;
+}
+#birthday {
+  font-size: 12px;
+}
+
+#signup {
+  font-size: 32px;
+  font-weight: 550;
+  padding: 10px 10px 10px 10px;
+}
+
+#signup-info {
+  font-size: 15px;
+  padding-left: 10px;
+}
+
+#month {
+  height: 30px;
+  width: 120px;
+  border-radius: 4px;
+  border: 1px solid lightgray;
+}
+
+#day {
+  height: 30px;
+  width: 120px;
+  border-radius: 4px;
+  border: 1px solid lightgray;
+}
+
+#year {
+  height: 30px;
+  width: 120px;
+  border-radius: 4px;
+  border: 1px solid lightgray;
+}
+
+p {
+  display: flex;
+  font-size: 12px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 10px;
+}
+
+.line-break {
+  height: 15px;
+}
+
+.line-break1 {
+  width: 20px;
+}
+
+.line-break2 {
+  width: 22px;
+}
+
+.line-break11 {
+  height: 27px;
+}
+
+.submit-button2 {
+  background-color: #4eae01;
+  border: none;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 18px;
+  border-radius: 6px;
+  height: 40px;
+  width: 200px;
+  margin-left: 115px;
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+.submit-button3 {
+  background-color: #ae0101ca;
+  border: none;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 18px;
+  border-radius: 6px;
+  height: 40px;
+  width: 200px;
+  margin-left: 115px;
+  margin-top: 10px;
+  margin-bottom: 25px;
+}
+
+.submit-button:hover {
+  background-color: #419000;
+}
+
+.selectPronoun {
+  display: flex;
+  margin-left: 100%;
+  margin-top: 10%;
+}
+
+#h4 {
+  color: #606770;
+  font-size: 15px;
+  line-height: 15px;
+  margin-bottom: 15px;
+  margin-top: 5px;
+  font-weight: 400;
+
 }

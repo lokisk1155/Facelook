@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import CreateAccountForm from "./CreateAccountForm";
 import RecentLogins from "./RecentLogins";
+import { Modal } from "../../context/Modal"
 
 function LoginPage() {
   const dispatch = useDispatch();
@@ -14,6 +15,7 @@ function LoginPage() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const [createFormOpen, setCreateFormOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const history = useHistory();
 
   const handleSubmit = (e) => {
@@ -92,7 +94,11 @@ function LoginPage() {
         >
           Create New Account
         </button>
-        {createFormOpen && <CreateAccountForm closeForm={setCreateFormOpen} />}
+        {createFormOpen && ( 
+            <Modal onClose={() => setShowModal(false)}>
+              <CreateAccountForm closeForm={setCreateFormOpen}/>
+            </Modal>
+        )}
       </div>
     </div>
   );
