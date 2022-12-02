@@ -5,14 +5,14 @@ import { getCurrent } from "../../../store/user";
 import { useSelector } from "react-redux";
 import { fetchUser } from "../../../store/user";
 import { useEffect, useState } from "react";
-import './overview.css'
+import "./overview.css";
 
 function Overview() {
   const dispatch = useDispatch();
-  const { id } = useParams() 
-  const sessionUser = useSelector((state) => state.session.user)
-  const currentUser = useSelector(getCurrent(id))
-  const isUser = currentUser.id === sessionUser.id 
+  const { id } = useParams();
+  const sessionUser = useSelector((state) => state.session.user);
+  const currentUser = useSelector(getCurrent(id));
+  const isUser = currentUser.id === sessionUser.id;
 
   const [workPlace, setWorkPlace] = useState("");
   const [toggleWork, setToggleWork] = useState(false);

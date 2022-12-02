@@ -8,11 +8,11 @@ import { useParams } from "react-router-dom";
 
 function ContactInfo() {
   const dispatch = useDispatch();
-  const { id } = useParams() 
+  const { id } = useParams();
 
-  const sessionUser = useSelector((state) => state.session.user)
-  const currentUser = useSelector(getCurrent(id))
-  const isUser = currentUser.id === sessionUser.id 
+  const sessionUser = useSelector((state) => state.session.user);
+  const currentUser = useSelector(getCurrent(id));
+  const isUser = currentUser.id === sessionUser.id;
 
   const [phoneNumber, setPhoneNumber] = useState(false);
   const [togglePhone, setTogglePhone] = useState(false);

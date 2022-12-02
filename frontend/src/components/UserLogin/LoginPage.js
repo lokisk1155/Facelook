@@ -41,59 +41,59 @@ function LoginPage() {
   return (
     <div className="login-page-container">
       <RecentLogins />
-    <div className="flexbox-container">
-      <div className="login-form-container">
-        <form className="login-form" onSubmit={handleSubmit}>
-          <ul>
-            {errors &&
-              errors.map((error) => {
-                return <div className="login-error">{error}</div>;
-              })}
-          </ul>
-          <div>
-            <input
-              className="email-password-text"
-              type="text"
-              value={credential}
-              placeholder={"Email or Phone number"}
-              onChange={(e) => setCredential(e.target.value)}
-              required
-            />
-          </div>
+      <div className="flexbox-container">
+        <div className="login-form-container">
+          <form className="login-form" onSubmit={handleSubmit}>
+            <ul>
+              {errors &&
+                errors.map((error) => {
+                  return <div className="login-error">{error}</div>;
+                })}
+            </ul>
+            <div>
+              <input
+                className="email-password-text"
+                type="text"
+                value={credential}
+                placeholder={"Email or Phone number"}
+                onChange={(e) => setCredential(e.target.value)}
+                required
+              />
+            </div>
 
-          <div>
+            <div>
+              <input
+                className="email-password-text"
+                type="password"
+                value={password}
+                placeholder={"Password"}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+            <div>
+              <button className="login-button" type="submit">
+                Log In
+              </button>
+            </div>
+          </form>
+          <form action="/forgot_password">
             <input
-              className="email-password-text"
-              type="password"
-              value={password}
-              placeholder={"Password"}
-              onChange={(e) => setPassword(e.target.value)}
-              required
+              className="forgot-password"
+              type="submit"
+              value="Forgot Password?"
             />
-          </div>
-          <div>
-            <button className="login-button" type="submit">
-              Log In
-            </button>
-          </div>
-        </form>
-        <form action="/forgot_password">
-          <input
-            className="forgot-password"
-            type="submit"
-            value="Forgot Password?"
-          />
-        </form>
+          </form>
+        </div>
+
+        <button
+          className="Create-Account-Modal"
+          onClick={() => setCreateFormOpen(true)}
+        >
+          Create New Account
+        </button>
+        {createFormOpen && <CreateAccountForm closeForm={setCreateFormOpen} />}
       </div>
-
-      <button
-        className="Create-Account-Modal"
-        onClick={() => setCreateFormOpen(true)}
-      >
-        Create New Account
-      </button>
-      {createFormOpen && <CreateAccountForm closeForm={setCreateFormOpen} />}
-    </div>
     </div>
   );
 }

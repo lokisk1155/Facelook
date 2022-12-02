@@ -18,10 +18,10 @@ function PlacesLived() {
   const [fakeCity, setFakeCity] = useState("");
   const [toggleAddCity, setToggleAddCity] = useState(false);
 
-  const { id } = useParams() 
-  const sessionUser = useSelector((state) => state.session.user)
-  const currentUser = useSelector(getCurrent(id))
-  const isUser = currentUser.id === sessionUser.id 
+  const { id } = useParams();
+  const sessionUser = useSelector((state) => state.session.user);
+  const currentUser = useSelector(getCurrent(id));
+  const isUser = currentUser.id === sessionUser.id;
 
   function checkPlaces() {
     if (currentUser.places_worked) {

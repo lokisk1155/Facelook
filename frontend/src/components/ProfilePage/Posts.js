@@ -14,11 +14,10 @@ import profilePic from "../HomePage/NavBar/imgs/blank.png";
 import { deletePost } from "../../store/post";
 
 function Posts() {
-  const { id } = useParams() 
+  const { id } = useParams();
   const dispatch = useDispatch();
 
-
-  const currentUser = useSelector(getCurrent(id))
+  const currentUser = useSelector(getCurrent(id));
 
   const sessionUser = useSelector((state) => {
     return state.session.user;
@@ -173,10 +172,7 @@ function Posts() {
           </button>
 
           {details && (
-            <EditDetails
-              closeForm={setDetails}
-              currentUser={currentUser}
-            />
+            <EditDetails closeForm={setDetails} currentUser={currentUser} />
           )}
         </div>
         <div>

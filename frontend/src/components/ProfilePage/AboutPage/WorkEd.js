@@ -6,11 +6,12 @@ import { createPortal } from "react-dom";
 import { getCurrent } from "../../../store/user";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import "./workEd.css";
 
 function WorkEd() {
   const dispatch = useDispatch();
 
-  const { id } = useParams()
+  const { id } = useParams();
 
   const currentUser = useSelector(getCurrent(id));
 
@@ -18,7 +19,7 @@ function WorkEd() {
     return state.session.user;
   });
 
-  const isUser = sessionUser.id === currentUser.id 
+  const isUser = sessionUser.id === currentUser.id;
 
   const [work, setWork] = useState(null);
   const [toggleWork, setToggleWork] = useState(false);
@@ -118,7 +119,12 @@ function WorkEd() {
         )}
 
         {isUser && work && (
-          <button onClick={() => setToggleWorkEdit(true)}>Edit Work</button>
+          <button
+            className="edit-button"
+            onClick={() => setToggleWorkEdit(true)}
+          >
+            Edit Work
+          </button>
         )}
         {toggleWorkEdit && (
           <form onSubmit={handleSubmit}>
@@ -133,7 +139,12 @@ function WorkEd() {
         )}
 
         {isUser && (
-          <button onClick={() => setToggleAddWork(true)}>Add Work</button>
+          <button
+            className="edit-button"
+            onClick={() => setToggleAddWork(true)}
+          >
+            Add Work
+          </button>
         )}
         {toggleAddWork && (
           <form onSubmit={handleAddWork}>
@@ -153,6 +164,7 @@ function WorkEd() {
         <p>{college}</p>
         {!college && isUser && (
           <button
+            className="edit-button"
             onClick={() => {
               setToggleCollege(!toggleCollege);
             }}
@@ -173,6 +185,7 @@ function WorkEd() {
         )}
         {isUser && college && !toggleCollege && (
           <button
+            className="edit-button"
             onClick={() => {
               setToggleEditCollege(true);
             }}
@@ -199,6 +212,7 @@ function WorkEd() {
         <p>{highschool}</p>
         {!highschool && isUser && (
           <button
+            className="edit-button"
             onClick={() => {
               setToggleHighscool(!toggleHighscool);
             }}
@@ -213,12 +227,18 @@ function WorkEd() {
               placeholder="Company"
               onChange={(e) => setFakeHighscool(e.target.value)}
             ></input>
-            <button onClick={() => setToggleHighscool(false)}>cancel</button>
+            <button
+              className="test-button"
+              onClick={() => setToggleHighscool(false)}
+            >
+              cancel
+            </button>
             <input type="submit" value="save" />
           </form>
         )}
         {isUser && highschool && !toggleHighscool && (
           <button
+            className="edit-button"
             onClick={() => {
               setToggleEditHighschool(true);
             }}

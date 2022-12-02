@@ -8,10 +8,10 @@ import { useParams } from "react-router-dom";
 
 function Relationship() {
   const dispatch = useDispatch();
-  const { id } = useParams() 
-  const sessionUser = useSelector((state) => state.session.user)
-  const currentUser = useSelector(getCurrent(id))
-  const isUser = currentUser.id === sessionUser.id 
+  const { id } = useParams();
+  const sessionUser = useSelector((state) => state.session.user);
+  const currentUser = useSelector(getCurrent(id));
+  const isUser = currentUser.id === sessionUser.id;
 
   const [relationship, setRelationship] = useState(null);
   const [fakeRelationship, setFakeRelationship] = useState("");

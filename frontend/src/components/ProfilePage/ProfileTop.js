@@ -9,7 +9,7 @@ import { fetchFriends } from "../../store/friend";
 import { getCurrent } from "../../store/user";
 import { Link, useParams } from "react-router-dom";
 
-function ProfileTop( ) {
+function ProfileTop() {
   const dispatch = useDispatch();
 
   const [notSelf, setNotSelf] = useState(false);
@@ -25,13 +25,10 @@ function ProfileTop( ) {
     return state.session.user;
   });
 
-
-
-
   useEffect(() => {
-      dispatch(fetchUser(id)).then(() => {
+    dispatch(fetchUser(id)).then(() => {
       dispatch(fetchFriend(id));
-      })
+    });
   }, []);
 
   // const friends = useSelector((state) => {
@@ -48,10 +45,8 @@ function ProfileTop( ) {
   //   return output;
   // });
 
-
   // const is_friend = currentUser.friends.includes(sessionUser.id);
   // const not_self = currentUser.id === sessionUser.id
-
 
   const handleFile = (e) => {
     const file = e.target.files[0];
@@ -121,28 +116,15 @@ function ProfileTop( ) {
       </div>} */}
       <div className="profile-selectors">
         <Link to={`/ProfilePage/${id}`}>
-        <button
-          className="posts-selector-button"
-        >
-          Posts
-        </button>
-        </Link> 
-
-        <Link to={`/ProfilePage/${id}/about`}>
-        <button
-          className="about-selector-button"
-        >
-          About
-        </button>
+          <button className="posts-selector-button">Posts</button>
         </Link>
 
+        <Link to={`/ProfilePage/${id}/about`}>
+          <button className="about-selector-button">About</button>
+        </Link>
 
         <Link to={`/ProfilePage/${id}/Friends`}>
-        <button
-          className="about-selector-button"
-        >
-          Friends
-        </button>
+          <button className="about-selector-button">Friends</button>
         </Link>
       </div>
     </>

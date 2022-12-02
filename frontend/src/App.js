@@ -15,7 +15,7 @@ function App() {
     <div className="omega-container">
       <NavBar />
       <Switch>
-        <Route exact path="/" render={(() => <HomePage />)} />
+        <Route exact path="/" render={() => <HomePage />} />
         <Route exact path="/login_page" render={() => <LoginPage />} />
         <ProfilePageRoutes />
       </Switch>
