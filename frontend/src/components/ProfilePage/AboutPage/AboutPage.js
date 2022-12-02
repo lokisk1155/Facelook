@@ -188,8 +188,6 @@ function AboutPage({ }) {
   // };
 
   return (
-    <div className="about-page-container">
-      <div className="about-page-block">
         <div className="about-page-button-container">
         <Link to={`/ProfilePage/${id}/about`}>
           <button
@@ -237,8 +235,6 @@ function AboutPage({ }) {
           </button>
           </Link>
         </div>
-      </div>
-    </div>
   );
 }
 

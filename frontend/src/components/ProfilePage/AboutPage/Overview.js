@@ -5,6 +5,7 @@ import { getCurrent } from "../../../store/user";
 import { useSelector } from "react-redux";
 import { fetchUser } from "../../../store/user";
 import { useEffect, useState } from "react";
+import './overview.css'
 
 function Overview() {
   const dispatch = useDispatch();
@@ -91,7 +92,7 @@ function Overview() {
   }
 
   return (
-    <div>
+    <div className="content-container">
       <div>
         <p>{workPlace}</p>
         {!workPlace && isUser && (
