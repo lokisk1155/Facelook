@@ -5,19 +5,32 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { fetchUsers } from "../../../store/user";
 import { useEffect } from "react";
+import csrfFetch from "../../../store/csrf";
 
 function SearchBar() {
   const dispatch = useDispatch() 
-  
+
+ 
+  const [users, setUsers] = useState(null)
   const [queryUsers, setQueryUsers] = useState(false)
 
   console.log(queryUsers)
 
+  const getUsers = async () => {
+    const res = await csrfFetch(`api/users`);
+    const data = await res.json();
+    setUsers(data)
+    return 
+  }
+
   useEffect(() => {
-    dispatch(fetchUsers())
+    if (!users) {
+      getUsers() 
+    }
   }, [queryUsers])
 
   return (
+    <>
     <div className="search-bar">
       <input
         type="text"
@@ -26,7 +39,8 @@ function SearchBar() {
         onClick={(e) => setQueryUsers(!queryUsers)}
       ></input>
     </div>
+    </>
   );
 }
 
-export default SearchBar;
+export default SearchBar

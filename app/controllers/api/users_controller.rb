@@ -2,7 +2,6 @@ class Api::UsersController < ApplicationController
     wrap_parameters include: User.attribute_names + ['password', 'id', 'profilePic']
 
     def index 
-
       @users = User.all 
       # params.has_key?(:user_ids) # boolean checking for presence of user_ids key in params
       # /api/users?userIds=[1, 5, 7]
