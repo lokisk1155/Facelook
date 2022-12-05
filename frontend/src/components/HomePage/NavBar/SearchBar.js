@@ -10,22 +10,25 @@ import csrfFetch from "../../../store/csrf";
 function SearchBar() {
   const dispatch = useDispatch() 
 
- 
+  const [typed, setTyped] = useState("")
   const [users, setUsers] = useState(null)
+  const [filteredUsers] = useState(users)
   const [queryUsers, setQueryUsers] = useState(false)
-
-  console.log(queryUsers)
 
   const getUsers = async () => {
     const res = await csrfFetch(`api/users`);
     const data = await res.json();
-    setUsers(data)
-    return 
+    return data
   }
+
+  console.log(typed, 'typed')
+  console.log(users, 'users')
 
   useEffect(() => {
     if (!users) {
-      getUsers() 
+      getUsers().then((data) => {
+        setUsers(data)
+      })   
     }
   }, [queryUsers])
 
@@ -36,6 +39,7 @@ function SearchBar() {
         type="text"
         placeholder="    search-faceOok"
         className="search-box"
+        onChange={((e) => setTyped(e.target.value))}
         onClick={(e) => setQueryUsers(!queryUsers)}
       ></input>
     </div>
