@@ -65,7 +65,7 @@ const userReducer = (previousState = {}, action) => {
   let newState = { ...previousState };
   switch (action.type) {
     case SET_CURRENT_PROFILE:
-      newState = { ...previousState, [action.payload.id]: action.payload };
+      newState = { [action.payload.id]: action.payload };
       return newState;
     case SET_CURRENT_ARRAY:
       newState = { ...previousState, [action.payload.id]: action.payload };
@@ -74,9 +74,6 @@ const userReducer = (previousState = {}, action) => {
       return { ...previousState, ...action.payload };
     case RECEIVE_FRIEND:
       return { ...previousState, ...action.payload.user };
-    // case REMOVE_FRIEND:
-    //   debugger;
-
     default:
       return previousState;
   }
