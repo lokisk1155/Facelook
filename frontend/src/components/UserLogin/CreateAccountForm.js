@@ -3,22 +3,26 @@ import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from "../../store/session";
 import "./CreateAccountForm.css";
 import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { getCurrent } from "../../store/user";
 
 function CreateAccountForm({ closeForm }) {
+
+  const currentUser = useSelector((state) => state.session.user)
+
+  const history = useHistory() 
   const dispatch = useDispatch();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [day, setDay] = useState("");
-  const [month, setMonth] = useState("");
-  const [year, setYear] = useState("");
+  const [day, setDay] = useState("1");
+  const [month, setMonth] = useState("1");
+  const [year, setYear] = useState("2020");
   const [gender, setGender] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const [clicked, setClicked] = useState(false);
-
-  if (sessionUser) return <Redirect to="/" />;
 
   let years = [];
   for (let i = 1950; i < 2023; i++) {
@@ -30,25 +34,27 @@ function CreateAccountForm({ closeForm }) {
     days.push(i);
   }
 
-  let birthday;
   // let credential;
   const handleSubmit = (e) => {
     e.preventDefault();
+    const user = {
+      firstName,
+      lastName,
+      email,
+      password,
+      day,
+      month, 
+      year, 
+      gender,
+    }
+    debugger 
     if (password === confirmPassword) {
       setErrors([]);
-      birthday = month + "/" + day + "/" + year;
-      // credential = { firstName, lastName, email, birthday, gender };
       return dispatch(
-        sessionActions.signup({
-          firstName,
-          lastName,
-          email,
-          password,
-          birthday,
-          gender,
-        })
+        sessionActions.signup(user)
       ).catch(async (res) => {
         let data;
+        history.push("/");
         try {
           data = await res.clone().json();
         } catch {
@@ -63,6 +69,11 @@ function CreateAccountForm({ closeForm }) {
       "Confirm Password field must be the same as the Password field",
     ]);
   };
+
+
+  if (currentUser) return <Redirect to="/" />;
+
+
   return (
     <>
       <form className="signup-modal-form" onSubmit={handleSubmit}>
@@ -110,7 +121,7 @@ function CreateAccountForm({ closeForm }) {
                 id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="  Mobile number or email"
+                placeholder="  Email"
                 required
               />
             </label>
