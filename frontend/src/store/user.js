@@ -51,7 +51,6 @@ export const updateUser = (user) => async (dispatch) => {
   return data;
 };
 
-
 export const updateUserArray = (user) => async (dispatch) => {
   const res = await csrfFetch(`/api/users/${user.id}`, {
     method: "PUT",

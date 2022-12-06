@@ -7,10 +7,9 @@ import { useHistory } from "react-router-dom";
 import { getCurrent } from "../../store/user";
 
 function CreateAccountForm({ closeForm }) {
+  const currentUser = useSelector((state) => state.session.user);
 
-  const currentUser = useSelector((state) => state.session.user)
-
-  const history = useHistory() 
+  const history = useHistory();
   const dispatch = useDispatch();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -43,16 +42,14 @@ function CreateAccountForm({ closeForm }) {
       email,
       password,
       day,
-      month, 
-      year, 
+      month,
+      year,
       gender,
-    }
-    debugger 
+    };
+    debugger;
     if (password === confirmPassword) {
       setErrors([]);
-      return dispatch(
-        sessionActions.signup(user)
-      ).catch(async (res) => {
+      return dispatch(sessionActions.signup(user)).catch(async (res) => {
         let data;
         history.push("/");
         try {
@@ -70,9 +67,7 @@ function CreateAccountForm({ closeForm }) {
     ]);
   };
 
-
   if (currentUser) return <Redirect to="/" />;
-
 
   return (
     <>
@@ -240,7 +235,7 @@ function CreateAccountForm({ closeForm }) {
             </p>
           </div>
         </div>
-        <button className="submit-button2" type="submit" >
+        <button className="submit-button2" type="submit">
           Sign up
         </button>
         <button className="submit-button3" onClick={() => closeForm(false)}>
@@ -251,4 +246,4 @@ function CreateAccountForm({ closeForm }) {
   );
 }
 
-export default CreateAccountForm
+export default CreateAccountForm;
