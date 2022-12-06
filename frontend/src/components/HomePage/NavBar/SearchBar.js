@@ -13,6 +13,7 @@ function SearchBar() {
   const [typed, setTyped] = useState("");
   const [users, setUsers] = useState(null);
   const [filteredUsers, setFilteredUsers] = useState(null);
+
   const [queryUsers, setQueryUsers] = useState(false);
 
   const getUsers = async () => {
@@ -27,7 +28,7 @@ function SearchBar() {
         setUsers(data);
       });
     }
-    if (users) {
+    if (users && typed.length > 0) {
       let currentMatches = Object.values(users).filter((user) => {
         let userName = `${user.first_name} ${user.last_name}`.toLowerCase();
         return userName.startsWith(typed.toLowerCase());
@@ -35,17 +36,16 @@ function SearchBar() {
 
       if (currentMatches) {
         setFilteredUsers(currentMatches);
-      } else {
-        setFilteredUsers(null);
-      }
+      } 
+    } else {
+      setFilteredUsers(null)
     }
   }, [typed]);
 
-  console.log(typed, "typed");
+  //console.log(typed, "typed");
   console.log(filteredUsers, "filtered");
   console.log(users, "orginal");
-
-  return (
+  return (  
     <>
       <div className="search-bar">
         <input
