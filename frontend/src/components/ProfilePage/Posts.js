@@ -24,9 +24,11 @@ function Posts() {
   });
 
   const posts = useSelector((state) => {
+    debugger 
     if (state.post) {
       let unSorted = Object.values(state.post);
-      return unSorted.filter((post) => post.user_id == currentUser.id);
+      unSorted.filter((post) => post.user_id == id);
+      return unSorted
     } else {
       return [];
     }

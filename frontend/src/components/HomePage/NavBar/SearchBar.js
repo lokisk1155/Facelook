@@ -3,18 +3,20 @@ import "./SearchBar.css";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { fetchUsers } from "../../../store/user";
+import { fetchUsers, updateUser } from "../../../store/user";
 import { useEffect } from "react";
 import csrfFetch from "../../../store/csrf";
+import { Link } from "react-router-dom";
+
 
 function SearchBar() {
   const dispatch = useDispatch();
 
+
   const [typed, setTyped] = useState("");
   const [users, setUsers] = useState(null);
   const [filteredUsers, setFilteredUsers] = useState(null);
-
-  const [queryUsers, setQueryUsers] = useState(false);
+  const [recentSearches, setRecentSearches] = useState([])
 
   const getUsers = async () => {
     const res = await csrfFetch(`api/users`);
@@ -28,6 +30,7 @@ function SearchBar() {
         setUsers(data);
       });
     }
+
     if (users && typed.length > 0) {
       let currentMatches = Object.values(users).filter((user) => {
         let userName = `${user.first_name} ${user.last_name}`.toLowerCase();
@@ -42,9 +45,6 @@ function SearchBar() {
     }
   }, [typed]);
 
-  //console.log(typed, "typed");
-  console.log(filteredUsers, "filtered");
-  console.log(users, "orginal");
   return (  
     <>
       <div className="search-bar">
@@ -53,14 +53,26 @@ function SearchBar() {
           placeholder="    search-faceOok"
           className="search-box"
           onChange={(e) => setTyped(e.target.value)}
-          onClick={() => setQueryUsers(true)}
         ></input>
       </div>
-
-      {filteredUsers &&
-        filteredUsers.map((user) => {
-          return <div>{user.first_name}</div>;
+      
+      {filteredUsers && <div className="search-results-container">
+        <label> Results:
+        {filteredUsers.map((user) => {
+          return <Link className="result-user" to={`/ProfilePage/${user.id}`} onClick={() => {setRecentSearches((users) => {
+            return { ...users, user }
+          })}
+          
+        }>{`${user.first_name} ${user.last_name}`}</Link>
         })}
+        </label>
+        <label>
+          Recent:
+        {Object.keys(recentSearches).length > 0 && Object.values(recentSearches).map((user) => {
+          return <Link className="result-user" to={`/ProfilePage/${user.id}`}>{`${user.first_name} ${user.last_name}`}</Link>
+        })}
+        </label>
+        </div>}
     </>
   );
 }
