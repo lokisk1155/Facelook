@@ -10,7 +10,6 @@ function Friends({ currentUser, sessionUser }) {
   const friends = useSelector((state) => {
     return state.friend.users;
   });
-  console.log(friends);
 
   useEffect(() => {
     dispatch(fetchFriends(currentUser.id));

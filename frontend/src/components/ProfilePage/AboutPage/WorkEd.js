@@ -50,12 +50,8 @@ function WorkEd() {
   }
 
   const handleSubmit = () => {
-    setToggleWork(false);
-    setToggleWorkEdit(false);
-    setToggleAddWork(false);
     setWork(fakeWork);
     let work = fakeWork;
-    console.log(fakeWork);
     const user = {
       ...currentUser,
       work,
@@ -64,8 +60,6 @@ function WorkEd() {
   };
 
   const handleCollege = () => {
-    setToggleEditCollege(false);
-    setToggleCollege(false);
     setCollege(fakeCollege);
     let education = fakeCollege;
     const user = {
@@ -76,8 +70,6 @@ function WorkEd() {
   };
 
   const handleHighschool = () => {
-    setToggleEditHighschool(false);
-    setToggleHighscool(false);
     setHighschool(fakeHighschool);
     let highschool = fakeHighschool;
     const user = {

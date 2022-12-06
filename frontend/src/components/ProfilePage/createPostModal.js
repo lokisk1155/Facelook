@@ -26,10 +26,7 @@ function CreatePostModal({
 
   const handlePostSubmit = (e) => {
     e.preventDefault();
-    console.log(content, "inside submit");
-
     if (content.length > 0) {
-      console.log("in if ");
       if (type === "create") {
         let post;
         if (userId) {
@@ -45,7 +42,6 @@ function CreatePostModal({
         return closeModal(null);
       }
     } else {
-      console.log("in else");
       return closeModal(null);
     }
   };
