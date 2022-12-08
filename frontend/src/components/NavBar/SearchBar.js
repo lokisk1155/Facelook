@@ -48,8 +48,8 @@ function SearchBar() {
       <div className="search-bar">
         <input
           type="text"
-          placeholder="    search-faceOok"
-          className="search-box"
+          placeholder="    Search FaceLook"
+          className="search-input"
           onChange={(e) => setTyped(e.target.value)}
         ></input>
       </div>
