@@ -8,7 +8,7 @@ import csrfFetch from "../../store/csrf";
 import { fetchFriends } from "../../store/friend";
 import { getCurrent } from "../../store/user";
 import { Link, useParams } from "react-router-dom";
-import NavBar from "../HomePage/NavBar/NavBar";
+import NavBar from "../NavBar/NavBar";
 
 function ProfileTop() {
   const dispatch = useDispatch();

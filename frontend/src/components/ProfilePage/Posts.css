@@ -96,6 +96,7 @@
   display: flex;
   width: 675px;
   margin: 5px;
+  padding-top: 50px;
 }
 
 .post-feed-container {

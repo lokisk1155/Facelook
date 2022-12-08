@@ -2,7 +2,7 @@ import "./createPostModal.css";
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { createPost } from "../../store/post";
-import profilePic from "../HomePage/NavBar/imgs/blank.png";
+import profilePic from "../NavBar/imgs/blank.png";
 import { updatePost } from "../../store/post";
 import { useParams } from "react-router-dom";
 

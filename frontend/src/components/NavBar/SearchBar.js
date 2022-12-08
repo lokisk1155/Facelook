@@ -3,9 +3,9 @@ import "./SearchBar.css";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { fetchUsers, updateUser } from "../../../store/user";
+import { fetchUsers, updateUser } from "../../store/user";
 import { useEffect } from "react";
-import csrfFetch from "../../../store/csrf";
+import csrfFetch from "../../store/csrf";
 import { Link } from "react-router-dom";
 
 function SearchBar() {

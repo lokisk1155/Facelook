@@ -4,10 +4,11 @@
   align-items: flex-end;
   justify-content: space-between;
   align-self: center;
-  flex-wrap: nowrap;
-  flex-flow: nowrap;
   height: 50px;
   background-color: white;
+  position: fixed;
+  top: 0px;
+  width: 100vw;
 }
 
 .linkedin {

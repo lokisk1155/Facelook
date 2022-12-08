@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { logout } from "../../../store/session";
+import { logout } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import "./profilePicModal.css";
 import profilePic from "./imgs/blank.png";

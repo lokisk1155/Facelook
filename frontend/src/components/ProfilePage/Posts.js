@@ -10,7 +10,7 @@ import { fetchtPosts, updatePost } from "../../store/post";
 import { createPost } from "../../store/post";
 import "./Posts.css";
 import CreatePostModal from "./createPostModal";
-import profilePic from "../HomePage/NavBar/imgs/blank.png";
+import profilePic from "../NavBar/imgs/blank.png";
 import { deletePost } from "../../store/post";
 
 function Posts() {
