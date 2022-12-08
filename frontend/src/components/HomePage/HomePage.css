@@ -14,7 +14,6 @@
     overflow: auto;
 }
   
-  /* Stops the float property from affecting content after the columns */
 .columns:after {
     content: "";
     display: table;

@@ -57,7 +57,7 @@ body {
   border: none;
   height: 40px;
   font-weight: bold;
-  width: 95%;
+  width: 100%;
 }
 
 .login-button:hover {
