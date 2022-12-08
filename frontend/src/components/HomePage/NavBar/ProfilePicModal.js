@@ -22,7 +22,7 @@ function ProfilePicModal({ closeModal }) {
         </Link>
 
         <div>
-          <Link to="login_page">
+          <Link to="/">
             <button
               className="logout-button"
               onClick={() => {

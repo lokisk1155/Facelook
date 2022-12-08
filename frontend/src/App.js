@@ -9,14 +9,17 @@ import LoginPage from "./components/UserLogin/LoginPage";
 import RecentLogins from "./components/UserLogin/RecentLogins";
 import ProfileIndex from "./components/ProfilePage/ProfileIndex";
 import { ProfilePageRoutes } from "./routes/ProfilePageRoutes";
+import { useSelector } from "react-redux";
 
 function App() {
+
+  const sessionUser = useSelector((state) => state.session.user)
+
   return (
     <div className="omega-container">
-      <NavBar />
+      {sessionUser && <NavBar />}
       <Switch>
-        <Route exact path="/" render={() => <HomePage />} />
-        <Route exact path="/login_page" render={() => <LoginPage />} />
+        <Route exact path="/" render={() => sessionUser ? <HomePage /> : <LoginPage />} />
         <ProfilePageRoutes />
       </Switch>
     </div>

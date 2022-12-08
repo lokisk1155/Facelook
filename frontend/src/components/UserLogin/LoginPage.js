@@ -44,6 +44,8 @@ function LoginPage() {
       })
       .catch(() => {
         setOpen(true);
+        setCredential("")
+        setPassword("")
       });
   };
   return (
