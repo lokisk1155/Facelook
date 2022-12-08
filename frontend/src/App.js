@@ -7,14 +7,17 @@ import { useSelector } from "react-redux";
 import HomePage from "./components/HomePage/HomePage";
 
 function App() {
-
-  const sessionUser = useSelector((state) => state.session.user)
+  const sessionUser = useSelector((state) => state.session.user);
 
   return (
     <>
-    {sessionUser && <NavBar />}
+      {sessionUser && <NavBar />}
       <Switch>
-        <Route exact path="/" render={() => sessionUser ? <HomePage /> : <LoginPage />} />
+        <Route
+          exact
+          path="/"
+          render={() => (sessionUser ? <HomePage /> : <LoginPage />)}
+        />
         <ProfilePageRoutes />
       </Switch>
     </>

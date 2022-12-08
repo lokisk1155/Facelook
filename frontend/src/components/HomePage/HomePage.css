@@ -1,21 +1,21 @@
 .home-page-container {
-    display: flex;
+  display: flex;
 }
 
 .column {
-    float: left;
-    width: 32%;
+  float: left;
+  width: 32%;
 }
 .middle {
-    margin-top: 65px;
-    float: left;
-    width: 36%;
-    height: 90vw;
-    overflow: auto;
+  margin-top: 65px;
+  float: left;
+  width: 36%;
+  height: 90vw;
+  overflow: auto;
 }
-  
+
 .columns:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
+  content: "";
+  display: table;
+  clear: both;
+}

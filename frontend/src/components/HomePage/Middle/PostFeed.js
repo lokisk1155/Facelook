@@ -6,7 +6,7 @@ import { deletePost } from "../../../store/post";
 import profilePic from "../../NavBar/imgs/blank.png";
 import { fetchUsers } from "../../../store/user";
 import { Link } from "react-router-dom";
-import "./PostFeed.css"
+import "./PostFeed.css";
 
 function PostFeed() {
   const dispatch = useDispatch();
@@ -67,92 +67,92 @@ function PostFeed() {
 
   return (
     <>
-        <div className="create-post-modal">
-          <button className="new-post-button" onClick={handleNewPost}>
-            <label className="place-holder-text-new-post">
-              What's on your mind?
-            </label>
-          </button>
+      <div className="create-post-modal">
+        <button className="new-post-button" onClick={handleNewPost}>
+          <label className="place-holder-text-new-post">
+            What's on your mind?
+          </label>
+        </button>
 
-          <div className="pic-holder">
-            {
-              <img
-                className="profile-pic-inside-create-post"
-                src={profilePic}
-              ></img>
-            }
-          </div>
+        <div className="pic-holder">
+          {
+            <img
+              className="profile-pic-inside-create-post"
+              src={profilePic}
+            ></img>
+          }
+        </div>
 
-          <div className="modal-holder">
-            {togglePost && (
-              <CreatePostModal
-                type={"create"}
-                currentUser={currentUser}
-                postContent={"What's on your mind?"}
-                header={"Create post"}
-                closeModal={setTogglePost}
-                userId={currentUser.id}
-              />
-            )}
-          </div>
-          </div>
+        <div className="modal-holder">
+          {togglePost && (
+            <CreatePostModal
+              type={"create"}
+              currentUser={currentUser}
+              postContent={"What's on your mind?"}
+              header={"Create post"}
+              closeModal={setTogglePost}
+              userId={currentUser.id}
+            />
+          )}
+        </div>
+      </div>
 
-        {posts && (
-          <div className="individual-post-container">
-            {posts
-              .map((post) => {
-                return (
-                  <div key={post.id} className="individual-post">
-                    <div key={post.id} className="post-header">
-                      <Link to={`/ProfilePage/${post.user_id}`}>
-                        <img
-                          key={post.id}
-                          className="post-pic"
-                          src={profilePic}
-                        ></img>
-                      </Link>
-                      <h5 key={post.id} className="current-user-name">
-                        {typeof users[post.user_id] !== "undefined"
-                          ? `${users[post.user_id].first_name} ${
-                              users[post.user_id].last_name
-                            }`
-                          : "temp"}
-                      </h5>
-                    </div>
-                    <p key={post.id} className="post-content">
-                      {post.content}
-                    </p>
-                    {currentUser.id === post.user_id ? (
-                      <button onClick={() => handleDeletePost(post)}>
-                        Delete Post
-                      </button>
-                    ) : (
-                      <div />
-                    )}
-                    {currentUser.id === post.user_id ? (
-                      <button onClick={() => handleCheckPost(post.id)}>
-                        Edit Post
-                      </button>
-                    ) : (
-                      <div />
-                    )}
-                    {checkPost === post.id && (
-                      <CreatePostModal
-                        type="update"
-                        currentUser={currentUser}
-                        postId={post.id}
-                        postContent={post.content}
-                        header={"Edit post"}
-                        closeModal={setCheckPost}
-                      />
-                    )}
+      {posts && (
+        <div className="individual-post-container">
+          {posts
+            .map((post) => {
+              return (
+                <div key={post.id} className="individual-post">
+                  <div key={post.id} className="post-header">
+                    <Link to={`/ProfilePage/${post.user_id}`}>
+                      <img
+                        key={post.id}
+                        className="post-pic"
+                        src={profilePic}
+                      ></img>
+                    </Link>
+                    <h5 key={post.id} className="current-user-name">
+                      {typeof users[post.user_id] !== "undefined"
+                        ? `${users[post.user_id].first_name} ${
+                            users[post.user_id].last_name
+                          }`
+                        : "temp"}
+                    </h5>
                   </div>
-                );
-              })
-              .reverse()}
-          </div>
-        )}
-      </>
+                  <p key={post.id} className="post-content">
+                    {post.content}
+                  </p>
+                  {currentUser.id === post.user_id ? (
+                    <button onClick={() => handleDeletePost(post)}>
+                      Delete Post
+                    </button>
+                  ) : (
+                    <div />
+                  )}
+                  {currentUser.id === post.user_id ? (
+                    <button onClick={() => handleCheckPost(post.id)}>
+                      Edit Post
+                    </button>
+                  ) : (
+                    <div />
+                  )}
+                  {checkPost === post.id && (
+                    <CreatePostModal
+                      type="update"
+                      currentUser={currentUser}
+                      postId={post.id}
+                      postContent={post.content}
+                      header={"Edit post"}
+                      closeModal={setCheckPost}
+                    />
+                  )}
+                </div>
+              );
+            })
+            .reverse()}
+        </div>
+      )}
+    </>
   );
 }
 
