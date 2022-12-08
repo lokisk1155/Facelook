@@ -134,7 +134,7 @@ function HomePage() {
                       <div />
                     )}
                     {currentUser.id === post.user_id ? (
-                      <button onClick={handleCheckPost(post.id)}>
+                      <button onClick={() =>handleCheckPost(post.id)}>
                         Edit Post
                       </button>
                     ) : (

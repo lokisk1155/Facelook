@@ -17,49 +17,41 @@ function Posts() {
   const { id } = useParams();
   const dispatch = useDispatch();
 
-  const currentUser = useSelector(getCurrent(id));
+  const currentUser = useSelector((state) => {
+    return state.user
+  })
 
   const sessionUser = useSelector((state) => {
     return state.session.user;
   });
 
-  const posts = useSelector((state) => {
-    debugger 
-    if (state.post) {
-      let unSorted = Object.values(state.post);
-      unSorted.filter((post) => post.user_id == id);
-      return unSorted
-    } else {
-      return [];
-    }
-  });
+  const allPosts = useSelector((state) => state.post)
+
+  const [posts, setPosts] = useState(null)
 
   const [displayEditDelete, setDisplayEditDelete] = useState(false);
 
-  const [day, setDay] = useState(currentUser.day);
-  const [month, setMonth] = useState(currentUser.month);
-  const [year, setYear] = useState(currentUser.year);
-  const [bio, setBio] = useState(currentUser.bio);
+  const [day, setDay] = useState(null);
+  const [month, setMonth] = useState(null);
+  const [year, setYear] = useState(null);
+  const [bio, setBio] = useState(null);
   const [toggleBio, setToggleBio] = useState(false);
   const [details, setDetails] = useState(false);
-  const [featured, setFeatured] = useState(currentUser.featured);
-  const [location, setLocation] = useState(currentUser.location);
+  const [featured, setFeatured] = useState(null);
+  const [location, setLocation] = useState(null);
   const [customFeatured, setCustomFeatured] = useState(true);
   const [customEdit, setCustomEdit] = useState(true);
   const [customBio, setCustomBio] = useState(true);
-  const [name, setName] = useState(
-    `${currentUser.first_name} ${currentUser.last_name}`
-  );
-  const [relationship, setRelationShip] = useState(currentUser.relationship);
-  //day, month, year, bio, details, featured, location, name, relationship
+  const [name, setName] = useState(null) 
+
+  const [relationship, setRelationShip] = useState(null);
 
   const [togglePost, setTogglePost] = useState(false);
   const [customPost, setCustomPost] = useState(false);
 
-  const [work, setWork] = useState(currentUser.work);
+  const [work, setWork] = useState(null);
   const [content, setContent] = useState("ayeee");
 
-  const reversedArray = posts.reverse();
 
   let antiToggle = !toggleBio;
 
@@ -69,15 +61,27 @@ function Posts() {
   const [customEditPost, setCustomEditPost] = useState(false);
 
   useEffect(() => {
-    dispatch(fetchtPosts());
+    dispatch(fetchUser(id)).then(() => dispatch(fetchtPosts()));
     if (postDeleted) {
       setPostDeleted(false);
     }
-    if (sessionUser.id === currentUser.id) {
+    if (sessionUser.id === id) {
       setDisplayEditDelete(true);
     }
-    setName(`${currentUser.first_name} ${currentUser.last_name}`);
+    if (allPosts) {
+      if (id) {
+        const filteredPosts = Object.values(allPosts);
+        filteredPosts.filter((post) => post.user_id === id);
+          setPosts(filteredPosts.reverse())
+       } else {
+        setPosts(allPosts.reverse())
+      }
+    }
   }, [postDeleted]);
+
+
+
+  console.log(posts)
 
   const handleBioSubmit = (e) => {
     e.preventDefault();
@@ -96,7 +100,7 @@ function Posts() {
     setTogglePost(true);
   };
 
-  function handleDeletePost(post) {
+  const handleDeletePost = (post) => {
     if (post.user_id === currentUser.id) {
       dispatch(deletePost(post.id));
       setPostDeleted(true);

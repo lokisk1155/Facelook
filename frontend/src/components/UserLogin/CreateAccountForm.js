@@ -46,7 +46,7 @@ function CreateAccountForm({ closeForm }) {
       year,
       gender,
     };
-    debugger;
+
     if (password === confirmPassword) {
       setErrors([]);
       return dispatch(sessionActions.signup(user)).catch(async (res) => {
