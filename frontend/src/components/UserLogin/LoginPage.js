@@ -17,12 +17,10 @@ function LoginPage() {
   const [createFormOpen, setCreateFormOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const history = useHistory();
-  const [open, setOpen] = useState(false)
-
+  const [open, setOpen] = useState(false);
 
   const demoEmail = "ooo@aol.com";
   const demoPassword = "12345678";
-
 
   // if (errors) {
   //   const error = document.getElementsByClassName('credential')
@@ -30,7 +28,7 @@ function LoginPage() {
   // }
 
   const handleClick = (e) => {
-    e.preventDefault() 
+    e.preventDefault();
     const user = { credential: demoEmail, password: demoPassword };
     dispatch(sessionActions.login(user)).then(() => {
       history.push("/");
@@ -45,15 +43,13 @@ function LoginPage() {
         history.push("/");
       })
       .catch(() => {
-        setOpen(true)
-      }
-    );
+        setOpen(true);
+      });
   };
   return (
     <>
-    
-    <div className="container">
-      <div className="login">
+      <div className="container">
+        <div className="login">
           <form className="login-form" onSubmit={handleSubmit}>
             <div>
               <input
@@ -81,26 +77,28 @@ function LoginPage() {
                 Log In
               </button>
 
-              <Link onClick={handleClick} className="forgot-pw">Demo User</Link>
+              <Link onClick={handleClick} className="forgot-pw">
+                Demo User
+              </Link>
 
-              <hr id ="hr"/>
+              <hr id="hr" />
               <button
-                  className="create-new-account"
-                  onClick={() => setCreateFormOpen(true)}
-                  >
-                  Create New Account
-                </button>
+                className="create-new-account"
+                onClick={() => setCreateFormOpen(true)}
+              >
+                Create New Account
+              </button>
             </div>
           </form>
-          </div>
-        
+        </div>
+
         {createFormOpen && (
           <Modal onClose={() => setShowModal(false)}>
             <CreateAccountForm closeForm={setCreateFormOpen} />
           </Modal>
         )}
-        </div>
-        </>
+      </div>
+    </>
   );
 }
 

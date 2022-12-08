@@ -18,16 +18,16 @@ function Posts() {
   const dispatch = useDispatch();
 
   const currentUser = useSelector((state) => {
-    return state.user
-  })
+    return state.user;
+  });
 
   const sessionUser = useSelector((state) => {
     return state.session.user;
   });
 
-  const allPosts = useSelector((state) => state.post)
+  const allPosts = useSelector((state) => state.post);
 
-  const [posts, setPosts] = useState(null)
+  const [posts, setPosts] = useState(null);
 
   const [displayEditDelete, setDisplayEditDelete] = useState(false);
 
@@ -42,7 +42,7 @@ function Posts() {
   const [customFeatured, setCustomFeatured] = useState(true);
   const [customEdit, setCustomEdit] = useState(true);
   const [customBio, setCustomBio] = useState(true);
-  const [name, setName] = useState(null) 
+  const [name, setName] = useState(null);
 
   const [relationship, setRelationShip] = useState(null);
 
@@ -51,7 +51,6 @@ function Posts() {
 
   const [work, setWork] = useState(null);
   const [content, setContent] = useState("ayeee");
-
 
   let antiToggle = !toggleBio;
 
@@ -72,16 +71,14 @@ function Posts() {
       if (id) {
         const filteredPosts = Object.values(allPosts);
         filteredPosts.filter((post) => post.user_id === id);
-          setPosts(filteredPosts.reverse())
-       } else {
-        setPosts(allPosts.reverse())
+        setPosts(filteredPosts.reverse());
+      } else {
+        setPosts(allPosts.reverse());
       }
     }
   }, [postDeleted]);
 
-
-
-  console.log(posts)
+  console.log(posts);
 
   const handleBioSubmit = (e) => {
     e.preventDefault();
@@ -107,7 +104,7 @@ function Posts() {
       return;
     }
     return;
-  }
+  };
 
   const handleEditPost = (postId) => (e) => {
     e.preventDefault();
