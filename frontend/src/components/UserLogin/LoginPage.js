@@ -13,15 +13,21 @@ function LoginPage() {
   const sessionUser = useSelector((state) => state.session.user);
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState(false);
   const [createFormOpen, setCreateFormOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const history = useHistory();
+  const [open, setOpen] = useState(false)
 
 
   const demoEmail = "ooo@aol.com";
   const demoPassword = "12345678";
 
+
+  // if (errors) {
+  //   const error = document.getElementsByClassName('credential')
+  //   error.focus()
+  // }
 
   const handleClick = (e) => {
     e.preventDefault() 
@@ -38,37 +44,20 @@ function LoginPage() {
       .then(() => {
         history.push("/");
       })
-      .catch(async (res) => {
-        let data;
-        try {
-          // .clone() essentially allows you to read the response body twice
-          data = await res.clone().json();
-        } catch {
-          data = await res.text(); // Will hit this case if the server is down
-        }
-        if (data?.errors) setErrors(data.errors);
-        else if (data) setErrors([data]);
-        else setErrors([res.statusText]);
-      });
-    return;
+      .catch(() => {
+        setOpen(true)
+      }
+    );
   };
-
   return (
     <>
     
     <div className="container">
-    
       <div className="login">
           <form className="login-form" onSubmit={handleSubmit}>
-            <ul>
-              {errors &&
-                errors.map((error) => {
-                  return <div className="login-error">{error}</div>;
-                })}
-            </ul>
             <div>
               <input
-                className="credential"
+                className={`credential ${open ? "active" : "inactive"}`}
                 type="text"
                 value={credential}
                 placeholder={"Email or Phone number"}
@@ -79,7 +68,7 @@ function LoginPage() {
 
             <div>
               <input
-                className="password"
+                className={`password ${open ? "active" : "inactive"}`}
                 type="password"
                 value={password}
                 placeholder={"Password"}

@@ -3,6 +3,7 @@
   padding-bottom: 100px;
   min-height: 95vh;
   justify-content: center;
+  flex-direction: row;
 }
 
 body {
@@ -97,5 +98,18 @@ body {
 
 .title {
   color: #1877F2;
+  text-align: center;
 }
 
+.error-message {
+  color: red;
+}
+
+
+.credential.active {
+  border: 1px solid red;
+}
+
+.password.active {
+  border: 1px solid red;
+}
