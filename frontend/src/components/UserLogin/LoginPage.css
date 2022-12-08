@@ -1,57 +1,101 @@
-.flexbox-container {
-  display: block;
-  border: 1px solid black;
-  width: 400px;
-  margin-left: 475px;
-  margin-top: 150px;
-  background-color: white;
+.container {
+  display: flex;
+  padding-bottom: 100px;
+  min-height: 95vh;
+  justify-content: center;
+}
+
+body {
+  background-color: #f0f2f5;
+}
+
+.login {
+  position: relative;
+  background-color: #FFFFFF;
+  height: 400px;
+  width: 425px;
   border-radius: 10px;
-}
-
-.login-form {
-  height: 225px;
-}
-
-.login-form-container {
   display: flex;
   flex-direction: column;
+  top: 18vh;
   justify-content: center;
+  padding: 10px 10px 20px 10px;
+  box-shadow: 0 5px 5px 3px gainsboro;
   align-items: center;
 }
 
-.login-error {
-  color: red;
+.credential, .password {
+  height: 3vw;
+  margin: 8px 0;
+  border-radius: 5px;
+  padding-left: 10px;
+  font-size: 16px;
+  width: 95%;
+  border: 1.5px solid #EEEFF0;
 }
 
-.forgot-password {
-  background: none;
-  border: none;
-  color: blue;
-  margin-bottom: 35px;
+.login, .password {
+  margin-bottom: 15px;
+}
+
+.credential:focus, .password:focus {
+  outline: none;
+  border: 1px solid blue;
+  box-shadow: 0 0 5px #719ECE;
+  caret-color: blue
 }
 
 .login-button {
-  color: white;
-  background-color: blue;
-  width: 250px;
-  padding: 15px;
-  margin: 20px;
-  border-radius: 10px;
+  background-color: #1877F2;
+  color: #FFFFFF;
+  font-size: 20px;
+  border-radius: 5px;
+  border: none;
+  height: 40px;
+  font-weight: bold;
+  width: 95%;
 }
 
-.email-password-text {
-  width: 250px;
-  padding: 15px;
-  margin: 5px;
+.login-button:hover {
+  background-color: #166FE5;
+  cursor: pointer;
 }
 
-.Create-Account-Modal {
-  color: white;
-  background-color: lightgreen;
-  width: 200px;
-  padding: 15px;
-  margin: 20px;
-  border-radius: 10px;
-  position: relative;
-  left: 75px;
+.create-new-account {
+  background-color: #43a72f;
+  color: #FFFFFF;
+  font-size: 18px;
+  border-radius: 5px;
+  border: none;
+  font-weight: bold;
+  width: 280px;
+  height: 40px;
 }
+
+.form > #hr {
+  width: 95%;
+  background-color: rgb(194, 193, 193);
+  height: 0.1%;
+  border: none;
+}
+
+.forgot-pw {
+  margin: 18px 0;
+  text-decoration: none;
+  font-size: 15px;
+  color: #1877F2;
+  position: inherit;
+  display: flex;
+  justify-content: center;
+}
+
+.forgot-pw:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+
+.title {
+  color: #1877F2;
+}
+

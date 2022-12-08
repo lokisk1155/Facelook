@@ -18,6 +18,19 @@ function LoginPage() {
   const [showModal, setShowModal] = useState(false);
   const history = useHistory();
 
+
+  const demoEmail = "ooo@aol.com";
+  const demoPassword = "12345678";
+
+
+  const handleClick = (e) => {
+    e.preventDefault() 
+    const user = { credential: demoEmail, password: demoPassword };
+    dispatch(sessionActions.login(user)).then(() => {
+      history.push("/");
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
@@ -41,10 +54,11 @@ function LoginPage() {
   };
 
   return (
-    <div className="login-page-container">
-      <RecentLogins />
-      <div className="flexbox-container">
-        <div className="login-form-container">
+    <>
+    
+    <div className="container">
+    
+      <div className="login">
           <form className="login-form" onSubmit={handleSubmit}>
             <ul>
               {errors &&
@@ -54,7 +68,7 @@ function LoginPage() {
             </ul>
             <div>
               <input
-                className="email-password-text"
+                className="credential"
                 type="text"
                 value={credential}
                 placeholder={"Email or Phone number"}
@@ -65,7 +79,7 @@ function LoginPage() {
 
             <div>
               <input
-                className="email-password-text"
+                className="password"
                 type="password"
                 value={password}
                 placeholder={"Password"}
@@ -77,30 +91,27 @@ function LoginPage() {
               <button className="login-button" type="submit">
                 Log In
               </button>
+
+              <Link onClick={handleClick} className="forgot-pw">Demo User</Link>
+
+              <hr id ="hr"/>
+              <button
+                  className="create-new-account"
+                  onClick={() => setCreateFormOpen(true)}
+                  >
+                  Create New Account
+                </button>
             </div>
           </form>
-          <form action="/forgot_password">
-            <input
-              className="forgot-password"
-              type="submit"
-              value="Forgot Password?"
-            />
-          </form>
-        </div>
-
-        <button
-          className="Create-Account-Modal"
-          onClick={() => setCreateFormOpen(true)}
-        >
-          Create New Account
-        </button>
+          </div>
+        
         {createFormOpen && (
           <Modal onClose={() => setShowModal(false)}>
             <CreateAccountForm closeForm={setCreateFormOpen} />
           </Modal>
         )}
-      </div>
-    </div>
+        </div>
+        </>
   );
 }
 
