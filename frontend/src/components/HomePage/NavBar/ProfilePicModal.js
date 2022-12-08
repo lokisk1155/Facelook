@@ -9,6 +9,7 @@ function ProfilePicModal({ closeModal }) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
 
+
   return (
     <div className="omega-profile-modal-container">
       <div className="profile-pic-modal-container">
@@ -22,9 +23,11 @@ function ProfilePicModal({ closeModal }) {
         </Link>
 
         <div>
-          <button className="logout-button" onClick={() => dispatch(logout())}>
+          <Link to="login_page">
+          <button className="logout-button" onClick={() => {dispatch(logout())}}>
             <label className="logout-button-text">Log Out</label>
           </button>
+          </Link>
         </div>
       </div>
     </div>
