@@ -11,7 +11,6 @@ import { useEffect } from "react";
 import { useRef } from "react";
 import SearchModal from "./SearchModal";
 
-
 function NavBar() {
   const searchRef = useRef();
   const user = useSelector((state) => state.session.user);
@@ -22,17 +21,20 @@ function NavBar() {
 
   useEffect(() => {
     const checkClickElseWhere = (e) => {
-      e.preventDefault() 
-       if (toggleSearch && searchRef.current && !searchRef.current.contains(e.target)) {
-        setToggleSearch(false)
-       }
-    }
-    document.addEventListener("click", checkClickElseWhere)
+      e.preventDefault();
+      if (
+        toggleSearch &&
+        searchRef.current &&
+        !searchRef.current.contains(e.target)
+      ) {
+        setToggleSearch(false);
+      }
+    };
+    document.addEventListener("click", checkClickElseWhere);
     return () => {
-      document.removeEventListener("click", checkClickElseWhere)
-    }
-
-  }, [toggleSearch])
+      document.removeEventListener("click", checkClickElseWhere);
+    };
+  }, [toggleSearch]);
 
   if (!user) {
     return <Redirect to="/login_page" />;
@@ -42,7 +44,6 @@ function NavBar() {
     <div className="navbar-container">
       <div className="left-container-navbar" ref={searchRef}>
         <div className="facebook-picture">
-          
           <img
             src={Facebook}
             width="40px"
@@ -53,7 +54,7 @@ function NavBar() {
         </div>
 
         {!toggleSearch && (
-          <div className="search-bar" >
+          <div className="search-bar">
             <i className="material-icons">search</i>
             <input
               type="text"
@@ -93,7 +94,7 @@ function NavBar() {
         </div>
       </div>
 
-      <div className="right-container-navbar" >
+      <div className="right-container-navbar">
         <div className="navbar-profile-modal">
           <img
             src={profilePic}
@@ -106,7 +107,9 @@ function NavBar() {
           />
         </div>
       </div>
-      {profileModal && <ProfilePicModal closeModal={setProfileModal} user={user} />}
+      {profileModal && (
+        <ProfilePicModal closeModal={setProfileModal} user={user} />
+      )}
     </div>
   );
 }

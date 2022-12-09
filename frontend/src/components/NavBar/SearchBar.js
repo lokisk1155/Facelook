@@ -11,7 +11,7 @@ import SearchModal from "./SearchModal";
 import profilePic from "./imgs/blank.png";
 
 function SearchBar({ autoFocus, closeModal }) {
-  const history = useHistory()
+  const history = useHistory();
   const dispatch = useDispatch();
   const [typed, setTyped] = useState("");
   const [users, setUsers] = useState(null);
@@ -47,8 +47,13 @@ function SearchBar({ autoFocus, closeModal }) {
 
   return (
     <>
-    <div className="search-bar-modal">
-      <button className="back-arrow-search-bar-modal" onClick={(() => closeModal(false))}>{"<"}</button>
+      <div className="search-bar-modal">
+        <button
+          className="back-arrow-search-bar-modal"
+          onClick={() => closeModal(false)}
+        >
+          {"<"}
+        </button>
         <input
           type="text"
           placeholder="    Search FaceLook"
@@ -57,7 +62,7 @@ function SearchBar({ autoFocus, closeModal }) {
           autoFocus={true}
         ></input>
       </div>
-      
+
       {/* {recentSearches.length > 0 && !filteredUsers && Object.keys(recentSearches).length > 0 &&
               Object.values(recentSearches).map((user) => {
                 return (
@@ -69,34 +74,34 @@ function SearchBar({ autoFocus, closeModal }) {
                 
       })} */}
 
-      {!typed && recentSearches.length < 1 && <h3 className="no-recent-searches">No Recent Searches</h3>}
+      {!typed && recentSearches.length < 1 && (
+        <h3 className="no-recent-searches">No Recent Searches</h3>
+      )}
       <div className="adjust-container">
-      {filteredUsers && (
-        <div className="search-results-container">
+        {filteredUsers && (
+          <div className="search-results-container">
             {" "}
             {filteredUsers.map((user) => {
               return (
                 <div
-                  onClick={() => { history.push(`/ProfilePage/${user.id}`)
+                  onClick={() => {
+                    history.push(`/ProfilePage/${user.id}`);
                     // setRecentSearches((users) => {
                     //   return { ...users, user };
                     // });
                   }}
                 >
                   <div className="result-user-div">
-                  <img className="result-user-profile-pic" src={profilePic} />   
-                  
-                  <text className="result-user-name">{`${user.first_name} ${user.last_name}`}</text>
+                    <img className="result-user-profile-pic" src={profilePic} />
+
+                    <text className="result-user-name">{`${user.first_name} ${user.last_name}`}</text>
                   </div>
-                
                 </div>
               );
             })}
-           
-        </div>
-      )}
+          </div>
+        )}
       </div>
-
     </>
   );
 }
