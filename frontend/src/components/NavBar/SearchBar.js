@@ -7,10 +7,12 @@ import { fetchUsers, updateUser } from "../../store/user";
 import { useEffect } from "react";
 import csrfFetch from "../../store/csrf";
 import { Link } from "react-router-dom";
+import SearchModal from "./SearchModal";
+import profilePic from "./imgs/blank.png";
 
-function SearchBar() {
+function SearchBar({ autoFocus, closeModal }) {
+  const history = useHistory()
   const dispatch = useDispatch();
-
   const [typed, setTyped] = useState("");
   const [users, setUsers] = useState(null);
   const [filteredUsers, setFilteredUsers] = useState(null);
@@ -45,48 +47,56 @@ function SearchBar() {
 
   return (
     <>
-      <div className="search-bar">
+    <div className="search-bar-modal">
+      <button className="back-arrow-search-bar-modal" onClick={(() => closeModal(false))}>{"<"}</button>
         <input
           type="text"
           placeholder="    Search FaceLook"
-          className="search-input"
+          className="search-input-modal"
           onChange={(e) => setTyped(e.target.value)}
+          autoFocus={true}
         ></input>
       </div>
-
-      {filteredUsers && (
-        <div className="search-results-container">
-          <label>
-            {" "}
-            Results:
-            {filteredUsers.map((user) => {
-              return (
-                <Link
-                  className="result-user"
-                  to={`/ProfilePage/${user.id}`}
-                  onClick={() => {
-                    setRecentSearches((users) => {
-                      return { ...users, user };
-                    });
-                  }}
-                >{`${user.first_name} ${user.last_name}`}</Link>
-              );
-            })}
-          </label>
-          <label>
-            Recent:
-            {Object.keys(recentSearches).length > 0 &&
+      
+      {/* {recentSearches.length > 0 && !filteredUsers && Object.keys(recentSearches).length > 0 &&
               Object.values(recentSearches).map((user) => {
                 return (
                   <Link
                     className="result-user"
                     to={`/ProfilePage/${user.id}`}
                   >{`${user.first_name} ${user.last_name}`}</Link>
-                );
-              })}
-          </label>
+              );
+                
+      })} */}
+
+      {!typed && recentSearches.length < 1 && <h3 className="no-recent-searches">No Recent Searches</h3>}
+      <div className="adjust-container">
+      {filteredUsers && (
+        <div className="search-results-container">
+            {" "}
+            {filteredUsers.map((user) => {
+              return (
+                <div
+                  onClick={() => { history.push(`/ProfilePage/${user.id}`)
+                    // setRecentSearches((users) => {
+                    //   return { ...users, user };
+                    // });
+                  }}
+                >
+                  <div className="result-user-div">
+                  <img className="result-user-profile-pic" src={profilePic} />   
+                  
+                  <text className="result-user-name">{`${user.first_name} ${user.last_name}`}</text>
+                  </div>
+                
+                </div>
+              );
+            })}
+           
         </div>
       )}
+      </div>
+
     </>
   );
 }

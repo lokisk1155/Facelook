@@ -71,16 +71,32 @@
 
 .search-bar {
   display: flex;
-  justify-content: center;
-}
-
-.search-input {
   width: 100%;
-  padding: 0.5em;
   border: none;
   font-size: 1em;
   background-color: rgb(231, 230, 230);
   border-radius: 25px;
+  margin-left: 10px;
+}
+
+.search-input {
+  background-color: rgb(231, 230, 230);
+  width: 100%;
+  margin-right: 5px;
+  padding: 0.5em;
+  border: none;
+  font-size: 1em;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+}
+
+
+.material-icons {
+  margin-left: 5px;
+  color: grey;
 }
 
 .navbar-container {
@@ -90,6 +106,7 @@
   height: 60px;
   background-color: white;
   width: 120%;
+  padding: 5px;
 }
 
 .left-container-navbar {
@@ -109,6 +126,6 @@
   float: left;
   width: 15%;
   height: 50px;
-  width: 20vw;
+  width: 20%;
   justify-content: flex-end;
 }
