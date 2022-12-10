@@ -1,11 +1,12 @@
 import SearchBar from "./SearchBar";
 import "./SearchModal.css";
 
-function SearchModal({ closeModal }) {
+function SearchModal({ closeModal, typed, setTyped }) {
   return (
     <div className="search-modal-container">
-      <SearchBar autoFocus={false} closeModal={closeModal} />
+      <SearchBar typed={typed} setTyped={setTyped} autoFocus={false} closeModal={closeModal} />
     </div>
+
   );
 }
 

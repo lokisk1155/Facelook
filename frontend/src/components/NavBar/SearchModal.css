@@ -8,3 +8,8 @@
   border-radius: 10px;
   box-shadow: 1px 1px 2.5px 2.5px lightgray;
 }
+
+
+.search-modal-wrapper {
+  width: 15%;
+}

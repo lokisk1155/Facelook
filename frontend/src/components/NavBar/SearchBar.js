@@ -10,10 +10,10 @@ import { Link } from "react-router-dom";
 import SearchModal from "./SearchModal";
 import profilePic from "./imgs/blank.png";
 
-function SearchBar({ autoFocus, closeModal }) {
+function SearchBar({ autoFocus, closeModal, typed, setTyped }) {
   const history = useHistory();
   const dispatch = useDispatch();
-  const [typed, setTyped] = useState("");
+  //const [typed, setTyped] = useState("");
   const [users, setUsers] = useState(null);
   const [filteredUsers, setFilteredUsers] = useState(null);
   const [recentSearches, setRecentSearches] = useState([]);
@@ -56,9 +56,11 @@ function SearchBar({ autoFocus, closeModal }) {
         </button>
         <input
           type="text"
-          placeholder="    Search FaceLook"
+          value={typed}
+          placeholder={typed ? typed : "    Search FaceLook"}
           className="search-input-modal"
           onChange={(e) => setTyped(e.target.value)}
+
           autoFocus={true}
         ></input>
       </div>
