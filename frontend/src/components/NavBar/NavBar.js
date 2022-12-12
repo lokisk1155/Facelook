@@ -23,6 +23,7 @@ function NavBar() {
   const [typed, setTyped] = useState("");
   const location = useLocation();
   const history = useHistory();
+  const temp = "#2c2c2c"
 
   useEffect(() => {
     const checkClickElseWhere = (e) => {
@@ -91,9 +92,9 @@ function NavBar() {
         )}
       </div>
 
-      <div className="middle-column-navbar">
-        <div className="link-wrapper">
-          <div className="home-link">
+      <div className="middle-column-navbar" >
+        <div className="link-wrapper" >
+          <div className="home-link" style={{ borderBottom: temp }}>
             <Link
               to="/"
               onClick={() => {
