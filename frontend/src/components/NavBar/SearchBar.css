@@ -95,8 +95,6 @@
   width: 100%;
   border: none;
   background-color: white;
-
-
 }
 
 .search-for-typed-button:hover {
@@ -104,10 +102,9 @@
 }
 
 .search-for-typed-text {
-  color: #1B74E4;  
+  color: #1b74e4;
   text-align: center;
 }
-
 
 #searchFor {
   color: white;
@@ -117,10 +114,10 @@
 
 .mi-icon-holder {
   height: 35px;
-  line-height: 35px;  
-  width: 35px;  
+  line-height: 35px;
+  width: 35px;
   border-radius: 50%;
-  background-color: #1B74E4;  
+  background-color: #1b74e4;
   border: none;
   color: white;
   cursor: pointer;

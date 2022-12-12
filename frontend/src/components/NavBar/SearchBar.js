@@ -10,7 +10,13 @@ import { Link } from "react-router-dom";
 import SearchModal from "./SearchModal";
 import profilePic from "./imgs/blank.png";
 
-function SearchBar({ autoFocus, closeModal, typed, setTyped, setFilteredUserCount }) {
+function SearchBar({
+  autoFocus,
+  closeModal,
+  typed,
+  setTyped,
+  setFilteredUserCount,
+}) {
   const history = useHistory();
   const dispatch = useDispatch();
   //const [typed, setTyped] = useState("");
@@ -40,15 +46,15 @@ function SearchBar({ autoFocus, closeModal, typed, setTyped, setFilteredUserCoun
       if (currentMatches) {
         setFilteredUsers(currentMatches);
         if (currentMatches.length > 0) {
-          setFilteredUserCount(currentMatches.length)
+          setFilteredUserCount(currentMatches.length);
         }
       }
     } else {
       setFilteredUsers(null);
-    } 
+    }
 
     if (typed.length === 0) {
-      setFilteredUserCount(0)
+      setFilteredUserCount(0);
     }
   }, [typed]);
 
@@ -85,36 +91,39 @@ function SearchBar({ autoFocus, closeModal, typed, setTyped, setFilteredUserCoun
       {!typed && recentSearches.length < 1 && (
         <h3 className="no-recent-searches">No Recent Searches</h3>
       )}
-        {filteredUsers && (
-          <div className="search-results-container">
-            {" "}
-            {filteredUsers.map((user) => {
-              return (
-                <div
-                  onClick={() => {
-                    history.push(`/ProfilePage/${user.id}`);
-                    // setRecentSearches((users) => {
-                    //   return { ...users, user };
-                    // });
-                  }}
-                >
-                  <div className="result-user-div">
-                    <img className="result-user-profile-pic" src={profilePic} />
+      {filteredUsers && (
+        <div className="search-results-container">
+          {" "}
+          {filteredUsers.map((user) => {
+            return (
+              <div
+                onClick={() => {
+                  history.push(`/ProfilePage/${user.id}`);
+                  // setRecentSearches((users) => {
+                  //   return { ...users, user };
+                  // });
+                }}
+              >
+                <div className="result-user-div">
+                  <img className="result-user-profile-pic" src={profilePic} />
 
-                    <p className="result-user-name">{`${user.first_name} ${user.last_name}`}</p>
-                  </div>
+                  <p className="result-user-name">{`${user.first_name} ${user.last_name}`}</p>
                 </div>
-              );
-            })}
-
-          {typed.length > 0 && <button className="search-for-typed-button">
-            <button className="mi-icon-holder"><i className="material-icons" id="searchFor">search</i></button>
-            <p className="search-for-typed-text">{`Search for ${typed}`}</p>
-          </button>}
-          </div>
-        )}
-
-        
+              </div>
+            );
+          })}
+          {typed.length > 0 && (
+            <button className="search-for-typed-button">
+              <button className="mi-icon-holder">
+                <i className="material-icons" id="searchFor">
+                  search
+                </i>
+              </button>
+              <p className="search-for-typed-text">{`Search for ${typed}`}</p>
+            </button>
+          )}
+        </div>
+      )}
     </>
   );
 }

@@ -43,7 +43,7 @@ function CreatePostModal({
     } else {
       return closeModal(null);
     }
-  };
+  }
   return (
     <div className="omega-create-post-modal">
       <form className="actual-create-post-form">
@@ -69,7 +69,12 @@ function CreatePostModal({
           placeholder={placeHolder}
           onChange={(e) => setContent(e.target.value)}
         ></textarea>
-        <input className="submit-post-button" value="post" type="submit" onClick={(() => handlePostSubmit())}/>
+        <input
+          className="submit-post-button"
+          value="post"
+          type="submit"
+          onClick={() => handlePostSubmit()}
+        />
       </form>
     </div>
   );
