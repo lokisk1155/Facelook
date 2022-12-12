@@ -1,8 +1,7 @@
 .search-modal-container {
   top: 0;
   left: 0;
-  width: 15%;
-  height: 150%;
+  width: 20%;
   position: absolute;
   background-color: white;
   border-radius: 10px;

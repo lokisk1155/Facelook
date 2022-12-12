@@ -55,7 +55,7 @@
 
 .result-user-div {
   height: 50px;
-  border-radius: 20px;
+  border-radius: 5px;
   position: relative;
   display: flex;
   align-items: center;
@@ -84,4 +84,45 @@
   background-color: white;
   box-shadow: 1px 1px 2.5px 2.5px lightgray;
   border-bottom-right-radius: 10px;
+}
+
+.search-for-typed-button {
+  height: 50px;
+  border-radius: 5px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: none;
+  background-color: white;
+
+
+}
+
+.search-for-typed-button:hover {
+  background-color: rgb(231, 230, 230);
+}
+
+.search-for-typed-text {
+  color: #1B74E4;  
+  text-align: center;
+}
+
+
+#searchFor {
+  color: white;
+  margin: auto;
+  vertical-align: middle;
+}
+
+.mi-icon-holder {
+  height: 35px;
+  line-height: 35px;  
+  width: 35px;  
+  border-radius: 50%;
+  background-color: #1B74E4;  
+  border: none;
+  color: white;
+  cursor: pointer;
+  margin: 5px;
 }

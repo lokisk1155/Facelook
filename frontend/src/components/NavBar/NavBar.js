@@ -18,7 +18,7 @@ function NavBar() {
   const [profileModal, setProfileModal] = useState(false);
   const [toggle, setToggle] = useState(true);
   const [toggleSearch, setToggleSearch] = useState(false);
-  const [fillColor, setFillColor] = useState("#ffffff");
+  const [fillColor, setFillColor] = useState("#1B74E4");
   const [stroke, setStroke] = useState("#2c2c2c");
   const [typed, setTyped] = useState("");
   const location = useLocation();
@@ -45,7 +45,7 @@ function NavBar() {
   useEffect(() => {
     if (location.pathname !== "/") {
       setFillColor("#ffffff");
-    }
+    } 
 
     if (fillColor === "#ffffff") {
       setStroke("#2c2c2c");
