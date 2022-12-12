@@ -51,6 +51,7 @@
 
 .no-recent-searches {
   text-align: center;
+  color: grey;
 }
 
 .search-results-container {
@@ -131,4 +132,9 @@
   color: white;
   cursor: pointer;
   margin: 5px;
+}
+
+
+.back-arrow-svg {
+  color: grey;
 }
