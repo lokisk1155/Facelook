@@ -16,7 +16,7 @@
   border-radius: 10px;
   align-items: flex-end;
   border: none;
-  box-shadow: 1px 1px 2.5px 2.5px lightgray;
+  box-shadow: 0px 12px 12px 0px lightgrey;
 }
 
 .link-button {
@@ -28,7 +28,6 @@
   border: none;
   border-radius: 10px;
   border: none;
-  box-shadow: 1px 1px 2.5px 2.5px lightgray;
 }
 
 .link-button:hover {

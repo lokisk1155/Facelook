@@ -70,7 +70,7 @@ function SearchBar({
         <input
           type="text"
           value={typed}
-          placeholder={typed ? typed : "    Search FaceLook"}
+          placeholder={typed ? typed : "Search FaceLook"}
           className="search-input-modal"
           onChange={(e) => setTyped(e.target.value)}
           autoFocus={true}

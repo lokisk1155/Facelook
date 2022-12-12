@@ -24,15 +24,22 @@
 .search-input-modal {
   background-color: rgb(231, 230, 230);
   margin: 5px;
-  width: 80%;
+  width: 70%;
   padding: 0.5em;
   border: none;
   font-size: 1em;
   border-radius: 15px;
+  margin-right: 5px;
+  height: 100%;
+  font-family: Arial;
 }
 
 .back-arrow-search-bar-modal {
-  width: 12.5%;
+  height: 35px;
+  width: 35px;
+  margin-top: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
   border: none;
   border-radius: 50%;
   background-color: white;
@@ -82,7 +89,7 @@
 
 .adjust-container {
   background-color: white;
-  box-shadow: 1px 1px 2.5px 2.5px lightgray;
+  box-shadow: 0px 12px 12px 0px lightgrey;
   border-bottom-right-radius: 10px;
 }
 
@@ -104,12 +111,14 @@
 .search-for-typed-text {
   color: #1b74e4;
   text-align: center;
+  margin-left: 4px;
 }
 
 #searchFor {
   color: white;
   margin: auto;
   vertical-align: middle;
+  margin-bottom: 4px;
 }
 
 .mi-icon-holder {
