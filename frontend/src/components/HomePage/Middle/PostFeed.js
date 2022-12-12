@@ -69,9 +69,7 @@ function PostFeed() {
     <>
       <div className="create-post-modal">
         <button className="new-post-button" onClick={handleNewPost}>
-          <label className="place-holder-text-new-post">
-            What's on your mind?
-          </label>
+          <p className="text-inside-new-post">What is on your mind?</p>
         </button>
 
         <div className="pic-holder">

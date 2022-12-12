@@ -3,24 +3,6 @@
   justify-content: space-between;
 }
 
-.left-nav-bar-container {
-  padding: 20px;
-  height: 800px;
-  width: 250px;
-}
-
-.middle-nav-bar-container {
-  padding: 20px;
-  height: 800px;
-  width: 250px;
-}
-
-.right-nav-bar-container {
-  padding: 25px;
-  height: 800px;
-  width: 250px;
-}
-
 .omega-posts-container {
   display: flex;
   width: 675px;
@@ -34,7 +16,7 @@
 
 .new-post-button {
   height: 50px;
-  width: 675px;
+  width: 100%;
   padding: 10px;
   margin-top: 11px;
   border-radius: 40px;
@@ -82,10 +64,8 @@
   margin: 5px;
 }
 
-.place-holder-text-new-post {
-  justify-content: flex-start;
-  color: gray;
-  margin-right: 400px;
+.text-inside-new-post {
+  color: gray; 
 }
 
 .post-header {

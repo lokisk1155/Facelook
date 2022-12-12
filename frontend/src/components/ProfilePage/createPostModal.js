@@ -24,8 +24,7 @@ function CreatePostModal({
   const [title, setHeader] = useState(header);
   const [placeHolder, setPlaceHolder] = useState(postContent);
 
-  const handlePostSubmit = (e) => {
-    e.preventDefault();
+  function handlePostSubmit() {
     if (content.length > 0) {
       if (type === "create") {
         let post;
@@ -47,7 +46,7 @@ function CreatePostModal({
   };
   return (
     <div className="omega-create-post-modal">
-      <form className="actual-create-post-form" onSubmit={handlePostSubmit}>
+      <form className="actual-create-post-form">
         <div className="modal-header">
           <h3>{title}</h3>
           <button className="close-button" onClick={() => closeModal(null)}>
@@ -70,7 +69,7 @@ function CreatePostModal({
           placeholder={placeHolder}
           onChange={(e) => setContent(e.target.value)}
         ></textarea>
-        <input className="submit-post-button" value="post" type="submit" />
+        <input className="submit-post-button" value="post" type="submit" onClick={(() => handlePostSubmit())}/>
       </form>
     </div>
   );
