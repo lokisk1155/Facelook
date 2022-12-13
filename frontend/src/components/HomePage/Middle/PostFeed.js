@@ -13,8 +13,7 @@ function PostFeed() {
   const [postDeleted, setPostDeleted] = useState(false);
   const [checkPost, setCheckPost] = useState(null);
   const [togglePost, setTogglePost] = useState(false);
-
-
+  const [targetedPost, setTargetedPost] = useState(null)
 
   const posts = useSelector((state) => {
     if (state.post) {
@@ -124,18 +123,19 @@ function PostFeed() {
                     <div />
                   )}
                   {currentUser.id === post.user_id ? (
-                    <button onClick={(e) => setCheckPost(true)}>
+                    <button onClick={(e) => {setCheckPost(true)
+                      setTargetedPost(post)}}>
                       Edit Post
                     </button>
                   ) : (
                     <div />
                   )}
-                  {checkPost && (
+                  {checkPost && targetedPost.user_id === currentUser.id && (
                     <CreatePostModal
                       type="update"
                       currentUser={currentUser}
-                      postId={post.id}
-                      postContent={post.content}
+                      postId={targetedPost.id}
+                      postContent={targetedPost.content}
                       header={"Edit post"}
                       closeModal={setCheckPost}
                     />
