@@ -3,8 +3,13 @@ import { useDispatch } from "react-redux";
 import { fetchFriend } from "../../store/friend";
 import { useSelector } from "react-redux";
 import { fetchFriends } from "../../store/friend";
+import { useParams } from "react-router-dom";
 
-function Friends({ currentUser, sessionUser }) {
+function Friends() {
+
+  const { id } = useParams() 
+
+  const currentUser = useSelector((state) => state.user[id])
   const dispatch = useDispatch();
 
   const friends = useSelector((state) => {
