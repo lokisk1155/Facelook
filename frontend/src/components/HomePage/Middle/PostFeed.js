@@ -101,15 +101,14 @@ function PostFeed() {
             .map((post) => {
               return (
                 <div key={post.id} className="individual-post">
-                  <div key={post.id} className="post-header">
+                  <div className="post-header">
                     <Link to={`/ProfilePage/${post.user_id}`}>
                       <img
-                        key={post.id}
                         className="post-pic"
                         src={profilePic}
                       ></img>
                     </Link>
-                    <h5 key={post.id} className="current-user-name">
+                    <h5 className="current-user-name">
                       {typeof users[post.user_id] !== "undefined"
                         ? `${users[post.user_id].first_name} ${
                             users[post.user_id].last_name
@@ -117,7 +116,7 @@ function PostFeed() {
                         : "temp"}
                     </h5>
                   </div>
-                  <p key={post.id} className="post-content">
+                  <p className="post-content">
                     {post.content}
                   </p>
                   {currentUser.id === post.user_id ? (

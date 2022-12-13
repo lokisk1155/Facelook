@@ -18,7 +18,7 @@ function Posts() {
   const dispatch = useDispatch();
 
   const currentUser = useSelector((state) => {
-    return state.user;
+    return state.user[id];
   });
 
   const sessionUser = useSelector((state) => {
@@ -76,20 +76,24 @@ function Posts() {
         setPosts(allPosts.reverse());
       }
     }
+
+    if (currentUser) {
+      setBio(currentUser.bio)
+    }
+
   }, [postDeleted]);
 
-  console.log(posts);
+
+
 
   const handleBioSubmit = (e) => {
     e.preventDefault();
     setCustomBio(!customBio);
     setToggleBio(customBio);
     const user = {
-      ...currentUser,
-      bio,
+      ...currentUser, bio
     };
-    user.password = currentUser.password;
-    dispatch(updateUser(user));
+    return dispatch(updateUser(user));
   };
 
   const handleNewPost = (e) => {
@@ -116,7 +120,7 @@ function Posts() {
       <div className="intro-container">
         <h2 className="intro-header">Intro </h2>
         <div>
-          <h4 className="actual-bio">{bio}</h4>
+          {bio && <h4 className="actual-bio">{bio}</h4>}
           {antiToggle && (
             <button
               className="add-bio-button"
@@ -232,7 +236,7 @@ function Posts() {
                     <div key={index} className="individual-post">
                       <div className="post-header">
                         <img className="post-pic" src={profilePic}></img>
-                        <h5 className="current-user-name">{`${currentUser.first_name} ${currentUser.last_name}`}</h5>
+                        {/* <h5 className="current-user-name">{`${currentUser.first_name} ${currentUser.last_name}`}</h5> */}
                       </div>
                       <p className="post-content">{post.content}</p>
                       {displayEditDelete && (
