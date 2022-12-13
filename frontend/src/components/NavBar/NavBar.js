@@ -13,7 +13,7 @@ import SearchModal from "./SearchModal";
 import { useLocation } from "react-router-dom";
 
 function NavBar() {
-  const searchRef = useRef();
+  //const searchRef = useRef();
   const user = useSelector((state) => state.session.user);
   const [profileModal, setProfileModal] = useState(false);
   const [toggle, setToggle] = useState(true);
@@ -25,22 +25,22 @@ function NavBar() {
   const history = useHistory();
   const temp = "#2c2c2c";
 
-  useEffect(() => {
-    const checkClickElseWhere = (e) => {
-      e.preventDefault();
-      if (
-        toggleSearch &&
-        searchRef.current &&
-        !searchRef.current.contains(e.target)
-      ) {
-        setToggleSearch(false);
-      }
-    };
-    document.addEventListener("click", checkClickElseWhere);
-    return () => {
-      document.removeEventListener("click", checkClickElseWhere);
-    };
-  }, [toggleSearch]);
+  // useEffect(() => {
+  //   const checkClickElseWhere = (e) => {
+  //     e.preventDefault();
+  //     if (
+  //       toggleSearch &&
+  //       searchRef.current &&
+  //       !searchRef.current.contains(e.target)
+  //     ) {
+  //       setToggleSearch(false);
+  //     }
+  //   };
+  //   document.addEventListener("click", checkClickElseWhere);
+  //   return () => {
+  //     document.removeEventListener("click", checkClickElseWhere);
+  //   };
+  // }, [toggleSearch]);
 
   useEffect(() => {
     if (location.pathname !== "/") {
@@ -60,7 +60,7 @@ function NavBar() {
 
   return (
     <div className="navbar-container">
-      <div className="left-container-navbar" ref={searchRef}>
+      <div className="left-container-navbar">
         <div className="facebook-picture">
           <img
             src={Facebook}
