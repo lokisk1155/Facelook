@@ -10,8 +10,12 @@ import "./PostFeed.css";
 
 function PostFeed() {
   const dispatch = useDispatch();
+  const [postDeleted, setPostDeleted] = useState(false);
+  const [checkPost, setCheckPost] = useState(null);
+  const [togglePost, setTogglePost] = useState(false);
 
-  const currentUser = useSelector((state) => state.session.user);
+
+
   const posts = useSelector((state) => {
     if (state.post) {
       return Object.values(state.post);
@@ -28,9 +32,7 @@ function PostFeed() {
     }
   });
 
-  const [postDeleted, setPostDeleted] = useState(false);
-  const [checkPost, setCheckPost] = useState(null);
-  const [togglePost, setTogglePost] = useState(false);
+  const currentUser = useSelector((state) => state.session.user);
 
   useEffect(() => {
     dispatch(fetchUsers()).then((data) => {
@@ -55,11 +57,6 @@ function PostFeed() {
     }
     return;
   }
-
-  const handleCheckPost = (postId) => (e) => {
-    e.preventDefault();
-    setCheckPost(postId);
-  };
 
   if (!users) {
     return null;
@@ -127,13 +124,13 @@ function PostFeed() {
                     <div />
                   )}
                   {currentUser.id === post.user_id ? (
-                    <button onClick={() => handleCheckPost(post.id)}>
+                    <button onClick={(e) => setCheckPost(true)}>
                       Edit Post
                     </button>
                   ) : (
                     <div />
                   )}
-                  {checkPost === post.id && (
+                  {checkPost && (
                     <CreatePostModal
                       type="update"
                       currentUser={currentUser}
