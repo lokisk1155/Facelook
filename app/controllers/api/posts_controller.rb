@@ -27,7 +27,7 @@ class Api::PostsController < ApplicationController
         @post = Post.find(params[:id])
         update = @post.update(update_params)
         if update 
-            render :show 
+            render 'api/posts/show'
         else 
             render json: { errors: @post.errors.full_messages }
         end 

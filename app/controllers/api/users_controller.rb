@@ -2,18 +2,25 @@ class Api::UsersController < ApplicationController
     wrap_parameters include: User.attribute_names + ['password', 'id', 'profilePic']
 
     def index 
-      @users = User.all 
-      # params.has_key?(:user_ids) # boolean checking for presence of user_ids key in params
-      # /api/users?userIds=[1, 5, 7]
-      # @users = User.find(params[:user_ids])
-      render :index
+      if params.has_key?(:user_ids) 
+        @users = [] 
+        idArray = params[:user_ids].split(",")
+        idArray.each do |id| 
+          user = User.find(id)
+            @users << user if user 
+        end 
+          render 'api/users/friends'
+      else 
+        @users = User.all 
+        render 'api/users/index'
+      end 
     end 
 
     def create
       @user = User.new(create_params)
       if @user.save
         login!(@user)
-        render :show
+        render 'api/users/show'
       else
         render json: { errors: @user.errors.full_messages }
       end
@@ -21,7 +28,7 @@ class Api::UsersController < ApplicationController
 
     def show 
       @user = User.find(params[:id])
-      render :show 
+      render 'api/users/show'
     end 
 
     def update
@@ -36,7 +43,7 @@ class Api::UsersController < ApplicationController
       end
   
       if result
-        render :show
+        render 'api/users/show'
       else
         render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
       end

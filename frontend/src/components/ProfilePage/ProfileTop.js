@@ -14,9 +14,9 @@ function ProfileTop() {
   const dispatch = useDispatch();
 
   const [notSelf, setNotSelf] = useState(false);
-
   const [profilePic, setProfilePic] = useState();
   const [profilePicUrl, setProfilePicUrl] = useState(null);
+  const [isFriend, setIsFriend] = useState(null)
 
   const { id } = useParams();
 
@@ -29,12 +29,10 @@ function ProfileTop() {
   useEffect(() => {
     dispatch(fetchUser(id)).then(() => {
       dispatch(fetchFriend(id));
-    });
+    }).then(() => {
+      setIsFriend(currentUser.friends.includes(sessionUser.id))
+    })
   }, []);
-
-  const friends = useSelector((state) => {
-    return state.friend;
-  });
 
   const friend = useSelector(({ friend }) => {
     const output = Object.values(friend).filter((f) => {
@@ -46,8 +44,7 @@ function ProfileTop() {
     return output;
   });
 
-  const is_friend = currentUser.friends.includes(sessionUser.id);
-  const not_self = currentUser.id === sessionUser.id
+ 
 
   const handleFile = (e) => {
     const file = e.target.files[0];
@@ -76,7 +73,7 @@ function ProfileTop() {
 
   const handleDelete = (e) => {
     e.preventDefault();
-    if (is_friend) {
+    if (isFriend) {
       const friendshipId = friend[0].id;
       dispatch(deleteFriend(friendshipId)).then(() => {
         dispatch(fetchUser(currentUser.id));
@@ -107,8 +104,8 @@ function ProfileTop() {
         <br></br>
         {preview}
       </div>
-      {not_self || <div>
-      {is_friend ? ( 
+      {notSelf || <div>
+      {isFriend ? ( 
           <button onClick={handleDelete}>Delete Friend</button>
         ) : (
           <button onClick={handleAdd}>Add Friend</button>

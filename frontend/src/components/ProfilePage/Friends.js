@@ -4,29 +4,39 @@ import { fetchFriend } from "../../store/friend";
 import { useSelector } from "react-redux";
 import { fetchFriends } from "../../store/friend";
 import { useParams } from "react-router-dom";
+import csrfFetch from "../../store/csrf";
+import { useState } from "react";
+import { fetchUsers } from "../../store/user";
 
 function Friends() {
-
+  const dispatch = useDispatch();
   const { id } = useParams() 
 
-  const currentUser = useSelector((state) => state.user[id])
-  const dispatch = useDispatch();
+  const [friendsArray, setFriendsArray] = useState(null)
 
   const friends = useSelector((state) => {
-    return state.friend.users;
+    return Object.values(state.user[id].friends)
   });
 
   useEffect(() => {
-    dispatch(fetchFriends(currentUser.id));
+    const fetchData = async () => {
+      // Wait for dispatch(fetchFriends(id)) to complete before calling fetchUsers
+      await dispatch(fetchFriends(id));
+      if (friends) {
+        const users = await dispatch(fetchUsers(friends))
+        setFriendsArray(users);
+      } else {
+        setFriendsArray(['You have no friends idiot'])
+      }
+    }
+    fetchData() 
   }, []);
 
-  if (!friends) {
-    return null;
-  }
+  console.log(friendsArray, 'yo')
 
   return (
     <div>
-      {Object.values(friends).map((friend) => {
+      {Object.values(friendsArray).map((friend) => {
         return (
           <div>
             <p>{friend.first_name}</p>

@@ -28,8 +28,8 @@ export const fetchFriend = (userId) => async (dispatch) => {
 export const fetchFriends = (userId) => async (dispatch) => {
   const res = await csrfFetch(`/api/friends?userId=${userId}`);
   if (res.ok) {
-    const users = await res.json();
-    dispatch(receiveFriends({ users }));
+    const fetchedUsers = await res.json();
+    dispatch(receiveFriends(fetchedUsers));
   }
 };
 

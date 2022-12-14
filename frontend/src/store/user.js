@@ -1,5 +1,5 @@
 import csrfFetch from "./csrf";
-import { RECEIVE_FRIEND, REMOVE_FRIEND } from "./friend";
+import { receiveFriends, RECEIVE_FRIEND, REMOVE_FRIEND } from "./friend";
 
 export const SET_CURRENT_PROFILE = "users/SET_CURRENT_PROFILE";
 export const RECEIVE_USERS = "users/RECEIVE_USERS";
@@ -24,10 +24,18 @@ export const receiveUsers = (users) => ({
   payload: users,
 });
 
-export const fetchUsers = () => async (dispatch) => {
-  const res = await csrfFetch(`api/users`);
-  const data = await res.json();
-  dispatch(receiveUsers(data));
+export const fetchUsers = (userIds) => async (dispatch) => {
+  let res;
+  if (userIds) {
+    res = await csrfFetch(`/api/users?userIds=${userIds}`)
+    const data = await res.json();
+    return data 
+  } else {  
+    res = await csrfFetch(`/api/users`);
+    const data = await res.json();
+    dispatch(receiveUsers(data));
+    return data
+  }
 };
 
 export const fetchUser = (userId) => async (dispatch) => {
