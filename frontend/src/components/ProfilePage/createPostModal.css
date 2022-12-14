@@ -4,7 +4,8 @@
   top: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(215, 213, 213, 0.116);
+  background-color: rgba(215, 213, 213, 0.52);
+  box-shadow: 0px 12px 12px 0px lightgrey;
 }
 
 .actual-create-post-form {

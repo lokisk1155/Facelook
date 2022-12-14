@@ -29,7 +29,7 @@
 }
 
 .about-page-button-style:focus {
-  background-color: blue;
+  outline: none;
 }
 
 .profile-top-container {

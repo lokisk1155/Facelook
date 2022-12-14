@@ -18,12 +18,11 @@
 }
 
 .profile-pic-modal {
-  height: 35px;
-  width: 35px;
-  border-radius: 30px;
-  margin-right: 15px;
-  margin-top: 10px;
+  border-radius: 50%;
   cursor: pointer;
+  height: 38px;
+  width: 38px;
+  margin-top: 5px;
 }
 
 .nav-middle-links {
@@ -114,6 +113,7 @@
   padding: 0.5em;
   border: none;
   font-size: 1em;
+  outline: none;
 }
 
 .search-box {
@@ -155,7 +155,29 @@
 .right-container-navbar {
   float: left;
   display: flex;
-  width: 29vw;
+  width: 30vw;
   height: 50px;
   justify-content: flex-end;
 }
+
+
+
+.menu-svg {
+  height: 20px;
+  width: 20px;
+  margin-top: 2.5px;
+}
+
+.menu-button-navbar {
+  cursor: pointer;
+  height: 38px;
+  width: 38px;
+  margin-top: 5px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 50%;
+  background-color: #f0f2f5;
+}
+
+
+

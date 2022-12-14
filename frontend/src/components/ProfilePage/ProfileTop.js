@@ -32,22 +32,22 @@ function ProfileTop() {
     });
   }, []);
 
-  // const friends = useSelector((state) => {
-  //   return state.friend;
-  // });
+  const friends = useSelector((state) => {
+    return state.friend;
+  });
 
-  // const friend = useSelector(({ friend }) => {
-  //   const output = Object.values(friend).filter((f) => {
-  //     return (
-  //       (f.sender_id == sessionUser.id && f.receiver_id == currentUser.id) ||
-  //       (f.sender_id == currentUser.id && f.receiver_id == sessionUser.id)
-  //     );
-  //   });
-  //   return output;
-  // });
+  const friend = useSelector(({ friend }) => {
+    const output = Object.values(friend).filter((f) => {
+      return (
+        (f.sender_id == sessionUser.id && f.receiver_id == currentUser.id) ||
+        (f.sender_id == currentUser.id && f.receiver_id == sessionUser.id)
+      );
+    });
+    return output;
+  });
 
-  // const is_friend = currentUser.friends.includes(sessionUser.id);
-  // const not_self = currentUser.id === sessionUser.id
+  const is_friend = currentUser.friends.includes(sessionUser.id);
+  const not_self = currentUser.id === sessionUser.id
 
   const handleFile = (e) => {
     const file = e.target.files[0];
@@ -65,24 +65,24 @@ function ProfileTop() {
     }
   };
 
-  // const handleAdd = (e) => {
-  //   e.preventDefault();
-  //   const friendRequest = {
-  //     sender_id: sessionUser.id,
-  //     receiver_id: currentUser.id,
-  //   };
-  //   return dispatch(addFriend(friendRequest));
-  // };
+  const handleAdd = (e) => {
+    e.preventDefault();
+    const friendRequest = {
+      sender_id: sessionUser.id,
+      receiver_id: currentUser.id,
+    };
+    return dispatch(addFriend(friendRequest));
+  };
 
-  // const handleDelete = (e) => {
-  //   e.preventDefault();
-  //   if (is_friend) {
-  //     const friendshipId = friend[0].id;
-  //     dispatch(deleteFriend(friendshipId)).then(() => {
-  //       dispatch(fetchUser(currentUser.id));
-  //     });
-  //   }
-  // };
+  const handleDelete = (e) => {
+    e.preventDefault();
+    if (is_friend) {
+      const friendshipId = friend[0].id;
+      dispatch(deleteFriend(friendshipId)).then(() => {
+        dispatch(fetchUser(currentUser.id));
+      });
+    }
+  };
 
   const preview = profilePicUrl ? (
     <img src={profilePicUrl} style={{ width: "200px" }} />
@@ -107,14 +107,14 @@ function ProfileTop() {
         <br></br>
         {preview}
       </div>
-      {/* {not_self || <div>
+      {not_self || <div>
       {is_friend ? ( 
           <button onClick={handleDelete}>Delete Friend</button>
         ) : (
           <button onClick={handleAdd}>Add Friend</button>
         )
       }
-      </div>} */}
+      </div>}
       <div className="profile-selectors">
         <Link to={`/ProfilePage/${id}`}>
           <button className="posts-selector-button">Posts</button>

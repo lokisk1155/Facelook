@@ -6,7 +6,7 @@ class Api::FriendsController < ApplicationController
             @sender = User.find(friends_params[:sender_id])
             @receiver = User.find(friends_params[:receiver_id])
             @friendship = [@sender, @receiver]
-            render :index
+            render :show 
         else 
             render json: @friend.errors.full_messages
         end 
@@ -77,8 +77,8 @@ class Api::FriendsController < ApplicationController
 
     private 
 
-    def friends_params 
+    def friends_params
         params.require(:friend).permit(:id, :sender_id, :receiver_id)
-    end 
+      end
 
 end 
