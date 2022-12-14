@@ -34,6 +34,10 @@ function Friends() {
 
   console.log(friendsArray, 'yo')
 
+  if (!friendsArray) {
+    return null
+  }
+
   return (
     <div>
       {Object.values(friendsArray).map((friend) => {
