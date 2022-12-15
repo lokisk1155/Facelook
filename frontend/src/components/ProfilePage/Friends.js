@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import csrfFetch from "../../store/csrf";
 import { useState } from "react";
 import { fetchUsers } from "../../store/user";
+import profilePic from "../NavBar/imgs/blank.png";
 
 function Friends() {
   const dispatch = useDispatch();
@@ -20,36 +21,25 @@ function Friends() {
 
   useEffect(() => {
     const fetchData = async () => {
-      // Wait for dispatch(fetchFriends(id)) to complete before calling fetchUsers
       await dispatch(fetchFriends(id));
       if (friends) {
         const users = await dispatch(fetchUsers(friends))
         setFriendsArray(users);
-      } else {
-        setFriendsArray(['You have no friends idiot'])
       }
     }
     fetchData() 
   }, []);
 
-  console.log(friendsArray, 'yo')
-
-  if (!friendsArray) {
-    return null
-  }
-
   return (
     <div>
-      {Object.values(friendsArray).map((friend) => {
+      {friendsArray ? Object.values(friendsArray).map((friend) => {
         return (
-          <div>
-            <p>{friend.first_name}</p>
-            <p>{friend.last_name}</p>
-            <p>{friend.day}</p>
-            <p>{friend.month}</p>
+          <div key={friend.id} className="friend-profile-page-container">
+            <img className="friend-profile-pic" src={profilePic}></img>
+            <p className="friend-profile-name" >{`${friend.first_name} ${friend.last_name}`}</p>
           </div>
         );
-      })}
+      }) : null}
     </div>
   );
 }
