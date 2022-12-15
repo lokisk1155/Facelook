@@ -1,0 +1,93 @@
+.profile-top-container {
+    height: 80vh;
+    margin-top: 55px;
+
+}
+
+.profile-page-header {
+    display: flex;
+    width: 100%;
+    width: 100vw;
+    justify-content: center;
+
+}
+
+.cover-photo-profile-page {
+
+}
+
+.right-side-of-page-header {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.toggle-friends-button {
+    cursor: pointer;
+}
+
+.profile-selectors {
+    margin-top: 2%;
+    border-top: 3px solid grey;
+    border-bottom: 3px solid black;
+    margin-left: 13%;
+    width: 74.25%;
+
+}
+
+.about-selector-button {
+    border: none;
+    height: 6vh;
+    width: 6vw;
+}
+.post-selector-button {
+    border: none;
+    height: 6vh;
+    width: 6vw;
+}
+.about-selector-button:hover {
+    background-color: grey;
+}
+.post-selector-button:hover {
+    background-color: grey;
+}
+
+.left-side-of-page-header {
+    display: flex;
+    margin-top: -28px;
+    margin-right: 37.5em;
+}
+
+.profile-top-profile-pic {
+    height: 180px;
+    width: 180px;
+    border-radius: 50%;
+    border: 3px white;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.name-friend-count-container {
+    margin-top: 5vh;
+}
+
+.background-photo-container-profile-page {
+    height: 410px;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.background-photo-profile-page { 
+    width: 80%;
+    height: 80%;
+    height: 410px;
+    width: 1090px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    object-fit: cover;
+    background-color:gray;
+    cursor: pointer;
+}
+
