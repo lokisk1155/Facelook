@@ -22,13 +22,18 @@ class Api::FriendsController < ApplicationController
     end 
 
     def destroy   
-        @friend = Friend.find(params[:id])
+        @friend = Friend.find_by(sender_id: params[:id], receiver_id: current_user.id)
+
+        unless @friend
+            @friend = Friend.find_by(sender_id: current_user.id, receiver_id: params[:id])
+        end
+
         if @friend
-            @friend.destroy 
-            render :show
-        else 
-            render json: {} 
-        end 
+            @friend.destroy
+            render json: { }
+        else
+            render json: { errors: ["not friends."]}, status: 403
+        end
     end 
 
     def index 

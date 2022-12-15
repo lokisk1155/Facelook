@@ -42,8 +42,8 @@ export const addFriend = (friendRequest) => async (dispatch) => {
   dispatch(receiveFriend(data));
 };
 
-export const deleteFriend = (friendshipId) => async (dispatch) => {
-  const res = await csrfFetch(`/api/friends/${friendshipId}`, {
+export const deleteFriend = (userId) => async (dispatch) => {
+  const res = await csrfFetch(`/api/friends/${userId}`, {
     method: "DELETE",
   });
   const data = await res.json();

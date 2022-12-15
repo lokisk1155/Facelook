@@ -74,8 +74,7 @@ function ProfileTop() {
   const handleDelete = (e) => {
     e.preventDefault();
     if (isFriend) {
-      const friendshipId = friend[0].id;
-      dispatch(deleteFriend(friendshipId)).then(() => {
+      dispatch(deleteFriend(currentUser.id)).then(() => {
         dispatch(fetchUser(currentUser.id));
       });
     }
