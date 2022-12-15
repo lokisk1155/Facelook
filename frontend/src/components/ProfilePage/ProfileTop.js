@@ -6,7 +6,7 @@ import { useState } from "react";
 import { getCurrent } from "../../store/user";
 import { Link, useParams } from "react-router-dom";
 import profilePicBlank from "../NavBar/imgs/blank.png";
-import "./ProfileTop.css"
+import "./ProfileTop.css";
 
 function ProfileTop() {
   const dispatch = useDispatch();
@@ -14,8 +14,8 @@ function ProfileTop() {
   const [notSelf, setNotSelf] = useState(true);
   const [profilePic, setProfilePic] = useState();
   const [profilePicUrl, setProfilePicUrl] = useState(null);
-  const [isFriend, setIsFriend] = useState(null)
-  const [toggleDropDown, setToggleDropDown] = useState(false)
+  const [isFriend, setIsFriend] = useState(null);
+  const [toggleDropDown, setToggleDropDown] = useState(false);
 
   const { id } = useParams();
 
@@ -26,18 +26,20 @@ function ProfileTop() {
   });
 
   const friendCount = useSelector((state) => {
-    return state.user[id].friends.length
-  })
+    return state.user[id].friends.length;
+  });
 
   useEffect(() => {
-    dispatch(fetchUser(id)).then(() => {
-      dispatch(fetchFriend(id));
-    }).then(() => {
-      setIsFriend(currentUser.friends.includes(sessionUser.id))
-    })
+    dispatch(fetchUser(id))
+      .then(() => {
+        dispatch(fetchFriend(id));
+      })
+      .then(() => {
+        setIsFriend(currentUser.friends.includes(sessionUser.id));
+      });
 
     if (currentUser.id === sessionUser.id) {
-      setNotSelf(false)
+      setNotSelf(false);
     }
   }, []);
 
@@ -91,30 +93,37 @@ function ProfileTop() {
 
   return (
     <div className="profile-top-container">
-
-
       <div className="background-photo-container-profile-page">
-          <div className="background-photo-profile-page"></div>
+        <div className="background-photo-profile-page"></div>
       </div>
 
       <div className="profile-page-header">
         <div className="left-side-of-page-header">
-        <img className="profile-top-profile-pic" src={profilePicBlank} />
-        <div className="name-friend-count-container">
-          <p>{`${currentUser.first_name} ${currentUser.last_name}`}</p>
-          <p>{friendCount} friends</p>
-        </div>
+          <img className="profile-top-profile-pic" src={profilePicBlank} />
+          <div className="name-friend-count-container">
+            <p>{`${currentUser.first_name} ${currentUser.last_name}`}</p>
+            <p>{friendCount} friends</p>
+          </div>
         </div>
 
         <div className="right-side-of-page-header">
-        <div className="friends-toggle-button-container">
-          {isFriend && notSelf ? <button className="toggle-friends-button" onClick={(() => setToggleDropDown(!toggleDropDown))}>Friends</button> : null }
-          {!isFriend && notSelf ? <button className="toggle-friends-button"  onClick={handleAdd}>Add Friend</button> : null}
-        </div>
+          <div className="friends-toggle-button-container">
+            {isFriend && notSelf ? (
+              <button
+                className="toggle-friends-button"
+                onClick={() => setToggleDropDown(!toggleDropDown)}
+              >
+                Friends
+              </button>
+            ) : null}
+            {!isFriend && notSelf ? (
+              <button className="toggle-friends-button" onClick={handleAdd}>
+                Add Friend
+              </button>
+            ) : null}
+          </div>
         </div>
       </div>
-
-  
 
       <div className="profile-selectors">
         <Link to={`/ProfilePage/${id}`}>
@@ -135,9 +144,8 @@ function ProfileTop() {
 
 export default ProfileTop;
 
-
-
-      {/* <h2 id="h1">Upload profile picture</h2>
+{
+  /* <h2 id="h1">Upload profile picture</h2>
       <hr />
       <br></br>
       <form id="submit-form">
@@ -153,4 +161,5 @@ export default ProfileTop;
         {preview && <h4>Image preview</h4>}
         <br></br>
         {preview}
-      </div> */}
+      </div> */
+}

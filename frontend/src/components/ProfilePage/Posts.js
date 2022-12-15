@@ -78,20 +78,17 @@ function Posts() {
     }
 
     if (currentUser) {
-      setBio(currentUser.bio)
+      setBio(currentUser.bio);
     }
-
   }, [postDeleted]);
-
-
-
 
   const handleBioSubmit = (e) => {
     e.preventDefault();
     setCustomBio(!customBio);
     setToggleBio(customBio);
     const user = {
-      ...currentUser, bio
+      ...currentUser,
+      bio,
     };
     return dispatch(updateUser(user));
   };

@@ -13,9 +13,9 @@ function PostFeed() {
   const [postDeleted, setPostDeleted] = useState(false);
   const [checkPost, setCheckPost] = useState(null);
   const [togglePost, setTogglePost] = useState(false);
-  const [targetedPost, setTargetedPost] = useState(null)
+  const [targetedPost, setTargetedPost] = useState(null);
 
-  console.log(targetedPost)
+  console.log(targetedPost);
 
   const posts = useSelector((state) => {
     if (state.post) {
@@ -101,10 +101,7 @@ function PostFeed() {
                 <div key={post.id} className="individual-post">
                   <div className="post-header">
                     <Link to={`/ProfilePage/${post.user_id}`}>
-                      <img
-                        className="post-pic"
-                        src={profilePic}
-                      ></img>
+                      <img className="post-pic" src={profilePic}></img>
                     </Link>
                     <h5 className="current-user-name">
                       {typeof users[post.user_id] !== "undefined"
@@ -114,9 +111,7 @@ function PostFeed() {
                         : "temp"}
                     </h5>
                   </div>
-                  <p className="post-content">
-                    {post.content}
-                  </p>
+                  <p className="post-content">{post.content}</p>
                   {currentUser.id === post.user_id ? (
                     <button onClick={() => handleDeletePost(post)}>
                       Delete Post
@@ -125,8 +120,12 @@ function PostFeed() {
                     <div />
                   )}
                   {currentUser.id === post.user_id ? (
-                    <button onClick={(e) => {setCheckPost(true)
-                      setTargetedPost(post)}}>
+                    <button
+                      onClick={(e) => {
+                        setCheckPost(true);
+                        setTargetedPost(post);
+                      }}
+                    >
                       Edit Post
                     </button>
                   ) : (

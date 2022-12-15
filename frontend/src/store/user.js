@@ -27,14 +27,14 @@ export const receiveUsers = (users) => ({
 export const fetchUsers = (userIds) => async (dispatch) => {
   let res;
   if (userIds) {
-    res = await csrfFetch(`/api/users?userIds=${userIds}`)
+    res = await csrfFetch(`/api/users?userIds=${userIds}`);
     const data = await res.json();
-    return data 
-  } else {  
+    return data;
+  } else {
     res = await csrfFetch(`/api/users`);
     const data = await res.json();
     dispatch(receiveUsers(data));
-    return data
+    return data;
   }
 };
 
