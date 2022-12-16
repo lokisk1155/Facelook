@@ -40,18 +40,19 @@ function ProfileTop() {
 
     if (currentUser.id === sessionUser.id) {
       setNotSelf(false);
-    }
-  }, []);
+    } 
 
-  const friend = useSelector(({ friend }) => {
-    const output = Object.values(friend).filter((f) => {
-      return (
-        (f.sender_id == sessionUser.id && f.receiver_id == currentUser.id) ||
-        (f.sender_id == currentUser.id && f.receiver_id == sessionUser.id)
-      );
-    });
-    return output;
-  });
+  }, [isFriend]);
+
+  // const friend = useSelector(({ friend }) => {
+  //   const output = Object.values(friend).filter((f) => {
+  //     return (
+  //       (f.sender_id == sessionUser.id && f.receiver_id == currentUser.id) ||
+  //       (f.sender_id == currentUser.id && f.receiver_id == sessionUser.id)
+  //     );
+  //   });
+  //   return output;
+  // });
 
   const handleFile = (e) => {
     const file = e.target.files[0];
@@ -71,6 +72,7 @@ function ProfileTop() {
 
   const handleAdd = (e) => {
     e.preventDefault();
+    setIsFriend(true)
     const friendRequest = {
       sender_id: sessionUser.id,
       receiver_id: currentUser.id,
@@ -79,17 +81,17 @@ function ProfileTop() {
   };
 
   const handleDelete = (e) => {
-    e.preventDefault();
-    if (isFriend) {
-      dispatch(deleteFriend(currentUser.id)).then(() => {
-        dispatch(fetchUser(currentUser.id));
-      });
-    }
+     e.preventDefault();
+     if (isFriend) {
+      setIsFriend(false)
+      return dispatch(deleteFriend(currentUser.id))
+     }
   };
 
   const preview = profilePicUrl ? (
     <img src={profilePicUrl} style={{ width: "200px" }} />
   ) : null;
+
 
   return (
     <div className="profile-top-container">
@@ -103,18 +105,20 @@ function ProfileTop() {
           <div className="name-friend-count-container">
             <p>{`${currentUser.first_name} ${currentUser.last_name}`}</p>
             <p>{friendCount} friends</p>
+            {toggleDropDown && <button onClick={handleDelete}>delete friend</button>}
           </div>
         </div>
 
         <div className="right-side-of-page-header">
           <div className="friends-toggle-button-container">
             {isFriend && notSelf ? (
-              <button
+              <div
                 className="toggle-friends-button"
                 onClick={() => setToggleDropDown(!toggleDropDown)}
-              >
+              > 
                 Friends
-              </button>
+              </div>
+              
             ) : null}
             {!isFriend && notSelf ? (
               <button className="toggle-friends-button" onClick={handleAdd}>

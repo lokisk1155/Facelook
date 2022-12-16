@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import { useRef } from "react";
 import SearchModal from "./SearchModal";
 import { useLocation } from "react-router-dom";
+import { Modal } from "../../context/Modal";
 
 function NavBar() {
   //const searchRef = useRef();
@@ -83,13 +84,15 @@ function NavBar() {
           </div>
         )}
 
-        {toggleSearch && (
-          <SearchModal
-            typed={typed}
-            setTyped={setTyped}
-            closeModal={setToggleSearch}
-          />
-        )}
+        {toggleSearch && ( 
+                <Modal onClose={() => setToggleSearch(false)}>
+                  <SearchModal
+                      typed={typed}
+                      setTyped={setTyped}
+                      closeModal={setToggleSearch}
+                  />
+                </Modal>
+        )}  
       </div>
 
       <div className="middle-column-navbar">
@@ -158,7 +161,9 @@ function NavBar() {
         </div>
       </div>
       {profileModal && (
-        <ProfilePicModal closeModal={setProfileModal} user={user} />
+        <Modal onClose={() => setProfileModal(false)}>
+          <ProfilePicModal closeModal={setProfileModal} user={user} />
+        </Modal>
       )}
     </div>
   );
