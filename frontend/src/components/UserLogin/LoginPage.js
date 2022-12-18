@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import CreateAccountForm from "./CreateAccountForm";
 import RecentLogins from "./RecentLogins";
-import { Modal } from "../../context/Modal";
+import CreateModal from "../../context/CreateModal";
 
 function LoginPage() {
   const dispatch = useDispatch();
@@ -51,7 +51,7 @@ function LoginPage() {
   return (
     <>
       <div className="container">
-        <div className="login">
+        {!createFormOpen ? <div className="login">
           <form className="login-form" onSubmit={handleSubmit}>
             <div>
               <input
@@ -92,14 +92,11 @@ function LoginPage() {
               </button>
             </div>
           </form>
+        </div> : null}
+      
+        {createFormOpen ? <div className="create-account-container"><CreateAccountForm closeForm={setCreateFormOpen} /></div>: null}
         </div>
-
-        {createFormOpen && (
-          <Modal onClose={() => setShowModal(false)}>
-            <CreateAccountForm closeForm={setCreateFormOpen} />
-          </Modal>
-        )}
-      </div>
+  
     </>
   );
 }

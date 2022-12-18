@@ -114,3 +114,9 @@ body {
 .password.active {
   border: 1px solid red;
 }
+
+.create-account-container {
+  background-color: white;
+  padding: 10px;
+
+}

@@ -1,7 +1,6 @@
 .signup-modal-form {
-  min-height: 592px;
-  width: 431px;
-  margin-right: 2vw;
+  height: 35vh;
+  width: 30vw;
 }
 
 .signup-modal {
