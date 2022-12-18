@@ -3,7 +3,6 @@ import { logout } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import "./profilePicModal.css";
 import profilePic from "./imgs/blank.png";
-import { useNavigate } from "react-router-dom";
 
 function ProfilePicModal({ closeModal }) {
   const dispatch = useDispatch();

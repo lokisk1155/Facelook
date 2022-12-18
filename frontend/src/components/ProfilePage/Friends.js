@@ -1,10 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { fetchFriend } from "../../store/friend";
 import { useSelector } from "react-redux";
 import { fetchFriends } from "../../store/friend";
 import { useParams } from "react-router-dom";
-import csrfFetch from "../../store/csrf";
 import { useState } from "react";
 import { fetchUsers } from "../../store/user";
 import profilePic from "../NavBar/imgs/blank.png";

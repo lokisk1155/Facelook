@@ -1,6 +1,5 @@
 import { useDispatch } from "react-redux";
 import { updateUser } from "../../../store/user";
-
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { getCurrent } from "../../../store/user";

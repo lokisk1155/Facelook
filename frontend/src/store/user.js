@@ -1,6 +1,5 @@
 import csrfFetch from "./csrf";
-import { receiveFriends, RECEIVE_FRIEND, REMOVE_FRIEND } from "./friend";
-
+import { RECEIVE_FRIEND } from "./friend";
 export const SET_CURRENT_PROFILE = "users/SET_CURRENT_PROFILE";
 export const RECEIVE_USERS = "users/RECEIVE_USERS";
 export const SET_CURRENT_ARRAY = "users/SET_CURRENT_ARRAY";

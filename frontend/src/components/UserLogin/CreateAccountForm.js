@@ -4,7 +4,6 @@ import * as sessionActions from "../../store/session";
 import "./CreateAccountForm.css";
 import { Redirect } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import { getCurrent } from "../../store/user";
 
 function CreateAccountForm({ closeForm }) {
   const currentUser = useSelector((state) => state.session.user);
@@ -33,7 +32,6 @@ function CreateAccountForm({ closeForm }) {
     days.push(i);
   }
 
-  // let credential;
   const handleSubmit = (e) => {
     e.preventDefault();
     const user = {

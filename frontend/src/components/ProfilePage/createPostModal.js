@@ -1,6 +1,6 @@
 import "./createPostModal.css";
 import { useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { createPost } from "../../store/post";
 import profilePic from "../NavBar/imgs/blank.png";
 import { updatePost } from "../../store/post";

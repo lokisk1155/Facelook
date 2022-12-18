@@ -6,10 +6,8 @@ import {
 } from "../../../store/user";
 import { useSelector } from "react-redux";
 import { getCurrent } from "../../../store/user";
-import { fetchUser } from "../../../store/user";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { setCurrentProfileArray } from "../../../store/user";
 import { useState } from "react";
 
 function PlacesLived() {

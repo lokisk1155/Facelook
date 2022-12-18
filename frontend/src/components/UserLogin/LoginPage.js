@@ -3,10 +3,7 @@ import "./LoginPage.css";
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
 import CreateAccountForm from "./CreateAccountForm";
-import RecentLogins from "./RecentLogins";
-import CreateModal from "../../context/CreateModal";
 
 function LoginPage() {
   const dispatch = useDispatch();
@@ -21,11 +18,6 @@ function LoginPage() {
 
   const demoEmail = "ooo@aol.com";
   const demoPassword = "12345678";
-
-  // if (errors) {
-  //   const error = document.getElementsByClassName('credential')
-  //   error.focus()
-  // }
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -51,52 +43,57 @@ function LoginPage() {
   return (
     <>
       <div className="container">
-        {!createFormOpen ? <div className="login">
-          <form className="login-form" onSubmit={handleSubmit}>
-            <div>
-              <input
-                className={`credential ${open ? "active" : "inactive"}`}
-                type="text"
-                value={credential}
-                placeholder={"Email or Phone number"}
-                onChange={(e) => setCredential(e.target.value)}
-                required
-              />
-            </div>
+        {!createFormOpen ? (
+          <div className="login">
+            <form className="login-form" onSubmit={handleSubmit}>
+              <div>
+                <input
+                  className={`credential ${open ? "active" : "inactive"}`}
+                  type="text"
+                  value={credential}
+                  placeholder={"Email or Phone number"}
+                  onChange={(e) => setCredential(e.target.value)}
+                  required
+                />
+              </div>
 
-            <div>
-              <input
-                className={`password ${open ? "active" : "inactive"}`}
-                type="password"
-                value={password}
-                placeholder={"Password"}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
-            <div>
-              <button className="login-button" type="submit">
-                Log In
-              </button>
+              <div>
+                <input
+                  className={`password ${open ? "active" : "inactive"}`}
+                  type="password"
+                  value={password}
+                  placeholder={"Password"}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
+              <div>
+                <button className="login-button" type="submit">
+                  Log In
+                </button>
 
-              <Link onClick={handleClick} className="forgot-pw">
-                Demo User
-              </Link>
+                <Link onClick={handleClick} className="forgot-pw">
+                  Demo User
+                </Link>
 
-              <hr id="hr" />
-              <button
-                className="create-new-account"
-                onClick={() => setCreateFormOpen(true)}
-              >
-                Create New Account
-              </button>
-            </div>
-          </form>
-        </div> : null}
-      
-        {createFormOpen ? <div className="create-account-container"><CreateAccountForm closeForm={setCreateFormOpen} /></div>: null}
-        </div>
-  
+                <hr id="hr" />
+                <button
+                  className="create-new-account"
+                  onClick={() => setCreateFormOpen(true)}
+                >
+                  Create New Account
+                </button>
+              </div>
+            </form>
+          </div>
+        ) : null}
+
+        {createFormOpen ? (
+          <div className="create-account-container">
+            <CreateAccountForm closeForm={setCreateFormOpen} />
+          </div>
+        ) : null}
+      </div>
     </>
   );
 }

@@ -10,9 +10,7 @@ import "./ProfileTop.css";
 
 function ProfileTop() {
   const dispatch = useDispatch();
-
   const [notSelf, setNotSelf] = useState(true);
-  const [profilePic, setProfilePic] = useState();
   const [profilePicUrl, setProfilePicUrl] = useState(null);
   const [isFriend, setIsFriend] = useState(null);
   const [toggleDropDown, setToggleDropDown] = useState(false);
@@ -40,39 +38,12 @@ function ProfileTop() {
 
     if (currentUser.id === sessionUser.id) {
       setNotSelf(false);
-    } 
-
-  }, [isFriend]);
-
-  // const friend = useSelector(({ friend }) => {
-  //   const output = Object.values(friend).filter((f) => {
-  //     return (
-  //       (f.sender_id == sessionUser.id && f.receiver_id == currentUser.id) ||
-  //       (f.sender_id == currentUser.id && f.receiver_id == sessionUser.id)
-  //     );
-  //   });
-  //   return output;
-  // });
-
-  const handleFile = (e) => {
-    const file = e.target.files[0];
-    const selectButton = document.getElementById("upload-photo-button");
-    const uploadButton = document.getElementById("submit-photo-button-dead");
-    if (file) {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-      fileReader.onload = () => {
-        setProfilePic(file);
-        setProfilePicUrl(fileReader.result);
-      };
-      selectButton.id = "upload-photo-button-dead";
-      uploadButton.id = "submit-photo-button";
     }
-  };
+  }, [isFriend]);
 
   const handleAdd = (e) => {
     e.preventDefault();
-    setIsFriend(true)
+    setIsFriend(true);
     const friendRequest = {
       sender_id: sessionUser.id,
       receiver_id: currentUser.id,
@@ -81,17 +52,16 @@ function ProfileTop() {
   };
 
   const handleDelete = (e) => {
-     e.preventDefault();
-     if (isFriend) {
-      setIsFriend(false)
-      return dispatch(deleteFriend(currentUser.id))
-     }
+    e.preventDefault();
+    if (isFriend) {
+      setIsFriend(false);
+      return dispatch(deleteFriend(currentUser.id));
+    }
   };
 
   const preview = profilePicUrl ? (
     <img src={profilePicUrl} style={{ width: "200px" }} />
   ) : null;
-
 
   return (
     <div className="profile-top-container">
@@ -105,7 +75,9 @@ function ProfileTop() {
           <div className="name-friend-count-container">
             <p>{`${currentUser.first_name} ${currentUser.last_name}`}</p>
             <p>{friendCount} friends</p>
-            {toggleDropDown && <button onClick={handleDelete}>delete friend</button>}
+            {toggleDropDown && (
+              <button onClick={handleDelete}>delete friend</button>
+            )}
           </div>
         </div>
 
@@ -115,10 +87,9 @@ function ProfileTop() {
               <div
                 className="toggle-friends-button"
                 onClick={() => setToggleDropDown(!toggleDropDown)}
-              > 
+              >
                 Friends
               </div>
-              
             ) : null}
             {!isFriend && notSelf ? (
               <button className="toggle-friends-button" onClick={handleAdd}>
@@ -167,3 +138,29 @@ export default ProfileTop;
         {preview}
       </div> */
 }
+
+// const friend = useSelector(({ friend }) => {
+//   const output = Object.values(friend).filter((f) => {
+//     return (
+//       (f.sender_id == sessionUser.id && f.receiver_id == currentUser.id) ||
+//       (f.sender_id == currentUser.id && f.receiver_id == sessionUser.id)
+//     );
+//   });
+//   return output;
+// });
+
+// const handleFile = (e) => {
+//   const file = e.target.files[0];
+//   const selectButton = document.getElementById("upload-photo-button");
+//   const uploadButton = document.getElementById("submit-photo-button-dead");
+//   if (file) {
+//     const fileReader = new FileReader();
+//     fileReader.readAsDataURL(file);
+//     fileReader.onload = () => {
+//       setProfilePic(file);
+//       setProfilePicUrl(fileReader.result);
+//     };
+//     selectButton.id = "upload-photo-button-dead";
+//     uploadButton.id = "submit-photo-button";
+//   }
+// };

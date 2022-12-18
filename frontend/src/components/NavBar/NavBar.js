@@ -2,13 +2,11 @@ import "./NavBar.css";
 import profilePic from "./imgs/blank.png";
 import { useState } from "react";
 import ProfilePicModal from "./ProfilePicModal";
-import SearchBar from "./SearchBar";
 import { useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import Facebook from "./imgs/Facebook.png";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-import { useRef } from "react";
 import SearchModal from "./SearchModal";
 import { useLocation } from "react-router-dom";
 import { Modal } from "../../context/Modal";
@@ -84,15 +82,15 @@ function NavBar() {
           </div>
         )}
 
-        {toggleSearch && ( 
-                <Modal onClose={() => setToggleSearch(false)}>
-                  <SearchModal
-                      typed={typed}
-                      setTyped={setTyped}
-                      closeModal={setToggleSearch}
-                  />
-                </Modal>
-        )}  
+        {toggleSearch && (
+          <Modal onClose={() => setToggleSearch(false)}>
+            <SearchModal
+              typed={typed}
+              setTyped={setTyped}
+              closeModal={setToggleSearch}
+            />
+          </Modal>
+        )}
       </div>
 
       <div className="middle-column-navbar">

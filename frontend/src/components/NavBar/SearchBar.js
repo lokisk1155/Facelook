@@ -1,13 +1,9 @@
-import { Redirect } from "react-router-dom";
 import "./SearchBar.css";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { fetchUsers, updateUser } from "../../store/user";
 import { useEffect } from "react";
 import csrfFetch from "../../store/csrf";
-import { Link } from "react-router-dom";
-import SearchModal from "./SearchModal";
 import profilePic from "./imgs/blank.png";
 
 function SearchBar({
@@ -19,7 +15,6 @@ function SearchBar({
 }) {
   const history = useHistory();
   const dispatch = useDispatch();
-  //const [typed, setTyped] = useState("");
   const [users, setUsers] = useState(null);
   const [filteredUsers, setFilteredUsers] = useState(null);
   const [recentSearches, setRecentSearches] = useState([]);
@@ -94,17 +89,6 @@ function SearchBar({
         ></input>
       </div>
 
-      {/* {recentSearches.length > 0 && !filteredUsers && Object.keys(recentSearches).length > 0 &&
-              Object.values(recentSearches).map((user) => {
-                return (
-                  <Link
-                    className="result-user"
-                    to={`/ProfilePage/${user.id}`}
-                  >{`${user.first_name} ${user.last_name}`}</Link>
-              );
-                
-      })} */}
-
       {!typed && recentSearches.length < 1 && (
         <h4 className="no-recent-searches">No Recent Searches</h4>
       )}
@@ -116,9 +100,6 @@ function SearchBar({
               <div
                 onClick={() => {
                   history.push(`/ProfilePage/${user.id}`);
-                  // setRecentSearches((users) => {
-                  //   return { ...users, user };
-                  // });
                 }}
               >
                 <div className="result-user-div">
@@ -146,3 +127,22 @@ function SearchBar({
 }
 
 export default SearchBar;
+
+{
+  /* {recentSearches.length > 0 && !filteredUsers && Object.keys(recentSearches).length > 0 &&
+              Object.values(recentSearches).map((user) => {
+                return (
+                  <Link
+                    className="result-user"
+                    to={`/ProfilePage/${user.id}`}
+                  >{`${user.first_name} ${user.last_name}`}</Link>
+              );
+                
+      })} */
+}
+
+// setRecentSearches((users) => {
+//   return { ...users, user };
+// });
+
+//const [typed, setTyped] = useState("");

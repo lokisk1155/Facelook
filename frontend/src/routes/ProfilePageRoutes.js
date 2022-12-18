@@ -1,18 +1,13 @@
 import { Switch, Route } from "react-router-dom";
-import ProfileHeader from "../components/ProfilePage/ProfileHeader";
 import AboutPage from "../components/ProfilePage/AboutPage/AboutPage";
 import ProfileTop from "../components/ProfilePage/ProfileTop";
 import Overview from "../components/ProfilePage/AboutPage/Overview";
-import HomePage from "../components/HomePage/HomePage";
 import Posts from "../components/ProfilePage/Posts";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
 import WorkEd from "../components/ProfilePage/AboutPage/WorkEd";
 import PlacesLived from "../components/ProfilePage/AboutPage/PlacesLived";
 import ContactInfo from "../components/ProfilePage/AboutPage/ContactInfo";
 import Relationship from "../components/ProfilePage/AboutPage/relationship";
 import Friends from "../components/ProfilePage/Friends";
-import { fetchUser } from "../store/user";
 import "./routeStyling.css";
 
 export function ProfilePageRoutes() {

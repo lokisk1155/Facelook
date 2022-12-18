@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getCurrent } from "../../../store/user";
 import { useSelector } from "react-redux";
-import { fetchUser } from "../../../store/user";
 import { useEffect, useState } from "react";
 import "./overview.css";
 
