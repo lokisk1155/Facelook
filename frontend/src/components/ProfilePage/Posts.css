@@ -1,8 +1,7 @@
 .omega-profile-page-container {
-  height: 10000px;
-  width: 100vw;
   display: flex;
   background-color: #f0f2f5;
+  margin-top: 5vh;
 }
 
 .intro-container {

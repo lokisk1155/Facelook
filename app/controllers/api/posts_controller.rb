@@ -1,12 +1,5 @@
 class Api::PostsController < ApplicationController
 
-        # (passed in from frontend, type and author_id)
-        # if type = home page
-        # then @posts = Post.all
-        # else if type = prof page
-        # @posts = Post.find(by an author_id) (1 way)
-        # @posts = Post.user_posts
-
     def index 
         @posts = Post.all
         render :index
@@ -23,7 +16,6 @@ class Api::PostsController < ApplicationController
     end
 
     def update 
-
         @post = Post.find(params[:id])
         update = @post.update(update_params)
         if update 

@@ -14,6 +14,8 @@ function ProfileTop() {
   const [profilePicUrl, setProfilePicUrl] = useState(null);
   const [isFriend, setIsFriend] = useState(null);
   const [toggleDropDown, setToggleDropDown] = useState(false);
+  const [friendCount, setFriendCount] = useState(false)
+  const [currentUserName, setCurrentUserName] = useState(false)
 
   const { id } = useParams();
 
@@ -23,22 +25,15 @@ function ProfileTop() {
     return state.session.user;
   });
 
-  const friendCount = useSelector((state) => {
-    return state.user[id].friends.length;
-  });
-
   useEffect(() => {
-    dispatch(fetchUser(id))
-      .then(() => {
-        dispatch(fetchFriend(id));
-      })
-      .then(() => {
+        dispatch(fetchFriend(id)).then(() => {
         setIsFriend(currentUser.friends.includes(sessionUser.id));
-      });
-
-    if (currentUser.id === sessionUser.id) {
-      setNotSelf(false);
-    }
+        setFriendCount(Object.values(currentUser.friends).length)
+        setCurrentUserName(`${currentUser.first_name} ${currentUser.last_name}`)
+        if (currentUser.id === sessionUser.id) {
+          setNotSelf(false);
+        }
+        })
   }, [isFriend]);
 
   const handleAdd = (e) => {
@@ -48,20 +43,21 @@ function ProfileTop() {
       sender_id: sessionUser.id,
       receiver_id: currentUser.id,
     };
-    return dispatch(addFriend(friendRequest));
+    dispatch(addFriend(friendRequest)).then(() => {
+      dispatch(fetchFriend(id))
+    })
   };
 
   const handleDelete = (e) => {
     e.preventDefault();
+    setIsFriend(false)
     if (isFriend) {
       setIsFriend(false);
-      return dispatch(deleteFriend(currentUser.id));
-    }
-  };
-
-  const preview = profilePicUrl ? (
-    <img src={profilePicUrl} style={{ width: "200px" }} />
-  ) : null;
+      dispatch(deleteFriend(currentUser.id)).then(() => {
+        dispatch(fetchFriend(id))
+      })
+    };
+  }
 
   return (
     <div className="profile-top-container">
@@ -73,8 +69,8 @@ function ProfileTop() {
         <div className="left-side-of-page-header">
           <img className="profile-top-profile-pic" src={profilePicBlank} />
           <div className="name-friend-count-container">
-            <p>{`${currentUser.first_name} ${currentUser.last_name}`}</p>
-            <p>{friendCount} friends</p>
+            {currentUserName ? <p>{currentUserName}</p> : null}
+            {friendCount ? <p>{friendCount} friends</p> : null }
             {toggleDropDown && (
               <button onClick={handleDelete}>delete friend</button>
             )}
@@ -119,7 +115,7 @@ function ProfileTop() {
 
 export default ProfileTop;
 
-{
+
   /* <h2 id="h1">Upload profile picture</h2>
       <hr />
       <br></br>
@@ -137,7 +133,7 @@ export default ProfileTop;
         <br></br>
         {preview}
       </div> */
-}
+
 
 // const friend = useSelector(({ friend }) => {
 //   const output = Object.values(friend).filter((f) => {
@@ -164,3 +160,8 @@ export default ProfileTop;
 //     uploadButton.id = "submit-photo-button";
 //   }
 // };
+
+
+// const preview = profilePicUrl ? (
+//   <img src={profilePicUrl} style={{ width: "200px" }} />
+// ) : null;
