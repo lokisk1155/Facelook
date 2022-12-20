@@ -1,8 +1,60 @@
 .friend-profile-page-container {
+   
 }
 
 .friend-profile-pic {
+    height: 65px;
+    margin: 10px;
 }
 
 .friend-profile-name {
 }
+
+
+.please-work-oh-my {
+    justify-content: center;
+    height: 100px;
+}
+
+.actual-friend-container {
+    height: 100px;
+    display: flex;
+    margin: 10px;
+    border: 1px solid lightgrey;
+    align-items: center;
+}
+
+.middle-col {
+    width: 70vw;
+    margin-top: 10px;
+    background-color: white;
+    border-radius: 15px;
+}
+
+
+.right-col {
+    width: 15vw;
+}
+
+.left-col {
+    width: 15vw;
+}
+
+.column-container {
+    display: flex;
+}
+
+.friends-headers {
+    display: flex;
+    margin: 10px;
+    
+}
+
+.friends-search-bar-container {
+    text-align: center;
+}
+
+.friends-search-input {
+
+}
+

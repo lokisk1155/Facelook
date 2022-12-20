@@ -11,7 +11,6 @@ import "./ProfileTop.css";
 function ProfileTop() {
   const dispatch = useDispatch();
   const [notSelf, setNotSelf] = useState(true);
-  const [profilePicUrl, setProfilePicUrl] = useState(null);
   const [isFriend, setIsFriend] = useState(null);
   const [toggleDropDown, setToggleDropDown] = useState(false);
   const [friendCount, setFriendCount] = useState(false)
@@ -26,14 +25,17 @@ function ProfileTop() {
   });
 
   useEffect(() => {
-        dispatch(fetchFriend(id)).then(() => {
-        setIsFriend(currentUser.friends.includes(sessionUser.id));
-        setFriendCount(Object.values(currentUser.friends).length)
-        setCurrentUserName(`${currentUser.first_name} ${currentUser.last_name}`)
-        if (currentUser.id === sessionUser.id) {
-          setNotSelf(false);
-        }
+        dispatch(fetchUser(id)).then(() => {
+          dispatch(fetchFriend(id)).then(() => {
+            setIsFriend(currentUser.friends.includes(sessionUser.id));
+            setFriendCount(Object.values(currentUser.friends).length)
+            setCurrentUserName(`${currentUser.first_name} ${currentUser.last_name}`)
+            if (currentUser.id === sessionUser.id) {
+              setNotSelf(false);
+            }
+          })
         })
+
   }, [isFriend]);
 
   const handleAdd = (e) => {
@@ -165,3 +167,6 @@ export default ProfileTop;
 // const preview = profilePicUrl ? (
 //   <img src={profilePicUrl} style={{ width: "200px" }} />
 // ) : null;
+
+
+// const [profilePicUrl, setProfilePicUrl] = useState(null);
