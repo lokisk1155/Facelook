@@ -47,7 +47,6 @@ export const deleteFriend = (userId) => async (dispatch) => {
     method: "DELETE",
   });
   const data = await res.json();
-
   dispatch(removeFriend(data));
 };
 

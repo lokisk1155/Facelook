@@ -4,7 +4,10 @@
 
 .friend-profile-pic {
     height: 65px;
+    width: 65px;
     margin: 10px;
+    border-radius: 15px;
+    box-shadow: 0.25px 0.75px 0.75px 0.25px lightgrey;
 }
 
 .friend-profile-name {
@@ -14,30 +17,28 @@
 .please-work-oh-my {
     justify-content: center;
     height: 100px;
+    width: 100%;
 }
 
-.actual-friend-container {
-    height: 100px;
-    display: flex;
-    margin: 10px;
-    border: 1px solid lightgrey;
-    align-items: center;
-}
+
 
 .middle-col {
-    width: 70vw;
+    width: 76vw;
     margin-top: 10px;
     background-color: white;
-    border-radius: 15px;
+    border-radius: 5px;
+    border: 0.5px solid lightgrey;
+    box-shadow: 0px 12px 12px 0px lightgrey;
+    margin-bottom: 10px;
 }
 
 
 .right-col {
-    width: 15vw;
+    width: 12vw;
 }
 
 .left-col {
-    width: 15vw;
+    width: 12vw;
 }
 
 .column-container {
@@ -46,15 +47,55 @@
 
 .friends-headers {
     display: flex;
-    margin: 10px;
-    
-}
+    margin: 5px;
 
-.friends-search-bar-container {
-    text-align: center;
 }
 
 .friends-search-input {
+    background-color: rgb(231, 230, 230);
+    border: none;
+    font-size: 1em;
+    outline: none;
+    border-radius: 25px;
+}
+.friends-search-bar-container {
+    display: flex;
+    width: 25%;
+    border: none;
+    background-color: rgb(231, 230, 230);
+    border-radius: 25px;
+    height: 50%;
+    margin: auto;
+    box-shadow: 0.25px 0.75px 0.75px 0.25px lightgrey;
+}
+         
+.unfriend-button-in-map {
+    background-image: url("https://static.xx.fbcdn.net/rsrc.php/v3/yL/r/NpEPqAnLsbj.png");
+    background-position: 0px -63px;
+    background-size: 21px 168px; 
+    width: 20px; 
+    height: 20px; 
+    justify-content: flex-end;
+    display: inline-block;
+}
+
+.delete-on-friend {
+    border: none;
+    background-color: white;
+    justify-content: flex-end;
+    cursor: pointer;
+}
+
+.actual-friend-container {
+    height: 85px;
+    display: flex;
+    border: 0.1px solid lightgrey;
+    align-items: center;
+    border-radius: 15px;
+    width: 95%;
+    margin: 7.5px;
 
 }
+
+
 
