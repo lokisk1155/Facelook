@@ -13,8 +13,8 @@ function ProfileTop() {
   const [notSelf, setNotSelf] = useState(true);
   const [isFriend, setIsFriend] = useState(null);
   const [toggleDropDown, setToggleDropDown] = useState(false);
-  const [friendCount, setFriendCount] = useState(false)
-  const [currentUserName, setCurrentUserName] = useState(false)
+  const [friendCount, setFriendCount] = useState(false);
+  const [currentUserName, setCurrentUserName] = useState(false);
 
   const { id } = useParams();
 
@@ -25,17 +25,18 @@ function ProfileTop() {
   });
 
   useEffect(() => {
-        dispatch(fetchUser(id)).then(() => {
-          dispatch(fetchFriend(id)).then(() => {
-            setIsFriend(currentUser.friends.includes(sessionUser.id));
-            setFriendCount(Object.values(currentUser.friends).length)
-            setCurrentUserName(`${currentUser.first_name} ${currentUser.last_name}`)
-            if (currentUser.id === sessionUser.id) {
-              setNotSelf(false);
-            }
-          })
-        })
-
+    dispatch(fetchUser(id)).then(() => {
+      dispatch(fetchFriend(id)).then(() => {
+        setIsFriend(currentUser.friends.includes(sessionUser.id));
+        setFriendCount(Object.values(currentUser.friends).length);
+        setCurrentUserName(
+          `${currentUser.first_name} ${currentUser.last_name}`
+        );
+        if (currentUser.id === sessionUser.id) {
+          setNotSelf(false);
+        }
+      });
+    });
   }, [isFriend]);
 
   const handleAdd = (e) => {
@@ -46,20 +47,20 @@ function ProfileTop() {
       receiver_id: currentUser.id,
     };
     dispatch(addFriend(friendRequest)).then(() => {
-      dispatch(fetchFriend(id))
-    })
+      dispatch(fetchFriend(id));
+    });
   };
 
   const handleDelete = (e) => {
     e.preventDefault();
-    setIsFriend(false)
+    setIsFriend(false);
     if (isFriend) {
       setIsFriend(false);
       dispatch(deleteFriend(currentUser.id)).then(() => {
-        dispatch(fetchFriend(id))
-      })
-    };
-  }
+        dispatch(fetchFriend(id));
+      });
+    }
+  };
 
   return (
     <div className="profile-top-container">
@@ -72,7 +73,7 @@ function ProfileTop() {
           <img className="profile-top-profile-pic" src={profilePicBlank} />
           <div className="name-friend-count-container">
             {currentUserName ? <p>{currentUserName}</p> : null}
-            {friendCount ? <p>{friendCount} friends</p> : null }
+            {friendCount ? <p>{friendCount} friends</p> : null}
             {toggleDropDown && (
               <button onClick={handleDelete}>delete friend</button>
             )}
@@ -117,8 +118,7 @@ function ProfileTop() {
 
 export default ProfileTop;
 
-
-  /* <h2 id="h1">Upload profile picture</h2>
+/* <h2 id="h1">Upload profile picture</h2>
       <hr />
       <br></br>
       <form id="submit-form">
@@ -135,7 +135,6 @@ export default ProfileTop;
         <br></br>
         {preview}
       </div> */
-
 
 // const friend = useSelector(({ friend }) => {
 //   const output = Object.values(friend).filter((f) => {
@@ -163,10 +162,8 @@ export default ProfileTop;
 //   }
 // };
 
-
 // const preview = profilePicUrl ? (
 //   <img src={profilePicUrl} style={{ width: "200px" }} />
 // ) : null;
-
 
 // const [profilePicUrl, setProfilePicUrl] = useState(null);
