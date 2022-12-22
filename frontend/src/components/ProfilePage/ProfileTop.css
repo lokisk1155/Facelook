@@ -96,3 +96,14 @@
   background-color: gray;
   cursor: pointer;
 }
+
+@media (max-width: 550px) {
+  .body {
+    width: 80%;
+  }
+
+  .profile-selectors {
+    align-items: stretch;
+  }
+
+}

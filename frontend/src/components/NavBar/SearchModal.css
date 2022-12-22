@@ -11,3 +11,11 @@
 .search-modal-wrapper {
   width: 15%;
 }
+
+@media (max-width: 550px) {
+  .search-modal-container {
+    width: 50vw;
+  }
+
+
+}

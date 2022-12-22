@@ -1,25 +1,23 @@
+
 .omega-create-post-modal {
   position: absolute;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(215, 213, 213, 0.52);
-  box-shadow: 0px 12px 12px 0px lightgrey;
-}
-
-.actual-create-post-form {
-  display: block;
-  position: absolute;
-  top: 25vh;
-  left: 34vw;
+  top: 35%;
+  left: 36%;
+  margin-top: -50px;
+  margin-left: -40px;
   background: white;
   padding: 10px;
   height: 375px;
   width: 450px;
   border-radius: 10px;
-  align-items: flex-end;
   border-color: black;
+  box-shadow: 0px 12px 12px 0px lightgrey;
+}
+
+
+.actual-create-post-form {
+
+
 }
 
 .new-post-input {
@@ -66,10 +64,36 @@
 }
 
 textarea {
-  width: 400px;
-  height: 150px;
   resize: none;
   border: none;
   outline: none;
   font-size: 25px;
+}
+
+#modal-background {
+  background-color: rgba(255, 255, 255, 0.675);
+}
+
+
+@media (max-width: 550px) {
+  .omega-create-post-modal {
+    width: 94%;
+    left: 0;
+  }
+
+  .submit-post-button {
+    width: 100%;
+  }
+
+  textarea {
+    width: 100%;
+    height: 40%;
+  }
+
+  .omega-create-post-modal {
+    top: 30%;
+    left: 12%;
+    width: 90%;
+  }
+  
 }

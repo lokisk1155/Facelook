@@ -7,11 +7,12 @@ import profilePic from "../../NavBar/imgs/blank.png";
 import { fetchUsers } from "../../../store/user";
 import { Link } from "react-router-dom";
 import "./PostFeed.css";
+import { Modal } from "../../../context/Modal";
 
 function PostFeed() {
   const dispatch = useDispatch();
   const [postDeleted, setPostDeleted] = useState(false);
-  const [checkPost, setCheckPost] = useState(null);
+  const [checkPost, setCheckPost] = useState(false);
   const [togglePost, setTogglePost] = useState(false);
   const [targetedPost, setTargetedPost] = useState(null);
 
@@ -78,9 +79,8 @@ function PostFeed() {
             ></img>
           }
         </div>
-
-        <div className="modal-holder">
           {togglePost && (
+          <Modal onClose={() => setTogglePost(false)}>
             <CreatePostModal
               type={"create"}
               currentUser={currentUser}
@@ -89,8 +89,8 @@ function PostFeed() {
               closeModal={setTogglePost}
               userId={currentUser.id}
             />
+            </Modal>
           )}
-        </div>
       </div>
 
       {posts && (
@@ -132,6 +132,7 @@ function PostFeed() {
                     <div />
                   )}
                   {checkPost && targetedPost.user_id === currentUser.id && (
+                    <Modal onClose={() => setCheckPost(false)}>
                     <CreatePostModal
                       type="update"
                       currentUser={currentUser}
@@ -140,6 +141,7 @@ function PostFeed() {
                       header={"Edit post"}
                       closeModal={setCheckPost}
                     />
+                    </Modal>
                   )}
                 </div>
               );

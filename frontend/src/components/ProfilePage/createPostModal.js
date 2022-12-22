@@ -46,7 +46,6 @@ function CreatePostModal({
   }
   return (
     <div className="omega-create-post-modal">
-      <form className="actual-create-post-form">
         <div className="modal-header">
           <h3>{title}</h3>
           <button className="close-button" onClick={() => closeModal(null)}>
@@ -64,7 +63,7 @@ function CreatePostModal({
           <p className="user-name-text">{`${currentUser.first_name} ${currentUser.last_name}`}</p>
         </div>
         <textarea
-          className="new-post-input"
+          className=""
           type="text"
           placeholder={placeHolder}
           onChange={(e) => setContent(e.target.value)}
@@ -75,7 +74,6 @@ function CreatePostModal({
           type="submit"
           onClick={() => handlePostSubmit()}
         />
-      </form>
     </div>
   );
 }

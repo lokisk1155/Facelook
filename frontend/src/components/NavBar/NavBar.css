@@ -176,3 +176,21 @@
   border-radius: 50%;
   background-color: #f0f2f5;
 }
+
+@media (max-width: 550px) {
+  .left-container-navbar {
+    width: 50vw;
+  }
+
+  .middle-column-navbar {
+    width: 20vw;
+  }
+
+  .right-container-navbar {
+    width: 25vw;
+  }
+
+  .link-wrapper {
+    justify-content: flex-start;
+  }
+}
