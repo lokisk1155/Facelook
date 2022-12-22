@@ -26,7 +26,7 @@ function ProfileDefault({ componentName, about }) {
 
   const currentUser = useSelector((state) => state.user[id]);
 
-  const [friendIds, setFriendIds] = useState(null)
+  const [friendIds, setFriendIds] = useState(null);
 
   const [friends, setFriends] = useState(null);
 
@@ -45,7 +45,7 @@ function ProfileDefault({ componentName, about }) {
   }
 
   function checkFriendCrednetials() {
-    setFriendIds(Object.values(currentUser.friends))
+    setFriendIds(Object.values(currentUser.friends));
     setNotSelf(currentUser.id !== sessionUser.id ? true : false);
     setCurrentUserName(
       `${capitalizeFirstLetter(currentUser.first_name)} ${capitalizeFirstLetter(
@@ -59,23 +59,29 @@ function ProfileDefault({ componentName, about }) {
   }
 
   useEffect(() => {
-    Promise.all([dispatch(fetchPosts()), dispatch(fetchUser(id)), dispatch(fetchFriends(id))])
+    Promise.all([
+      dispatch(fetchPosts()),
+      dispatch(fetchUser(id)),
+      dispatch(fetchFriends(id)),
+    ]);
     const getData = async () => {
-        await checkFriendCrednetials();
-        const users = await dispatch(fetchUsers(Object.values(currentUser.friends)))
-        setFriends(users);
-          if (Object.values(users).length > 2) {
-            let dividedLength = Math.floor(Object.values(users).length / 2);
-            let divCalc = dividedLength * 125 + 175;
-            setDivHeight(`${divCalc}px`);
-          } else {
-            setDivHeight(`250px`);
-          }
-    }
-    getData() 
+      await checkFriendCrednetials();
+      const users = await dispatch(
+        fetchUsers(Object.values(currentUser.friends))
+      );
+      setFriends(users);
+      if (Object.values(users).length > 2) {
+        let dividedLength = Math.floor(Object.values(users).length / 2);
+        let divCalc = dividedLength * 125 + 175;
+        setDivHeight(`${divCalc}px`);
+      } else {
+        setDivHeight(`250px`);
+      }
+    };
+    getData();
   }, [id]);
 
-  console.log(friends, 'yooooo')
+  console.log(friends, "yooooo");
 
   return (
     <>

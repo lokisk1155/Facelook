@@ -18,7 +18,7 @@ function ProfileTop({
   notSelf,
   setIsFriend,
   refresh,
-  setRefresh
+  setRefresh,
 }) {
   const dispatch = useDispatch();
 
@@ -29,7 +29,7 @@ function ProfileTop({
   const handleAdd = (e) => {
     e.preventDefault();
     setIsFriend(true);
-    setFriendCount(friendCount + 1)
+    setFriendCount(friendCount + 1);
     const friendRequest = {
       sender_id: sessionUser.id,
       receiver_id: currentUser.id,
@@ -40,7 +40,7 @@ function ProfileTop({
   const handleDelete = (e) => {
     e.preventDefault();
     setIsFriend(null);
-    setFriendCount(friendCount - 1)
+    setFriendCount(friendCount - 1);
     setToggleDropDown(!toggleDropDown);
     if (isFriend) {
       return dispatch(deleteFriend(currentUser.id));
