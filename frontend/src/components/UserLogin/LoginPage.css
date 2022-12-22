@@ -119,3 +119,19 @@ body {
   background-color: white;
   padding: 10px;
 }
+
+
+@media (max-width: 550px) {
+  .credential {
+    height: 10vw;
+  }
+
+  .password {
+    height: 10vw;
+  }
+
+  .container {
+    width: 95%;
+    margin-left: 10px;
+  }
+}
