@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders user data  1`] = `
+<div
+  className="content-container"
+>
+  <div>
+    <p />
+  </div>
+  <div>
+    <p />
+  </div>
+  <div>
+    <p />
+  </div>
+  <div>
+    <p />
+  </div>
+</div>
+`;
