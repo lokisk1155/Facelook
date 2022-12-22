@@ -26,9 +26,7 @@ function ProfileDefault({ componentName, about }) {
 
   const currentUser = useSelector((state) => state.user[id]);
 
-  const friendIds = useSelector((state) =>
-    Object.values(state.user[id].friends)
-  );
+  const [friendIds, setFriendIds] = useState(null)
 
   const [friends, setFriends] = useState(null);
 
@@ -47,6 +45,7 @@ function ProfileDefault({ componentName, about }) {
   }
 
   function checkFriendCrednetials() {
+    setFriendIds(Object.values(currentUser.friends))
     setNotSelf(currentUser.id !== sessionUser.id ? true : false);
     setCurrentUserName(
       `${capitalizeFirstLetter(currentUser.first_name)} ${capitalizeFirstLetter(
@@ -60,9 +59,7 @@ function ProfileDefault({ componentName, about }) {
   }
 
   useEffect(() => {
-    dispatch(fetchPosts());
-    dispatch(fetchUser(id)).then(() => {
-      dispatch(fetchFriends(id)).then(() => {
+    Promise.all([dispatch(fetchPosts()), dispatch(fetchUser(id)), dispatch(fetchFriends(id))]).then(() => {
         checkFriendCrednetials();
         dispatch(fetchUsers(friendIds)).then((data) => {
           setFriends(data);
@@ -74,8 +71,7 @@ function ProfileDefault({ componentName, about }) {
             setDivHeight(`250px`);
           }
         });
-      });
-    });
+      })
   }, [id]);
 
   return (
@@ -85,6 +81,7 @@ function ProfileDefault({ componentName, about }) {
         currentUser={currentUser}
         isFriend={isFriend}
         friendCount={friendCount}
+        setFriendCount={setFriendCount}
         notSelf={notSelf}
         currentUserName={currentUserName}
         setIsFriend={setIsFriend}
