@@ -2,7 +2,7 @@ import ProfileTop from "../components/ProfilePage/ProfileTop";
 import Posts from "../components/ProfilePage/Posts";
 import { useEffect } from "react";
 import { fetchUser } from "../store/user";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { fetchFriend } from "../store/friend";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchFriends } from "../store/friend";
@@ -18,6 +18,9 @@ import WorkEd from "../components/ProfilePage/AboutPage/WorkEd";
 import { fetchUsers } from "../store/user";
 
 function ProfileDefault({ componentName, about }) {
+
+  const location = useLocation()
+
   const { id } = useParams();
 
   const dispatch = useDispatch();
@@ -26,13 +29,7 @@ function ProfileDefault({ componentName, about }) {
 
   const currentUser = useSelector((state) => state.user[id]);
 
-  const [friendIds, setFriendIds] = useState(null);
-
   const [friends, setFriends] = useState(null);
-
-  const [isFriend, setIsFriend] = useState(null);
-
-  const [friendCount, setFriendCount] = useState(null);
 
   const [divHeight, setDivHeight] = useState(null);
 
@@ -40,23 +37,7 @@ function ProfileDefault({ componentName, about }) {
 
   const [notSelf, setNotSelf] = useState(null);
 
-  function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
 
-  function checkFriendCrednetials() {
-    setFriendIds(Object.values(currentUser.friends));
-    setNotSelf(currentUser.id !== sessionUser.id ? true : false);
-    setCurrentUserName(
-      `${capitalizeFirstLetter(currentUser.first_name)} ${capitalizeFirstLetter(
-        currentUser.last_name
-      )}`
-    );
-    if (currentUser.friends) {
-      setFriendCount(Object.values(currentUser.friends).length);
-      setIsFriend(currentUser.friends.includes(sessionUser.id) ? true : false);
-    }
-  }
 
   useEffect(() => {
     Promise.all([
@@ -65,7 +46,8 @@ function ProfileDefault({ componentName, about }) {
       dispatch(fetchFriends(id)),
     ]);
     const getData = async () => {
-      await checkFriendCrednetials();
+      // await checkFriendCrednetials();
+      if (!currentUser) return null 
       const users = await dispatch(
         fetchUsers(Object.values(currentUser.friends))
       );
@@ -81,19 +63,14 @@ function ProfileDefault({ componentName, about }) {
     getData();
   }, [id]);
 
-  console.log(friends, "yooooo");
+  // console.log(friends, "yooooo");
 
   return (
     <>
       <ProfileTop
         sessionUser={sessionUser}
         currentUser={currentUser}
-        isFriend={isFriend}
-        friendCount={friendCount}
-        setFriendCount={setFriendCount}
         notSelf={notSelf}
-        currentUserName={currentUserName}
-        setIsFriend={setIsFriend}
       />
       {componentName === "Posts" ? (
         <Posts
