@@ -18,7 +18,7 @@ export function ProfilePageRoutes() {
           path="/ProfilePage/:id"
           render={() => (
             <>
-              <ProfileDefault componentName={"Posts"}/>
+              <ProfileDefault componentName={"Posts"} />
             </>
           )}
         />
@@ -27,7 +27,7 @@ export function ProfilePageRoutes() {
           path="/ProfilePage/:id/friends"
           render={() => (
             <>
-              <ProfileDefault componentName={"Friends"}/>
+              <ProfileDefault componentName={"Friends"} />
             </>
           )}
         />
@@ -36,7 +36,7 @@ export function ProfilePageRoutes() {
           path="/ProfilePage/:id/about"
           render={() => (
             <>
-              <ProfileDefault componentName={"About"} about={"Overview"}/>
+              <ProfileDefault componentName={"About"} about={"Overview"} />
             </>
           )}
         />
@@ -45,7 +45,7 @@ export function ProfilePageRoutes() {
           path="/ProfilePage/:id/about/work_and_education"
           render={() => (
             <>
-               <ProfileDefault componentName={"About"} about={"WorkEd"}/>
+              <ProfileDefault componentName={"About"} about={"WorkEd"} />
             </>
           )}
         />
@@ -54,7 +54,7 @@ export function ProfilePageRoutes() {
           path="/ProfilePage/:id/about/places_lived"
           render={() => (
             <>
-               <ProfileDefault componentName={"About"} about={"PlacesLived"}/>
+              <ProfileDefault componentName={"About"} about={"PlacesLived"} />
             </>
           )}
         />
@@ -63,7 +63,7 @@ export function ProfilePageRoutes() {
           path="/ProfilePage/:id/about/contact_info"
           render={() => (
             <>
-               <ProfileDefault componentName={"About"} about={"Contact"}/>
+              <ProfileDefault componentName={"About"} about={"Contact"} />
             </>
           )}
         />
@@ -72,7 +72,7 @@ export function ProfilePageRoutes() {
           path="/ProfilePage/:id/about/family_and_relationships"
           render={() => (
             <>
-               <ProfileDefault componentName={"About"} about={"Relationship"}/>
+              <ProfileDefault componentName={"About"} about={"Relationship"} />
             </>
           )}
         />

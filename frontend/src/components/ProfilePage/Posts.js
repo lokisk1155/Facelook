@@ -23,7 +23,7 @@ function Posts(currentUser, sessionUser) {
     }
   });
 
-  const posts = allPosts.filter((post) => post.user_id == id)
+  const posts = allPosts.filter((post) => post.user_id == id);
 
   const [displayEditDelete, setDisplayEditDelete] = useState(false);
 
