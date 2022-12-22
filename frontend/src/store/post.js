@@ -19,7 +19,7 @@ export const removePost = (postId) => ({
   payload: postId,
 });
 
-export const fetchtPosts = () => async (dispatch) => {
+export const fetchPosts = () => async (dispatch) => {
   const res = await csrfFetch(`/api/posts`);
   const data = await res.json();
   dispatch(receivePosts(data));

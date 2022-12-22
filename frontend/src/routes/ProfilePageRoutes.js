@@ -2,13 +2,12 @@ import { Switch, Route } from "react-router-dom";
 import AboutPage from "../components/ProfilePage/AboutPage/AboutPage";
 import ProfileTop from "../components/ProfilePage/ProfileTop";
 import Overview from "../components/ProfilePage/AboutPage/Overview";
-import Posts from "../components/ProfilePage/Posts";
 import WorkEd from "../components/ProfilePage/AboutPage/WorkEd";
 import PlacesLived from "../components/ProfilePage/AboutPage/PlacesLived";
 import ContactInfo from "../components/ProfilePage/AboutPage/ContactInfo";
 import Relationship from "../components/ProfilePage/AboutPage/relationship";
-import Friends from "../components/ProfilePage/Friends";
 import "./routeStyling.css";
+import ProfileDefault from "../pages/profileDefault";
 
 export function ProfilePageRoutes() {
   return (
@@ -19,8 +18,7 @@ export function ProfilePageRoutes() {
           path="/ProfilePage/:id"
           render={() => (
             <>
-              <ProfileTop />
-              <Posts />
+              <ProfileDefault componentName={"Posts"}/>
             </>
           )}
         />
@@ -29,8 +27,7 @@ export function ProfilePageRoutes() {
           path="/ProfilePage/:id/friends"
           render={() => (
             <>
-              <ProfileTop />
-              <Friends />
+              <ProfileDefault componentName={"Friends"}/>
             </>
           )}
         />
@@ -39,13 +36,7 @@ export function ProfilePageRoutes() {
           path="/ProfilePage/:id/about"
           render={() => (
             <>
-              <ProfileTop />
-              <div className="about-page-container">
-                <div className="about-page-block">
-                  <AboutPage />
-                  <Overview />
-                </div>
-              </div>
+              <ProfileDefault componentName={"About"} about={"Overview"}/>
             </>
           )}
         />
@@ -54,13 +45,7 @@ export function ProfilePageRoutes() {
           path="/ProfilePage/:id/about/work_and_education"
           render={() => (
             <>
-              <ProfileTop />
-              <div className="about-page-container">
-                <div className="about-page-block">
-                  <AboutPage />
-                  <WorkEd />
-                </div>
-              </div>
+               <ProfileDefault componentName={"About"} about={"WorkEd"}/>
             </>
           )}
         />
@@ -69,13 +54,7 @@ export function ProfilePageRoutes() {
           path="/ProfilePage/:id/about/places_lived"
           render={() => (
             <>
-              <ProfileTop />
-              <div className="about-page-container">
-                <div className="about-page-block">
-                  <AboutPage />
-                  <PlacesLived />
-                </div>
-              </div>
+               <ProfileDefault componentName={"About"} about={"PlacesLived"}/>
             </>
           )}
         />
@@ -84,13 +63,7 @@ export function ProfilePageRoutes() {
           path="/ProfilePage/:id/about/contact_info"
           render={() => (
             <>
-              <ProfileTop />
-              <div className="about-page-container">
-                <div className="about-page-block">
-                  <AboutPage />
-                  <ContactInfo />
-                </div>
-              </div>
+               <ProfileDefault componentName={"About"} about={"Contact"}/>
             </>
           )}
         />
@@ -99,13 +72,7 @@ export function ProfilePageRoutes() {
           path="/ProfilePage/:id/about/family_and_relationships"
           render={() => (
             <>
-              <ProfileTop />
-              <div className="about-page-container">
-                <div className="about-page-block">
-                  <AboutPage />
-                  <Relationship />
-                </div>
-              </div>
+               <ProfileDefault componentName={"About"} about={"Relationship"}/>
             </>
           )}
         />

@@ -40,7 +40,7 @@
   height: 6vh;
   width: 6vw;
   background-color: #fff;
-  margin: 3.5px;
+  margin: 2.5px;
   border-radius: 5px;
 }
 .post-selector-button {
@@ -48,7 +48,7 @@
   height: 6vh;
   width: 6vw;
   background-color: #fff;
-  margin: 3.5px;
+  margin-left: 2.5px;
   border-radius: 5px;
 }
 .about-selector-button:hover {

@@ -10,27 +10,15 @@ import { Link } from "react-router-dom";
 import { deleteFriend } from "../../store/friend";
 import "./Friends.css";
 
-function Friends() {
+function Friends({ friends, users, divHeight }) {
   const dispatch = useDispatch();
   const { id } = useParams();
 
   const sessionUserId = useSelector((state) => state.session.user.id);
 
-  console.log(id, sessionUserId, "ids");
-
-  const [friendsArray, setFriendsArray] = useState(null);
-
   const [filteredUsers, setFilteredUsers] = useState(null);
 
-  const [typed, setTyped] = useState(null);
-
-  const [divHeight, setDivHeight] = useState(null);
-
-  const [toggle, setToggle] = useState(false);
-
-  const friends = useSelector((state) => {
-    return Object.values(state.user[id].friends);
-  });
+  const [typed, setTyped] = useState("");
 
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -38,33 +26,28 @@ function Friends() {
 
   const handleDelete = (userId) => (e) => {
     e.preventDefault();
-    setToggle(true);
     setTyped(null);
     return dispatch(deleteFriend(userId));
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      await dispatch(fetchFriends(id));
-      if (friends) {
-        const users = await dispatch(fetchUsers(friends));
-        setFriendsArray(users);
-        if (Object.values(users).length > 2) {
-          let dividedLength = Math.floor(Object.values(users).length / 2);
-          let divCalc = dividedLength * 125 + 175;
-          setDivHeight(`${divCalc}px`);
-        } else {
-          setDivHeight(`250px`);
-        }
-      }
-    };
-    setToggle(false);
-    fetchData();
-  }, [toggle]);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //       const users = await dispatch(fetchUsers(friends));
+  //       setfriends(users);
+  //       if (Object.values(users).length > 2) {
+  //         let dividedLength = Math.floor(Object.values(users).length / 2);
+  //         let divCalc = dividedLength * 125 + 175;
+  //         setDivHeight(`${divCalc}px`);
+  //       } else {
+  //         setDivHeight(`250px`);
+  //       }
+  //     }
+  //   fetchData();
+  // }, []);
 
   useEffect(() => {
-    if (friendsArray && typed.length > 0) {
-      let currentMatches = Object.values(friendsArray).filter((user) => {
+    if (friends && typed.length > 0) {
+      let currentMatches = Object.values(friends).filter((user) => {
         let userName = `${user.first_name} ${user.last_name}`.toLowerCase();
         return userName.startsWith(typed.toLowerCase());
       });
@@ -89,12 +72,12 @@ function Friends() {
             />
           </div>
         </div>
-        {friendsArray && !filteredUsers ? (
+        {friends && !filteredUsers ? (
           <div
             className="please-work-oh-my"
             style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)" }}
           >
-            {Object.values(friendsArray).map((friend) => {
+            {Object.values(friends).map((friend) => {
               return (
                 <div key={friend.id} className="actual-friend-container">
                   <Link to={`/ProfilePage/${friend.id}`}>

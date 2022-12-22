@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { fetchtPosts } from "../../../store/post";
+import { fetchPosts } from "../../../store/post";
 import CreatePostModal from "../../ProfilePage/createPostModal";
 import { deletePost } from "../../../store/post";
 import profilePic from "../../NavBar/imgs/blank.png";
@@ -37,7 +37,7 @@ function PostFeed() {
 
   useEffect(() => {
     dispatch(fetchUsers()).then((data) => {
-      dispatch(fetchtPosts());
+      dispatch(fetchPosts());
     });
 
     if (postDeleted) {

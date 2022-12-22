@@ -8,59 +8,32 @@ import { Link, useParams } from "react-router-dom";
 import profilePicBlank from "../NavBar/imgs/blank.png";
 import "./ProfileTop.css";
 
-function ProfileTop() {
+function ProfileTop({ currentUser, sessionUser, isFriend, friendCount, currentUserName, notSelf, setIsFriend }) {
   const dispatch = useDispatch();
-  const [notSelf, setNotSelf] = useState(true);
-  const [isFriend, setIsFriend] = useState(null);
+
   const [toggleDropDown, setToggleDropDown] = useState(false);
-  const [friendCount, setFriendCount] = useState(false);
-  const [currentUserName, setCurrentUserName] = useState(false);
 
   const { id } = useParams();
 
-  const currentUser = useSelector(getCurrent(id));
-
-  const sessionUser = useSelector((state) => {
-    return state.session.user;
-  });
-
-  useEffect(() => {
-    dispatch(fetchUser(id)).then(() => {
-      dispatch(fetchFriend(id)).then(() => {
-        setIsFriend(currentUser.friends.includes(sessionUser.id));
-        setFriendCount(Object.values(currentUser.friends).length);
-        setCurrentUserName(
-          `${currentUser.first_name} ${currentUser.last_name}`
-        );
-        if (currentUser.id === sessionUser.id) {
-          setNotSelf(false);
-        }
-      });
-    });
-  }, [isFriend]);
-
   const handleAdd = (e) => {
     e.preventDefault();
-    setIsFriend(true);
+    setIsFriend(true)
     const friendRequest = {
       sender_id: sessionUser.id,
       receiver_id: currentUser.id,
     };
-    dispatch(addFriend(friendRequest)).then(() => {
-      dispatch(fetchFriend(id));
-    });
-  };
+    return dispatch(addFriend(friendRequest))
+  }
+  
 
   const handleDelete = (e) => {
     e.preventDefault();
-    setIsFriend(false);
+    setIsFriend(null)
+    setToggleDropDown(!toggleDropDown)
     if (isFriend) {
-      setIsFriend(false);
-      dispatch(deleteFriend(currentUser.id)).then(() => {
-        dispatch(fetchFriend(id));
-      });
-    }
-  };
+      return dispatch(deleteFriend(currentUser.id))
+    };
+  }
 
   return (
     <div className="profile-top-container">
@@ -72,8 +45,8 @@ function ProfileTop() {
         <div className="left-side-of-page-header">
           <img className="profile-top-profile-pic" src={profilePicBlank} />
           <div className="name-friend-count-container">
-            {currentUserName ? <p>{currentUserName}</p> : null}
-            {friendCount ? <p>{friendCount} friends</p> : null}
+            <h3>{currentUserName}</h3>
+            <p>{friendCount} friends</p>
             {toggleDropDown && (
               <button onClick={handleDelete}>delete friend</button>
             )}

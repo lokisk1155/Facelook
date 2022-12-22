@@ -5,27 +5,25 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import Featured from "./Featured";
 import EditDetails from "./EditDetails";
-import { fetchtPosts, updatePost } from "../../store/post";
+import { fetchPosts, updatePost } from "../../store/post";
 import "./Posts.css";
 import CreatePostModal from "./createPostModal";
 import profilePic from "../NavBar/imgs/blank.png";
 import { deletePost } from "../../store/post";
 
-function Posts() {
+function Posts(currentUser, sessionUser) {
   const { id } = useParams();
   const dispatch = useDispatch();
 
-  const currentUser = useSelector((state) => {
-    return state.user[id];
+  const allPosts = useSelector((state) => {
+    if (state.post) {
+      return Object.values(state.post);
+    } else {
+      return [];
+    }
   });
 
-  const sessionUser = useSelector((state) => {
-    return state.session.user;
-  });
-
-  const allPosts = useSelector((state) => state.post);
-
-  const [posts, setPosts] = useState(null);
+  const posts = allPosts.filter((post) => post.user_id == id)
 
   const [displayEditDelete, setDisplayEditDelete] = useState(false);
 
@@ -57,28 +55,24 @@ function Posts() {
   const [editPost, setEditPost] = useState(null);
   const [customEditPost, setCustomEditPost] = useState(false);
 
-  useEffect(() => {
-    dispatch(fetchUser(id)).then(() => dispatch(fetchtPosts()));
-    if (postDeleted) {
-      setPostDeleted(false);
-    }
-    if (sessionUser.id === id) {
-      setDisplayEditDelete(true);
-    }
-    if (allPosts) {
-      if (id) {
-        const filteredPosts = Object.values(allPosts);
-        filteredPosts.filter((post) => post.user_id === id);
-        setPosts(filteredPosts.reverse());
-      } else {
-        setPosts(allPosts.reverse());
-      }
-    }
-
-    if (currentUser) {
-      setBio(currentUser.bio);
-    }
-  }, [postDeleted]);
+  // useEffect(() => {
+  //   if (postDeleted) {
+  //     setPostDeleted(false);
+  //   }
+  //   if (sessionUser.id === id) {
+  //     setDisplayEditDelete(true);
+  //   }
+  //   if (allPosts) {
+  //     if (id) {
+  //       const filteredPosts = Object.values(allPosts);
+  //       filteredPosts.filter((post) => post.user_id === id);
+  //       setPosts(filteredPosts.reverse());
+  //     } else {
+  //       setPosts(allPosts.reverse());
+  //     }
+  //   }
+  //   setBio(currentUser.bio);
+  // }, [postDeleted]);
 
   const handleBioSubmit = (e) => {
     e.preventDefault();
