@@ -59,20 +59,23 @@ function ProfileDefault({ componentName, about }) {
   }
 
   useEffect(() => {
-    Promise.all([dispatch(fetchPosts()), dispatch(fetchUser(id)), dispatch(fetchFriends(id))]).then(() => {
-        checkFriendCrednetials();
-        dispatch(fetchUsers(friendIds)).then((data) => {
-          setFriends(data);
-          if (Object.values(data).length > 2) {
-            let dividedLength = Math.floor(Object.values(data).length / 2);
+    Promise.all([dispatch(fetchPosts()), dispatch(fetchUser(id)), dispatch(fetchFriends(id))])
+    const getData = async () => {
+        await checkFriendCrednetials();
+        const users = await dispatch(fetchUsers(Object.values(currentUser.friends)))
+        setFriends(users);
+          if (Object.values(users).length > 2) {
+            let dividedLength = Math.floor(Object.values(users).length / 2);
             let divCalc = dividedLength * 125 + 175;
             setDivHeight(`${divCalc}px`);
           } else {
             setDivHeight(`250px`);
           }
-        });
-      })
+    }
+    getData() 
   }, [id]);
+
+  console.log(friends, 'yooooo')
 
   return (
     <>
