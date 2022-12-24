@@ -46,34 +46,34 @@ function CreatePostModal({
   }
   return (
     <div className="omega-create-post-modal">
-        <div className="modal-header">
-          <h3>{title}</h3>
-          <button className="close-button" onClick={() => closeModal(null)}>
-            X
-          </button>
-        </div>
-        <div className="pic-holder">
-          {
-            <img
-              className="profile-pic-inside-create-post"
-              src={profilePic}
-            ></img>
-          }
+      <div className="modal-header">
+        <h3>{title}</h3>
+        <button className="close-button" onClick={() => closeModal(null)}>
+          X
+        </button>
+      </div>
+      <div className="pic-holder">
+        {
+          <img
+            className="profile-pic-inside-create-post"
+            src={profilePic}
+          ></img>
+        }
 
-          <p className="user-name-text">{`${currentUser.first_name} ${currentUser.last_name}`}</p>
-        </div>
-        <textarea
-          className=""
-          type="text"
-          placeholder={placeHolder}
-          onChange={(e) => setContent(e.target.value)}
-        ></textarea>
-        <input
-          className="submit-post-button"
-          value="post"
-          type="submit"
-          onClick={() => handlePostSubmit()}
-        />
+        <p className="user-name-text">{`${currentUser.first_name} ${currentUser.last_name}`}</p>
+      </div>
+      <textarea
+        className=""
+        type="text"
+        placeholder={placeHolder}
+        onChange={(e) => setContent(e.target.value)}
+      ></textarea>
+      <input
+        className="submit-post-button"
+        value="post"
+        type="submit"
+        onClick={() => handlePostSubmit()}
+      />
     </div>
   );
 }

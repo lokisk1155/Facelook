@@ -79,7 +79,7 @@ function PostFeed() {
             ></img>
           }
         </div>
-          {togglePost && (
+        {togglePost && (
           <Modal onClose={() => setTogglePost(false)}>
             <CreatePostModal
               type={"create"}
@@ -89,8 +89,8 @@ function PostFeed() {
               closeModal={setTogglePost}
               userId={currentUser.id}
             />
-            </Modal>
-          )}
+          </Modal>
+        )}
       </div>
 
       {posts && (
@@ -133,14 +133,14 @@ function PostFeed() {
                   )}
                   {checkPost && targetedPost.user_id === currentUser.id && (
                     <Modal onClose={() => setCheckPost(false)}>
-                    <CreatePostModal
-                      type="update"
-                      currentUser={currentUser}
-                      postId={targetedPost.id}
-                      postContent={targetedPost.content}
-                      header={"Edit post"}
-                      closeModal={setCheckPost}
-                    />
+                      <CreatePostModal
+                        type="update"
+                        currentUser={currentUser}
+                        postId={targetedPost.id}
+                        postContent={targetedPost.content}
+                        header={"Edit post"}
+                        closeModal={setCheckPost}
+                      />
                     </Modal>
                   )}
                 </div>

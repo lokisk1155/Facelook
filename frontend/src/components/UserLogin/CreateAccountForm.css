@@ -213,7 +213,6 @@ p {
   font-weight: 400;
 }
 
-
 @media (max-width: 550px) {
   .signup-modal-form {
     height: 80vh;
@@ -241,7 +240,6 @@ p {
   .submit-button2 {
     width: 40vw;
     margin: 0;
-
   }
 
   .submit-button3 {
@@ -252,7 +250,5 @@ p {
   .mobile-button-container {
     display: flex;
     margin-top: 30px;
-    
   }
-
-  }
+}

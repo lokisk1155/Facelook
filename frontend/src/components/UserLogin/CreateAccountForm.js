@@ -234,12 +234,12 @@ function CreateAccountForm({ closeForm }) {
           </div>
         </div>
         <div className="mobile-button-container">
-        <button className="submit-button2" type="submit">
-          Sign up
-        </button>
-        <button className="submit-button3" onClick={() => closeForm(false)}>
-          Cancel
-        </button>
+          <button className="submit-button2" type="submit">
+            Sign up
+          </button>
+          <button className="submit-button3" onClick={() => closeForm(false)}>
+            Cancel
+          </button>
         </div>
       </form>
     </>

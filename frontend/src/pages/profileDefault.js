@@ -18,8 +18,7 @@ import WorkEd from "../components/ProfilePage/AboutPage/WorkEd";
 import { fetchUsers } from "../store/user";
 
 function ProfileDefault({ componentName, about }) {
-
-  const location = useLocation()
+  const location = useLocation();
 
   const { id } = useParams();
 
@@ -29,7 +28,7 @@ function ProfileDefault({ componentName, about }) {
 
   const currentUser = useSelector((state) => state.user[id]);
 
-  const friends = useSelector((state) => state.friend)
+  const friends = useSelector((state) => state.friend);
 
   const [divHeight, setDivHeight] = useState(null);
 
@@ -38,18 +37,16 @@ function ProfileDefault({ componentName, about }) {
   const [notSelf, setNotSelf] = useState(null);
 
   useEffect(() => {
-    Promise.all([
-      dispatch(fetchPosts()),
-      dispatch(fetchUser(id)),
-    ]);
+    Promise.all([dispatch(fetchPosts()), dispatch(fetchUser(id))]);
   }, [id]);
 
   if (!currentUser) {
-    return null 
-  } else if (Object.keys(currentUser.friends).length !== Object.keys(friends).length) {
-    dispatch(fetchFriends(Object.values(currentUser.friends)))
+    return null;
+  } else if (
+    Object.keys(currentUser.friends).length !== Object.keys(friends).length
+  ) {
+    dispatch(fetchFriends(Object.values(currentUser.friends)));
   }
-
 
   return (
     <>

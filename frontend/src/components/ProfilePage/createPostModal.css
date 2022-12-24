@@ -1,4 +1,3 @@
-
 .omega-create-post-modal {
   position: absolute;
   top: 35%;
@@ -14,10 +13,7 @@
   box-shadow: 0px 12px 12px 0px lightgrey;
 }
 
-
 .actual-create-post-form {
-
-
 }
 
 .new-post-input {
@@ -74,7 +70,6 @@ textarea {
   background-color: rgba(255, 255, 255, 0.675);
 }
 
-
 @media (max-width: 550px) {
   .omega-create-post-modal {
     width: 94%;
@@ -95,5 +90,4 @@ textarea {
     left: 12%;
     width: 90%;
   }
-  
 }

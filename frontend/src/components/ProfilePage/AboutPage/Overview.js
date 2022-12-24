@@ -6,16 +6,15 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import "./overview.css";
 
-function Overview({ }) {
+function Overview({}) {
   const dispatch = useDispatch();
   const { id } = useParams();
   const sessionUser = useSelector((state) => state.session.user);
   const currentUser = useSelector((state) => state.user[id]);
 
+  console.log(id, "id");
 
-  console.log(id, 'id')
-
-  let isUser
+  let isUser;
 
   if (currentUser) {
     isUser = currentUser.id === sessionUser.id;
@@ -41,9 +40,8 @@ function Overview({ }) {
   const [fakeRelationship, setFakeRelationship] = useState("");
   const [toggleRelationshipEdit, setToggleRelationshipEdit] = useState(false);
 
-  console.log(currentUser, 'currentuser')
+  console.log(currentUser, "currentuser");
   //console.log(sessionUser, 'sessionUser')
-
 
   useEffect(() => {
     checkParams();

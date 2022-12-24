@@ -8,11 +8,7 @@ import { Link, useParams } from "react-router-dom";
 import profilePicBlank from "../NavBar/imgs/blank.png";
 import "./ProfileTop.css";
 
-function ProfileTop({
-  currentUser,
-  sessionUser,
-}) {
-
+function ProfileTop({ currentUser, sessionUser }) {
   const dispatch = useDispatch();
 
   const [toggleDropDown, setToggleDropDown] = useState(false);
@@ -40,7 +36,7 @@ function ProfileTop({
     // setFriendCount(friendCount - 1);
     setToggleDropDown(!toggleDropDown);
     if (isFriend) {
-      return dispatch(deleteFriend(currentUser.id))
+      return dispatch(deleteFriend(currentUser.id));
     }
   };
 
@@ -53,14 +49,15 @@ function ProfileTop({
   // }
 
   if (currentUser === undefined) {
-    return null 
-  } 
+    return null;
+  }
 
-  const currentUserName = `${capitalizeFirstLetter(currentUser.first_name)} ${capitalizeFirstLetter(currentUser.last_name)}`
-  const friendCount = Object.values(currentUser.friends).length
-  const isFriend = currentUser.friends.includes(sessionUser.id) ? true : false
-  const notSelf = currentUser.id !== sessionUser.id ? true : false
-
+  const currentUserName = `${capitalizeFirstLetter(
+    currentUser.first_name
+  )} ${capitalizeFirstLetter(currentUser.last_name)}`;
+  const friendCount = Object.values(currentUser.friends).length;
+  const isFriend = currentUser.friends.includes(sessionUser.id) ? true : false;
+  const notSelf = currentUser.id !== sessionUser.id ? true : false;
 
   return (
     <div className="profile-top-container">

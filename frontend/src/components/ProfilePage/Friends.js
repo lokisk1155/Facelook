@@ -19,7 +19,7 @@ function Friends({ friends }) {
 
   const [filteredUsers, setFilteredUsers] = useState(null);
 
-  const [divHeight, setDivHeight] = useState(null)
+  const [divHeight, setDivHeight] = useState(null);
 
   const [typed, setTyped] = useState("");
 
@@ -50,8 +50,7 @@ function Friends({ friends }) {
       setDivHeight(`${divCalc}px`);
     } else {
       setDivHeight(`250px`);
-    } 
-
+    }
   }, [typed]);
 
   return (
