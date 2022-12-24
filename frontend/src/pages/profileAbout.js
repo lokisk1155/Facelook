@@ -11,7 +11,6 @@ import Relationship from "../components/ProfilePage/AboutPage/relationship";
 import WorkEd from "../components/ProfilePage/AboutPage/WorkEd";
 
 function ProfileAbout({ about }) {
-
   const { id } = useParams();
 
   const dispatch = useDispatch();
@@ -21,30 +20,32 @@ function ProfileAbout({ about }) {
   const currentUser = useSelector((state) => state.user[id]);
 
   useEffect(() => {
-    dispatch(fetchUser(id))
+    dispatch(fetchUser(id));
   }, [id]);
 
   return (
     <>
-      <ProfileTop
-        sessionUser={sessionUser}
-        currentUser={currentUser}
-      />
-        <div className="about-page-container">
-          <div className="about-page-block">
-            <AboutPage />
-            {about === "Overview" ? <Overview         sessionUser={sessionUser}
-        currentUser={currentUser}/> : null}
-            {about === "Contact" ? <ContactInfo         sessionUser={sessionUser}
-        currentUser={currentUser}/> : null}
-            {about === "Relationship" ? <Relationship         sessionUser={sessionUser}
-        currentUser={currentUser}/> : null}
-            {about === "PlacesLived" ? <PlacesLived         sessionUser={sessionUser}
-        currentUser={currentUser}/> : null}
-            {about === "WorkEd" ? <WorkEd         sessionUser={sessionUser}
-        currentUser={currentUser}/> : null}
-          </div>
+      <ProfileTop sessionUser={sessionUser} currentUser={currentUser} />
+      <div className="about-page-container">
+        <div className="about-page-block">
+          <AboutPage />
+          {about === "Overview" ? (
+            <Overview sessionUser={sessionUser} currentUser={currentUser} />
+          ) : null}
+          {about === "Contact" ? (
+            <ContactInfo sessionUser={sessionUser} currentUser={currentUser} />
+          ) : null}
+          {about === "Relationship" ? (
+            <Relationship sessionUser={sessionUser} currentUser={currentUser} />
+          ) : null}
+          {about === "PlacesLived" ? (
+            <PlacesLived sessionUser={sessionUser} currentUser={currentUser} />
+          ) : null}
+          {about === "WorkEd" ? (
+            <WorkEd sessionUser={sessionUser} currentUser={currentUser} />
+          ) : null}
         </div>
+      </div>
     </>
   );
 }

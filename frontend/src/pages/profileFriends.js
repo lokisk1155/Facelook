@@ -17,36 +17,35 @@ function ProfileFriends() {
 
   const friends = useSelector((state) => state.friend);
 
-
   useEffect(() => {
     dispatch(fetchUser(id));
   }, [id]);
 
   if (!currentUser) {
     return null;
-  } 
+  }
 
   if (Object.keys(currentUser.friends).length !== Object.keys(friends).length) {
     const setFriends = async () => {
-        dispatch(fetchFriends(Object.values(currentUser.friends)));
-    }
-    setFriends() 
+      dispatch(fetchFriends(Object.values(currentUser.friends)));
+    };
+    setFriends();
   }
 
-  console.log(Object.keys(currentUser.friends).length !== Object.keys(friends).length, 'conditional evaluation')
-  console.log(friends, 'from state')
+  console.log(
+    Object.keys(currentUser.friends).length !== Object.keys(friends).length,
+    "conditional evaluation"
+  );
+  console.log(friends, "from state");
 
   return (
     <>
-        <ProfileTop
-            sessionUser={sessionUser}
-            currentUser={currentUser}
-        /> 
-        <Friends
-          sessionUser={sessionUser}
-          currentUser={currentUser}
-          friends={friends}
-        />
+      <ProfileTop sessionUser={sessionUser} currentUser={currentUser} />
+      <Friends
+        sessionUser={sessionUser}
+        currentUser={currentUser}
+        friends={friends}
+      />
     </>
   );
 }

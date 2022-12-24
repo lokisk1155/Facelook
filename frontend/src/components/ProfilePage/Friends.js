@@ -16,7 +16,7 @@ function Friends({ friends }) {
 
   const sessionUserId = useSelector((state) => state.session.user.id);
 
-  let divHeight
+  let divHeight;
 
   let filteredUsers;
 
@@ -24,22 +24,22 @@ function Friends({ friends }) {
 
   useEffect(() => {
     if (typed.length > 0) {
-        let currentMatches = Object.values(friends).filter((user) => {
-          let userName = `${user.first_name} ${user.last_name}`.toLowerCase();
-          return userName.startsWith(typed.toLowerCase());
-        });
-        filteredUsers = (currentMatches);
+      let currentMatches = Object.values(friends).filter((user) => {
+        let userName = `${user.first_name} ${user.last_name}`.toLowerCase();
+        return userName.startsWith(typed.toLowerCase());
+      });
+      filteredUsers = currentMatches;
     } else {
-      filteredUsers = (null);
+      filteredUsers = null;
     }
   }, [typed]);
 
   if (Object.values(friends).length > 2) {
     let dividedLength = Math.floor(Object.values(friends).length / 2);
     let divCalc = dividedLength * 125 + 175;
-    divHeight = (`${divCalc}px`);
+    divHeight = `${divCalc}px`;
   } else {
-    divHeight = (`250px`);
+    divHeight = `250px`;
   }
 
   const handleDelete = (userId) => (e) => {

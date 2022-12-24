@@ -42,15 +42,17 @@ function ProfileDefault({ componentName, about }) {
 
   if (!currentUser) {
     return null;
-  } 
+  }
   if (Object.keys(currentUser.friends).length !== Object.keys(friends).length) {
     dispatch(fetchFriends(Object.values(currentUser.friends)));
   }
 
-  console.log(friends, 'friends')
+  console.log(friends, "friends");
 
-  console.log(Object.keys(currentUser.friends).length !== Object.keys(friends).length, 'my conditional')
-
+  console.log(
+    Object.keys(currentUser.friends).length !== Object.keys(friends).length,
+    "my conditional"
+  );
 
   return (
     <>
