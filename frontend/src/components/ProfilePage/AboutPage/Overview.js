@@ -15,8 +15,6 @@ function Overview({ }) {
 
   console.log(id, 'id')
 
-   //const state = useSelector((state) => console.log(state.user[1]))
-
   let isUser
 
   if (currentUser) {

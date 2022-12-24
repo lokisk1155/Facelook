@@ -1,7 +1,7 @@
 import ProfileTop from "../components/ProfilePage/ProfileTop";
 import Posts from "../components/ProfilePage/Posts";
 import { useEffect } from "react";
-import { fetchUser } from "../store/user";
+import { receiveFriends } from "../store/friend";
 import { useLocation, useParams } from "react-router-dom";
 import { fetchFriend } from "../store/friend";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,7 +15,8 @@ import Overview from "../components/ProfilePage/AboutPage/Overview";
 import PlacesLived from "../components/ProfilePage/AboutPage/PlacesLived";
 import Relationship from "../components/ProfilePage/AboutPage/relationship";
 import WorkEd from "../components/ProfilePage/AboutPage/WorkEd";
-import { fetchUsers } from "../store/user";
+import { fetchUsers,fetchUser } from "../store/user";
+
 
 function ProfileDefault({ componentName, about }) {
 
@@ -33,8 +34,6 @@ function ProfileDefault({ componentName, about }) {
 
   const [divHeight, setDivHeight] = useState(null);
 
-  const [currentUserName, setCurrentUserName] = useState(null);
-
   const [notSelf, setNotSelf] = useState(null);
 
 
@@ -51,7 +50,7 @@ function ProfileDefault({ componentName, about }) {
       const users = await dispatch(
         fetchUsers(Object.values(currentUser.friends))
       );
-      setFriends(users);
+      dispatch(receiveFriends(users))
       if (Object.values(users).length > 2) {
         let dividedLength = Math.floor(Object.values(users).length / 2);
         let divCalc = dividedLength * 125 + 175;
@@ -88,16 +87,14 @@ function ProfileDefault({ componentName, about }) {
         />
       ) : null}
       {componentName === "About" ? (
-        <div className="about-page-container">
-          <div className="about-page-block">
+        <>
             <AboutPage />
             {about === "Overview" ? <Overview /> : null}
             {about === "Contact" ? <ContactInfo /> : null}
             {about === "Relationship" ? <Relationship /> : null}
             {about === "PlacesLived" ? <PlacesLived /> : null}
             {about === "WorkEd" ? <WorkEd /> : null}
-          </div>
-        </div>
+        </>
       ) : null}
     </>
   );
