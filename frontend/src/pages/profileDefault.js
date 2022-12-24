@@ -1,7 +1,7 @@
 import ProfileTop from "../components/ProfilePage/ProfileTop";
 import Posts from "../components/ProfilePage/Posts";
 import { useEffect } from "react";
-import { receiveFriends } from "../store/friend";
+import { fetchUser } from "../store/user";
 import { useLocation, useParams } from "react-router-dom";
 import { fetchFriend } from "../store/friend";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,8 +15,7 @@ import Overview from "../components/ProfilePage/AboutPage/Overview";
 import PlacesLived from "../components/ProfilePage/AboutPage/PlacesLived";
 import Relationship from "../components/ProfilePage/AboutPage/relationship";
 import WorkEd from "../components/ProfilePage/AboutPage/WorkEd";
-import { fetchUsers,fetchUser } from "../store/user";
-
+import { fetchUsers } from "../store/user";
 
 function ProfileDefault({ componentName, about }) {
 
@@ -30,39 +29,27 @@ function ProfileDefault({ componentName, about }) {
 
   const currentUser = useSelector((state) => state.user[id]);
 
-  const [friends, setFriends] = useState(null);
+  const friends = useSelector((state) => state.friend)
 
   const [divHeight, setDivHeight] = useState(null);
 
+  const [currentUserName, setCurrentUserName] = useState(null);
+
   const [notSelf, setNotSelf] = useState(null);
-
-
 
   useEffect(() => {
     Promise.all([
       dispatch(fetchPosts()),
       dispatch(fetchUser(id)),
-      dispatch(fetchFriends(id)),
     ]);
-    const getData = async () => {
-      // await checkFriendCrednetials();
-      if (!currentUser) return null 
-      const users = await dispatch(
-        fetchUsers(Object.values(currentUser.friends))
-      );
-      dispatch(receiveFriends(users))
-      if (Object.values(users).length > 2) {
-        let dividedLength = Math.floor(Object.values(users).length / 2);
-        let divCalc = dividedLength * 125 + 175;
-        setDivHeight(`${divCalc}px`);
-      } else {
-        setDivHeight(`250px`);
-      }
-    };
-    getData();
   }, [id]);
 
-  // console.log(friends, "yooooo");
+  if (!currentUser) {
+    return null 
+  } else if (Object.keys(currentUser.friends).length !== Object.keys(friends).length) {
+    dispatch(fetchFriends(Object.values(currentUser.friends)))
+  }
+
 
   return (
     <>
@@ -87,14 +74,16 @@ function ProfileDefault({ componentName, about }) {
         />
       ) : null}
       {componentName === "About" ? (
-        <>
+        <div className="about-page-container">
+          <div className="about-page-block">
             <AboutPage />
             {about === "Overview" ? <Overview /> : null}
             {about === "Contact" ? <ContactInfo /> : null}
             {about === "Relationship" ? <Relationship /> : null}
             {about === "PlacesLived" ? <PlacesLived /> : null}
             {about === "WorkEd" ? <WorkEd /> : null}
-        </>
+          </div>
+        </div>
       ) : null}
     </>
   );
