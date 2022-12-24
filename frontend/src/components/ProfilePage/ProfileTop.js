@@ -7,6 +7,7 @@ import { getCurrent } from "../../store/user";
 import { Link, useParams } from "react-router-dom";
 import profilePicBlank from "../NavBar/imgs/blank.png";
 import "./ProfileTop.css";
+import capitalizeFirstLetter from "../../utils/capFirstLetter";
 
 function ProfileTop({ currentUser, sessionUser }) {
   const dispatch = useDispatch();
@@ -15,14 +16,20 @@ function ProfileTop({ currentUser, sessionUser }) {
 
   const { id } = useParams();
 
-  function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
+  if (currentUser === undefined) return null;
+
+  const currentUserName = `${capitalizeFirstLetter(
+    currentUser.first_name
+  )} ${capitalizeFirstLetter(currentUser.last_name)}`;
+
+  const friendCount = Object.values(currentUser.friends).length;
+
+  const isFriend = currentUser.friends.includes(sessionUser.id) ? true : false;
+
+  const notSelf = currentUser.id !== sessionUser.id ? true : false;
 
   const handleAdd = (e) => {
     e.preventDefault();
-    // setIsFriend(true);
-    // setFriendCount(friendCount + 1);
     const friendRequest = {
       sender_id: sessionUser.id,
       receiver_id: currentUser.id,
@@ -32,32 +39,11 @@ function ProfileTop({ currentUser, sessionUser }) {
 
   const handleDelete = (e) => {
     e.preventDefault();
-    // setIsFriend(null);
-    // setFriendCount(friendCount - 1);
     setToggleDropDown(!toggleDropDown);
     if (isFriend) {
       return dispatch(deleteFriend(currentUser.id));
     }
   };
-
-  // function checkFriendCrednetials() {
-  //   setNotSelf(currentUser.id !== sessionUser.id ? true : false);
-  //   if (currentUser.friends) {
-  //     // setFriendCount(Object.values(currentUser.friends).length);
-  //     setIsFriend(currentUser.friends.includes(sessionUser.id) ? true : false);
-  //   }
-  // }
-
-  if (currentUser === undefined) {
-    return null;
-  }
-
-  const currentUserName = `${capitalizeFirstLetter(
-    currentUser.first_name
-  )} ${capitalizeFirstLetter(currentUser.last_name)}`;
-  const friendCount = Object.values(currentUser.friends).length;
-  const isFriend = currentUser.friends.includes(sessionUser.id) ? true : false;
-  const notSelf = currentUser.id !== sessionUser.id ? true : false;
 
   return (
     <div className="profile-top-container">

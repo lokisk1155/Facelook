@@ -8,6 +8,7 @@ import ContactInfo from "../components/ProfilePage/AboutPage/ContactInfo";
 import Relationship from "../components/ProfilePage/AboutPage/relationship";
 import "./routeStyling.css";
 import ProfileDefault from "../pages/profileDefault";
+import ProfileFriends from "../pages/profileFriends";
 
 export function ProfilePageRoutes() {
   return (
@@ -27,7 +28,7 @@ export function ProfilePageRoutes() {
           path="/ProfilePage/:id/friends"
           render={() => (
             <>
-              <ProfileDefault componentName={"Friends"} />
+              <ProfileFriends />
             </>
           )}
         />

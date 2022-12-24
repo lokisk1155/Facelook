@@ -1,5 +1,5 @@
 .profile-top-container {
-  height: 80vh;
+  height: 85vh;
   margin-top: 55px;
   background-color: #fff;
   box-shadow: 0px 1px 1px 0px lightgrey;
@@ -9,6 +9,7 @@
   display: flex;
   width: 100%;
   width: 100vw;
+  margin: 10px;
   justify-content: center;
   background-color: #fff;
 }
@@ -27,7 +28,6 @@
 }
 
 .profile-selectors {
-  margin-top: 2%;
   border-top: 1px solid lightgrey;
   margin-left: 13%;
   width: 74.25%;
