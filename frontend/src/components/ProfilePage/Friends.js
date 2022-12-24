@@ -10,13 +10,16 @@ import { Link } from "react-router-dom";
 import { deleteFriend } from "../../store/friend";
 import "./Friends.css";
 
-function Friends({ friends, users, divHeight }) {
+function Friends({ friends }) {
   const dispatch = useDispatch();
+
   const { id } = useParams();
 
   const sessionUserId = useSelector((state) => state.session.user.id);
 
   const [filteredUsers, setFilteredUsers] = useState(null);
+
+  const [divHeight, setDivHeight] = useState(null)
 
   const [typed, setTyped] = useState("");
 
@@ -30,21 +33,6 @@ function Friends({ friends, users, divHeight }) {
     return dispatch(deleteFriend(userId));
   };
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //       const users = await dispatch(fetchUsers(friends));
-  //       setfriends(users);
-  //       if (Object.values(users).length > 2) {
-  //         let dividedLength = Math.floor(Object.values(users).length / 2);
-  //         let divCalc = dividedLength * 125 + 175;
-  //         setDivHeight(`${divCalc}px`);
-  //       } else {
-  //         setDivHeight(`250px`);
-  //       }
-  //     }
-  //   fetchData();
-  // }, []);
-
   useEffect(() => {
     if (friends && typed.length > 0) {
       let currentMatches = Object.values(friends).filter((user) => {
@@ -55,6 +43,15 @@ function Friends({ friends, users, divHeight }) {
     } else {
       setFilteredUsers(null);
     }
+
+    if (Object.values(friends).length > 2) {
+      let dividedLength = Math.floor(Object.values(friends).length / 2);
+      let divCalc = dividedLength * 125 + 175;
+      setDivHeight(`${divCalc}px`);
+    } else {
+      setDivHeight(`250px`);
+    } 
+
   }, [typed]);
 
   return (
