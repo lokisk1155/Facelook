@@ -50,8 +50,8 @@ function ProfileTop({ currentUser, sessionUser }) {
       <div className="background-photo-container-profile-page">
         <div className="background-photo-profile-page"></div>
       </div>
-
       <div className="profile-page-header">
+        <div className="left-side-of-page-header">
           <img className="profile-top-profile-pic" src={profilePicBlank} />
           <div className="name-friend-count-container">
             <p className="current-user-name">{currentUserName}</p>
@@ -60,6 +60,8 @@ function ProfileTop({ currentUser, sessionUser }) {
               <button onClick={handleDelete}>delete friend</button>
             )}
         </div>
+        </div>
+
 
           <div className="friends-toggle-button-container">
             {isFriend && notSelf ? (
