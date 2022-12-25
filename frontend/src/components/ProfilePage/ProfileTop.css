@@ -10,7 +10,7 @@
   width: 100%;
   width: 100vw;
   margin: 10px;
-  justify-content: center;
+  justify-content: space-between;
   background-color: #fff;
 }
 
@@ -98,11 +98,81 @@
 }
 
 @media (max-width: 550px) {
-  .body {
-    width: 80%;
-  }
 
   .profile-selectors {
     align-items: stretch;
   }
+
+  .background-photo-container-profile-page {
+    width: 100%;
+    height: 40%;
+  }
+
+  .background-photo-profile-page {
+    width: 75%;
+    height: 95%;
+    object-fit: cover;
+  }
+
+  .profile-top-container {
+    width: 100vw;
+    height: 62vw;
+  }
+
+  .profile-page-header {
+    height: 40%;
+    width: 100%;
+    margin: 0px;
+    justify-content: center;
+  }
+
+  .profile-selectors {
+    height: 19%;
+    width: 75%;
+  }
+
+  .post-selector-button {
+    width: 15%;
+    margin: 1%;
+  }
+  .about-selector-button {
+    width: 15%;
+    margin: 1%;
+  }
+
+  .profile-top-profile-pic {
+    height:  75px;
+    width: 75px;
+    justify-content: center;
+    
+  }
+
+  .left-side-of-page-header {
+    width: 100%;
+  }
+
+  .right-side-of-page-header {
+    display: none;
+  }
+
+  .current-user-name {
+    width: 25px;
+  }
+
+  .name-friend-count-container {
+    margin: 2px;
+  }
+
+  .toggle-friends-button {
+    margin: 25%;
+  }
+
+  /* .profile-page-header {
+    display: flex;
+    width: 100%;
+    width: 100vw;
+    margin: 10px;
+    justify-content: center;
+    background-color: #fff;
+  } */
 }

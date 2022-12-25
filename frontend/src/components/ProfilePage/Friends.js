@@ -74,9 +74,9 @@ function Friends({ friends }) {
                   <Link to={`/ProfilePage/${friend.id}`}>
                     <img className="friend-profile-pic" src={profilePic}></img>
                   </Link>
-                  <h5 className="friend-profile-name">{`${capitalizeFirstLetter(
+                  <p className="friend-profile-name">{`${capitalizeFirstLetter(
                     friend.first_name
-                  )} ${capitalizeFirstLetter(friend.last_name)}`}</h5>
+                  )} ${capitalizeFirstLetter(friend.last_name)}`}</p>
                   {sessionUserId == id ? (
                     <button
                       className="delete-on-friend"
@@ -101,9 +101,9 @@ function Friends({ friends }) {
                   <Link to={`/ProfilePage/${friend.id}`}>
                     <img className="friend-profile-pic" src={profilePic}></img>
                   </Link>
-                  <h5 className="friend-profile-name">{`${capitalizeFirstLetter(
+                  <p className="friend-profile-name">{`${capitalizeFirstLetter(
                     friend.first_name
-                  )} ${capitalizeFirstLetter(friend.last_name)}`}</h5>
+                  )} ${capitalizeFirstLetter(friend.last_name)}`}</p>
                   {sessionUserId == id ? (
                     <button
                       className="delete-on-friend"
