@@ -46,22 +46,21 @@ function ProfileTop({ currentUser, sessionUser }) {
   };
 
   return (
-    <div className="profile-top-container">
-      <div className="background-photo-container-profile-page">
-        <div className="background-photo-profile-page"></div>
-      </div>
-      <div className="profile-page-header">
-      <div className="name-friend-count-container">
-        <div className="profile-picture-and-name-container">
-          <img className="profile-top-profile-pic" src={profilePicBlank} />
-          <div>
-            <p className="current-user-name">{currentUserName}</p>
-            <p>{friendCount} friends</p>
-          </div>
+    <>
+      <div className="profile-top-container">
+        <div className="background-photo-container-profile-page">
+          <div className="background-photo-profile-page"></div>
         </div>
-      </div>
+        <div className="profile-page-header">
+          <div className="profile-picture-and-name-container">
+            <img className="profile-top-profile-pic" src={profilePicBlank} />
+            <div>
+              <p className="current-user-name">{currentUserName}</p>
+              <p>{friendCount} friends</p>
+            </div>
+          </div>
 
-      <div className="friends-toggle-button-container">
+          <div className="friends-toggle-button-container">
             {!toggleDropDown && isFriend && notSelf ? (
               <button
                 className="toggle-friends-button"
@@ -72,29 +71,36 @@ function ProfileTop({ currentUser, sessionUser }) {
             ) : null}
           </div>
           {!toggleDropDown && !isFriend && notSelf ? (
-              <button className="toggle-friends-button" onClick={handleAdd}>
-                Add Friend
-              </button>
-            ) : null}
-            {toggleDropDown && isFriend && notSelf ? (
-              <button className="toogle-friends-button" onClick={handleDelete}>delete friend</button>
-            ) : null }
+            <button className="toggle-friends-button" onClick={handleAdd}>
+              Add Friend
+            </button>
+          ) : null}
+          {toggleDropDown && isFriend && notSelf ? (
+            <button className="toogle-friends-button" onClick={handleDelete}>
+              delete friend
+            </button>
+          ) : null}
+        </div>
       </div>
 
-      <div className="profile-selectors">
-        <Link to={`/ProfilePage/${id}`}>
-          <button className="post-selector-button">Posts</button>
-        </Link>
+      <div className="col-container-links">
+        <div className="page-link-col"></div>
+        <div className="profile-selectors">
+          <Link to={`/ProfilePage/${id}`}>
+            <button className="post-selector-button">Posts</button>
+          </Link>
 
-        <Link to={`/ProfilePage/${id}/about`}>
-          <button className="about-selector-button">About</button>
-        </Link>
+          <Link to={`/ProfilePage/${id}/about`}>
+            <button className="about-selector-button">About</button>
+          </Link>
 
-        <Link to={`/ProfilePage/${id}/Friends`}>
-          <button className="about-selector-button">Friends</button>
-        </Link>
+          <Link to={`/ProfilePage/${id}/Friends`}>
+            <button className="about-selector-button">Friends</button>
+          </Link>
+        </div>
+        <div className="page-link-col"></div>
       </div>
-    </div>
+    </>
   );
 }
 

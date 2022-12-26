@@ -37,12 +37,16 @@ function ProfileFriends() {
 
   return (
     <>
-      {friends ? <ProfileTop sessionUser={sessionUser} currentUser={currentUser} /> : null}
-      {friends ? <Friends
-        sessionUser={sessionUser}
-        currentUser={currentUser}
-        friends={friends}
-      /> : null }
+      {friends ? (
+        <ProfileTop sessionUser={sessionUser} currentUser={currentUser} />
+      ) : null}
+      {friends ? (
+        <Friends
+          sessionUser={sessionUser}
+          currentUser={currentUser}
+          friends={friends}
+        />
+      ) : null}
     </>
   );
 }

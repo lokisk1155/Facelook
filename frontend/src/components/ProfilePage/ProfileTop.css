@@ -2,11 +2,10 @@
   height: 75vh;
   margin-top: 55px;
   background-color: #fff;
-  box-shadow: 0px 1px 1px 0px lightgrey;
 }
 
 .profile-page-header {
-  height: 13vw;
+  height: 30%;
   display: flex;
   width: 75vw;
   justify-content: space-between;
@@ -19,7 +18,6 @@
   margin-right: 5vw;
   margin-top: 5vh;
 }
-
 
 .right-side-of-page-header {
   display: flex;
@@ -35,30 +33,36 @@
 }
 
 .profile-selectors {
-  border-top: 1px solid lightgrey;
-  margin-left: 13%;
-  width: 74.25%;
-  background-color: #fff;
-  height: 8vh;
-  bottom: 0;
+  height: 50px;
+  width: 75vw;
   width: 100%;
+  bottom: 0;
+  border-top: 1px solid lightgrey;
+}
+
+.col-container-links {
+  display: flex;
+  background-color: #fff;
+}
+
+.page-link-col {
+  width: 12.5vw;
+  height: 100%;
 }
 
 .about-selector-button {
   border: none;
-  height: 100%;
-  width: 8vw;
-  background-color: #fff;
-  margin: 2.5px;
+  height: 99%;
   border-radius: 2.5px;
+  background-color: #fff;
+  width: 7%;
 }
 .post-selector-button {
   border: none;
-  height: 100%;
-  width: 8vw;
+  height: 99%;
   background-color: #fff;
   border-radius: 2.5px;
-  margin: 2.5px;
+  width: 7%;
 }
 .about-selector-button:hover {
   background-color: lightgrey;
@@ -90,14 +94,8 @@
   cursor: pointer;
 }
 
-.name-friend-count-container {
-  display: flex;
-  align-items: center;
-  margin-top: 5vh;
-}
-
 .background-photo-container-profile-page {
-  height: 50vh;
+  height: 70%;
   width: 100vw;
   overflow: hidden;
   display: flex;
@@ -108,7 +106,6 @@
 .background-photo-profile-page {
   width: 80%;
   height: 100%;
-  width: 1090px;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   object-fit: cover;
@@ -116,22 +113,14 @@
   cursor: pointer;
 }
 
-
-
-.name-friend-count-container {
-  margin: 0;
-  
-}
-
 @media (max-width: 550px) {
-
   .profile-selectors {
     align-items: stretch;
   }
 
   .background-photo-container-profile-page {
     width: 100%;
-    height: 60%;
+    height: 65%;
   }
 
   .background-photo-profile-page {
@@ -142,7 +131,7 @@
 
   .profile-top-container {
     width: 100vw;
-    height: 45vh;
+    height: 50vh;
   }
 
   /* . {
@@ -159,9 +148,6 @@
   .profile-top-profile-pic {
     margin-left: 90px;
   }
-
-  
-  
 
   .profile-page-header {
     margin-bottom: 1vh;
@@ -186,10 +172,9 @@
   }
 
   .profile-top-profile-pic {
-    height:  75px;
+    height: 75px;
     width: 75px;
     justify-content: center;
-    
   }
 
   .left-side-of-page-header {
@@ -200,8 +185,6 @@
     display: none;
   }
 
- 
-
   .name-friend-count-container {
     margin: 2px;
   }
@@ -210,13 +193,11 @@
   }
 
   .name-friend-count-container {
-
   }
 
   .profile-picture-and-name-container {
     display: block;
   }
-  
 
   /* .profile-page-header {
     display: flex;

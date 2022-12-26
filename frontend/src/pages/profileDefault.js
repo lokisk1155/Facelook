@@ -43,15 +43,12 @@ function ProfileDefault() {
 
   return (
     <>
-      <ProfileTop
+      <ProfileTop sessionUser={sessionUser} currentUser={currentUser} />
+      <Posts
         sessionUser={sessionUser}
         currentUser={currentUser}
+        friends={friends}
       />
-        <Posts
-          sessionUser={sessionUser}
-          currentUser={currentUser}
-          friends={friends}
-        />
     </>
   );
 }
