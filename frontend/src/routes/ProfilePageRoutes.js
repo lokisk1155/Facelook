@@ -9,6 +9,7 @@ import Relationship from "../components/ProfilePage/AboutPage/relationship";
 import "./routeStyling.css";
 import ProfileDefault from "../pages/profileDefault";
 import ProfileFriends from "../pages/profileFriends";
+import ProfileAbout from "../pages/profileAbout";
 
 export function ProfilePageRoutes() {
   return (
@@ -19,7 +20,7 @@ export function ProfilePageRoutes() {
           path="/ProfilePage/:id"
           render={() => (
             <>
-              <ProfileDefault componentName={"Posts"} />
+              <ProfileDefault />
             </>
           )}
         />
@@ -37,7 +38,7 @@ export function ProfilePageRoutes() {
           path="/ProfilePage/:id/about"
           render={() => (
             <>
-              <ProfileDefault componentName={"About"} about={"Overview"} />
+              <ProfileAbout about={"Overview"} />
             </>
           )}
         />
@@ -46,7 +47,7 @@ export function ProfilePageRoutes() {
           path="/ProfilePage/:id/about/work_and_education"
           render={() => (
             <>
-              <ProfileDefault componentName={"About"} about={"WorkEd"} />
+              <ProfileAbout about={"WorkEd"} />
             </>
           )}
         />
@@ -55,7 +56,7 @@ export function ProfilePageRoutes() {
           path="/ProfilePage/:id/about/places_lived"
           render={() => (
             <>
-              <ProfileDefault componentName={"About"} about={"PlacesLived"} />
+              <ProfileAbout about={"PlacesLived"} />
             </>
           )}
         />
@@ -64,7 +65,7 @@ export function ProfilePageRoutes() {
           path="/ProfilePage/:id/about/contact_info"
           render={() => (
             <>
-              <ProfileDefault componentName={"About"} about={"Contact"} />
+              <ProfileAbout about={"Contact"} />
             </>
           )}
         />
@@ -73,7 +74,7 @@ export function ProfilePageRoutes() {
           path="/ProfilePage/:id/about/family_and_relationships"
           render={() => (
             <>
-              <ProfileDefault componentName={"About"} about={"Relationship"} />
+              <ProfileAbout about={"Relationship"} />
             </>
           )}
         />

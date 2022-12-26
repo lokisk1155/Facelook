@@ -51,34 +51,35 @@ function ProfileTop({ currentUser, sessionUser }) {
         <div className="background-photo-profile-page"></div>
       </div>
       <div className="profile-page-header">
-        <div className="left-side-of-page-header">
+      <div className="name-friend-count-container">
+        <div className="profile-picture-and-name-container">
           <img className="profile-top-profile-pic" src={profilePicBlank} />
-          <div className="name-friend-count-container">
+          <div>
             <p className="current-user-name">{currentUserName}</p>
             <p>{friendCount} friends</p>
-            {toggleDropDown && (
-              <button onClick={handleDelete}>delete friend</button>
-            )}
+          </div>
         </div>
-        </div>
+      </div>
 
-
-          <div className="friends-toggle-button-container">
-            {isFriend && notSelf ? (
-              <div
+      <div className="friends-toggle-button-container">
+            {!toggleDropDown && isFriend && notSelf ? (
+              <button
                 className="toggle-friends-button"
                 onClick={() => setToggleDropDown(!toggleDropDown)}
               >
                 Friends
-              </div>
+              </button>
             ) : null}
-            {!isFriend && notSelf ? (
+          </div>
+          {!toggleDropDown && !isFriend && notSelf ? (
               <button className="toggle-friends-button" onClick={handleAdd}>
                 Add Friend
               </button>
             ) : null}
-          </div>
-        </div>
+            {toggleDropDown && isFriend && notSelf ? (
+              <button className="toogle-friends-button" onClick={handleDelete}>delete friend</button>
+            ) : null }
+      </div>
 
       <div className="profile-selectors">
         <Link to={`/ProfilePage/${id}`}>

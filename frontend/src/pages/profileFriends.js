@@ -26,10 +26,7 @@ function ProfileFriends() {
   }
 
   if (Object.keys(currentUser.friends).length !== Object.keys(friends).length) {
-    const setFriends = async () => {
-      dispatch(fetchFriends(Object.values(currentUser.friends)));
-    };
-    setFriends();
+    dispatch(fetchFriends(Object.values(currentUser.friends)));
   }
 
   console.log(
@@ -40,12 +37,12 @@ function ProfileFriends() {
 
   return (
     <>
-      <ProfileTop sessionUser={sessionUser} currentUser={currentUser} />
-      <Friends
+      {friends ? <ProfileTop sessionUser={sessionUser} currentUser={currentUser} /> : null}
+      {friends ? <Friends
         sessionUser={sessionUser}
         currentUser={currentUser}
         friends={friends}
-      />
+      /> : null }
     </>
   );
 }

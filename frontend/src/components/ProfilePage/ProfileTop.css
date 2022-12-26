@@ -1,5 +1,5 @@
 .profile-top-container {
-  height: 85vh;
+  height: 75vh;
   margin-top: 55px;
   background-color: #fff;
   box-shadow: 0px 1px 1px 0px lightgrey;
@@ -15,6 +15,11 @@
   margin-right: 12.5vw;
 }
 
+.friends-toggle-button-container {
+  margin-right: 5vw;
+  margin-top: 5vh;
+}
+
 
 .right-side-of-page-header {
   display: flex;
@@ -24,6 +29,9 @@
 
 .toggle-friends-button {
   cursor: pointer;
+  height: 40px;
+  width: 150px;
+  margin: auto;
 }
 
 .profile-selectors {
@@ -32,6 +40,8 @@
   width: 74.25%;
   background-color: #fff;
   height: 8vh;
+  bottom: 0;
+  width: 100%;
 }
 
 .about-selector-button {
@@ -59,8 +69,16 @@
 
 .left-side-of-page-header {
   display: flex;
+  justify-content: space-between;
   margin-top: -28px;
   margin-right: 37.5em;
+}
+
+.profile-picture-and-name-container {
+  display: flex;
+  align-items: center;
+  top: -5vh;
+  position: relative;
 }
 
 .profile-top-profile-pic {
@@ -73,6 +91,8 @@
 }
 
 .name-friend-count-container {
+  display: flex;
+  align-items: center;
   margin-top: 5vh;
 }
 
@@ -87,8 +107,7 @@
 
 .background-photo-profile-page {
   width: 80%;
-  height: 80%;
-  height: 410px;
+  height: 100%;
   width: 1090px;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -97,9 +116,11 @@
   cursor: pointer;
 }
 
-.left-side-of-page-header {
-  display: flex;
-  height: 20%;
+
+
+.name-friend-count-container {
+  margin: 0;
+  
 }
 
 @media (max-width: 550px) {
@@ -110,7 +131,7 @@
 
   .background-photo-container-profile-page {
     width: 100%;
-    height: 40%;
+    height: 60%;
   }
 
   .background-photo-profile-page {
@@ -121,16 +142,35 @@
 
   .profile-top-container {
     width: 100vw;
-    height: 62vw;
+    height: 45vh;
   }
 
-  . {
+  /* . {
     height: 40%;
     width: 80%;
     margin: 0px;
     justify-content: center;
+  } */
+
+  .friends-toggle-button-container {
+    margin: 0;
   }
 
+  .profile-top-profile-pic {
+    margin-left: 90px;
+  }
+
+  
+  
+
+  .profile-page-header {
+    margin-bottom: 1vh;
+    justify-content: center;
+  }
+  .toggle-friends-button {
+    height: 25px;
+    width: 100px;
+  }
   .profile-selectors {
     height: 19%;
     width: 75%;
@@ -160,17 +200,23 @@
     display: none;
   }
 
-  .current-user-name {
-    width: 25px;
-  }
+ 
 
   .name-friend-count-container {
     margin: 2px;
   }
 
   .toggle-friends-button {
-    margin: 25%;
   }
+
+  .name-friend-count-container {
+
+  }
+
+  .profile-picture-and-name-container {
+    display: block;
+  }
+  
 
   /* .profile-page-header {
     display: flex;

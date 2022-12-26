@@ -17,7 +17,7 @@ import Relationship from "../components/ProfilePage/AboutPage/relationship";
 import WorkEd from "../components/ProfilePage/AboutPage/WorkEd";
 import { fetchUsers } from "../store/user";
 
-function ProfileDefault({ componentName, about }) {
+function ProfileDefault() {
   const location = useLocation();
 
   const { id } = useParams();
@@ -30,12 +30,6 @@ function ProfileDefault({ componentName, about }) {
 
   const friends = useSelector((state) => state.friend);
 
-  const [divHeight, setDivHeight] = useState(null);
-
-  const [currentUserName, setCurrentUserName] = useState(null);
-
-  const [notSelf, setNotSelf] = useState(null);
-
   useEffect(() => {
     Promise.all([dispatch(fetchPosts()), dispatch(fetchUser(id))]);
   }, [id]);
@@ -47,47 +41,17 @@ function ProfileDefault({ componentName, about }) {
     dispatch(fetchFriends(Object.values(currentUser.friends)));
   }
 
-  console.log(friends, "friends");
-
-  console.log(
-    Object.keys(currentUser.friends).length !== Object.keys(friends).length,
-    "my conditional"
-  );
-
   return (
     <>
       <ProfileTop
         sessionUser={sessionUser}
         currentUser={currentUser}
-        notSelf={notSelf}
       />
-      {componentName === "Posts" ? (
         <Posts
           sessionUser={sessionUser}
           currentUser={currentUser}
           friends={friends}
         />
-      ) : null}
-      {componentName === "Friends" ? (
-        <Friends
-          sessionUser={sessionUser}
-          currentUser={currentUser}
-          friends={friends}
-          divHeight={divHeight}
-        />
-      ) : null}
-      {componentName === "About" ? (
-        <div className="about-page-container">
-          <div className="about-page-block">
-            <AboutPage />
-            {about === "Overview" ? <Overview /> : null}
-            {about === "Contact" ? <ContactInfo /> : null}
-            {about === "Relationship" ? <Relationship /> : null}
-            {about === "PlacesLived" ? <PlacesLived /> : null}
-            {about === "WorkEd" ? <WorkEd /> : null}
-          </div>
-        </div>
-      ) : null}
     </>
   );
 }
