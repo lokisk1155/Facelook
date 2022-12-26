@@ -128,6 +128,7 @@
 }
 
 .navbar-container {
+  z-index: 1;
   top: 0;
   position: fixed;
   display: flex;

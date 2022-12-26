@@ -37,7 +37,7 @@ function ProfileTop({ currentUser, sessionUser, setToggle, toggle }) {
     if (!isFriend) {
       dispatch(addFriend(friendRequest));
     }
-    setToggle(!toggle)
+    setToggle(!toggle);
   };
 
   const handleDelete = (e) => {
@@ -45,7 +45,7 @@ function ProfileTop({ currentUser, sessionUser, setToggle, toggle }) {
     if (isFriend) {
       return dispatch(deleteFriend(currentUser.id));
     }
-    setToggle(!toggle)
+    setToggle(!toggle);
   };
 
   return (
@@ -71,11 +71,21 @@ function ProfileTop({ currentUser, sessionUser, setToggle, toggle }) {
               >
                 Friends
               </button>
-            ) : !isFriend && <button className="toggle-friends-button" onClick={handleAdd}>
-            Add Friend
-          </button> || isFriend && <button className="toogle-friends-button" onClick={handleDelete}>
-              delete friend
-            </button>}
+            ) : (
+              (!isFriend && notSelf && (
+                <button className="toggle-friends-button" onClick={handleAdd}>
+                  Add Friend
+                </button>
+              )) ||
+              (isFriend && notSelf && (
+                <button
+                  className="toogle-friends-button"
+                  onClick={handleDelete}
+                >
+                  delete friend
+                </button>
+              ))
+            )}
           </div>
         </div>
       </div>

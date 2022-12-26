@@ -47,7 +47,7 @@ export const deleteFriend = (userId) => async (dispatch) => {
   });
   const data = await res.json();
   dispatch(removeFriend(data));
-  return dispatch(fetchUser(userId))
+  return dispatch(fetchUser(userId));
 };
 
 const friendReducer = (previousState = {}, action) => {
