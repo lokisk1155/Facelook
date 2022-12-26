@@ -134,7 +134,7 @@
   height: 50px;
   background-color: white;
   width: 120%;
-  box-shadow: 0px 12px 12px 0px lightgrey;
+  box-shadow: 0px 12px 12px 0px darkgrey;
 }
 
 .left-container-navbar {

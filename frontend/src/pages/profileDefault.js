@@ -30,9 +30,11 @@ function ProfileDefault() {
 
   const friends = useSelector((state) => state.friend);
 
+  const [toggle, setToggle] = useState(false)
+
   useEffect(() => {
     Promise.all([dispatch(fetchPosts()), dispatch(fetchUser(id))]);
-  }, [id]);
+  }, [id, toggle]);
 
   if (!currentUser) {
     return null;
@@ -43,11 +45,13 @@ function ProfileDefault() {
 
   return (
     <>
-      <ProfileTop sessionUser={sessionUser} currentUser={currentUser} />
+      <ProfileTop sessionUser={sessionUser} currentUser={currentUser}  toggle={toggle}
+        setToggle={setToggle}/>
       <Posts
         sessionUser={sessionUser}
         currentUser={currentUser}
         friends={friends}
+       
       />
     </>
   );

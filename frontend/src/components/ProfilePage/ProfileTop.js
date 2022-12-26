@@ -9,7 +9,7 @@ import profilePicBlank from "../NavBar/imgs/blank.png";
 import "./ProfileTop.css";
 import capitalizeFirstLetter from "../../utils/capFirstLetter";
 
-function ProfileTop({ currentUser, sessionUser }) {
+function ProfileTop({ currentUser, sessionUser, setToggle, toggle }) {
   const dispatch = useDispatch();
 
   const [toggleDropDown, setToggleDropDown] = useState(false);
@@ -34,15 +34,18 @@ function ProfileTop({ currentUser, sessionUser }) {
       sender_id: sessionUser.id,
       receiver_id: currentUser.id,
     };
-    return dispatch(addFriend(friendRequest));
+    if (!isFriend) {
+      dispatch(addFriend(friendRequest));
+    }
+    setToggle(!toggle)
   };
 
   const handleDelete = (e) => {
     e.preventDefault();
-    setToggleDropDown(!toggleDropDown);
     if (isFriend) {
       return dispatch(deleteFriend(currentUser.id));
     }
+    setToggle(!toggle)
   };
 
   return (
@@ -55,7 +58,7 @@ function ProfileTop({ currentUser, sessionUser }) {
           <div className="profile-picture-and-name-container">
             <img className="profile-top-profile-pic" src={profilePicBlank} />
             <div>
-              <p className="current-user-name">{currentUserName}</p>
+              <p className="current-user-name-profile-top">{currentUserName}</p>
               <p>{friendCount} friends</p>
             </div>
           </div>
@@ -68,18 +71,12 @@ function ProfileTop({ currentUser, sessionUser }) {
               >
                 Friends
               </button>
-            ) : null}
-          </div>
-          {!toggleDropDown && !isFriend && notSelf ? (
-            <button className="toggle-friends-button" onClick={handleAdd}>
-              Add Friend
-            </button>
-          ) : null}
-          {toggleDropDown && isFriend && notSelf ? (
-            <button className="toogle-friends-button" onClick={handleDelete}>
+            ) : !isFriend && <button className="toggle-friends-button" onClick={handleAdd}>
+            Add Friend
+          </button> || isFriend && <button className="toogle-friends-button" onClick={handleDelete}>
               delete friend
-            </button>
-          ) : null}
+            </button>}
+          </div>
         </div>
       </div>
 

@@ -1,4 +1,5 @@
 import csrfFetch from "./csrf";
+import { fetchUser } from "./user";
 export const REMOVE_FRIEND = "friends/REMOVE_FRIEND";
 export const RECEIVE_FRIEND = "friends/RECEIVE_FRIEND";
 export const RECEIVE_FRIENDS = "friends/RECEIVE_FRIENDS";
@@ -46,6 +47,7 @@ export const deleteFriend = (userId) => async (dispatch) => {
   });
   const data = await res.json();
   dispatch(removeFriend(data));
+  return dispatch(fetchUser(userId))
 };
 
 const friendReducer = (previousState = {}, action) => {

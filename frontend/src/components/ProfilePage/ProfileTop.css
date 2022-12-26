@@ -1,5 +1,5 @@
 .profile-top-container {
-  height: 75vh;
+  height: 70vh;
   margin-top: 55px;
   background-color: #fff;
 }
@@ -10,8 +10,8 @@
   width: 75vw;
   justify-content: space-between;
   background-color: #fff;
-  margin-left: 12.5vw;
-  margin-right: 12.5vw;
+  margin-left: 9vw;
+  margin-right: 9vw;
 }
 
 .friends-toggle-button-container {
@@ -33,36 +33,42 @@
 }
 
 .profile-selectors {
-  height: 50px;
+  height: 60px;
   width: 75vw;
   width: 100%;
   bottom: 0;
   border-top: 1px solid lightgrey;
+ 
 }
 
 .col-container-links {
   display: flex;
   background-color: #fff;
+  box-shadow: 0px 1px 1px 0px lightgrey;
 }
 
 .page-link-col {
-  width: 12.5vw;
+  width: 12vw;
   height: 100%;
 }
 
 .about-selector-button {
   border: none;
-  height: 99%;
-  border-radius: 2.5px;
+  height: 90%;
+  border-radius: 5px;
   background-color: #fff;
   width: 7%;
+  margin-right: 2px;
+  margin-top: 3px;
 }
 .post-selector-button {
   border: none;
-  height: 99%;
+  height: 90%;
   background-color: #fff;
-  border-radius: 2.5px;
+  border-radius: 5px;
   width: 7%;
+  margin-right: 2px;
+  margin-top: 3px;
 }
 .about-selector-button:hover {
   background-color: lightgrey;
@@ -86,12 +92,13 @@
 }
 
 .profile-top-profile-pic {
-  height: 180px;
-  width: 180px;
+  height: 22.5vh;
+  width: 22.5vh;
   border-radius: 50%;
   border: 3px white;
   object-fit: cover;
   cursor: pointer;
+  border: 5px solid #fff;
 }
 
 .background-photo-container-profile-page {
@@ -104,7 +111,7 @@
 }
 
 .background-photo-profile-page {
-  width: 80%;
+  width: 85%;
   height: 100%;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -119,8 +126,20 @@
   }
 
   .background-photo-container-profile-page {
+    height: 80%;
+  }
+
+  .current-user-name-profile-top {
+    text-align: center;
+  }
+
+  .background-photo-container-profile-page {
     width: 100%;
-    height: 65%;
+    height: 80%;
+  }
+
+  .col-container-links {
+    height: 5vh;
   }
 
   .background-photo-profile-page {
@@ -131,7 +150,7 @@
 
   .profile-top-container {
     width: 100vw;
-    height: 50vh;
+    height: 40vh;
   }
 
   /* . {
@@ -146,12 +165,12 @@
   }
 
   .profile-top-profile-pic {
-    margin-left: 90px;
   }
 
   .profile-page-header {
     margin-bottom: 1vh;
     justify-content: center;
+    height: 20%;
   }
   .toggle-friends-button {
     height: 25px;
@@ -160,15 +179,6 @@
   .profile-selectors {
     height: 19%;
     width: 75%;
-  }
-
-  .post-selector-button {
-    width: 15%;
-    margin: 1%;
-  }
-  .about-selector-button {
-    width: 15%;
-    margin: 1%;
   }
 
   .profile-top-profile-pic {
@@ -196,7 +206,7 @@
   }
 
   .profile-picture-and-name-container {
-    display: block;
+    margin-top: 5vh;
   }
 
   /* .profile-page-header {
@@ -207,4 +217,11 @@
     justify-content: center;
     background-color: #fff;
   } */
+
+  .profile-top-profile-pic {
+    position: absolute;
+    top: -15vh;
+  }
+
+
 }
