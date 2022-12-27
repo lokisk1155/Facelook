@@ -29,24 +29,23 @@ function ProfileFriends() {
     dispatch(fetchFriends(Object.values(currentUser.friends)));
   }
 
-  console.log(
-    Object.keys(currentUser.friends).length !== Object.keys(friends).length,
-    "conditional evaluation"
-  );
-  console.log(friends, "from state");
-
   return (
     <>
       {friends ? (
         <ProfileTop sessionUser={sessionUser} currentUser={currentUser} />
       ) : null}
-      {friends ? (
-        <Friends
+        <div style={{ display: "flex"}}>
+        <div style={{ width: "15vw"}}></div>
+        <div style={{ width: "70vw", maxWidth: "1250px", justifyContent: "center"}}>
+        {friends ? (<Friends
           sessionUser={sessionUser}
           currentUser={currentUser}
           friends={friends}
         />
-      ) : null}
+        ) : null}
+        <div style={{ width: "15vw"}}></div>
+      </div>
+    </div>
     </>
   );
 }

@@ -1,6 +1,3 @@
-.friend-profile-page-container {
-}
-
 .friend-profile-pic {
   height: 65px;
   width: 65px;
@@ -15,26 +12,15 @@
   width: 100%;
 }
 
-.middle-col {
-  width: 76vw;
+.friends-container {
   margin-top: 25px;
   background-color: white;
   border-radius: 5px;
   border: 0.5px solid lightgrey;
   box-shadow: 0px 12px 12px 0px lightgrey;
   margin-bottom: 10px;
-}
-
-.right-col {
-  width: 12vw;
-}
-
-.left-col {
-  width: 12vw;
-}
-
-.column-container {
-  display: flex;
+  align-self: center;
+  max-width: 1250px;
 }
 
 .friends-headers {
@@ -97,9 +83,9 @@
     width: 100px;
   }
 
-  .middle-col {
+  /* .middle-col {
     width: 95%;
-  }
+  } */
 
   .friend-profile-pic {
     height: 30px;
@@ -113,6 +99,6 @@
     width: 90%;
   }
 
-  .friend-profile-name {
-  }
 }
+
+

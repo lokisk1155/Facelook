@@ -18,7 +18,7 @@ function Friends({ friends }) {
 
   let divHeight;
 
-  let filteredUsers;
+  const [filteredUsers, setFilteredUsers] = useState(null)
 
   const [typed, setTyped] = useState("");
 
@@ -28,9 +28,9 @@ function Friends({ friends }) {
         let userName = `${user.first_name} ${user.last_name}`.toLowerCase();
         return userName.startsWith(typed.toLowerCase());
       });
-      filteredUsers = currentMatches;
+      setFilteredUsers(currentMatches)
     } else {
-      filteredUsers = null;
+      setFilteredUsers(null)
     }
   }, [typed]);
 
@@ -49,9 +49,7 @@ function Friends({ friends }) {
   };
 
   return (
-    <div className="column-container">
-      <div className="right-col"></div>
-      <div className="middle-col" style={{ height: divHeight }}>
+      <div className="friends-container" style={{ height: divHeight }}>
         <div className="friends-headers">
           <h2 style={{ margin: `25px` }}>Friends</h2>
           <div className="friends-search-bar-container">
@@ -118,8 +116,6 @@ function Friends({ friends }) {
           </div>
         ) : null}
       </div>
-      <div className="left-col"></div>
-    </div>
   );
 }
 

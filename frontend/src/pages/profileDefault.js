@@ -3,23 +3,13 @@ import Posts from "../components/ProfilePage/Posts";
 import { useEffect } from "react";
 import { fetchUser } from "../store/user";
 import { useLocation, useParams } from "react-router-dom";
-import { fetchFriend } from "../store/friend";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchFriends } from "../store/friend";
 import { useState } from "react";
-import Friends from "../components/ProfilePage/Friends";
 import { fetchPosts } from "../store/post";
-import AboutPage from "../components/ProfilePage/AboutPage/AboutPage";
-import ContactInfo from "../components/ProfilePage/AboutPage/ContactInfo";
-import Overview from "../components/ProfilePage/AboutPage/Overview";
-import PlacesLived from "../components/ProfilePage/AboutPage/PlacesLived";
-import Relationship from "../components/ProfilePage/AboutPage/relationship";
-import WorkEd from "../components/ProfilePage/AboutPage/WorkEd";
-import { fetchUsers } from "../store/user";
+import Intro from "../components/ProfilePage/Intro";
 
 function ProfileDefault() {
-  const location = useLocation();
-
   const { id } = useParams();
 
   const dispatch = useDispatch();
@@ -50,12 +40,19 @@ function ProfileDefault() {
         currentUser={currentUser}
         toggle={toggle}
         setToggle={setToggle}
-      />
+      /> 
+      <div style={{ display: "flex"}}>
+      <div style={{ width: "10vw"}}></div>
+      <div style={{ width: "80vw", display: "flex", justifyContent: "center"}}>
+      <Intro currentUser={currentUser} sessionUser={sessionUser} toggle={toggle}
+        setToggle={setToggle}/>
       <Posts
         sessionUser={sessionUser}
         currentUser={currentUser}
-        friends={friends}
-      />
+      /> 
+      </div>
+      <div style={{ width: "10vw"}}></div>
+      </div>
     </>
   );
 }
