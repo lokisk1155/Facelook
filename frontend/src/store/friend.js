@@ -39,7 +39,7 @@ export const addFriend = (friendRequest) => async (dispatch) => {
   });
   const data = await res.json();
   await dispatch(receiveFriend(data));
-  dispatch(fetchUser(friendRequest.receiver_id))
+  dispatch(fetchUser(friendRequest.receiver_id));
 };
 
 export const deleteFriend = (userId) => async (dispatch) => {

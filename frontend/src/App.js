@@ -9,15 +9,15 @@ import { getUsers } from "./store/simpleUsers";
 import { useParams } from "react-router-dom";
 
 function App() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const { id } = useParams()
-  
+  const { id } = useParams();
+
   const sessionUser = useSelector((state) => state.session.user);
 
   useEffect(() => {
-    dispatch(getUsers())
-  }, [id])
+    dispatch(getUsers());
+  }, [id]);
 
   return (
     <>

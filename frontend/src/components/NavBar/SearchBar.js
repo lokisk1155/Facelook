@@ -12,8 +12,7 @@ function SearchBar({
   setTyped,
   setFilteredUserCount,
 }) {
-
-  const users = useSelector((state) => state.simpleUsers)
+  const users = useSelector((state) => state.simpleUsers);
 
   const history = useHistory();
   const [filteredUsers, setFilteredUsers] = useState(null);
@@ -41,7 +40,7 @@ function SearchBar({
   }, [typed]);
 
   if (!users) {
-    return null
+    return null;
   }
 
   return (
@@ -88,7 +87,8 @@ function SearchBar({
           {" "}
           {filteredUsers.map((user) => {
             return (
-              <div key={user.id}
+              <div
+                key={user.id}
                 onClick={() => {
                   history.push(`/ProfilePage/${user.id}`);
                 }}
@@ -99,7 +99,6 @@ function SearchBar({
                   <p className="result-user-name">{user.name}</p>
                 </div>
               </div>
-   
             );
           })}
           {typed.length > 0 && (

@@ -29,7 +29,7 @@ function Overview({ currentUser, sessionUser }) {
   const [toggleRelationshipEdit, setToggleRelationshipEdit] = useState(false);
 
   const handleWork = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     let work = fakeWork;
     const user = {
       ...currentUser,
@@ -39,7 +39,7 @@ function Overview({ currentUser, sessionUser }) {
   };
 
   const handleEducation = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     let education = fakeEducation;
     const user = {
       ...currentUser,
@@ -49,7 +49,7 @@ function Overview({ currentUser, sessionUser }) {
   };
 
   const handleLocation = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     let location = fakeLocation;
     const user = {
       ...currentUser,
@@ -59,7 +59,7 @@ function Overview({ currentUser, sessionUser }) {
   };
 
   const handleRelationship = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     let relationship = fakeRelationship;
     const user = {
       ...currentUser,
