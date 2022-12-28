@@ -1,7 +1,6 @@
 .friends-container-container {
   display: block;
   border: 1px;
-  height: 45%;
   background-color: white;
   border-radius: 10px;
   background-color: white;
@@ -9,6 +8,14 @@
   box-shadow: 0px 12px 12px 0px lightgrey;
   width: 100%;
   min-width: 150px;
-  height: 25vh;
   margin-top: 15px;
 }
+
+.actual-friends-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+.indi-friends {
+    width: 33.3333%;
+}
+

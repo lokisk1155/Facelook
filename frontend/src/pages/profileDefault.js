@@ -47,7 +47,7 @@ function ProfileDefault() {
         <div
           style={{ width: "80vw", display: "flex", justifyContent: "center" }}
         >
-          <div style={{ width: "20vw", flexDirection: "column" }}>
+          <div style={{ width: "29.9vw", flexDirection: "column" }}>
             <Intro
               currentUser={currentUser}
               sessionUser={sessionUser}
