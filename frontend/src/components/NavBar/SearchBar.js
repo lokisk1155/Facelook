@@ -1,9 +1,8 @@
 import "./SearchBar.css";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useEffect } from "react";
-import csrfFetch from "../../store/csrf";
 import profilePic from "./imgs/blank.png";
 
 function SearchBar({
@@ -13,29 +12,17 @@ function SearchBar({
   setTyped,
   setFilteredUserCount,
 }) {
+
+  const users = useSelector((state) => state.simpleUsers)
+
   const history = useHistory();
-  const dispatch = useDispatch();
-  const [users, setUsers] = useState(null);
   const [filteredUsers, setFilteredUsers] = useState(null);
   const [recentSearches, setRecentSearches] = useState([]);
 
-  const getUsers = async () => {
-    const res = await csrfFetch(`api/users`);
-    const data = await res.json();
-    return data;
-  };
-
   useEffect(() => {
-    if (!users) {
-      getUsers().then((data) => {
-        setUsers(data);
-      });
-    }
-
     if (users && typed.length > 0) {
       let currentMatches = Object.values(users).filter((user) => {
-        let userName = `${user.first_name} ${user.last_name}`.toLowerCase();
-        return userName.startsWith(typed.toLowerCase());
+        return user.name.startsWith(typed.toLowerCase());
       });
 
       if (currentMatches) {
@@ -52,6 +39,10 @@ function SearchBar({
       setFilteredUserCount(0);
     }
   }, [typed]);
+
+  if (!users) {
+    return null
+  }
 
   return (
     <>
@@ -105,7 +96,7 @@ function SearchBar({
                 <div className="result-user-div">
                   <img className="result-user-profile-pic" src={profilePic} />
 
-                  <p className="result-user-name">{`${user.first_name} ${user.last_name}`}</p>
+                  <p className="result-user-name">{user.name}</p>
                 </div>
               </div>
             );

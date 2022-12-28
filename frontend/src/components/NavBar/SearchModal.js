@@ -11,8 +11,6 @@ function SearchModal({ closeModal, typed, setTyped }) {
   const adjustedHeightForContainer = `${userFilteredCountTimesHeight}px`;
 
   useEffect(() => {}, [userFilteredCount]);
-
-  console.log(adjustedHeightForContainer);
   return (
     <div
       className="search-modal-container"

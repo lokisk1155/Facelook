@@ -16,8 +16,6 @@ function PostFeed() {
   const [togglePost, setTogglePost] = useState(false);
   const [targetedPost, setTargetedPost] = useState(null);
 
-  console.log(targetedPost);
-
   const posts = useSelector((state) => {
     if (state.post) {
       return Object.values(state.post);
