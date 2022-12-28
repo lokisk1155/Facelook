@@ -25,7 +25,8 @@ function WorkEd({ currentUser, sessionUser }) {
   const [toggleHighscool, setToggleHighscool] = useState(false);
   const [toggleEditHighscool, setToggleEditHighschool] = useState(false);
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault()
     setWork(fakeWork);
     let work = fakeWork;
     const user = {
@@ -35,7 +36,8 @@ function WorkEd({ currentUser, sessionUser }) {
     return dispatch(updateUser(user));
   };
 
-  const handleCollege = () => {
+  const handleCollege = (e) => {
+    e.preventDefault()
     setCollege(fakeCollege);
     let education = fakeCollege;
     const user = {
@@ -45,7 +47,8 @@ function WorkEd({ currentUser, sessionUser }) {
     return dispatch(updateUser(user));
   };
 
-  const handleHighschool = () => {
+  const handleHighschool = (e) => {
+    e.preventDefault()
     setHighschool(fakeHighschool);
     let highschool = fakeHighschool;
     const user = {
@@ -55,7 +58,8 @@ function WorkEd({ currentUser, sessionUser }) {
     return dispatch(updateUser(user));
   };
 
-  const handleAddWork = () => {
+  const handleAddWork = (e) => {
+    e.preventDefault()
     setWork(fakeWork);
     let places_lived = currentUser.places_worked.push(fakeWork);
     const user = {

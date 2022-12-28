@@ -86,8 +86,6 @@
 .profile-picture-and-name-container {
   display: flex;
   align-items: center;
-  top: -5vh;
-  position: relative;
 }
 
 .profile-top-profile-pic {
@@ -98,6 +96,7 @@
   object-fit: cover;
   cursor: pointer;
   border: 5px solid #fff;
+  margin-bottom: 50px;
 }
 
 .background-photo-container-profile-page {
@@ -184,6 +183,7 @@
     height: 75px;
     width: 75px;
     justify-content: center;
+
   }
 
   .left-side-of-page-header {

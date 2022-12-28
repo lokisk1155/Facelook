@@ -28,7 +28,8 @@ function Overview({ currentUser, sessionUser }) {
   const [fakeRelationship, setFakeRelationship] = useState("");
   const [toggleRelationshipEdit, setToggleRelationshipEdit] = useState(false);
 
-  const handleWork = () => {
+  const handleWork = (e) => {
+    e.preventDefault()
     let work = fakeWork;
     const user = {
       ...currentUser,
@@ -37,7 +38,8 @@ function Overview({ currentUser, sessionUser }) {
     return dispatch(updateUser(user));
   };
 
-  const handleEducation = () => {
+  const handleEducation = (e) => {
+    e.preventDefault()
     let education = fakeEducation;
     const user = {
       ...currentUser,
@@ -46,8 +48,8 @@ function Overview({ currentUser, sessionUser }) {
     return dispatch(updateUser(user));
   };
 
-  const handleLocation = () => {
-    // setLocation(fakeLocation);
+  const handleLocation = (e) => {
+    e.preventDefault()
     let location = fakeLocation;
     const user = {
       ...currentUser,
@@ -56,8 +58,8 @@ function Overview({ currentUser, sessionUser }) {
     return dispatch(updateUser(user));
   };
 
-  const handleRelationship = () => {
-    // setRelationShip(fakeRelationship);
+  const handleRelationship = (e) => {
+    e.preventDefault()
     let relationship = fakeRelationship;
     const user = {
       ...currentUser,
