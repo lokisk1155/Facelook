@@ -23,7 +23,7 @@ function ProfileAbout({ about }) {
     dispatch(fetchUser(id));
   }, [id]);
 
-  if (!currentUser) return null 
+  if (!currentUser) return null;
 
   return (
     <>

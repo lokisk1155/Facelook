@@ -34,18 +34,25 @@ function ProfileFriends() {
       {friends ? (
         <ProfileTop sessionUser={sessionUser} currentUser={currentUser} />
       ) : null}
-        <div style={{ display: "flex"}}>
-        <div style={{ width: "15vw"}}></div>
-        <div style={{ width: "70vw", maxWidth: "1250px", justifyContent: "center"}}>
-        {friends ? (<Friends
-          sessionUser={sessionUser}
-          currentUser={currentUser}
-          friends={friends}
-        />
-        ) : null}
-        <div style={{ width: "15vw"}}></div>
+      <div style={{ display: "flex" }}>
+        <div style={{ width: "15vw" }}></div>
+        <div
+          style={{
+            width: "70vw",
+            maxWidth: "1250px",
+            justifyContent: "center",
+          }}
+        >
+          {friends ? (
+            <Friends
+              sessionUser={sessionUser}
+              currentUser={currentUser}
+              friends={friends}
+            />
+          ) : null}
+          <div style={{ width: "15vw" }}></div>
+        </div>
       </div>
-    </div>
     </>
   );
 }

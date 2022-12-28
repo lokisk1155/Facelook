@@ -7,7 +7,7 @@ function Overview({ currentUser, sessionUser }) {
   const dispatch = useDispatch();
 
   const isUser = currentUser.id === sessionUser.id;
- 
+
   const [workPlace, setWorkPlace] = useState(currentUser.work);
   const [toggleWork, setToggleWork] = useState(false);
   const [fakeWork, setFakeWork] = useState("");
@@ -43,7 +43,7 @@ function Overview({ currentUser, sessionUser }) {
       ...currentUser,
       education,
     };
-    return dispatch(updateUser(user))
+    return dispatch(updateUser(user));
   };
 
   const handleLocation = () => {

@@ -3,7 +3,6 @@ import { updateUserArray } from "../../../store/user";
 import { useState } from "react";
 
 function PlacesLived({ currentUser, sessionUser }) {
-
   const dispatch = useDispatch();
 
   const isUser = currentUser.id === sessionUser.id;
@@ -12,11 +11,9 @@ function PlacesLived({ currentUser, sessionUser }) {
   const [fakeCity, setFakeCity] = useState("");
   const [toggleAddCity, setToggleAddCity] = useState(false);
 
-
-
   const handleAddCity = (e) => {
     e.preventDefault();
-    setPlacesLived(fakeCity)
+    setPlacesLived(fakeCity);
     let places_worked = fakeCity;
     const user = {
       ...currentUser,
@@ -40,7 +37,7 @@ function PlacesLived({ currentUser, sessionUser }) {
             <button onClick={() => setToggleAddCity(false)}>Cancel</button>
             <input type="submit" />
           </form>
-        ) : null }
+        ) : null}
       </div>
     </div>
   );

@@ -3,7 +3,6 @@ import { updateUser } from "../../../store/user";
 import { useState } from "react";
 
 function Relationship({ currentUser, sessionUser }) {
-
   const dispatch = useDispatch();
 
   const isUser = currentUser.id === sessionUser.id;

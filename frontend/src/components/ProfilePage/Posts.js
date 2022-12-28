@@ -20,7 +20,7 @@ function Posts({ currentUser, sessionUser }) {
 
   const posts = useSelector((state) => {
     if (state.post) {
-      return Object.values(state.post).filter((post) => post.user_id == id)
+      return Object.values(state.post).filter((post) => post.user_id == id);
     } else {
       return [];
     }
@@ -49,76 +49,76 @@ function Posts({ currentUser, sessionUser }) {
   };
 
   return (
-      <div className="omega-posts-container-profile-page ">
-        <div className="post-feed-container">
-          <div className="create-post-modal">
-            <button className="new-post-button" onClick={handleNewPost}>
-              <label className="place-holder-text-new-post">
-                What's on your mind?
-              </label>
-            </button>
+    <div className="omega-posts-container-profile-page ">
+      <div className="post-feed-container">
+        <div className="create-post-modal">
+          <button className="new-post-button" onClick={handleNewPost}>
+            <label className="place-holder-text-new-post">
+              What's on your mind?
+            </label>
+          </button>
 
-            <div className="pic-holder">
-              {
-                <img
-                  className="profile-pic-inside-create-post"
-                  src={profilePic}
-                ></img>
-              }
-            </div>
-
-            <div className="modal-holder">
-              {togglePost ? (
-                <CreatePostModal
-                  type={"create"}
-                  currentUser={currentUser}
-                  postContent={"What's on your mind?"}
-                  header={"Create post"}
-                  closeModal={setTogglePost}
-                />
-              ) : null }
-            </div>
+          <div className="pic-holder">
+            {
+              <img
+                className="profile-pic-inside-create-post"
+                src={profilePic}
+              ></img>
+            }
           </div>
 
-          {posts && (
-            <div className="individual-post-container">
-              {posts
-                .map((post, index) => {
-                  return (
-                    <div key={index} className="individual-post">
-                      <div className="post-header">
-                        <img className="post-pic" src={profilePic}></img>
-                        <h5 className="current-user-name">{`${currentUser.first_name} ${currentUser.last_name}`}</h5>
-                      </div>
-                      <p className="post-content">{post.content}</p>
-                      {ownsPost && (
-                        <button onClick={() => handleDeletePost(post)}>
-                          Delete Post
-                        </button>
-                      )}
-                      {ownsPost && (
-                        <button onClick={handleEditPost(post.id)}>
-                          Edit Post
-                        </button>
-                      )}
-                      {editPost === post.id ? (
-                        <CreatePostModal
-                          type="update"
-                          currentUser={currentUser}
-                          postId={post.id}
-                          postContent={post.content}
-                          header={"Edit post"}
-                          closeModal={setEditPost}
-                        />
-                      ) : null }
-                    </div>
-                  );
-                })
-                .reverse()}
-            </div>
-          )}
+          <div className="modal-holder">
+            {togglePost ? (
+              <CreatePostModal
+                type={"create"}
+                currentUser={currentUser}
+                postContent={"What's on your mind?"}
+                header={"Create post"}
+                closeModal={setTogglePost}
+              />
+            ) : null}
+          </div>
         </div>
+
+        {posts && (
+          <div className="individual-post-container">
+            {posts
+              .map((post, index) => {
+                return (
+                  <div key={index} className="individual-post">
+                    <div className="post-header">
+                      <img className="post-pic" src={profilePic}></img>
+                      <h5 className="current-user-name">{`${currentUser.first_name} ${currentUser.last_name}`}</h5>
+                    </div>
+                    <p className="post-content">{post.content}</p>
+                    {ownsPost && (
+                      <button onClick={() => handleDeletePost(post)}>
+                        Delete Post
+                      </button>
+                    )}
+                    {ownsPost && (
+                      <button onClick={handleEditPost(post.id)}>
+                        Edit Post
+                      </button>
+                    )}
+                    {editPost === post.id ? (
+                      <CreatePostModal
+                        type="update"
+                        currentUser={currentUser}
+                        postId={post.id}
+                        postContent={post.content}
+                        header={"Edit post"}
+                        closeModal={setEditPost}
+                      />
+                    ) : null}
+                  </div>
+                );
+              })
+              .reverse()}
+          </div>
+        )}
       </div>
+    </div>
   );
 }
 
@@ -129,21 +129,21 @@ export default Posts;
 // const [togglePost, setTogglePost] = useState(false)
 // const [customPost, setCustomPost] = useState(false)
 
-  // useEffect(() => {
-  //   if (postDeleted) {
-  //     setPostDeleted(false);
-  //   }
-  //   if (sessionUser.id === id) {
-  //     setDisplayEditDelete(true);
-  //   }
-  //   if (allPosts) {
-  //     if (id) {
-  //       const filteredPosts = Object.values(allPosts);
-  //       filteredPosts.filter((post) => post.user_id === id);
-  //       setPosts(filteredPosts.reverse());
-  //     } else {
-  //       setPosts(allPosts.reverse());
-  //     }
-  //   }
-  //   setBio(currentUser.bio);
-  // }, [postDeleted]);
+// useEffect(() => {
+//   if (postDeleted) {
+//     setPostDeleted(false);
+//   }
+//   if (sessionUser.id === id) {
+//     setDisplayEditDelete(true);
+//   }
+//   if (allPosts) {
+//     if (id) {
+//       const filteredPosts = Object.values(allPosts);
+//       filteredPosts.filter((post) => post.user_id === id);
+//       setPosts(filteredPosts.reverse());
+//     } else {
+//       setPosts(allPosts.reverse());
+//     }
+//   }
+//   setBio(currentUser.bio);
+// }, [postDeleted]);

@@ -5,7 +5,6 @@ import { useState } from "react";
 import "./workEd.css";
 
 function WorkEd({ currentUser, sessionUser }) {
-
   const dispatch = useDispatch();
 
   const isUser = sessionUser.id === currentUser.id;
