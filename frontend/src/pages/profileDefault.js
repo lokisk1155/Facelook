@@ -2,10 +2,9 @@ import ProfileTop from "../components/ProfilePage/ProfileTop";
 import Posts from "../components/ProfilePage/Posts";
 import { useEffect } from "react";
 import { fetchUser } from "../store/user";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchFriends } from "../store/friend";
-import { useState } from "react";
 import { fetchPosts } from "../store/post";
 import Intro from "../components/ProfilePage/Intro";
 import FriendsContainer from "../components/ProfilePage/FriendsContainer";
@@ -21,11 +20,9 @@ function ProfileDefault() {
 
   const friends = useSelector((state) => state.friend);
 
-  const [toggle, setToggle] = useState(false);
-
   useEffect(() => {
     Promise.all([dispatch(fetchPosts()), dispatch(fetchUser(id))]);
-  }, [id, toggle]);
+  }, [id]);
 
   if (!currentUser) {
     return null;
@@ -39,8 +36,6 @@ function ProfileDefault() {
       <ProfileTop
         sessionUser={sessionUser}
         currentUser={currentUser}
-        toggle={toggle}
-        setToggle={setToggle}
       />
       <div style={{ display: "flex" }}>
         <div style={{ width: "10vw" }}></div>
@@ -51,8 +46,6 @@ function ProfileDefault() {
             <Intro
               currentUser={currentUser}
               sessionUser={sessionUser}
-              toggle={toggle}
-              setToggle={setToggle}
             />
             <FriendsContainer
               currentUser={currentUser}

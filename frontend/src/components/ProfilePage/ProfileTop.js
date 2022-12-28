@@ -9,7 +9,7 @@ import profilePicBlank from "../NavBar/imgs/blank.png";
 import "./ProfileTop.css";
 import capitalizeFirstLetter from "../../utils/capFirstLetter";
 
-function ProfileTop({ currentUser, sessionUser, setToggle, toggle }) {
+function ProfileTop({ currentUser, sessionUser }) {
   const dispatch = useDispatch();
 
   const [toggleDropDown, setToggleDropDown] = useState(false);
@@ -37,15 +37,13 @@ function ProfileTop({ currentUser, sessionUser, setToggle, toggle }) {
     if (!isFriend) {
       dispatch(addFriend(friendRequest));
     }
-    setToggle(!toggle);
   };
 
   const handleDelete = (e) => {
     e.preventDefault();
     if (isFriend) {
-      return dispatch(deleteFriend(currentUser.id));
+      dispatch(deleteFriend(currentUser.id));
     }
-    setToggle(!toggle);
   };
 
   return (
