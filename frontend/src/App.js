@@ -6,14 +6,18 @@ import { ProfilePageRoutes } from "./routes/ProfilePageRoutes";
 import { useDispatch, useSelector } from "react-redux";
 import HomePage from "./components/HomePage/HomePage";
 import { getUsers } from "./store/simpleUsers";
+import { useParams } from "react-router-dom";
 
 function App() {
   const dispatch = useDispatch()
+
+  const { id } = useParams()
+  
   const sessionUser = useSelector((state) => state.session.user);
 
   useEffect(() => {
     dispatch(getUsers())
-  }, [])
+  }, [id])
 
   return (
     <>

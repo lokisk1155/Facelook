@@ -26,6 +26,7 @@ function FriendsContainer({ friends }) {
           ? mutualFriends.map((friend) => {
               return (
                 <div
+                    key={friend.id} 
                   style={{
                     height: "140px",
                     width: "120px",

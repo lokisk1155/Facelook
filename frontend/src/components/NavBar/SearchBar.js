@@ -56,8 +56,8 @@ function SearchBar({
             viewBox="0 0 20 20"
             className="back-arrow-svg"
           >
-            <g fill-rule="evenodd" transform="translate(-446 -350)">
-              <g fill-rule="nonzero">
+            <g fillRule="evenodd" transform="translate(-446 -350)">
+              <g fillRule="nonzero">
                 <path
                   d="M100.249 201.999a1 1 0 0 0-1.415-1.415l-5.208 5.209a1 1 0 0 0 0 1.414l5.208 5.209A1 1 0 0 0 100.25 211l-4.501-4.501 4.5-4.501z"
                   transform="translate(355 153.5)"
@@ -88,7 +88,7 @@ function SearchBar({
           {" "}
           {filteredUsers.map((user) => {
             return (
-              <div
+              <div key={user.id}
                 onClick={() => {
                   history.push(`/ProfilePage/${user.id}`);
                 }}
@@ -99,17 +99,18 @@ function SearchBar({
                   <p className="result-user-name">{user.name}</p>
                 </div>
               </div>
+   
             );
           })}
           {typed.length > 0 && (
-            <button className="search-for-typed-button">
+            <div className="search-for-typed-button">
               <button className="mi-icon-holder">
                 <i className="material-icons" id="searchFor">
                   search
                 </i>
               </button>
               <p className="search-for-typed-text">{`Search for ${typed}`}</p>
-            </button>
+            </div>
           )}
         </div>
       )}

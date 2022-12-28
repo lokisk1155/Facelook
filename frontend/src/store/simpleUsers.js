@@ -8,7 +8,7 @@ export const setSimpleUsers = (users) => ({
 });
 
 export const getUsers = () => async (dispatch) => {
-    const res = await csrfFetch(`api/users`);
+    const res = await csrfFetch(`/api/users`);
     const data = await res.json()
     const filtered = Object.values(data).map((user) => {
         return { id: user.id, name: `${user.first_name} ${user.last_name}` }
