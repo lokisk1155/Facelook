@@ -1,30 +1,16 @@
 import { useDispatch } from "react-redux";
 import { updateUser } from "../../../store/user";
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { getCurrent } from "../../../store/user";
-import { useParams } from "react-router-dom";
+import { useState } from "react";
 
-function Relationship() {
+function Relationship({ currentUser, sessionUser }) {
+
   const dispatch = useDispatch();
-  const { id } = useParams();
-  const sessionUser = useSelector((state) => state.session.user);
-  const currentUser = useSelector(getCurrent(id));
+
   const isUser = currentUser.id === sessionUser.id;
 
-  const [relationship, setRelationship] = useState(null);
+  const [relationship, setRelationship] = useState(currentUser.relationship);
   const [fakeRelationship, setFakeRelationship] = useState("");
   const [toggleRelationship, setToggleRelationship] = useState(false);
-
-  useEffect(() => {
-    checkUser();
-  });
-
-  function checkUser() {
-    if (currentUser) {
-      setRelationship(currentUser.relationship);
-    }
-  }
 
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -1,51 +1,30 @@
 import { useDispatch } from "react-redux";
 import { updateUser } from "../../../store/user";
-import { useEffect, useState } from "react";
-import { getCurrent } from "../../../store/user";
-import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useState } from "react";
+
 import "./workEd.css";
 
-function WorkEd() {
+function WorkEd({ currentUser, sessionUser }) {
+
   const dispatch = useDispatch();
-
-  const { id } = useParams();
-
-  const currentUser = useSelector(getCurrent(id));
-
-  const sessionUser = useSelector((state) => {
-    return state.session.user;
-  });
 
   const isUser = sessionUser.id === currentUser.id;
 
-  const [work, setWork] = useState(null);
+  const [work, setWork] = useState(currentUser.work);
   const [toggleWork, setToggleWork] = useState(false);
   const [fakeWork, setFakeWork] = useState("");
   const [toggleWorkEdit, setToggleWorkEdit] = useState(false);
   const [toggleAddWork, setToggleAddWork] = useState(false);
 
-  const [college, setCollege] = useState(null);
+  const [college, setCollege] = useState(currentUser.education);
   const [fakeCollege, setFakeCollege] = useState("");
   const [toggleCollege, setToggleCollege] = useState(false);
   const [toggleEditCollege, setToggleEditCollege] = useState(false);
 
-  const [highschool, setHighschool] = useState(null);
+  const [highschool, setHighschool] = useState(currentUser.highschool);
   const [fakeHighschool, setFakeHighscool] = useState("");
   const [toggleHighscool, setToggleHighscool] = useState(false);
   const [toggleEditHighscool, setToggleEditHighschool] = useState(false);
-
-  useEffect(() => {
-    checkUser();
-  });
-
-  function checkUser() {
-    if (currentUser) {
-      setWork(currentUser.work);
-      setCollege(currentUser.education);
-      setHighschool(currentUser.highschool);
-    }
-  }
 
   const handleSubmit = () => {
     setWork(fakeWork);

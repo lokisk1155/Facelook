@@ -23,6 +23,8 @@ function ProfileAbout({ about }) {
     dispatch(fetchUser(id));
   }, [id]);
 
+  if (!currentUser) return null 
+
   return (
     <>
       <ProfileTop sessionUser={sessionUser} currentUser={currentUser} />

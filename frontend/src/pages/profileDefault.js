@@ -8,6 +8,7 @@ import { fetchFriends } from "../store/friend";
 import { useState } from "react";
 import { fetchPosts } from "../store/post";
 import Intro from "../components/ProfilePage/Intro";
+import FriendsContainer from "../components/ProfilePage/FriendsContainer";
 
 function ProfileDefault() {
   const { id } = useParams();
@@ -44,8 +45,11 @@ function ProfileDefault() {
       <div style={{ display: "flex"}}>
       <div style={{ width: "10vw"}}></div>
       <div style={{ width: "80vw", display: "flex", justifyContent: "center"}}>
+        <div style={{ width: "20vw", flexDirection: "column"}} >
       <Intro currentUser={currentUser} sessionUser={sessionUser} toggle={toggle}
         setToggle={setToggle}/>
+      <FriendsContainer currentUser={currentUser} sessionUser={sessionUser} friends={friends}/>
+        </div>
       <Posts
         sessionUser={sessionUser}
         currentUser={currentUser}

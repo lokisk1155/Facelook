@@ -1,38 +1,22 @@
 import { useDispatch } from "react-redux";
-import {
-  setCurrentProfile,
-  updateUser,
-  updateUserArray,
-} from "../../../store/user";
-import { useSelector } from "react-redux";
-import { getCurrent } from "../../../store/user";
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { updateUserArray } from "../../../store/user";
 import { useState } from "react";
 
-function PlacesLived() {
+function PlacesLived({ currentUser, sessionUser }) {
+
   const dispatch = useDispatch();
-  const [placesLived, setPlacesLived] = useState(null);
+
+  const isUser = currentUser.id === sessionUser.id;
+
+  const [placesLived, setPlacesLived] = useState(currentUser.places_worked);
   const [fakeCity, setFakeCity] = useState("");
   const [toggleAddCity, setToggleAddCity] = useState(false);
 
-  const { id } = useParams();
-  const sessionUser = useSelector((state) => state.session.user);
-  const currentUser = useSelector(getCurrent(id));
-  const isUser = currentUser.id === sessionUser.id;
 
-  function checkPlaces() {
-    if (currentUser.places_worked) {
-      setPlacesLived(currentUser.places_worked);
-    }
-  }
-
-  useEffect(() => {
-    checkPlaces();
-  }, []);
 
   const handleAddCity = (e) => {
     e.preventDefault();
+    setPlacesLived(fakeCity)
     let places_worked = fakeCity;
     const user = {
       ...currentUser,
@@ -46,7 +30,7 @@ function PlacesLived() {
       <p>{placesLived}</p>
       <button onClick={() => setToggleAddCity(!toggleAddCity)}>Add City</button>
       <div>
-        {toggleAddCity && (
+        {toggleAddCity && isUser ? (
           <form onSubmit={handleAddCity}>
             <input
               type="text"
@@ -56,7 +40,7 @@ function PlacesLived() {
             <button onClick={() => setToggleAddCity(false)}>Cancel</button>
             <input type="submit" />
           </form>
-        )}
+        ) : null }
       </div>
     </div>
   );

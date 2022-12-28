@@ -1,4 +1,4 @@
-.intro-container {
+.friends-container-container {
     display: block;
     border: 1px;
     height: 45%;
@@ -12,16 +12,3 @@
     height: 25vh;
     margin-top: 15px;
 }
-
-  .intro-header {
-    margin: 10px;
-  }
-
-  .content-container {
-    height: 65%;
-
-  }
-
-  .user-info {
-    margin-bottom: 20px;
-  }

@@ -1,63 +1,34 @@
 import { updateUser } from "../../../store/user";
 import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
-import { getCurrent } from "../../../store/user";
-import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./overview.css";
 
-function Overview({}) {
+function Overview({ currentUser, sessionUser }) {
   const dispatch = useDispatch();
-  const { id } = useParams();
-  const sessionUser = useSelector((state) => state.session.user);
-  const currentUser = useSelector((state) => state.user[id]);
 
-  console.log(id, "id");
-
-  let isUser;
-
-  if (currentUser) {
-    isUser = currentUser.id === sessionUser.id;
-  }
-
-  const [workPlace, setWorkPlace] = useState("");
+  const isUser = currentUser.id === sessionUser.id;
+ 
+  const [workPlace, setWorkPlace] = useState(currentUser.work);
   const [toggleWork, setToggleWork] = useState(false);
   const [fakeWork, setFakeWork] = useState("");
   const [toggleWorkEdit, setToggleWorkEdit] = useState(false);
 
-  const [education, setEducation] = useState("");
+  const [education, setEducation] = useState(currentUser.education);
   const [toggleEducation, setToggleEducation] = useState(false);
   const [fakeEducation, setFakeEducation] = useState("");
   const [toggleEducationEdit, setToggleEducationEdit] = useState(false);
 
-  const [location, setLocation] = useState("");
+  const [location, setLocation] = useState(currentUser.location);
   const [toggleLocation, setToggleLocation] = useState(false);
   const [fakeLocation, setFakeLocation] = useState("");
   const [toggleLocationEdit, setToggleLocationEdit] = useState(false);
 
-  const [relationship, setRelationShip] = useState("");
+  const [relationship, setRelationShip] = useState(currentUser.relationship);
   const [toggleRelationship, setToggleRelationship] = useState(false);
   const [fakeRelationship, setFakeRelationship] = useState("");
   const [toggleRelationshipEdit, setToggleRelationshipEdit] = useState(false);
 
-  console.log(currentUser, "currentuser");
-  //console.log(sessionUser, 'sessionUser')
-
-  useEffect(() => {
-    checkParams();
-  }, []);
-
-  function checkParams() {
-    if (currentUser) {
-      setWorkPlace(currentUser.work);
-      setRelationShip(currentUser.relationship);
-      setEducation(currentUser.education);
-      setLocation(currentUser.location);
-    }
-  }
-
   const handleWork = () => {
-    setWorkPlace(fakeWork);
     let work = fakeWork;
     const user = {
       ...currentUser,
@@ -67,17 +38,16 @@ function Overview({}) {
   };
 
   const handleEducation = () => {
-    setEducation(fakeEducation);
     let education = fakeEducation;
     const user = {
       ...currentUser,
       education,
     };
-    return dispatch(updateUser(user));
+    return dispatch(updateUser(user))
   };
 
   const handleLocation = () => {
-    setLocation(fakeLocation);
+    // setLocation(fakeLocation);
     let location = fakeLocation;
     const user = {
       ...currentUser,
@@ -87,7 +57,7 @@ function Overview({}) {
   };
 
   const handleRelationship = () => {
-    setRelationShip(fakeRelationship);
+    // setRelationShip(fakeRelationship);
     let relationship = fakeRelationship;
     const user = {
       ...currentUser,
@@ -95,10 +65,6 @@ function Overview({}) {
     };
     return dispatch(updateUser(user));
   };
-
-  function handleClick() {
-    return setToggleWorkEdit(true);
-  }
 
   return (
     <div className="content-container">
@@ -126,7 +92,7 @@ function Overview({}) {
         )}
 
         {isUser && workPlace && (
-          <button onClick={handleClick}>Edit Post</button>
+          <button onClick={() => setToggleWorkEdit(true)}>Edit work</button>
         )}
         {toggleWorkEdit && (
           <form onSubmit={handleWork}>
