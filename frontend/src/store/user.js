@@ -52,7 +52,7 @@ export const updateUser = (user, formData) => async (dispatch) => {
   if (formData) {
     const res = await csrfFetch(`/api/users/${user.id}`, {
       method: "PUT",
-      body: formData
+      body: formData,
     });
     const data = await res.json();
     dispatch(setCurrentProfile(data.user));
@@ -66,7 +66,6 @@ export const updateUser = (user, formData) => async (dispatch) => {
     dispatch(setCurrentProfile(data.user));
     return data;
   }
-
 };
 
 export const updateUserArray = (user) => async (dispatch) => {

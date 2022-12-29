@@ -24,12 +24,12 @@ function PostFeed() {
     }
   });
 
-  const simpleUsers = useSelector((state) => state.simpleUsers)
+  const simpleUsers = useSelector((state) => state.simpleUsers);
 
   const currentUser = useSelector((state) => state.session.user);
 
   useEffect(() => {
-    dispatch(fetchPosts())
+    dispatch(fetchPosts());
     if (postDeleted) {
       setPostDeleted(false);
     }
@@ -88,49 +88,52 @@ function PostFeed() {
             .map((post) => {
               return (
                 <div key={post.id} className="individual-post">
-                  {typeof simpleUsers[post.user_id] !== "undefined"
-                        ? <><div className="post-header">
-                    <Link to={`/ProfilePage/${post.user_id}`}>
-                      <img className="post-pic" src={profilePic}></img>
-                    </Link>
-                    <h5 className="current-user-name">
-                      {typeof simpleUsers[post.user_id] !== "undefined"
-                        ? `${simpleUsers[post.user_id].name}`
-                        : "temp"}
-                    </h5>
-                  </div>
-                  <p className="post-content">{post.content}</p>
-                  {currentUser.id === post.user_id ? (
-                    <button onClick={() => handleDeletePost(post)}>
-                      Delete Post
-                    </button>
-                  ) : (
-                    <div />
-                  )}
-                  {currentUser.id === post.user_id ? (
-                    <button
-                      onClick={(e) => {
-                        setCheckPost(true);
-                        setTargetedPost(post);
-                      }}
-                    >
-                      Edit Post
-                    </button>
-                  ) : (
-                    <div />
-                  )}
-                  {checkPost && targetedPost.user_id === currentUser.id && (
-                    <Modal onClose={() => setCheckPost(false)}>
-                      <CreatePostModal
-                        type="update"
-                        currentUser={currentUser}
-                        postId={targetedPost.id}
-                        postContent={targetedPost.content}
-                        header={"Edit post"}
-                        closeModal={setCheckPost}
-                      />
-                    </Modal>
-                  )}</> : null }
+                  {typeof simpleUsers[post.user_id] !== "undefined" ? (
+                    <>
+                      <div className="post-header">
+                        <Link to={`/ProfilePage/${post.user_id}`}>
+                          <img className="post-pic" src={profilePic}></img>
+                        </Link>
+                        <h5 className="current-user-name">
+                          {typeof simpleUsers[post.user_id] !== "undefined"
+                            ? `${simpleUsers[post.user_id].name}`
+                            : "temp"}
+                        </h5>
+                      </div>
+                      <p className="post-content">{post.content}</p>
+                      {currentUser.id === post.user_id ? (
+                        <button onClick={() => handleDeletePost(post)}>
+                          Delete Post
+                        </button>
+                      ) : (
+                        <div />
+                      )}
+                      {currentUser.id === post.user_id ? (
+                        <button
+                          onClick={(e) => {
+                            setCheckPost(true);
+                            setTargetedPost(post);
+                          }}
+                        >
+                          Edit Post
+                        </button>
+                      ) : (
+                        <div />
+                      )}
+                      {checkPost && targetedPost.user_id === currentUser.id && (
+                        <Modal onClose={() => setCheckPost(false)}>
+                          <CreatePostModal
+                            type="update"
+                            currentUser={currentUser}
+                            postId={targetedPost.id}
+                            postContent={targetedPost.content}
+                            header={"Edit post"}
+                            closeModal={setCheckPost}
+                          />
+                        </Modal>
+                      )}
+                    </>
+                  ) : null}
                 </div>
               );
             })

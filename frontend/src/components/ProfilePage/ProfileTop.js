@@ -16,13 +16,13 @@ function ProfileTop({ currentUser, sessionUser }) {
 
   const [toggleDropDown, setToggleDropDown] = useState(false);
 
-  const [photoFile, setPhotoFile] = useState(null)
+  const [photoFile, setPhotoFile] = useState(null);
 
-  const [photoUrl, setPhotoUrl] = useState(null)
+  const [photoUrl, setPhotoUrl] = useState(null);
 
   const { id } = useParams();
 
-  const [toggle, setToggle] = useState(false)
+  const [toggle, setToggle] = useState(false);
 
   if (currentUser === undefined) return null;
 
@@ -37,15 +37,15 @@ function ProfileTop({ currentUser, sessionUser }) {
   const notSelf = currentUser.id !== sessionUser.id ? true : false;
 
   const handleUpdateProfile = async (e) => {
-    e.preventDefault() 
+    e.preventDefault();
     const formData = new FormData();
     if (photoFile) {
-      formData.append('user[profile_pic]', photoFile);
+      formData.append("user[profile_pic]", photoFile);
     }
-    dispatch(updateUser(currentUser, formData))
-  }
+    dispatch(updateUser(currentUser, formData));
+  };
 
-  const handleFile = e => {
+  const handleFile = (e) => {
     const file = e.target.files[0];
     if (file) {
       const fileReader = new FileReader();
@@ -55,7 +55,7 @@ function ProfileTop({ currentUser, sessionUser }) {
         setPhotoUrl(fileReader.result);
       };
     }
-  }
+  };
 
   const handleAdd = (e) => {
     e.preventDefault();
@@ -75,7 +75,9 @@ function ProfileTop({ currentUser, sessionUser }) {
     }
   };
 
-  const preview = currentUser.profilePicUrl ? currentUser.profilePicUrl : profilePicBlank
+  const preview = currentUser.profilePicUrl
+    ? currentUser.profilePicUrl
+    : profilePicBlank;
 
   return (
     <>
@@ -87,10 +89,12 @@ function ProfileTop({ currentUser, sessionUser }) {
           <div className="profile-picture-and-name-container">
             <img className="profile-top-profile-pic" src={preview} />
             <button onClick={() => setToggle(true)}> change pic</button>
-            {toggle && <div>
-              <input type="file" onChange={handleFile} />
+            {toggle && (
+              <div>
+                <input type="file" onChange={handleFile} />
                 <button onClick={handleUpdateProfile}>upload</button>
-              </div>}
+              </div>
+            )}
             <div>
               <p className="current-user-name-profile-top">{currentUserName}</p>
               <p>{friendCount} friends</p>
