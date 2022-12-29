@@ -1,20 +1,28 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteFriend, addFriend, fetchFriend } from "../../store/friend";
-import { fetchUser } from "../../store/user";
+import { fetchUser, updateUser } from "../../store/user";
 import { useState } from "react";
 import { getCurrent } from "../../store/user";
 import { Link, useParams } from "react-router-dom";
 import profilePicBlank from "../NavBar/imgs/blank.png";
 import "./ProfileTop.css";
 import capitalizeFirstLetter from "../../utils/capFirstLetter";
+import { setCurrentProfile } from "../../store/user";
+import csrfFetch from "../../store/csrf";
 
 function ProfileTop({ currentUser, sessionUser }) {
   const dispatch = useDispatch();
 
   const [toggleDropDown, setToggleDropDown] = useState(false);
 
+  const [photoFile, setPhotoFile] = useState(null)
+
+  const [photoUrl, setPhotoUrl] = useState(null)
+
   const { id } = useParams();
+
+  const [toggle, setToggle] = useState(false)
 
   if (currentUser === undefined) return null;
 
@@ -27,6 +35,27 @@ function ProfileTop({ currentUser, sessionUser }) {
   const isFriend = currentUser.friends.includes(sessionUser.id) ? true : false;
 
   const notSelf = currentUser.id !== sessionUser.id ? true : false;
+
+  const handleUpdateProfile = async (e) => {
+    e.preventDefault() 
+    const formData = new FormData();
+    if (photoFile) {
+      formData.append('user[profile_pic]', photoFile);
+    }
+    dispatch(updateUser(currentUser, formData))
+  }
+
+  const handleFile = e => {
+    const file = e.target.files[0];
+    if (file) {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        setPhotoFile(file);
+        setPhotoUrl(fileReader.result);
+      };
+    }
+  }
 
   const handleAdd = (e) => {
     e.preventDefault();
@@ -46,6 +75,8 @@ function ProfileTop({ currentUser, sessionUser }) {
     }
   };
 
+  const preview = currentUser.profilePicUrl ? currentUser.profilePicUrl : profilePicBlank
+
   return (
     <>
       <div className="profile-top-container">
@@ -54,7 +85,12 @@ function ProfileTop({ currentUser, sessionUser }) {
         </div>
         <div className="profile-page-header">
           <div className="profile-picture-and-name-container">
-            <img className="profile-top-profile-pic" src={profilePicBlank} />
+            <img className="profile-top-profile-pic" src={preview} />
+            <button onClick={() => setToggle(true)}> change pic</button>
+            {toggle && <div>
+              <input type="file" onChange={handleFile} />
+                <button onClick={handleUpdateProfile}>upload</button>
+              </div>}
             <div>
               <p className="current-user-name-profile-top">{currentUserName}</p>
               <p>{friendCount} friends</p>

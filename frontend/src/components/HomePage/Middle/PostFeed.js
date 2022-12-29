@@ -4,7 +4,7 @@ import { fetchPosts } from "../../../store/post";
 import CreatePostModal from "../../ProfilePage/createPostModal";
 import { deletePost } from "../../../store/post";
 import profilePic from "../../NavBar/imgs/blank.png";
-import { fetchUsers } from "../../../store/user";
+import { fetchsimpleUsers } from "../../../store/user";
 import { Link } from "react-router-dom";
 import "./PostFeed.css";
 import { Modal } from "../../../context/Modal";
@@ -24,21 +24,12 @@ function PostFeed() {
     }
   });
 
-  const users = useSelector((state) => {
-    if (state.user) {
-      return state.user;
-    } else {
-      return [];
-    }
-  });
+  const simpleUsers = useSelector((state) => state.simpleUsers)
 
   const currentUser = useSelector((state) => state.session.user);
 
   useEffect(() => {
-    dispatch(fetchUsers()).then((data) => {
-      dispatch(fetchPosts());
-    });
-
+    dispatch(fetchPosts())
     if (postDeleted) {
       setPostDeleted(false);
     }
@@ -58,7 +49,7 @@ function PostFeed() {
     return;
   }
 
-  if (!users) {
+  if (!simpleUsers) {
     return null;
   }
 
@@ -97,15 +88,14 @@ function PostFeed() {
             .map((post) => {
               return (
                 <div key={post.id} className="individual-post">
-                  <div className="post-header">
+                  {typeof simpleUsers[post.user_id] !== "undefined"
+                        ? <><div className="post-header">
                     <Link to={`/ProfilePage/${post.user_id}`}>
                       <img className="post-pic" src={profilePic}></img>
                     </Link>
                     <h5 className="current-user-name">
-                      {typeof users[post.user_id] !== "undefined"
-                        ? `${users[post.user_id].first_name} ${
-                            users[post.user_id].last_name
-                          }`
+                      {typeof simpleUsers[post.user_id] !== "undefined"
+                        ? `${simpleUsers[post.user_id].name}`
                         : "temp"}
                     </h5>
                   </div>
@@ -140,7 +130,7 @@ function PostFeed() {
                         closeModal={setCheckPost}
                       />
                     </Modal>
-                  )}
+                  )}</> : null }
                 </div>
               );
             })

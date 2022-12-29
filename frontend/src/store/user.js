@@ -48,14 +48,25 @@ export const getCurrent = (id) => (state) => {
   return state.user[id];
 };
 
-export const updateUser = (user) => async (dispatch) => {
-  const res = await csrfFetch(`/api/users/${user.id}`, {
-    method: "PUT",
-    body: JSON.stringify({ user }),
-  });
-  const data = await res.json();
-  dispatch(setCurrentProfile(data.user));
-  return data;
+export const updateUser = (user, formData) => async (dispatch) => {
+  if (formData) {
+    const res = await csrfFetch(`/api/users/${user.id}`, {
+      method: "PUT",
+      body: formData
+    });
+    const data = await res.json();
+    dispatch(setCurrentProfile(data.user));
+    return data;
+  } else {
+    const res = await csrfFetch(`/api/users/${user.id}`, {
+      method: "PUT",
+      body: JSON.stringify({ user }),
+    });
+    const data = await res.json();
+    dispatch(setCurrentProfile(data.user));
+    return data;
+  }
+
 };
 
 export const updateUserArray = (user) => async (dispatch) => {
