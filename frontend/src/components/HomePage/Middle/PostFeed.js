@@ -88,7 +88,7 @@ function PostFeed() {
                 <div key={post.id} className="individual-post">
                   <div className="post-header">
                     <Link to={`/ProfilePage/${post.user_id}`}>
-                      <img className="post-pic" src={profilePic}></img>
+                      <img className="post-pic" src={simpleUsers[post.user_id].profile_picture ? simpleUsers[post.user_id].profile_picture : profilePic}></img>
                     </Link>
                     <h5 className="current-user-name">
                       {simpleUsers[post.user_id].name}

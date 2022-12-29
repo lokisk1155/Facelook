@@ -15,7 +15,7 @@ export const getUsers = () => async (dispatch) => {
     simpleUsers[data[key].id] = {
       user_id: data[key].id,
       name: `${data[key].first_name} ${data[key].last_name}`,
-      photo: data[key].photo,
+      profile_picture: data[key].profile_picture,
     };
   }
   dispatch(setSimpleUsers(simpleUsers));
