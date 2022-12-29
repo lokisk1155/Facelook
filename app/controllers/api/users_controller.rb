@@ -33,15 +33,26 @@ class Api::UsersController < ApplicationController
 
     def update
       @user = User.find(params[:id])
-      result = false
+      photoAttached = false
       
       if params.has_key?(:profile_pic)
         @user.profile_pic.attach(params[:profile_pic])
-        result = @user.save
-      else 
-        result = @user.update(update_params)
+        photoAttached = true 
       end
-  
+
+      if params.has_key?(:cover_photo)
+        @user.cover_photo.attach(params[:cover_photo])
+        photoAttached = true 
+      end
+
+      result = false 
+
+      if photoAttached
+          result = @user.save
+      else 
+          result = @user.update(update_params)
+      end 
+
       if result
         render 'api/users/show'
       else
@@ -56,7 +67,7 @@ class Api::UsersController < ApplicationController
     end
 
     def update_params
-      params.require(:user).permit(:email, :id, :first_name, :last_name, :gender, :day, :month, :year, :bio, :featured, :work, :location, :education, :relationship, :phone_number, :created_at, :profile_pic, :highschool, :social_link, :language, :website, :places_lived, :places_worked)
+      params.require(:user).permit(:email, :id, :first_name, :last_name, :gender, :day, :month, :year, :bio, :featured, :work, :location, :education, :relationship, :phone_number, :created_at, :profile_pic, :highschool, :social_link, :language, :website, :places_lived, :places_worked, :cover_photo)
     end
 end 
 

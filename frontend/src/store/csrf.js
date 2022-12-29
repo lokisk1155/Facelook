@@ -26,10 +26,8 @@ async function csrfFetch(url, options = {}) {
   ) {
     options.headers["Content-Type"] =
       options.headers["Content-Type"] || "application/json";
-    options.headers["X-CSRF-Token"] = sessionStorage.getItem("X-CSRF-Token");
-  } else {
-    options.headers["X-CSRF-Token"] = sessionStorage.getItem("X-CSRF-Token");
-  }
+  } 
+  options.headers["X-CSRF-Token"] = sessionStorage.getItem("X-CSRF-Token");
   // call fetch with the url and the updated options hash
   const res = await fetch(url, options);
   // if the response status code is 400 or above, then throw an error with the

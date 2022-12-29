@@ -39,7 +39,6 @@ export const fetchUsers = (userIds) => async (dispatch) => {
 
 export const fetchUser = (userId) => async (dispatch) => {
   const res = await csrfFetch(`/api/users/${userId}`);
-
   const data = await res.json();
   dispatch(setCurrentProfile(data.user));
 };
@@ -49,23 +48,21 @@ export const getCurrent = (id) => (state) => {
 };
 
 export const updateUser = (user, formData) => async (dispatch) => {
+  let res; 
   if (formData) {
-    const res = await csrfFetch(`/api/users/${user.id}`, {
+    res = await csrfFetch(`/api/users/${user.id}`, {
       method: "PUT",
       body: formData,
     });
-    const data = await res.json();
-    dispatch(setCurrentProfile(data.user));
-    return data;
   } else {
-    const res = await csrfFetch(`/api/users/${user.id}`, {
+    res = await csrfFetch(`/api/users/${user.id}`, {
       method: "PUT",
       body: JSON.stringify({ user }),
     });
-    const data = await res.json();
-    dispatch(setCurrentProfile(data.user));
-    return data;
   }
+  const data = await res.json();
+  dispatch(setCurrentProfile(data.user));
+  return data;
 };
 
 export const updateUserArray = (user) => async (dispatch) => {

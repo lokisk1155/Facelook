@@ -150,20 +150,3 @@ function NavBar() {
 }
 
 export default NavBar;
-
-{
-  /* <img
-          src={linkedin}
-          alt="linkedin"
-          className="linkedin"
-          onClick={() =>
-            window.open("https://www.linkedin.com/in/shawn-mallon-3050b7161")
-          }
-        ></img>
-        <img
-          src={github}
-          alt="github"
-          className="github"
-          onClick={() => window.open("https://github.com/lokisk1155/FaceOok")}
-        ></img> */
-}

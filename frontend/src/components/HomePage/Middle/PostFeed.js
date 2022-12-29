@@ -16,13 +16,7 @@ function PostFeed() {
   const [togglePost, setTogglePost] = useState(false);
   const [targetedPost, setTargetedPost] = useState(null);
 
-  const posts = useSelector((state) => {
-    if (state.post) {
-      return Object.values(state.post);
-    } else {
-      return [];
-    }
-  });
+  const posts = useSelector((state) => state.post)
 
   const simpleUsers = useSelector((state) => state.simpleUsers);
 
@@ -49,8 +43,12 @@ function PostFeed() {
     return;
   }
 
-  if (!simpleUsers) {
+  if (Object.keys(simpleUsers).length === 0) {
     return null;
+  }
+
+  if  (Object.keys(posts).length === 0) {
+    return null 
   }
 
   return (
@@ -84,20 +82,16 @@ function PostFeed() {
 
       {posts && (
         <div className="individual-post-container">
-          {posts
+          {Object.values(posts)
             .map((post) => {
               return (
-                <div key={post.id} className="individual-post">
-                  {typeof simpleUsers[post.user_id] !== "undefined" ? (
-                    <>
+                  <div key={post.id} className="individual-post">
                       <div className="post-header">
                         <Link to={`/ProfilePage/${post.user_id}`}>
                           <img className="post-pic" src={profilePic}></img>
                         </Link>
                         <h5 className="current-user-name">
-                          {typeof simpleUsers[post.user_id] !== "undefined"
-                            ? `${simpleUsers[post.user_id].name}`
-                            : "temp"}
+                            {simpleUsers[post.user_id].name}
                         </h5>
                       </div>
                       <p className="post-content">{post.content}</p>
@@ -132,10 +126,8 @@ function PostFeed() {
                           />
                         </Modal>
                       )}
-                    </>
-                  ) : null}
                 </div>
-              );
+                );
             })
             .reverse()}
         </div>

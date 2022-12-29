@@ -151,13 +151,6 @@
     height: 40vh;
   }
 
-  /* . {
-    height: 40%;
-    width: 80%;
-    margin: 0px;
-    justify-content: center;
-  } */
-
   .friends-toggle-button-container {
     margin: 0;
   }
@@ -206,15 +199,6 @@
   .profile-picture-and-name-container {
     margin-top: 5vh;
   }
-
-  /* .profile-page-header {
-    display: flex;
-    width: 100%;
-    width: 100vw;
-    margin: 10px;
-    justify-content: center;
-    background-color: #fff;
-  } */
 
   .profile-top-profile-pic {
     position: absolute;

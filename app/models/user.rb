@@ -8,6 +8,8 @@ class User < ApplicationRecord
     before_validation :ensure_session_token
 
     has_one_attached :profile_pic
+
+    has_one_attached :cover_photo
   
     has_many :posts,
       dependent: :destroy
