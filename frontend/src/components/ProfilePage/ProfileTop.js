@@ -84,18 +84,24 @@ function ProfileTop({ currentUser, sessionUser }) {
     ? currentUser.profile_picture
     : profilePicBlank;
 
-  const coverPhotoPreview = currentUser.cover_photo ? currentUser.cover_photo : null 
+  const coverPhotoPreview = currentUser.cover_photo
+    ? currentUser.cover_photo
+    : null;
 
   return (
     <>
       <div className="profile-top-container">
         <div className="background-photo-container-profile-page">
-          <img src={coverPhotoPreview} className="background-photo-profile-page" />
+          <img
+            src={coverPhotoPreview}
+            className="background-photo-profile-page"
+          />
         </div>
-        <label>edit cover photo
+        <label>
+          edit cover photo
           <input type="file" onChange={handleFile} />
           <button onClick={handleUpdateCoverPhoto}>upload</button>
-          </label>
+        </label>
         <div className="profile-page-header">
           <div className="profile-picture-and-name-container">
             <img className="profile-top-profile-pic" src={preview} />

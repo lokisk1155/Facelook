@@ -16,7 +16,7 @@ function PostFeed() {
   const [togglePost, setTogglePost] = useState(false);
   const [targetedPost, setTargetedPost] = useState(null);
 
-  const posts = useSelector((state) => state.post)
+  const posts = useSelector((state) => state.post);
 
   const simpleUsers = useSelector((state) => state.simpleUsers);
 
@@ -47,8 +47,8 @@ function PostFeed() {
     return null;
   }
 
-  if  (Object.keys(posts).length === 0) {
-    return null 
+  if (Object.keys(posts).length === 0) {
+    return null;
   }
 
   return (
@@ -85,49 +85,49 @@ function PostFeed() {
           {Object.values(posts)
             .map((post) => {
               return (
-                  <div key={post.id} className="individual-post">
-                      <div className="post-header">
-                        <Link to={`/ProfilePage/${post.user_id}`}>
-                          <img className="post-pic" src={profilePic}></img>
-                        </Link>
-                        <h5 className="current-user-name">
-                            {simpleUsers[post.user_id].name}
-                        </h5>
-                      </div>
-                      <p className="post-content">{post.content}</p>
-                      {currentUser.id === post.user_id ? (
-                        <button onClick={() => handleDeletePost(post)}>
-                          Delete Post
-                        </button>
-                      ) : (
-                        <div />
-                      )}
-                      {currentUser.id === post.user_id ? (
-                        <button
-                          onClick={(e) => {
-                            setCheckPost(true);
-                            setTargetedPost(post);
-                          }}
-                        >
-                          Edit Post
-                        </button>
-                      ) : (
-                        <div />
-                      )}
-                      {checkPost && targetedPost.user_id === currentUser.id && (
-                        <Modal onClose={() => setCheckPost(false)}>
-                          <CreatePostModal
-                            type="update"
-                            currentUser={currentUser}
-                            postId={targetedPost.id}
-                            postContent={targetedPost.content}
-                            header={"Edit post"}
-                            closeModal={setCheckPost}
-                          />
-                        </Modal>
-                      )}
+                <div key={post.id} className="individual-post">
+                  <div className="post-header">
+                    <Link to={`/ProfilePage/${post.user_id}`}>
+                      <img className="post-pic" src={profilePic}></img>
+                    </Link>
+                    <h5 className="current-user-name">
+                      {simpleUsers[post.user_id].name}
+                    </h5>
+                  </div>
+                  <p className="post-content">{post.content}</p>
+                  {currentUser.id === post.user_id ? (
+                    <button onClick={() => handleDeletePost(post)}>
+                      Delete Post
+                    </button>
+                  ) : (
+                    <div />
+                  )}
+                  {currentUser.id === post.user_id ? (
+                    <button
+                      onClick={(e) => {
+                        setCheckPost(true);
+                        setTargetedPost(post);
+                      }}
+                    >
+                      Edit Post
+                    </button>
+                  ) : (
+                    <div />
+                  )}
+                  {checkPost && targetedPost.user_id === currentUser.id && (
+                    <Modal onClose={() => setCheckPost(false)}>
+                      <CreatePostModal
+                        type="update"
+                        currentUser={currentUser}
+                        postId={targetedPost.id}
+                        postContent={targetedPost.content}
+                        header={"Edit post"}
+                        closeModal={setCheckPost}
+                      />
+                    </Modal>
+                  )}
                 </div>
-                );
+              );
             })
             .reverse()}
         </div>

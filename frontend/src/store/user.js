@@ -48,7 +48,7 @@ export const getCurrent = (id) => (state) => {
 };
 
 export const updateUser = (user, formData) => async (dispatch) => {
-  let res; 
+  let res;
   if (formData) {
     res = await csrfFetch(`/api/users/${user.id}`, {
       method: "PUT",
