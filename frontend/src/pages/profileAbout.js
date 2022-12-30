@@ -20,15 +20,15 @@ function ProfileAbout({ about }) {
 
   const currentUser = useSelector((state) => state.user[id]);
 
-  const noPosts = true 
+  const noPosts = true;
 
-  const noFriends = true 
+  const noFriends = true;
 
   useEffect(() => {
-    dispatch(profilePage(id, noPosts, noFriends))
+    dispatch(profilePage(id, noPosts, noFriends));
   }, [id]);
 
-  if (!currentUser || !sessionUser || !id ) {
+  if (!currentUser || !sessionUser || !id) {
     return null;
   }
 

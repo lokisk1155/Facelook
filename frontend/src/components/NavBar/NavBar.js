@@ -15,7 +15,7 @@ function NavBar() {
   //const searchRef = useRef();
   const user = useSelector((state) => state.session.user);
 
-  const simpleUsers = useSelector((state) => state.simpleUsers)
+  const simpleUsers = useSelector((state) => state.simpleUsers);
 
   const [profileModal, setProfileModal] = useState(false);
   const [toggle, setToggle] = useState(true);
@@ -44,10 +44,12 @@ function NavBar() {
   }
 
   if (!simpleUsers[user.id]) {
-    return null 
+    return null;
   }
 
-  const navbarPic = simpleUsers[user.id].profile_picture ? simpleUsers[user.id].profile_picture :  profilePic
+  const navbarPic = simpleUsers[user.id].profile_picture
+    ? simpleUsers[user.id].profile_picture
+    : profilePic;
 
   return (
     <div className="navbar-container">
@@ -143,22 +145,19 @@ function NavBar() {
 
 export default NavBar;
 
-
-
-
-  // useEffect(() => {
-  //   const checkClickElseWhere = (e) => {
-  //     e.preventDefault();
-  //     if (
-  //       toggleSearch &&
-  //       searchRef.current &&
-  //       !searchRef.current.contains(e.target)
-  //     ) {
-  //       setToggleSearch(false);
-  //     }
-  //   };
-  //   document.addEventListener("click", checkClickElseWhere);
-  //   return () => {
-  //     document.removeEventListener("click", checkClickElseWhere);
-  //   };
-  // }, [toggleSearch]);
+// useEffect(() => {
+//   const checkClickElseWhere = (e) => {
+//     e.preventDefault();
+//     if (
+//       toggleSearch &&
+//       searchRef.current &&
+//       !searchRef.current.contains(e.target)
+//     ) {
+//       setToggleSearch(false);
+//     }
+//   };
+//   document.addEventListener("click", checkClickElseWhere);
+//   return () => {
+//     document.removeEventListener("click", checkClickElseWhere);
+//   };
+// }, [toggleSearch]);

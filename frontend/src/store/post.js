@@ -20,15 +20,15 @@ export const removePost = (postId) => ({
 });
 
 export const fetchPost = (postId) => async (dispatch) => {
-  const res = await csrfFetch(`/api/posts/${postId}`)
-  const data = await res.json() 
-  return data 
-}
+  const res = await csrfFetch(`/api/posts/${postId}`);
+  const data = await res.json();
+  return data;
+};
 
 export const fetchPosts = (limit) => async (dispatch) => {
-  let res; 
+  let res;
   if (limit) {
-    res = await csrfFetch(`/api/posts?limit=${limit}`)
+    res = await csrfFetch(`/api/posts?limit=${limit}`);
   } else {
     res = res = await csrfFetch(`/api/posts`);
   }

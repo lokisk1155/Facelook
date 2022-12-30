@@ -70,7 +70,10 @@ function Friends({ friends }) {
             return (
               <div key={friend.id} className="actual-friend-container">
                 <Link to={`/ProfilePage/${friend.id}`}>
-                  <img className="friend-profile-pic" src={friend.profile_picture || profilePic}></img>
+                  <img
+                    className="friend-profile-pic"
+                    src={friend.profile_picture || profilePic}
+                  ></img>
                 </Link>
                 <p className="friend-profile-name">{`${capitalizeFirstLetter(
                   friend.first_name
@@ -97,7 +100,10 @@ function Friends({ friends }) {
             return (
               <div key={friend.id} className="actual-friend-container">
                 <Link to={`/ProfilePage/${friend.id}`}>
-                  <img className="friend-profile-pic" src={friend.profile_picture || profilePic}></img>
+                  <img
+                    className="friend-profile-pic"
+                    src={friend.profile_picture || profilePic}
+                  ></img>
                 </Link>
                 <p className="friend-profile-name">{`${capitalizeFirstLetter(
                   friend.first_name

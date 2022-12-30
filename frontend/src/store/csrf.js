@@ -4,9 +4,9 @@ export function storeCSRFToken(response) {
 }
 
 export async function restoreCSRF() {
-    const response = await csrfFetch("/api/session");
-    storeCSRFToken(response);
-    return response;
+  const response = await csrfFetch("/api/session");
+  storeCSRFToken(response);
+  return response;
 }
 
 async function csrfFetch(url, options = {}) {
@@ -24,10 +24,7 @@ async function csrfFetch(url, options = {}) {
 
   const res = await fetch(url, options);
   if (res.status >= 400) throw res;
-  else return res
+  else return res;
 }
 
 export default csrfFetch;
-
-
-

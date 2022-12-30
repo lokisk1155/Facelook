@@ -18,10 +18,10 @@ function ProfileFriends() {
 
   const friends = useSelector((state) => state.friends);
 
-  const noPosts = true 
+  const noPosts = true;
 
   useEffect(() => {
-    dispatch(profilePage(id, noPosts))
+    dispatch(profilePage(id, noPosts));
   }, [id]);
 
   if (!currentUser || !sessionUser || !id || !friends) {

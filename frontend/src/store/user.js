@@ -6,8 +6,8 @@ export const RECEIVE_USERS = "users/RECEIVE_USERS";
 export const SET_CURRENT_ARRAY = "users/SET_CURRENT_ARRAY";
 
 export const setCurrentProfile = (user) => ({
-    type: SET_CURRENT_PROFILE,
-    payload: user,
+  type: SET_CURRENT_PROFILE,
+  payload: user,
 });
 
 export const receiveUsers = (users) => ({

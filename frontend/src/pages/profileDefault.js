@@ -22,7 +22,7 @@ function ProfileDefault() {
   const friends = useSelector((state) => state.friends);
 
   useEffect(() => {
-    dispatch(profilePage(id))
+    dispatch(profilePage(id));
   }, [id]);
 
   if (!currentUser || !sessionUser || !id || !friends) {

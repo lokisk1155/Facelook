@@ -4,12 +4,12 @@ export const SET_CURRENT_USER = "session/setCurrentUser";
 export const REMOVE_CURRENT_USER = "session/removeCurrentUser";
 
 export const setCurrentUser = (user) => ({
-    type: SET_CURRENT_USER,
-    payload: user,
+  type: SET_CURRENT_USER,
+  payload: user,
 });
 
 const removeCurrentUser = () => ({
-    type: REMOVE_CURRENT_USER,
+  type: REMOVE_CURRENT_USER,
 });
 
 const storeCSRFToken = (response) => {
