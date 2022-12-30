@@ -10,6 +10,15 @@ class Api::PostsController < ApplicationController
             render 'api/posts/index'
         end 
     end
+
+    def show 
+        @posts = Post.where(user_id: params[:id])
+        if @posts.length < 2 
+            render 'api/posts/show'
+        else 
+            render 'api/posts/index'
+        end 
+    end 
     
     def create
         @post = Post.new(post_params)

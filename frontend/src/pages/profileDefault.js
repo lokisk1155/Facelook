@@ -8,6 +8,7 @@ import { fetchFriends } from "../store/friend";
 import { fetchPosts } from "../store/post";
 import Intro from "../components/ProfilePage/Intro";
 import FriendsContainer from "../components/ProfilePage/FriendsContainer";
+import { profilePage } from "../store/profilePage";
 
 function ProfileDefault() {
   const { id } = useParams();
@@ -21,14 +22,11 @@ function ProfileDefault() {
   const friends = useSelector((state) => state.friends);
 
   useEffect(() => {
-    Promise.all([dispatch(fetchPosts()), dispatch(fetchUser(id))]);
+    dispatch(profilePage(id))
   }, [id]);
 
-  if (!currentUser) {
+  if (!currentUser || !sessionUser || !id || !friends) {
     return null;
-  }
-  if (Object.keys(currentUser.friends).length !== Object.keys(friends).length) {
-    dispatch(fetchFriends(Object.values(currentUser.friends)));
   }
 
   return (

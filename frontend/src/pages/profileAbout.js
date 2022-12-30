@@ -9,6 +9,7 @@ import Overview from "../components/ProfilePage/AboutPage/Overview";
 import PlacesLived from "../components/ProfilePage/AboutPage/PlacesLived";
 import Relationship from "../components/ProfilePage/AboutPage/relationship";
 import WorkEd from "../components/ProfilePage/AboutPage/WorkEd";
+import { profilePage } from "../store/profilePage";
 
 function ProfileAbout({ about }) {
   const { id } = useParams();
@@ -19,9 +20,18 @@ function ProfileAbout({ about }) {
 
   const currentUser = useSelector((state) => state.user[id]);
 
+  const noPosts = true 
+
+  const noFriends = true 
+
   useEffect(() => {
-    dispatch(fetchUser(id));
+    dispatch(profilePage(id, noPosts, noFriends))
   }, [id]);
+
+  if (!currentUser || !sessionUser || !id ) {
+    return null;
+  }
+
 
   if (!currentUser) return null;
 
