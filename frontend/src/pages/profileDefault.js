@@ -42,7 +42,6 @@ function ProfileDefault() {
             <FriendsContainer
               currentUser={currentUser}
               sessionUser={sessionUser}
-              friends={friends}
             />
           </div>
           <Posts sessionUser={sessionUser} currentUser={currentUser} />
