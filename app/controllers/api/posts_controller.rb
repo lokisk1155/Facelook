@@ -1,8 +1,14 @@
 class Api::PostsController < ApplicationController
-
     def index 
-        @posts = Post.all
-        render :index
+        if params[:limit]
+            @posts = []
+            limit = params[:limit].to_i
+            @posts = Post.take(limit)
+            render'api/posts/index'
+        else 
+            @posts = Post.all
+            render 'api/posts/index'
+        end 
     end
     
     def create

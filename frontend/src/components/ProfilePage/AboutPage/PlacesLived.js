@@ -1,5 +1,4 @@
 import { useDispatch } from "react-redux";
-import { updateUserArray } from "../../../store/user";
 import { useState } from "react";
 
 function PlacesLived({ currentUser, sessionUser }) {
@@ -19,7 +18,6 @@ function PlacesLived({ currentUser, sessionUser }) {
       ...currentUser,
       places_worked,
     };
-    return dispatch(updateUserArray(user));
   };
 
   return (

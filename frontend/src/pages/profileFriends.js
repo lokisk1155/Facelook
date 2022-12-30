@@ -15,7 +15,7 @@ function ProfileFriends() {
 
   const currentUser = useSelector((state) => state.user[id]);
 
-  const friends = useSelector((state) => state.friend);
+  const friends = useSelector((state) => state.friends);
 
   useEffect(() => {
     dispatch(fetchUser(id));

@@ -52,13 +52,12 @@ export const deleteFriend = (userId) => async (dispatch) => {
 };
 
 const friendReducer = (previousState = {}, action) => {
-  let newState = {};
+  let newState = { ...previousState};
   switch (action.type) {
     case RECEIVE_FRIEND:
-      newState = { ...previousState, ...action.payload.friend };
+      newState = { ...action.payload.friend };
       return newState;
     case REMOVE_FRIEND:
-      newState = { ...previousState };
       delete newState[action.friendship.id];
       return newState;
     case RECEIVE_FRIENDS:

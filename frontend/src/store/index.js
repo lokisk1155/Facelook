@@ -9,8 +9,8 @@ import userReducer from "./user";
 export const rootReducer = combineReducers({
   session: sessionReducer,
   user: userReducer,
-  post: postsReducer,
-  friend: friendReducer,
+  posts: postsReducer,
+  friends: friendReducer,
   simpleUsers: simpleUsersReducer,
 });
 

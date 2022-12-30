@@ -3,18 +3,14 @@ import csrfFetch from "./csrf";
 export const SET_CURRENT_USER = "session/setCurrentUser";
 export const REMOVE_CURRENT_USER = "session/removeCurrentUser";
 
-export const setCurrentUser = (user) => {
-  return {
+export const setCurrentUser = (user) => ({
     type: SET_CURRENT_USER,
     payload: user,
-  };
-};
+});
 
-const removeCurrentUser = () => {
-  return {
+const removeCurrentUser = () => ({
     type: REMOVE_CURRENT_USER,
-  };
-};
+});
 
 const storeCSRFToken = (response) => {
   const csrfToken = response.headers.get("X-CSRF-Token");

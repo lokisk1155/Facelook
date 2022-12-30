@@ -19,8 +19,8 @@ function Posts({ currentUser, sessionUser }) {
   const ownsPost = currentUser.id === sessionUser.id ? true : false;
 
   const posts = useSelector((state) => {
-    if (state.post) {
-      return Object.values(state.post).filter((post) => post.user_id == id);
+    if (state.posts) {
+      return Object.values(state.posts).filter((post) => post.user_id == id);
     } else {
       return [];
     }

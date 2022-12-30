@@ -1,12 +1,4 @@
 import { Switch, Route } from "react-router-dom";
-import AboutPage from "../components/ProfilePage/AboutPage/AboutPage";
-import ProfileTop from "../components/ProfilePage/ProfileTop";
-import Overview from "../components/ProfilePage/AboutPage/Overview";
-import WorkEd from "../components/ProfilePage/AboutPage/WorkEd";
-import PlacesLived from "../components/ProfilePage/AboutPage/PlacesLived";
-import ContactInfo from "../components/ProfilePage/AboutPage/ContactInfo";
-import Relationship from "../components/ProfilePage/AboutPage/relationship";
-import "./routeStyling.css";
 import ProfileDefault from "../pages/profileDefault";
 import ProfileFriends from "../pages/profileFriends";
 import ProfileAbout from "../pages/profileAbout";

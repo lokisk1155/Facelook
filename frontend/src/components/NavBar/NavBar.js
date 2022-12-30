@@ -14,6 +14,9 @@ import { Modal } from "../../context/Modal";
 function NavBar() {
   //const searchRef = useRef();
   const user = useSelector((state) => state.session.user);
+
+  const simpleUsers = useSelector((state) => state.simpleUsers)
+
   const [profileModal, setProfileModal] = useState(false);
   const [toggle, setToggle] = useState(true);
   const [toggleSearch, setToggleSearch] = useState(false);
@@ -23,23 +26,6 @@ function NavBar() {
   const location = useLocation();
   const history = useHistory();
   const temp = "#2c2c2c";
-
-  // useEffect(() => {
-  //   const checkClickElseWhere = (e) => {
-  //     e.preventDefault();
-  //     if (
-  //       toggleSearch &&
-  //       searchRef.current &&
-  //       !searchRef.current.contains(e.target)
-  //     ) {
-  //       setToggleSearch(false);
-  //     }
-  //   };
-  //   document.addEventListener("click", checkClickElseWhere);
-  //   return () => {
-  //     document.removeEventListener("click", checkClickElseWhere);
-  //   };
-  // }, [toggleSearch]);
 
   useEffect(() => {
     if (location.pathname !== "/") {
@@ -56,6 +42,12 @@ function NavBar() {
   if (!user) {
     return <Redirect to="/login_page" />;
   }
+
+  if (!simpleUsers[user.id]) {
+    return null 
+  }
+
+  const navbarPic = simpleUsers[user.id].profile_picture ? simpleUsers[user.id].profile_picture :  profilePic
 
   return (
     <div className="navbar-container">
@@ -130,7 +122,7 @@ function NavBar() {
         </button>
         <div className="navbar-profile-modal">
           <img
-            src={profilePic}
+            src={navbarPic}
             alt="profile-pic"
             className="profile-pic-modal"
             onClick={() => {
@@ -150,3 +142,23 @@ function NavBar() {
 }
 
 export default NavBar;
+
+
+
+
+  // useEffect(() => {
+  //   const checkClickElseWhere = (e) => {
+  //     e.preventDefault();
+  //     if (
+  //       toggleSearch &&
+  //       searchRef.current &&
+  //       !searchRef.current.contains(e.target)
+  //     ) {
+  //       setToggleSearch(false);
+  //     }
+  //   };
+  //   document.addEventListener("click", checkClickElseWhere);
+  //   return () => {
+  //     document.removeEventListener("click", checkClickElseWhere);
+  //   };
+  // }, [toggleSearch]);

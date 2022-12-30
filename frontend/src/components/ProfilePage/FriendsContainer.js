@@ -41,7 +41,7 @@ function FriendsContainer({ friends }) {
                   >
                     <img
                       style={{ height: "110px", borderRadius: "5px" }}
-                      src={profilePic}
+                      src={friend.profile_picture || profilePic}
                     ></img>
                     <p style={{ textAlign: "center", textDecoration: "none" }}>
                       {capitalizeFirstLetter(friend.first_name)}{" "}

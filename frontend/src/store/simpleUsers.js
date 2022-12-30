@@ -7,7 +7,7 @@ export const setSimpleUsers = (users) => ({
   payload: users,
 });
 
-export const getUsers = () => async (dispatch) => {
+export const getSimpleUsers = () => async (dispatch) => {
   const res = await csrfFetch(`/api/users`);
   const data = await res.json();
   const simpleUsers = {};

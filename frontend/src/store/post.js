@@ -19,8 +19,19 @@ export const removePost = (postId) => ({
   payload: postId,
 });
 
-export const fetchPosts = () => async (dispatch) => {
-  const res = await csrfFetch(`/api/posts`);
+export const fetchPost = (postId) => async (dispatch) => {
+  const res = await csrfFetch(`/api/posts/${postId}`)
+  const data = await res.json() 
+  return data 
+}
+
+export const fetchPosts = (limit) => async (dispatch) => {
+  let res; 
+  if (limit) {
+    res = await csrfFetch(`/api/posts?limit=${limit}`)
+  } else {
+    res = res = await csrfFetch(`/api/posts`);
+  }
   const data = await res.json();
   dispatch(receivePosts(data));
 };
@@ -30,10 +41,8 @@ export const createPost = (post) => async (dispatch) => {
     method: "POST",
     body: JSON.stringify(post),
   });
-  if (res.ok) {
-    const data = await res.json();
-    dispatch(receivePosts(data));
-  }
+  const data = await res.json();
+  dispatch(receivePosts(data));
 };
 
 export const updatePost = (post) => async (dispatch) => {

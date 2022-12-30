@@ -11,7 +11,7 @@ function ContactInfo() {
   const { id } = useParams();
 
   const sessionUser = useSelector((state) => state.session.user);
-  const currentUser = useSelector(getCurrent(id));
+  const currentUser = useSelector((state) => state.user[id]);
   const isUser = currentUser.id === sessionUser.id;
 
   const [phoneNumber, setPhoneNumber] = useState(false);

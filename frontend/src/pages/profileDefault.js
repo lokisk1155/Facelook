@@ -18,7 +18,7 @@ function ProfileDefault() {
 
   const currentUser = useSelector((state) => state.user[id]);
 
-  const friends = useSelector((state) => state.friend);
+  const friends = useSelector((state) => state.friends);
 
   useEffect(() => {
     Promise.all([dispatch(fetchPosts()), dispatch(fetchUser(id))]);
