@@ -94,7 +94,7 @@ function SearchBar({
                 }}
               >
                 <div className="result-user-div">
-                  <img className="result-user-profile-pic" src={profilePic} />
+                  <img className="result-user-profile-pic" src={user.profile_picture || profilePic} />
 
                   <p className="result-user-name">{user.name}</p>
                 </div>

@@ -18,13 +18,7 @@ function Posts({ currentUser, sessionUser }) {
 
   const ownsPost = currentUser.id === sessionUser.id ? true : false;
 
-  const posts = useSelector((state) => {
-    if (state.posts) {
-      return Object.values(state.posts).filter((post) => post.user_id == id);
-    } else {
-      return [];
-    }
-  });
+  const posts = useSelector((state) => Object.values(state.posts))
 
   const [togglePost, setTogglePost] = useState(false);
 
@@ -62,7 +56,7 @@ function Posts({ currentUser, sessionUser }) {
             {
               <img
                 className="profile-pic-inside-create-post"
-                src={profilePic}
+                src={currentUser.profile_picture || profilePic}
               ></img>
             }
           </div>
@@ -87,7 +81,7 @@ function Posts({ currentUser, sessionUser }) {
                 return (
                   <div key={index} className="individual-post">
                     <div className="post-header">
-                      <img className="post-pic" src={profilePic}></img>
+                      <img className="post-pic" src={currentUser.profile_picture || profilePic}></img>
                       <h5 className="current-user-name">{`${currentUser.first_name} ${currentUser.last_name}`}</h5>
                     </div>
                     <p className="post-content">{post.content}</p>

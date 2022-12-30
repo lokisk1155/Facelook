@@ -24,13 +24,9 @@ function ProfileFriends() {
     dispatch(profilePage(id, noPosts))
   }, [id]);
 
-  if (!currentUser || !sessionUser || !id) {
+  if (!currentUser || !sessionUser || !id || !friends) {
     return null;
   }
-
-  // if (Object.keys(currentUser.friends).length !== Object.keys(friends).length) {
-  //   dispatch(fetchFriends(Object.values(currentUser.friends)));
-  // }
 
   return (
     <>

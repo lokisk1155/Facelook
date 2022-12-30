@@ -13,11 +13,7 @@ class Api::PostsController < ApplicationController
 
     def show 
         @posts = Post.where(user_id: params[:id])
-        if @posts.length < 2 
-            render 'api/posts/show'
-        else 
-            render 'api/posts/index'
-        end 
+        render 'api/posts/index'
     end 
     
     def create

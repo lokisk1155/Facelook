@@ -32,9 +32,6 @@ function ProfileAbout({ about }) {
     return null;
   }
 
-
-  if (!currentUser) return null;
-
   return (
     <>
       <ProfileTop sessionUser={sessionUser} currentUser={currentUser} />

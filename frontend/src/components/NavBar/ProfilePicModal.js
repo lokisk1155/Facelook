@@ -13,7 +13,7 @@ function ProfilePicModal({ closeModal }) {
       <div className="profile-pic-modal-container">
         <Link className="link-to-profile-page" to={`/ProfilePage/${user.id}`}>
           <button className="link-button">
-            <img className="link-profile-pic" src={profilePic} />
+            <img className="link-profile-pic" src={user.profile_picture || profilePic} />
             <p className="link-user-name">
               {user.first_name} {user.last_name}
             </p>
