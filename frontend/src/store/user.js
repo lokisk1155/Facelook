@@ -16,41 +16,41 @@ export const receiveUsers = (users) => ({
 });
 
 export const fetchUser = (userId) => async (dispatch) => {
-  const res = await csrfFetch(`/api/users/${userId}`);
-  const data = await res.json();
-  dispatch(setCurrentProfile(data.user));
+  const userRes = await csrfFetch(`/api/users/${userId}`);
+  const userData = await userRes.json();
+  dispatch(setCurrentProfile(userData.user));
 };
 
 export const fetchUsers = (userIds) => async (dispatch) => {
-  let res;
+  let usersRes;
   if (userIds) {
-    res = await csrfFetch(`/api/users?userIds=${userIds}`);
-    const data = await res.json();
-    return data;
+    usersRes = await csrfFetch(`/api/users?userIds=${userIds}`);
+    const usersData = await usersRes.json();
+    return usersData;
   } else {
-    res = await csrfFetch(`/api/users`);
-    const data = await res.json();
-    dispatch(receiveUsers(data));
-    return data;
+    usersRes = await csrfFetch(`/api/users`);
+    const usersData = await usersRes.json();
+    dispatch(receiveUsers(usersData));
+    return usersData;
   }
 };
 
 export const updateUser = (user, formData) => async (dispatch) => {
-  let res;
+  let userRes;
   if (formData) {
-    res = await csrfFetch(`/api/users/${user.id}`, {
+    userRes = await csrfFetch(`/api/users/${user.id}`, {
       method: "PUT",
       body: formData,
     });
   } else {
-    res = await csrfFetch(`/api/users/${user.id}`, {
+    userRes = await csrfFetch(`/api/users/${user.id}`, {
       method: "PUT",
       body: JSON.stringify({ user }),
     });
   }
-  const data = await res.json();
-  dispatch(setCurrentProfile(data.user));
-  return data;
+  const userData = await userRes.json();
+  dispatch(setCurrentProfile(userData.user));
+  return userData;
 };
 
 const userReducer = (previousState = {}, action) => {

@@ -20,43 +20,44 @@ export const removePost = (postId) => ({
 });
 
 export const fetchPost = (postId) => async (dispatch) => {
-  const res = await csrfFetch(`/api/posts/${postId}`);
-  const data = await res.json();
-  return data;
+  const postRes = await csrfFetch(`/api/posts/${postId}`);
+  const postData = await postRes.json();
+  return postData;
 };
 
 export const fetchPosts = (limit) => async (dispatch) => {
-  let res;
+  let postRes;
   if (limit) {
-    res = await csrfFetch(`/api/posts?limit=${limit}`);
+    postRes = await csrfFetch(`/api/posts?limit=${limit}`);
   } else {
-    res = res = await csrfFetch(`/api/posts`);
+    postRes = await csrfFetch(`/api/posts`);
   }
-  const data = await res.json();
-  dispatch(receivePosts(data));
+  const postData = await postRes.json();
+  dispatch(receivePosts(postData));
 };
 
 export const createPost = (post) => async (dispatch) => {
-  const res = await csrfFetch("/api/posts", {
+  const postRes = await csrfFetch("/api/posts", {
     method: "POST",
     body: JSON.stringify(post),
   });
-  const data = await res.json();
-  dispatch(receivePosts(data));
+  const postData = await postRes.json();
+  dispatch(receivePosts(postData));
+  return postData
 };
 
 export const updatePost = (post) => async (dispatch) => {
-  const res = await csrfFetch(`/api/posts/${post.id}`, {
+  const postRes = await csrfFetch(`/api/posts/${post.id}`, {
     method: "PUT",
     body: JSON.stringify({ post }),
   });
-  const data = await res.json();
-  dispatch(receivePost(data));
-  return data;
+  const postData = await postRes.json();
+  dispatch(receivePost(postData));
+  return postData;
 };
 
 export const deletePost = (postId) => async (dispatch) => {
-  const res = await csrfFetch(`/api/posts/${postId}`, { method: "DELETE" });
+  await csrfFetch(`/api/posts/${postId}`, { method: "DELETE" });
   dispatch(removePost(postId));
 };
 
