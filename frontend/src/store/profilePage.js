@@ -10,16 +10,13 @@ export const profilePage = (id, noPosts, noFriends) => async (dispatch) => {
   const userIds = Object.values(userData.user.friends);
   const friendsRes = await csrfFetch(`/api/users?userIds=${userIds}`);
   const friendsData = await friendsRes.json();
-  if (noPosts)
-    return Promise.all([
-      dispatch(setCurrentProfile(userData.user)),
-      dispatch(receiveFriends(friendsData)),
-    ]);
+  if (noPosts) {
+    dispatch(setCurrentProfile(userData.user))
+    return dispatch(receiveFriends(friendsData))
+  } 
   const postRes = await csrfFetch(`/api/posts/${id}`);
   const postData = await postRes.json();
-  Promise.all([
-    dispatch(receivePosts(postData)),
-    dispatch(setCurrentProfile(userData.user)),
-    dispatch(receiveFriends(friendsData)),
-  ]);
+  dispatch(receivePosts(postData)),
+  dispatch(setCurrentProfile(userData.user)),
+  dispatch(receiveFriends(friendsData)),
 };
