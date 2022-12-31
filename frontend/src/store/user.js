@@ -1,5 +1,6 @@
 import csrfFetch from "./csrf";
 import { RECEIVE_FRIEND } from "./friend";
+import { profilePage } from "./profilePage";
 
 export const SET_CURRENT_PROFILE = "users/SET_CURRENT_PROFILE";
 export const RECEIVE_USERS = "users/RECEIVE_USERS";
@@ -48,9 +49,7 @@ export const updateUser = (user, formData) => async (dispatch) => {
       body: JSON.stringify({ user }),
     });
   }
-  const userData = await userRes.json();
-  dispatch(setCurrentProfile(userData.user));
-  return userData;
+  return dispatch(profilePage(user.id))
 };
 
 const userReducer = (previousState = {}, action) => {

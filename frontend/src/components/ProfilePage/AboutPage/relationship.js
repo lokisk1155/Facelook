@@ -7,13 +7,11 @@ function Relationship({ currentUser, sessionUser }) {
 
   const isUser = currentUser.id === sessionUser.id;
 
-  const [relationship, setRelationship] = useState(currentUser.relationship);
   const [fakeRelationship, setFakeRelationship] = useState("");
   const [toggleRelationship, setToggleRelationship] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setRelationship(fakeRelationship);
     setToggleRelationship(false);
     let relationship = fakeRelationship;
     const user = {
@@ -28,7 +26,7 @@ function Relationship({ currentUser, sessionUser }) {
       <div>
         <h4>Relationship</h4>
 
-        {(relationship && <p>{relationship}</p>) ||
+        {(currentUser.relationship && <p>{currentUser.relationship}</p>) ||
           (isUser && (
             <button
               onClick={() => {
@@ -38,7 +36,7 @@ function Relationship({ currentUser, sessionUser }) {
               Add Relationship Status
             </button>
           ))}
-        {isUser && toggleRelationship && !relationship && (
+        {isUser && toggleRelationship && !currentUser.relationship && (
           <form onSubmit={handleSubmit}>
             <select
               type="text"
@@ -63,7 +61,7 @@ function Relationship({ currentUser, sessionUser }) {
           </form>
         )}
 
-        {isUser && relationship && (
+        {isUser && currentUser.relationship && (
           <button onClick={() => setToggleRelationship(true)}>
             Edit Relationship Status
           </button>

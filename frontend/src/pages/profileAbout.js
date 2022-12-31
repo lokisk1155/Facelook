@@ -1,6 +1,5 @@
 import ProfileTop from "../components/ProfilePage/ProfileTop";
 import { useEffect } from "react";
-import { fetchUser } from "../store/user";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import AboutPage from "../components/ProfilePage/AboutPage/AboutPage";

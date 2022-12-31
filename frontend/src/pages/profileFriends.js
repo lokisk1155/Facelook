@@ -1,9 +1,7 @@
 import ProfileTop from "../components/ProfilePage/ProfileTop";
 import { useEffect } from "react";
-import { fetchUser } from "../store/user";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchFriends } from "../store/friend";
 import Friends from "../components/ProfilePage/Friends";
 import { profilePage } from "../store/profilePage";
 

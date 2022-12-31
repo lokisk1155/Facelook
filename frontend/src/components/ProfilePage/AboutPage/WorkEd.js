@@ -1,7 +1,6 @@
 import { useDispatch } from "react-redux";
 import { updateUser } from "../../../store/user";
 import { useState } from "react";
-
 import "./workEd.css";
 
 function WorkEd({ currentUser, sessionUser }) {
@@ -9,25 +8,21 @@ function WorkEd({ currentUser, sessionUser }) {
 
   const isUser = sessionUser.id === currentUser.id;
 
-  const [work, setWork] = useState(currentUser.work);
   const [toggleWork, setToggleWork] = useState(false);
   const [fakeWork, setFakeWork] = useState("");
   const [toggleWorkEdit, setToggleWorkEdit] = useState(false);
   const [toggleAddWork, setToggleAddWork] = useState(false);
 
-  const [college, setCollege] = useState(currentUser.education);
   const [fakeCollege, setFakeCollege] = useState("");
   const [toggleCollege, setToggleCollege] = useState(false);
   const [toggleEditCollege, setToggleEditCollege] = useState(false);
 
-  const [highschool, setHighschool] = useState(currentUser.highschool);
   const [fakeHighschool, setFakeHighscool] = useState("");
   const [toggleHighscool, setToggleHighscool] = useState(false);
   const [toggleEditHighscool, setToggleEditHighschool] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setWork(fakeWork);
     let work = fakeWork;
     const user = {
       ...currentUser,
@@ -38,7 +33,6 @@ function WorkEd({ currentUser, sessionUser }) {
 
   const handleCollege = (e) => {
     e.preventDefault();
-    setCollege(fakeCollege);
     let education = fakeCollege;
     const user = {
       ...currentUser,
@@ -49,7 +43,6 @@ function WorkEd({ currentUser, sessionUser }) {
 
   const handleHighschool = (e) => {
     e.preventDefault();
-    setHighschool(fakeHighschool);
     let highschool = fakeHighschool;
     const user = {
       ...currentUser,
@@ -60,7 +53,6 @@ function WorkEd({ currentUser, sessionUser }) {
 
   const handleAddWork = (e) => {
     e.preventDefault();
-    setWork(fakeWork);
     let places_lived = currentUser.places_worked.push(fakeWork);
     const user = {
       ...currentUser,
@@ -73,8 +65,8 @@ function WorkEd({ currentUser, sessionUser }) {
     <div>
       <div>
         <h4>Work</h4>
-        <p>{work}</p>
-        {!work && isUser && (
+        {currentUser.work ? <p>{currentUser.work}</p> : null}
+        {!currentUser.work && isUser && (
           <button
             onClick={() => {
               setToggleWork(!toggleWork);
@@ -83,14 +75,14 @@ function WorkEd({ currentUser, sessionUser }) {
             Add a workplace
           </button>
         )}
-        {toggleWork && !work && (
+        {toggleWork && !currentUser.work && (
           <form onSubmit={handleSubmit}>
             <input type="text" onChange={(e) => setFakeWork(e.target.value)} />
             <input type="submit" />
           </form>
         )}
 
-        {isUser && work && (
+        {isUser && currentUser.work && (
           <button
             className="edit-button"
             onClick={() => setToggleWorkEdit(true)}
@@ -133,8 +125,8 @@ function WorkEd({ currentUser, sessionUser }) {
 
       <div>
         <h4>College</h4>
-        <p>{college}</p>
-        {!college && isUser && (
+        {currentUser.education ? <p>{currentUser.education}</p> : null}
+        {!currentUser.education  && isUser && (
           <button
             className="edit-button"
             onClick={() => {
@@ -155,7 +147,7 @@ function WorkEd({ currentUser, sessionUser }) {
             <input type="submit" value="save" />
           </form>
         )}
-        {isUser && college && !toggleCollege && (
+        {isUser && currentUser.education && !toggleCollege && (
           <button
             className="edit-button"
             onClick={() => {
@@ -181,8 +173,8 @@ function WorkEd({ currentUser, sessionUser }) {
 
       <div>
         <h4>Highschool</h4>
-        <p>{highschool}</p>
-        {!highschool && isUser && (
+        {currentUser.highschool ? <p>{currentUser.highschool}</p> : null}
+        {!currentUser.highschool && isUser && (
           <button
             className="edit-button"
             onClick={() => {
@@ -208,7 +200,7 @@ function WorkEd({ currentUser, sessionUser }) {
             <input type="submit" value="save" />
           </form>
         )}
-        {isUser && highschool && !toggleHighscool && (
+        {isUser && currentUser.highschool && !toggleHighscool && (
           <button
             className="edit-button"
             onClick={() => {

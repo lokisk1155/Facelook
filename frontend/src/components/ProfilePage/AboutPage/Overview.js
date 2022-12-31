@@ -8,22 +8,18 @@ function Overview({ currentUser, sessionUser }) {
 
   const isUser = currentUser.id === sessionUser.id;
 
-  const [workPlace, setWorkPlace] = useState(currentUser.work);
   const [toggleWork, setToggleWork] = useState(false);
   const [fakeWork, setFakeWork] = useState("");
   const [toggleWorkEdit, setToggleWorkEdit] = useState(false);
 
-  const [education, setEducation] = useState(currentUser.education);
   const [toggleEducation, setToggleEducation] = useState(false);
   const [fakeEducation, setFakeEducation] = useState("");
   const [toggleEducationEdit, setToggleEducationEdit] = useState(false);
 
-  const [location, setLocation] = useState(currentUser.location);
   const [toggleLocation, setToggleLocation] = useState(false);
   const [fakeLocation, setFakeLocation] = useState("");
   const [toggleLocationEdit, setToggleLocationEdit] = useState(false);
 
-  const [relationship, setRelationShip] = useState(currentUser.relationship);
   const [toggleRelationship, setToggleRelationship] = useState(false);
   const [fakeRelationship, setFakeRelationship] = useState("");
   const [toggleRelationshipEdit, setToggleRelationshipEdit] = useState(false);
@@ -71,8 +67,8 @@ function Overview({ currentUser, sessionUser }) {
   return (
     <div className="content-container">
       <div>
-        <p>{workPlace}</p>
-        {!workPlace && isUser && (
+        {currentUser.work ? <p>{currentUser.work}</p> : null}
+        {!currentUser.work  && isUser && (
           <button
             onClick={() => {
               setToggleWork(true);
@@ -81,7 +77,7 @@ function Overview({ currentUser, sessionUser }) {
             Add a workplace
           </button>
         )}
-        {toggleWork && !workPlace && (
+        {toggleWork && !currentUser.work && (
           <form onSubmit={handleWork}>
             <input
               type="text"
@@ -93,7 +89,7 @@ function Overview({ currentUser, sessionUser }) {
           </form>
         )}
 
-        {isUser && workPlace && (
+        {isUser && currentUser.work && (
           <button onClick={() => setToggleWorkEdit(true)}>Edit work</button>
         )}
         {toggleWorkEdit && (
@@ -110,8 +106,8 @@ function Overview({ currentUser, sessionUser }) {
       </div>
 
       <div>
-        <p>{education}</p>
-        {!education && isUser && (
+        {currentUser.education ? <p>{currentUser.education}</p> : null}
+        {!currentUser.education && isUser && (
           <button
             onClick={() => {
               setToggleEducation(true);
@@ -120,7 +116,7 @@ function Overview({ currentUser, sessionUser }) {
             Add Education
           </button>
         )}
-        {toggleEducation && !education && (
+        {toggleEducation && !currentUser.education && (
           <form onSubmit={handleEducation}>
             <input
               type="text"
@@ -132,7 +128,7 @@ function Overview({ currentUser, sessionUser }) {
           </form>
         )}
 
-        {isUser && education && (
+        {isUser && currentUser.education && (
           <button onClick={() => setToggleEducationEdit(true)}>
             Edit Education
           </button>
@@ -153,8 +149,8 @@ function Overview({ currentUser, sessionUser }) {
       </div>
 
       <div>
-        <p>{location}</p>
-        {!location && isUser && (
+        {currentUser.location ? <p>{currentUser.location}</p> : null}
+        {!currentUser.location&& isUser && (
           <button
             onClick={() => {
               setToggleLocation(true);
@@ -163,7 +159,7 @@ function Overview({ currentUser, sessionUser }) {
             Add Location
           </button>
         )}
-        {toggleLocation && !location && (
+        {toggleLocation && !currentUser.location && (
           <form onSubmit={handleLocation}>
             <input
               type="text"
@@ -175,7 +171,7 @@ function Overview({ currentUser, sessionUser }) {
           </form>
         )}
 
-        {isUser && location && (
+        {isUser && currentUser.location && (
           <button onClick={() => setToggleLocationEdit(true)}>
             Change Primary Location
           </button>
@@ -194,8 +190,8 @@ function Overview({ currentUser, sessionUser }) {
       </div>
 
       <div>
-        <p>{relationship}</p>
-        {!relationship && isUser && (
+      {currentUser.relationship ? <p>{currentUser.relationship}</p> : null}
+        {!currentUser.relationship && isUser && (
           <button
             onClick={() => {
               setToggleRelationship(!toggleRelationship);
@@ -204,7 +200,7 @@ function Overview({ currentUser, sessionUser }) {
             Add Relationship Status
           </button>
         )}
-        {toggleRelationship && !relationship && (
+        {toggleRelationship && !currentUser.relationship && (
           <form onSubmit={handleRelationship}>
             <select
               type="text"
@@ -229,7 +225,7 @@ function Overview({ currentUser, sessionUser }) {
           </form>
         )}
 
-        {isUser && relationship && (
+        {isUser && currentUser.relationship && (
           <button onClick={() => setToggleRelationshipEdit(true)}>
             Edit Relationship Status
           </button>

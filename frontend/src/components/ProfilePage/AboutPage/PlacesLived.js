@@ -1,28 +1,28 @@
 import { useDispatch } from "react-redux";
 import { useState } from "react";
+import { updateUser } from "../../../store/user";
 
 function PlacesLived({ currentUser, sessionUser }) {
   const dispatch = useDispatch();
 
   const isUser = currentUser.id === sessionUser.id;
 
-  const [placesLived, setPlacesLived] = useState(currentUser.places_worked);
   const [fakeCity, setFakeCity] = useState("");
   const [toggleAddCity, setToggleAddCity] = useState(false);
 
   const handleAddCity = (e) => {
     e.preventDefault();
-    setPlacesLived(fakeCity);
     let places_worked = fakeCity;
     const user = {
       ...currentUser,
       places_worked,
     };
+    return dispatch(updateUser(user));
   };
 
   return (
     <div>
-      <p>{placesLived}</p>
+      {currentUser.location ? <p>{currentUser.location}</p> : null}
       <button onClick={() => setToggleAddCity(!toggleAddCity)}>Add City</button>
       <div>
         {toggleAddCity && isUser ? (

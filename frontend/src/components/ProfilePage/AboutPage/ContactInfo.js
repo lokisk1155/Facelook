@@ -1,9 +1,6 @@
-import { useEffect } from "react";
-import { getCurrent, setCurrentProfile } from "../../../store/user";
 import { useState } from "react";
 import { updateUser } from "../../../store/user";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 function ContactInfo() {
@@ -14,86 +11,28 @@ function ContactInfo() {
   const currentUser = useSelector((state) => state.user[id]);
   const isUser = currentUser.id === sessionUser.id;
 
-  const [phoneNumber, setPhoneNumber] = useState(false);
   const [togglePhone, setTogglePhone] = useState(false);
   const [togglePhoneEdit, setTogglePhoneEdit] = useState(false);
   const [fakePhoneNumber, setFakePhoneNumber] = useState("");
 
-  const [email, setEmail] = useState(currentUser.email);
   const [toggleEmailEdit, setToggleEmailEdit] = useState(false);
   const [fakeEmail, setFakeEmail] = useState("");
 
-  const [gender, setGender] = useState(currentUser.gender);
   const [toggleEditGender, setToggleEditGender] = useState(false);
   const [fakeGender, setFakeGender] = useState("");
   const [customGender, setCustomGender] = useState(false);
 
-  const [website, setWebsite] = useState(null);
   const [fakeWebsite, setFakeWebsite] = useState("");
   const [toggleWebsite, setTogggleWebsite] = useState(false);
   const [toggleEditWebsite, setToggleEditWebsite] = useState(false);
 
-  const [sociallink, setSocialLink] = useState(null);
   const [fakeSocial, setFakeSocial] = useState("");
   const [toggleSocial, setToggleSocial] = useState(false);
   const [toggleEditSocial, setToggleEditSocial] = useState(false);
 
-  const [monthName, setMonthName] = useState(null);
-
-  useEffect(() => {
-    setMonth();
-    checkUser();
-  }, []);
-
-  function checkUser() {
-    if (currentUser.phone_number) {
-      setPhoneNumber(currentUser.phone_number);
-    }
-
-    if (currentUser.website) {
-      setWebsite(currentUser.website);
-    }
-
-    if (currentUser.social_link) {
-      setSocialLink(currentUser.social_link);
-    }
-  }
-
-  function setMonth() {
-    switch (currentUser.month) {
-      case "1":
-        return setMonthName("January");
-      case "2":
-        return setMonthName("Febuary");
-      case "3":
-        return setMonthName("March");
-      case "4":
-        return setMonthName("Apirl");
-      case "5":
-        return setMonthName("May");
-      case "6":
-        return setMonthName("June");
-      case "7":
-        return setMonthName("July");
-      case "8":
-        return setMonthName("August");
-      case "9":
-        return setMonthName("September");
-      case "10":
-        return setMonthName("October");
-      case "11":
-        return setMonthName("November");
-      case "12":
-        return setMonthName("December");
-      default:
-        return setMonthName("default");
-    }
-  }
-
   const handlePhoneNumber = () => {
     setTogglePhone(false);
     setTogglePhoneEdit(false);
-    setPhoneNumber(fakePhoneNumber);
     let phone_number = fakePhoneNumber;
     const user = {
       ...currentUser,
@@ -104,7 +43,6 @@ function ContactInfo() {
 
   const handleEmail = () => {
     setToggleEmailEdit(false);
-    setEmail(fakeEmail);
     let email = fakeEmail;
     const user = {
       ...currentUser,
@@ -115,7 +53,6 @@ function ContactInfo() {
 
   const handleGender = () => {
     setToggleEditGender(false);
-    setGender(fakeGender);
     let gender = fakeGender;
     const user = {
       ...currentUser,
@@ -127,7 +64,6 @@ function ContactInfo() {
   const handleWebsite = () => {
     setTogggleWebsite(false);
     setToggleEditWebsite(false);
-    setWebsite(fakeWebsite);
     let website = fakeWebsite;
     const user = {
       ...currentUser,
@@ -139,20 +75,21 @@ function ContactInfo() {
   const handleSocialLink = () => {
     setToggleSocial(false);
     setToggleEditSocial(false);
-    setSocialLink(fakeSocial);
-    let social_link = fakeSocial;
-    let user = {
+    const social_link = fakeSocial;
+    const user = {
       ...currentUser,
       social_link,
     };
     return dispatch(updateUser(user));
   };
 
+  
+
   return (
     <div>
       <div>
-        <p>{email}</p>
-        {isUser && email && (
+      {currentUser.email ? <p>{currentUser.email}</p> : null}
+        {isUser && currentUser.email && (
           <button onClick={() => setToggleEmailEdit(true)}>Edit Email</button>
         )}
         {toggleEmailEdit && (
@@ -169,8 +106,8 @@ function ContactInfo() {
       </div>
 
       <div>
-        {phoneNumber ? (
-          <p>{phoneNumber}</p>
+        {currentUser.phone_number ? (
+          <p>{currentUser.phone_number}</p>
         ) : (
           isUser && (
             <button onClick={() => setTogglePhone(true)}>Add Phone</button>
@@ -187,7 +124,7 @@ function ContactInfo() {
             <button type="submit">Submit</button>
           </form>
         )}
-        {isUser && phoneNumber && (
+        {isUser && currentUser.phone_number && (
           <button onClick={() => setTogglePhoneEdit(true)}>
             Edit Phone Number
           </button>
@@ -205,7 +142,7 @@ function ContactInfo() {
         )}
       </div>
 
-      <p>{gender}</p>
+      {currentUser.gender ? <p>{currentUser.gender}</p> : null}
       {isUser && (
         <button onClick={() => setToggleEditGender(true)}>Edit Gender</button>
       )}
@@ -240,15 +177,15 @@ function ContactInfo() {
       )}
 
       <div>
-        {website ? (
+        {currentUser.website ? (
           <p>
             personal website:{" "}
             <a
-              href={`https://${website}`}
+              href={`https://${currentUser.website}`}
               target="_blank"
               rel="noreferrer noopener"
             >
-              {website.slice(0, -4)}
+              {currentUser.website.slice(0, -4)}
             </a>
           </p>
         ) : (
@@ -267,7 +204,7 @@ function ContactInfo() {
             <button type="submit">Submit</button>
           </form>
         )}
-        {website && (
+        {currentUser.website && (
           <button onClick={() => setToggleEditWebsite(true)}>
             Edit Website
           </button>
@@ -286,15 +223,15 @@ function ContactInfo() {
       </div>
 
       <div>
-        {sociallink ? (
+        {currentUser.social_link ? (
           <p>
             Social Media:{" "}
             <a
-              href={`https://${sociallink}`}
+              href={`https://${currentUser.social_link}`}
               target="_blank"
               rel="noreferrer noopener"
             >
-              {sociallink.slice(0, -4)}
+              {currentUser.social_link.slice(0, -4)}
             </a>
           </p>
         ) : (
@@ -313,7 +250,7 @@ function ContactInfo() {
             <button type="submit">Submit</button>
           </form>
         )}
-        {isUser && sociallink && (
+        {isUser && currentUser.social_link && (
           <button onClick={() => setToggleEditSocial(true)}>Edit Social</button>
         )}
         {toggleEditSocial && (
@@ -331,7 +268,7 @@ function ContactInfo() {
 
       <div></div>
 
-      <p>birth date: {`${monthName} ${currentUser.day}`}</p>
+      <p>birth date: {`${currentUser.month} ${currentUser.day}`}</p>
       <p>birth year: {currentUser.year}</p>
     </div>
   );
