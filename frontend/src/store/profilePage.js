@@ -16,7 +16,7 @@ export const profilePage = (id, noPosts, noFriends) => async (dispatch) => {
   } 
   const postRes = await csrfFetch(`/api/posts/${id}`);
   const postData = await postRes.json();
-  dispatch(receivePosts(postData)),
-  dispatch(setCurrentProfile(userData.user)),
-  dispatch(receiveFriends(friendsData))
+  dispatch(receivePosts(postData));
+  dispatch(setCurrentProfile(userData.user));
+  dispatch(receiveFriends(friendsData));
 };
