@@ -37,7 +37,6 @@ export const addFriend = (friendRequest) => async (dispatch) => {
     body: JSON.stringify(friendRequest),
   });
   const friendData = await friendRes.json();
-  await dispatch(receiveFriend(friendData));
   return dispatch(profilePage(friendRequest.receiver_id));
 };
 
