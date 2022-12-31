@@ -90,11 +90,7 @@ function PostFeed() {
                     <Link to={`/ProfilePage/${post.user_id}`}>
                       <img
                         className="post-pic"
-                        src={
-                          simpleUsers[post.user_id].profile_picture
-                            ? simpleUsers[post.user_id].profile_picture
-                            : profilePic
-                        }
+                        src={ simpleUsers[post.user_id].profile_picture || profilePic}
                       ></img>
                     </Link>
                     <h5 className="current-user-name">
