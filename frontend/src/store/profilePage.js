@@ -18,5 +18,5 @@ export const profilePage = (id, noPosts, noFriends) => async (dispatch) => {
   const postData = await postRes.json();
   dispatch(receivePosts(postData)),
   dispatch(setCurrentProfile(userData.user)),
-  dispatch(receiveFriends(friendsData)),
+  dispatch(receiveFriends(friendsData))
 };
