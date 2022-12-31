@@ -83,12 +83,10 @@ function ContactInfo() {
     return dispatch(updateUser(user));
   };
 
-  
-
   return (
     <div>
       <div>
-      {currentUser.email ? <p>{currentUser.email}</p> : null}
+        {currentUser.email ? <p>{currentUser.email}</p> : null}
         {isUser && currentUser.email && (
           <button onClick={() => setToggleEmailEdit(true)}>Edit Email</button>
         )}

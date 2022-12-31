@@ -126,7 +126,7 @@ function WorkEd({ currentUser, sessionUser }) {
       <div>
         <h4>College</h4>
         {currentUser.education ? <p>{currentUser.education}</p> : null}
-        {!currentUser.education  && isUser && (
+        {!currentUser.education && isUser && (
           <button
             className="edit-button"
             onClick={() => {

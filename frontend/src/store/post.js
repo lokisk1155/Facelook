@@ -43,7 +43,7 @@ export const createPost = (post) => async (dispatch) => {
   });
   const postData = await postRes.json();
   dispatch(receivePosts(postData));
-  return postData
+  return postData;
 };
 
 export const updatePost = (post) => async (dispatch) => {

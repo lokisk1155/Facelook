@@ -68,7 +68,7 @@ function Overview({ currentUser, sessionUser }) {
     <div className="content-container">
       <div>
         {currentUser.work ? <p>{currentUser.work}</p> : null}
-        {!currentUser.work  && isUser && (
+        {!currentUser.work && isUser && (
           <button
             onClick={() => {
               setToggleWork(true);
@@ -150,7 +150,7 @@ function Overview({ currentUser, sessionUser }) {
 
       <div>
         {currentUser.location ? <p>{currentUser.location}</p> : null}
-        {!currentUser.location&& isUser && (
+        {!currentUser.location && isUser && (
           <button
             onClick={() => {
               setToggleLocation(true);
@@ -190,7 +190,7 @@ function Overview({ currentUser, sessionUser }) {
       </div>
 
       <div>
-      {currentUser.relationship ? <p>{currentUser.relationship}</p> : null}
+        {currentUser.relationship ? <p>{currentUser.relationship}</p> : null}
         {!currentUser.relationship && isUser && (
           <button
             onClick={() => {

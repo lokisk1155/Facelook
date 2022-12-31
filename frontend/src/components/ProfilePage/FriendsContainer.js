@@ -5,10 +5,9 @@ import capitalizeFirstLetter from "../../utils/capFirstLetter";
 import { useSelector } from "react-redux";
 
 function FriendsContainer() {
+  const friends = useSelector((state) => state.friends);
 
-  const friends = useSelector((state) => state.friends)
-
-  if (!friends) return null 
+  if (!friends) return null;
 
   const mutualFriends = Object.values(friends).slice(0, 9);
 

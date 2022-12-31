@@ -49,7 +49,7 @@ export const updateUser = (user, formData) => async (dispatch) => {
       body: JSON.stringify({ user }),
     });
   }
-  return dispatch(profilePage(user.id))
+  return dispatch(profilePage(user.id));
 };
 
 const userReducer = (previousState = {}, action) => {
