@@ -47,9 +47,7 @@ function NavBar() {
     return null;
   }
 
-  const navbarPic = simpleUsers[user.id].profile_picture
-    ? simpleUsers[user.id].profile_picture
-    : profilePic;
+  const navbarPic = simpleUsers[user.id].profile_picture || profilePic;
 
   return (
     <div className="navbar-container">
