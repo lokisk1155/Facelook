@@ -34,7 +34,7 @@ class Api::UsersController < ApplicationController
     def update
       @user = User.find(params[:id])
       photoAttached = false
-      
+
       if params.has_key?(:profile_pic)
         @user.profile_pic.attach(params[:profile_pic])
         photoAttached = true 
@@ -67,7 +67,7 @@ class Api::UsersController < ApplicationController
     end
 
     def update_params
-      params.require(:user).permit(:email, :id, :first_name, :last_name, :gender, :day, :month, :year, :bio, :featured, :work, :location, :education, :relationship, :phone_number, :created_at, :profile_pic, :highschool, :social_link, :language, :website, :places_lived, :places_worked, :cover_photo)
+      params.require(:user).permit(:email, :id, :first_name, :last_name, :gender, :day, :month, :year, :bio, :featured, :work, :location, :education, :relationship, :phone_number, :created_at, :highschool, :social_link, :language, :website, :places_lived, :places_worked)
     end
 end 
 

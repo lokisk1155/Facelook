@@ -1,10 +1,9 @@
 import ProfileTop from "../components/ProfilePage/ProfileTop";
 import { useEffect } from "react";
-import { fetchUser } from "../store/user";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchFriends } from "../store/friend";
 import Friends from "../components/ProfilePage/Friends";
+import { profilePage } from "../store/profilePage";
 
 function ProfileFriends() {
   const { id } = useParams();
@@ -15,18 +14,16 @@ function ProfileFriends() {
 
   const currentUser = useSelector((state) => state.user[id]);
 
-  const friends = useSelector((state) => state.friend);
+  const friends = useSelector((state) => state.friends);
+
+  const noPosts = true;
 
   useEffect(() => {
-    dispatch(fetchUser(id));
+    dispatch(profilePage(id, noPosts));
   }, [id]);
 
-  if (!currentUser) {
+  if (!currentUser || !sessionUser || !id || !friends) {
     return null;
-  }
-
-  if (Object.keys(currentUser.friends).length !== Object.keys(friends).length) {
-    dispatch(fetchFriends(Object.values(currentUser.friends)));
   }
 
   return (

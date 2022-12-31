@@ -1,6 +1,5 @@
 import ProfileTop from "../components/ProfilePage/ProfileTop";
 import { useEffect } from "react";
-import { fetchUser } from "../store/user";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import AboutPage from "../components/ProfilePage/AboutPage/AboutPage";
@@ -9,6 +8,7 @@ import Overview from "../components/ProfilePage/AboutPage/Overview";
 import PlacesLived from "../components/ProfilePage/AboutPage/PlacesLived";
 import Relationship from "../components/ProfilePage/AboutPage/relationship";
 import WorkEd from "../components/ProfilePage/AboutPage/WorkEd";
+import { profilePage } from "../store/profilePage";
 
 function ProfileAbout({ about }) {
   const { id } = useParams();
@@ -19,11 +19,17 @@ function ProfileAbout({ about }) {
 
   const currentUser = useSelector((state) => state.user[id]);
 
+  const noPosts = true;
+
+  const noFriends = true;
+
   useEffect(() => {
-    dispatch(fetchUser(id));
+    dispatch(profilePage(id, noPosts, noFriends));
   }, [id]);
 
-  if (!currentUser) return null;
+  if (!currentUser || !sessionUser || !id) {
+    return null;
+  }
 
   return (
     <>

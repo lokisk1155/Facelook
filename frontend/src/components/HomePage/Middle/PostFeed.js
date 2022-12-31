@@ -16,11 +16,11 @@ function PostFeed() {
   const [togglePost, setTogglePost] = useState(false);
   const [targetedPost, setTargetedPost] = useState(null);
 
-  const posts = useSelector((state) => state.post);
+  const posts = useSelector((state) => state.posts);
 
   const simpleUsers = useSelector((state) => state.simpleUsers);
 
-  const currentUser = useSelector((state) => state.session.user);
+  const sessionUser = useSelector((state) => state.session.user);
 
   useEffect(() => {
     dispatch(fetchPosts());
@@ -35,7 +35,7 @@ function PostFeed() {
   };
 
   function handleDeletePost(post) {
-    if (post.user_id === currentUser.id) {
+    if (post.user_id === sessionUser.id) {
       dispatch(deletePost(post.id));
       setPostDeleted(true);
       return;
@@ -62,7 +62,7 @@ function PostFeed() {
           {
             <img
               className="profile-pic-inside-create-post"
-              src={profilePic}
+              src={simpleUsers[sessionUser.id].profile_picture || profilePic}
             ></img>
           }
         </div>
@@ -70,11 +70,11 @@ function PostFeed() {
           <Modal onClose={() => setTogglePost(false)}>
             <CreatePostModal
               type={"create"}
-              currentUser={currentUser}
+              currentUser={sessionUser}
               postContent={"What's on your mind?"}
               header={"Create post"}
               closeModal={setTogglePost}
-              userId={currentUser.id}
+              userId={sessionUser.id}
             />
           </Modal>
         )}
@@ -88,21 +88,24 @@ function PostFeed() {
                 <div key={post.id} className="individual-post">
                   <div className="post-header">
                     <Link to={`/ProfilePage/${post.user_id}`}>
-                      <img className="post-pic" src={simpleUsers[post.user_id].profile_picture ? simpleUsers[post.user_id].profile_picture : profilePic}></img>
+                      <img
+                        className="post-pic"
+                        src={ simpleUsers[post.user_id].profile_picture || profilePic}
+                      ></img>
                     </Link>
                     <h5 className="current-user-name">
                       {simpleUsers[post.user_id].name}
                     </h5>
                   </div>
                   <p className="post-content">{post.content}</p>
-                  {currentUser.id === post.user_id ? (
+                  {sessionUser.id === post.user_id ? (
                     <button onClick={() => handleDeletePost(post)}>
                       Delete Post
                     </button>
                   ) : (
                     <div />
                   )}
-                  {currentUser.id === post.user_id ? (
+                  {sessionUser.id === post.user_id ? (
                     <button
                       onClick={(e) => {
                         setCheckPost(true);
@@ -114,11 +117,11 @@ function PostFeed() {
                   ) : (
                     <div />
                   )}
-                  {checkPost && targetedPost.user_id === currentUser.id && (
+                  {checkPost && targetedPost.user_id === sessionUser.id && (
                     <Modal onClose={() => setCheckPost(false)}>
                       <CreatePostModal
                         type="update"
-                        currentUser={currentUser}
+                        currentUser={sessionUser}
                         postId={targetedPost.id}
                         postContent={targetedPost.content}
                         header={"Edit post"}

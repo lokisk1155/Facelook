@@ -12,6 +12,7 @@
   background-color: #fff;
   margin-left: 9vw;
   margin-right: 9vw;
+  max-width: 1400px;
 }
 
 .friends-toggle-button-container {

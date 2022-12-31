@@ -56,7 +56,7 @@ function CreatePostModal({
         {
           <img
             className="profile-pic-inside-create-post"
-            src={profilePic}
+            src={currentUser.profile_picture || profilePic}
           ></img>
         }
 

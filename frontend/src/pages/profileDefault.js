@@ -1,13 +1,11 @@
 import ProfileTop from "../components/ProfilePage/ProfileTop";
 import Posts from "../components/ProfilePage/Posts";
 import { useEffect } from "react";
-import { fetchUser } from "../store/user";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchFriends } from "../store/friend";
-import { fetchPosts } from "../store/post";
 import Intro from "../components/ProfilePage/Intro";
 import FriendsContainer from "../components/ProfilePage/FriendsContainer";
+import { profilePage } from "../store/profilePage";
 
 function ProfileDefault() {
   const { id } = useParams();
@@ -18,17 +16,14 @@ function ProfileDefault() {
 
   const currentUser = useSelector((state) => state.user[id]);
 
-  const friends = useSelector((state) => state.friend);
+  const friends = useSelector((state) => state.friends);
 
   useEffect(() => {
-    Promise.all([dispatch(fetchPosts()), dispatch(fetchUser(id))]);
+    dispatch(profilePage(id));
   }, [id]);
 
-  if (!currentUser) {
+  if (!currentUser || !sessionUser || !id || !friends) {
     return null;
-  }
-  if (Object.keys(currentUser.friends).length !== Object.keys(friends).length) {
-    dispatch(fetchFriends(Object.values(currentUser.friends)));
   }
 
   return (
@@ -44,7 +39,6 @@ function ProfileDefault() {
             <FriendsContainer
               currentUser={currentUser}
               sessionUser={sessionUser}
-              friends={friends}
             />
           </div>
           <Posts sessionUser={sessionUser} currentUser={currentUser} />

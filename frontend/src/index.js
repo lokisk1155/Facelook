@@ -37,7 +37,7 @@ const renderApplication = () => {
     </React.StrictMode>
   );
 };
-//renderApplication()
+
 if (
   sessionStorage.getItem("currentUser") === null ||
   sessionStorage.getItem("X-CSRF-Token") === null

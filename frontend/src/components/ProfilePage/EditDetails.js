@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 function EditDetails({ closeForm }) {
   const { id } = useParams();
 
-  const currentUser = useSelector(getCurrent(id));
+  const currentUser = useSelector((state) => state.user[id]);
 
   const handleCloseForm = (e) => {
     e.preventDefault();

@@ -2,8 +2,13 @@ import "./FriendsContainer.css";
 import profilePic from "../NavBar/imgs/blank.png";
 import { Link } from "react-router-dom";
 import capitalizeFirstLetter from "../../utils/capFirstLetter";
+import { useSelector } from "react-redux";
 
-function FriendsContainer({ friends }) {
+function FriendsContainer() {
+  const friends = useSelector((state) => state.friends);
+
+  if (!friends) return null;
+
   const mutualFriends = Object.values(friends).slice(0, 9);
 
   const divMultiplyer = mutualFriends.length > 3 ? mutualFriends.length / 3 : 0;
@@ -41,7 +46,7 @@ function FriendsContainer({ friends }) {
                   >
                     <img
                       style={{ height: "110px", borderRadius: "5px" }}
-                      src={profilePic}
+                      src={friend.profile_picture || profilePic}
                     ></img>
                     <p style={{ textAlign: "center", textDecoration: "none" }}>
                       {capitalizeFirstLetter(friend.first_name)}{" "}
