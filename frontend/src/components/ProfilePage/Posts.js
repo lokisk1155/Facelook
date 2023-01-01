@@ -10,6 +10,7 @@ import "./Posts.css";
 import CreatePostModal from "./createPostModal";
 import profilePic from "../NavBar/imgs/blank.png";
 import { deletePost } from "../../store/post";
+import { profilePage } from "../../store/profilePage";
 
 function Posts({ currentUser, sessionUser }) {
   const { id } = useParams();
@@ -24,6 +25,8 @@ function Posts({ currentUser, sessionUser }) {
 
   const [editPost, setEditPost] = useState(null);
 
+  const location = "profile"
+
   const handleNewPost = (e) => {
     e.preventDefault();
     setTogglePost(true);
@@ -31,7 +34,7 @@ function Posts({ currentUser, sessionUser }) {
 
   const handleDeletePost = (post) => {
     if (post.user_id === currentUser.id) {
-      dispatch(deletePost(post.id));
+      dispatch(deletePost(post.id, id, location));
       return;
     }
     return;
@@ -69,6 +72,7 @@ function Posts({ currentUser, sessionUser }) {
                 postContent={"What's on your mind?"}
                 header={"Create post"}
                 closeModal={setTogglePost}
+                location={location}
               />
             ) : null}
           </div>
@@ -106,6 +110,7 @@ function Posts({ currentUser, sessionUser }) {
                         postContent={post.content}
                         header={"Edit post"}
                         closeModal={setEditPost}
+                        location={location}
                       />
                     ) : null}
                   </div>

@@ -4,10 +4,10 @@ import { fetchPosts } from "../../../store/post";
 import CreatePostModal from "../../ProfilePage/createPostModal";
 import { deletePost } from "../../../store/post";
 import profilePic from "../../NavBar/imgs/blank.png";
-import { fetchsimpleUsers } from "../../../store/user";
 import { Link } from "react-router-dom";
 import "./PostFeed.css";
 import { Modal } from "../../../context/Modal";
+import { getSimpleUsers } from "../../../store/simpleUsers";
 
 function PostFeed() {
   const dispatch = useDispatch();
@@ -51,6 +51,9 @@ function PostFeed() {
     return null;
   }
 
+  if(simpleUsers[sessionUser.id].profile_picture === undefined) {
+    return null 
+  }
   return (
     <>
       <div className="create-post-modal">
@@ -75,6 +78,7 @@ function PostFeed() {
               header={"Create post"}
               closeModal={setTogglePost}
               userId={sessionUser.id}
+              location={"home"}
             />
           </Modal>
         )}
@@ -126,6 +130,7 @@ function PostFeed() {
                         postContent={targetedPost.content}
                         header={"Edit post"}
                         closeModal={setCheckPost}
+                        location={"home"}
                       />
                     </Modal>
                   )}

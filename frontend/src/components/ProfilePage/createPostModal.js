@@ -14,6 +14,7 @@ function CreatePostModal({
   type,
   postId,
   userId,
+  location
 }) {
   const dispatch = useDispatch();
 
@@ -31,13 +32,13 @@ function CreatePostModal({
         if (userId) {
           post = { content, user_id: userId };
         } else if (id) {
-          post = { content, user_id: id };
+          post = { content, id: postId, user_id: currentUser.id };
         }
-        dispatch(createPost(post));
+        dispatch(createPost(post, id, location));
         return closeModal(null);
       } else if (type === "update") {
-        let post = { content, id: postId };
-        dispatch(updatePost(post));
+        let post = { content, id: postId, user_id: currentUser.id };
+        dispatch(updatePost(post, id, location));
         return closeModal(null);
       }
     } else {
