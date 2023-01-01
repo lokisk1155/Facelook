@@ -11,9 +11,9 @@ export const profilePage = (id, noPosts, noFriends) => async (dispatch) => {
   const friendsRes = await csrfFetch(`/api/users?userIds=${userIds}`);
   const friendsData = await friendsRes.json();
   if (noPosts) {
-    dispatch(setCurrentProfile(userData.user))
-    return dispatch(receiveFriends(friendsData))
-  } 
+    dispatch(setCurrentProfile(userData.user));
+    return dispatch(receiveFriends(friendsData));
+  }
   const postRes = await csrfFetch(`/api/posts/${id}`);
   const postData = await postRes.json();
   dispatch(receivePosts(postData));
@@ -25,4 +25,4 @@ export const profilePagePosts = (id) => async (dispatch) => {
   const postRes = await csrfFetch(`/api/posts/${id}`);
   const postData = await postRes.json();
   dispatch(receivePosts(postData));
-}
+};

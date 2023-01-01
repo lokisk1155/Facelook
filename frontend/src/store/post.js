@@ -44,9 +44,9 @@ export const createPost = (post, id, location) => async (dispatch) => {
   });
   const postData = await postRes.json();
   if (location === "profile") {
-    dispatch(profilePage(id))
+    dispatch(profilePage(id));
   } else {
-    dispatch(fetchPosts())
+    dispatch(fetchPosts());
   }
 };
 
@@ -55,20 +55,20 @@ export const updatePost = (post, id, location) => async (dispatch) => {
     method: "PUT",
     body: JSON.stringify({ post }),
   });
-  const postData = await postRes.json() 
+  const postData = await postRes.json();
   if (location === "profile") {
-    dispatch(profilePage(id))
+    dispatch(profilePage(id));
   } else {
-    dispatch(receivePost(postData))
+    dispatch(receivePost(postData));
   }
 };
 
 export const deletePost = (postId, id, location) => async (dispatch) => {
   await csrfFetch(`/api/posts/${postId}`, { method: "DELETE" });
   if (location === "profile") {
-    dispatch(profilePage(id))
+    dispatch(profilePage(id));
   } else if (location === "home") {
-    dispatch(removePost(postId))
+    dispatch(removePost(postId));
   }
 };
 

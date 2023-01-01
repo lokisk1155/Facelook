@@ -14,7 +14,7 @@ function CreatePostModal({
   type,
   postId,
   userId,
-  location
+  location,
 }) {
   const dispatch = useDispatch();
 

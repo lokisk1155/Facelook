@@ -25,7 +25,7 @@ function Posts({ currentUser, sessionUser }) {
 
   const [editPost, setEditPost] = useState(null);
 
-  const location = "profile"
+  const location = "profile";
 
   const handleNewPost = (e) => {
     e.preventDefault();
