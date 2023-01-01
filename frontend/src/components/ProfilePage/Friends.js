@@ -23,15 +23,14 @@ function Friends({ friends, setDeletedFriend }) {
 
   const [typed, setTyped] = useState("");
 
-  const [friendDeleted, setFriendDeleted] = useState(false)
-
+  const [friendDeleted, setFriendDeleted] = useState(false);
 
   useEffect(() => {
-    dispatch(profilePage(id))
+    dispatch(profilePage(id));
     if (friendDeleted) {
-      setFriendDeleted(false)
+      setFriendDeleted(false);
     }
-  }, [friendDeleted])
+  }, [friendDeleted]);
 
   useEffect(() => {
     if (typed.length > 0) {
@@ -55,9 +54,9 @@ function Friends({ friends, setDeletedFriend }) {
 
   const handleDelete = (userId) => (e) => {
     e.preventDefault();
-    setTyped("")
+    setTyped("");
     dispatch(deleteFriend(userId));
-    setFriendDeleted(true)
+    setFriendDeleted(true);
   };
 
   return (
