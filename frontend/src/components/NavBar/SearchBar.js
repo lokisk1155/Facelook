@@ -6,18 +6,14 @@ import { useEffect } from "react";
 import profilePic from "./imgs/blank.png";
 import { Link } from "react-router-dom";
 
-function SearchBar({
-  setTyped,
-  closeModal,
-  setDiv,
-}) {
+function SearchBar({ setTyped, closeModal, setDiv }) {
   const users = useSelector((state) => state.simpleUsers);
 
   const history = useHistory();
   const [filteredUsers, setFilteredUsers] = useState(null);
   const [recentSearches, setRecentSearches] = useState([]);
 
-  const [frTyped, setfrTyped] = useState("")
+  const [frTyped, setfrTyped] = useState("");
 
   useEffect(() => {
     if (users && frTyped.length > 1) {
@@ -33,12 +29,11 @@ function SearchBar({
     }
 
     if (frTyped.length === 0) {
-      setDiv(0)
+      setDiv(0);
     } else {
-      setDiv((Object.values(filteredUsers).length))
+      setDiv(Object.values(filteredUsers).length);
     }
-    setTyped(frTyped)
-    
+    setTyped(frTyped);
   }, [frTyped]);
 
   if (!users) {
@@ -88,32 +83,33 @@ function SearchBar({
         <div className="search-results-container">
           {" "}
           {filteredUsers.map((user) => {
-            console.log(user)
+            console.log(user);
             return (
-            <Link to={`/ProfilePage/${user.user_id}`} style={{ textDecoration: 'none', color: "black" }}>
-              <div
-                key={user.id}
+              <Link
+                to={`/ProfilePage/${user.user_id}`}
+                style={{ textDecoration: "none", color: "black" }}
               >
-                <div className="result-user-div">
-                  <img
-                    className="result-user-profile-pic"
-                    src={user.profile_picture || profilePic}
-                  />
+                <div key={user.id}>
+                  <div className="result-user-div">
+                    <img
+                      className="result-user-profile-pic"
+                      src={user.profile_picture || profilePic}
+                    />
 
-                  <p className="result-user-name">{user.name}</p>
+                    <p className="result-user-name">{user.name}</p>
+                  </div>
                 </div>
-              </div>
               </Link>
             );
           })}
-            <div className="search-for-typed-button">
-              <button className="mi-icon-holder">
-                <i className="material-icons" id="searchFor">
-                  search
-                </i>
-              </button>
-              <p className="search-for-typed-text">{`Search for ${frTyped}`}</p>
-            </div>
+          <div className="search-for-typed-button">
+            <button className="mi-icon-holder">
+              <i className="material-icons" id="searchFor">
+                search
+              </i>
+            </button>
+            <p className="search-for-typed-text">{`Search for ${frTyped}`}</p>
+          </div>
         </div>
       )}
     </>

@@ -6,16 +6,12 @@ import { useState } from "react";
 function SearchModal({ closeModal, typed, setTyped }) {
   const [userFilteredCount, setFilteredUserCount] = useState(0);
 
-  let adjustedHeightForContainer; 
+  let adjustedHeightForContainer;
 
   useEffect(() => {
     const userFilteredCountTimesHeight = userFilteredCount * 50 + 115;
     adjustedHeightForContainer = `${userFilteredCountTimesHeight}px`;
-  }, [userFilteredCount])
-
-
-
-
+  }, [userFilteredCount]);
 
   useEffect(() => {}, [userFilteredCount]);
   return (
