@@ -4,13 +4,12 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import profilePic from "./imgs/blank.png";
+import { Link } from "react-router-dom";
 
 function SearchBar({
-  autoFocus,
-  closeModal,
-  typed,
   setTyped,
-  setFilteredUserCount,
+  closeModal,
+  setDiv,
 }) {
   const users = useSelector((state) => state.simpleUsers);
 
@@ -18,26 +17,29 @@ function SearchBar({
   const [filteredUsers, setFilteredUsers] = useState(null);
   const [recentSearches, setRecentSearches] = useState([]);
 
+  const [frTyped, setfrTyped] = useState("")
+
   useEffect(() => {
-    if (users && typed.length > 0) {
+    if (users && frTyped.length > 1) {
       let currentMatches = Object.values(users).filter((user) => {
-        return user.name.startsWith(typed.toLowerCase());
+        return user.name.startsWith(frTyped.toLowerCase());
       });
 
       if (currentMatches) {
         setFilteredUsers(currentMatches);
-        if (currentMatches.length > 0) {
-          setFilteredUserCount(currentMatches.length);
-        }
       }
     } else {
-      setFilteredUsers(null);
+      setFilteredUsers(Object.values(users).slice(0, 10));
     }
 
-    if (typed.length === 0) {
-      setFilteredUserCount(0);
+    if (frTyped.length === 0) {
+      setDiv(0)
+    } else {
+      setDiv((Object.values(filteredUsers).length))
     }
-  }, [typed]);
+    setTyped(frTyped)
+    
+  }, [frTyped]);
 
   if (!users) {
     return null;
@@ -71,27 +73,26 @@ function SearchBar({
         </button>
         <input
           type="text"
-          value={typed}
-          placeholder={typed ? typed : "Search FaceLook"}
+          value={frTyped}
+          placeholder={frTyped ? frTyped : "Search FaceLook"}
           className="search-input-modal"
-          onChange={(e) => setTyped(e.target.value)}
+          onChange={(e) => setfrTyped(e.target.value)}
           autoFocus={true}
         ></input>
       </div>
 
-      {!typed && recentSearches.length < 1 && (
+      {!frTyped && recentSearches.length < 1 && (
         <h4 className="no-recent-searches">No Recent Searches</h4>
       )}
       {filteredUsers && (
         <div className="search-results-container">
           {" "}
           {filteredUsers.map((user) => {
+            console.log(user)
             return (
+            <Link to={`/ProfilePage/${user.user_id}`} style={{ textDecoration: 'none', color: "black" }}>
               <div
                 key={user.id}
-                onClick={() => {
-                  history.push(`/ProfilePage/${user.id}`);
-                }}
               >
                 <div className="result-user-div">
                   <img
@@ -102,18 +103,17 @@ function SearchBar({
                   <p className="result-user-name">{user.name}</p>
                 </div>
               </div>
+              </Link>
             );
           })}
-          {typed.length > 0 && (
             <div className="search-for-typed-button">
               <button className="mi-icon-holder">
                 <i className="material-icons" id="searchFor">
                   search
                 </i>
               </button>
-              <p className="search-for-typed-text">{`Search for ${typed}`}</p>
+              <p className="search-for-typed-text">{`Search for ${frTyped}`}</p>
             </div>
-          )}
         </div>
       )}
     </>

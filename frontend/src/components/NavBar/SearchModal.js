@@ -6,9 +6,16 @@ import { useState } from "react";
 function SearchModal({ closeModal, typed, setTyped }) {
   const [userFilteredCount, setFilteredUserCount] = useState(0);
 
-  const userFilteredCountTimesHeight = userFilteredCount * 50 + 115;
+  let adjustedHeightForContainer; 
 
-  const adjustedHeightForContainer = `${userFilteredCountTimesHeight}px`;
+  useEffect(() => {
+    const userFilteredCountTimesHeight = userFilteredCount * 50 + 115;
+    adjustedHeightForContainer = `${userFilteredCountTimesHeight}px`;
+  }, [userFilteredCount])
+
+
+
+
 
   useEffect(() => {}, [userFilteredCount]);
   return (
@@ -17,7 +24,7 @@ function SearchModal({ closeModal, typed, setTyped }) {
       style={{ height: adjustedHeightForContainer }}
     >
       <SearchBar
-        setFilteredUserCount={setFilteredUserCount}
+        setDiv={setFilteredUserCount}
         typed={typed}
         setTyped={setTyped}
         autoFocus={false}
