@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Friends from "../components/ProfilePage/Friends";
 import { profilePage } from "../store/profilePage";
+import { useState } from "react";
 
 function ProfileFriends() {
   const { id } = useParams();
@@ -19,7 +20,7 @@ function ProfileFriends() {
   const noPosts = true;
 
   useEffect(() => {
-    dispatch(profilePage(id, noPosts));
+    dispatch(profilePage(id));
   }, [id]);
 
   if (!currentUser || !sessionUser || !id || !friends) {
