@@ -44,7 +44,10 @@ export const createPost = (post, id, location, formData) => async (dispatch) => 
   });
   const postData = await postRes.json()
   const newPost = postData[Object.keys(postData)[Object.keys(postData).length - 1]]
-  if (formData) return dispatch(updatePost(newPost, id, location, formData))
+  if (formData instanceof FormData) {
+    debugger 
+    return dispatch(updatePost(newPost, id, location, formData))
+  }
   if (location === "profile") {
     dispatch(profilePage(id));
   } else {

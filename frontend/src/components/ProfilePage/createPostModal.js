@@ -29,10 +29,12 @@ function CreatePostModal({
 
   const [photoUrl, setPhotoUrl] = useState(null);
 
+
   function handlePostSubmit() {
     if (content.length < 1) return closeModal(null);
-    const formData = new FormData();
+    let formData;
     if (photoFile) {
+      formData = new FormData();
       formData.append("postAttached[photo]", photoFile);
     }
       if (type === "create") {
