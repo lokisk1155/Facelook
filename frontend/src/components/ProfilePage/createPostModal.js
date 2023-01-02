@@ -33,7 +33,7 @@ function CreatePostModal({
     if (content.length < 1) return closeModal(null);
     const formData = new FormData();
     if (photoFile) {
-      formData.append("user[photo]", photoFile);
+      formData.append("postAttached[photo]", photoFile);
     }
       if (type === "create") {
         let post;

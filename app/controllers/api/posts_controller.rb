@@ -17,15 +17,7 @@ class Api::PostsController < ApplicationController
     end 
     
     def create
-        @post = false 
-        debugger 
-        if params[:user].has_key?(:photo)
-            @post = Post.new(user_id: 1, content: "yo")
-            @post.photo.attach(params[:user][:photo])
-        else  
-            @post = Post.new(post_params)
-        end 
-
+        @post = Post.new(post_params)
         if @post.save
             @posts = Post.all
             render'api/posts/index'
@@ -36,12 +28,24 @@ class Api::PostsController < ApplicationController
 
     def update 
         @post = Post.find(params[:id])
-        update = @post.update(update_params)
-        if update 
-            render 'api/posts/show'
-        else 
-            render json: { errors: @post.errors.full_messages }
-        end 
+        photoAttached = false 
+        if params[:post_attached] && params[:post_attached].has_key?(:photo)
+            @post.photo.attach(params[:post_attached][:photo])
+            photoAttached = true 
+        end
+        if photoAttached
+            if @post.save 
+                render 'api/posts/show'
+            end 
+        else  
+            update = @post.update(update_params)
+            if update 
+                render 'api/posts/show'
+            else 
+                render json: { errors: @post.errors.full_messages }
+            end 
+        end  
+  
     end 
 
     def destroy 

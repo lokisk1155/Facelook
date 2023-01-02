@@ -38,18 +38,13 @@ export const fetchPosts = (limit) => async (dispatch) => {
 };
 
 export const createPost = (post, id, location, formData) => async (dispatch) => {
-  let postRes;
-  if (formData) {
-    postRes = await csrfFetch(`/api/posts`, {
-      method: "POST",
-      body: formData
-    });
-  } else {
-    postRes = await csrfFetch("/api/posts", {
-      method: "POST",
-      body: JSON.stringify(post),
-    });
-  }
+  const postRes = await csrfFetch("/api/posts", {
+    method: "POST",
+    body: JSON.stringify(post),
+  });
+  const postData = await postRes.json()
+  const newPost = postData[Object.keys(postData)[Object.keys(postData).length - 1]]
+  if (formData) return dispatch(updatePost(newPost, id, location, formData))
   if (location === "profile") {
     dispatch(profilePage(id));
   } else {
@@ -57,11 +52,20 @@ export const createPost = (post, id, location, formData) => async (dispatch) => 
   }
 };
 
-export const updatePost = (post, id, location) => async (dispatch) => {
-  const postRes = await csrfFetch(`/api/posts/${post.id}`, {
-    method: "PUT",
-    body: JSON.stringify({ post }),
-  });
+export const updatePost = (post, id, location, formData) => async (dispatch) => {
+  debugger
+  let postRes;
+  if (formData) {
+    postRes = await csrfFetch(`/api/posts/${post.id}`, {
+      method: "PUT",
+      body: formData,
+    });
+  } else {
+    postRes = await csrfFetch(`/api/posts/${post.id}`, {
+      method: "PUT",
+      body: JSON.stringify({ post }),
+    });
+  }
   const postData = await postRes.json();
   if (location === "profile") {
     dispatch(profilePage(id));
