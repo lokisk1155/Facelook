@@ -26,7 +26,7 @@ function CreatePostModal({
   const [placeHolder, setPlaceHolder] = useState(postContent);
 
   function handlePostSubmit() {
-    if (content.length > 0) {
+    if (content.length > 0) return closeModal(null);
       if (type === "create") {
         let post;
         if (userId) {
@@ -41,10 +41,21 @@ function CreatePostModal({
         dispatch(updatePost(post, id, location));
         return closeModal(null);
       }
-    } else {
-      return closeModal(null);
-    }
+    } 
   }
+
+  const handleFile = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        setPhotoFile(file);
+        setPhotoUrl(fileReader.result);
+      };
+    }
+  };
+
   return (
     <div className="omega-create-post-modal">
       <div className="modal-header">
