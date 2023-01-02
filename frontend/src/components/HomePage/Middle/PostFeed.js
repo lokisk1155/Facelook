@@ -51,7 +51,7 @@ function PostFeed() {
     return null;
   }
 
-  if (simpleUsers[sessionUser.id].profile_picture === undefined) {
+  if (simpleUsers[sessionUser.id]?.profile_picture === undefined) {
     return null;
   }
   return (

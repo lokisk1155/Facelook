@@ -34,9 +34,11 @@ function ProfileTop({ currentUser, sessionUser, friends}) {
 
   let friendsInHeader;
 
-  let friendsHeader = 'Friends'
+  let friendsTemp = 'Friends'
 
   let mutualFriends = friends
+
+  let friendsHeader;
 
   if (currentUser.id !== sessionUser.id) {
     mutualFriends = {} 
@@ -47,17 +49,16 @@ function ProfileTop({ currentUser, sessionUser, friends}) {
     }
     const mutualLength = Object.values(mutualFriends).length
       if (mutualLength !== 0) {
-        if (mutualLength === 1) friendsInHeader = 'Mutual Friend'
-        else friendsInHeader = 'Mutual Friends'
-        friendsHeader = Object.values(mutualFriends).length
+        if (mutualLength === 1) friendsTemp = 'Mutual Friend'
+        else friendsTemp = 'Mutual Friends'
+        friendsHeader = `${mutualLength} ${friendsTemp}` 
       } else {
-        friendsInHeader = friendCount
+        if (mutualLength === 1) friendsTemp = 'Friend'
+        friendsHeader = `${friendCount} ${friendsTemp}`
     }
+  } else {
+    friendsHeader = `${friendCount} Friends`
   }
-
-  console.log(mutualFriends)
-
-  console.log(friendsInHeader)
 
   const handleUpdateProfile = async (e) => {
     e.preventDefault();
@@ -115,6 +116,8 @@ function ProfileTop({ currentUser, sessionUser, friends}) {
     ? currentUser.cover_photo
     : null;
 
+    console.log(friendsHeader)
+
   return (
     <>
       <div className="profile-top-container">
@@ -141,7 +144,7 @@ function ProfileTop({ currentUser, sessionUser, friends}) {
             )}
             <div>
               <p className="current-user-name-profile-top">{currentUserName}</p>
-              <p>{`${friendsHeader} ${friendsInHeader} `}</p>
+              <p>{friendsHeader}</p>
             </div>
           </div>
 
