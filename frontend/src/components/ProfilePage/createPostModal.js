@@ -29,7 +29,6 @@ function CreatePostModal({
 
   const [photoUrl, setPhotoUrl] = useState(null);
 
-
   function handlePostSubmit() {
     if (content.length < 1) return closeModal(null);
     let formData;
@@ -37,33 +36,33 @@ function CreatePostModal({
       formData = new FormData();
       formData.append("postAttached[photo]", photoFile);
     }
-      if (type === "create") {
-        let post;
-        if (userId) {
-          post = { content, user_id: userId };
-        } else if (id) {
-          post = { content, id: postId, user_id: currentUser.id };
-        }
-        dispatch(createPost(post, id, location, formData));
-        return closeModal(null);
-      } else if (type === "update") {
-        let post = { content, id: postId, user_id: currentUser.id };
-        dispatch(updatePost(post, id, location, formData));
-        return closeModal(null);
+    if (type === "create") {
+      let post;
+      if (userId) {
+        post = { content, user_id: userId };
+      } else if (id) {
+        post = { content, id: postId, user_id: currentUser.id };
       }
-    } 
+      dispatch(createPost(post, id, location, formData));
+      return closeModal(null);
+    } else if (type === "update") {
+      let post = { content, id: postId, user_id: currentUser.id };
+      dispatch(updatePost(post, id, location, formData));
+      return closeModal(null);
+    }
+  }
 
-    const handleFile = (e) => {
-      const file = e.target.files[0];
-      if (file) {
-        const fileReader = new FileReader();
-        fileReader.readAsDataURL(file);
-        fileReader.onload = () => {
-          setPhotoFile(file);
-          setPhotoUrl(fileReader.result);
-        };
-      }
-    };
+  const handleFile = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        setPhotoFile(file);
+        setPhotoUrl(fileReader.result);
+      };
+    }
+  };
 
   return (
     <div className="omega-create-post-modal">
@@ -89,8 +88,10 @@ function CreatePostModal({
         placeholder={placeHolder}
         onChange={(e) => setContent(e.target.value)}
       ></textarea>
-      {photoFile ? <img src={photoUrl} style={{ height: "50px", width: "50px"}}/> : null}
-       <input type="file" onChange={handleFile} />
+      {photoFile ? (
+        <img src={photoUrl} style={{ height: "50px", width: "50px" }} />
+      ) : null}
+      <input type="file" onChange={handleFile} />
       <input
         className="submit-post-button"
         value="post"
