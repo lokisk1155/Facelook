@@ -7,7 +7,7 @@ import profilePicBlank from "../NavBar/imgs/blank.png";
 import "./ProfileTop.css";
 import capitalizeFirstLetter from "../../utils/capFirstLetter";
 
-function ProfileTop({ currentUser, sessionUser, friends}) {
+function ProfileTop({ currentUser, sessionUser, friends }) {
   const dispatch = useDispatch();
 
   const [toggleDropDown, setToggleDropDown] = useState(false);
@@ -34,30 +34,30 @@ function ProfileTop({ currentUser, sessionUser, friends}) {
 
   let friendsInHeader;
 
-  let friendsTemp = 'Friends'
+  let friendsTemp = "Friends";
 
-  let mutualFriends = friends
+  let mutualFriends = friends;
 
   let friendsHeader;
 
   if (currentUser.id !== sessionUser.id) {
-    mutualFriends = {} 
+    mutualFriends = {};
     for (const key in friends) {
-      if ((friends[key].friends).includes(sessionUser.id)) {
-        mutualFriends[key] = friends[key]
+      if (friends[key].friends.includes(sessionUser.id)) {
+        mutualFriends[key] = friends[key];
       }
     }
-    const mutualLength = Object.values(mutualFriends).length
-      if (mutualLength !== 0) {
-        if (mutualLength === 1) friendsTemp = 'Mutual Friend'
-        else friendsTemp = 'Mutual Friends'
-        friendsHeader = `${mutualLength} ${friendsTemp}` 
-      } else {
-        if (mutualLength === 1) friendsTemp = 'Friend'
-        friendsHeader = `${friendCount} ${friendsTemp}`
+    const mutualLength = Object.values(mutualFriends).length;
+    if (mutualLength !== 0) {
+      if (mutualLength === 1) friendsTemp = "Mutual Friend";
+      else friendsTemp = "Mutual Friends";
+      friendsHeader = `${mutualLength} ${friendsTemp}`;
+    } else {
+      if (mutualLength === 1) friendsTemp = "Friend";
+      friendsHeader = `${friendCount} ${friendsTemp}`;
     }
   } else {
-    friendsHeader = `${friendCount} Friends`
+    friendsHeader = `${friendCount} Friends`;
   }
 
   const handleUpdateProfile = async (e) => {
@@ -116,7 +116,7 @@ function ProfileTop({ currentUser, sessionUser, friends}) {
     ? currentUser.cover_photo
     : null;
 
-    console.log(friendsHeader)
+  console.log(friendsHeader);
 
   return (
     <>

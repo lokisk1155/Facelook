@@ -9,13 +9,13 @@ function FriendsContainer({ currentUser, sessionUser }) {
 
   if (!friends) return null;
 
-  let mutualFriends = friends
+  let mutualFriends = friends;
 
   if (currentUser.id !== sessionUser.id) {
-    mutualFriends = {} 
+    mutualFriends = {};
     for (const key in friends) {
-      if ((friends[key].friends).includes(sessionUser.id)) {
-        mutualFriends[key] = friends[key]
+      if (friends[key].friends.includes(sessionUser.id)) {
+        mutualFriends[key] = friends[key];
       }
     }
   }

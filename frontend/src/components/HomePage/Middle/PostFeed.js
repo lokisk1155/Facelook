@@ -89,7 +89,11 @@ function PostFeed() {
           {Object.values(posts)
             .map((post) => {
               return (
-                <div key={post.id} className="individual-post" style={{ height: post.picture ? "40vw" : "10vw"}}>
+                <div
+                  key={post.id}
+                  className="individual-post"
+                  style={{ height: post.picture ? "40vw" : "10vw" }}
+                >
                   <div className="post-header">
                     <Link to={`/ProfilePage/${post.user_id}`}>
                       <img
@@ -102,32 +106,42 @@ function PostFeed() {
                     </Link>
                     <h5 className="current-user-name">
                       {simpleUsers[post.user_id].name}
-                    </h5>  
+                    </h5>
                   </div>
-                  <div style={{ height: "10%", margin: post.picture ? "auto" : "50px"}}>
+                  <div
+                    style={{
+                      height: "10%",
+                      margin: post.picture ? "auto" : "50px",
+                    }}
+                  >
                     <p className="post-content">{post.content}</p>
                   </div>
-                  {post.picture ? <img src={post.picture} style={{width: "100%", height: "70%"}}/> : null}
-                  <div style={{ margin: "25px"}}>
-                  {sessionUser.id === post.user_id ? (
-                    <button onClick={() => handleDeletePost(post)}>
-                      Delete Post
-                    </button>
-                  ) : (
-                    <div />
-                  )}
-                  {sessionUser.id === post.user_id ? (
-                    <button
-                      onClick={(e) => {
-                        setCheckPost(true);
-                        setTargetedPost(post);
-                      }}
-                    >
-                      Edit Post
-                    </button>
-                  ) : (
-                    <div />
-                  )}
+                  {post.picture ? (
+                    <img
+                      src={post.picture}
+                      style={{ width: "100%", height: "70%" }}
+                    />
+                  ) : null}
+                  <div style={{ margin: "25px" }}>
+                    {sessionUser.id === post.user_id ? (
+                      <button onClick={() => handleDeletePost(post)}>
+                        Delete Post
+                      </button>
+                    ) : (
+                      <div />
+                    )}
+                    {sessionUser.id === post.user_id ? (
+                      <button
+                        onClick={(e) => {
+                          setCheckPost(true);
+                          setTargetedPost(post);
+                        }}
+                      >
+                        Edit Post
+                      </button>
+                    ) : (
+                      <div />
+                    )}
                   </div>
                   {checkPost && targetedPost.user_id === sessionUser.id && (
                     <Modal onClose={() => setCheckPost(false)}>

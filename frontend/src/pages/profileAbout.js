@@ -19,7 +19,7 @@ function ProfileAbout({ about }) {
 
   const currentUser = useSelector((state) => state.user[id]);
 
-  const friends = useSelector((state) => state.friends)
+  const friends = useSelector((state) => state.friends);
 
   const noPosts = true;
 
@@ -35,7 +35,11 @@ function ProfileAbout({ about }) {
 
   return (
     <>
-      <ProfileTop sessionUser={sessionUser} currentUser={currentUser} friends={friends}/>
+      <ProfileTop
+        sessionUser={sessionUser}
+        currentUser={currentUser}
+        friends={friends}
+      />
       <div className="about-page-container">
         <div className="about-page-block">
           <AboutPage />
