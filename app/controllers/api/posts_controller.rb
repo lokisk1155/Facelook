@@ -17,7 +17,15 @@ class Api::PostsController < ApplicationController
     end 
     
     def create
-        @post = Post.new(post_params)
+        @post = false 
+        debugger 
+        if params[:user].has_key?(:photo)
+            @post = Post.new(user_id: 1, content: "yo")
+            @post.photo.attach(params[:user][:photo])
+        else  
+            @post = Post.new(post_params)
+        end 
+
         if @post.save
             @posts = Post.all
             render'api/posts/index'

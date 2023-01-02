@@ -105,6 +105,7 @@ function PostFeed() {
                     </h5>
                   </div>
                   <p className="post-content">{post.content}</p>
+                  {post.picture ? <img src={post.picture} /> : null}
                   {sessionUser.id === post.user_id ? (
                     <button onClick={() => handleDeletePost(post)}>
                       Delete Post

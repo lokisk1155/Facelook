@@ -39,6 +39,7 @@ export const fetchUsers = (userIds) => async (dispatch) => {
 export const updateUser = (user, formData) => async (dispatch) => {
   let userRes;
   if (formData) {
+    debugger
     userRes = await csrfFetch(`/api/users/${user.id}`, {
       method: "PUT",
       body: formData,

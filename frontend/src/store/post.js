@@ -37,12 +37,19 @@ export const fetchPosts = (limit) => async (dispatch) => {
   dispatch(receivePosts(postData));
 };
 
-export const createPost = (post, id, location) => async (dispatch) => {
-  const postRes = await csrfFetch("/api/posts", {
-    method: "POST",
-    body: JSON.stringify(post),
-  });
-  const postData = await postRes.json();
+export const createPost = (post, id, location, formData) => async (dispatch) => {
+  let postRes;
+  if (formData) {
+    postRes = await csrfFetch(`/api/posts`, {
+      method: "POST",
+      body: formData
+    });
+  } else {
+    postRes = await csrfFetch("/api/posts", {
+      method: "POST",
+      body: JSON.stringify(post),
+    });
+  }
   if (location === "profile") {
     dispatch(profilePage(id));
   } else {

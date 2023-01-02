@@ -92,6 +92,7 @@ function Posts({ currentUser, sessionUser }) {
                       <h5 className="current-user-name">{`${currentUser.first_name} ${currentUser.last_name}`}</h5>
                     </div>
                     <p className="post-content">{post.content}</p>
+                    {post.picture ? <img src={post.picture} style={{ height: "50px", width: "50px"}}/> : null }
                     {ownsPost && (
                       <button onClick={() => handleDeletePost(post)}>
                         Delete Post

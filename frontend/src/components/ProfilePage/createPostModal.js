@@ -25,8 +25,16 @@ function CreatePostModal({
   const [title, setHeader] = useState(header);
   const [placeHolder, setPlaceHolder] = useState(postContent);
 
+  const [photoFile, setPhotoFile] = useState(null);
+
+  const [photoUrl, setPhotoUrl] = useState(null);
+
   function handlePostSubmit() {
-    if (content.length > 0) return closeModal(null);
+    if (content.length < 1) return closeModal(null);
+    const formData = new FormData();
+    if (photoFile) {
+      formData.append("user[photo]", photoFile);
+    }
       if (type === "create") {
         let post;
         if (userId) {
@@ -34,27 +42,26 @@ function CreatePostModal({
         } else if (id) {
           post = { content, id: postId, user_id: currentUser.id };
         }
-        dispatch(createPost(post, id, location));
+        dispatch(createPost(post, id, location, formData));
         return closeModal(null);
       } else if (type === "update") {
         let post = { content, id: postId, user_id: currentUser.id };
-        dispatch(updatePost(post, id, location));
+        dispatch(updatePost(post, id, location, formData));
         return closeModal(null);
       }
     } 
-  }
 
-  const handleFile = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-      fileReader.onload = () => {
-        setPhotoFile(file);
-        setPhotoUrl(fileReader.result);
-      };
-    }
-  };
+    const handleFile = (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(file);
+        fileReader.onload = () => {
+          setPhotoFile(file);
+          setPhotoUrl(fileReader.result);
+        };
+      }
+    };
 
   return (
     <div className="omega-create-post-modal">
@@ -80,6 +87,8 @@ function CreatePostModal({
         placeholder={placeHolder}
         onChange={(e) => setContent(e.target.value)}
       ></textarea>
+      {photoFile ? <img src={photoUrl} style={{ height: "50px", width: "50px"}}/> : null}
+       <input type="file" onChange={handleFile} />
       <input
         className="submit-post-button"
         value="post"
