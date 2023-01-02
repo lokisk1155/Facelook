@@ -1,15 +1,24 @@
 import "./FriendsContainer.css";
 import profilePic from "../NavBar/imgs/blank.png";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import capitalizeFirstLetter from "../../utils/capFirstLetter";
 import { useSelector } from "react-redux";
 
-function FriendsContainer() {
-  const friends = useSelector((state) => state.friends);
+function FriendsContainer({ currentUser, sessionUser }) {
+  const friends = useSelector((state) => Object.values(state.friends));
 
   if (!friends) return null;
 
-  const mutualFriends = Object.values(friends).slice(0, 9);
+  let mutualFriends = friends
+
+  if (currentUser.id !== sessionUser.id) {
+    mutualFriends = {} 
+    for (const key in friends) {
+      if ((friends[key].friends).includes(sessionUser.id)) {
+        mutualFriends[key] = friends[key]
+      }
+    }
+  }
 
   const divMultiplyer = mutualFriends.length > 3 ? mutualFriends.length / 3 : 0;
 
@@ -28,7 +37,7 @@ function FriendsContainer() {
         className="actual-friends-container"
       >
         {mutualFriends
-          ? mutualFriends.map((friend) => {
+          ? Object.values(mutualFriends).map((friend) => {
               return (
                 <div
                   key={friend.id}

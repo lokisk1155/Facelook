@@ -46,10 +46,7 @@ export const createPost =
     const postData = await postRes.json();
     const newPost =
       postData[Object.keys(postData)[Object.keys(postData).length - 1]];
-    if (formData instanceof FormData) {
-      debugger;
-      return dispatch(updatePost(newPost, id, location, formData));
-    }
+    if (formData instanceof FormData) return dispatch(updatePost(newPost, id, location, formData));
     if (location === "profile") {
       dispatch(profilePage(id));
     } else {
@@ -59,7 +56,6 @@ export const createPost =
 
 export const updatePost =
   (post, id, location, formData) => async (dispatch) => {
-    debugger;
     let postRes;
     if (formData) {
       postRes = await csrfFetch(`/api/posts/${post.id}`, {
