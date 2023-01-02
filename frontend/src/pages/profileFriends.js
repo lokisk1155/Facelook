@@ -30,7 +30,7 @@ function ProfileFriends() {
   return (
     <>
       {friends ? (
-        <ProfileTop sessionUser={sessionUser} currentUser={currentUser} />
+        <ProfileTop sessionUser={sessionUser} currentUser={currentUser} friends={friends}/>
       ) : null}
       <div style={{ display: "flex" }}>
         <div style={{ width: "15vw" }}></div>

@@ -7,7 +7,7 @@ import profilePicBlank from "../NavBar/imgs/blank.png";
 import "./ProfileTop.css";
 import capitalizeFirstLetter from "../../utils/capFirstLetter";
 
-function ProfileTop({ currentUser, sessionUser }) {
+function ProfileTop({ currentUser, sessionUser, friends}) {
   const dispatch = useDispatch();
 
   const [toggleDropDown, setToggleDropDown] = useState(false);
@@ -31,6 +31,33 @@ function ProfileTop({ currentUser, sessionUser }) {
   const isFriend = currentUser.friends.includes(sessionUser.id) ? true : false;
 
   const notSelf = currentUser.id !== sessionUser.id ? true : false;
+
+  let friendsInHeader;
+
+  let friendsHeader = 'Friends'
+
+  let mutualFriends = friends
+
+  if (currentUser.id !== sessionUser.id) {
+    mutualFriends = {} 
+    for (const key in friends) {
+      if ((friends[key].friends).includes(sessionUser.id)) {
+        mutualFriends[key] = friends[key]
+      }
+    }
+    const mutualLength = Object.values(mutualFriends).length
+      if (mutualLength !== 0) {
+        if (mutualLength === 1) friendsInHeader = 'Mutual Friend'
+        else friendsInHeader = 'Mutual Friends'
+        friendsHeader = Object.values(mutualFriends).length
+      } else {
+        friendsInHeader = friendCount
+    }
+  }
+
+  console.log(mutualFriends)
+
+  console.log(friendsInHeader)
 
   const handleUpdateProfile = async (e) => {
     e.preventDefault();
@@ -114,7 +141,7 @@ function ProfileTop({ currentUser, sessionUser }) {
             )}
             <div>
               <p className="current-user-name-profile-top">{currentUserName}</p>
-              <p>{friendCount} friends</p>
+              <p>{`${friendsHeader} ${friendsInHeader} `}</p>
             </div>
           </div>
 

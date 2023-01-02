@@ -28,7 +28,7 @@ function ProfileDefault() {
 
   return (
     <>
-      <ProfileTop sessionUser={sessionUser} currentUser={currentUser} />
+      <ProfileTop sessionUser={sessionUser} currentUser={currentUser} friends={friends}/>
       <div style={{ display: "flex" }}>
         <div style={{ width: "10vw" }}></div>
         <div

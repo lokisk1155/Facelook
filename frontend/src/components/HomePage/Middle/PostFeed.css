@@ -27,8 +27,6 @@
 
 .individual-post {
   border: 1px;
-  padding: 10px;
-  margin: 10px;
   background-color: white;
   border-radius: 10px;
   border: none;
@@ -69,7 +67,7 @@
 
 .post-header {
   display: flex;
-  height: 50px;
+  height: 10%;
 }
 
 .post-pic {
