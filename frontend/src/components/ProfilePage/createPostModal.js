@@ -1,6 +1,6 @@
 import "./createPostModal.css";
 import { useDispatch } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createPost } from "../../store/post";
 import profilePic from "../NavBar/imgs/blank.png";
 import { updatePost } from "../../store/post";
@@ -31,6 +31,16 @@ function CreatePostModal({
   const [photoUrl, setPhotoUrl] = useState(null);
 
   const [openCrop, setOpenCrop] = useState(false);
+
+  const [containerHeight, setContainerHeight] = useState(null)
+
+  useEffect(() => {
+    if (photoFile || photoUrl) {
+      setContainerHeight("600px") 
+    } else {
+      setContainerHeight("375px")
+    }
+  }, [photoFile, photoUrl])
 
   function handlePostSubmit() {
     if (content.length < 1) return closeModal(null);
@@ -69,7 +79,7 @@ function CreatePostModal({
   };
 
   return (
-    <div className="omega-create-post-modal">
+    <div className="omega-create-post-modal" style={{ height: containerHeight}}>
       {!openCrop ? (
         <>
           <div className="modal-header">
@@ -94,8 +104,8 @@ function CreatePostModal({
             onChange={(e) => setContent(e.target.value)}
           ></textarea>
           {photoFile ? (
-            <img src={photoUrl} style={{ height: "50px", width: "50px" }} />
-          ) : null}
+            <img src={photoUrl} style={{ height: "50%", width: "100%" }} />
+          ) :
           <div style={{ width: "100%", height: "15%", alignItems: "center" }}>
             <label className="custom-file-upload" >
             <p>Add to your post</p>
@@ -116,8 +126,8 @@ function CreatePostModal({
             />
               <input type="file" onChange={handleFile} />
             </label>
- 
-          </div>
+          </div> }
+
           <input
             className="submit-post-button"
             value="post"
