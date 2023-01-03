@@ -85,7 +85,7 @@ function PostFeed() {
       </div>
 
       {posts && (
-        <div className="individual-post-container">
+        <>
           {Object.values(posts)
             .map((post) => {
               return (
@@ -160,7 +160,7 @@ function PostFeed() {
               );
             })
             .reverse()}
-        </div>
+        </>
       )}
     </>
   );

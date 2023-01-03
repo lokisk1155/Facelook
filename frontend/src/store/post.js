@@ -57,8 +57,9 @@ export const createPost =
 
 export const updatePost =
   (post, id, location, formData) => async (dispatch) => {
+    const photoAttached = formData instanceof FormData
     let postRes;
-    if (formData) {
+    if (photoAttached) {
       postRes = await csrfFetch(`/api/posts/${post.id}`, {
         method: "PUT",
         body: formData,
@@ -73,7 +74,11 @@ export const updatePost =
     if (location === "profile") {
       dispatch(profilePage(id));
     } else {
-      dispatch(receivePost(postData));
+      if (photoAttached) {
+        dispatch(fetchPosts())
+      } else {
+        dispatch(receivePost(postData));
+      }
     }
   };
 
