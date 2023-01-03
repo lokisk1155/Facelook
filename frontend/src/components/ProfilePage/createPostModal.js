@@ -30,7 +30,7 @@ function CreatePostModal({
 
   const [photoUrl, setPhotoUrl] = useState(null);
 
-  const [openCrop, setOpenCrop] = useState(false)
+  const [openCrop, setOpenCrop] = useState(false);
 
   function handlePostSubmit() {
     if (content.length < 1) return closeModal(null);
@@ -65,45 +65,54 @@ function CreatePostModal({
         setPhotoUrl(fileReader.result);
       };
     }
-    setOpenCrop(true)
+    setOpenCrop(true);
   };
 
   return (
     <div className="omega-create-post-modal">
-      {!openCrop ? 
-      <>
-      <div className="modal-header">
-        <h3>{title}</h3>
-        <button className="close-button" onClick={() => closeModal(null)}>
-          X
-        </button>
-      </div>
-      <div className="pic-holder">
-        {
-          <img
-            className="profile-pic-inside-create-post"
-            src={currentUser.profile_picture || profilePic}
-          ></img>
-        }
-        <p className="user-name-text">{`${currentUser.first_name} ${currentUser.last_name}`}</p>
-      </div>
-      <textarea
-        className=""
-        type="text"
-        placeholder={placeHolder}
-        onChange={(e) => setContent(e.target.value)}
-      ></textarea>
-      {photoFile ? (
-        <img src={photoUrl} style={{ height: "50px", width: "50px" }} />
+      {!openCrop ? (
+        <>
+          <div className="modal-header">
+            <h3>{title}</h3>
+            <button className="close-button" onClick={() => closeModal(null)}>
+              X
+            </button>
+          </div>
+          <div className="pic-holder">
+            {
+              <img
+                className="profile-pic-inside-create-post"
+                src={currentUser.profile_picture || profilePic}
+              ></img>
+            }
+            <p className="user-name-text">{`${currentUser.first_name} ${currentUser.last_name}`}</p>
+          </div>
+          <textarea
+            className=""
+            type="text"
+            placeholder={placeHolder}
+            onChange={(e) => setContent(e.target.value)}
+          ></textarea>
+          {photoFile ? (
+            <img src={photoUrl} style={{ height: "50px", width: "50px" }} />
+          ) : null}
+          <input type="file" onChange={handleFile} />
+          <input
+            className="submit-post-button"
+            value="post"
+            type="submit"
+            onClick={() => handlePostSubmit()}
+          />
+        </>
       ) : null}
-      <input type="file" onChange={handleFile} />
-      <input
-        className="submit-post-button"
-        value="post"
-        type="submit"
-        onClick={() => handlePostSubmit()}
-      /></> : null}
-      {openCrop ? <CropEasy photoURL={photoUrl} setOpenCrop={setOpenCrop} setPhotoURL={setPhotoUrl} setFile={setPhotoFile} /> : null}
+      {openCrop ? (
+        <CropEasy
+          photoURL={photoUrl}
+          setOpenCrop={setOpenCrop}
+          setPhotoURL={setPhotoUrl}
+          setFile={setPhotoFile}
+        />
+      ) : null}
     </div>
   );
 }

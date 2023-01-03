@@ -1,5 +1,5 @@
 function getRadianAngle(degreeValue) {
-    return (degreeValue * Math.PI) / 180;
+  return (degreeValue * Math.PI) / 180;
 }
 
-export default getRadianAngle
+export default getRadianAngle;

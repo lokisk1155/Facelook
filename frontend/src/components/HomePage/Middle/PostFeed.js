@@ -82,7 +82,6 @@ function PostFeed() {
               location={"home"}
             />
           </Modal>
-          
         )}
       </div>
 
