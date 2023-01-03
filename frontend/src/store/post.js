@@ -57,7 +57,6 @@ export const createPost =
 
 export const updatePost =
   (post, id, location, formData) => async (dispatch) => {
-    debugger;
     const photoAttached = formData instanceof FormData;
     let postRes;
     if (photoAttached) {

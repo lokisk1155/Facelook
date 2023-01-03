@@ -51,10 +51,22 @@ const CropEasy = ({ photoURL, setOpenCrop, setPhotoURL, setFile }) => {
             }}
             className="zoom-range"
           />
-        </div>
-        <div className="controls">
-          <button onClick={(e) => cropImage(e)}>save</button>
-          <button onClick={() => setOpenCrop(false)}>cancel</button>
+          <div className="action-buttons">
+            <button
+              className="save-cancel"
+              role="button"
+              onClick={() => setOpenCrop(false)}
+            >
+              cancel
+            </button>
+            <button
+              className="save-cancel"
+              role="button"
+              onClick={(e) => cropImage(e)}
+            >
+              save
+            </button>
+          </div>
         </div>
       </div>
     </>

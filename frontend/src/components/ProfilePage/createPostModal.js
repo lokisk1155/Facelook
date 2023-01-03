@@ -88,7 +88,7 @@ function CreatePostModal({
             <p className="user-name-text">{`${currentUser.first_name} ${currentUser.last_name}`}</p>
           </div>
           <textarea
-            className=""
+            className="textarea-post"
             type="text"
             placeholder={placeHolder}
             onChange={(e) => setContent(e.target.value)}
@@ -96,7 +96,28 @@ function CreatePostModal({
           {photoFile ? (
             <img src={photoUrl} style={{ height: "50px", width: "50px" }} />
           ) : null}
-          <input type="file" onChange={handleFile} />
+          <div style={{ width: "100%", height: "15%", alignItems: "center" }}>
+            <label className="custom-file-upload" >
+            <p>Add to your post</p>
+            <i
+              style={{
+                height: "24px",
+                width: "24px",
+                backgroundImage:
+                  "url(https://static.xx.fbcdn.net/rsrc.php/v3/yH/r/IbmEpilFoF1.png)",
+                backgroundPosition: "0px -208px",
+                backgroundSize: "33px 605px",
+                backgroundRepeat: "no-repeat",
+                display: "inline-block",
+                justifyContent: "center",
+                alignSelf: "center",
+                marginRight: "20px"
+              }}
+            />
+              <input type="file" onChange={handleFile} />
+            </label>
+ 
+          </div>
           <input
             className="submit-post-button"
             value="post"
