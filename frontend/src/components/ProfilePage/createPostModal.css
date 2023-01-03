@@ -80,7 +80,7 @@ textarea {
   width: 7%;
   margin-left: 46.5%;
 }
-input[type="file"] {
+.input-file-post {
   display: none;
 }
 

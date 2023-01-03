@@ -1,5 +1,5 @@
 import "./createPostModal.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { createPost } from "../../store/post";
 import profilePic from "../NavBar/imgs/blank.png";
@@ -19,6 +19,8 @@ function CreatePostModal({
 }) {
   const dispatch = useDispatch();
 
+  const simpleUsers = useSelector((state) => state.simpleUsers);
+
   const { id } = useParams();
 
   const [content, setContent] = useState("");
@@ -32,15 +34,15 @@ function CreatePostModal({
 
   const [openCrop, setOpenCrop] = useState(false);
 
-  const [containerHeight, setContainerHeight] = useState(null)
+  const [containerHeight, setContainerHeight] = useState(null);
 
   useEffect(() => {
     if (photoFile || photoUrl) {
-      setContainerHeight("600px") 
+      setContainerHeight("600px");
     } else {
-      setContainerHeight("375px")
+      setContainerHeight("375px");
     }
-  }, [photoFile, photoUrl])
+  }, [photoFile, photoUrl]);
 
   function handlePostSubmit() {
     if (content.length < 1) return closeModal(null);
@@ -79,7 +81,10 @@ function CreatePostModal({
   };
 
   return (
-    <div className="omega-create-post-modal" style={{ height: containerHeight}}>
+    <div
+      className="omega-create-post-modal"
+      style={{ height: containerHeight }}
+    >
       {!openCrop ? (
         <>
           <div className="modal-header">
@@ -92,12 +97,17 @@ function CreatePostModal({
             {
               <img
                 className="profile-pic-inside-create-post"
-                src={currentUser.profile_picture || profilePic}
+                src={
+                  simpleUsers[userId]?.profile_picture ||
+                  currentUser.profile_picture ||
+                  profilePic
+                }
               ></img>
             }
             <p className="user-name-text">{`${currentUser.first_name} ${currentUser.last_name}`}</p>
           </div>
           <textarea
+            autoFocus={true}
             className="textarea-post"
             type="text"
             placeholder={placeHolder}
@@ -105,28 +115,33 @@ function CreatePostModal({
           ></textarea>
           {photoFile ? (
             <img src={photoUrl} style={{ height: "50%", width: "100%" }} />
-          ) :
-          <div style={{ width: "100%", height: "15%", alignItems: "center" }}>
-            <label className="custom-file-upload" >
-            <p>Add to your post</p>
-            <i
-              style={{
-                height: "24px",
-                width: "24px",
-                backgroundImage:
-                  "url(https://static.xx.fbcdn.net/rsrc.php/v3/yH/r/IbmEpilFoF1.png)",
-                backgroundPosition: "0px -208px",
-                backgroundSize: "33px 605px",
-                backgroundRepeat: "no-repeat",
-                display: "inline-block",
-                justifyContent: "center",
-                alignSelf: "center",
-                marginRight: "20px"
-              }}
-            />
-              <input type="file" onChange={handleFile} />
-            </label>
-          </div> }
+          ) : (
+            <div style={{ width: "100%", height: "15%", alignItems: "center" }}>
+              <label className="custom-file-upload">
+                <p>Add to your post</p>
+                <i
+                  style={{
+                    height: "24px",
+                    width: "24px",
+                    backgroundImage:
+                      "url(https://static.xx.fbcdn.net/rsrc.php/v3/yH/r/IbmEpilFoF1.png)",
+                    backgroundPosition: "0px -208px",
+                    backgroundSize: "33px 605px",
+                    backgroundRepeat: "no-repeat",
+                    display: "inline-block",
+                    justifyContent: "center",
+                    alignSelf: "center",
+                    marginRight: "20px",
+                  }}
+                />
+                <input
+                  className="input-file-post"
+                  type="file"
+                  onChange={handleFile}
+                />
+              </label>
+            </div>
+          )}
 
           <input
             className="submit-post-button"

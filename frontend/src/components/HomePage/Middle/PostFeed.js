@@ -16,6 +16,7 @@ function PostFeed() {
   const [checkPost, setCheckPost] = useState(false);
   const [togglePost, setTogglePost] = useState(false);
   const [targetedPost, setTargetedPost] = useState(null);
+  const [editPost, setEditPost] = useState(null);
 
   const posts = useSelector((state) => state.posts);
 
@@ -108,6 +109,34 @@ function PostFeed() {
                     <h5 className="current-user-name">
                       {simpleUsers[post.user_id].name}
                     </h5>
+                    {post.user_id === sessionUser.id ? <svg
+                      onClick={() => setEditPost(post.id)}
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      width="1em"
+                      height="1em"
+                      class="x1lliihq x1k90msu x2h7rmj x1qfuztq xcza8v6 x1qx5ct2 xw4jnvo"
+                    >
+                      <g fill-rule="evenodd" transform="translate(-446 -350)">
+                        <path d="M458 360a2 2 0 1 1-4 0 2 2 0 0 1 4 0m6 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0m-12 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0"></path>
+                      </g>
+                    </svg> : null}
+                    {editPost === post.id ? (
+                      <>
+                        <button onClick={() => handleDeletePost(post)}>
+                          Delete Post
+                        </button>
+                        <button
+                          onClick={(e) => {
+                            setCheckPost(true);
+                            setTargetedPost(post);
+                          }}
+                        >
+                          Edit Post
+                        </button>
+                        <button onClick={() => setEditPost(null)}>close</button>
+                      </>
+                    ) : null}
                   </div>
                   <div
                     style={{
@@ -123,27 +152,7 @@ function PostFeed() {
                       style={{ width: "100%", height: "70%" }}
                     />
                   ) : null}
-                  <div style={{ margin: "25px" }}>
-                    {sessionUser.id === post.user_id ? (
-                      <button onClick={() => handleDeletePost(post)}>
-                        Delete Post
-                      </button>
-                    ) : (
-                      <div />
-                    )}
-                    {sessionUser.id === post.user_id ? (
-                      <button
-                        onClick={(e) => {
-                          setCheckPost(true);
-                          setTargetedPost(post);
-                        }}
-                      >
-                        Edit Post
-                      </button>
-                    ) : (
-                      <div />
-                    )}
-                  </div>
+                  <div style={{ margin: "25px" }}></div>
                   {checkPost && targetedPost.user_id === sessionUser.id && (
                     <Modal onClose={() => setCheckPost(false)}>
                       <CreatePostModal
