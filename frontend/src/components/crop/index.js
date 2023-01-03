@@ -1,17 +1,6 @@
-import { Cancel } from '@mui/icons-material';
-import CropIcon from '@mui/icons-material/Crop';
-import {
-  Box,
-  Button,
-  DialogActions,
-  DialogContent,
-  Slider,
-  Typography,
-} from '@mui/material';
 import React, { useState } from 'react';
 import Cropper from 'react-easy-crop';
 import getCroppedImg from '../../utils/cropImage';
-import { useCallback } from 'react';
 import "./index.css"
 
 const CropEasy = ({ photoURL, setOpenCrop, setPhotoURL, setFile }) => {
@@ -32,8 +21,6 @@ const CropEasy = ({ photoURL, setOpenCrop, setPhotoURL, setFile }) => {
         photoURL,
         croppedAreaPixels,
       );
-      console.log(file, 'file')
-      console.log('url')
       setPhotoURL(url);
       setFile(file);
       setOpenCrop(null);
