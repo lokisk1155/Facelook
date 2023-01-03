@@ -2,7 +2,7 @@
   position: absolute;
   top: 35%;
   left: 36%;
-  margin-top: -50px;
+  margin-top: -100px;
   margin-left: -40px;
   background: white;
   padding: 10px;
@@ -67,7 +67,7 @@ textarea {
 }
 
 #modal-background {
-  background-color: rgba(255, 255, 255, 0.675);
+  background-color: rgba(255, 255, 255, 0.791);
 }
 
 .textarea-post {

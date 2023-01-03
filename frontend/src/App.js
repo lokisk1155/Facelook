@@ -29,7 +29,6 @@ function App() {
           path="/"
           render={() => (sessionUser ? <HomePage /> : <LoginPage />)}
         />
-        <Route exact path="/crop" render={() => <CropEasy />} />
         <ProfilePageRoutes />
       </Switch>
     </>
