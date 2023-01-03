@@ -10,5 +10,11 @@
   "license": "ISC",
   "engines": {
     "node": "16.x"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/icons-material": "^5.11.0",
+    "react-easy-crop": "^4.6.3"
   }
 }

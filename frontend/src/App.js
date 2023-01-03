@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import HomePage from "./components/HomePage/HomePage";
 import { getSimpleUsers } from "./store/simpleUsers";
 import { useParams } from "react-router-dom";
+import CropEasy from "./components/crop";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +28,11 @@ function App() {
           exact
           path="/"
           render={() => (sessionUser ? <HomePage /> : <LoginPage />)}
+        />
+        <Route
+          exact
+          path="/crop"
+          render={() => (<CropEasy />)}
         />
         <ProfilePageRoutes />
       </Switch>

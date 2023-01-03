@@ -5,6 +5,7 @@ import { createPost } from "../../store/post";
 import profilePic from "../NavBar/imgs/blank.png";
 import { updatePost } from "../../store/post";
 import { useParams } from "react-router-dom";
+import CropEasy from "../crop";
 
 function CreatePostModal({
   currentUser,
@@ -28,6 +29,8 @@ function CreatePostModal({
   const [photoFile, setPhotoFile] = useState(null);
 
   const [photoUrl, setPhotoUrl] = useState(null);
+
+  const [openCrop, setOpenCrop] = useState(false)
 
   function handlePostSubmit() {
     if (content.length < 1) return closeModal(null);
@@ -62,10 +65,13 @@ function CreatePostModal({
         setPhotoUrl(fileReader.result);
       };
     }
+    setOpenCrop(true)
   };
 
   return (
     <div className="omega-create-post-modal">
+      {!openCrop ? 
+      <>
       <div className="modal-header">
         <h3>{title}</h3>
         <button className="close-button" onClick={() => closeModal(null)}>
@@ -79,7 +85,6 @@ function CreatePostModal({
             src={currentUser.profile_picture || profilePic}
           ></img>
         }
-
         <p className="user-name-text">{`${currentUser.first_name} ${currentUser.last_name}`}</p>
       </div>
       <textarea
@@ -97,7 +102,8 @@ function CreatePostModal({
         value="post"
         type="submit"
         onClick={() => handlePostSubmit()}
-      />
+      /></> : null}
+      {openCrop ? <CropEasy photoURL={photoUrl} setOpenCrop={setOpenCrop} setPhotoURL={setPhotoUrl} setFile={setPhotoFile} /> : null}
     </div>
   );
 }
