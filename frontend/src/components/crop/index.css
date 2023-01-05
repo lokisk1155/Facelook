@@ -21,11 +21,11 @@ body {
 
 .controls {
   position: absolute;
-  bottom: 20px;
+  bottom: 10px;
   left: 50%;
-  width: 50%;
+  width: 75%;
   transform: translateX(-50%);
-  height: 40px;
+  height: 60px;
   align-items: center;
 }
 
@@ -106,6 +106,7 @@ body {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  width: 50%;
-  margin: 10px;
+  width: 40%;
+  height: 25px;
+  margin: 5px;
 }

@@ -109,17 +109,19 @@ function PostFeed() {
                     <h5 className="current-user-name">
                       {simpleUsers[post.user_id].name}
                     </h5>
-                    {post.user_id === sessionUser.id ? <svg
-                      onClick={() => setEditPost(post.id)}
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      width="1em"
-                      height="1em"
-                    >
-                      <g fill-rule="evenodd" transform="translate(-446 -350)">
-                        <path d="M458 360a2 2 0 1 1-4 0 2 2 0 0 1 4 0m6 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0m-12 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0"></path>
-                      </g>
-                    </svg> : null}
+                    {post.user_id === sessionUser.id ? (
+                      <svg
+                        onClick={() => setEditPost(post.id)}
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        width="1em"
+                        height="1em"
+                      >
+                        <g fill-rule="evenodd" transform="translate(-446 -350)">
+                          <path d="M458 360a2 2 0 1 1-4 0 2 2 0 0 1 4 0m6 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0m-12 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0"></path>
+                        </g>
+                      </svg>
+                    ) : null}
                     {editPost === post.id ? (
                       <>
                         <button onClick={() => handleDeletePost(post)}>
