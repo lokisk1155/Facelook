@@ -43,11 +43,11 @@ function PostFeed() {
     return;
   }
 
-  if (Object.keys(simpleUsers).length === 0) {
+  if (Object.keys(simpleUsers).length < 1) {
     return null;
   }
 
-  if (Object.keys(posts).length === 0) {
+  if (Object.keys(posts).length < 1) {
     return null;
   }
 
