@@ -14,9 +14,8 @@ import { profilePage } from "../../store/profilePage";
 import { Modal } from "../../context/Modal";
 import { Link } from "react-router-dom";
 
-
 function Posts({ currentUser, sessionUser }) {
-  const { id } = useParams() 
+  const { id } = useParams();
 
   const dispatch = useDispatch();
 
@@ -24,12 +23,14 @@ function Posts({ currentUser, sessionUser }) {
 
   const [editPost, setEditPost] = useState(null);
 
-  const posts = useSelector((state) => Object.values(state.posts).filter((post) => post.user_id === currentUser.id))
+  const posts = useSelector((state) =>
+    Object.values(state.posts).filter((post) => post.user_id === currentUser.id)
+  );
 
-  const simpleUsers = useSelector((state) => state.simpleUsers)
+  const simpleUsers = useSelector((state) => state.simpleUsers);
 
   if (Object.values(simpleUsers).length < 1) {
-    return null 
+    return null;
   }
 
   const self = currentUser.id === sessionUser.id ? true : false;
@@ -188,7 +189,7 @@ function Posts({ currentUser, sessionUser }) {
   );
 }
 
-export default Posts 
+export default Posts;
 
 // onClick={(() => handleUpdatePost(post.id))}>
 

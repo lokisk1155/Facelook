@@ -5,8 +5,7 @@ import StoriesHomeFeed from "./Middle/StoriesHomeFeed";
 function HomePage() {
   return (
     <div className="home-page-container">
-      <div className="column">
-      </div>
+      <div className="column"></div>
 
       <div className="middle">
         <StoriesHomeFeed />
