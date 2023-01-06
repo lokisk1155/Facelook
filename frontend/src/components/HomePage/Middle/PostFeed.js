@@ -91,9 +91,13 @@ function PostFeed() {
               return (
                 <div
                   key={post.id}
-                  className="individual-post" 
-                  style={{ height: post.picture ? "40vw" : "10vw", minHeight: post.picture ? "400px" : "100px", minWidth: "300px" }}
-              >
+                  className="individual-post"
+                  style={{
+                    height: post.picture ? "40vw" : "10vw",
+                    minHeight: post.picture ? "400px" : "100px",
+                    minWidth: "300px",
+                  }}
+                >
                   <div className="post-header">
                     <div
                       className="picture-and-name"
@@ -138,21 +142,23 @@ function PostFeed() {
                     }}
                   >
                     <p className="post-content">{post.content}</p>
-                    {editPost ? <div className="edit-delete-post-popdown">
-                      <button onClick={() => handleDeletePost(post)}>
-                        Delete Post
-                      </button>
-                      <button
-                        onClick={(e) => {
-                          setCheckPost(true);
-                          setTargetedPost(post);
-                        }}
-                      >
-                        Edit Post
-                      </button>
-                      <button onClick={() => setEditPost(null)}>close</button>
-                    </div> : null}
-                  </div> 
+                    {editPost === post.id ? (
+                      <div className="edit-delete-post-popdown">
+                        <button onClick={() => handleDeletePost(post)}>
+                          Delete Post
+                        </button>
+                        <button
+                          onClick={(e) => {
+                            setCheckPost(true);
+                            setTargetedPost(post);
+                          }}
+                        >
+                          Edit Post
+                        </button>
+                        <button onClick={() => setEditPost(null)}>close</button>
+                      </div>
+                    ) : null}
+                  </div>
                   {post.picture ? (
                     <img
                       src={post.picture}
