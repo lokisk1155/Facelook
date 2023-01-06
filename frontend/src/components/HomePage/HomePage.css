@@ -19,13 +19,34 @@
   display: table;
   clear: both;
 }
-
-@media (max-width: 550px) {
+@media (max-width: 1000px) {
   .middle {
-    width: 90%;
+    width: 50%;
   }
 
   .column {
-    width: 5%;
+    width: 25%;
   }
 }
+
+
+@media (max-width: 800px) {
+  .middle {
+    width: 50%;
+  }
+
+  .column {
+    width: 25%;
+  }
+}
+
+@media (max-width: 625px) {
+  .middle {
+    width: 86%;
+  }
+
+  .column {
+    width: 8%;
+  }
+}
+

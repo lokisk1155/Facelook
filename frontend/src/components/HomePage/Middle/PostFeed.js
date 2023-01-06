@@ -91,51 +91,45 @@ function PostFeed() {
               return (
                 <div
                   key={post.id}
-                  className="individual-post"
-                  style={{ height: post.picture ? "40vw" : "10vw" }}
-                >
+                  className="individual-post" 
+                  style={{ height: post.picture ? "40vw" : "10vw", minHeight: post.picture ? "400px" : "100px", minWidth: "300px" }}
+              >
                   <div className="post-header">
-                    <Link to={`/ProfilePage/${post.user_id}`}>
-                      <img
-                        className="post-pic"
-                        src={
-                          simpleUsers[post.user_id].profile_picture ||
-                          profilePic
-                        }
-                      ></img>
-                    </Link>
-                    <h5 className="current-user-name">
-                      {simpleUsers[post.user_id].name}
-                    </h5>
-                    {post.user_id === sessionUser.id ? (
-                      <svg
-                        onClick={() => setEditPost(post.id)}
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                        width="1em"
-                        height="1em"
-                      >
-                        <g fill-rule="evenodd" transform="translate(-446 -350)">
-                          <path d="M458 360a2 2 0 1 1-4 0 2 2 0 0 1 4 0m6 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0m-12 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0"></path>
-                        </g>
-                      </svg>
-                    ) : null}
-                    {editPost === post.id ? (
-                      <>
-                        <button onClick={() => handleDeletePost(post)}>
-                          Delete Post
-                        </button>
-                        <button
-                          onClick={(e) => {
-                            setCheckPost(true);
-                            setTargetedPost(post);
-                          }}
+                    <div
+                      className="picture-and-name"
+                      style={{ display: "flex" }}
+                    >
+                      <Link to={`/ProfilePage/${post.user_id}`}>
+                        <img
+                          className="post-pic"
+                          src={
+                            simpleUsers[post.user_id].profile_picture ||
+                            profilePic
+                          }
+                        ></img>
+                      </Link>
+                      <h5 className="current-user-name">
+                        {simpleUsers[post.user_id].name}
+                      </h5>
+                    </div>
+                    <div className="svg-dots">
+                      {post.user_id === sessionUser.id ? (
+                        <svg
+                          onClick={() => setEditPost(post.id)}
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                          width="1em"
+                          height="1em"
                         >
-                          Edit Post
-                        </button>
-                        <button onClick={() => setEditPost(null)}>close</button>
-                      </>
-                    ) : null}
+                          <g
+                            fill-rule="evenodd"
+                            transform="translate(-446 -350)"
+                          >
+                            <path d="M458 360a2 2 0 1 1-4 0 2 2 0 0 1 4 0m6 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0m-12 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0"></path>
+                          </g>
+                        </svg>
+                      ) : null}
+                    </div>
                   </div>
                   <div
                     style={{
@@ -144,7 +138,21 @@ function PostFeed() {
                     }}
                   >
                     <p className="post-content">{post.content}</p>
-                  </div>
+                    {editPost ? <div className="edit-delete-post-popdown">
+                      <button onClick={() => handleDeletePost(post)}>
+                        Delete Post
+                      </button>
+                      <button
+                        onClick={(e) => {
+                          setCheckPost(true);
+                          setTargetedPost(post);
+                        }}
+                      >
+                        Edit Post
+                      </button>
+                      <button onClick={() => setEditPost(null)}>close</button>
+                    </div> : null}
+                  </div> 
                   {post.picture ? (
                     <img
                       src={post.picture}
