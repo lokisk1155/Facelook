@@ -1,15 +1,15 @@
 import PostFeed from "./Middle/PostFeed";
 import "./HomePage.css";
-import Stories from "./Left/stories";
+import StoriesHomeFeed from "./Middle/StoriesHomeFeed";
 
 function HomePage() {
   return (
     <div className="home-page-container">
       <div className="column">
-        <Stories />
       </div>
 
       <div className="middle">
+        <StoriesHomeFeed />
         <PostFeed />
       </div>
 
