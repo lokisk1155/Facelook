@@ -13,7 +13,7 @@ export const rootReducer = combineReducers({
   posts: postsReducer,
   friends: friendReducer,
   simpleUsers: simpleUsersReducer,
-  stories: storiesReducer, 
+  stories: storiesReducer,
 });
 
 let enhancer;
