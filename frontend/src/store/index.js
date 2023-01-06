@@ -5,6 +5,7 @@ import postsReducer from "./post";
 import sessionReducer from "./session";
 import simpleUsersReducer from "./simpleUsers";
 import userReducer from "./user";
+import { storiesReducer } from "./story";
 
 export const rootReducer = combineReducers({
   session: sessionReducer,
@@ -12,6 +13,7 @@ export const rootReducer = combineReducers({
   posts: postsReducer,
   friends: friendReducer,
   simpleUsers: simpleUsersReducer,
+  stories: storiesReducer, 
 });
 
 let enhancer;
