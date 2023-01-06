@@ -7,7 +7,7 @@ import profilePicBlank from "../NavBar/imgs/blank.png";
 import "./ProfileTop.css";
 import capitalizeFirstLetter from "../../utils/capFirstLetter";
 
-function ProfileTop({ currentUser, sessionUser }) {
+function ProfileTop({ currentUser, sessionUser, friends }) {
   const dispatch = useDispatch();
 
   const [toggleDropDown, setToggleDropDown] = useState(false);
@@ -31,6 +31,34 @@ function ProfileTop({ currentUser, sessionUser }) {
   const isFriend = currentUser.friends.includes(sessionUser.id) ? true : false;
 
   const notSelf = currentUser.id !== sessionUser.id ? true : false;
+
+  let friendsInHeader;
+
+  let friendsTemp = "Friends";
+
+  let mutualFriends = friends;
+
+  let friendsHeader;
+
+  if (currentUser.id !== sessionUser.id) {
+    mutualFriends = {};
+    for (const key in friends) {
+      if (friends[key].friends.includes(sessionUser.id)) {
+        mutualFriends[key] = friends[key];
+      }
+    }
+    const mutualLength = Object.values(mutualFriends).length;
+    if (mutualLength !== 0) {
+      if (mutualLength === 1) friendsTemp = "Mutual Friend";
+      else friendsTemp = "Mutual Friends";
+      friendsHeader = `${mutualLength} ${friendsTemp}`;
+    } else {
+      if (mutualLength === 1) friendsTemp = "Friend";
+      friendsHeader = `${friendCount} ${friendsTemp}`;
+    }
+  } else {
+    friendsHeader = `${friendCount} Friends`;
+  }
 
   const handleUpdateProfile = async (e) => {
     e.preventDefault();
@@ -88,6 +116,8 @@ function ProfileTop({ currentUser, sessionUser }) {
     ? currentUser.cover_photo
     : null;
 
+  console.log(friendsHeader);
+
   return (
     <>
       <div className="profile-top-container">
@@ -114,7 +144,7 @@ function ProfileTop({ currentUser, sessionUser }) {
             )}
             <div>
               <p className="current-user-name-profile-top">{currentUserName}</p>
-              <p>{friendCount} friends</p>
+              <p>{friendsHeader}</p>
             </div>
           </div>
 

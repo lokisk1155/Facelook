@@ -49,7 +49,6 @@ function CreateAccountForm({ closeForm }) {
       setErrors([]);
       return dispatch(sessionActions.signup(user)).catch(async (res) => {
         let data;
-        history.push("/");
         try {
           data = await res.clone().json();
         } catch {
@@ -64,8 +63,6 @@ function CreateAccountForm({ closeForm }) {
       "Confirm Password field must be the same as the Password field",
     ]);
   };
-
-  if (currentUser) return <Redirect to="/" />;
 
   return (
     <>

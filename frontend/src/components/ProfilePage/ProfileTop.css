@@ -87,6 +87,7 @@
 .profile-picture-and-name-container {
   display: flex;
   align-items: center;
+  margin-bottom: 30px;
 }
 
 .profile-top-profile-pic {

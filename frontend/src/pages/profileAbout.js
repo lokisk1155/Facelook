@@ -19,12 +19,14 @@ function ProfileAbout({ about }) {
 
   const currentUser = useSelector((state) => state.user[id]);
 
+  const friends = useSelector((state) => state.friends);
+
   const noPosts = true;
 
   const noFriends = true;
 
   useEffect(() => {
-    dispatch(profilePage(id, noPosts, noFriends));
+    dispatch(profilePage(id, noPosts));
   }, [id]);
 
   if (!currentUser || !sessionUser || !id) {
@@ -33,7 +35,11 @@ function ProfileAbout({ about }) {
 
   return (
     <>
-      <ProfileTop sessionUser={sessionUser} currentUser={currentUser} />
+      <ProfileTop
+        sessionUser={sessionUser}
+        currentUser={currentUser}
+        friends={friends}
+      />
       <div className="about-page-container">
         <div className="about-page-block">
           <AboutPage />

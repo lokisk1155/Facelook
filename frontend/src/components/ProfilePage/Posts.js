@@ -90,18 +90,24 @@ function Posts({ currentUser, sessionUser }) {
                         src={currentUser.profile_picture || profilePic}
                       ></img>
                       <h5 className="current-user-name">{`${currentUser.first_name} ${currentUser.last_name}`}</h5>
+                      {ownsPost ? (
+                        <>
+                          <button onClick={() => handleDeletePost(post)}>
+                            Delete Post
+                          </button>
+                          <button onClick={handleEditPost(post.id)}>
+                            Edit Post
+                          </button>
+                        </>
+                      ) : null}
                     </div>
                     <p className="post-content">{post.content}</p>
-                    {ownsPost && (
-                      <button onClick={() => handleDeletePost(post)}>
-                        Delete Post
-                      </button>
-                    )}
-                    {ownsPost && (
-                      <button onClick={handleEditPost(post.id)}>
-                        Edit Post
-                      </button>
-                    )}
+                    {post.picture ? (
+                      <img
+                        src={post.picture}
+                        style={{ height: "50px", width: "50px" }}
+                      />
+                    ) : null}
                     {editPost === post.id ? (
                       <CreatePostModal
                         type="update"
