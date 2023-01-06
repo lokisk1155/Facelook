@@ -4,8 +4,8 @@
   flex-direction: column;
   border: none;
 }
-.post-feed-container {
-  width: 100%;
+.post-feed-profile-page-container {
+  width: 50%;
 }
 
 .new-post-button {
