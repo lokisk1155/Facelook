@@ -7,8 +7,6 @@ import profilePic from "../../NavBar/imgs/blank.png";
 import { Link } from "react-router-dom";
 import "./PostFeed.css";
 import { Modal } from "../../../context/Modal";
-import { getSimpleUsers } from "../../../store/simpleUsers";
-import CropEasy from "../../crop";
 
 function PostFeed() {
   const dispatch = useDispatch();
