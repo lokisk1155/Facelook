@@ -1,38 +1,20 @@
-import ProfileTop from "../components/ProfilePage/ProfileTop";
 import Posts from "../components/ProfilePage/Posts";
-import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Intro from "../components/ProfilePage/Intro";
 import FriendsContainer from "../components/ProfilePage/FriendsContainer";
-import { profilePage } from "../store/profilePage";
 
 function ProfileDefault() {
   const { id } = useParams();
-
-  const dispatch = useDispatch();
-
   const sessionUser = useSelector((state) => state.session.user);
-
   const currentUser = useSelector((state) => state.user[id]);
 
-  const friends = useSelector((state) => state.friends);
-
-  useEffect(() => {
-    dispatch(profilePage(id));
-  }, [id]);
-
-  if (!currentUser || !sessionUser || !id || !friends) {
+  if (!currentUser || !sessionUser) {
     return null;
   }
 
   return (
     <>
-      <ProfileTop
-        sessionUser={sessionUser}
-        currentUser={currentUser}
-        friends={friends}
-      />
       <div style={{ display: "flex" }}>
         <div style={{ width: "10vw" }}></div>
         <div

@@ -28,7 +28,7 @@ function App() {
           path="/"
           render={() => (sessionUser ? <HomePage /> : <LoginPage />)}
         />
-        <ProfilePageRoutes />
+        <Route path="/ProfilePage/:id" render={() => <ProfilePageRoutes />} />
       </Switch>
     </>
   );
