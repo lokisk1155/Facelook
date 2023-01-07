@@ -6,12 +6,7 @@ import { useParams } from "react-router-dom";
 import ProfileTop from "../components/ProfilePage/ProfileTop";
 import { useEffect } from "react";
 import { profilePage } from "../store/profilePage";
-import Overview from "../components/ProfilePage/AboutPage/Overview";
-import AboutPage from "../components/ProfilePage/AboutPage/AboutPage";
-import ContactInfo from "../components/ProfilePage/AboutPage/ContactInfo";
-import PlacesLived from "../components/ProfilePage/AboutPage/PlacesLived";
-import Relationship from "../components/ProfilePage/AboutPage/relationship";
-import WorkEd from "../components/ProfilePage/AboutPage/WorkEd";
+import ProfileAbout from "../pages/profileAbout";
 
 export function ProfilePageRoutes() {
   const { id } = useParams();
@@ -22,7 +17,7 @@ export function ProfilePageRoutes() {
 
   useEffect(() => {
     dispatch(profilePage(id));
-  }, [id]);
+  }, [id, dispatch]);
 
   if (!currentUser || !sessionUser || !friends) {
     return null;
@@ -41,51 +36,7 @@ export function ProfilePageRoutes() {
         render={() => <ProfileFriends />}
       />
       <Route path="/ProfilePage/:id/about">
-        <div className="about-page-container">
-          <div className="about-page-block">
-            <AboutPage />
-            <Route
-              exact
-              path="/ProfilePage/:id/about"
-              render={() => (
-                <Overview sessionUser={sessionUser} currentUser={currentUser} />
-              )}
-            />
-            <Route
-              path="/ProfilePage/:id/about/work_and_education"
-              render={() => (
-                <WorkEd sessionUser={sessionUser} currentUser={currentUser} />
-              )}
-            />
-            <Route
-              path="/ProfilePage/:id/about/places_lived"
-              render={() => (
-                <PlacesLived
-                  sessionUser={sessionUser}
-                  currentUser={currentUser}
-                />
-              )}
-            />
-            <Route
-              path="/ProfilePage/:id/about/contact_info"
-              render={() => (
-                <ContactInfo
-                  sessionUser={sessionUser}
-                  currentUser={currentUser}
-                />
-              )}
-            />
-            <Route
-              path="/ProfilePage/:id/about/family_and_relationships"
-              render={() => (
-                <Relationship
-                  sessionUser={sessionUser}
-                  currentUser={currentUser}
-                />
-              )}
-            />
-          </div>
-        </div>
+        <ProfileAbout sessionUser={sessionUser} currentUser={currentUser} />
       </Route>
     </>
   );
