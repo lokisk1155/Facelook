@@ -9,15 +9,9 @@ import { getSimpleUsers } from "./store/simpleUsers";
 import { useParams } from "react-router-dom";
 
 function App() {
-  const dispatch = useDispatch();
-
-  const { id } = useParams();
-
   const sessionUser = useSelector((state) => state.session.user);
-
-  useEffect(() => {
-    dispatch(getSimpleUsers());
-  }, [id]);
+  const dispatch = useDispatch();
+  dispatch(getSimpleUsers());
 
   return (
     <>
