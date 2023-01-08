@@ -14,6 +14,10 @@
   margin-left: 390px;
 }
 
+.name-and-time-elapsed {
+  display: flex;
+}
+
 .new-post-button {
   height: 50px;
   width: 100%;
@@ -68,7 +72,6 @@
 .post-header {
   display: flex;
   justify-content: space-between;
-  height: 10%;
 }
 
 .post-pic {
@@ -81,6 +84,7 @@
 .post-content {
   padding: 10px;
   margin-left: 5px;
+  overflow-wrap: break-word;
 }
 
 .svg-dots {
@@ -88,5 +92,8 @@
   position: relative;
 }
 
-.edit-delete-post-popdown {
+.svg-dots-dropdown-container {
+  display: flex;
+  flex-direction: column;
 }
+
