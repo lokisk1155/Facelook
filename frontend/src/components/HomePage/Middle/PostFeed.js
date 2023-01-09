@@ -15,9 +15,8 @@ function PostFeed() {
   const [togglePost, setTogglePost] = useState(false);
   const [targetedPost, setTargetedPost] = useState(null);
   const [editPost, setEditPost] = useState(null);
-  const [editContent, setEditContent] = useState(null)
-  const [editId, setEditId] = useState(null)
-
+  const [editContent, setEditContent] = useState(null);
+  const [editId, setEditId] = useState(null);
 
   const posts = useSelector((state) => state.posts);
 
@@ -38,49 +37,49 @@ function PostFeed() {
   };
 
   const submitUpdate = (id) => (e) => {
-    e.preventDefault() 
+    e.preventDefault();
     const post = {
       id: id,
-      content: editContent
-    }
-    setEditId(null)
-    dispatch(updatePost(post))
-  }
+      content: editContent,
+    };
+    setEditId(null);
+    dispatch(updatePost(post));
+  };
 
   const handleDeletePost = (post) => (e) => {
-    e.preventDefault() 
+    e.preventDefault();
     if (post.user_id === sessionUser.id) {
       dispatch(deletePost(post.id));
       setPostDeleted(true);
     }
-  }
+  };
 
   function formatDateTime(comparedTime) {
-    const sec = Math.floor(comparedTime / 1000)
+    const sec = Math.floor(comparedTime / 1000);
     if (sec < 60) {
-      return `${sec}s`
+      return `${sec}s`;
     }
-    const min = Math.floor(sec / 60)
+    const min = Math.floor(sec / 60);
     if (min < 60) {
-      return `${min}m`
+      return `${min}m`;
     }
-    const hr = Math.floor(min / 60)
+    const hr = Math.floor(min / 60);
     if (hr < 24) {
-      return `${hr}h`
+      return `${hr}h`;
     }
-    const day = Math.floor(hr / 24)
+    const day = Math.floor(hr / 24);
     if (day < 7) {
-      return `${day}d`
+      return `${day}d`;
     }
-    return `${Math.floor(day / 7)}w`  
-}
+    return `${Math.floor(day / 7)}w`;
+  }
 
-function getTimeElapsed(createdAt) {
+  function getTimeElapsed(createdAt) {
     const previous = new Date(createdAt);
     const now = new Date(); // get current datetime
-    const comparedTime = (now.valueOf() - previous.valueOf());
-    return formatDateTime(comparedTime)
-}
+    const comparedTime = now.valueOf() - previous.valueOf();
+    return formatDateTime(comparedTime);
+  }
 
   if (Object.keys(simpleUsers).length < 1) {
     return null;
@@ -135,10 +134,12 @@ function getTimeElapsed(createdAt) {
                     height: post.picture ? "40vw" : "10vw",
                     minHeight: post.picture ? "400px" : "150px",
                     minWidth: "300px",
-                    
                   }}
+                >
+                  <div
+                    className="post-header"
+                    style={{ height: post.picture ? "9%" : "25%" }}
                   >
-                  <div className="post-header" style={{ height: post.picture ? "9%" : "25%"}}>
                     <div
                       className="picture-and-name"
                       style={{ display: "flex" }}
@@ -152,49 +153,107 @@ function getTimeElapsed(createdAt) {
                           }
                         ></img>
                       </Link>
-                      <div style={{ padding: "5px"}}>
-                      <h5 style={{ height: "50%", margin: "0", padding: "2px"}}>
-                        {simpleUsers[post.user_id].name}
-                      </h5>
-                      <p style={{ color: "#65676b", fontSize: ".7rem", height: "50%", margin: "0", padding: "2px"}}>{getTimeElapsed(post.created_at)}</p>
-                      </div>
-                   
-                    </div>
-                    {post.user_id === sessionUser.id ? <div className="svg-dots">
-                      <>
-                      <div className="svg-container">
-                        <svg
-                          style={{ visibility: editPost === post.id ? "hidden" : ""}}
-                          onClick={() => setEditPost(post.id)}
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                          width="1em"
-                          height="1em"
+                      <div style={{ padding: "5px" }}>
+                        <h5
+                          style={{ height: "50%", margin: "0", padding: "2px" }}
                         >
-                          <g
-                            fill-rule="evenodd"
-                            transform="translate(-446 -350)"
-                          >
-                            <path d="M458 360a2 2 0 1 1-4 0 2 2 0 0 1 4 0m6 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0m-12 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0"></path>
-                          </g>
-                        </svg>
-                        </div>
-                        {editPost === post.id ? <div className="svg-dots-dropdown-container">
-                          <button onClick={() => {setEditId(post.id)
-                                                setEditPost(null)} }>Edit</button>
-                          <button onClick={handleDeletePost(post)}>Delete</button>
-                          <button onClick={() => setEditPost(null)}>Close</button>
-                        </div> : null}
-                      </>
-                    </div> : null}
+                          {simpleUsers[post.user_id].name}
+                        </h5>
+                        <p
+                          style={{
+                            color: "#65676b",
+                            fontSize: ".7rem",
+                            height: "50%",
+                            margin: "0",
+                            padding: "2px",
+                          }}
+                        >
+                          {getTimeElapsed(post.created_at)}
+                        </p>
+                      </div>
+                    </div>
+                    {post.user_id === sessionUser.id ? (
+                      <div className="svg-dots">
+                        <>
+                          <div className="svg-container">
+                            <svg
+                              style={{
+                                visibility:
+                                  editPost === post.id ? "hidden" : "",
+                              }}
+                              onClick={() => setEditPost(post.id)}
+                              fill="currentColor"
+                              viewBox="0 0 20 20"
+                              width="1em"
+                              height="1em"
+                            >
+                              <g
+                                fill-rule="evenodd"
+                                transform="translate(-446 -350)"
+                              >
+                                <path d="M458 360a2 2 0 1 1-4 0 2 2 0 0 1 4 0m6 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0m-12 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0"></path>
+                              </g>
+                            </svg>
+                          </div>
+                          {editPost === post.id ? (
+                            <div className="svg-dots-dropdown-container">
+                              <button
+                                onClick={() => {
+                                  setEditId(post.id);
+                                  setEditPost(null);
+                                }}
+                              >
+                                Edit
+                              </button>
+                              <button onClick={handleDeletePost(post)}>
+                                Delete
+                              </button>
+                              <button onClick={() => setEditPost(null)}>
+                                Close
+                              </button>
+                            </div>
+                          ) : null}
+                        </>
+                      </div>
+                    ) : null}
                   </div>
-                  <div className="post-content-container" style={{ width: "90%", height: "10%"}}>
-                    {editId !== post.id ? <p style={{height: "100%"}}>{post.content}</p> :
-                      <div className="edit-update-post-button-container" style={{ display: "flex", height: "100%" }}>
-                        <textarea className="post-content" autoFocus={editId} onChange={(e) => setEditContent(e.target.value)} style={{ width: "50%", resize: "none", fontSize: "12px"}}>{post.content}</textarea>
-                        <button className="save-cancel-individual-post-buttons" onClick={(() => setEditId(null))}>cancel</button>
-                        <button className="save-cancel-individual-post-buttons" onClick={submitUpdate(post.id)}>save</button>
-                        </div>}
+                  <div
+                    className="post-content-container"
+                    style={{ width: "90%", height: "10%" }}
+                  >
+                    {editId !== post.id ? (
+                      <p style={{ height: "100%" }}>{post.content}</p>
+                    ) : (
+                      <div
+                        className="edit-update-post-button-container"
+                        style={{ display: "flex", height: "100%" }}
+                      >
+                        <textarea
+                          className="post-content"
+                          autoFocus={editId}
+                          onChange={(e) => setEditContent(e.target.value)}
+                          style={{
+                            width: "50%",
+                            resize: "none",
+                            fontSize: "12px",
+                          }}
+                        >
+                          {post.content}
+                        </textarea>
+                        <button
+                          className="save-cancel-individual-post-buttons"
+                          onClick={() => setEditId(null)}
+                        >
+                          cancel
+                        </button>
+                        <button
+                          className="save-cancel-individual-post-buttons"
+                          onClick={submitUpdate(post.id)}
+                        >
+                          save
+                        </button>
+                      </div>
+                    )}
                   </div>
                   {post.picture ? (
                     <img

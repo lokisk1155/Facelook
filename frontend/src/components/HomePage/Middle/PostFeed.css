@@ -85,7 +85,9 @@
 .post-content {
   width: 80%;
   overflow-wrap: break-word;
-  font-family: #4d4e53; font-family: 'Open Sans', sans-serif; line-height: 1.5; 
+  font-family: #4d4e53;
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.5;
 }
 
 .svg-dots {
@@ -98,11 +100,6 @@
   flex-direction: column;
 }
 
-
 .save-cancel-individual-post-buttons {
   height: 10%;
 }
-
-
-
-
