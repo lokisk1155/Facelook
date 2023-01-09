@@ -148,8 +148,12 @@ function PostFeed() {
                     >
                       <Link to={`/ProfilePage/${post.user_id}`}>
                         <img
-
-                          style={{ height: "30px", width: "30px", borderRadius: "50px", padding: "10px"}}
+                          style={{
+                            height: "30px",
+                            width: "30px",
+                            borderRadius: "50px",
+                            padding: "10px",
+                          }}
                           src={
                             simpleUsers[post.user_id].profile_picture ||
                             profilePic
@@ -199,9 +203,21 @@ function PostFeed() {
                             </svg>
                           </div>
                           {editPost === post.id ? (
-                            <div className="svg-dots-dropdown-container" style={{ padding: "0.5px", boxShadow: "0.25px 0.25px .525px 0.525px grey" }}>
+                            <div
+                              className="svg-dots-dropdown-container"
+                              style={{
+                                padding: "0.5px",
+                                boxShadow: "0.25px 0.25px .525px 0.525px grey",
+                              }}
+                            >
                               <button
-                                style={{ border: "none", height: "35px", width: "85px", backgroundColor: "#fff", borderBottom: "0.5px solid black"}}
+                                style={{
+                                  border: "none",
+                                  height: "35px",
+                                  width: "85px",
+                                  backgroundColor: "#fff",
+                                  borderBottom: "0.5px solid black",
+                                }}
                                 onClick={() => {
                                   setEditId(post.id);
                                   setEditPost(null);
@@ -209,15 +225,29 @@ function PostFeed() {
                               >
                                 Edit
                               </button>
-                            
-                              <button 
-                              style={{ border: "none", height: "35px", width: "85px", backgroundColor: "#fff", borderBottom: "0.5px solid black"}}
-                              onClick={handleDeletePost(post)}>
+
+                              <button
+                                style={{
+                                  border: "none",
+                                  height: "35px",
+                                  width: "85px",
+                                  backgroundColor: "#fff",
+                                  borderBottom: "0.5px solid black",
+                                }}
+                                onClick={handleDeletePost(post)}
+                              >
                                 Delete
                               </button>
-                              <button 
-                              style={{ border: "none", height: "35px", width: "85px", backgroundColor: "#fff", borderBottom: "none" }}
-                              onClick={() => setEditPost(null)}>
+                              <button
+                                style={{
+                                  border: "none",
+                                  height: "35px",
+                                  width: "85px",
+                                  backgroundColor: "#fff",
+                                  borderBottom: "none",
+                                }}
+                                onClick={() => setEditPost(null)}
+                              >
                                 Close
                               </button>
                             </div>
@@ -228,14 +258,24 @@ function PostFeed() {
                   </div>
                   <div
                     className="post-content-container"
-                    style={{ width: "100%", height: post.picture ? "5%" : "10%", minHeight: "35px", padding: '5px'}}
+                    style={{
+                      width: "100%",
+                      height: post.picture ? "5%" : "10%",
+                      minHeight: "35px",
+                      padding: "5px",
+                    }}
                   >
                     {editId !== post.id ? (
                       <p style={{ height: "100%" }}>{post.content}</p>
                     ) : (
                       <div
                         className="edit-update-post-button-container"
-                        style={{ display: "flex", paddingBottom: "10px", height: "35px", justifyContent: "space-between"}}
+                        style={{
+                          display: "flex",
+                          paddingBottom: "10px",
+                          height: "35px",
+                          justifyContent: "space-between",
+                        }}
                       >
                         <textarea
                           className="post-content-textarea"
@@ -247,24 +287,45 @@ function PostFeed() {
                             resize: "none",
                             fontSize: "12px",
                             minHeight: "10px",
-                                                    }}
+                          }}
+                        ></textarea>
+                        <div
+                          style={{
+                            display: "flex",
+                            paddingRight: "15px",
+                            alignItems: "center",
+                          }}
                         >
-                          
-                        </textarea>
-                        <div style={{ display: "flex", paddingRight: "15px", alignItems: "center"}}>
-                        <button  style={{ minHeight: "20px",  backgroundColor: "#1b74e4", border: "none", borderRadius: "2px", margin: "5px", color: "white"}}
-                          className="save-cancel-individual-post-buttons"
-                          onClick={() => setEditId(null)}
-                        >
-                          cancel
-                        </button>
-                        <button style={{ minHeight: "20px", backgroundColor: "#1b74e4", border: "none", borderRadius: "2px", margin: "5px", color: "white", visibility: editContent?.length < 1 ? "hidden" : ""}}
-
-                          className="save-cancel-individual-post-buttons"
-                          onClick={submitUpdate(post.id)}
-                        >
-                          save
-                        </button>
+                          <button
+                            style={{
+                              minHeight: "20px",
+                              backgroundColor: "#1b74e4",
+                              border: "none",
+                              borderRadius: "2px",
+                              margin: "5px",
+                              color: "white",
+                            }}
+                            className="save-cancel-individual-post-buttons"
+                            onClick={() => setEditId(null)}
+                          >
+                            cancel
+                          </button>
+                          <button
+                            style={{
+                              minHeight: "20px",
+                              backgroundColor: "#1b74e4",
+                              border: "none",
+                              borderRadius: "2px",
+                              margin: "5px",
+                              color: "white",
+                              visibility:
+                                editContent?.length < 1 ? "hidden" : "",
+                            }}
+                            className="save-cancel-individual-post-buttons"
+                            onClick={submitUpdate(post.id)}
+                          >
+                            save
+                          </button>
                         </div>
                       </div>
                     )}
