@@ -80,6 +80,12 @@ function PostFeed() {
     return formatDateTime(comparedTime);
   }
 
+  function contentHeight(postContent) {
+    const row = 35
+    const rows = postContent.length / 50 
+    return `${row * rows}px`
+  }
+
   if (Object.keys(simpleUsers).length < 1) {
     return null;
   }
@@ -130,7 +136,7 @@ function PostFeed() {
                   key={post.id}
                   className="individual-post"
                   style={{
-                    height: post.picture ? "36vw" : "6vw",
+                    height: post.picture ? `36vw + ${contentHeight(post.content)}` : `6vw + ${contentHeight(post.content)}`,
                     minHeight: post.picture ? "400px" : "75px",
                     minWidth: "300px",
                   }}
@@ -207,7 +213,6 @@ function PostFeed() {
                               className="svg-dots-dropdown-container"
                               style={{
                                 padding: "0.5px",
-                                boxShadow: "0.25px 0.25px .525px 0.525px grey",
                               }}
                             >
                               <button
@@ -216,7 +221,8 @@ function PostFeed() {
                                   height: "35px",
                                   width: "85px",
                                   backgroundColor: "#fff",
-                                  borderBottom: "0.5px solid black",
+                                  border: "0.5px solid black",
+                                  zIndex: "3"
                                 }}
                                 onClick={() => {
                                   setEditId(post.id);
@@ -232,7 +238,8 @@ function PostFeed() {
                                   height: "35px",
                                   width: "85px",
                                   backgroundColor: "#fff",
-                                  borderBottom: "0.5px solid black",
+                                  border: "0.5px solid black",
+                                  zIndex: "3"
                                 }}
                                 onClick={handleDeletePost(post)}
                               >
@@ -244,7 +251,8 @@ function PostFeed() {
                                   height: "35px",
                                   width: "85px",
                                   backgroundColor: "#fff",
-                                  borderBottom: "none",
+                                  border: "0.5px solid black",
+                                  zIndex: "3"
                                 }}
                                 onClick={() => setEditPost(null)}
                               >
