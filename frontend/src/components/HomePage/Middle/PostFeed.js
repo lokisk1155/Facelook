@@ -131,14 +131,14 @@ function PostFeed() {
                   key={post.id}
                   className="individual-post"
                   style={{
-                    height: post.picture ? "40vw" : "10vw",
-                    minHeight: post.picture ? "400px" : "150px",
+                    height: post.picture ? "40vw" : "6vw",
+                    minHeight: post.picture ? "400px" : "75px",
                     minWidth: "300px",
                   }}
                 >
                   <div
                     className="post-header"
-                    style={{ height: post.picture ? "9%" : "25%" }}
+                    style={{ height: post.picture ? "9%" : "25%", minHeight: "33px"}}
                   >
                     <div
                       className="picture-and-name"
@@ -219,7 +219,7 @@ function PostFeed() {
                   </div>
                   <div
                     className="post-content-container"
-                    style={{ width: "90%", height: "10%" }}
+                    style={{ width: "90%", height: "10%", minHeight: "35px" }}
                   >
                     {editId !== post.id ? (
                       <p style={{ height: "100%" }}>{post.content}</p>
