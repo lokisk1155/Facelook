@@ -52,7 +52,6 @@ export const createPost =
 export const updatePost =
   (post, id, location, formData) => async (dispatch) => {
     const photoAttached = formData instanceof FormData;
-    debugger;
     const postRes = await csrfFetch(`/api/posts/${post.id}`, {
       method: "PUT",
       body: photoAttached ? formData : JSON.stringify({ post }),

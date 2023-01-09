@@ -106,7 +106,7 @@ function Posts({ currentUser, sessionUser }) {
                     >
                       <Link to={`/ProfilePage/${post.user_id}`}>
                         <img
-                          className="post-pic"
+                          style={{ height: "25px", width: "25px", borderRadius: "50px"}}
                           src={
                             simpleUsers[post.user_id].profile_picture ||
                             profilePic

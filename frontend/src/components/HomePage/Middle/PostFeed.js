@@ -13,7 +13,6 @@ function PostFeed() {
   const [postDeleted, setPostDeleted] = useState(false);
   const [checkPost, setCheckPost] = useState(false);
   const [togglePost, setTogglePost] = useState(false);
-  const [targetedPost, setTargetedPost] = useState(null);
   const [editPost, setEditPost] = useState(null);
   const [editContent, setEditContent] = useState(null);
   const [editId, setEditId] = useState(null);
@@ -131,14 +130,17 @@ function PostFeed() {
                   key={post.id}
                   className="individual-post"
                   style={{
-                    height: post.picture ? "40vw" : "6vw",
+                    height: post.picture ? "36vw" : "6vw",
                     minHeight: post.picture ? "400px" : "75px",
                     minWidth: "300px",
                   }}
                 >
                   <div
                     className="post-header"
-                    style={{ height: post.picture ? "9%" : "25%", minHeight: "33px"}}
+                    style={{
+                      height: post.picture ? "9%" : "25%",
+                      minHeight: "33px",
+                    }}
                   >
                     <div
                       className="picture-and-name"
@@ -146,7 +148,8 @@ function PostFeed() {
                     >
                       <Link to={`/ProfilePage/${post.user_id}`}>
                         <img
-                          className="post-pic"
+
+                          style={{ height: "30px", width: "30px", borderRadius: "50px", padding: "10px"}}
                           src={
                             simpleUsers[post.user_id].profile_picture ||
                             profilePic
@@ -162,10 +165,10 @@ function PostFeed() {
                         <p
                           style={{
                             color: "#65676b",
-                            fontSize: ".7rem",
-                            height: "50%",
+                            fontSize: ".55rem",
+                            height: "30%",
                             margin: "0",
-                            padding: "2px",
+                            padding: "3px",
                           }}
                         >
                           {getTimeElapsed(post.created_at)}
@@ -196,8 +199,9 @@ function PostFeed() {
                             </svg>
                           </div>
                           {editPost === post.id ? (
-                            <div className="svg-dots-dropdown-container">
+                            <div className="svg-dots-dropdown-container" style={{ padding: "0.5px", boxShadow: "0.25px 0.25px .525px 0.525px grey" }}>
                               <button
+                                style={{ border: "none", height: "35px", width: "85px", backgroundColor: "#fff", borderBottom: "0.5px solid black"}}
                                 onClick={() => {
                                   setEditId(post.id);
                                   setEditPost(null);
@@ -205,10 +209,15 @@ function PostFeed() {
                               >
                                 Edit
                               </button>
-                              <button onClick={handleDeletePost(post)}>
+                            
+                              <button 
+                              style={{ border: "none", height: "35px", width: "85px", backgroundColor: "#fff", borderBottom: "0.5px solid black"}}
+                              onClick={handleDeletePost(post)}>
                                 Delete
                               </button>
-                              <button onClick={() => setEditPost(null)}>
+                              <button 
+                              style={{ border: "none", height: "35px", width: "85px", backgroundColor: "#fff", borderBottom: "none" }}
+                              onClick={() => setEditPost(null)}>
                                 Close
                               </button>
                             </div>
@@ -219,46 +228,51 @@ function PostFeed() {
                   </div>
                   <div
                     className="post-content-container"
-                    style={{ width: "90%", height: "10%", minHeight: "35px" }}
+                    style={{ width: "100%", height: post.picture ? "5%" : "10%", minHeight: "35px", padding: '5px'}}
                   >
                     {editId !== post.id ? (
                       <p style={{ height: "100%" }}>{post.content}</p>
                     ) : (
                       <div
                         className="edit-update-post-button-container"
-                        style={{ display: "flex", height: "100%" }}
+                        style={{ display: "flex", paddingBottom: "10px", height: "35px", justifyContent: "space-between"}}
                       >
                         <textarea
-                          className="post-content"
+                          className="post-content-textarea"
                           autoFocus={editId}
                           onChange={(e) => setEditContent(e.target.value)}
+                          placeholder={post.content}
                           style={{
-                            width: "50%",
+                            width: "80%",
                             resize: "none",
                             fontSize: "12px",
-                          }}
+                            minHeight: "10px",
+                                                    }}
                         >
-                          {post.content}
+                          
                         </textarea>
-                        <button
+                        <div style={{ display: "flex", paddingRight: "15px", alignItems: "center"}}>
+                        <button  style={{ minHeight: "20px",  backgroundColor: "#1b74e4", border: "none", borderRadius: "2px", margin: "5px", color: "white"}}
                           className="save-cancel-individual-post-buttons"
                           onClick={() => setEditId(null)}
                         >
                           cancel
                         </button>
-                        <button
+                        <button style={{ minHeight: "20px", backgroundColor: "#1b74e4", border: "none", borderRadius: "2px", margin: "5px", color: "white", visibility: editContent?.length < 1 ? "hidden" : ""}}
+
                           className="save-cancel-individual-post-buttons"
                           onClick={submitUpdate(post.id)}
                         >
                           save
                         </button>
+                        </div>
                       </div>
                     )}
                   </div>
                   {post.picture ? (
                     <img
                       src={post.picture}
-                      style={{ width: "100%", height: "70%" }}
+                      style={{ width: "100%", height: "80.5%" }}
                     />
                   ) : null}
                   <div style={{ margin: "25px" }}></div>

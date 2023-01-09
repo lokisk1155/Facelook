@@ -32,7 +32,7 @@
 .individual-post {
   border: 1px;
   background-color: white;
-  border-radius: 10px;
+  border-radius: 5px;
   border: none;
   box-shadow: 0px 4px 4px 0px lightgrey;
 }
@@ -74,25 +74,17 @@
   justify-content: space-between;
 }
 
-.post-pic {
-  border-radius: 30px;
-  height: 90%;
-  width: 69%;
-  align-self: center;
-  padding: 5px;
-}
-
-.post-content {
-  width: 80%;
+.post-content-textarea {
+  width: 100%;
   overflow-wrap: break-word;
   font-family: #4d4e53;
   font-family: "Open Sans", sans-serif;
   line-height: 1.5;
+  padding: 9.9px;
 }
 
 .svg-dots {
-  padding: 20px;
-  position: relative;
+  padding: 10px;
 }
 
 .svg-dots-dropdown-container {
