@@ -81,9 +81,9 @@ function PostFeed() {
   }
 
   function contentHeight(postContent) {
-    const row = 35
-    const rows = postContent.length / 50 
-    return `${row * rows}px`
+    const row = 35;
+    const rows = postContent.length / 50;
+    return `${row * rows}px`;
   }
 
   if (Object.keys(simpleUsers).length < 1) {
@@ -136,7 +136,9 @@ function PostFeed() {
                   key={post.id}
                   className="individual-post"
                   style={{
-                    height: post.picture ? `36vw + ${contentHeight(post.content)}` : `6vw + ${contentHeight(post.content)}`,
+                    height: post.picture
+                      ? `36vw + ${contentHeight(post.content)}`
+                      : `6vw + ${contentHeight(post.content)}`,
                     minHeight: post.picture ? "400px" : "75px",
                     minWidth: "300px",
                   }}
@@ -222,7 +224,7 @@ function PostFeed() {
                                   width: "85px",
                                   backgroundColor: "#fff",
                                   border: "0.5px solid black",
-                                  zIndex: "3"
+                                  zIndex: "3",
                                 }}
                                 onClick={() => {
                                   setEditId(post.id);
@@ -239,7 +241,7 @@ function PostFeed() {
                                   width: "85px",
                                   backgroundColor: "#fff",
                                   border: "0.5px solid black",
-                                  zIndex: "3"
+                                  zIndex: "3",
                                 }}
                                 onClick={handleDeletePost(post)}
                               >
@@ -252,7 +254,7 @@ function PostFeed() {
                                   width: "85px",
                                   backgroundColor: "#fff",
                                   border: "0.5px solid black",
-                                  zIndex: "3"
+                                  zIndex: "3",
                                 }}
                                 onClick={() => setEditPost(null)}
                               >
