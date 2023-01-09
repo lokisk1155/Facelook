@@ -63,15 +63,9 @@
 
 .post-header {
   display: flex;
-  height: 50px;
+
 }
 
-.post-pic {
-  border-radius: 30px;
-  height: 40px;
-  align-self: center;
-  padding: 10px;
-}
 
 .post-content {
   padding: 10px;
