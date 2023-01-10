@@ -4,12 +4,11 @@ import { useSelector } from "react-redux";
 import profilePic from "../../NavBar/imgs/blank.png";
 
 function StoriesHomeFeed({ stories = ["test1", "test2", "test3"] }) {
+  const sessionUser = useSelector((state) => state.session.user);
 
-  const sessionUser = useSelector((state) => state.session.user)
+  const sessionUserPicture = sessionUser.profile_picture;
 
-  const sessionUserPicture = sessionUser.profile_picture
-
-  const sessionUserName = `${sessionUser.first_name} ${sessionUser.last_name}`
+  const sessionUserName = `${sessionUser.first_name} ${sessionUser.last_name}`;
   return (
     <>
       <div className="stories-header-container">
@@ -48,8 +47,30 @@ function StoriesHomeFeed({ stories = ["test1", "test2", "test3"] }) {
             paddingBottom: "10px",
           }}
         >
-            <img style={{ height: "70%", width: "100%", borderTopLeftRadius: "10px", borderTopRightRadius: "10px"}} src={sessionUserPicture || profilePic}></img>
-            <p style={{ fontSize: "0.5rm", padding: "0", margin: "0", width: "100%", height: "25%", textAlign: "center", borderBottomLeftRadius: "10px", borderBottomRightRadius: "10px", boxShadow: "0px 12px 12px 0px lightgrey"}}>Create Story</p>
+          <img
+            style={{
+              height: "70%",
+              width: "100%",
+              borderTopLeftRadius: "10px",
+              borderTopRightRadius: "10px",
+            }}
+            src={sessionUserPicture || profilePic}
+          ></img>
+          <p
+            style={{
+              fontSize: "0.5rm",
+              padding: "0",
+              margin: "0",
+              width: "100%",
+              height: "25%",
+              textAlign: "center",
+              borderBottomLeftRadius: "10px",
+              borderBottomRightRadius: "10px",
+              boxShadow: "0px 12px 12px 0px lightgrey",
+            }}
+          >
+            Create Story
+          </p>
         </div>
         {stories.map((story, index) => {
           return (
