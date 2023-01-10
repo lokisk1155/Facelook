@@ -81,35 +81,34 @@ function PostFeed() {
   }
 
   function contentHeight(post) {
-    let postRows = post.content.split("").length / 35
-    let postValue = 2 * postRows
-    let value = postValue > 2 ? postValue : 2
+    let postRows = post.content.split("").length / 35;
+    let postValue = 2 * postRows;
+    let value = postValue > 2 ? postValue : 2;
     if (post.picture) {
-      value += 36
-      return `${value}vw`
+      value += 36;
+      return `${value}vw`;
     } else {
       if (value === 3) {
-        value = 8
+        value = 8;
       }
-      return `${value}vw`
+      return `${value}vw`;
     }
   }
 
   function imageHeight(postContent) {
-      let postRows = postContent.split("").length / 35
-      let postValue = 3 * postRows
-      let value = postValue > 3 ? postValue : 3
-      const result = 80 - value
-      return `${result}%`
+    let postRows = postContent.split("").length / 35;
+    let postValue = 3 * postRows;
+    let value = postValue > 3 ? postValue : 3;
+    const result = 80 - value;
+    return `${result}%`;
   }
 
   function imageMargin(postContent) {
-    let postRows = postContent.split("").length / 35
-    let postValue = 10 * postRows
-    let value = postValue > 10 ? postValue : 10
-    return `${value}px`
+    let postRows = postContent.split("").length / 35;
+    let postValue = 10 * postRows;
+    let value = postValue > 10 ? postValue : 10;
+    return `${value}px`;
   }
-
 
   if (Object.keys(simpleUsers).length < 1) {
     return null;
@@ -366,7 +365,11 @@ function PostFeed() {
                   {post.picture ? (
                     <img
                       src={post.picture}
-                      style={{ width: "100%", height: imageHeight(post.content), marginTop: imageMargin(post.content) }}
+                      style={{
+                        width: "100%",
+                        height: imageHeight(post.content),
+                        marginTop: imageMargin(post.content),
+                      }}
                     />
                   ) : null}
                   <div style={{ margin: "25px" }}></div>
