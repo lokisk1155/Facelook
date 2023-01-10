@@ -6,6 +6,7 @@ import { Link, useParams } from "react-router-dom";
 import profilePicBlank from "../NavBar/imgs/blank.png";
 import "./ProfileTop.css";
 import capitalizeFirstLetter from "../../utils/capFirstLetter";
+import { profilePage } from "../../store/profilePage";
 
 function ProfileTop({ currentUser, sessionUser, friends }) {
   const dispatch = useDispatch();
@@ -105,6 +106,8 @@ function ProfileTop({ currentUser, sessionUser, friends }) {
     e.preventDefault();
     if (isFriend) {
       dispatch(deleteFriend(currentUser.id));
+    } else {
+      dispatch(profilePage(id))
     }
   };
 
