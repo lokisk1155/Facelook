@@ -81,23 +81,22 @@ function PostFeed() {
   }
 
   function contentHeight(post) {
-    let postRows = post.content.split("").length / 35;
+    let postRows = post.content.split("").length / 48;
     let value;
     if (post.picture) {
-      value = postRows * 60
-      return `${value}px`
+      value = postRows * 60;
+      return `${value}px`;
     } else {
-      value = postRows * 30
-      return `${value}px`
+      value = postRows * 30;
+      return `${value}px`;
     }
-
   }
 
   function imageHeight(postContent) {
     let postRows = postContent.split("").length / 35;
     let postValue = 3 * postRows;
     let value = postValue > 3 ? postValue : 3;
-    const result = 80 - value
+    const result = 80 - value;
     return `${result}%`;
   }
 
@@ -121,7 +120,7 @@ function PostFeed() {
   }
   return (
     <>
-      <div className="create-post-modal" >
+      <div className="create-post-modal">
         <button className="new-post-button" onClick={handleNewPost}>
           <p className="text-inside-new-post">What is on your mind?</p>
         </button>
@@ -161,7 +160,7 @@ function PostFeed() {
                     height: contentHeight(post),
                     minHeight: post.picture ? "400px" : "85px",
                     minWidth: "300px",
-                    marginBottom: "15px"
+                    marginBottom: "15px",
                   }}
                 >
                   <div
@@ -224,7 +223,7 @@ function PostFeed() {
                               height="1em"
                             >
                               <g
-                                fill-rule="evenodd"
+                                fillRule="evenodd"
                                 transform="translate(-446 -350)"
                               >
                                 <path d="M458 360a2 2 0 1 1-4 0 2 2 0 0 1 4 0m6 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0m-12 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0"></path>
@@ -291,14 +290,20 @@ function PostFeed() {
                     className="post-content-container"
                     style={{
                       width: "100%",
-                      height: post.picture ? postContentHeight(post.content) : "60%",
+                      height: post.picture
+                        ? postContentHeight(post.content)
+                        : "60%",
                       minHeight: "35px",
                       padding: "5px",
-                      overflow: "hidden"
+                      overflow: "hidden",
                     }}
                   >
                     {editId !== post.id ? (
-                      <p style={{ height: "100%", margin: "0", padding: "2px"}}>{post.content}</p>
+                      <p
+                        style={{ height: "100%", margin: "0", padding: "2px" }}
+                      >
+                        {post.content}
+                      </p>
                     ) : (
                       <div
                         className="edit-update-post-button-container"
@@ -306,7 +311,7 @@ function PostFeed() {
                           display: "flex",
                           paddingBottom: "10px",
                           justifyContent: "space-between",
-                          height: "100%"
+                          height: "100%",
                         }}
                       >
                         <textarea
@@ -320,7 +325,7 @@ function PostFeed() {
                             resize: "none",
                             fontSize: "12px",
                             minHeight: "10px",
-                            height: post.picture ? "100%" : "75%"
+                            height: post.picture ? "100%" : "75%",
                           }}
                         ></textarea>
                         <div
