@@ -85,28 +85,28 @@ function PostFeed() {
     let postValue = 2 * postRows;
     let value = postValue > 2 ? postValue : 2;
     if (post.picture) {
-      value += 36;
+      value += 28;
       return `${value}vw`;
     } else {
       if (value === 3) {
-        value = 8;
-      }
+        value = 9;
+      } 
       return `${value}vw`;
     }
   }
 
   function imageHeight(postContent) {
     let postRows = postContent.split("").length / 35;
-    let postValue = 3 * postRows;
-    let value = postValue > 3 ? postValue : 3;
-    const result = 80 - value;
+    let postValue = 2 * postRows;
+    let value = postValue > 2 ? postValue : 2;
+    const result = 80 - value
     return `${result}%`;
   }
 
-  function imageMargin(postContent) {
+  function postContentHeight(postContent) {
     let postRows = postContent.split("").length / 35;
-    let postValue = 10 * postRows;
-    let value = postValue > 10 ? postValue : 10;
+    let postValue = 16 * postRows;
+    let value = postValue > 16 ? postValue : 16;
     return `${value}px`;
   }
 
@@ -182,7 +182,7 @@ function PostFeed() {
                             height: "30px",
                             width: "30px",
                             borderRadius: "50px",
-                            padding: "10px",
+                            padding: "7px",
                           }}
                           src={
                             simpleUsers[post.user_id].profile_picture ||
@@ -292,13 +292,14 @@ function PostFeed() {
                     className="post-content-container"
                     style={{
                       width: "100%",
-                      height: post.picture ? "5%" : "10%",
+                      height: post.picture ? postContentHeight(post.content) : "10%",
                       minHeight: "35px",
                       padding: "5px",
+                      overflow: "scroll",
                     }}
                   >
                     {editId !== post.id ? (
-                      <p style={{ height: "100%" }}>{post.content}</p>
+                      <p style={{ height: "100%", padding: "0px", padding: "2px"}}>{post.content}</p>
                     ) : (
                       <div
                         className="edit-update-post-button-container"
@@ -368,7 +369,7 @@ function PostFeed() {
                       style={{
                         width: "100%",
                         height: imageHeight(post.content),
-                        marginTop: imageMargin(post.content),
+                        paddingTop: "5px"
                       }}
                     />
                   ) : null}
