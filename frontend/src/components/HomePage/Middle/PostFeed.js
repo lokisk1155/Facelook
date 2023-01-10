@@ -95,8 +95,8 @@ function PostFeed() {
 
   function imageHeight(postContent) {
     let postRows = postContent.split("").length / 35;
-    let postValue = 2 * postRows;
-    let value = postValue > 2 ? postValue : 2;
+    let postValue = 3 * postRows;
+    let value = postValue > 3 ? postValue : 3;
     const result = 80 - value
     return `${result}%`;
   }
@@ -121,7 +121,7 @@ function PostFeed() {
   }
   return (
     <>
-      <div className="create-post-modal">
+      <div className="create-post-modal" >
         <button className="new-post-button" onClick={handleNewPost}>
           <p className="text-inside-new-post">What is on your mind?</p>
         </button>
@@ -161,7 +161,7 @@ function PostFeed() {
                     height: contentHeight(post),
                     minHeight: post.picture ? "400px" : "85px",
                     minWidth: "300px",
-                    marginBottom: "25px"
+                    marginBottom: "15px"
                   }}
                 >
                   <div
@@ -298,15 +298,15 @@ function PostFeed() {
                     }}
                   >
                     {editId !== post.id ? (
-                      <p style={{ height: "100%", padding: "0px", padding: "2px"}}>{post.content}</p>
+                      <p style={{ height: "100%", margin: "0", padding: "2px"}}>{post.content}</p>
                     ) : (
                       <div
                         className="edit-update-post-button-container"
                         style={{
                           display: "flex",
                           paddingBottom: "10px",
-                          height: "35px",
                           justifyContent: "space-between",
+                          height: "100%"
                         }}
                       >
                         <textarea
@@ -314,11 +314,13 @@ function PostFeed() {
                           autoFocus={editId}
                           onChange={(e) => setEditContent(e.target.value)}
                           placeholder={post.content}
+                          maxLength="150"
                           style={{
                             width: "80%",
                             resize: "none",
                             fontSize: "12px",
                             minHeight: "10px",
+                            height: post.picture ? "100%" : "50%"
                           }}
                         ></textarea>
                         <div
@@ -368,7 +370,7 @@ function PostFeed() {
                       style={{
                         width: "100%",
                         height: imageHeight(post.content),
-                        paddingTop: "5px"
+                        paddingTop: "5px",
                       }}
                     />
                   ) : null}
