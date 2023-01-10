@@ -80,11 +80,36 @@ function PostFeed() {
     return formatDateTime(comparedTime);
   }
 
-  function contentHeight(postContent) {
-    const row = 35;
-    const rows = postContent.length / 50;
-    return `${row * rows}px`;
+  function contentHeight(post) {
+    let postRows = post.content.split("").length / 35
+    let postValue = 2 * postRows
+    let value = postValue > 2 ? postValue : 2
+    if (post.picture) {
+      value += 36
+      return `${value}vw`
+    } else {
+      if (value === 3) {
+        value = 8
+      }
+      return `${value}vw`
+    }
   }
+
+  function imageHeight(postContent) {
+      let postRows = postContent.split("").length / 35
+      let postValue = 3 * postRows
+      let value = postValue > 3 ? postValue : 3
+      const result = 80 - value
+      return `${result}%`
+  }
+
+  function imageMargin(postContent) {
+    let postRows = postContent.split("").length / 35
+    let postValue = 10 * postRows
+    let value = postValue > 10 ? postValue : 10
+    return `${value}px`
+  }
+
 
   if (Object.keys(simpleUsers).length < 1) {
     return null;
@@ -136,9 +161,7 @@ function PostFeed() {
                   key={post.id}
                   className="individual-post"
                   style={{
-                    height: post.picture
-                      ? `36vw + ${contentHeight(post.content)}`
-                      : `6vw + ${contentHeight(post.content)}`,
+                    height: contentHeight(post),
                     minHeight: post.picture ? "400px" : "75px",
                     minWidth: "300px",
                   }}
@@ -343,7 +366,7 @@ function PostFeed() {
                   {post.picture ? (
                     <img
                       src={post.picture}
-                      style={{ width: "100%", height: "80.5%" }}
+                      style={{ width: "100%", height: imageHeight(post.content), marginTop: imageMargin(post.content) }}
                     />
                   ) : null}
                   <div style={{ margin: "25px" }}></div>
