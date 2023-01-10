@@ -32,6 +32,7 @@ function StoriesHomeFeed({ stories = ["test1", "test2", "test3"] }) {
           minHeight: "75px",
           justifyContent: "space-evenly",
           backgroundColor: "#fff",
+          padding: "10px",
           marginLeft: "10px",
           marginRight: "10px",
           borderEndStartRadius: "10px",
@@ -43,8 +44,12 @@ function StoriesHomeFeed({ stories = ["test1", "test2", "test3"] }) {
           className="story-img"
           style={{
             width: "20%",
-            paddingTop: "10px",
-            paddingBottom: "10px",
+            margin: "2.5px",
+            padding: "0",
+            borderRadius: "5px",
+            display: "flex",
+            flexDirection: "column",
+            position: "relative"
           }}
         >
           <img
@@ -53,23 +58,51 @@ function StoriesHomeFeed({ stories = ["test1", "test2", "test3"] }) {
               width: "100%",
               borderTopLeftRadius: "10px",
               borderTopRightRadius: "10px",
+              margin: "0",
+              padding: "0",
+              borderTop: "0.3px solid lightgrey",
+              borderLeft: "0.3px solid lightgrey",
+              borderRight: "0.3px solid lightgrey",
+              objectFit: "cover"
             }}
             src={sessionUserPicture || profilePic}
-          ></img>
+          >
+          </img>
+          <svg
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            style={{ height: "30px", borderRadius: "100px", backgroundColor: "rgb(27, 116, 228)", color: "#fff", border: "5px solid #fff", position: "absolute", top: "70%",
+            transform: "translateY(-50%)", bottom: 0, left: 0,
+            right: 0,
+            margin: "auto",}}
+          >
+            <g fillRule="evenodd" transform="translate(-446 -350)">
+              <g fillRule="nonzero">
+                <path
+                  d="M95 201.5h13a1 1 0 1 0 0-2H95a1 1 0 1 0 0 2z"
+                  transform="translate(354.5 159.5)"
+                ></path>
+                <path
+                  d="M102.5 207v-13a1 1 0 1 0-2 0v13a1 1 0 1 0 2 0z"
+                  transform="translate(354.5 159.5)"
+                ></path>
+              </g>
+            </g>
+          </svg>
           <p
             style={{
-              fontSize: "0.5rm",
               padding: "0",
               margin: "0",
               width: "100%",
-              height: "25%",
-              textAlign: "center",
+              height: "20%",
+              justifyContent: "center",
               borderBottomLeftRadius: "10px",
               borderBottomRightRadius: "10px",
-              boxShadow: "0px 12px 12px 0px lightgrey",
+              borderBottom: "0.3px solid lightgrey",
+              borderLeft: "0.3px solid lightgrey",
+              borderRight: "0.3px solid lightgrey",
             }}
           >
-            Create Story
           </p>
         </div>
         {stories.map((story, index) => {
