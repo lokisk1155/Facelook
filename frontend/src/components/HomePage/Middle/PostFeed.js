@@ -82,17 +82,15 @@ function PostFeed() {
 
   function contentHeight(post) {
     let postRows = post.content.split("").length / 35;
-    let postValue = 2 * postRows;
-    let value = postValue > 2 ? postValue : 2;
+    let value;
     if (post.picture) {
-      value += 28;
-      return `${value}vw`;
+      value = postRows * 60
+      return `${value}px`
     } else {
-      if (value === 3) {
-        value = 9;
-      } 
-      return `${value}vw`;
+      value = postRows * 30
+      return `${value}px`
     }
+
   }
 
   function imageHeight(postContent) {
@@ -161,8 +159,9 @@ function PostFeed() {
                   className="individual-post"
                   style={{
                     height: contentHeight(post),
-                    minHeight: post.picture ? "400px" : "75px",
+                    minHeight: post.picture ? "400px" : "85px",
                     minWidth: "300px",
+                    marginBottom: "25px"
                   }}
                 >
                   <div
@@ -292,10 +291,10 @@ function PostFeed() {
                     className="post-content-container"
                     style={{
                       width: "100%",
-                      height: post.picture ? postContentHeight(post.content) : "10%",
+                      height: post.picture ? postContentHeight(post.content) : "60%",
                       minHeight: "35px",
                       padding: "5px",
-                      overflow: "scroll",
+                      overflow: "hidden"
                     }}
                   >
                     {editId !== post.id ? (
