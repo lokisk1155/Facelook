@@ -320,7 +320,7 @@ function PostFeed() {
                             resize: "none",
                             fontSize: "12px",
                             minHeight: "10px",
-                            height: post.picture ? "100%" : "50%"
+                            height: post.picture ? "100%" : "75%"
                           }}
                         ></textarea>
                         <div
