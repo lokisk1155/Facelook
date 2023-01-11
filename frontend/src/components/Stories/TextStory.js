@@ -85,17 +85,14 @@ function TextStory() {
         className="text-preview-container"
         style={{
           display: "flex",
-          margin: "10%",
-          marginTop: "100px",
-          marginBottom: "100px",
+          width: "90%",
+          marginTop: "100px"
         }}
       >
         <div
           className="edit-preview-container"
           style={{
-            width: "30%",
-            marginRight: "20px",
-            marginLeft: "20px",
+            width: "50%",
             borderRadius: "7px",
             boxShadow: "0px 75px 75px 0px lightgrey",
           }}
@@ -110,7 +107,7 @@ function TextStory() {
                 width: "84%",
                 border: "0.5px solid lightgrey",
                 borderRadius: "7px",
-                margin: "4%",
+                margin: "2%",
                 overflowWrap: "break-word",
                 fontFamily: "#4d4e53",
                 fontFamily: "Open Sans, sans-serif",
@@ -131,8 +128,8 @@ function TextStory() {
               <input
                 style={{
                   border: "0.5px solid lightgrey",
-                  marginLeft: "4%",
-                  marginRight: "4%",
+                  marginLeft: "2%",
+                  marginRight: "2%",
                   textDecoration: "none",
                   height: "25px",
                   width: "70%",
@@ -143,8 +140,8 @@ function TextStory() {
               <input
                 style={{
                   border: "0.5px solid lightgrey",
-                  marginLeft: "4%",
-                  marginRight: "4%",
+                  marginLeft: "2%",
+                  marginRight: "2%",
                   textDecoration: "none",
                   height: "25px",
                   width: "70%",
@@ -156,7 +153,7 @@ function TextStory() {
                 <i
                   data-visualcompletion="css-img"
                   style={{
-                    marginLeft: "5px",
+                    marginLeft: "1%",
                     backgroundImage:
                       "url(https://static.xx.fbcdn.net/rsrc.php/v3/y5/r/3gymACvmGbk.png)",
                     backgroundPosition: "0px -17px",
@@ -170,8 +167,8 @@ function TextStory() {
                 <select
                   style={{
                     border: "0.5px solid lightgrey",
-                    marginLeft: "4%",
-                    marginRight: "4%",
+                    marginLeft: "2%",
+                    marginRight: "2%",
                     textDecoration: "none",
                     height: "25px",
                     width: "59%",
@@ -186,59 +183,50 @@ function TextStory() {
                 </select>
               </label>
             </div>
-            <label
+            <div
               style={{
                 border: "0.5px solid lightgrey",
-                width: "33%",
-                padding: "5%",
+                width: "20%",
                 fontSize: "15px",
-                display: "flex",
-                flexDirection: "column"
+                display: "grid",
+                columnCount: "4",
+                gridTemplateColumns: "repeat(2, 50%)",
+                border: "1px solid lightgrey"
               }}
             >
-              Move Text
               <div
                 onClick={moveUp}
-                style={{ margin: "15px", cursor: "pointer" }}
+                style={{cursor: "pointer", margin: "auto",  }}
                 class="arrow-button arrow-button--t"
               />
               <div
                 onClick={moveDown}
-                style={{ margin: "15px", cursor: "pointer" }}
+                style={{cursor: "pointer", margin: "auto",  }}
                 class="arrow-button arrow-button--b"
               />
               <div
                 onClick={moveRight}
-                style={{ margin: "15px", cursor: "pointer" }}
+                style={{cursor: "pointer", margin: "auto",  }}
                 class="arrow-button arrow-button--r"
               />
               <div
                 onClick={moveLeft}
-                style={{ margin: "15px", cursor: "pointer" }}
+                style={{cursor: "pointer", margin: "auto", }}
                 class="arrow-button arrow-button--l"
               />
-              <button
-                style={{
-                  border: "none",
-                  borderRadius: "5px",
-                  backgroundColor: "#1b74e4",
-                  color: "white",
-                }}
-                onClick={resetMoves}
-              >
-                Reset
-              </button>
-            </label>
+            </div>
           </div>
         </div>
         <div
           className="text-actual-preview-container"
           style={{
-            width: "70%",
+            width: "80%",
             borderRadius: "7px",
             marginRight: "20px",
             marginLeft: "20px",
             boxShadow: "0px 75px 75px 0px lightgrey",
+            minWidth: "315px",
+            minHeight: "275px"
           }}
         >
           <p style={{ fontSize: "15px", color: "black", marginLeft: "1%" }}>
@@ -254,6 +242,8 @@ function TextStory() {
               marginRight: "2.5%",
               borderRadius: "7px",
               paddingTop: "25px",
+              minWidth: "300px",
+              minHeight: "250px"
             }}
           >
             <div
@@ -265,6 +255,8 @@ function TextStory() {
                 marginRight: "30%",
                 borderRadius: "7px",
                 backgroundColor: backgroundColor,
+                minWidth: "150px",
+                minHeight: "200px"
               }}
             >
               <p
@@ -276,6 +268,8 @@ function TextStory() {
                   paddingLeft: paddingLeft,
                   paddingRight: paddingRight,
                   color: color,
+                  minWidth: "150px",
+                  minHeight: "200px"
                 }}
               >
                 {textContent}
