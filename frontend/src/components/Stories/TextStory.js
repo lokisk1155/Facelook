@@ -103,7 +103,7 @@ function TextStory() {
           <h3 style={{ paddingLeft: "7px" }}>Your Story</h3>
           <label>
             <textarea
-              maxLength="100"
+              maxLength="200"
               placeholder="Start Typing..."
               style={{
                 height: "10%",
@@ -152,6 +152,39 @@ function TextStory() {
                 placeholder="Font height #..."
                 onChange={(e) => setFontSize(`${e.target.value * 5}px`)}
               ></input>
+              <label>
+                <i
+                  data-visualcompletion="css-img"
+                  style={{
+                    marginLeft: "5px",
+                    backgroundImage:
+                      "url(https://static.xx.fbcdn.net/rsrc.php/v3/y5/r/3gymACvmGbk.png)",
+                    backgroundPosition: "0px -17px",
+                    backgroundSize: "17px 34px",
+                    width: "16px",
+                    height: "16px",
+                    backgroundRepeat: "no-repeat",
+                    display: "inline-block",
+                  }}
+                />
+                <select
+                  style={{
+                    border: "0.5px solid lightgrey",
+                    marginLeft: "4%",
+                    marginRight: "4%",
+                    textDecoration: "none",
+                    height: "25px",
+                    width: "59%",
+                  }}
+                  className="select-text-font"
+                >
+                  <option>Headline</option>
+                  <option>Simple</option>
+                  <option> Clean</option>
+                  <option>Casual</option>
+                  <option>Fancy</option>
+                </select>
+              </label>
             </div>
             <label
               style={{
@@ -159,6 +192,8 @@ function TextStory() {
                 width: "33%",
                 padding: "5%",
                 fontSize: "15px",
+                display: "flex",
+                flexDirection: "column"
               }}
             >
               Move Text
