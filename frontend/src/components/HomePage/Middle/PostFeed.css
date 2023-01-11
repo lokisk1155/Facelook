@@ -14,6 +14,10 @@
   margin-left: 390px;
 }
 
+.name-and-time-elapsed {
+  display: flex;
+}
+
 .new-post-button {
   height: 50px;
   width: 100%;
@@ -28,9 +32,9 @@
 .individual-post {
   border: 1px;
   background-color: white;
-  border-radius: 10px;
+  border-radius: 5px;
   border: none;
-  box-shadow: 0px 12px 12px 0px lightgrey;
+  box-shadow: 0px 4px 4px 0px lightgrey;
 }
 
 .create-post-modal {
@@ -43,7 +47,7 @@
   flex-direction: row-reverse;
   justify-content: flex-start;
   border: none;
-  box-shadow: 0px 12px 12px 0px lightgrey;
+  box-shadow: 0px 4px 4px 0px lightgrey;
 }
 
 .profile-pic-inside-create-post {
@@ -67,17 +71,26 @@
 
 .post-header {
   display: flex;
+  justify-content: space-between;
+}
+
+.post-content-textarea {
+  width: 100%;
+  overflow-wrap: break-word;
+  font-family: #4d4e53;
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.5;
+}
+
+.svg-dots {
+  padding: 10px;
+}
+
+.svg-dots-dropdown-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.save-cancel-individual-post-buttons {
   height: 10%;
-}
-
-.post-pic {
-  border-radius: 30px;
-  height: 40px;
-  align-self: center;
-  padding: 10px;
-}
-
-.post-content {
-  padding: 10px;
-  margin-left: 5px;
 }

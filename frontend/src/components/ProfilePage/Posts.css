@@ -4,8 +4,8 @@
   flex-direction: column;
   border: none;
 }
-.post-feed-container {
-  width: 100%;
+.post-feed-profile-page-container {
+  width: 50%;
 }
 
 .new-post-button {
@@ -63,14 +63,6 @@
 
 .post-header {
   display: flex;
-  height: 50px;
-}
-
-.post-pic {
-  border-radius: 30px;
-  height: 40px;
-  align-self: center;
-  padding: 10px;
 }
 
 .post-content {

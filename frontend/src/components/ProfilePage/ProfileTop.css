@@ -86,8 +86,6 @@
 
 .profile-picture-and-name-container {
   display: flex;
-  align-items: center;
-  margin-bottom: 30px;
 }
 
 .profile-top-profile-pic {
@@ -127,10 +125,6 @@
 
   .background-photo-container-profile-page {
     height: 80%;
-  }
-
-  .current-user-name-profile-top {
-    text-align: center;
   }
 
   .background-photo-container-profile-page {

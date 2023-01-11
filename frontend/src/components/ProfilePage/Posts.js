@@ -11,19 +11,29 @@ import CreatePostModal from "./createPostModal";
 import profilePic from "../NavBar/imgs/blank.png";
 import { deletePost } from "../../store/post";
 import { profilePage } from "../../store/profilePage";
+import { Modal } from "../../context/Modal";
+import { Link } from "react-router-dom";
 
 function Posts({ currentUser, sessionUser }) {
   const { id } = useParams();
 
   const dispatch = useDispatch();
 
-  const ownsPost = currentUser.id === sessionUser.id ? true : false;
-
-  const posts = useSelector((state) => Object.values(state.posts));
-
   const [togglePost, setTogglePost] = useState(false);
 
   const [editPost, setEditPost] = useState(null);
+
+  const posts = useSelector((state) =>
+    Object.values(state.posts).filter((post) => post.user_id === currentUser.id)
+  );
+
+  const simpleUsers = useSelector((state) => state.simpleUsers);
+
+  if (Object.values(simpleUsers).length < 1) {
+    return null;
+  }
+
+  const self = currentUser.id === sessionUser.id ? true : false;
 
   const location = "profile";
 
@@ -46,86 +56,139 @@ function Posts({ currentUser, sessionUser }) {
   };
 
   return (
-    <div className="omega-posts-container-profile-page ">
-      <div className="post-feed-container">
-        <div className="create-post-modal">
-          <button className="new-post-button" onClick={handleNewPost}>
-            <label className="place-holder-text-new-post">
-              What's on your mind?
-            </label>
-          </button>
+    <div className="post-feed-profile-page-container">
+      <div className="create-post-modal">
+        <button className="new-post-button" onClick={handleNewPost}>
+          <p className="text-inside-new-post">What is on your mind?</p>
+        </button>
 
-          <div className="pic-holder">
-            {
-              <img
-                className="profile-pic-inside-create-post"
-                src={currentUser.profile_picture || profilePic}
-              ></img>
-            }
-          </div>
-
-          <div className="modal-holder">
-            {togglePost ? (
-              <CreatePostModal
-                type={"create"}
-                currentUser={currentUser}
-                postContent={"What's on your mind?"}
-                header={"Create post"}
-                closeModal={setTogglePost}
-                location={location}
-              />
-            ) : null}
-          </div>
+        <div className="pic-holder">
+          {
+            <img
+              className="profile-pic-inside-create-post"
+              src={currentUser.profile_picture || profilePic}
+            ></img>
+          }
         </div>
+        {togglePost && self ? (
+          <Modal onClose={() => setTogglePost(false)}>
+            <CreatePostModal
+              type={"create"}
+              currentUser={sessionUser}
+              postContent={"What's on your mind?"}
+              header={"Create post"}
+              closeModal={setTogglePost}
+              userId={sessionUser.id}
+              location={"home"}
+            />
+          </Modal>
+        ) : null}
+      </div>
 
-        {posts && (
-          <div className="individual-post-container">
-            {posts
-              .map((post, index) => {
-                return (
-                  <div key={index} className="individual-post">
-                    <div className="post-header">
-                      <img
-                        className="post-pic"
-                        src={currentUser.profile_picture || profilePic}
-                      ></img>
-                      <h5 className="current-user-name">{`${currentUser.first_name} ${currentUser.last_name}`}</h5>
-                      {ownsPost ? (
-                        <>
-                          <button onClick={() => handleDeletePost(post)}>
-                            Delete Post
-                          </button>
-                          <button onClick={handleEditPost(post.id)}>
-                            Edit Post
-                          </button>
-                        </>
+      {posts && (
+        <>
+          {Object.values(posts)
+            .map((post) => {
+              return (
+                <div
+                  key={post.id}
+                  className="individual-post"
+                  style={{
+                    height: post.picture ? "40vw" : "10vw",
+                    minHeight: post.picture ? "400px" : "100px",
+                    minWidth: "300px",
+                  }}
+                >
+                  <div className="post-header">
+                    <div
+                      className="picture-and-name"
+                      style={{ display: "flex" }}
+                    >
+                      <Link to={`/ProfilePage/${post.user_id}`}>
+                        <img
+                          style={{
+                            height: "25px",
+                            width: "25px",
+                            borderRadius: "50px",
+                          }}
+                          src={
+                            simpleUsers[post.user_id].profile_picture ||
+                            profilePic
+                          }
+                        ></img>
+                      </Link>
+                      <h5 className="current-user-name">
+                        {simpleUsers[post.user_id].name}
+                      </h5>
+                    </div>
+                    <div className="svg-dots">
+                      {post.user_id === sessionUser.id ? (
+                        <svg
+                          onClick={handleEditPost(post.id)}
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                          width="1em"
+                          height="1em"
+                        >
+                          <g
+                            fill-rule="evenodd"
+                            transform="translate(-446 -350)"
+                          >
+                            <path d="M458 360a2 2 0 1 1-4 0 2 2 0 0 1 4 0m6 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0m-12 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0"></path>
+                          </g>
+                        </svg>
                       ) : null}
                     </div>
+                  </div>
+                  <div
+                    style={{
+                      height: "10%",
+                      margin: post.picture ? "auto" : "50px",
+                    }}
+                  >
                     <p className="post-content">{post.content}</p>
-                    {post.picture ? (
-                      <img
-                        src={post.picture}
-                        style={{ height: "50px", width: "50px" }}
-                      />
-                    ) : null}
                     {editPost === post.id ? (
+                      <div className="edit-delete-post-popdown">
+                        <button onClick={() => handleDeletePost(post)}>
+                          Delete Post
+                        </button>
+                        <button
+                          onClick={(e) => {
+                            setEditPost(post.id);
+                          }}
+                        >
+                          Edit Post
+                        </button>
+                        <button onClick={() => setEditPost(null)}>close</button>
+                      </div>
+                    ) : null}
+                  </div>
+                  {post.picture ? (
+                    <img
+                      src={post.picture}
+                      style={{ width: "100%", height: "70%" }}
+                    />
+                  ) : null}
+                  <div style={{ margin: "25px" }}></div>
+                  {editPost && editPost.user_id === sessionUser.id && (
+                    <Modal onClose={() => setEditPost(false)}>
                       <CreatePostModal
                         type="update"
                         currentUser={currentUser}
-                        postId={post.id}
-                        postContent={post.content}
+                        postId={editPost.id}
+                        postContent={editPost.content}
                         header={"Edit post"}
                         closeModal={setEditPost}
-                        location={location}
+                        location={"home"}
                       />
-                    ) : null}
-                  </div>
-                );
-              })
-              .reverse()}
-          </div>
-        )}
-      </div>
+                    </Modal>
+                  )}
+                </div>
+              );
+            })
+            .reverse()}
+        </>
+      )}
     </div>
   );
 }
