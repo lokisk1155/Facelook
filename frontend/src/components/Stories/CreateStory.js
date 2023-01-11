@@ -91,7 +91,7 @@ function CreateStory() {
             </p>
           </label>
         </div>
-      ) : null }
+      ) : null}
       {photoFile && photoUrl ? (
         <PreviewStory
           file={photoFile}
@@ -99,7 +99,7 @@ function CreateStory() {
           url={photoUrl}
           setUrl={setPhotoUrl}
         />
-      ) : null }
+      ) : null}
       {textStory ? <TextStory /> : null}
     </>
   );

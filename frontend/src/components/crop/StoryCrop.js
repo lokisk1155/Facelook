@@ -20,17 +20,17 @@ const StoryCrop = ({ photoURL, setPhotoURL, setFile, fileSaved }) => {
       const { file, url } = await getCroppedImg(photoURL, croppedAreaPixels);
       setPhotoURL(url);
       setFile(file);
-      return fileSaved(true)
+      return fileSaved(true);
     } catch (error) {
       console.log(error);
     }
   };
 
   const close = (e) => {
-    e.preventDefault() 
-    setFile(null)
-    setPhotoURL(null)
-  }
+    e.preventDefault();
+    setFile(null);
+    setPhotoURL(null);
+  };
 
   return (
     <>
@@ -60,11 +60,7 @@ const StoryCrop = ({ photoURL, setPhotoURL, setFile, fileSaved }) => {
             className="zoom-range"
           />
           <div className="action-buttons">
-            <button
-              className="save-cancel"
-              role="button"
-              onClick={close}
-            >
+            <button className="save-cancel" role="button" onClick={close}>
               cancel
             </button>
             <button
