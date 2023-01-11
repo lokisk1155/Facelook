@@ -1,12 +1,16 @@
 import "./StoriesHomeFeed.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import profilePic from "../../NavBar/imgs/blank.png";
 
 function StoriesHomeFeed({ stories = ["test1", "test2", "test3"] }) {
+  const history = useHistory();
+
   const sessionUser = useSelector((state) => state.session.user);
 
-  const sessionUserPicture = sessionUser.profile_picture;
+  const sessionUserPicture = useSelector(
+    (state) => state.simpleUsers[sessionUser.id]?.profile_picture
+  );
 
   const sessionUserName = `${sessionUser.first_name} ${sessionUser.last_name}`;
   return (
@@ -42,6 +46,7 @@ function StoriesHomeFeed({ stories = ["test1", "test2", "test3"] }) {
       >
         <div
           className="story-img"
+          onClick={() => history.push("/stories/create")}
           style={{
             width: "20%",
             margin: "2.5px",
@@ -49,7 +54,7 @@ function StoriesHomeFeed({ stories = ["test1", "test2", "test3"] }) {
             borderRadius: "5px",
             display: "flex",
             flexDirection: "column",
-            position: "relative"
+            position: "relative",
           }}
         >
           <img
@@ -63,18 +68,27 @@ function StoriesHomeFeed({ stories = ["test1", "test2", "test3"] }) {
               borderTop: "0.3px solid lightgrey",
               borderLeft: "0.3px solid lightgrey",
               borderRight: "0.3px solid lightgrey",
-              objectFit: "cover"
+              objectFit: "cover",
             }}
             src={sessionUserPicture || profilePic}
-          >
-          </img>
+          ></img>
           <svg
             fill="currentColor"
             viewBox="0 0 20 20"
-            style={{ height: "30px", borderRadius: "100px", backgroundColor: "rgb(27, 116, 228)", color: "#fff", border: "5px solid #fff", position: "absolute", top: "70%",
-            transform: "translateY(-50%)", bottom: 0, left: 0,
-            right: 0,
-            margin: "auto",}}
+            style={{
+              height: "30px",
+              borderRadius: "100px",
+              backgroundColor: "rgb(27, 116, 228)",
+              color: "#fff",
+              border: "5px solid #fff",
+              position: "absolute",
+              top: "70%",
+              transform: "translateY(-50%)",
+              bottom: 0,
+              left: 0,
+              right: 0,
+              margin: "auto",
+            }}
           >
             <g fillRule="evenodd" transform="translate(-446 -350)">
               <g fillRule="nonzero">
@@ -102,9 +116,9 @@ function StoriesHomeFeed({ stories = ["test1", "test2", "test3"] }) {
               borderLeft: "0.3px solid lightgrey",
               borderRight: "0.3px solid lightgrey",
             }}
-          >
-          </p>
+          ></p>
         </div>
+
         {stories.map((story, index) => {
           return (
             <div
