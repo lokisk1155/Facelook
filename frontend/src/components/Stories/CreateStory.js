@@ -21,16 +21,14 @@ function CreateStory() {
   };
 
   return (
-    <>
+    <div className="omega-story-container">
       {!photoFile && !textStory ? (
         <div
           className="story-creation-container"
           style={{
-            height: "100vh",
-            width: "100vw",
             display: "flex",
             justifyContent: "center",
-            alignItems: "center",
+            marginTop: "15%",
           }}
         >
           <label
@@ -101,7 +99,7 @@ function CreateStory() {
         />
       ) : null}
       {textStory ? <TextStory /> : null}
-    </>
+    </div>
   );
 }
 

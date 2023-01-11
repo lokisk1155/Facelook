@@ -5,3 +5,8 @@
 .picture-story-button:hover {
   box-shadow: 0px 0px 120px 0px darkgoldenrod;
 }
+
+.omega-story-container {
+  height: 100vh;
+  width: 100vw;
+}
