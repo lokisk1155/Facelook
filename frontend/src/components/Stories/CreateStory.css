@@ -1,0 +1,7 @@
+.text-story-button:hover {
+  box-shadow: 0px 0px 120px 0px darkgreen;
+}
+
+.picture-story-button:hover {
+  box-shadow: 0px 0px 120px 0px darkgoldenrod;
+}
