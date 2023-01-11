@@ -11,15 +11,15 @@ function TextStory() {
 
   const [paddingLeft, setPaddingLeft] = useState("10px");
 
-  const [fakePaddingLeft, setFakePaddingLeft] = useState(10)
+  const [fakePaddingLeft, setFakePaddingLeft] = useState(10);
 
   const [paddingRight, setPaddingRight] = useState("10px");
 
-  const [fakePaddingRight, setFakePaddingRight] = useState(10)
+  const [fakePaddingRight, setFakePaddingRight] = useState(10);
 
   const [paddingY, setPaddingY] = useState("");
 
-  const [fakePaddingY, setFakePaddingY] = useState(0)
+  const [fakePaddingY, setFakePaddingY] = useState(0);
 
   const [color, setColor] = useState("red");
 
@@ -34,52 +34,50 @@ function TextStory() {
   };
 
   const moveUp = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (fakePaddingY <= 10) {
-      return 
+      return;
     } else {
-      let newPadding = fakePaddingY - 10
-      setFakePaddingY(newPadding)
-      setPaddingY(`${newPadding}px`)
+      let newPadding = fakePaddingY - 10;
+      setFakePaddingY(newPadding);
+      setPaddingY(`${newPadding}px`);
     }
-  }
+  };
 
   const moveDown = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (fakePaddingY >= 320) {
-      return 
+      return;
     } else {
-      let newPadding = fakePaddingY + 10
-      setFakePaddingY(newPadding)
-      setPaddingY(`${newPadding}px`)
+      let newPadding = fakePaddingY + 10;
+      setFakePaddingY(newPadding);
+      setPaddingY(`${newPadding}px`);
     }
-  }
+  };
 
   const moveLeft = (e) => {
-      e.preventDefault()
-        let newPadding = fakePaddingRight + 10
-        setFakePaddingRight(newPadding)
-        setPaddingRight(`${newPadding}px`)
-      
-  }
+    e.preventDefault();
+    let newPadding = fakePaddingRight + 10;
+    setFakePaddingRight(newPadding);
+    setPaddingRight(`${newPadding}px`);
+  };
 
   const moveRight = (e) => {
-    e.preventDefault()
-      let newPadding = fakePaddingLeft + 10
-      setFakePaddingLeft(newPadding)
-      setPaddingLeft(`${newPadding}px`)
-    
-  }
+    e.preventDefault();
+    let newPadding = fakePaddingLeft + 10;
+    setFakePaddingLeft(newPadding);
+    setPaddingLeft(`${newPadding}px`);
+  };
 
   const resetMoves = (e) => {
-    e.preventDefault() 
-    setPaddingLeft("0")
-    setPaddingRight("0")
-    setPaddingY("0")
-    setFakePaddingLeft(0)
-    setFakePaddingRight(0)
-    setFakePaddingY(0)
-  }
+    e.preventDefault();
+    setPaddingLeft("0");
+    setPaddingRight("0");
+    setPaddingY("0");
+    setFakePaddingLeft(0);
+    setFakePaddingRight(0);
+    setFakePaddingY(0);
+  };
 
   return (
     <>
@@ -102,7 +100,7 @@ function TextStory() {
             boxShadow: "0px 75px 75px 0px lightgrey",
           }}
         >
-          <h3 style={{ paddingLeft: "7px"}}>Your Story</h3>
+          <h3 style={{ paddingLeft: "7px" }}>Your Story</h3>
           <label>
             <textarea
               maxLength="100"
@@ -121,36 +119,82 @@ function TextStory() {
               }}
               onChange={(e) => setTextContent(e.target.value)}
             />
-          
           </label>
-            <div style={{ display: "flex"}}>
-            <div style={{ display: "flex", flexDirection: "column", marginLeft: "2%"}}>
-            <input
-              style={{ border: "0.5px solid lightgrey", marginLeft: "4%", marginRight: "4%", textDecoration: "none", height: "25px", width: "70%"  }}
-              placeholder="Type your color..."
-              onChange={(e) => setColor(e.target.value)}
-            ></input>
-             <input
-              style={{ border: "0.5px solid lightgrey", marginLeft: "4%", marginRight: "4%", textDecoration: "none", height: "25px", width: "70%"  }}
-              placeholder="Font height #..."
-              onChange={(e) => setFontSize(`${e.target.value * 5}px`)}
-            ></input>
+          <div style={{ display: "flex" }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                marginLeft: "2%",
+              }}
+            >
+              <input
+                style={{
+                  border: "0.5px solid lightgrey",
+                  marginLeft: "4%",
+                  marginRight: "4%",
+                  textDecoration: "none",
+                  height: "25px",
+                  width: "70%",
+                }}
+                placeholder="Type your color..."
+                onChange={(e) => setColor(e.target.value)}
+              ></input>
+              <input
+                style={{
+                  border: "0.5px solid lightgrey",
+                  marginLeft: "4%",
+                  marginRight: "4%",
+                  textDecoration: "none",
+                  height: "25px",
+                  width: "70%",
+                }}
+                placeholder="Font height #..."
+                onChange={(e) => setFontSize(`${e.target.value * 5}px`)}
+              ></input>
             </div>
-          <label style={{ border: "0.5px solid lightgrey", width: "33%", padding: "5%", fontSize: "15px"}}>
-            Move Text
-
-          <div onClick={moveUp} style={{ margin: "15px", cursor: "pointer"}} class="arrow-button arrow-button--t" />
-
-          <div onClick={moveDown} style={{ margin: "15px", cursor: "pointer"}} class="arrow-button arrow-button--b" />
-
-          <div onClick={moveRight}  style={{ margin: "15px", cursor: "pointer"}} class="arrow-button arrow-button--r" />
-
-          <div onClick={moveLeft} style={{ margin: "15px", cursor: "pointer"}} class="arrow-button arrow-button--l" />
-
-          <button style={{ border: "none", borderRadius: "5px", backgroundColor: "#1b74e4", color: "white"}} onClick={resetMoves}>Reset</button>
-
-          </label>
-        </div>
+            <label
+              style={{
+                border: "0.5px solid lightgrey",
+                width: "33%",
+                padding: "5%",
+                fontSize: "15px",
+              }}
+            >
+              Move Text
+              <div
+                onClick={moveUp}
+                style={{ margin: "15px", cursor: "pointer" }}
+                class="arrow-button arrow-button--t"
+              />
+              <div
+                onClick={moveDown}
+                style={{ margin: "15px", cursor: "pointer" }}
+                class="arrow-button arrow-button--b"
+              />
+              <div
+                onClick={moveRight}
+                style={{ margin: "15px", cursor: "pointer" }}
+                class="arrow-button arrow-button--r"
+              />
+              <div
+                onClick={moveLeft}
+                style={{ margin: "15px", cursor: "pointer" }}
+                class="arrow-button arrow-button--l"
+              />
+              <button
+                style={{
+                  border: "none",
+                  borderRadius: "5px",
+                  backgroundColor: "#1b74e4",
+                  color: "white",
+                }}
+                onClick={resetMoves}
+              >
+                Reset
+              </button>
+            </label>
+          </div>
         </div>
         <div
           className="text-actual-preview-container"
@@ -162,7 +206,7 @@ function TextStory() {
             boxShadow: "0px 75px 75px 0px lightgrey",
           }}
         >
-          <p style={{ fontSize: "15px", color: "black", marginLeft: "1%", }}>
+          <p style={{ fontSize: "15px", color: "black", marginLeft: "1%" }}>
             Preview
           </p>
           <div
