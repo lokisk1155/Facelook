@@ -1,9 +1,13 @@
 import "./TextStory.css";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+
 
 function TextStory() {
   const sessionUser = useSelector((state) => state.session.user);
+
+  const simpleUsers = useSelector((state) => state.simpleUsers)
 
   const [backgroundColor, setBackgroundColor] = useState("#1b74e4");
 
@@ -77,6 +81,11 @@ function TextStory() {
     setFakePaddingLeft(0);
     setFakePaddingRight(0);
     setFakePaddingY(0);
+    setBackgroundColor("#1b74e4")
+    setFontSize("20")
+    setTextContent("")
+    setColor("")
+
   };
 
   return (
@@ -92,19 +101,26 @@ function TextStory() {
         <div
           className="edit-preview-container"
           style={{
-            width: "50%",
+            width: "15%",
+            height: "100%",
             borderRadius: "7px",
             boxShadow: "0px 75px 75px 0px lightgrey",
+            minWidth: "115px"
+           
           }}
-        >
-          <h3 style={{ paddingLeft: "7px" }}>Your Story</h3>
+        > 
+          <div style={{  display: "flex", minWidth: "100px", justifyContent: "space-between" }}>
+            <h3 style={{padding: "0", margin: "0" }}>Your Story</h3>
+            <img style={{ height: "50px", borderRadius: "50px", padding: "5px",}} src={simpleUsers[sessionUser.id].profile_picture} />
+          </div>
           <label>
             <textarea
               maxLength="200"
               placeholder="Start Typing..."
+              value={textContent}
               style={{
                 height: "10%",
-                width: "84%",
+                width: "90%",
                 border: "0.5px solid lightgrey",
                 borderRadius: "7px",
                 margin: "2%",
@@ -117,7 +133,7 @@ function TextStory() {
               onChange={(e) => setTextContent(e.target.value)}
             />
           </label>
-          <div style={{ display: "flex" }}>
+          <div style={{ display: "flex", width: "100%", height: "40%" }}>
             <div
               style={{
                 display: "flex",
@@ -126,52 +142,45 @@ function TextStory() {
               }}
             >
               <input
+                value={color}
                 style={{
                   border: "0.5px solid lightgrey",
-                  marginLeft: "2%",
-                  marginRight: "2%",
                   textDecoration: "none",
                   height: "25px",
-                  width: "70%",
+                  width: "95%",
                 }}
                 placeholder="Type your color..."
                 onChange={(e) => setColor(e.target.value)}
               ></input>
               <input
+              value={fontSize}
                 style={{
                   border: "0.5px solid lightgrey",
-                  marginLeft: "2%",
-                  marginRight: "2%",
                   textDecoration: "none",
                   height: "25px",
-                  width: "70%",
+                  width: "95%",
                 }}
-                placeholder="Font height #..."
-                onChange={(e) => setFontSize(`${e.target.value * 5}px`)}
+                placeholder="Pixel font height..."
+                onChange={(e) => setFontSize(`${e.target.value}px`)}
+              ></input>
+              <input
+                value={backgroundColor}
+                style={{
+                  border: "0.5px solid lightgrey",
+                  textDecoration: "none",
+                  height: "25px",
+                  width: "95%",
+                }}
+                placeholder="Background color..."
+                onChange={(e) => setBackgroundColor(`${e.target.value}`)}
               ></input>
               <label>
-                <i
-                  data-visualcompletion="css-img"
-                  style={{
-                    marginLeft: "1%",
-                    backgroundImage:
-                      "url(https://static.xx.fbcdn.net/rsrc.php/v3/y5/r/3gymACvmGbk.png)",
-                    backgroundPosition: "0px -17px",
-                    backgroundSize: "17px 34px",
-                    width: "16px",
-                    height: "16px",
-                    backgroundRepeat: "no-repeat",
-                    display: "inline-block",
-                  }}
-                />
                 <select
                   style={{
                     border: "0.5px solid lightgrey",
-                    marginLeft: "2%",
-                    marginRight: "2%",
                     textDecoration: "none",
                     height: "25px",
-                    width: "59%",
+                    width: "100%",
                   }}
                   className="select-text-font"
                 >
@@ -182,48 +191,59 @@ function TextStory() {
                   <option>Fancy</option>
                 </select>
               </label>
-            </div>
-            <div
+              <div
               style={{
                 border: "0.5px solid lightgrey",
-                width: "20%",
+                width: "100%",
+                height: "45%",
                 fontSize: "15px",
                 display: "grid",
                 columnCount: "4",
                 gridTemplateColumns: "repeat(2, 50%)",
-                border: "1px solid lightgrey"
+                border: "1px solid lightgrey",
+                minHeight: "50px",
+                minWidth: "50px"
               }}
             >
               <div
                 onClick={moveUp}
-                style={{cursor: "pointer", margin: "auto",  }}
-                class="arrow-button arrow-button--t"
+                style={{cursor: "pointer", margin: "auto" }}
+                className="arrow-button arrow-button--t"
               />
               <div
                 onClick={moveDown}
                 style={{cursor: "pointer", margin: "auto",  }}
-                class="arrow-button arrow-button--b"
+                className="arrow-button arrow-button--b"
               />
               <div
                 onClick={moveRight}
                 style={{cursor: "pointer", margin: "auto",  }}
-                class="arrow-button arrow-button--r"
+                className="arrow-button arrow-button--r"
               />
               <div
                 onClick={moveLeft}
                 style={{cursor: "pointer", margin: "auto", }}
-                class="arrow-button arrow-button--l"
+                className="arrow-button arrow-button--l"
               />
             </div>
+            </div>
+          </div>
+          <div className="storyButtons" style={{ display: "flex", flexDirection: "column", height: "30%", justifyContent: "space-evenly"}}>
+            <button style={{ height: "15%", width: "65%", marginLeft: "15%", backgroundColor: "#1b74e4", border: "none", color: "#fff", borderRadius: "7px"}} onClick={resetMoves}>reset</button>
+            <Link style={{ height: "15%"}} to="/">
+              <button style={{ height: "100%", width: "65%", marginLeft: "15%", backgroundColor: "#1b74e4", border: "none", color: "#fff", borderRadius: "7px"}}>discard</button>
+            </Link>
+        
+            <button style={{ height: "15%", width: "65%", marginLeft: "15%", backgroundColor: "#1b74e4", border: "none", color: "#fff", borderRadius: "7px"}} >save</button>
           </div>
         </div>
         <div
           className="text-actual-preview-container"
           style={{
-            width: "80%",
+            width: "90%",
             borderRadius: "7px",
-            marginRight: "20px",
-            marginLeft: "20px",
+            marginRight: "2.5%",
+            marginLeft: "2.5%",
             boxShadow: "0px 75px 75px 0px lightgrey",
             minWidth: "315px",
             minHeight: "275px"
@@ -243,7 +263,8 @@ function TextStory() {
               borderRadius: "7px",
               paddingTop: "25px",
               minWidth: "300px",
-              minHeight: "250px"
+              minHeight: "250px",
+              position: "relative"
             }}
           >
             <div
@@ -251,12 +272,18 @@ function TextStory() {
               style={{
                 height: "90%",
                 width: "40%",
-                marginLeft: "30%",
-                marginRight: "30%",
+                position: "absolute",
                 borderRadius: "7px",
                 backgroundColor: backgroundColor,
-                minWidth: "150px",
-                minHeight: "200px"
+                minWidth: "200px",
+                minHeight: "200px",
+                top: "50%",
+                right: "50%",
+                bottom: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                maxWidth: "300px"
+
               }}
             >
               <p
