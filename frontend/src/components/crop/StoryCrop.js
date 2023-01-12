@@ -40,7 +40,7 @@ const StoryCrop = ({ photoURL, setPhotoURL, setFile, fileSaved }) => {
             image={photoURL}
             crop={crop}
             zoom={zoom}
-            aspect={4 / 3}
+            aspect={2.25 / 3.5}
             onCropChange={setCrop}
             onCropComplete={onCropComplete}
             onZoomChange={setZoom}
