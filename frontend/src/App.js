@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import HomePage from "./components/HomePage/HomePage";
 import { getSimpleUsers } from "./store/simpleUsers";
 import { useParams } from "react-router-dom";
+import CreateStory from "./components/Stories/CreateStory";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ function App() {
           path="/"
           render={() => (sessionUser ? <HomePage /> : <LoginPage />)}
         />
+        <Route exact path="/stories/create" render={() => <CreateStory />} />
         <ProfilePageRoutes />
       </Switch>
     </>

@@ -1,8 +1,10 @@
-.stories-container {
+.stories-header-container {
   background-color: white;
-  border-radius: 10px;
-  margin: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   box-shadow: 0px 4px 4px 0px lightgrey;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .stories-header {
@@ -20,5 +22,10 @@
   padding: 5px;
 }
 
-.create-story-button {
+.story-img:hover {
+  transform: scale(1.1);
+}
+
+.create-story-button:hover {
+  transform: scale(1.1);
 }

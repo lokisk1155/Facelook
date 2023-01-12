@@ -107,7 +107,7 @@ function ProfileTop({ currentUser, sessionUser, friends }) {
     if (isFriend) {
       dispatch(deleteFriend(currentUser.id));
     } else {
-      dispatch(profilePage(id))
+      dispatch(profilePage(id));
     }
   };
 
