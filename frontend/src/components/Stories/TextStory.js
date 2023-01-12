@@ -148,7 +148,7 @@ function TextStory() {
               }}
             >
               <input
-                value={color}
+                
                 style={{
                   border: "0.5px solid lightgrey",
                   textDecoration: "none",
@@ -159,7 +159,7 @@ function TextStory() {
                 onChange={(e) => setColor(e.target.value)}
               ></input>
               <input
-                value={fontSize}
+      
                 style={{
                   border: "0.5px solid lightgrey",
                   textDecoration: "none",
@@ -170,7 +170,7 @@ function TextStory() {
                 onChange={(e) => setFontSize(`${e.target.value}px`)}
               ></input>
               <input
-                value={backgroundColor}
+              
                 style={{
                   border: "0.5px solid lightgrey",
                   textDecoration: "none",
