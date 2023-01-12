@@ -28,8 +28,11 @@ export const fetchPost = (postId) => async (dispatch) => {
 
 export const fetchPosts = (limit) => async (dispatch) => {
   let postRes;
-  if (limit) postRes = await csrfFetch(`/api/posts?limit=${limit}`);
-  else postRes = await csrfFetch(`/api/posts`);
+  if (limit) {
+    postRes = await csrfFetch(`/api/posts?limit=${limit}`);
+  } else {
+    postRes = await csrfFetch(`/api/posts`);
+  }
   const postData = await postRes.json();
   dispatch(receivePosts(postData));
 };
@@ -43,9 +46,12 @@ export const createPost =
     const postData = await postRes.json();
     const newPost =
       postData[Object.keys(postData)[Object.keys(postData).length - 1]];
-    if (formData instanceof FormData)
+    if (formData instanceof FormData) {
       return dispatch(updatePost(newPost, id, location, formData));
-    if (location === "profile") return dispatch(profilePage(id));
+    }
+    if (location === "profile") {
+      return dispatch(profilePage(id));
+    }
     return dispatch(fetchPosts());
   };
 
@@ -57,14 +63,20 @@ export const updatePost =
       body: photoAttached ? formData : JSON.stringify({ post }),
     });
     const postData = await postRes.json();
-    if (location === "profile") return dispatch(profilePage(id));
-    if (photoAttached) return dispatch(fetchPosts());
+    if (location === "profile") {
+      return dispatch(profilePage(id));
+    }
+    if (photoAttached) {
+      return dispatch(fetchPosts());
+    }
     return dispatch(receivePost(postData));
   };
 
 export const deletePost = (postId, id, location) => async (dispatch) => {
   await csrfFetch(`/api/posts/${postId}`, { method: "DELETE" });
-  if (location === "profile") return dispatch(profilePage(id));
+  if (location === "profile") {
+    return dispatch(profilePage(id));
+  }
   return dispatch(removePost(postId));
 };
 
