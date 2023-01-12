@@ -1,21 +1,15 @@
 class Api::StoriesController < ApplicationController
     def create 
+        @story = Story.new(user_id: params[:user_id])
         photo_attached = params[:story] && params[:story].has_key?(:photo)
         if photo_attached
-            @story = Story.new(user_id: params[:user_id])
             @story.photo.attach(params[:story][:photo])
-            if @story.save 
-                @stories = Story.all
-                render 'api/stories/index'
-            end 
-        else 
-            @story = Story.new(style_params)
-            if @story.save 
-                @stories = Story.all
-                render 'api/stories/index'
-            end 
-        end
+        end 
 
+        if @story.save 
+            debugger 
+            return render 'api/storys/show'
+        end 
         private 
 
         def style_params 
