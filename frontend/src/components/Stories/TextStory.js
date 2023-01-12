@@ -92,7 +92,7 @@ function TextStory() {
         className="text-preview-container"
         style={{
           display: "flex",
-          width: "90%",
+          width: "100%",
           marginTop: "100px",
         }}
       >
