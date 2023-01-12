@@ -3,11 +3,10 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-
 function TextStory() {
   const sessionUser = useSelector((state) => state.session.user);
 
-  const simpleUsers = useSelector((state) => state.simpleUsers)
+  const simpleUsers = useSelector((state) => state.simpleUsers);
 
   const [backgroundColor, setBackgroundColor] = useState("#1b74e4");
 
@@ -81,11 +80,10 @@ function TextStory() {
     setFakePaddingLeft(0);
     setFakePaddingRight(0);
     setFakePaddingY(0);
-    setBackgroundColor("#1b74e4")
-    setFontSize("20")
-    setTextContent("")
-    setColor("")
-
+    setBackgroundColor("#1b74e4");
+    setFontSize("20");
+    setTextContent("");
+    setColor("");
   };
 
   return (
@@ -95,7 +93,7 @@ function TextStory() {
         style={{
           display: "flex",
           width: "90%",
-          marginTop: "100px"
+          marginTop: "100px",
         }}
       >
         <div
@@ -105,13 +103,21 @@ function TextStory() {
             height: "100%",
             borderRadius: "7px",
             boxShadow: "0px 75px 75px 0px lightgrey",
-            minWidth: "115px"
-           
+            minWidth: "115px",
           }}
-        > 
-          <div style={{  display: "flex", minWidth: "100px", justifyContent: "space-between" }}>
-            <h3 style={{padding: "0", margin: "0" }}>Your Story</h3>
-            <img style={{ height: "50px", borderRadius: "50px", padding: "5px",}} src={simpleUsers[sessionUser.id].profile_picture} />
+        >
+          <div
+            style={{
+              display: "flex",
+              minWidth: "100px",
+              justifyContent: "space-between",
+            }}
+          >
+            <h3 style={{ padding: "0", margin: "0" }}>Your Story</h3>
+            <img
+              style={{ height: "50px", borderRadius: "50px", padding: "5px" }}
+              src={simpleUsers[sessionUser.id].profile_picture}
+            />
           </div>
           <label>
             <textarea
@@ -153,7 +159,7 @@ function TextStory() {
                 onChange={(e) => setColor(e.target.value)}
               ></input>
               <input
-              value={fontSize}
+                value={fontSize}
                 style={{
                   border: "0.5px solid lightgrey",
                   textDecoration: "none",
@@ -192,49 +198,94 @@ function TextStory() {
                 </select>
               </label>
               <div
-              style={{
-                border: "0.5px solid lightgrey",
-                width: "100%",
-                height: "45%",
-                fontSize: "15px",
-                display: "grid",
-                columnCount: "4",
-                gridTemplateColumns: "repeat(2, 50%)",
-                border: "1px solid lightgrey",
-                minHeight: "50px",
-                minWidth: "50px"
-              }}
-            >
-              <div
-                onClick={moveUp}
-                style={{cursor: "pointer", margin: "auto" }}
-                className="arrow-button arrow-button--t"
-              />
-              <div
-                onClick={moveDown}
-                style={{cursor: "pointer", margin: "auto",  }}
-                className="arrow-button arrow-button--b"
-              />
-              <div
-                onClick={moveRight}
-                style={{cursor: "pointer", margin: "auto",  }}
-                className="arrow-button arrow-button--r"
-              />
-              <div
-                onClick={moveLeft}
-                style={{cursor: "pointer", margin: "auto", }}
-                className="arrow-button arrow-button--l"
-              />
-            </div>
+                style={{
+                  border: "0.5px solid lightgrey",
+                  width: "100%",
+                  height: "45%",
+                  fontSize: "15px",
+                  display: "grid",
+                  columnCount: "4",
+                  gridTemplateColumns: "repeat(2, 50%)",
+                  border: "1px solid lightgrey",
+                  minHeight: "50px",
+                  minWidth: "50px",
+                }}
+              >
+                <div
+                  onClick={moveUp}
+                  style={{ cursor: "pointer", margin: "auto" }}
+                  className="arrow-button arrow-button--t"
+                />
+                <div
+                  onClick={moveDown}
+                  style={{ cursor: "pointer", margin: "auto" }}
+                  className="arrow-button arrow-button--b"
+                />
+                <div
+                  onClick={moveRight}
+                  style={{ cursor: "pointer", margin: "auto" }}
+                  className="arrow-button arrow-button--r"
+                />
+                <div
+                  onClick={moveLeft}
+                  style={{ cursor: "pointer", margin: "auto" }}
+                  className="arrow-button arrow-button--l"
+                />
+              </div>
             </div>
           </div>
-          <div className="storyButtons" style={{ display: "flex", flexDirection: "column", height: "30%", justifyContent: "space-evenly"}}>
-            <button style={{ height: "15%", width: "65%", marginLeft: "15%", backgroundColor: "#1b74e4", border: "none", color: "#fff", borderRadius: "7px"}} onClick={resetMoves}>reset</button>
-            <Link style={{ height: "15%"}} to="/">
-              <button style={{ height: "100%", width: "65%", marginLeft: "15%", backgroundColor: "#1b74e4", border: "none", color: "#fff", borderRadius: "7px"}}>discard</button>
+          <div
+            className="storyButtons"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              height: "30%",
+              justifyContent: "space-evenly",
+            }}
+          >
+            <button
+              style={{
+                height: "15%",
+                width: "65%",
+                marginLeft: "15%",
+                backgroundColor: "#1b74e4",
+                border: "none",
+                color: "#fff",
+                borderRadius: "7px",
+              }}
+              onClick={resetMoves}
+            >
+              reset
+            </button>
+            <Link style={{ height: "15%" }} to="/">
+              <button
+                style={{
+                  height: "100%",
+                  width: "65%",
+                  marginLeft: "15%",
+                  backgroundColor: "#1b74e4",
+                  border: "none",
+                  color: "#fff",
+                  borderRadius: "7px",
+                }}
+              >
+                discard
+              </button>
             </Link>
-        
-            <button style={{ height: "15%", width: "65%", marginLeft: "15%", backgroundColor: "#1b74e4", border: "none", color: "#fff", borderRadius: "7px"}} >save</button>
+
+            <button
+              style={{
+                height: "15%",
+                width: "65%",
+                marginLeft: "15%",
+                backgroundColor: "#1b74e4",
+                border: "none",
+                color: "#fff",
+                borderRadius: "7px",
+              }}
+            >
+              save
+            </button>
           </div>
         </div>
         <div
@@ -246,7 +297,7 @@ function TextStory() {
             marginLeft: "2.5%",
             boxShadow: "0px 75px 75px 0px lightgrey",
             minWidth: "315px",
-            minHeight: "275px"
+            minHeight: "275px",
           }}
         >
           <p style={{ fontSize: "15px", color: "black", marginLeft: "1%" }}>
@@ -264,7 +315,7 @@ function TextStory() {
               paddingTop: "25px",
               minWidth: "300px",
               minHeight: "250px",
-              position: "relative"
+              position: "relative",
             }}
           >
             <div
@@ -282,8 +333,7 @@ function TextStory() {
                 bottom: "50%",
                 left: "50%",
                 transform: "translate(-50%, -50%)",
-                maxWidth: "300px"
-
+                maxWidth: "300px",
               }}
             >
               <p
@@ -296,7 +346,7 @@ function TextStory() {
                   paddingRight: paddingRight,
                   color: color,
                   minWidth: "150px",
-                  minHeight: "200px"
+                  minHeight: "200px",
                 }}
               >
                 {textContent}
