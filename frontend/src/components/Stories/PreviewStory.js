@@ -4,7 +4,7 @@ import StoryCrop from "../crop/StoryCrop";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-function PreviewStory({ file, setFile, url, setUrl, submit}) {
+function PreviewStory({ file, setFile, url, setUrl, submit }) {
   const simpleUsers = useSelector((state) => state.simpleUsers);
   const sessionUser = useSelector((state) => state.session.user);
   const [preview, setPreview] = useState(null);

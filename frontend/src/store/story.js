@@ -8,17 +8,18 @@ export const addStory = (story) => ({
   payload: story,
 });
 
-export const createStory = (story, userId, location, formData) => async (dispatch) => {
-  const storyRequest = await csrfFetch(`/api/stories?userId=${userId}`, {
-    method: "POST",
-    body: formData instanceof FormData ? formData : JSON.stringify(story)
-  });
-  const storyResponse = await storyRequest.json()
-  if (location === "profile") {
-    return dispatch(profilePage(userId))
-  }
-  return dispatch(addStory(storyResponse));
-};
+export const createStory =
+  (story, userId, location, formData) => async (dispatch) => {
+    const storyRequest = await csrfFetch(`/api/stories?userId=${userId}`, {
+      method: "POST",
+      body: formData instanceof FormData ? formData : JSON.stringify(story),
+    });
+    const storyResponse = await storyRequest.json();
+    if (location === "profile") {
+      return dispatch(profilePage(userId));
+    }
+    return dispatch(addStory(storyResponse));
+  };
 
 export const storiesReducer = (previousState = {}, action) => {
   switch (action.type) {

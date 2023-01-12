@@ -6,29 +6,29 @@ import { useDispatch, useSelector } from "react-redux";
 import { createStory } from "../../store/story";
 
 function CreateStory() {
-  const dispatch = useDispatch() 
-  const sessionUserId = useSelector((state) => state.session.user.id)
+  const dispatch = useDispatch();
+  const sessionUserId = useSelector((state) => state.session.user.id);
   const [photoFile, setPhotoFile] = useState(null);
   const [photoUrl, setPhotoUrl] = useState(null);
   const [textStory, setTextStory] = useState(null);
 
-  const submitStory =(e) => {
-    e.preventDefault() 
+  const submitStory = (e) => {
+    e.preventDefault();
     let formData;
     if (photoFile) {
       formData = new FormData();
       formData.append("story[photo]", photoFile);
     }
-    let story = { }
+    let story = {};
     if (textStory) {
-      story = textStory
+      story = textStory;
     } else {
       story = {
-        user_id: sessionUserId
-      }
+        user_id: sessionUserId,
+      };
     }
-    return dispatch(createStory(story, sessionUserId, "home", formData))
-  }
+    return dispatch(createStory(story, sessionUserId, "home", formData));
+  };
 
   const handleFile = (e) => {
     const file = e.target.files[0];
@@ -114,7 +114,7 @@ function CreateStory() {
       ) : null}
       {photoFile && photoUrl ? (
         <PreviewStory
-        submit={submitStory}
+          submit={submitStory}
           file={photoFile}
           setFile={setPhotoFile}
           url={photoUrl}
