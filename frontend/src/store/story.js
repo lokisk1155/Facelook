@@ -13,7 +13,7 @@ export const createStory = (story, userId, location, formData) => async (dispatc
     method: "POST",
     body: formData instanceof FormData ? formData : JSON.stringify(story)
   });
-  const storyResponse = await storyRequest.json();
+  const storyResponse = await storyRequest.json()
   if (location === "profile") {
     return dispatch(profilePage(userId))
   }
@@ -23,7 +23,7 @@ export const createStory = (story, userId, location, formData) => async (dispatc
 export const storiesReducer = (previousState = {}, action) => {
   switch (action.type) {
     case ADD_STORY:
-      return { ...previousState, [action.payload.id]: action.payload };
+      return { [action.payload.id]: action.payload };
     default:
       return previousState;
   }

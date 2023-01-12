@@ -27,7 +27,7 @@ function CreateStory() {
         user_id: sessionUserId
       }
     }
-    // return dispatch(createStory(story, sessionUserId, "home", formData))
+    return dispatch(createStory(story, sessionUserId, "home", formData))
   }
 
   const handleFile = (e) => {
