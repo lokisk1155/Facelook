@@ -20,8 +20,9 @@ function CreateStory() {
       formData.append("story[photo]", photoFile);
     }
     let story = {
-      user_id: sessionUserId, ...styles
-    }
+      user_id: sessionUserId,
+      ...styles,
+    };
     return dispatch(createStory(story, sessionUserId, "home", formData));
   };
 

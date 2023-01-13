@@ -23,10 +23,9 @@ export const createStory =
 
 // export const getFourStories = () => async (dispatch) => {
 //   const stories = await csrfFetch("/api/stories")
-//   const storiesResponse = await stories.json() 
+//   const storiesResponse = await stories.json()
 //   return dispatch(addStory(storiesResponse))
 // }
-
 
 export const storiesReducer = (previousState = {}, action) => {
   switch (action.type) {

@@ -32,11 +32,11 @@ function TextStory({ submit }) {
     background_color: backgroundColor,
     font_size: fontSize,
     padding_right: paddingRight,
-    padding_left: paddingLeft, 
+    padding_left: paddingLeft,
     padding_y: paddingY,
     color: color,
-    text_content: textContent
-  }
+    text_content: textContent,
+  };
 
   const moveUp = (e) => {
     e.preventDefault();
