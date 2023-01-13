@@ -6,14 +6,13 @@ class Api::StoriesController < ApplicationController
             @story.photo.attach(params[:story][:photo])
         end 
 
-        if @story.save 
-            debugger 
-            return render 'api/storys/show'
+        if !photo_attached
+            @story = false 
+            @story = Story.new(user_id: params[:user_id], background_color:  params[:background_color], font_size: params[:font_size], padding_left: params[:padding_left], padding_right: params[:padding_right], padding_y: params[:padding_y],color: params[:color],text_content: params[:text_content])
         end 
-        private 
 
-        def style_params 
-            params.require(:story).permit(:user_id, :background_color, :font_size, :padding_left, :padding_right, :padding_y, :color, :text_content)
+        if @story.save 
+            return render 'api/stories/show'
         end 
     end 
 end 

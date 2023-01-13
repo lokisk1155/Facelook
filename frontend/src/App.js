@@ -8,6 +8,7 @@ import HomePage from "./components/HomePage/HomePage";
 import { getSimpleUsers } from "./store/simpleUsers";
 import { useParams } from "react-router-dom";
 import CreateStory from "./components/Stories/CreateStory";
+import { getFourStories } from "./store/story";
 
 function App() {
   const dispatch = useDispatch();

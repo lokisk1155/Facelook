@@ -12,20 +12,15 @@ function CreateStory() {
   const [photoUrl, setPhotoUrl] = useState(null);
   const [textStory, setTextStory] = useState(null);
 
-  const submitStory = (e) => {
+  const submitStory = (styles) => (e) => {
     e.preventDefault();
     let formData;
     if (photoFile) {
       formData = new FormData();
       formData.append("story[photo]", photoFile);
     }
-    let story = {};
-    if (textStory) {
-      story = textStory;
-    } else {
-      story = {
-        user_id: sessionUserId,
-      };
+    let story = {
+      user_id: sessionUserId, ...styles
     }
     return dispatch(createStory(story, sessionUserId, "home", formData));
   };

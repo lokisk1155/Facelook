@@ -21,10 +21,17 @@ export const createStory =
     return dispatch(addStory(storyResponse));
   };
 
+// export const getFourStories = () => async (dispatch) => {
+//   const stories = await csrfFetch("/api/stories")
+//   const storiesResponse = await stories.json() 
+//   return dispatch(addStory(storiesResponse))
+// }
+
+
 export const storiesReducer = (previousState = {}, action) => {
   switch (action.type) {
     case ADD_STORY:
-      return { [action.payload.id]: action.payload };
+      return { ...previousState, [action.payload.id]: action.payload };
     default:
       return previousState;
   }
