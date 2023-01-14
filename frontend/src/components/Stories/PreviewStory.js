@@ -82,7 +82,7 @@ function PreviewStory({ file, setFile, url, setUrl, submit }) {
                 </Link>
 
                 <button
-                  onClick={submit}
+                  onClick={() => submit()}
                   style={{
                     height: "15%",
                     width: "65%",
