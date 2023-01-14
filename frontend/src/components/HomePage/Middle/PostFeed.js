@@ -26,7 +26,7 @@ function PostFeed() {
 
   useEffect(() => {
     dispatch(fetchPosts());
-    dispatch(fetchStories())
+    dispatch(fetchStories());
     if (postDeleted) {
       setPostDeleted(false);
     }
