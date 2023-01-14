@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import profilePic from "../../NavBar/imgs/blank.png";
 
-function StoriesHomeFeed({ stories = ["test1", "test2", "test3"] }) {
+function StoriesHomeFeed({ stories }) {
   const history = useHistory();
 
   const sessionUser = useSelector((state) => state.session.user);
@@ -119,21 +119,19 @@ function StoriesHomeFeed({ stories = ["test1", "test2", "test3"] }) {
           ></p>
         </div>
 
-        {stories.map((story, index) => {
+        {Object.values(stories).slice(5, 8).map((story, index) => {
           return (
-            <div
+            <img
               key={index}
+              src={story.picture || ""}
               className="story-img"
               style={{
                 width: "20%",
-                margin: "2.5px",
-                borderRadius: "5px",
-                paddingTop: "10px",
-                paddingBottom: "10px",
-              }}
-            >
-              {story}
-            </div>
+                height: "85%",
+                paddingTop: "5px",
+                borderRadius: "10px"
+              }}>
+            </img>
           );
         })}
       </div>

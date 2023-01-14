@@ -24,9 +24,10 @@ function PostFeed() {
 
   const sessionUser = useSelector((state) => state.session.user);
 
+
   useEffect(() => {
     dispatch(fetchPosts());
-    dispatch(fetchStories());
+
     if (postDeleted) {
       setPostDeleted(false);
     }
