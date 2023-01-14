@@ -2,15 +2,28 @@ import "./StoriesHomeFeed.css";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import profilePic from "../../NavBar/imgs/blank.png";
+import { useState } from "react";
+import { useEffect } from "react";
 
 function StoriesHomeFeed({ stories }) {
   const history = useHistory();
 
   const sessionUser = useSelector((state) => state.session.user);
 
+  const [x, setX] = useState(1)
+
+  const windowStories = [stories[x-1], stories[x], stories[x+1]]
+
   const sessionUserPicture = useSelector(
     (state) => state.simpleUsers[sessionUser.id]?.profile_picture
   );
+
+
+  useEffect(() => {
+    if (x >= Object.keys(stories).length - 1) {
+      setX(1)
+    }
+  }, [x])
 
   const sessionUserName = `${sessionUser.first_name} ${sessionUser.last_name}`;
   return (
@@ -119,11 +132,12 @@ function StoriesHomeFeed({ stories }) {
           ></p>
         </div>
 
-        {Object.values(stories).slice(5, 8).map((story, index) => {
+        {Object.values(windowStories).map((story, index) => {
           return (
+            <>
             <img
               key={index}
-              src={story.picture || ""}
+              src={story?.picture}
               className="story-img"
               style={{
                 width: "20%",
@@ -132,8 +146,10 @@ function StoriesHomeFeed({ stories }) {
                 borderRadius: "10px"
               }}>
             </img>
+            </>
           );
         })}
+        <button onClick={(() => setX(x + 1))}> move window </button>
       </div>
     </>
   );
