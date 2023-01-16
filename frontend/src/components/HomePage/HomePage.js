@@ -6,6 +6,7 @@ import { fetchPosts } from "../../store/post";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { fetchStories } from "../../store/story";
+import NavBar from "../NavBar/NavBar";
 
 function HomePage() {
   const dispatch = useDispatch();
@@ -22,6 +23,8 @@ function HomePage() {
   }
 
   return (
+    <>
+    <NavBar />
     <div className="home-page-container">
       <div className="column"></div>
 
@@ -32,6 +35,7 @@ function HomePage() {
 
       <div className="column"></div>
     </div>
+    </>
   );
 }
 

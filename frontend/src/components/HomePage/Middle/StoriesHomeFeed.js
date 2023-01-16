@@ -135,9 +135,9 @@ function StoriesHomeFeed({ stories }) {
 
         {Object.values(stories).map((story, index) => {
           return (
-            <>
+            <Link to={`/stories/${story.id}`} style={{ width: "20%"}}>
               {story.picture !== null ? (
-                <div className="story-img" style={{ width: "20%", height: "150px", paddingTop: "5px", borderRadius: "10px", backgroundImage: `url(${story.picture})`, 
+                <div className="story-img" style={{ width: "100%", height: "150px", paddingTop: "5px", borderRadius: "10px", backgroundImage: `url(${story.picture})`, 
                 backgroundPosition: "center", backgroundRepeat: "no-repeat", backgroundColor: "lightgrey"}}>
                   <img 
                     style={{ height: "30px", width: "30px", borderRadius: "50px"}}
@@ -150,7 +150,7 @@ function StoriesHomeFeed({ stories }) {
                   className="indi-text-story-home-page"
                   style={{
                     backgroundColor: story.background_color,
-                    width: "20%",
+                    width: "100%",
                     height: "85%",
                     paddingTop: "5px",
                     borderRadius: "10px",
@@ -162,7 +162,7 @@ function StoriesHomeFeed({ stories }) {
                   </img>
                 </div>
               )}
-            </>
+            </Link>
           );
         })}
         {/* <button style={{ height: "10px", width: "10px"}} onClick={() => setX(x + 1)}> move window </button> */}

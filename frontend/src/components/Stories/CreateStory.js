@@ -4,9 +4,12 @@ import PreviewStory from "./PreviewStory";
 import TextStory from "./TextStory";
 import { useDispatch, useSelector } from "react-redux";
 import { createStory } from "../../store/story";
+import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
-function CreateStory() {
+function CreateStoryIntro() {
   const dispatch = useDispatch();
+  const history = useHistory()
   const sessionUserId = useSelector((state) => state.session.user.id);
   const [photoFile, setPhotoFile] = useState(null);
   const [photoUrl, setPhotoUrl] = useState(null);
@@ -23,7 +26,8 @@ function CreateStory() {
       user_id: sessionUserId,
       ...styles,
     };
-    return dispatch(createStory(story, sessionUserId, "home", formData));
+    dispatch(createStory(story, sessionUserId, "home", formData));
+    return history.push("/")
   };
 
   const handleFile = (e) => {
@@ -122,4 +126,4 @@ function CreateStory() {
   );
 }
 
-export default CreateStory;
+export default CreateStoryIntro;
