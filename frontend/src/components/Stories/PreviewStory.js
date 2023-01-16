@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { createStory } from "../../store/story";
 
 function PreviewStory({ file, setFile, url, setUrl }) {
-  const dispatch = useDispatch() 
+  const dispatch = useDispatch();
   const simpleUsers = useSelector((state) => state.simpleUsers);
   const sessionUser = useSelector((state) => state.session.user);
 
@@ -14,18 +14,17 @@ function PreviewStory({ file, setFile, url, setUrl }) {
   const [fileSaved, setFileSaved] = useState(null);
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-      let formData;
-      if (file) {
-        formData = new FormData();
-        formData.append("story[photo]", file);
-      }
-      let story = {
-        user_id: sessionUser.id,
-      };
-      return dispatch(createStory(story, sessionUser.id, "home", formData));
+    e.preventDefault();
+    let formData;
+    if (file) {
+      formData = new FormData();
+      formData.append("story[photo]", file);
+    }
+    let story = {
+      user_id: sessionUser.id,
     };
-  
+    return dispatch(createStory(story, sessionUser.id, "home", formData));
+  };
 
   return (
     <>

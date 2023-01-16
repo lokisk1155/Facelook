@@ -148,7 +148,13 @@ function StoriesHomeFeed({ stories }) {
             </>
           );
         })}
-        <button style={{ height: "10px", width: "10px"}} onClick={() => setX(x + 1)}> move window </button>
+        <button
+          style={{ height: "10px", width: "10px" }}
+          onClick={() => setX(x + 1)}
+        >
+          {" "}
+          move window{" "}
+        </button>
       </div>
     </>
   );
