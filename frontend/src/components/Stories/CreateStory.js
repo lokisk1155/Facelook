@@ -14,7 +14,6 @@ function CreateStory() {
 
   const submitStory = (styles) => (e) => {
     e.preventDefault();
-    debugger;
     let formData;
     if (photoFile) {
       formData = new FormData();

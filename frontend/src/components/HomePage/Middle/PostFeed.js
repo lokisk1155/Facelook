@@ -24,7 +24,6 @@ function PostFeed() {
 
   const sessionUser = useSelector((state) => state.session.user);
 
-
   useEffect(() => {
     dispatch(fetchPosts());
 

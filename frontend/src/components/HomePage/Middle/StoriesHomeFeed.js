@@ -10,20 +10,19 @@ function StoriesHomeFeed({ stories }) {
 
   const sessionUser = useSelector((state) => state.session.user);
 
-  const [x, setX] = useState(1)
+  const [x, setX] = useState(1);
 
-  const windowStories = [stories[x-1], stories[x], stories[x+1]]
+  const windowStories = [stories[x - 1], stories[x], stories[x + 1]];
 
   const sessionUserPicture = useSelector(
     (state) => state.simpleUsers[sessionUser.id]?.profile_picture
   );
 
-
   useEffect(() => {
     if (x >= Object.keys(stories).length - 1) {
-      setX(1)
+      setX(1);
     }
-  }, [x])
+  }, [x]);
 
   const sessionUserName = `${sessionUser.first_name} ${sessionUser.last_name}`;
   return (
@@ -132,24 +131,24 @@ function StoriesHomeFeed({ stories }) {
           ></p>
         </div>
 
-        {Object.values(windowStories).map((story, index) => {
+        {Object.values(stories).map((story, index) => {
           return (
             <>
-            <img
-              key={index}
-              src={story?.picture}
-              className="story-img"
-              style={{
-                width: "20%",
-                height: "85%",
-                paddingTop: "5px",
-                borderRadius: "10px"
-              }}>
-            </img>
+              <img
+                key={index}
+                src={story?.picture}
+                className="story-img"
+                style={{
+                  width: "20%",
+                  height: "85%",
+                  paddingTop: "5px",
+                  borderRadius: "10px",
+                }}
+              ></img>
             </>
           );
         })}
-        <button onClick={(() => setX(x + 1))}> move window </button>
+        <button style={{ height: "10px", width: "10px"}} onClick={() => setX(x + 1)}> move window </button>
       </div>
     </>
   );

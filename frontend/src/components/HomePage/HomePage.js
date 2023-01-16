@@ -8,17 +8,17 @@ import { useSelector } from "react-redux";
 import { fetchStories } from "../../store/story";
 
 function HomePage() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const stories = useSelector((state) => (state.stories.undefined))
+  const stories = useSelector((state) => state.stories.undefined);
 
   useEffect(() => {
     dispatch(fetchStories());
-    dispatch(fetchPosts())
-  }, [])
+    dispatch(fetchPosts());
+  }, []);
 
   if (!stories) {
-    return null 
+    return null;
   }
 
   return (
@@ -26,7 +26,7 @@ function HomePage() {
       <div className="column"></div>
 
       <div className="middle">
-        <StoriesHomeFeed stories={stories}/>
+        <StoriesHomeFeed stories={stories} />
         <PostFeed />
       </div>
 
