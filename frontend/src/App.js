@@ -28,8 +28,12 @@ function App() {
           path="/"
           render={() => (sessionUser ? <HomePage /> : <LoginPage />)}
         />
-         <Route exact path="/stories/create" render={() => <CreateStoryIntro />} />
-         <Route exact path="/stories/:id" render={() => <StoryShow />} />
+        <Route
+          exact
+          path="/stories/create"
+          render={() => <CreateStoryIntro />}
+        />
+        <Route exact path="/stories/:id" render={() => <StoryShow />} />
         <ProfilePageRoutes />
       </Switch>
     </>

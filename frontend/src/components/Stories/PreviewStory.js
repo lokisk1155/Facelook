@@ -8,7 +8,7 @@ import { useHistory } from "react-router-dom";
 
 function PreviewStory({ file, setFile, url, setUrl }) {
   const dispatch = useDispatch();
-  const history = useHistory() 
+  const history = useHistory();
   const simpleUsers = useSelector((state) => state.simpleUsers);
   const sessionUser = useSelector((state) => state.session.user);
 
@@ -26,7 +26,7 @@ function PreviewStory({ file, setFile, url, setUrl }) {
       user_id: sessionUser.id,
     };
     dispatch(createStory(story, sessionUser.id, "home", formData));
-    return history.push("/")
+    return history.push("/");
   };
 
   return (

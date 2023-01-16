@@ -10,7 +10,7 @@ function StoriesHomeFeed({ stories }) {
 
   const sessionUser = useSelector((state) => state.session.user);
 
-  const simpleUsers = useSelector((state) => state.simpleUsers)
+  const simpleUsers = useSelector((state) => state.simpleUsers);
 
   const [x, setX] = useState(1);
 
@@ -135,14 +135,31 @@ function StoriesHomeFeed({ stories }) {
 
         {Object.values(stories).map((story, index) => {
           return (
-            <Link to={`/stories/${story.id}`} style={{ width: "20%"}}>
+            <Link to={`/stories/${story.id}`} style={{ width: "20%" }}>
               {story.picture !== null ? (
-                <div className="story-img" style={{ width: "100%", height: "150px", paddingTop: "5px", borderRadius: "10px", backgroundImage: `url(${story.picture})`, 
-                backgroundPosition: "center", backgroundRepeat: "no-repeat", backgroundColor: "lightgrey"}}>
-                  <img 
-                    style={{ height: "30px", width: "30px", borderRadius: "50px"}}
-                    src={simpleUsers[story.user_id]?.profile_picture || profilePic}>
-                  </img>
+                <div
+                  className="story-img"
+                  style={{
+                    width: "100%",
+                    height: "150px",
+                    paddingTop: "5px",
+                    borderRadius: "10px",
+                    backgroundImage: `url(${story.picture})`,
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                    backgroundColor: "lightgrey",
+                  }}
+                >
+                  <img
+                    style={{
+                      height: "30px",
+                      width: "30px",
+                      borderRadius: "50px",
+                    }}
+                    src={
+                      simpleUsers[story.user_id]?.profile_picture || profilePic
+                    }
+                  ></img>
                 </div>
               ) : (
                 <div
@@ -156,10 +173,16 @@ function StoriesHomeFeed({ stories }) {
                     borderRadius: "10px",
                   }}
                 >
-                  <img 
-                    style={{ height: "30px", width: "30px", borderRadius: "50px"}}
-                    src={simpleUsers[story.user_id]?.profile_picture || profilePic}>
-                  </img>
+                  <img
+                    style={{
+                      height: "30px",
+                      width: "30px",
+                      borderRadius: "50px",
+                    }}
+                    src={
+                      simpleUsers[story.user_id]?.profile_picture || profilePic
+                    }
+                  ></img>
                 </div>
               )}
             </Link>

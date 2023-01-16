@@ -1,9 +1,5 @@
 function StoryShow() {
-    return (
-        <>
-        </>
-    )
-
+  return <></>;
 }
 
-export default StoryShow
+export default StoryShow;

@@ -9,7 +9,7 @@ import { useHistory } from "react-router-dom";
 
 function CreateStoryIntro() {
   const dispatch = useDispatch();
-  const history = useHistory()
+  const history = useHistory();
   const sessionUserId = useSelector((state) => state.session.user.id);
   const [photoFile, setPhotoFile] = useState(null);
   const [photoUrl, setPhotoUrl] = useState(null);
@@ -27,7 +27,7 @@ function CreateStoryIntro() {
       ...styles,
     };
     dispatch(createStory(story, sessionUserId, "home", formData));
-    return history.push("/")
+    return history.push("/");
   };
 
   const handleFile = (e) => {

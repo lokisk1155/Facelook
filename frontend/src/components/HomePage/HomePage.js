@@ -24,17 +24,17 @@ function HomePage() {
 
   return (
     <>
-    <NavBar />
-    <div className="home-page-container">
-      <div className="column"></div>
+      <NavBar />
+      <div className="home-page-container">
+        <div className="column"></div>
 
-      <div className="middle">
-        <StoriesHomeFeed stories={stories} />
-        <PostFeed />
+        <div className="middle">
+          <StoriesHomeFeed stories={stories} />
+          <PostFeed />
+        </div>
+
+        <div className="column"></div>
       </div>
-
-      <div className="column"></div>
-    </div>
     </>
   );
 }
