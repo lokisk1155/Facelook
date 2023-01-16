@@ -29,3 +29,7 @@
 .create-story-button:hover {
   transform: scale(1.1);
 }
+
+.indi-text-story-home-page:hover {
+    transform: scale(1.1);
+}

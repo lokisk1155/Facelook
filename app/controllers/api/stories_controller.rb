@@ -19,14 +19,15 @@ class Api::StoriesController < ApplicationController
     end 
 
     def index 
-        @stories = Story.all 
-        @stories.each do |story|
+        @allStories = Story.all 
+        @allStories.each do |story|
             if story.created_at
                 if story.created_at < 24.hours.ago
                     story.destroy
                 end
             end 
         end
+        @stories = Story.last(3)
         render 'api/stories/index'
     end 
 

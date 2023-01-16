@@ -150,6 +150,7 @@
   height: 50px;
   width: 40vw;
   justify-content: space-around;
+  z-index: 5;
 }
 
 .right-container-navbar {

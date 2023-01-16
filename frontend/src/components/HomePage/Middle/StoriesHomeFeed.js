@@ -81,6 +81,7 @@ function StoriesHomeFeed({ stories }) {
               borderLeft: "0.3px solid lightgrey",
               borderRight: "0.3px solid lightgrey",
               objectFit: "cover",
+              
             }}
             src={sessionUserPicture || profilePic}
           ></img>
@@ -100,6 +101,7 @@ function StoriesHomeFeed({ stories }) {
               left: 0,
               right: 0,
               margin: "auto",
+              
             }}
           >
             <g fillRule="evenodd" transform="translate(-446 -350)">
@@ -127,6 +129,7 @@ function StoriesHomeFeed({ stories }) {
               borderBottom: "0.3px solid lightgrey",
               borderLeft: "0.3px solid lightgrey",
               borderRight: "0.3px solid lightgrey",
+              
             }}
           ></p>
         </div>
@@ -134,6 +137,7 @@ function StoriesHomeFeed({ stories }) {
         {Object.values(stories).map((story, index) => {
           return (
             <>
+            {story.picture !== null ? <>
               <img
                 key={index}
                 src={story?.picture}
@@ -144,18 +148,35 @@ function StoriesHomeFeed({ stories }) {
                   paddingTop: "5px",
                   borderRadius: "10px",
                 }}
-              ></img>
-            </>
+              ></img></> : 
+              <div         
+              key={index}
+              className="indi-text-story-home-page"
+              style={{
+                backgroundColor: story.background_color,
+                width: "20%",
+                height: "85%",
+                paddingTop: "5px",
+                borderRadius: "10px",
+              }}>
+                <p 
+                className="div-text-story-home-page"
+                style={{     
+                  width: "50%",
+                  height: "100%",    
+                  justifyContent: "center",    
+                  color: story.color, 
+                  fontSize: story.font_size, 
+                  paddingLeft: story.padding_left,
+                  paddingRight: story.padding_right,
+                  paddingY: story.padding_y,}}>{story.text_context}</p>
+                </div>}
+            </> 
           );
         })}
-        <button
-          style={{ height: "10px", width: "10px" }}
-          onClick={() => setX(x + 1)}
-        >
-          {" "}
-          move window{" "}
-        </button>
+        {/* <button style={{ height: "10px", width: "10px"}} onClick={() => setX(x + 1)}> move window </button> */}
       </div>
+
     </>
   );
 }
