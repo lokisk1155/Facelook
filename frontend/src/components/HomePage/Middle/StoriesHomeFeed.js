@@ -2,15 +2,29 @@ import "./StoriesHomeFeed.css";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import profilePic from "../../NavBar/imgs/blank.png";
+import { useState } from "react";
+import { useEffect } from "react";
 
-function StoriesHomeFeed({ stories = ["test1", "test2", "test3"] }) {
+function StoriesHomeFeed({ stories }) {
   const history = useHistory();
 
   const sessionUser = useSelector((state) => state.session.user);
 
+  const simpleUsers = useSelector((state) => state.simpleUsers);
+
+  const [x, setX] = useState(1);
+
+  const windowStories = [stories[x - 1], stories[x], stories[x + 1]];
+
   const sessionUserPicture = useSelector(
     (state) => state.simpleUsers[sessionUser.id]?.profile_picture
   );
+
+  useEffect(() => {
+    if (x >= Object.keys(stories).length - 1) {
+      setX(1);
+    }
+  }, [x]);
 
   const sessionUserName = `${sessionUser.first_name} ${sessionUser.last_name}`;
   return (
@@ -119,23 +133,62 @@ function StoriesHomeFeed({ stories = ["test1", "test2", "test3"] }) {
           ></p>
         </div>
 
-        {stories.map((story, index) => {
+        {Object.values(stories).map((story, index) => {
           return (
-            <div
-              key={index}
-              className="story-img"
-              style={{
-                width: "20%",
-                margin: "2.5px",
-                borderRadius: "5px",
-                paddingTop: "10px",
-                paddingBottom: "10px",
-              }}
-            >
-              {story}
-            </div>
+            <Link to={`/stories/${story.id}`} style={{ width: "20%" }}>
+              {story.picture !== null ? (
+                <div
+                  className="story-img"
+                  style={{
+                    width: "100%",
+                    height: "150px",
+                    paddingTop: "5px",
+                    borderRadius: "10px",
+                    backgroundImage: `url(${story.picture})`,
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                    backgroundColor: "lightgrey",
+                  }}
+                >
+                  <img
+                    style={{
+                      height: "30px",
+                      width: "30px",
+                      borderRadius: "50px",
+                    }}
+                    src={
+                      simpleUsers[story.user_id]?.profile_picture || profilePic
+                    }
+                  ></img>
+                </div>
+              ) : (
+                <div
+                  key={index}
+                  className="indi-text-story-home-page"
+                  style={{
+                    backgroundColor: story.background_color,
+                    width: "100%",
+                    height: "85%",
+                    paddingTop: "5px",
+                    borderRadius: "10px",
+                  }}
+                >
+                  <img
+                    style={{
+                      height: "30px",
+                      width: "30px",
+                      borderRadius: "50px",
+                    }}
+                    src={
+                      simpleUsers[story.user_id]?.profile_picture || profilePic
+                    }
+                  ></img>
+                </div>
+              )}
+            </Link>
           );
         })}
+        {/* <button style={{ height: "10px", width: "10px"}} onClick={() => setX(x + 1)}> move window </button> */}
       </div>
     </>
   );

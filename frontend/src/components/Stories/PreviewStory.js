@@ -1,14 +1,31 @@
-import { Redirect } from "react-router-dom";
 import { useState } from "react";
 import StoryCrop from "../crop/StoryCrop";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { createStory } from "../../store/story";
+import { useHistory } from "react-router-dom";
 
-function PreviewStory({ file, setFile, url, setUrl, submit}) {
+function PreviewStory({ file, setFile, url, setUrl }) {
+  const dispatch = useDispatch();
+  const history = useHistory();
   const simpleUsers = useSelector((state) => state.simpleUsers);
   const sessionUser = useSelector((state) => state.session.user);
-  const [preview, setPreview] = useState(null);
+
   const [fileSaved, setFileSaved] = useState(null);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let formData;
+    if (file) {
+      formData = new FormData();
+      formData.append("story[photo]", file);
+    }
+    let story = {
+      user_id: sessionUser.id,
+    };
+    dispatch(createStory(story, "home", formData));
+    return history.push("/");
+  };
 
   return (
     <>
@@ -82,7 +99,7 @@ function PreviewStory({ file, setFile, url, setUrl, submit}) {
                 </Link>
 
                 <button
-                  onClick={submit}
+                  onClick={handleSubmit}
                   style={{
                     height: "15%",
                     width: "65%",

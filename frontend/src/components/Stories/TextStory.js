@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-function TextStory() {
+function TextStory({ submit }) {
   const sessionUser = useSelector((state) => state.session.user);
 
   const simpleUsers = useSelector((state) => state.simpleUsers);
@@ -28,12 +28,14 @@ function TextStory() {
 
   const [textContent, setTextContent] = useState("");
 
-  const submitStory = (e) => {
-    const storyBackground = document.getElementById(
-      "actual-text-story-background"
-    );
-    const storyText = document.getElementById("actual-text-story-text");
-    return;
+  const styles = {
+    background_color: backgroundColor,
+    font_size: fontSize,
+    padding_right: paddingRight,
+    padding_left: paddingLeft,
+    padding_y: paddingY,
+    color: color,
+    text_content: textContent,
   };
 
   const moveUp = (e) => {
@@ -271,6 +273,7 @@ function TextStory() {
             </Link>
 
             <button
+              onClick={submit(styles)}
               style={{
                 height: "15%",
                 width: "65%",

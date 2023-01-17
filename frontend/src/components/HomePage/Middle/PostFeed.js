@@ -7,6 +7,7 @@ import profilePic from "../../NavBar/imgs/blank.png";
 import { Link } from "react-router-dom";
 import "./PostFeed.css";
 import { Modal } from "../../../context/Modal";
+import { fetchStories } from "../../../store/story";
 
 function PostFeed() {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ function PostFeed() {
 
   useEffect(() => {
     dispatch(fetchPosts());
+
     if (postDeleted) {
       setPostDeleted(false);
     }
