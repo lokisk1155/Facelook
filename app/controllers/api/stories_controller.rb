@@ -1,17 +1,14 @@
 class Api::StoriesController < ApplicationController
     def create 
-        @story = Story.new(user_id: params[:user_id])
-        photo_attached = params[:story] && params[:story].has_key?(:photo)
-        if photo_attached
+        @story 
+        
+        if params[:story] && params[:story].has_key?(:photo)
+            @story = Story.new(user_id: params[:user_id])
             @story.photo.attach(params[:story][:photo])
-        end 
-
-        if !photo_attached
+        else
             @story = false 
             @story = Story.new(user_id: params[:user_id], background_color:  params[:background_color], font_size: params[:font_size], padding_left: params[:padding_left], padding_right: params[:padding_right], padding_y: params[:padding_y],color: params[:color],text_content: params[:text_content])
         end 
-
-        time = Time.now 
 
         if @story.save 
             return render 'api/stories/show'
@@ -19,19 +16,7 @@ class Api::StoriesController < ApplicationController
     end 
 
     def index 
-        @allStories = Story.all 
-        @allStories.each do |story|
-            if story.created_at
-                if story.created_at < 24.hours.ago
-                    story.destroy
-                end
-            end 
-        end
-        @stories = Story.last(3)
+        @stories = Story.all.last(3)
         render 'api/stories/index'
-    end 
-
-    def destroy 
-
     end 
 end 

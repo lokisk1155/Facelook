@@ -26,7 +26,7 @@ function CreateStoryIntro() {
       user_id: sessionUserId,
       ...styles,
     };
-    dispatch(createStory(story, sessionUserId, "home", formData));
+    dispatch(createStory(story, "home", formData));
     return history.push("/");
   };
 
@@ -114,7 +114,6 @@ function CreateStoryIntro() {
       ) : null}
       {photoFile && photoUrl ? (
         <PreviewStory
-          submit={submitStory}
           file={photoFile}
           setFile={setPhotoFile}
           url={photoUrl}

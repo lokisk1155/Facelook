@@ -1,4 +1,3 @@
-import { Redirect } from "react-router-dom";
 import { useState } from "react";
 import StoryCrop from "../crop/StoryCrop";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,7 +11,6 @@ function PreviewStory({ file, setFile, url, setUrl }) {
   const simpleUsers = useSelector((state) => state.simpleUsers);
   const sessionUser = useSelector((state) => state.session.user);
 
-  const [preview, setPreview] = useState(null);
   const [fileSaved, setFileSaved] = useState(null);
 
   const handleSubmit = (e) => {
@@ -25,7 +23,7 @@ function PreviewStory({ file, setFile, url, setUrl }) {
     let story = {
       user_id: sessionUser.id,
     };
-    dispatch(createStory(story, sessionUser.id, "home", formData));
+    dispatch(createStory(story, "home", formData));
     return history.push("/");
   };
 
