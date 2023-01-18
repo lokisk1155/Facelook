@@ -34,11 +34,11 @@ function StoryShow() {
   return (
     <div
       className="stories-show-omega-container"
-      style={{ height: "100vh", width: "100vw", display: "flex" }}
+      style={{ height: "100vh", width: "100vw", display: "flex", backgroundColor: "#fff" }}
     >
       <div
         className="story-show-side-bar"
-        style={{ width: "20%", minWidth: "100px" }}
+        style={{ width: "20%", minWidth: "150px" }}
       >
         <div style={{ display: "flex" }}>
           <button
@@ -73,12 +73,13 @@ function StoryShow() {
           </button>
         </div>
         <br></br>
-        <div style={{ display: "flex", flexDirection: "column" }}>
+        <div style={{ display: "flex", flexDirection: "column", overflow: "scroll", height: "75%" }}>
           <h4>All Stories</h4>
           {stories &&
             Object.values(stories).map((story) => {
               return (
                 <Link
+                    key={story?.id}
                   className="all-stories-mapped"
                   style={{
                     display: "flex",
@@ -86,11 +87,13 @@ function StoryShow() {
                     width: "100%",
                     alignItems: "center",
                     paddingLeft: "10px",
+                    borderRadius: "5px",
+                    padding: "5px",
                   }}
                   to={`/stories/${story.id}`}
                 >
                   <img
-                    key={story?.id}
+                 
                     style={{
                       height: "50px",
                       width: "50px",
@@ -98,7 +101,7 @@ function StoryShow() {
                     }}
                     src={simpleUsers[story.user_id]?.picture || profilePic}
                   />
-                  <p style={{}}>{simpleUsers[story.user_id]?.name}</p>
+                  <p>{simpleUsers[story.user_id]?.name}</p>
                 </Link>
               );
             })}
@@ -107,14 +110,14 @@ function StoryShow() {
 
       <div
         className="story-show-preview-container"
-        style={{ width: "80%", backgroundColor: "black" }}
+        style={{ width: "80%", backgroundColor: "black", position: "relative" }}
       >
-        {stories[id].picture === null ? (
+        {stories[id]?.picture === null ? (
           <div
             className="actual-story-show-background"
             style={{
               height: "90%",
-              width: "30%",
+              width: "50%",
               position: "absolute",
               borderRadius: "7px",
               backgroundColor: stories[id].background_color,
@@ -126,6 +129,8 @@ function StoryShow() {
               left: "50%",
               transform: "translate(-50%, -50%)",
               maxWidth: "300px",
+              position: "absolute",
+              borderRadius: "5px"
             }}
           >
             <p
@@ -133,12 +138,13 @@ function StoryShow() {
               style={{
                 fontSize: stories[id].font_size,
                 justifyContent: "center",
-                paddingTop: stories[id].padding_top,
-                paddingLeft: stories[id].padding_left,
-                paddingRight: stories[id].padding_right,
+                paddingTop: `${stories[id].padding_top}px`,
+                paddingLeft: `${stories[id].padding_left}px`,
+                paddingRight: `${stories[id].padding_right}px`,
                 color: "black",
                 minWidth: "150px",
                 minHeight: "200px",
+                position: "absolute"
               }}
             >
               {stories[id].text_content}
@@ -150,7 +156,7 @@ function StoryShow() {
             src={stories[id]?.picture}
             style={{
               height: "90%",
-              width: "40%",
+              width: "65%",
               position: "absolute",
               borderRadius: "7px",
               minWidth: "200px",

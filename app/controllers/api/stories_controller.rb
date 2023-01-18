@@ -1,7 +1,6 @@
 class Api::StoriesController < ApplicationController
     def create 
         @story 
-
         if params[:story] && params[:story].has_key?(:photo)
             @story = Story.new(user_id: params[:user_id])
             @story.photo.attach(params[:story][:photo])
@@ -18,8 +17,10 @@ class Api::StoriesController < ApplicationController
     def index 
         @stories = Story.all
         if params[:limit]
-          
-            @stories = Story.all.last(params[:limit].to_i)
+            @stories = Story.where(user_id: current_user.id).limit(3)
+            if @stories.length > 3
+                @stories = Story.all.last(3)
+            end 
         end 
         render 'api/stories/index'
     end 
