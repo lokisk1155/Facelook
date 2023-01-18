@@ -13,7 +13,7 @@ function HomePage() {
 
   const stories = useSelector((state) => state.stories.undefined);
 
-  let limit = 3
+  let limit = 3;
 
   useEffect(() => {
     dispatch(fetchStories(limit));
