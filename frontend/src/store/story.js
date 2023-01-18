@@ -9,7 +9,7 @@ export const addStory = (story) => ({
 });
 
 export const createStory = (story, location, formData) => async (dispatch) => {
-  const storyRequest = await csrfFetch(`/api/stories?userId=${story.user_id}`, {
+  const storyRequest = await csrfFetch(`/api/stories`, {
     method: "POST",
     body: formData instanceof FormData ? formData : JSON.stringify(story),
   });
@@ -20,9 +20,15 @@ export const createStory = (story, location, formData) => async (dispatch) => {
   return dispatch(addStory(storyResponse));
 };
 
-export const fetchStories = () => async (dispatch) => {
-  const stories = await csrfFetch("/api/stories");
-  const storiesResponse = await stories.json();
+export const fetchStories = (limit) => async (dispatch) => {
+  let storiesReq;
+  if (limit) {
+    storiesReq = await csrfFetch(`/api/stories?limit=${limit}`);
+  } else {
+    storiesReq = await csrfFetch(`/api/stories`);
+  }
+
+  const storiesResponse = await storiesReq.json();
   return dispatch(addStory(storiesResponse));
 };
 
