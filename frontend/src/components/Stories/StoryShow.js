@@ -15,7 +15,7 @@ function StoryShow() {
 
   const { id } = useParams();
 
-  const [currentWindow, setCurrentWindow] = useState(0)
+  const [currentWindow, setCurrentWindow] = useState(0);
 
   useEffect(() => {
     const getData = async () => {
@@ -30,9 +30,9 @@ function StoryShow() {
   const stories = useSelector((state) => state.stories);
 
   if (!stories[id] || !simpleUsers) {
-    return null 
+    return null;
   }
-  const currentStory = stories[id][currentWindow]
+  const currentStory = stories[id][currentWindow];
   const usersWithStories = {};
 
   for (const id in stories) {
@@ -190,14 +190,20 @@ function StoryShow() {
           ></img>
         )}
       </div>
-      <button onClick={() => setCurrentWindow(() => {
-        if (currentWindow >= Object.keys(stories[id]).length) {
-          return 0 
-        } else {
-          const newWindow = currentWindow + 1 
-          return newWindow
+      <button
+        onClick={() =>
+          setCurrentWindow(() => {
+            if (currentWindow >= Object.keys(stories[id]).length) {
+              return 0;
+            } else {
+              const newWindow = currentWindow + 1;
+              return newWindow;
+            }
+          })
         }
-      })}>next picture</button>
+      >
+        next picture
+      </button>
     </div>
   );
 }

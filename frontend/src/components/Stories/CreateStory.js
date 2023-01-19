@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createStory } from "../../store/story";
 import PreviewStory from "./PreviewStory";
-import TextStory from "./TextStory"
-import "./CreateStory.css"
+import TextStory from "./TextStory";
+import "./CreateStory.css";
 
 function CreateStoryIntro() {
   const dispatch = useDispatch();
