@@ -135,7 +135,7 @@ function StoriesHomeFeed({ stories }) {
 
         {Object.values(stories).map((story, index) => {
           return (
-            <Link to={`/stories/${story.id}`} style={{ width: "20%" }}>
+            <Link to={`/stories/${story.user_id}`} style={{ width: "20%" }}>
               {story.picture !== null ? (
                 <div
                   className="story-img"

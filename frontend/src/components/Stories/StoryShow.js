@@ -7,11 +7,16 @@ import profilePic from "../NavBar/imgs/blank.png";
 import { Link } from "react-router-dom";
 import { fetchStories } from "../../store/story";
 import "./StoryShow.css";
+import { useState } from "react";
 
 function StoryShow() {
   const dispatch = useDispatch();
+
   const history = useHistory();
+
   const { id } = useParams();
+
+  const [currentWindow, setCurrentWindow] = useState(0)
 
   useEffect(() => {
     getData();
@@ -25,6 +30,10 @@ function StoryShow() {
   const simpleUsers = useSelector((state) => state.simpleUsers);
   const sessionUser = useSelector((state) => state.session.user);
   const stories = useSelector((state) => state.stories);
+  if (!stories[id]) {
+    return null 
+  }
+  const currentStory = stories[id][currentWindow]
   const usersWithStories = {};
 
   for (const id in stories) {
@@ -93,7 +102,6 @@ function StoryShow() {
           <h4>All Stories</h4>
           {stories &&
             Object.values(usersWithStories).map((user) => {
-              console.log(user)
               return (
                 <Link
                   key={user?.user_id}
@@ -128,7 +136,7 @@ function StoryShow() {
         className="story-show-preview-container"
         style={{ width: "80%", backgroundColor: "black", position: "relative" }}
       >
-        {stories[id]?.picture === null ? (
+        {currentStory.picture === null ? (
           <div
             className="actual-story-show-background"
             style={{
@@ -136,7 +144,7 @@ function StoryShow() {
               width: "50%",
               position: "absolute",
               borderRadius: "7px",
-              backgroundColor: stories[id].background_color,
+              backgroundColor: currentStory.background_color,
               minWidth: "200px",
               minHeight: "200px",
               top: "50%",
@@ -152,24 +160,24 @@ function StoryShow() {
             <p
               className="actual-story-show-text"
               style={{
-                fontSize: stories[id].font_size,
+                fontSize: currentStory.font_size,
                 justifyContent: "center",
-                paddingTop: `${stories[id].padding_top}px`,
-                paddingLeft: `${stories[id].padding_left}px`,
-                paddingRight: `${stories[id].padding_right}px`,
+                paddingTop: `${currentStory.padding_top}px`,
+                paddingLeft: `${currentStory.padding_left}px`,
+                paddingRight: `${currentStory.padding_right}px`,
                 color: "black",
                 minWidth: "150px",
                 minHeight: "200px",
                 position: "absolute",
               }}
             >
-              {stories[id].text_content}
+              {currentStory.text_content}
             </p>
           </div>
         ) : (
           <img
             className="actual-text-story-background"
-            src={stories[id]?.picture}
+            src={currentStory?.picture}
             style={{
               height: "90%",
               width: "65%",
