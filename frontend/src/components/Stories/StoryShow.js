@@ -25,7 +25,11 @@ function StoryShow() {
   const simpleUsers = useSelector((state) => state.simpleUsers);
   const sessionUser = useSelector((state) => state.session.user);
   const stories = useSelector((state) => state.stories);
-  //   console.log(stories[id], 'target story');
+  const usersWithStories = {}
+
+  for (const id in stories) {
+    usersWithStories[id] = simpleUsers[id]
+  }
 
   if (!stories || !simpleUsers) {
     return null;
@@ -88,10 +92,10 @@ function StoryShow() {
         >
           <h4>All Stories</h4>
           {stories &&
-            Object.values(stories).map((story) => {
+            Object.values(usersWithStories).map((user) => {
               return (
                 <Link
-                  key={story?.id}
+                  key={user?.user_id}
                   className="all-stories-mapped"
                   style={{
                     display: "flex",
@@ -102,7 +106,7 @@ function StoryShow() {
                     borderRadius: "5px",
                     padding: "5px",
                   }}
-                  to={`/stories/${story.id}`}
+                  to={`/stories/${user?.user_id}`}
                 >
                   <img
                     style={{
@@ -110,9 +114,9 @@ function StoryShow() {
                       width: "50px",
                       borderRadius: "50px",
                     }}
-                    src={simpleUsers[story.user_id]?.picture || profilePic}
+                    src={user?.picture || profilePic}
                   />
-                  <p>{simpleUsers[story.user_id]?.name}</p>
+                  <p>{user?.name}</p>
                 </Link>
               );
             })}
