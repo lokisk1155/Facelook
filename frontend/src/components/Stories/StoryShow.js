@@ -25,10 +25,10 @@ function StoryShow() {
   const simpleUsers = useSelector((state) => state.simpleUsers);
   const sessionUser = useSelector((state) => state.session.user);
   const stories = useSelector((state) => state.stories);
-  const usersWithStories = {}
+  const usersWithStories = {};
 
   for (const id in stories) {
-    usersWithStories[id] = simpleUsers[id]
+    usersWithStories[id] = simpleUsers[id];
   }
 
   if (!stories || !simpleUsers) {
@@ -93,6 +93,7 @@ function StoryShow() {
           <h4>All Stories</h4>
           {stories &&
             Object.values(usersWithStories).map((user) => {
+              console.log(user)
               return (
                 <Link
                   key={user?.user_id}
@@ -114,7 +115,7 @@ function StoryShow() {
                       width: "50px",
                       borderRadius: "50px",
                     }}
-                    src={user?.picture || profilePic}
+                    src={user?.profile_picture || profilePic}
                   />
                   <p>{user?.name}</p>
                 </Link>
