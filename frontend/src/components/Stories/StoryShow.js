@@ -1,13 +1,12 @@
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams, Link } from "react-router-dom";
 import { getSimpleUsers } from "../../store/simpleUsers";
-import { useEffect } from "react";
+import { fetchStories } from "../../store/story";
 import Facebook from "../NavBar/imgs/Facebook.png";
 import profilePic from "../NavBar/imgs/blank.png";
-import { Link } from "react-router-dom";
-import { fetchStories } from "../../store/story";
+
 import "./StoryShow.css";
-import { useState } from "react";
 
 function StoryShow() {
   const dispatch = useDispatch();
@@ -19,18 +18,18 @@ function StoryShow() {
   const [currentWindow, setCurrentWindow] = useState(0)
 
   useEffect(() => {
+    const getData = async () => {
+      await dispatch(fetchStories());
+      await dispatch(getSimpleUsers());
+    };
     getData();
   }, [id]);
 
-  const getData = async () => {
-    await dispatch(fetchStories());
-    await dispatch(getSimpleUsers());
-  };
-
   const simpleUsers = useSelector((state) => state.simpleUsers);
-  const sessionUser = useSelector((state) => state.session.user);
+
   const stories = useSelector((state) => state.stories);
-  if (!stories[id]) {
+
+  if (!stories[id] || !simpleUsers) {
     return null 
   }
   const currentStory = stories[id][currentWindow]
@@ -38,10 +37,6 @@ function StoryShow() {
 
   for (const id in stories) {
     usersWithStories[id] = simpleUsers[id];
-  }
-
-  if (!stories || !simpleUsers) {
-    return null;
   }
 
   return (

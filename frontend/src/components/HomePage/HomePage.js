@@ -1,12 +1,11 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchStories } from "../../store/story";
+import { fetchPosts } from "../../store/post";
+import NavBar from "../NavBar/NavBar";
+import StoriesHomeFeed from "./Middle/StoriesHomeFeed";
 import PostFeed from "./Middle/PostFeed";
 import "./HomePage.css";
-import StoriesHomeFeed from "./Middle/StoriesHomeFeed";
-import { useEffect } from "react";
-import { fetchPosts } from "../../store/post";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import { fetchStories } from "../../store/story";
-import NavBar from "../NavBar/NavBar";
 
 function HomePage() {
   const dispatch = useDispatch();

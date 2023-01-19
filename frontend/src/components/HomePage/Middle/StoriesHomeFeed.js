@@ -1,7 +1,7 @@
-import "./StoriesHomeFeed.css";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import profilePic from "../../NavBar/imgs/blank.png";
+import "./StoriesHomeFeed.css";
 
 function StoriesHomeFeed({ stories }) {
   const history = useHistory();
@@ -13,16 +13,6 @@ function StoriesHomeFeed({ stories }) {
   const sessionUserPicture = useSelector(
     (state) => state.simpleUsers[sessionUser.id]?.profile_picture
   );
-
-  const sessionUserName = `${sessionUser.first_name} ${sessionUser.last_name}`;
-
-  const filteredUserStories = Object.values(stories).filter((story) => story.user_id === sessionUser.id)
-
-  const difference = 3 - filteredUserStories.length 
-
-  if (filteredUserStories.length < 3) {
-    filteredUserStories.push(Object.values(stories).slice(-difference))
-  }
 
   return (
     <>
@@ -130,10 +120,10 @@ function StoriesHomeFeed({ stories }) {
           ></p>
         </div>
 
-        {filteredUserStories.map((story, index) => {
+        {Object.values(stories).map((story, index) => {
           return (
             <Link to={`/stories/${story?.user_id}`} style={{ width: "20%" }}>
-              {story.picture !== null ? (
+              {story?.picture !== null ? (
                 <div
                   className="story-img"
                   style={{

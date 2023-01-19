@@ -1,11 +1,10 @@
-import "./CreateStory.css";
 import { useState } from "react";
-import PreviewStory from "./PreviewStory";
-import TextStory from "./TextStory";
 import { useDispatch, useSelector } from "react-redux";
-import { createStory } from "../../store/story";
-import { Redirect } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import { createStory } from "../../store/story";
+import PreviewStory from "./PreviewStory";
+import TextStory from "./TextStory"
+import "./CreateStory.css"
 
 function CreateStoryIntro() {
   const dispatch = useDispatch();

@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { Redirect } from "react-router-dom";
+import React, { useState } from "react";
 import Cropper from "react-easy-crop";
 import getCroppedImg from "../../utils/cropImage";
 import "./index.css";
@@ -8,7 +7,6 @@ const StoryCrop = ({ photoURL, setPhotoURL, setFile, fileSaved }) => {
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
-  const [loading, setLoading] = useState(false);
 
   const onCropComplete = (croppedArea, croppedAreaPixels) => {
     setCroppedAreaPixels(croppedAreaPixels);

@@ -46,7 +46,7 @@ export const storiesReducer = (previousState = {}, action) => {
     case ADD_ALL:
       return action.payload;
     case ADD_STORY:
-      return { ...previousState, ...action.payload };
+      return { ...action.payload };
     default:
       return previousState;
   }
