@@ -136,7 +136,7 @@ function StoryShow() {
         className="story-show-preview-container"
         style={{ width: "80%", backgroundColor: "black", position: "relative" }}
       >
-        {currentStory.picture === null ? (
+        {currentStory?.picture === null ? (
           <div
             className="actual-story-show-background"
             style={{
@@ -144,7 +144,7 @@ function StoryShow() {
               width: "50%",
               position: "absolute",
               borderRadius: "7px",
-              backgroundColor: currentStory.background_color,
+              backgroundColor: currentStory?.background_color,
               minWidth: "200px",
               minHeight: "200px",
               top: "50%",
@@ -160,18 +160,18 @@ function StoryShow() {
             <p
               className="actual-story-show-text"
               style={{
-                fontSize: currentStory.font_size,
+                fontSize: currentStory?.font_size,
                 justifyContent: "center",
-                paddingTop: `${currentStory.padding_top}px`,
-                paddingLeft: `${currentStory.padding_left}px`,
-                paddingRight: `${currentStory.padding_right}px`,
+                paddingTop: `${currentStory?.padding_top}px`,
+                paddingLeft: `${currentStory?.padding_left}px`,
+                paddingRight: `${currentStory?.padding_right}px`,
                 color: "black",
                 minWidth: "150px",
                 minHeight: "200px",
                 position: "absolute",
               }}
             >
-              {currentStory.text_content}
+              {currentStory?.text_content}
             </p>
           </div>
         ) : (
@@ -195,6 +195,14 @@ function StoryShow() {
           ></img>
         )}
       </div>
+      <button onClick={() => setCurrentWindow(() => {
+        if (currentWindow >= Object.keys(stories[id]).length) {
+          return 0 
+        } else {
+          const newWindow = currentWindow + 1 
+          return newWindow
+        }
+      })}>next picture</button>
     </div>
   );
 }
