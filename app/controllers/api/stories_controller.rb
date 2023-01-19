@@ -17,10 +17,9 @@ class Api::StoriesController < ApplicationController
     def index 
         @stories = Story.all
         if params[:limit]
-            @stories = Story.where(user_id: current_user.id).limit(3)
-            if @stories.length > 3
-                @stories = Story.all.last(3)
-            end 
+            @stories = StoryGrouper.by_user(current_user.id)
+        else 
+            @stories = StoryGrouper.group_by_user
         end 
         render 'api/stories/index'
     end 
