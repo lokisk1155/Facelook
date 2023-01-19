@@ -2,11 +2,11 @@ class Api::StoriesController < ApplicationController
     def create 
         @story 
         if params[:story] && params[:story].has_key?(:photo)
-            @story = Story.new(user_id: params[:user_id])
+            @story = Story.new(user_id: current_user.id)
             @story.photo.attach(params[:story][:photo])
         else
             @story = false 
-            @story = Story.new(user_id: params[:user_id], background_color:  params[:background_color], font_size: params[:font_size], padding_left: params[:padding_left], padding_right: params[:padding_right], padding_y: params[:padding_y],color: params[:color],text_content: params[:text_content])
+            @story = Story.new(user_id: current_user.id, background_color:  params[:background_color], font_size: params[:font_size], padding_left: params[:padding_left], padding_right: params[:padding_right], padding_y: params[:padding_y],color: params[:color],text_content: params[:text_content])
         end 
 
         if @story.save 
@@ -16,11 +16,20 @@ class Api::StoriesController < ApplicationController
 
     def index 
         @stories = Story.all
+        @homepage = false
+        @all = false 
         if params[:limit]
-            @stories = StoryGrouper.by_user(current_user.id)
+          @stories = StoryGrouper.by_user(current_user.id)
+          @homepage = true 
         else 
-            @stories = StoryGrouper.group_by_user
+          @storiesNestedUnderUser = {}
+          user_ids = Story.select(:user_id).distinct.pluck(:user_id)
+          user_ids.each do |user_id|
+              @storiesNestedUnderUser.merge!(StoryGrouper.group_by_user(user_id))
+          end
+          @all = true
+          @stories = @storiesNestedUnderUser
         end 
         render 'api/stories/index'
-    end 
+      end
 end 

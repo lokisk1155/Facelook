@@ -3,9 +3,15 @@ import { profilePage } from "./profilePage";
 
 const ADD_STORY = "stories/ADD_STORY";
 
+const ADD_ALL = "stories/ADD_ALL";
+
 export const addStory = (story) => ({
   type: ADD_STORY,
   payload: story,
+});
+export const addAll = (stories) => ({
+  type: ADD_ALL,
+  payload: stories,
 });
 
 export const createStory = (story, location, formData) => async (dispatch) => {
@@ -29,13 +35,18 @@ export const fetchStories = (limit) => async (dispatch) => {
   }
 
   const storiesResponse = await storiesReq.json();
-  return dispatch(addStory(storiesResponse));
+  if (limit) {
+    return dispatch(addStory(storiesResponse));
+  } 
+  return dispatch(addAll(storiesResponse.stories));
 };
 
 export const storiesReducer = (previousState = {}, action) => {
   switch (action.type) {
+    case ADD_ALL:
+      return action.payload
     case ADD_STORY:
-      return { ...previousState, [action.payload.id]: action.payload };
+      return { ...previousState, ...action.payload}
     default:
       return previousState;
   }

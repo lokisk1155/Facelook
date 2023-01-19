@@ -24,7 +24,7 @@ function StoryShow() {
 
   const simpleUsers = useSelector((state) => state.simpleUsers);
   const sessionUser = useSelector((state) => state.session.user);
-  const stories = useSelector((state) => state.stories.undefined);
+  const stories = useSelector((state) => state.stories);
   //   console.log(stories[id], 'target story');
 
   if (!stories || !simpleUsers) {
