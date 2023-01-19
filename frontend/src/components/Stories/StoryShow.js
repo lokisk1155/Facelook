@@ -34,7 +34,12 @@ function StoryShow() {
   return (
     <div
       className="stories-show-omega-container"
-      style={{ height: "100vh", width: "100vw", display: "flex", backgroundColor: "#fff" }}
+      style={{
+        height: "100vh",
+        width: "100vw",
+        display: "flex",
+        backgroundColor: "#fff",
+      }}
     >
       <div
         className="story-show-side-bar"
@@ -73,13 +78,20 @@ function StoryShow() {
           </button>
         </div>
         <br></br>
-        <div style={{ display: "flex", flexDirection: "column", overflow: "scroll", height: "75%" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            overflow: "scroll",
+            height: "75%",
+          }}
+        >
           <h4>All Stories</h4>
           {stories &&
             Object.values(stories).map((story) => {
               return (
                 <Link
-                    key={story?.id}
+                  key={story?.id}
                   className="all-stories-mapped"
                   style={{
                     display: "flex",
@@ -93,7 +105,6 @@ function StoryShow() {
                   to={`/stories/${story.id}`}
                 >
                   <img
-                 
                     style={{
                       height: "50px",
                       width: "50px",
@@ -130,7 +141,7 @@ function StoryShow() {
               transform: "translate(-50%, -50%)",
               maxWidth: "300px",
               position: "absolute",
-              borderRadius: "5px"
+              borderRadius: "5px",
             }}
           >
             <p
@@ -144,7 +155,7 @@ function StoryShow() {
                 color: "black",
                 minWidth: "150px",
                 minHeight: "200px",
-                position: "absolute"
+                position: "absolute",
               }}
             >
               {stories[id].text_content}
