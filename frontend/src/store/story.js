@@ -37,16 +37,16 @@ export const fetchStories = (limit) => async (dispatch) => {
   const storiesResponse = await storiesReq.json();
   if (limit) {
     return dispatch(addStory(storiesResponse));
-  } 
+  }
   return dispatch(addAll(storiesResponse.stories));
 };
 
 export const storiesReducer = (previousState = {}, action) => {
   switch (action.type) {
     case ADD_ALL:
-      return action.payload
+      return action.payload;
     case ADD_STORY:
-      return { ...previousState, ...action.payload}
+      return { ...previousState, ...action.payload };
     default:
       return previousState;
   }
