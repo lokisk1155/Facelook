@@ -42,9 +42,16 @@ function StoryShow() {
 
   const handleNext = (e) => {
     e.preventDefault() 
-    if (currentWindow >= Object.keys(stories[id]).length) {
-      let nextUserId = parseInt(id) + 1
-      return history.push(`/stories/${nextUserId}`)
+    if (currentWindow - 1 >= stories[id].length) {
+      const userIds = Object.keys(stories);
+      const currentIndex = userIds.findIndex(userId => userId === id);
+      let nextIndex = currentIndex + 1;
+      if (nextIndex === userIds.length) {
+        nextIndex = 0;
+      }
+      const nextUserId = userIds[nextIndex];
+      setCurrentWindow(0)
+      return history.push(`/stories/${nextUserId}`);
     } else {
       const newWindow = currentWindow + 1;
       setCurrentWindow(newWindow)
@@ -53,12 +60,16 @@ function StoryShow() {
 
   const handlePrevious = (e) => {
     e.preventDefault() 
-    if (currentWindow < 1) {
-      let nextUserId = parseInt(id) - 1
-      if (nextUserId == 0) {
-        nextUserId = 1
+    if (currentWindow <= 1) {
+      const userIds = Object.keys(stories);
+      const currentIndex = userIds.findIndex(userId => userId === id);
+      let previousIndex = currentIndex - 1;
+      if (previousIndex < 0) {
+        previousIndex = userIds.length - 1;
       }
-      return history.push(`/stories/${nextUserId}`)
+      const previousUserId = userIds[previousIndex];
+      setCurrentWindow(0)
+      return history.push(`/stories/${previousUserId}`);
     } else {
       const newWindow = currentWindow -1 ;
       setCurrentWindow(newWindow)
