@@ -1,28 +1,26 @@
-import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { fetchPosts, updatePost } from "../../../store/post";
-import CreatePostModal from "../../ProfilePage/createPostModal";
-import { deletePost } from "../../../store/post";
-import profilePic from "../../NavBar/imgs/blank.png";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import "./PostFeed.css";
+import { fetchPosts, updatePost, deletePost } from "../../../store/post";
 import { Modal } from "../../../context/Modal";
-import { fetchStories } from "../../../store/story";
+import CreatePostModal from "../../ProfilePage/createPostModal";
+import profilePic from "../../NavBar/imgs/blank.png";
+import "./PostFeed.css";
 
 function PostFeed() {
   const dispatch = useDispatch();
+
   const [postDeleted, setPostDeleted] = useState(false);
+
   const [checkPost, setCheckPost] = useState(false);
+
   const [togglePost, setTogglePost] = useState(false);
+
   const [editPost, setEditPost] = useState(null);
+
   const [editContent, setEditContent] = useState(null);
+
   const [editId, setEditId] = useState(null);
-
-  const posts = useSelector((state) => state.posts);
-
-  const simpleUsers = useSelector((state) => state.simpleUsers);
-
-  const sessionUser = useSelector((state) => state.session.user);
 
   useEffect(() => {
     dispatch(fetchPosts());
@@ -31,6 +29,24 @@ function PostFeed() {
       setPostDeleted(false);
     }
   }, [postDeleted, checkPost]);
+
+  const posts = useSelector((state) => state.posts);
+
+  const simpleUsers = useSelector((state) => state.simpleUsers);
+
+  const sessionUser = useSelector((state) => state.session.user);
+
+  if (Object.keys(simpleUsers).length < 1) {
+    return null;
+  }
+
+  if (Object.keys(posts).length < 1) {
+    return null;
+  }
+
+  if (simpleUsers[sessionUser.id]?.profile_picture === undefined) {
+    return null;
+  }
 
   const handleNewPost = (e) => {
     e.preventDefault();
@@ -77,7 +93,7 @@ function PostFeed() {
 
   function getTimeElapsed(createdAt) {
     const previous = new Date(createdAt);
-    const now = new Date(); // get current datetime
+    const now = new Date();
     const comparedTime = now.valueOf() - previous.valueOf();
     return formatDateTime(comparedTime);
   }
@@ -109,17 +125,6 @@ function PostFeed() {
     return `${value}px`;
   }
 
-  if (Object.keys(simpleUsers).length < 1) {
-    return null;
-  }
-
-  if (Object.keys(posts).length < 1) {
-    return null;
-  }
-
-  if (simpleUsers[sessionUser.id]?.profile_picture === undefined) {
-    return null;
-  }
   return (
     <>
       <div className="create-post-modal">

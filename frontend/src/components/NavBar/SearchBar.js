@@ -118,21 +118,5 @@ function SearchBar({ setTyped, closeModal, setDiv }) {
 
 export default SearchBar;
 
-{
-  /* {recentSearches.length > 0 && !filteredUsers && Object.keys(recentSearches).length > 0 &&
-              Object.values(recentSearches).map((user) => {
-                return (
-                  <Link
-                    className="result-user"
-                    to={`/ProfilePage/${user.id}`}
-                  >{`${user.first_name} ${user.last_name}`}</Link>
-              );
-                
-      })} */
-}
 
-// setRecentSearches((users) => {
-//   return { ...users, user };
-// });
 
-//const [typed, setTyped] = useState("");

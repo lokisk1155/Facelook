@@ -15,6 +15,7 @@ export const addAll = (stories) => ({
   payload: stories,
 });
 
+
 export const createStory = (story, location, formData) => async (dispatch) => {
   const storyRequest = await csrfFetch(`/api/stories`, {
     method: "POST",
@@ -52,3 +53,5 @@ export const storiesReducer = (previousState = {}, action) => {
       return previousState;
   }
 };
+
+

@@ -1,15 +1,13 @@
 class Post < ApplicationRecord
-    validates :content, :user_id, presence: true
-    
-    belongs_to :user
+  validates :content, :user_id, presence: true
 
-    has_many :comments
+  belongs_to :user
 
-    has_many :likes
+  has_many :comments
 
-    has_one_attached :photo
+  has_many :likes
 
-    def user_posts(author_id)
-    end
-  end
-  
+  has_one_attached :photo
+
+  def user_posts(author_id); end
+end

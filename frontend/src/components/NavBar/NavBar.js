@@ -12,7 +12,6 @@ import { useLocation } from "react-router-dom";
 import { Modal } from "../../context/Modal";
 
 function NavBar() {
-  //const searchRef = useRef();
   const user = useSelector((state) => state.session.user);
 
   const simpleUsers = useSelector((state) => state.simpleUsers);
@@ -142,20 +141,3 @@ function NavBar() {
 }
 
 export default NavBar;
-
-// useEffect(() => {
-//   const checkClickElseWhere = (e) => {
-//     e.preventDefault();
-//     if (
-//       toggleSearch &&
-//       searchRef.current &&
-//       !searchRef.current.contains(e.target)
-//     ) {
-//       setToggleSearch(false);
-//     }
-//   };
-//   document.addEventListener("click", checkClickElseWhere);
-//   return () => {
-//     document.removeEventListener("click", checkClickElseWhere);
-//   };
-// }, [toggleSearch]);
