@@ -195,4 +195,3 @@ function Posts({ currentUser, sessionUser }) {
 
 export default Posts;
 
-]

@@ -10,7 +10,7 @@ import "./HomePage.css";
 function HomePage() {
   const dispatch = useDispatch();
 
-  const stories = useSelector((state) => state.stories);
+  const stories = useSelector((state) => state.stories.undefined);
 
   let limit = 3;
 

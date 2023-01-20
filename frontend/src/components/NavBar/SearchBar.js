@@ -118,5 +118,5 @@ function SearchBar({ setTyped, closeModal, setDiv }) {
 
 export default SearchBar;
 
-{
+
 
