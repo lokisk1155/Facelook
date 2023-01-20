@@ -11,7 +11,7 @@ import NavBar from "../NavBar/NavBar";
 function HomePage() {
   const dispatch = useDispatch();
 
-  const stories = useSelector((state) => state.stories.undefined);
+  const stories = useSelector((state) => state.stories);
 
   useEffect(() => {
     dispatch(fetchStories());
