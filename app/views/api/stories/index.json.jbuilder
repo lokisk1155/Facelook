@@ -22,11 +22,4 @@ if @all
   end
 end
 
-# json.set! userId do
-#     @storiesNestedUnderUser[userId].values.each do |story|
-#         json.set! story.id do
-#             json.extract! story, :id, :background_color, :font_size, :padding_left, :padding_right, :padding_y, :color, :text_content, :user_id
-#             json.picture story.photo.url
-#         end
-#     end
-# end
+

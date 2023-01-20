@@ -93,7 +93,7 @@ function PostFeed() {
 
   function getTimeElapsed(createdAt) {
     const previous = new Date(createdAt);
-    const now = new Date(); // get current datetime
+    const now = new Date();
     const comparedTime = now.valueOf() - previous.valueOf();
     return formatDateTime(comparedTime);
   }

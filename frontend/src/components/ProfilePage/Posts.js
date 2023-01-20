@@ -195,26 +195,4 @@ function Posts({ currentUser, sessionUser }) {
 
 export default Posts;
 
-// onClick={(() => handleUpdatePost(post.id))}>
-
-// const [togglePost, setTogglePost] = useState(false)
-// const [customPost, setCustomPost] = useState(false)
-
-// useEffect(() => {
-//   if (postDeleted) {
-//     setPostDeleted(false);
-//   }
-//   if (sessionUser.id === id) {
-//     setDisplayEditDelete(true);
-//   }
-//   if (allPosts) {
-//     if (id) {
-//       const filteredPosts = Object.values(allPosts);
-//       filteredPosts.filter((post) => post.user_id === id);
-//       setPosts(filteredPosts.reverse());
-//     } else {
-//       setPosts(allPosts.reverse());
-//     }
-//   }
-//   setBio(currentUser.bio);
-// }, [postDeleted]);
+]

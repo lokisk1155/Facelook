@@ -51,33 +51,3 @@ class Api::FriendsController < ApplicationController
     params.require(:friend).permit(:id, :sender_id, :receiver_id)
   end
 end
-
-# def index
-#     @sessionUserFriendIds = []
-#     @userFriends = []
-
-#     @friends = Friend.all
-#     @users = User.all
-
-#     @friends.each do |friend|
-#        if friend.sender_id == params[:user_id]
-#             @sessionUserFriendIds << friend.receiver_id
-#         elsif friend.receiver_id == params[:user_id]
-#             @sessionUserFriendIds << friend.sender_id
-#         end
-#     end
-
-#     @users.each do |user|
-#         @sessionUserFriendIds.each do |id|
-#             if user.id == id
-#                 @userFriends << user
-#             end
-#         end
-#     end
-
-#     if @userFriends.length > 0
-#          render `api/friends/index`
-#     else
-#         render json: { errors: 'No Friends!'}
-#     end
-#  end
