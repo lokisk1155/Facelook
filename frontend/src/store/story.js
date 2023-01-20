@@ -3,10 +3,13 @@ import { profilePage } from "./profilePage";
 
 const ADD_STORY = "stories/ADD_STORY";
 
+
+
 export const addStory = (story) => ({
   type: ADD_STORY,
   payload: story,
 });
+
 
 export const createStory = (story, location, formData) => async (dispatch) => {
   const storyRequest = await csrfFetch(`/api/stories?userId=${story.user_id}`, {
@@ -34,3 +37,5 @@ export const storiesReducer = (previousState = {}, action) => {
       return previousState;
   }
 };
+
+

@@ -1,9 +1,7 @@
-import "./StoriesHomeFeed.css";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import profilePic from "../../NavBar/imgs/blank.png";
-import { useState } from "react";
-import { useEffect } from "react";
+import "./StoriesHomeFeed.css";
 
 function StoriesHomeFeed({ stories }) {
   const history = useHistory();
@@ -12,21 +10,10 @@ function StoriesHomeFeed({ stories }) {
 
   const simpleUsers = useSelector((state) => state.simpleUsers);
 
-  const [x, setX] = useState(1);
-
-  const windowStories = [stories[x - 1], stories[x], stories[x + 1]];
-
   const sessionUserPicture = useSelector(
     (state) => state.simpleUsers[sessionUser.id]?.profile_picture
   );
 
-  useEffect(() => {
-    if (x >= Object.keys(stories).length - 1) {
-      setX(1);
-    }
-  }, [x]);
-
-  const sessionUserName = `${sessionUser.first_name} ${sessionUser.last_name}`;
   return (
     <>
       <div className="stories-header-container">
@@ -135,8 +122,8 @@ function StoriesHomeFeed({ stories }) {
 
         {Object.values(stories).map((story, index) => {
           return (
-            <Link to={`/stories/${story.id}`} style={{ width: "20%" }}>
-              {story.picture !== null ? (
+            <Link to={`/stories/${story?.user_id}`} style={{ width: "20%" }}>
+              {story?.picture !== null ? (
                 <div
                   className="story-img"
                   style={{
@@ -144,7 +131,7 @@ function StoriesHomeFeed({ stories }) {
                     height: "150px",
                     paddingTop: "5px",
                     borderRadius: "10px",
-                    backgroundImage: `url(${story.picture})`,
+                    backgroundImage: `url(${story?.picture})`,
                     backgroundPosition: "center",
                     backgroundRepeat: "no-repeat",
                     backgroundColor: "lightgrey",
@@ -157,7 +144,7 @@ function StoriesHomeFeed({ stories }) {
                       borderRadius: "50px",
                     }}
                     src={
-                      simpleUsers[story.user_id]?.profile_picture || profilePic
+                      simpleUsers[story?.user_id]?.profile_picture || profilePic
                     }
                   ></img>
                 </div>
@@ -166,7 +153,7 @@ function StoriesHomeFeed({ stories }) {
                   key={index}
                   className="indi-text-story-home-page"
                   style={{
-                    backgroundColor: story.background_color,
+                    backgroundColor: story?.background_color,
                     width: "100%",
                     height: "85%",
                     paddingTop: "5px",
@@ -180,7 +167,7 @@ function StoriesHomeFeed({ stories }) {
                       borderRadius: "50px",
                     }}
                     src={
-                      simpleUsers[story.user_id]?.profile_picture || profilePic
+                      simpleUsers[story?.user_id]?.profile_picture || profilePic
                     }
                   ></img>
                 </div>
@@ -188,7 +175,6 @@ function StoriesHomeFeed({ stories }) {
             </Link>
           );
         })}
-        {/* <button style={{ height: "10px", width: "10px"}} onClick={() => setX(x + 1)}> move window </button> */}
       </div>
     </>
   );

@@ -5,7 +5,7 @@ import { createPost } from "../../store/post";
 import profilePic from "../NavBar/imgs/blank.png";
 import { updatePost } from "../../store/post";
 import { useParams } from "react-router-dom";
-import CropEasy from "../crop";
+import CropEasy from "../crop/CropEasy";
 
 function CreatePostModal({
   currentUser,

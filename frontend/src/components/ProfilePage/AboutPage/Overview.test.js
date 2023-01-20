@@ -49,10 +49,7 @@ it(`renders user data `, async () => {
       </MemoryRouter>
     </Provider>
   );
-  // let tree = component.toJSON();
-  //console.log(component, 'root')
   expect(component).toBe(
     '<div class="content-container"><div><p></p><button>Add a workplace</button></div><div><p></p><button>Add Education</button></div><div><p></p><button>Add Location</button></div><div><p></p><button>Add Relationship Status</button></div></div>'
   );
-  // .toMatchSnapshot()
 });

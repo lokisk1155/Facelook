@@ -1,13 +1,9 @@
-import "./TextStory.css";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import "./TextStory.css";
 
 function TextStory({ submit }) {
-  const sessionUser = useSelector((state) => state.session.user);
-
-  const simpleUsers = useSelector((state) => state.simpleUsers);
-
   const [backgroundColor, setBackgroundColor] = useState("#1b74e4");
 
   const [fontSize, setFontSize] = useState("20px");
@@ -27,6 +23,10 @@ function TextStory({ submit }) {
   const [color, setColor] = useState("red");
 
   const [textContent, setTextContent] = useState("");
+
+  const sessionUser = useSelector((state) => state.session.user);
+
+  const simpleUsers = useSelector((state) => state.simpleUsers);
 
   const styles = {
     background_color: backgroundColor,

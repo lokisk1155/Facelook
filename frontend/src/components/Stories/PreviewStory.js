@@ -1,17 +1,19 @@
 import { useState } from "react";
-import StoryCrop from "../crop/StoryCrop";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { createStory } from "../../store/story";
-import { useHistory } from "react-router-dom";
+import StoryCrop from "../crop/StoryCrop";
 
 function PreviewStory({ file, setFile, url, setUrl }) {
   const dispatch = useDispatch();
+
   const history = useHistory();
-  const simpleUsers = useSelector((state) => state.simpleUsers);
-  const sessionUser = useSelector((state) => state.session.user);
 
   const [fileSaved, setFileSaved] = useState(null);
+
+  const simpleUsers = useSelector((state) => state.simpleUsers);
+
+  const sessionUser = useSelector((state) => state.session.user);
 
   const handleSubmit = (e) => {
     e.preventDefault();
