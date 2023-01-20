@@ -68,7 +68,7 @@ function StoryShow() {
         previousIndex = userIds.length - 1;
       }
       const previousUserId = userIds[previousIndex];
-      setCurrentWindow(0)
+      setCurrentWindow(stories[previousUserId].length - 1)
       return history.push(`/stories/${previousUserId}`);
     } else {
       const newWindow = currentWindow -1 ;
