@@ -42,7 +42,7 @@ function StoryShow() {
 
   const handleNext = (e) => {
     e.preventDefault() 
-    if (currentWindow - 1 >= stories[id].length) {
+    if (currentWindow === stories[id].length - 1) {
       const userIds = Object.keys(stories);
       const currentIndex = userIds.findIndex(userId => userId === id);
       let nextIndex = currentIndex + 1;
