@@ -16,6 +16,8 @@ function StoryShow() {
 
   const [currentWindow, setCurrentWindow] = useState(0);
 
+  console.log(currentWindow, 'current window')
+
   useEffect(() => {
     const getData = async () => {
       await dispatch(fetchStories());
@@ -36,6 +38,31 @@ function StoryShow() {
 
   for (const id in stories) {
     usersWithStories[id] = simpleUsers[id];
+  }
+
+  const handleNext = (e) => {
+    e.preventDefault() 
+    if (currentWindow >= Object.keys(stories[id]).length) {
+      let nextUserId = parseInt(id) + 1
+      return history.push(`/stories/${nextUserId}`)
+    } else {
+      const newWindow = currentWindow + 1;
+      setCurrentWindow(newWindow)
+    }
+  }
+
+  const handlePrevious = (e) => {
+    e.preventDefault() 
+    if (currentWindow < 1) {
+      let nextUserId = parseInt(id) - 1
+      if (nextUserId == 0) {
+        nextUserId = 1
+      }
+      return history.push(`/stories/${nextUserId}`)
+    } else {
+      const newWindow = currentWindow -1 ;
+      setCurrentWindow(newWindow)
+    }
   }
 
   return (
@@ -188,21 +215,21 @@ function StoryShow() {
             }}
           ></img>
         )}
-      </div>
-      <button
-        onClick={() =>
-          setCurrentWindow(() => {
-            if (currentWindow >= Object.keys(stories[id]).length) {
-              return 0;
-            } else {
-              const newWindow = currentWindow + 1;
-              return newWindow;
-            }
-          })
-        }
-      >
-        next picture
+         <button
+          style={{ height: "50px"}}
+          onClick={handleNext}
+          
+        >
+        next
       </button>
+        <button
+          style={{ height: "50px"}}
+          onClick={handlePrevious}
+        >
+        previous
+      </button>
+      </div>
+
     </div>
   );
 }
