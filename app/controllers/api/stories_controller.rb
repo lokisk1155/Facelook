@@ -31,7 +31,6 @@ class Api::StoriesController < ApplicationController
           @stories = @storiesNestedUnderUser
         end
         render 'api/stories/index'
-
     end
 end 
 
