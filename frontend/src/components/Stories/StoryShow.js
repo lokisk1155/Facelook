@@ -16,6 +16,8 @@ function StoryShow() {
 
   const [currentWindow, setCurrentWindow] = useState(0);
 
+  console.log(currentWindow, 'current window')
+
   useEffect(() => {
     const getData = async () => {
       await dispatch(fetchStories());
@@ -31,11 +33,48 @@ function StoryShow() {
   if (!stories[id] || !simpleUsers) {
     return null;
   }
+  
   const currentStory = stories[id][currentWindow];
   const usersWithStories = {};
 
   for (const id in stories) {
     usersWithStories[id] = simpleUsers[id];
+  }
+
+  const handleNext = (e) => {
+    e.preventDefault() 
+    if (currentWindow === stories[id].length - 1) {
+      const userIds = Object.keys(stories);
+      const currentIndex = userIds.findIndex(userId => userId === id);
+      let nextIndex = currentIndex + 1;
+      if (nextIndex === userIds.length) {
+        nextIndex = 0;
+      }
+      const nextUserId = userIds[nextIndex];
+      setCurrentWindow(0)
+      return history.push(`/stories/${nextUserId}`);
+    } else {
+      const newWindow = currentWindow + 1;
+      setCurrentWindow(newWindow)
+    }
+  }
+
+  const handlePrevious = (e) => {
+    e.preventDefault() 
+    if (currentWindow <= 1) {
+      const userIds = Object.keys(stories);
+      const currentIndex = userIds.findIndex(userId => userId === id);
+      let previousIndex = currentIndex - 1;
+      if (previousIndex < 0) {
+        previousIndex = userIds.length - 1;
+      }
+      const previousUserId = userIds[previousIndex];
+      setCurrentWindow(stories[previousUserId].length - 1)
+      return history.push(`/stories/${previousUserId}`);
+    } else {
+      const newWindow = currentWindow -1 ;
+      setCurrentWindow(newWindow)
+    }
   }
 
   return (
@@ -102,12 +141,13 @@ function StoryShow() {
                   className="all-stories-mapped"
                   style={{
                     display: "flex",
-                    height: "65px",
                     width: "100%",
                     alignItems: "center",
                     paddingLeft: "10px",
                     borderRadius: "5px",
                     padding: "5px",
+                    backgroundColor: user?.user_id == id ? "lightgrey" : "#fff", height: "65px", width: "100%" 
+              
                   }}
                   to={`/stories/${user?.user_id}`}
                 >
@@ -134,7 +174,7 @@ function StoryShow() {
           <div
             className="actual-story-show-background"
             style={{
-              height: "90%",
+              height: "75%",
               width: "50%",
               position: "absolute",
               borderRadius: "7px",
@@ -173,7 +213,7 @@ function StoryShow() {
             className="actual-text-story-background"
             src={currentStory?.picture}
             style={{
-              height: "90%",
+              height: "75%",
               width: "65%",
               position: "absolute",
               borderRadius: "7px",
@@ -188,21 +228,21 @@ function StoryShow() {
             }}
           ></img>
         )}
-      </div>
-      <button
-        onClick={() =>
-          setCurrentWindow(() => {
-            if (currentWindow >= Object.keys(stories[id]).length) {
-              return 0;
-            } else {
-              const newWindow = currentWindow + 1;
-              return newWindow;
-            }
-          })
-        }
-      >
-        next picture
+         <button
+          style={{ height: "50px"}}
+          onClick={handleNext}
+          
+        >
+        next
       </button>
+        <button
+          style={{ height: "50px"}}
+          onClick={handlePrevious}
+        >
+        previous
+      </button>
+      </div>
+
     </div>
   );
 }

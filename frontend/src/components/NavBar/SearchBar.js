@@ -10,35 +10,32 @@ function SearchBar({ setTyped, closeModal, setDiv }) {
   const users = useSelector((state) => state.simpleUsers);
 
   const history = useHistory();
-  const [filteredUsers, setFilteredUsers] = useState(null);
+  const [filteredUsers, setFilteredUsers] = useState([]);
   const [recentSearches, setRecentSearches] = useState([]);
 
   const [frTyped, setfrTyped] = useState("");
 
   useEffect(() => {
-    if (users && frTyped.length > 1) {
-      let currentMatches = Object.values(users).filter((user) => {
-        return user.name.startsWith(frTyped.toLowerCase());
+    if (users) {
+      let currentMatches = Object.values(users)?.filter((user) => {
+        return user?.name.startsWith(frTyped.toLowerCase());
       });
 
       if (currentMatches) {
         setFilteredUsers(currentMatches);
+      } else {
+        setFilteredUsers(Object.values(users).slice(0, 10))
       }
-    } else {
-      setFilteredUsers(Object.values(users).slice(0, 5));
     }
-
     if (frTyped.length === 0) {
       setDiv(0);
     } else {
-      setDiv(Object.values(filteredUsers).length);
+      setDiv(Object.values(filteredUsers)?.length);
     }
     setTyped(frTyped);
   }, [frTyped]);
 
-  if (!users) {
-    return null;
-  }
+
 
   return (
     <>
@@ -86,17 +83,17 @@ function SearchBar({ setTyped, closeModal, setDiv }) {
             console.log(user);
             return (
               <Link
-                to={`/ProfilePage/${user.user_id}`}
+                to={`/ProfilePage/${user?.user_id}`}
                 style={{ textDecoration: "none", color: "black" }}
               >
-                <div key={user.id}>
+                <div key={user?.id}>
                   <div className="result-user-div">
                     <img
                       className="result-user-profile-pic"
                       src={user.profile_picture || profilePic}
                     />
 
-                    <p className="result-user-name">{user.name}</p>
+                    <p className="result-user-name">{user?.name}</p>
                   </div>
                 </div>
               </Link>
