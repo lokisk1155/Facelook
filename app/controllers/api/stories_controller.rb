@@ -19,13 +19,13 @@ class Api::StoriesController < ApplicationController
         @homepage = false
         @all = false 
         if params[:limit]
-          @stories = StoryGrouper.by_user(current_user.id)
+          @stories = Story.by_user(current_user.id)
           @homepage = true
         else
           @storiesNestedUnderUser = {}
           user_ids = Story.select(:user_id).distinct.pluck(:user_id)
           user_ids.each do |user_id|
-            @storiesNestedUnderUser.merge!(StoryGrouper.group_by_user(user_id))
+            @storiesNestedUnderUser.merge!(Story.group_by_user(user_id))
           end
           @all = true
           @stories = @storiesNestedUnderUser
