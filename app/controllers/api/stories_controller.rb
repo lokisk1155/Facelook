@@ -18,7 +18,6 @@ class Api::StoriesController < ApplicationController
         @stories = Story.all
         @homepage = false
         @all = false 
-        debugger 
         if params[:limit]
           @stories = StoryGrouper.by_user(current_user.id)
           @homepage = true
