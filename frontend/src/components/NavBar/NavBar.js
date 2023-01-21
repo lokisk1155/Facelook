@@ -38,15 +38,7 @@ function NavBar() {
     }
   }, [location, fillColor]);
 
-  if (!user) {
-    return <Redirect to="/login_page" />;
-  }
-
-  if (!simpleUsers[user.id]) {
-    return null;
-  }
-
-  const navbarPic = simpleUsers[user.id].profile_picture || profilePic;
+  const navbarPic = simpleUsers[user?.id]?.profile_picture || profilePic;
 
   return (
     <div className="navbar-container">

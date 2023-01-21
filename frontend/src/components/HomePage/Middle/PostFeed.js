@@ -24,7 +24,6 @@ function PostFeed() {
 
   useEffect(() => {
     dispatch(fetchPosts());
-
     if (postDeleted) {
       setPostDeleted(false);
     }
@@ -35,18 +34,6 @@ function PostFeed() {
   const simpleUsers = useSelector((state) => state.simpleUsers);
 
   const sessionUser = useSelector((state) => state.session.user);
-
-  if (Object.keys(simpleUsers).length < 1) {
-    return null;
-  }
-
-  if (Object.keys(posts).length < 1) {
-    return null;
-  }
-
-  if (simpleUsers[sessionUser.id]?.profile_picture === undefined) {
-    return null;
-  }
 
   const handleNewPost = (e) => {
     e.preventDefault();
@@ -136,7 +123,7 @@ function PostFeed() {
           {
             <img
               className="profile-pic-inside-create-post"
-              src={simpleUsers[sessionUser.id].profile_picture || profilePic}
+              src={simpleUsers[sessionUser.id]?.profile_picture || profilePic}
             ></img>
           }
         </div>
@@ -148,7 +135,7 @@ function PostFeed() {
               postContent={"What's on your mind?"}
               header={"Create post"}
               closeModal={setTogglePost}
-              userId={sessionUser.id}
+              userId={sessionUser?.id}
               location={"home"}
             />
           </Modal>
@@ -161,11 +148,11 @@ function PostFeed() {
             .map((post) => {
               return (
                 <div
-                  key={post.id}
+                  key={post?.id}
                   className="individual-post"
                   style={{
                     height: contentHeight(post),
-                    minHeight: post.picture ? "400px" : "85px",
+                    minHeight: post?.picture ? "400px" : "85px",
                     minWidth: "300px",
                     marginBottom: "15px",
                   }}
@@ -173,7 +160,7 @@ function PostFeed() {
                   <div
                     className="post-header"
                     style={{
-                      height: post.picture ? "9%" : "25%",
+                      height: post?.picture ? "9%" : "25%",
                       minHeight: "33px",
                     }}
                   >
@@ -181,7 +168,7 @@ function PostFeed() {
                       className="picture-and-name"
                       style={{ display: "flex" }}
                     >
-                      <Link to={`/ProfilePage/${post.user_id}`}>
+                      <Link to={`/ProfilePage/${post?.user_id}`}>
                         <img
                           style={{
                             height: "30px",
@@ -190,7 +177,7 @@ function PostFeed() {
                             padding: "7px",
                           }}
                           src={
-                            simpleUsers[post.user_id].profile_picture ||
+                            simpleUsers[post?.user_id]?.profile_picture ||
                             profilePic
                           }
                         ></img>
@@ -199,7 +186,7 @@ function PostFeed() {
                         <h5
                           style={{ height: "50%", margin: "0", padding: "2px" }}
                         >
-                          {simpleUsers[post.user_id].name}
+                          {simpleUsers[post?.user_id]?.name}
                         </h5>
                         <p
                           style={{
@@ -210,11 +197,11 @@ function PostFeed() {
                             padding: "3px",
                           }}
                         >
-                          {getTimeElapsed(post.created_at)}
+                          {getTimeElapsed(post?.created_at)}
                         </p>
                       </div>
                     </div>
-                    {post.user_id === sessionUser.id ? (
+                    {post?.user_id === sessionUser?.id ? (
                       <div className="svg-dots">
                         <>
                           <div className="svg-container">
@@ -223,7 +210,7 @@ function PostFeed() {
                                 visibility:
                                   editPost === post.id ? "hidden" : "",
                               }}
-                              onClick={() => setEditPost(post.id)}
+                              onClick={() => setEditPost(post?.id)}
                               fill="currentColor"
                               viewBox="0 0 20 20"
                               width="1em"
@@ -237,7 +224,7 @@ function PostFeed() {
                               </g>
                             </svg>
                           </div>
-                          {editPost === post.id ? (
+                          {editPost === post?.id ? (
                             <div
                               className="svg-dots-dropdown-container"
                               style={{
@@ -309,7 +296,7 @@ function PostFeed() {
                       <p
                         style={{ height: "100%", margin: "0", padding: "2px" }}
                       >
-                        {post.content}
+                        {post?.content}
                       </p>
                     ) : (
                       <div
@@ -325,14 +312,14 @@ function PostFeed() {
                           className="post-content-textarea"
                           autoFocus={editId}
                           onChange={(e) => setEditContent(e.target.value)}
-                          placeholder={post.content}
+                          placeholder={post?.content}
                           maxLength="150"
                           style={{
                             width: "80%",
                             resize: "none",
                             fontSize: "12px",
                             minHeight: "10px",
-                            height: post.picture ? "100%" : "75%",
+                            height: post?.picture ? "100%" : "75%",
                           }}
                         ></textarea>
                         <div
@@ -368,7 +355,7 @@ function PostFeed() {
                                 editContent?.length < 1 ? "hidden" : "",
                             }}
                             className="save-cancel-individual-post-buttons"
-                            onClick={submitUpdate(post.id)}
+                            onClick={submitUpdate(post?.id)}
                           >
                             save
                           </button>
@@ -376,12 +363,12 @@ function PostFeed() {
                       </div>
                     )}
                   </div>
-                  {post.picture ? (
+                  {post?.picture ? (
                     <img
-                      src={post.picture}
+                      src={post?.picture}
                       style={{
                         width: "100%",
-                        height: imageHeight(post.content),
+                        height: imageHeight(post?.content),
                         paddingTop: "5px",
                       }}
                     />
