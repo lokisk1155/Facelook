@@ -16,7 +16,7 @@ function StoryShow() {
 
   const [currentWindow, setCurrentWindow] = useState(0);
 
-  console.log(currentWindow, 'current window')
+  console.log(currentWindow, "current window");
 
   useEffect(() => {
     const getData = async () => {
@@ -36,52 +36,52 @@ function StoryShow() {
   const currentStory = stories[id][currentWindow];
 
   if (currentStory === undefined) {
-    return null
+    return null;
   }
-  
+
   const usersWithStories = {};
 
   for (const id in stories) {
     if (simpleUsers[id] !== undefined) {
       usersWithStories[id] = simpleUsers[id];
-    } 
+    }
   }
 
   const handleNext = (e) => {
-    e.preventDefault() 
+    e.preventDefault();
     if (currentWindow === stories[id].length - 1) {
       const userIds = Object.keys(stories);
-      const currentIndex = userIds.findIndex(userId => userId === id);
+      const currentIndex = userIds.findIndex((userId) => userId === id);
       let nextIndex = currentIndex + 1;
       if (nextIndex === userIds.length) {
         nextIndex = 0;
       }
       const nextUserId = userIds[nextIndex];
-      setCurrentWindow(0)
+      setCurrentWindow(0);
       return history.push(`/stories/${nextUserId}`);
     } else {
       const newWindow = currentWindow + 1;
-      setCurrentWindow(newWindow)
+      setCurrentWindow(newWindow);
     }
-  }
+  };
 
   const handlePrevious = (e) => {
-    e.preventDefault() 
+    e.preventDefault();
     if (currentWindow <= 1) {
       const userIds = Object.keys(stories);
-      const currentIndex = userIds.findIndex(userId => userId === id);
+      const currentIndex = userIds.findIndex((userId) => userId === id);
       let previousIndex = currentIndex - 1;
       if (previousIndex < 0) {
         previousIndex = userIds.length - 1;
       }
       const previousUserId = userIds[previousIndex];
-      setCurrentWindow(stories[previousUserId].length - 1)
+      setCurrentWindow(stories[previousUserId].length - 1);
       return history.push(`/stories/${previousUserId}`);
     } else {
-      const newWindow = currentWindow -1 ;
-      setCurrentWindow(newWindow)
+      const newWindow = currentWindow - 1;
+      setCurrentWindow(newWindow);
     }
-  }
+  };
 
   return (
     <div
@@ -152,8 +152,9 @@ function StoryShow() {
                     paddingLeft: "10px",
                     borderRadius: "5px",
                     padding: "5px",
-                    backgroundColor: user.user_id == id ? "lightgrey" : "#fff", height: "65px", width: "100%" 
-              
+                    backgroundColor: user.user_id == id ? "lightgrey" : "#fff",
+                    height: "65px",
+                    width: "100%",
                   }}
                   to={`/stories/${user.user_id}`}
                 >
@@ -234,21 +235,13 @@ function StoryShow() {
             }}
           ></img>
         )}
-         <button
-          style={{ height: "50px"}}
-          onClick={handleNext}
-          
-        >
-        next
-      </button>
-        <button
-          style={{ height: "50px"}}
-          onClick={handlePrevious}
-        >
-        previous
-      </button>
+        <button style={{ height: "50px" }} onClick={handleNext}>
+          next
+        </button>
+        <button style={{ height: "50px" }} onClick={handlePrevious}>
+          previous
+        </button>
       </div>
-
     </div>
   );
 }

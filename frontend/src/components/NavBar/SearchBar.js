@@ -24,7 +24,7 @@ function SearchBar({ setTyped, closeModal, setDiv }) {
       if (currentMatches) {
         setFilteredUsers(currentMatches);
       } else {
-        setFilteredUsers(Object.values(users).slice(0, 10))
+        setFilteredUsers(Object.values(users).slice(0, 10));
       }
     }
     if (frTyped.length === 0) {
@@ -34,8 +34,6 @@ function SearchBar({ setTyped, closeModal, setDiv }) {
     }
     setTyped(frTyped);
   }, [frTyped]);
-
-
 
   return (
     <>
@@ -114,6 +112,3 @@ function SearchBar({ setTyped, closeModal, setDiv }) {
 }
 
 export default SearchBar;
-
-
-
