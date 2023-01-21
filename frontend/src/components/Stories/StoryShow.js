@@ -30,15 +30,21 @@ function StoryShow() {
 
   const stories = useSelector((state) => state.stories);
 
-  if (!stories[id] || !simpleUsers) {
+  if (!stories[id] || Object.values(simpleUsers).length === 0) {
     return null;
   }
-  
   const currentStory = stories[id][currentWindow];
+
+  if (currentStory === undefined) {
+    return null
+  }
+  
   const usersWithStories = {};
 
   for (const id in stories) {
-    usersWithStories[id] = simpleUsers[id];
+    if (simpleUsers[id] !== undefined) {
+      usersWithStories[id] = simpleUsers[id];
+    } 
   }
 
   const handleNext = (e) => {
@@ -146,10 +152,10 @@ function StoryShow() {
                     paddingLeft: "10px",
                     borderRadius: "5px",
                     padding: "5px",
-                    backgroundColor: user?.user_id == id ? "lightgrey" : "#fff", height: "65px", width: "100%" 
+                    backgroundColor: user.user_id == id ? "lightgrey" : "#fff", height: "65px", width: "100%" 
               
                   }}
-                  to={`/stories/${user?.user_id}`}
+                  to={`/stories/${user.user_id}`}
                 >
                   <img
                     style={{
@@ -157,9 +163,9 @@ function StoryShow() {
                       width: "50px",
                       borderRadius: "50px",
                     }}
-                    src={user?.profile_picture || profilePic}
+                    src={user.profile_picture || profilePic}
                   />
-                  <p>{user?.name}</p>
+                  <p>{user.name}</p>
                 </Link>
               );
             })}
@@ -170,7 +176,7 @@ function StoryShow() {
         className="story-show-preview-container"
         style={{ width: "80%", backgroundColor: "black", position: "relative" }}
       >
-        {currentStory?.picture === null ? (
+        {currentStory.picture === null ? (
           <div
             className="actual-story-show-background"
             style={{
@@ -178,7 +184,7 @@ function StoryShow() {
               width: "50%",
               position: "absolute",
               borderRadius: "7px",
-              backgroundColor: currentStory?.background_color,
+              backgroundColor: currentStory.background_color,
               minWidth: "200px",
               minHeight: "200px",
               top: "50%",
@@ -194,24 +200,24 @@ function StoryShow() {
             <p
               className="actual-story-show-text"
               style={{
-                fontSize: currentStory?.font_size,
+                fontSize: currentStory.font_size,
                 justifyContent: "center",
-                paddingTop: `${currentStory?.padding_top}px`,
-                paddingLeft: `${currentStory?.padding_left}px`,
-                paddingRight: `${currentStory?.padding_right}px`,
+                paddingTop: `${currentStory.padding_top}px`,
+                paddingLeft: `${currentStory.padding_left}px`,
+                paddingRight: `${currentStory.padding_right}px`,
                 color: "black",
                 minWidth: "150px",
                 minHeight: "200px",
                 position: "absolute",
               }}
             >
-              {currentStory?.text_content}
+              {currentStory.text_content}
             </p>
           </div>
         ) : (
           <img
             className="actual-text-story-background"
-            src={currentStory?.picture}
+            src={currentStory.picture}
             style={{
               height: "75%",
               width: "65%",
