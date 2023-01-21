@@ -172,7 +172,7 @@ function StoryShow() {
           <div
             className="actual-story-show-background"
             style={{
-              height: "90%",
+              height: "75%",
               width: "50%",
               position: "absolute",
               borderRadius: "7px",
@@ -211,7 +211,7 @@ function StoryShow() {
             className="actual-text-story-background"
             src={currentStory?.picture}
             style={{
-              height: "90%",
+              height: "75%",
               width: "65%",
               position: "absolute",
               borderRadius: "7px",
