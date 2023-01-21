@@ -12,10 +12,13 @@ class Api::StoriesController < ApplicationController
 
     return unless @story.save
 
+  end
+
     def index
         @stories = Story.all
         @homepage = false
-        @all = false
+        @all = false 
+        debugger 
         if params[:limit]
           @stories = StoryGrouper.by_user(current_user.id)
           @homepage = true
@@ -29,7 +32,7 @@ class Api::StoriesController < ApplicationController
           @stories = @storiesNestedUnderUser
         end
         render 'api/stories/index'
-      end
+
     end
 end 
 

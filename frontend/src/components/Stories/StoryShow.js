@@ -22,7 +22,7 @@ function StoryShow() {
       await dispatch(getSimpleUsers());
     };
     getData();
-  }, [id]);
+  }, []);
 
   const simpleUsers = useSelector((state) => state.simpleUsers);
 
@@ -95,10 +95,10 @@ function StoryShow() {
         >
           <h4>All Stories</h4>
           {stories &&
-            Object.values(usersWithStories).map((user) => {
+            Object.values(usersWithStories).map((user, index) => {
               return (
                 <Link
-                  key={user?.user_id}
+                  key={index}
                   className="all-stories-mapped"
                   style={{
                     display: "flex",
