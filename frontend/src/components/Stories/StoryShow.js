@@ -33,6 +33,7 @@ function StoryShow() {
   if (!stories[id] || !simpleUsers) {
     return null;
   }
+  
   const currentStory = stories[id][currentWindow];
   const usersWithStories = {};
 
@@ -134,18 +135,20 @@ function StoryShow() {
           <h4>All Stories</h4>
           {stories &&
             Object.values(usersWithStories).map((user) => {
+              console.log(user, 'user')
               return (
                 <Link
                   key={user?.user_id}
                   className="all-stories-mapped"
                   style={{
                     display: "flex",
-                    height: "65px",
                     width: "100%",
                     alignItems: "center",
                     paddingLeft: "10px",
                     borderRadius: "5px",
                     padding: "5px",
+                    backgroundColor: user?.user_id == id ? "lightgrey" : "#fff", height: "65px", width: "100%" 
+              
                   }}
                   to={`/stories/${user?.user_id}`}
                 >
