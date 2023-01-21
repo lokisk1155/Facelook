@@ -12,11 +12,25 @@ class Api::StoriesController < ApplicationController
 
     return unless @story.save
 
-    render 'api/stories/show'
   end
 
-  def index 
-    @stories = Story.all.last(3)
-    render 'api/stories/index'
-  end 
-end
+    def index
+        @stories = Story.all
+        @homepage = false
+        @all = false 
+        if params[:limit]
+          @stories = StoryGrouper.by_user(current_user.id)
+          @homepage = true
+        else
+          @storiesNestedUnderUser = {}
+          user_ids = Story.select(:user_id).distinct.pluck(:user_id)
+          user_ids.each do |user_id|
+            @storiesNestedUnderUser.merge!(StoryGrouper.group_by_user(user_id))
+          end
+          @all = true
+          @stories = @storiesNestedUnderUser
+        end
+        render 'api/stories/index'
+    end
+end 
+

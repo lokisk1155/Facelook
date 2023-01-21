@@ -10,16 +10,16 @@ import "./HomePage.css";
 function HomePage() {
   const dispatch = useDispatch();
 
-  const stories = useSelector((state) => state.stories.undefined);
+  const stories = useSelector((state) => state.stories);
+  const posts = useSelector((state) => state.posts);
 
   let limit = 3;
 
   useEffect(() => {
-    dispatch(fetchStories(limit));
-    dispatch(fetchPosts());
+    Promise.all([dispatch(fetchStories(limit)), dispatch(fetchPosts())]);
   }, []);
 
-  if (!stories) {
+  if (!stories || !posts) {
     return null;
   }
 
@@ -28,7 +28,6 @@ function HomePage() {
       <NavBar />
       <div className="home-page-container">
         <div className="column"></div>
-
         <div className="middle">
           <StoriesHomeFeed stories={stories} />
           <PostFeed />

@@ -142,6 +142,7 @@ function StoriesHomeFeed({ stories }) {
                       height: "30px",
                       width: "30px",
                       borderRadius: "50px",
+                      border: "4px solid rgb(27, 116, 228)",
                     }}
                     src={
                       simpleUsers[story?.user_id]?.profile_picture || profilePic
@@ -165,6 +166,8 @@ function StoriesHomeFeed({ stories }) {
                       height: "30px",
                       width: "30px",
                       borderRadius: "50px",
+                      marginLeft: "5px",
+                      border: "4px solid rgb(27, 116, 228)",
                     }}
                     src={
                       simpleUsers[story?.user_id]?.profile_picture || profilePic
