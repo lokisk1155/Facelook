@@ -16,7 +16,7 @@ function StoryShow() {
 
   const [currentWindow, setCurrentWindow] = useState(0);
 
-  console.log(currentWindow, "current window");
+  const sessionUser = useSelector((state) => state.session.user)
 
   useEffect(() => {
     const getData = async () => {
@@ -28,54 +28,68 @@ function StoryShow() {
 
   const simpleUsers = useSelector((state) => state.simpleUsers);
 
-  const stories = useSelector((state) => state.stories);
+  const stories = useSelector(state => state.stories)
+
+  const sessionUserId = sessionUser.id
+
 
   if (!stories[id] || Object.values(simpleUsers).length === 0) {
     return null;
   }
   const currentStory = stories[id][currentWindow];
 
+
   if (currentStory === undefined) {
     return null;
   }
 
-  const usersWithStories = {};
-
+  const usersWithStories = {}
   for (const id in stories) {
-    if (simpleUsers[id] !== undefined) {
-      usersWithStories[id] = simpleUsers[id];
+    if (simpleUsers[id] !== undefined && id != sessionUserId ) {
+      usersWithStories[id] = simpleUsers[id]
     }
   }
 
+  console.log(usersWithStories)
+
   const handleNext = (e) => {
     e.preventDefault();
-    if (currentWindow === stories[id].length - 1) {
-      const userIds = Object.keys(stories);
-      const currentIndex = userIds.findIndex((userId) => userId === id);
-      let nextIndex = currentIndex + 1;
-      if (nextIndex === userIds.length) {
-        nextIndex = 0;
+    if (id == sessionUserId) {
+      for (const id in stories) {
+      if (simpleUsers[id] !== undefined && id != sessionUserId ) {
+        return history.push(`/stories/${id}`)
       }
-      const nextUserId = userIds[nextIndex];
-      setCurrentWindow(0);
-      return history.push(`/stories/${nextUserId}`);
-    } else {
-      const newWindow = currentWindow + 1;
-      setCurrentWindow(newWindow);
+      }
+      } else {
+        if (currentWindow === Object.values(stories[id]).length - 1) {
+          const userIds = Object.keys(usersWithStories);
+          const currentIndex = userIds.findIndex((userId) => userId == id);
+          let nextIndex = currentIndex + 1;
+          if (nextIndex === userIds.length) {
+            nextIndex = 0;
+          }
+          const nextUserId = userIds[nextIndex];
+          setCurrentWindow(0);
+          return history.push(`/stories/${nextUserId}`);
+        } else {
+          const newWindow = currentWindow + 1;
+          setCurrentWindow(newWindow);
+        }
     }
+
   };
 
   const handlePrevious = (e) => {
     e.preventDefault();
     if (currentWindow <= 1) {
-      const userIds = Object.keys(stories);
+      const userIds = Object.keys(usersWithStories);
       const currentIndex = userIds.findIndex((userId) => userId === id);
       let previousIndex = currentIndex - 1;
       if (previousIndex < 0) {
         previousIndex = userIds.length - 1;
       }
       const previousUserId = userIds[previousIndex];
-      setCurrentWindow(stories[previousUserId].length - 1);
+      setCurrentWindow(0);
       return history.push(`/stories/${previousUserId}`);
     } else {
       const newWindow = currentWindow - 1;
@@ -129,6 +143,31 @@ function StoryShow() {
             Create Story
           </button>
         </div>
+        {stories[sessionUserId] !== undefined ? <Link
+                  onClick={() => setCurrentWindow(0)}
+                  style={{
+                    display: "flex",
+                    width: "100%",
+                    alignItems: "center",
+                    paddingLeft: "10px",
+                    borderRadius: "5px",
+                    padding: "5px",
+                    backgroundColor: sessionUser.id == id ? "lightgrey" : "#fff",
+                    height: "65px",
+                    width: "100%",
+                  }}
+                  to={`/stories/${sessionUser.id}`}
+                >
+                  <img
+                    style={{
+                      height: "50px",
+                      width: "50px",
+                      borderRadius: "50px",
+                    }}
+                    src={simpleUsers[sessionUser.id].profile_picture || profilePic}
+                  />
+                  <p>{simpleUsers[sessionUser.id].name}</p>
+                </Link> : null}
         <br></br>
         <div
           style={{
@@ -142,6 +181,7 @@ function StoryShow() {
           {stories &&
             Object.values(usersWithStories).map((user, index) => {
               return (
+                <>
                 <Link
                   key={index}
                   className="all-stories-mapped"
@@ -169,10 +209,11 @@ function StoryShow() {
                   />
                   <p>{user.name}</p>
                 </Link>
+                </>
               );
-            })}
+            })} 
         </div>
-      </div>
+      </div> 
 
       <div
         className="story-show-preview-container"
