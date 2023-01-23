@@ -17,16 +17,16 @@ function SearchBar({ setTyped, closeModal, setDiv }) {
 
   useEffect(() => {
     if (users) {
-      let currentMatches = Object.values(users)?.filter((user) => {
-        return user?.name.startsWith(frTyped.toLowerCase());
-      });
+      let currentMatches = Object.values(users).filter((user) => {
+        return user.name.toLowerCase().replace(" ", "").startsWith(frTyped.replace(" ", "").toLowerCase());
+      })
 
       if (currentMatches) {
         setFilteredUsers(currentMatches);
       } else {
         setFilteredUsers(Object.values(users).slice(0, 10));
       }
-    }
+    } 
     if (frTyped.length === 0) {
       setDiv(0);
     } else {
