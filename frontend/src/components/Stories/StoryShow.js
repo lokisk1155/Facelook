@@ -36,7 +36,7 @@ function StoryShow() {
   const currentStory = stories[id][currentWindow];
 
   if (currentStory === undefined) {
-    return null
+    return null;
   }
 
   const usersWithStories = {};
