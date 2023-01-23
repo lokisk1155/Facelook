@@ -36,7 +36,7 @@ function StoryShow() {
   const currentStory = stories[id][currentWindow];
 
   if (currentStory === undefined) {
-    return null;
+    return null
   }
 
   const usersWithStories = {};
@@ -145,6 +145,7 @@ function StoryShow() {
                 <Link
                   key={index}
                   className="all-stories-mapped"
+                  onClick={() => setCurrentWindow(0)}
                   style={{
                     display: "flex",
                     width: "100%",
