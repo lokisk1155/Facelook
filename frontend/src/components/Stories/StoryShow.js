@@ -219,73 +219,116 @@ function StoryShow() {
         className="story-show-preview-container"
         style={{ width: "80%", backgroundColor: "black", position: "relative" }}
       >
-      <div style={{ height: "90%", width: "60%",              top: "50%",
-              right: "50%",
-              bottom: "50%",
-              left: "50%",
-              position: "absolute", 
-              transform: "translate(-50%, -50%)", minWidth: "200px",
-              minHeight: "200px"}}>
-        {currentStory.picture === null ? (
-          <div
-            className="actual-story-show-background"
-            style={{
-              height: "75%",
-              width: "65%",
-              position: "absolute",
-              borderRadius: "7px",
-              minWidth: "200px",
-              minHeight: "200px",
-              top: "50%",
-              right: "50%",
-              bottom: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              maxWidth: "300px",
-              backgroundColor: currentStory.background_color,
-            }}
-          >
-            <p
-              className="actual-story-show-text"
+        <div
+          style={{
+            height: "90%",
+            width: "60%",
+            top: "50%",
+            right: "50%",
+            bottom: "50%",
+            left: "50%",
+            position: "absolute",
+            transform: "translate(-50%, -50%)",
+            minWidth: "200px",
+            minHeight: "200px",
+          }}
+        >
+          {currentStory.picture === null ? (
+            <div
+              className="actual-story-show-background"
               style={{
-                fontSize: currentStory.font_size,
-                justifyContent: "center",
-                paddingTop: `${currentStory.padding_top}px`,
-                paddingLeft: `${currentStory.padding_left}px`,
-                paddingRight: `${currentStory.padding_right}px`,
-                color: "black",
-                minWidth: "150px",
-                minHeight: "200px",
+                height: "75%",
+                width: "65%",
                 position: "absolute",
+                borderRadius: "7px",
+                minWidth: "200px",
+                minHeight: "200px",
+                top: "50%",
+                right: "50%",
+                bottom: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                maxWidth: "300px",
+                backgroundColor: currentStory.background_color,
               }}
             >
-              {currentStory.text_content}
-            </p>
-          </div>
-        ) : (
-          <img
-            className="actual-text-story-background"
-            src={currentStory.picture}
-            style={{
-              height: "75%",
-              width: "65%",
-              position: "absolute",
-              borderRadius: "7px",
-              minWidth: "200px",
-              minHeight: "200px",
-              top: "50%",
-              right: "50%",
-              bottom: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              maxWidth: "300px",
-            }}
-          ></img>
-        )}
+              <p
+                className="actual-story-show-text"
+                style={{
+                  fontSize: currentStory.font_size,
+                  justifyContent: "center",
+                  paddingTop: `${currentStory.padding_top}px`,
+                  paddingLeft: `${currentStory.padding_left}px`,
+                  paddingRight: `${currentStory.padding_right}px`,
+                  color: "black",
+                  minWidth: "150px",
+                  minHeight: "200px",
+                  position: "absolute",
+                }}
+              >
+                {currentStory.text_content}
+              </p>
+            </div>
+          ) : (
+            <img
+              className="actual-text-story-background"
+              src={currentStory.picture}
+              style={{
+                height: "75%",
+                width: "65%",
+                position: "absolute",
+                borderRadius: "7px",
+                minWidth: "200px",
+                minHeight: "200px",
+                top: "50%",
+                right: "50%",
+                bottom: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                maxWidth: "300px",
+              }}
+            ></img>
+          )}
         </div>
-        <div style={{ display: "flex", width: "200px", maxWidth: "30%", minHeight: "50px", height: "70px"}}>
-          <button style={{ width: "50%", minWidth: "45px", maxWidth: "65px",  borderRadius: "50%", backgroundColor: "#1b74e4", margin: "5px", color: "#fff",  border: "none" }} onClick={handlePrevious} >&#8249;</button>
-          <button style={{width: "50%", minWidth: "45px", maxWidth: "65px", borderRadius: "50%", backgroundColor: "#1b74e4", margin: "5px", color: "#fff",  border: "none" }} onClick={handleNext} >&#8250;</button>
+        <div
+          style={{
+            display: "flex",
+            width: "200px",
+            maxWidth: "30%",
+            minHeight: "50px",
+            height: "70px",
+          }}
+        >
+          <button
+            style={{
+              width: "50%",
+              minWidth: "45px",
+              maxWidth: "65px",
+              borderRadius: "50%",
+              backgroundColor: "#1b74e4",
+              margin: "5px",
+              color: "#fff",
+              border: "none",
+            }}
+            onClick={handlePrevious}
+          >
+            &#8249;
+          </button>
+          <button
+            style={{
+              width: "50%",
+              minWidth: "45px",
+              maxWidth: "65px",
+              borderRadius: "50%",
+              backgroundColor: "#1b74e4",
+              margin: "5px",
+              color: "#fff",
+              border: "none",
+            }}
+            onClick={handleNext}
+          >
+            &#8250;
+          </button>
         </div>
       </div>
     </div>
