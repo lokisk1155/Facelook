@@ -57,7 +57,7 @@ function Posts({ currentUser, sessionUser }) {
 
   return (
     <div className="post-feed-profile-page-container">
-      <div className="create-post-modal">
+      {self ? <div className="create-post-modal">
         <button className="new-post-button" onClick={handleNewPost}>
           <p className="text-inside-new-post">What is on your mind?</p>
         </button>
@@ -70,7 +70,7 @@ function Posts({ currentUser, sessionUser }) {
             ></img>
           }
         </div>
-        {togglePost && self ? (
+        {togglePost ? (
           <Modal onClose={() => setTogglePost(false)}>
             <CreatePostModal
               type={"create"}
@@ -83,7 +83,7 @@ function Posts({ currentUser, sessionUser }) {
             />
           </Modal>
         ) : null}
-      </div>
+      </div> : null }
 
       {posts && (
         <>
