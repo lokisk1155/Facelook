@@ -219,15 +219,21 @@ function StoryShow() {
         className="story-show-preview-container"
         style={{ width: "80%", backgroundColor: "black", position: "relative" }}
       >
+      <div style={{ height: "90%", width: "60%",              top: "50%",
+              right: "50%",
+              bottom: "50%",
+              left: "50%",
+              position: "absolute", 
+              transform: "translate(-50%, -50%)", minWidth: "200px",
+              minHeight: "200px"}}>
         {currentStory.picture === null ? (
           <div
             className="actual-story-show-background"
             style={{
               height: "75%",
-              width: "50%",
+              width: "65%",
               position: "absolute",
               borderRadius: "7px",
-              backgroundColor: currentStory.background_color,
               minWidth: "200px",
               minHeight: "200px",
               top: "50%",
@@ -236,8 +242,7 @@ function StoryShow() {
               left: "50%",
               transform: "translate(-50%, -50%)",
               maxWidth: "300px",
-              position: "absolute",
-              borderRadius: "5px",
+              backgroundColor: currentStory.background_color,
             }}
           >
             <p
@@ -277,12 +282,11 @@ function StoryShow() {
             }}
           ></img>
         )}
-        <button style={{ height: "50px" }} onClick={handleNext}>
-          next
-        </button>
-        <button style={{ height: "50px" }} onClick={handlePrevious}>
-          previous
-        </button>
+        </div>
+        <div style={{ display: "flex", width: "200px", maxWidth: "30%", minHeight: "50px", height: "70px"}}>
+          <button style={{ width: "50%", minWidth: "45px", maxWidth: "65px",  borderRadius: "50%", backgroundColor: "#1b74e4", margin: "5px", color: "#fff",  border: "none" }} onClick={handlePrevious} >&#8249;</button>
+          <button style={{width: "50%", minWidth: "45px", maxWidth: "65px", borderRadius: "50%", backgroundColor: "#1b74e4", margin: "5px", color: "#fff",  border: "none" }} onClick={handleNext} >&#8250;</button>
+        </div>
       </div>
     </div>
   );
