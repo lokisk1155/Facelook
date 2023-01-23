@@ -18,6 +18,9 @@ function FriendsContainer({ currentUser, sessionUser }) {
         mutualFriends[key] = friends[key];
       }
     }
+    if (Object.keys(mutualFriends).length < 1) {
+      mutualFriends = friends
+    }
   }
 
   const divMultiplyer = mutualFriends.length > 3 ? mutualFriends.length / 3 : 0;
