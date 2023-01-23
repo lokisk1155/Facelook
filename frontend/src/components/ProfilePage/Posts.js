@@ -57,33 +57,35 @@ function Posts({ currentUser, sessionUser }) {
 
   return (
     <div className="post-feed-profile-page-container">
-      {self ? <div className="create-post-modal">
-        <button className="new-post-button" onClick={handleNewPost}>
-          <p className="text-inside-new-post">What is on your mind?</p>
-        </button>
+      {self ? (
+        <div className="create-post-modal">
+          <button className="new-post-button" onClick={handleNewPost}>
+            <p className="text-inside-new-post">What is on your mind?</p>
+          </button>
 
-        <div className="pic-holder">
-          {
-            <img
-              className="profile-pic-inside-create-post"
-              src={currentUser.profile_picture || profilePic}
-            ></img>
-          }
+          <div className="pic-holder">
+            {
+              <img
+                className="profile-pic-inside-create-post"
+                src={currentUser.profile_picture || profilePic}
+              ></img>
+            }
+          </div>
+          {togglePost ? (
+            <Modal onClose={() => setTogglePost(false)}>
+              <CreatePostModal
+                type={"create"}
+                currentUser={sessionUser}
+                postContent={"What's on your mind?"}
+                header={"Create post"}
+                closeModal={setTogglePost}
+                userId={sessionUser.id}
+                location={"home"}
+              />
+            </Modal>
+          ) : null}
         </div>
-        {togglePost ? (
-          <Modal onClose={() => setTogglePost(false)}>
-            <CreatePostModal
-              type={"create"}
-              currentUser={sessionUser}
-              postContent={"What's on your mind?"}
-              header={"Create post"}
-              closeModal={setTogglePost}
-              userId={sessionUser.id}
-              location={"home"}
-            />
-          </Modal>
-        ) : null}
-      </div> : null }
+      ) : null}
 
       {posts && (
         <>

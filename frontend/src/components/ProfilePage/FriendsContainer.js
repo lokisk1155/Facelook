@@ -19,7 +19,7 @@ function FriendsContainer({ currentUser, sessionUser }) {
       }
     }
     if (Object.keys(mutualFriends).length < 1) {
-      mutualFriends = friends
+      mutualFriends = friends;
     }
   }
 
