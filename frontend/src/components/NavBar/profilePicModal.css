@@ -38,3 +38,6 @@
   border-radius: 7px;
 }
 
+.link-too-profile-page-modal:hover {
+  background-color: lightgrey;
+}
