@@ -80,10 +80,10 @@ function SearchBar({ setTyped, closeModal, setDiv }) {
       {filteredUsers && (
         <div className="search-results-container">
           {" "}
-          {filteredUsers.map((user) => {
-            console.log(user);
+          {filteredUsers.map((user, index) => {
             return (
               <Link
+                key={index}
                 to={`/ProfilePage/${user?.user_id}`}
                 style={{ textDecoration: "none", color: "black" }}
               >

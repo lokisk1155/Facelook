@@ -20,7 +20,6 @@ const StoryCrop = ({ photoURL, setPhotoURL, setFile, fileSaved }) => {
       setFile(file);
       return fileSaved(true);
     } catch (error) {
-      console.log(error);
     }
   };
 

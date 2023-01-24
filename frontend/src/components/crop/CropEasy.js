@@ -21,7 +21,6 @@ const CropEasy = ({ photoURL, setOpenCrop, setPhotoURL, setFile }) => {
       setFile(file);
       setOpenCrop(null);
     } catch (error) {
-      console.log(error);
     }
   };
 

@@ -48,8 +48,6 @@ function StoryShow() {
     }
   }
 
-  console.log(usersWithStories);
-
   const handleNext = (e) => {
     e.preventDefault();
     if (id == sessionUserId) {
