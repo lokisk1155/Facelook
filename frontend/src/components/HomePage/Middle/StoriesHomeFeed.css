@@ -16,6 +16,12 @@
   margin-left: 5%;
 }
 
+.story-create-button-the-acutal-button {
+  margin-left: 30%;
+  margin-right: 30%;
+  width: 40%;
+}
+
 .story-icon {
   height: 1.3em;
   width: 1.3em;
@@ -32,4 +38,29 @@
 
 .indi-text-story-home-page:hover {
   transform: scale(1.1);
+}
+
+@media (max-width: 1400px) {
+  .story-create-button-the-acutal-button {
+    margin-left: 25%;
+    margin-right: 25%;
+    width: 50%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .story-create-button-the-acutal-button {
+    margin-left: 22%;
+    margin-right: 22%;
+    width: 50%;
+  }
+}
+
+
+@media (max-width: 650px) {
+  .story-create-button-the-acutal-button {
+    margin-left: 18%;
+    margin-right: 18%;
+    width: 64%;
+  }
 }

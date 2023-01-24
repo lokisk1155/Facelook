@@ -46,7 +46,7 @@ function StoriesHomeFeed({ stories }) {
         }}
       >
         <div
-          className="story-img"
+        className="story-img"
           onClick={() => history.push("/stories/create")}
           style={{
             width: "20%",
@@ -55,7 +55,6 @@ function StoriesHomeFeed({ stories }) {
             borderRadius: "5px",
             display: "flex",
             flexDirection: "column",
-            position: "relative",
           }}
         >
           <img
@@ -73,22 +72,22 @@ function StoriesHomeFeed({ stories }) {
             }}
             src={sessionUserPicture || profilePic}
           ></img>
+          <div style={{transform: 'translate(0, -15px)', height: "60px",
+              borderBottomLeftRadius: "10px",
+              borderBottomRightRadius: "10px",
+              borderBottom: "0.3px solid lightgrey",
+              borderLeft: "0.3px solid lightgrey",
+              borderRight: "0.3px solid lightgrey", display: "flex"}}>
           <svg
             fill="currentColor"
             viewBox="0 0 20 20"
+            className="story-create-button-the-acutal-button"
             style={{
               height: "30px",
               borderRadius: "100px",
               backgroundColor: "rgb(27, 116, 228)",
               color: "#fff",
-              border: "5px solid #fff",
-              position: "absolute",
-              top: "70%",
-              transform: "translateY(-50%)",
-              bottom: 0,
-              left: 0,
-              right: 0,
-              margin: "auto",
+              border: "4px solid #fff"
             }}
           >
             <g fillRule="evenodd" transform="translate(-446 -350)">
@@ -104,20 +103,7 @@ function StoriesHomeFeed({ stories }) {
               </g>
             </g>
           </svg>
-          <p
-            style={{
-              padding: "0",
-              margin: "0",
-              width: "100%",
-              height: "20%",
-              justifyContent: "center",
-              borderBottomLeftRadius: "10px",
-              borderBottomRightRadius: "10px",
-              borderBottom: "0.3px solid lightgrey",
-              borderLeft: "0.3px solid lightgrey",
-              borderRight: "0.3px solid lightgrey",
-            }}
-          ></p>
+          </div>
         </div>
 
         {Object.values(stories).map((story, index) => {

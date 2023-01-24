@@ -25,10 +25,7 @@
   margin-top: 5px;
 }
 
-.nav-middle-links {
-}
-
-.link-wrapper {
+.er {
   width: 100%;
   display: flex;
   justify-content: space-around;
@@ -73,17 +70,6 @@
   width: 35px;
   stroke: rgba(44, 44, 44, 0.69);
   stroke-width: 0.9px;
-}
-.github-pic {
-}
-
-.linkedin {
-}
-
-.linkedin-picture {
-}
-
-.runaway {
 }
 
 .game-picture {
@@ -159,6 +145,7 @@
   height: 50px;
   justify-content: flex-end;
 }
+
 
 .menu-svg {
   height: 20px;
