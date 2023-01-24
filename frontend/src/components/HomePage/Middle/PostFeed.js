@@ -20,7 +20,7 @@ function PostFeed({ profilePage, currentUser }) {
 
   const [editPost, setEditPost] = useState(null);
 
-  const [editContent, setEditContent] = useState(null);
+  const [editContent, setEditContent] = useState("");
 
   const [editId, setEditId] = useState(null);
 
@@ -52,6 +52,9 @@ function PostFeed({ profilePage, currentUser }) {
 
   const submitUpdate = (id) => (e) => {
     e.preventDefault();
+    if (editContent.length < 2)  {
+      return 
+    }
     const post = {
       id: id,
       content: editContent,
