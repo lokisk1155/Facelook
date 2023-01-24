@@ -118,7 +118,7 @@ function ProfileTop({ currentUser, sessionUser, friends }) {
   const coverPhotoPreview = currentUser.cover_photo
     ? currentUser.cover_photo
     : null;
-    
+
   return (
     <>
       <div className="profile-top-container">

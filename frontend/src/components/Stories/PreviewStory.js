@@ -26,7 +26,7 @@ function PreviewStory({ file, setFile, url, setUrl }) {
       user_id: sessionUser.id,
     };
     dispatch(createStory(story, formData));
-    return history.push("/")
+    return history.push("/");
   };
 
   return (

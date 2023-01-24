@@ -20,7 +20,6 @@ export const createStory = (story, formData, history) => async (dispatch) => {
     method: "POST",
     body: formData instanceof FormData ? formData : JSON.stringify(story),
   });
-
 };
 
 export const fetchStories = (limit) => async (dispatch) => {

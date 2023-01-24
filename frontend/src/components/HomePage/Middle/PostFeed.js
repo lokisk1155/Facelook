@@ -183,12 +183,21 @@ function PostFeed() {
                         ></img>
                       </Link>
                       <div style={{ padding: "5px" }}>
-                      <Link style={{ textDecoration: "none"}} to={`/ProfilePage/${post?.user_id}`}>
-                        <h5
-                          style={{ height: "50%", margin: "0", padding: "2px", textDecoration: "none", color: "black" }}
+                        <Link
+                          style={{ textDecoration: "none" }}
+                          to={`/ProfilePage/${post?.user_id}`}
                         >
-                          {simpleUsers[post?.user_id]?.name}
-                        </h5>
+                          <h5
+                            style={{
+                              height: "50%",
+                              margin: "0",
+                              padding: "2px",
+                              textDecoration: "none",
+                              color: "black",
+                            }}
+                          >
+                            {simpleUsers[post?.user_id]?.name}
+                          </h5>
                         </Link>
                         <p
                           style={{

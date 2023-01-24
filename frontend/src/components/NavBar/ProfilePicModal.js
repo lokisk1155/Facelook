@@ -11,11 +11,26 @@ function ProfilePicModal({ closeModal }) {
   return (
     <div className="omega-profile-modal-container">
       <div className="profile-pic-modal-container">
-        <div className="main-buttons-of-modal" style={{ height: "35%", backgroundColor: "#fff", width: "90%", marginleft: "5%", marginRight: "5%"}}>
-        <Link  to={`/ProfilePage/${user.id}`}>
-
-        </Link>
-        <div style={{ height: "1px", width: "90%", marginLeft: "5%", marginRight: "5%", borderBottom: "1px solid lightgrey"}}></div>
+        <div
+          className="main-buttons-of-modal"
+          style={{
+            height: "35%",
+            backgroundColor: "#fff",
+            width: "90%",
+            marginleft: "5%",
+            marginRight: "5%",
+          }}
+        >
+          <Link to={`/ProfilePage/${user.id}`}></Link>
+          <div
+            style={{
+              height: "1px",
+              width: "90%",
+              marginLeft: "5%",
+              marginRight: "5%",
+              borderBottom: "1px solid lightgrey",
+            }}
+          ></div>
           <Link to="/">
             <button
               className="logout-button"

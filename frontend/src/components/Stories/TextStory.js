@@ -4,9 +4,9 @@ import { Link, useHistory } from "react-router-dom";
 import { createStory } from "../../store/story";
 import "./TextStory.css";
 
-function TextStory({ }) {
-  const dispatch = useDispatch() 
-  const history = useHistory() 
+function TextStory({}) {
+  const dispatch = useDispatch();
+  const history = useHistory();
   const [backgroundColor, setBackgroundColor] = useState("#1b74e4");
 
   const [fontSize, setFontSize] = useState("20px");
@@ -48,10 +48,8 @@ function TextStory({ }) {
       ...styles,
     };
     dispatch(createStory(story));
-    return history.push("/")
+    return history.push("/");
   };
-
-
 
   const moveUp = (e) => {
     e.preventDefault();
