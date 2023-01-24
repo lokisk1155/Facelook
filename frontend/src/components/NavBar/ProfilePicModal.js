@@ -116,7 +116,7 @@ function ProfilePicModal({ closeModal }) {
                 className="developer-links"
                 target="_blank"
                 style={{
-                  height: "28%",
+                  height: "30%",
                   display: "flex",
                   marginRight:
                     developerPictures[index] === wellfound ? "5px" : "0px",
@@ -128,7 +128,7 @@ function ProfilePicModal({ closeModal }) {
                 }}
                 to={{ pathname: developerWebsiteLinks[index] }}
               >
-                <img style={{ height: "75%", padding: "1px" }} src={website} />
+                <img style={{ height: "60%", padding: "1px" }} src={website} />
                 <h3 style={{ textDecoration: "none", color: "black" }}>
                   {developerWebsiteNames[index]}
                 </h3>

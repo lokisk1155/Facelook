@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { fetchPosts, updatePost, deletePost } from "../../../store/post";
 import { Modal } from "../../../context/Modal";
 import CreatePost from "../../Post/CreatePost";
 import profilePic from "../../NavBar/imgs/blank.png";
 import "./PostFeed.css";
 
-function PostFeed() {
+function PostFeed({ profilePage, currentUser }) {
   const dispatch = useDispatch();
+
+  const { id } = useParams() 
 
   const [postDeleted, setPostDeleted] = useState(false);
 
@@ -29,11 +31,13 @@ function PostFeed() {
     }
   }, [postDeleted, checkPost]);
 
-  const posts = useSelector((state) => state.posts);
+  const postsFromState = useSelector((state) => state.posts);
 
   const simpleUsers = useSelector((state) => state.simpleUsers);
 
   const sessionUser = useSelector((state) => state.session.user);
+
+  const posts = profilePage ? Object.values(Object.values(postsFromState).filter((post) => post.user_id === currentUser.id)) : postsFromState
 
   const handleNewPost = (e) => {
     e.preventDefault();
@@ -111,10 +115,10 @@ function PostFeed() {
     let value = postValue > 16 ? postValue : 16;
     return `${value}px`;
   }
-
+  
   return (
-    <>
-      <div className="create-post-modal">
+    <div style={{ display: "flex", flexDirection: "column"}}>
+      {profilePage === undefined || id == sessionUser.id ? <div className="create-post-modal" >
         <button className="new-post-button" onClick={handleNewPost}>
           <p className="text-inside-new-post">What is on your mind?</p>
         </button>
@@ -129,11 +133,11 @@ function PostFeed() {
         </div>
         {togglePost && (
           <Modal onClose={() => setTogglePost(false)}>
-            <CreatePost closeModal={setTogglePost} />
+            <CreatePost closeModal={setTogglePost} location={"home"} />
           </Modal>
         )}
-      </div>
-
+      </div> : null}
+      <div style={{ display: "flex", flexDirection: "column", margin: "2%"}}>
       {posts && (
         <>
           {Object.values(posts)
@@ -383,7 +387,8 @@ function PostFeed() {
             .reverse()}
         </>
       )}
-    </>
+      </div>
+    </div>
   );
 }
 

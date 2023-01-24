@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Intro from "../components/ProfilePage/Intro";
 import FriendsContainer from "../components/ProfilePage/FriendsContainer";
 import { profilePage } from "../store/profilePage";
+import PostFeed from "../components/HomePage/Middle/PostFeed";
 
 function ProfileDefault() {
   const { id } = useParams();
@@ -45,7 +46,7 @@ function ProfileDefault() {
               sessionUser={sessionUser}
             />
           </div>
-          <Posts sessionUser={sessionUser} currentUser={currentUser} />
+          <PostFeed profilePage={true} currentUser={currentUser}/>
         </div>
         <div style={{ width: "10vw" }}></div>
       </div>

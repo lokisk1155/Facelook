@@ -7,7 +7,7 @@ import "./CreatePost.css";
 import profilePic from "../NavBar/imgs/blank.png";
 import CropEasy from "../crop/CropEasy";
 
-function CreatePost({ closeModal }) {
+function CreatePost({ closeModal, location }) {
   const dispatch = useDispatch();
 
   const sessionUser = useSelector((state) => state.session.user);
@@ -42,7 +42,6 @@ function CreatePost({ closeModal }) {
       user_id: sessionUser.id,
     };
     const id = null;
-    const location = "home";
     dispatch(createPost(post, id, location, formData));
     return closeModal(null);
   }
