@@ -1,0 +1,29 @@
+.omega-create-post-modal {
+    position: absolute;
+    top: 35%;
+    left: 36.5%;
+    margin-top: -100px;
+    margin-left: -40px;
+    background: #fff;
+    padding: 10px;
+    height: 375px;
+    width: 450px;
+    border-radius: 7px;
+    box-shadow: 4px 18px 18px 4px lightgrey;
+  }
+
+  .input-file-post {
+    display: none;
+  }
+  
+  .custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    margin: auto;
+    padding: 5px;
+  }
+  

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchPosts, updatePost, deletePost } from "../../../store/post";
 import { Modal } from "../../../context/Modal";
-import CreatePostModal from "../../ProfilePage/createPostModal";
+import CreatePost from "../../Post/CreatePost";
 import profilePic from "../../NavBar/imgs/blank.png";
 import "./PostFeed.css";
 
@@ -129,15 +129,7 @@ function PostFeed() {
         </div>
         {togglePost && (
           <Modal onClose={() => setTogglePost(false)}>
-            <CreatePostModal
-              type={"create"}
-              currentUser={sessionUser}
-              postContent={"What's on your mind?"}
-              header={"Create post"}
-              closeModal={setTogglePost}
-              userId={sessionUser?.id}
-              location={"home"}
-            />
+            <CreatePost closeModal={setTogglePost} />
           </Modal>
         )}
       </div>
