@@ -178,9 +178,8 @@ function StoryShow() {
           {stories &&
             Object.values(usersWithStories).map((user, index) => {
               return (
-                <>
+                <div key={index}>
                   <Link
-                    key={index}
                     className="all-stories-mapped"
                     onClick={() => setCurrentWindow(0)}
                     style={{
@@ -207,7 +206,7 @@ function StoryShow() {
                     />
                     <p>{user.name}</p>
                   </Link>
-                </>
+                </div>
               );
             })}
         </div>

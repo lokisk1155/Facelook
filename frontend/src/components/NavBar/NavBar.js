@@ -98,7 +98,7 @@ function NavBar() {
       </div>
 
       <div className="right-container-navbar">
-        <button className="menu-button-navbar">
+        {/* <button className="menu-button-navbar">
           <svg fill="currentColor" viewBox="0 0 44 44" className="menu-svg">
             <circle cx="7" cy="7" r="6"></circle>
             <circle cx="22" cy="7" r="6"></circle>
@@ -110,7 +110,7 @@ function NavBar() {
             <circle cx="22" cy="37" r="6"></circle>
             <circle cx="37" cy="37" r="6"></circle>
           </svg>
-        </button>
+        </button> */}
         <div className="navbar-profile-modal">
           <img
             src={navbarPic}
