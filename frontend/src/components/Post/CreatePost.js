@@ -22,11 +22,15 @@ function CreatePost({ closeModal, location }) {
 
   const [containerHeight, setContainerHeight] = useState(null);
 
+  const [textareaHeight, setTextareaHeight] = useState("30%")
+
   useEffect(() => {
     if (photoFile) {
       setContainerHeight("600px");
+      setTextareaHeight("10%")
     } else {
       setContainerHeight("375px");
+      setTextareaHeight("30%")
     }
   }, [photoFile]);
 
@@ -97,7 +101,7 @@ function CreatePost({ closeModal, location }) {
           </div>
           <textarea
             autoFocus={true}
-            className="textarea-post"
+            style={{width: "100%", height: textareaHeight}}
             type="text"
             placeholder={`What's on your mind ${sessionUser.first_name}?`}
             onChange={(e) => setContent(e.target.value)}
