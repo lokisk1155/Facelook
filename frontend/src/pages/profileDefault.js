@@ -46,7 +46,7 @@ function ProfileDefault() {
               sessionUser={sessionUser}
             />
           </div>
-          <PostFeed profilePage={true} currentUser={currentUser}/>
+          <PostFeed profilePage={true} currentUser={currentUser} />
         </div>
         <div style={{ width: "10vw" }}></div>
       </div>
