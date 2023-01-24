@@ -2,46 +2,22 @@
   position: absolute;
   height: 50%;
   right: 0;
+  left: 40;
+  bottom: 0;
   top: 0;
 }
 .profile-pic-modal-container {
-  margin-top: 65px;
+  margin-top: 53px;
   border: none;
-  box-shadow: 0px 12px 12px 0px lightgrey;
-  background: whitesmoke;
+  box-shadow: 0px 6px 6px 0px lightgrey;
+  background-color: rgba(255, 255, 255, 0.852);
   height: 100%;
+  border-radius: 7px;
+  margin-right: 15px;
 }
 
-.link-button {
-  margin: 15px;
+.container-we-use {
   width: 325px;
-  height: 50px;
-  display: flex;
-  background-color: white;
-  border: none;
-  border-radius: 10px;
-  border: none;
-}
-
-.link-button:hover {
-  background-color: #dcdcdc;
-}
-
-.link-profile-pic {
-  margin-top: 5px;
-  height: 35px;
-  border-radius: 30px;
-}
-
-.link-user-name {
-  margin-top: 15px;
-  position: absolute;
-  margin-left: 50px;
-}
-
-.logout-button {
-  width: 325px;
-  height: 50px;
   margin-left: 15px;
   margin-bottom: 15px;
   border: none;
@@ -49,15 +25,16 @@
   border-radius: 10px;
 }
 
-.logout-button-text {
-  margin-right: 250px;
-}
-
-.logout-button:hover {
+.link-button {
+  display: flex;
   background-color: white;
+  border: none;
+  border-radius: 10px;
+  border: none;
 }
 
-@media (max-width: 500px) {
-  .profile-pic-modal-container {
-  }
+.developer-links:hover {
+  background-color: lightgrey;
+  border-radius: 7px;
 }
+
