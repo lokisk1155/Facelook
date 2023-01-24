@@ -46,7 +46,7 @@ function StoriesHomeFeed({ stories }) {
         }}
       >
         <div
-        className="story-img"
+          className="story-img"
           onClick={() => history.push("/stories/create")}
           style={{
             width: "20%",
@@ -72,43 +72,53 @@ function StoriesHomeFeed({ stories }) {
             }}
             src={sessionUserPicture || profilePic}
           ></img>
-          <div style={{transform: 'translate(0, -15px)', height: "60px",
+          <div
+            style={{
+              transform: "translate(0, -15px)",
+              height: "60px",
               borderBottomLeftRadius: "10px",
               borderBottomRightRadius: "10px",
               borderBottom: "0.3px solid lightgrey",
               borderLeft: "0.3px solid lightgrey",
-              borderRight: "0.3px solid lightgrey", display: "flex"}}>
-          <svg
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            className="story-create-button-the-acutal-button"
-            style={{
-              height: "30px",
-              borderRadius: "100px",
-              backgroundColor: "rgb(27, 116, 228)",
-              color: "#fff",
-              border: "4px solid #fff"
+              borderRight: "0.3px solid lightgrey",
+              display: "flex",
             }}
           >
-            <g fillRule="evenodd" transform="translate(-446 -350)">
-              <g fillRule="nonzero">
-                <path
-                  d="M95 201.5h13a1 1 0 1 0 0-2H95a1 1 0 1 0 0 2z"
-                  transform="translate(354.5 159.5)"
-                ></path>
-                <path
-                  d="M102.5 207v-13a1 1 0 1 0-2 0v13a1 1 0 1 0 2 0z"
-                  transform="translate(354.5 159.5)"
-                ></path>
+            <svg
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              className="story-create-button-the-acutal-button"
+              style={{
+                height: "30px",
+                borderRadius: "100px",
+                backgroundColor: "rgb(27, 116, 228)",
+                color: "#fff",
+                border: "4px solid #fff",
+              }}
+            >
+              <g fillRule="evenodd" transform="translate(-446 -350)">
+                <g fillRule="nonzero">
+                  <path
+                    d="M95 201.5h13a1 1 0 1 0 0-2H95a1 1 0 1 0 0 2z"
+                    transform="translate(354.5 159.5)"
+                  ></path>
+                  <path
+                    d="M102.5 207v-13a1 1 0 1 0-2 0v13a1 1 0 1 0 2 0z"
+                    transform="translate(354.5 159.5)"
+                  ></path>
+                </g>
               </g>
-            </g>
-          </svg>
+            </svg>
           </div>
         </div>
 
         {Object.values(stories).map((story, index) => {
           return (
-            <Link key={index} to={`/stories/${story?.user_id}`} style={{ width: "20%" }}>
+            <Link
+              key={index}
+              to={`/stories/${story?.user_id}`}
+              style={{ width: "20%" }}
+            >
               {story?.picture !== null ? (
                 <div
                   className="story-img"
