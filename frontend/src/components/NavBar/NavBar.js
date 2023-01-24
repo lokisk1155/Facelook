@@ -17,7 +17,6 @@ function NavBar() {
   const simpleUsers = useSelector((state) => state.simpleUsers);
 
   const [profileModal, setProfileModal] = useState(false);
-  const [toggle, setToggle] = useState(true);
   const [toggleSearch, setToggleSearch] = useState(false);
   const [fillColor, setFillColor] = useState("#1B74E4");
   const [stroke, setStroke] = useState("#2c2c2c");
@@ -117,8 +116,7 @@ function NavBar() {
             alt="profile-pic"
             className="profile-pic-modal"
             onClick={() => {
-              setToggle(!toggle);
-              setProfileModal(toggle);
+              setProfileModal(true);
             }}
           />
         </div>

@@ -7,27 +7,9 @@ import TextStory from "./TextStory";
 import "./CreateStory.css";
 
 function CreateStoryIntro() {
-  const dispatch = useDispatch();
-  const history = useHistory();
-  const sessionUserId = useSelector((state) => state.session.user.id);
   const [photoFile, setPhotoFile] = useState(null);
   const [photoUrl, setPhotoUrl] = useState(null);
   const [textStory, setTextStory] = useState(null);
-
-  const submitStory = (styles) => (e) => {
-    e.preventDefault();
-    let formData;
-    if (photoFile) {
-      formData = new FormData();
-      formData.append("story[photo]", photoFile);
-    }
-    let story = {
-      user_id: sessionUserId,
-      ...styles,
-    };
-    dispatch(createStory(story, "home", formData));
-    return history.push("/");
-  };
 
   const handleFile = (e) => {
     const file = e.target.files[0];
@@ -119,7 +101,7 @@ function CreateStoryIntro() {
           setUrl={setPhotoUrl}
         />
       ) : null}
-      {textStory ? <TextStory submit={submitStory} /> : null}
+      {textStory ? <TextStory /> : null}
     </div>
   );
 }

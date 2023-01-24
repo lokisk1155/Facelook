@@ -1,9 +1,12 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
+import { createStory } from "../../store/story";
 import "./TextStory.css";
 
-function TextStory({ submit }) {
+function TextStory({ }) {
+  const dispatch = useDispatch() 
+  const history = useHistory() 
   const [backgroundColor, setBackgroundColor] = useState("#1b74e4");
 
   const [fontSize, setFontSize] = useState("20px");
@@ -24,10 +27,6 @@ function TextStory({ submit }) {
 
   const [textContent, setTextContent] = useState("");
 
-  const sessionUser = useSelector((state) => state.session.user);
-
-  const simpleUsers = useSelector((state) => state.simpleUsers);
-
   const styles = {
     background_color: backgroundColor,
     font_size: fontSize,
@@ -37,6 +36,22 @@ function TextStory({ submit }) {
     color: color,
     text_content: textContent,
   };
+
+  const sessionUser = useSelector((state) => state.session.user);
+
+  const simpleUsers = useSelector((state) => state.simpleUsers);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let story = {
+      user_id: sessionUser.id,
+      ...styles,
+    };
+    dispatch(createStory(story));
+    return history.push("/")
+  };
+
+
 
   const moveUp = (e) => {
     e.preventDefault();
@@ -273,7 +288,7 @@ function TextStory({ submit }) {
             </Link>
 
             <button
-              onClick={submit(styles)}
+              onClick={handleSubmit}
               style={{
                 height: "15%",
                 width: "65%",

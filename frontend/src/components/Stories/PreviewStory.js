@@ -25,8 +25,8 @@ function PreviewStory({ file, setFile, url, setUrl }) {
     let story = {
       user_id: sessionUser.id,
     };
-    dispatch(createStory(story, "home", formData));
-    return history.push("/");
+    dispatch(createStory(story, formData));
+    return history.push("/")
   };
 
   return (
