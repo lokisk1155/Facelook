@@ -52,9 +52,6 @@ function PostFeed({ profilePage, currentUser }) {
 
   const submitUpdate = (id) => (e) => {
     e.preventDefault();
-    if (editContent.length < 2)  {
-      return 
-    }
     const post = {
       id: id,
       content: editContent,
