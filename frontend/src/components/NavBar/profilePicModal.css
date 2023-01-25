@@ -33,7 +33,8 @@
 }
 
 .developer-links:hover {
-  background-color: lightgrey;
+  background-color: #fff;
+  transform: scale(1.05);
   border-radius: 7px;
 }
 

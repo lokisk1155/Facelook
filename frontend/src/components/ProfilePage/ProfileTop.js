@@ -2,20 +2,22 @@ import { useDispatch } from "react-redux";
 import { deleteFriend, addFriend } from "../../store/friend";
 import { updateUser } from "../../store/user";
 import { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import profilePicBlank from "../NavBar/imgs/blank.png";
 import "./ProfileTop.css";
 import capitalizeFirstLetter from "../../utils/capFirstLetter";
 import { profilePage } from "../../store/profilePage";
+import { Modal } from "../../context/Modal";
+import EditProfile from "./EditProfile";
 
 function ProfileTop({ currentUser, sessionUser, friends }) {
   const dispatch = useDispatch();
 
+  const history = useHistory();
+
   const [toggleDropDown, setToggleDropDown] = useState(false);
 
-  const [photoFile, setPhotoFile] = useState(null);
-
-  const [photoUrl, setPhotoUrl] = useState(null);
+  const [editProfile, setEditProfile] = useState(null);
 
   const { id } = useParams();
 
@@ -60,36 +62,6 @@ function ProfileTop({ currentUser, sessionUser, friends }) {
   } else {
     friendsHeader = `${friendCount} Friends`;
   }
-
-  const handleUpdateProfile = async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    if (photoFile) {
-      formData.append("user[profile_pic]", photoFile);
-    }
-    dispatch(updateUser(currentUser, formData));
-  };
-
-  const handleUpdateCoverPhoto = async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    if (photoFile) {
-      formData.append("user[cover_photo]", photoFile);
-    }
-    dispatch(updateUser(currentUser, formData));
-  };
-
-  const handleFile = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-      fileReader.onload = () => {
-        setPhotoFile(file);
-        setPhotoUrl(fileReader.result);
-      };
-    }
-  };
 
   const handleAdd = (e) => {
     e.preventDefault();
@@ -137,32 +109,84 @@ function ProfileTop({ currentUser, sessionUser, friends }) {
             </div>
           </div>
 
-          <div className="friends-toggle-button-container">
-            {!toggleDropDown && isFriend && notSelf ? (
-              <button
-                className="toggle-friends-button"
-                onClick={() => setToggleDropDown(!toggleDropDown)}
-              >
-                Friends
-              </button>
-            ) : (
-              (!isFriend && notSelf && (
-                <button className="toggle-friends-button" onClick={handleAdd}>
-                  Add Friend
-                </button>
-              )) ||
-              (isFriend && notSelf && (
+          {notSelf ? (
+            <div className="friends-toggle-button-container">
+              {!toggleDropDown && isFriend ? (
                 <button
-                  className="toogle-friends-button"
-                  onClick={handleDelete}
+                  className="toggle-friends-button"
+                  onClick={() => setToggleDropDown(!toggleDropDown)}
                 >
-                  delete friend
+                  Friends
                 </button>
-              ))
-            )}
-          </div>
+              ) : (
+                (!isFriend && (
+                  <button className="toggle-friends-button" onClick={handleAdd}>
+                    Add Friend
+                  </button>
+                )) ||
+                (isFriend && (
+                  <button
+                    className="toogle-friends-button"
+                    onClick={handleDelete}
+                  >
+                    delete friend
+                  </button>
+                ))
+              )}
+            </div>
+          ) : (
+            <div
+              className="edit-details-and-add-story-container"
+              style={{
+                display: "flex",
+                width: "40%",
+                justifyContent: "space-between",
+              }}
+            >
+              <button
+                style={{
+                  height: "40%",
+                  width: "45%",
+                  alignSelf: "center",
+                  border: "none",
+                  color: "#fff",
+                  fontSize: "1rem",
+                  backgroundColor: "#166fe5",
+                  borderRadius: "7px",
+                }}
+                onClick={() => history.push("/stories/create")}
+              >
+                Add Story
+              </button>
+              <button
+                onClick={() => setEditProfile(true)}
+                style={{
+                  height: "40%",
+                  width: "45%",
+                  alignSelf: "center",
+                  border: "none",
+                  color: "#fff",
+                  fontSize: "1rem",
+                  backgroundColor: "#166fe5",
+                  borderRadius: "7px",
+                }}
+              >
+                Edit Profile
+              </button>
+            </div>
+          )}
         </div>
       </div>
+
+      {editProfile ? (
+        <Modal onClose={() => setEditProfile(false)}>
+          <EditProfile
+            closeModal={setEditProfile}
+            cover={coverPhotoPreview}
+            profile={preview}
+          />
+        </Modal>
+      ) : null}
 
       <div className="col-container-links">
         <div className="page-link-col"></div>
@@ -189,9 +213,3 @@ function ProfileTop({ currentUser, sessionUser, friends }) {
 }
 
 export default ProfileTop;
-
-// <label>
-// edit cover photo
-// <input type="file" onChange={handleFile} />
-// <button onClick={handleUpdateCoverPhoto}>upload</button>
-// </label>
