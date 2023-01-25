@@ -128,21 +128,9 @@ function ProfileTop({ currentUser, sessionUser, friends }) {
             className="background-photo-profile-page"
           />
         </div>
-        <label>
-          edit cover photo
-          <input type="file" onChange={handleFile} />
-          <button onClick={handleUpdateCoverPhoto}>upload</button>
-        </label>
         <div className="profile-page-header">
           <div className="profile-picture-and-name-container">
             <img className="profile-top-profile-pic" src={preview} />
-            <button onClick={() => setToggle(true)}> change pic</button>
-            {toggle && (
-              <div>
-                <input type="file" onChange={handleFile} />
-                <button onClick={handleUpdateProfile}>upload</button>
-              </div>
-            )}
             <div>
               <p className="current-user-name-profile-top">{currentUserName}</p>
               <p>{friendsHeader}</p>
@@ -179,15 +167,18 @@ function ProfileTop({ currentUser, sessionUser, friends }) {
       <div className="col-container-links">
         <div className="page-link-col"></div>
         <div className="profile-selectors">
-          <Link to={`/ProfilePage/${id}`}>
+          <Link className="post-selector-link" to={`/ProfilePage/${id}`}>
             <button className="post-selector-button">Posts</button>
           </Link>
 
-          <Link to={`/ProfilePage/${id}/about`}>
+          <Link className="post-selector-link" to={`/ProfilePage/${id}/about`}>
             <button className="about-selector-button">About</button>
           </Link>
 
-          <Link to={`/ProfilePage/${id}/Friends`}>
+          <Link
+            className="post-selector-link"
+            to={`/ProfilePage/${id}/Friends`}
+          >
             <button className="about-selector-button">Friends</button>
           </Link>
         </div>
@@ -198,3 +189,9 @@ function ProfileTop({ currentUser, sessionUser, friends }) {
 }
 
 export default ProfileTop;
+
+// <label>
+// edit cover photo
+// <input type="file" onChange={handleFile} />
+// <button onClick={handleUpdateCoverPhoto}>upload</button>
+// </label>

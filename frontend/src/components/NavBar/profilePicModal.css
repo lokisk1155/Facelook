@@ -40,3 +40,9 @@
 .link-too-profile-page-modal:hover {
   background-color: lightgrey;
 }
+
+.logout-button:hover {
+  background-color: rgb(255, 71, 71);
+  color: #fff;
+  font-size: 1.5rem;
+}

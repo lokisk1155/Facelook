@@ -85,6 +85,7 @@ function ProfilePicModal({ closeModal }) {
             }}
           ></div>
           <button
+            className="logout-button"
             style={{
               height: "35%",
               width: "95%",
@@ -96,7 +97,7 @@ function ProfilePicModal({ closeModal }) {
             }}
             onClick={() => dispatch(logout(user))}
           >
-            Logout
+            Log Out
           </button>
         </div>
         <div
