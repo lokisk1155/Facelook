@@ -7,6 +7,7 @@ import Intro from "../components/ProfilePage/Intro";
 import FriendsContainer from "../components/ProfilePage/FriendsContainer";
 import { profilePage } from "../store/profilePage";
 import PostFeed from "../components/HomePage/Middle/PostFeed";
+import "./ProfileDefault.css";
 
 function ProfileDefault() {
   const { id } = useParams();
@@ -34,21 +35,19 @@ function ProfileDefault() {
         currentUser={currentUser}
         friends={friends}
       />
-      <div style={{ display: "flex" }}>
-        <div style={{ width: "10vw" }}></div>
-        <div
-          style={{ width: "80vw", display: "flex", justifyContent: "center" }}
-        >
-          <div style={{ width: "29.9vw", flexDirection: "column" }}>
+      <div className="content-container-profile-default">
+        <div className="flex-or-nah-profile">
+          <div className="boxes-container-profile-default">
             <Intro currentUser={currentUser} sessionUser={sessionUser} />
             <FriendsContainer
               currentUser={currentUser}
               sessionUser={sessionUser}
             />
           </div>
-          <PostFeed profilePage={true} currentUser={currentUser} />
+          <div className="post-feed-profile-default">
+            <PostFeed profilePage={true} currentUser={currentUser} />
+          </div>
         </div>
-        <div style={{ width: "10vw" }}></div>
       </div>
     </>
   );

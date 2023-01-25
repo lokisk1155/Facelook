@@ -135,35 +135,26 @@ function ProfileTop({ currentUser, sessionUser, friends }) {
               )}
             </div>
           ) : (
-            <div
-              className="edit-details-and-add-story-container"
-              style={{
-                display: "flex",
-                width: "40%",
-                justifyContent: "flex-end",
-              }}
-            >
+            <div className="edit-details-and-add-story-container">
               <button
+                className="edit-profile-add-story-buttons"
                 style={{
-                  height: "30%",
-                  width: "40%",
                   alignSelf: "center",
                   border: "none",
                   color: "#fff",
                   fontSize: "1rem",
                   backgroundColor: "#166fe5",
                   borderRadius: "7px",
-                  margin: "10px"
+                  margin: "10px",
                 }}
                 onClick={() => history.push("/stories/create")}
               >
                 Add Story
               </button>
               <button
+                className="edit-profile-add-story-buttons"
                 onClick={() => setEditProfile(true)}
                 style={{
-                  height: "30%",
-                  width: "40%",
                   alignSelf: "center",
                   border: "none",
                   color: "#fff",

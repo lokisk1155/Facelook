@@ -36,13 +36,11 @@ function ProfileFriends() {
           friends={friends}
         />
       ) : null}
-      <div style={{ display: "flex" }}>
-        <div style={{ width: "15vw" }}></div>
+      <div style={{ display: "flex", justifyContent: "center" }}>
         <div
           style={{
-            width: "70vw",
+            width: "80vw",
             maxWidth: "1250px",
-            justifyContent: "center",
           }}
         >
           {friends ? (
@@ -52,7 +50,6 @@ function ProfileFriends() {
               friends={friends}
             />
           ) : null}
-          <div style={{ width: "15vw" }}></div>
         </div>
       </div>
     </>
