@@ -8,7 +8,7 @@
 .profile-page-header {
   height: 29%;
   display: flex;
-  width: 75vw;
+  width: 80vw;
   justify-content: space-between;
   background-color: #fff;
   margin-left: 9vw;
@@ -73,13 +73,13 @@
   height: 100%;
 }
 .about-selector-button:hover {
-  background-color: #166fe5;
+  background-color: lightgrey;
   color: #fff;
   font-size: 1rem;
   border-radius: 5px;
 }
 .post-selector-button:hover {
-  background-color: #166fe5;
+  background-color: lightgrey;
   color: #fff;
   font-size: 1rem;
   border-radius: 5px;

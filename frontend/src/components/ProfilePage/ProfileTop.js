@@ -140,19 +140,20 @@ function ProfileTop({ currentUser, sessionUser, friends }) {
               style={{
                 display: "flex",
                 width: "40%",
-                justifyContent: "space-between",
+                justifyContent: "flex-end",
               }}
             >
               <button
                 style={{
-                  height: "40%",
-                  width: "45%",
+                  height: "30%",
+                  width: "40%",
                   alignSelf: "center",
                   border: "none",
                   color: "#fff",
                   fontSize: "1rem",
                   backgroundColor: "#166fe5",
                   borderRadius: "7px",
+                  margin: "10px"
                 }}
                 onClick={() => history.push("/stories/create")}
               >
@@ -161,8 +162,8 @@ function ProfileTop({ currentUser, sessionUser, friends }) {
               <button
                 onClick={() => setEditProfile(true)}
                 style={{
-                  height: "40%",
-                  width: "45%",
+                  height: "30%",
+                  width: "40%",
                   alignSelf: "center",
                   border: "none",
                   color: "#fff",
