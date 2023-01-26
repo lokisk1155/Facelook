@@ -34,15 +34,16 @@
   .flex-or-nah-profile {
     display: flex;
     flex-direction: column;
+    width: 100%;
   }
 
   .boxes-container-profile-default {
-    width: 80vw;
+    width: 95%;
     display: flex;
     flex-direction: column;
   }
 
   .post-feed-profile-default {
-    width: 80vw;
+    width: 95%;
   }
 }

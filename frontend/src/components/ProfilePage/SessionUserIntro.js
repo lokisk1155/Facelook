@@ -11,7 +11,7 @@ function SessionUserIntro({ currentUser, changeHeight }) {
 
   useEffect(() => {
     if (toggleBio) {
-      changeHeight(divHeight +100)
+      changeHeight(divHeight + 100);
     } else {
       changeHeight(divHeight);
     }
@@ -19,7 +19,7 @@ function SessionUserIntro({ currentUser, changeHeight }) {
 
   return (
     <div style={{ height: "100%", width: "100%" }}>
-      <p style={{ justifyContent: "center"}}>{currentUser.bio}</p>
+      <p style={{ justifyContent: "center" }}>{currentUser.bio}</p>
       {toggleBio ? <EditBio closeModal={setToggleBio} /> : null}
       <div
         style={{
