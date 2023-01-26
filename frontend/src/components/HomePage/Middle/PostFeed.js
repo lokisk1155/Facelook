@@ -123,7 +123,7 @@ function PostFeed({ profilePage, currentUser }) {
   }
 
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
+    <div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
       {profilePage === undefined || id == sessionUser.id ? (
         <div className="create-post-modal">
           <button className="new-post-button" onClick={handleNewPost}>
@@ -145,7 +145,9 @@ function PostFeed({ profilePage, currentUser }) {
           )}
         </div>
       ) : null}
-      <div style={{ display: "flex", flexDirection: "column", margin: "2%" }}>
+      <div
+        style={{ display: "flex", flexDirection: "column", marginTop: "5px" }}
+      >
         {posts && (
           <>
             {Object.values(posts)
@@ -157,7 +159,7 @@ function PostFeed({ profilePage, currentUser }) {
                     style={{
                       height: contentHeight(post),
                       minHeight: post?.picture ? "400px" : "85px",
-                      minWidth: "300px",
+                      width: "100%",
                       marginBottom: "15px",
                     }}
                   >

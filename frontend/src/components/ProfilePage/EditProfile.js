@@ -27,7 +27,6 @@ function EditProfile({ closeModal, cover, profile }) {
     if (photoFile) {
       formData.append("user[profile_pic]", photoFile);
     }
-    debugger;
     dispatch(updateUser(currentUser, formData));
   };
 

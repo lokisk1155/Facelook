@@ -6,6 +6,7 @@ import { receiveFriends } from "./friend";
 export const profilePage = (id, noPosts, noFriends) => async (dispatch) => {
   const userRes = await csrfFetch(`/api/users/${id}`);
   const userData = await userRes.json();
+  console.log(userData);
   if (noFriends) return dispatch(setCurrentProfile(userData.user));
   const userIds = Object.values(userData.user.friends);
   const friendsRes = await csrfFetch(`/api/users?userIds=${userIds}`);

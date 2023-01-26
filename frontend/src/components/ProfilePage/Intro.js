@@ -1,67 +1,56 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { updateUser } from "../../store/user";
-import "./Intro.css";
+function Intro({ currentUser, changeHeight }) {
+  let count = 40;
 
-function Intro({ currentUser, sessionUser }) {
-  const dispatch = useDispatch();
+  const bio = currentUser.bio ? currentUser.bio : null;
 
-  const isUser = currentUser.id === sessionUser.id;
-
-  const [bio, setBio] = useState(currentUser.bio);
-
-  const [toggleBio, setToggleBio] = useState(false);
+  if (bio) {
+    count += 65;
+  }
 
   const work = currentUser.work ? currentUser.work : null;
 
+  if (work) {
+    count += 55;
+  }
+
   const education = currentUser.education ? currentUser.education : null;
 
+  if (education) {
+    count += 55;
+  }
+
   const location = currentUser.location ? currentUser.location : null;
+
+  if (location) {
+    count += 55;
+  }
 
   const relationship = currentUser.relationship
     ? currentUser.relationship
     : null;
 
-  const handleBioSubmit = (e) => {
-    e.preventDefault();
-    setToggleBio(false);
-    const user = {
-      ...currentUser,
-      bio,
-    };
-    return dispatch(updateUser(user));
-  };
+  if (relationship) {
+    count += 55;
+  }
+
+  changeHeight(count);
 
   return (
-    <div className="intro-container">
-      <h2 className="intro-header">Intro </h2>
-      <p style={{ justifyContent: "center" }}>{bio}</p>
-      <div
-        style={{ borderBottom: "1px solid lightgrey", margin: "10px" }}
-      ></div>
-      {isUser && toggleBio ? (
-        <>
-          <button
-            style={{ justifyContent: "center" }}
-            onClick={() => setToggleBio(true)}
-          >
-            Edit Bio
-          </button>
-          <form onSubmit={handleBioSubmit}>
-            <textarea onChange={(e) => setBio(e.target.value)}></textarea>
-            <button onClick={() => setToggleBio(false)}>X</button>
-            <button type="submit">save</button>
-          </form>
-        </>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-evenly",
+        height: "90%",
+      }}
+    >
+      {bio ? <p className="user-info">{bio}</p> : null}
+      {work ? <p className="user-info">Works at {work}</p> : null}
+      {education ? (
+        <p className="user-info">Graduated from {education}</p>
       ) : null}
-      <div className="content-container">
-        {work ? <p className="user-info">Works at {work}</p> : null}
-        {education ? (
-          <p className="user-info">Graduated from {education}</p>
-        ) : null}
-        {location ? <p className="user-info">lives in {location}</p> : null}
-        {relationship ? <p className="user-info">{relationship}</p> : null}
-      </div>
+      {location ? <p className="user-info">lives in {location}</p> : null}
+      {relationship ? <p className="user-info">{relationship}</p> : null}
     </div>
   );
 }

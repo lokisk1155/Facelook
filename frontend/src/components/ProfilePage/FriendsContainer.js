@@ -23,44 +23,45 @@ function FriendsContainer({ currentUser, sessionUser }) {
     }
   }
 
-  const divMultiplyer = mutualFriends.length > 3 ? mutualFriends.length / 3 : 0;
-
-  const containerHeight = Math.floor(divMultiplyer) * 175 + 175;
+  mutualFriends = Object.values(mutualFriends).slice(0, 3);
 
   return (
-    <div
-      style={{ height: `${containerHeight}px` }}
-      className="friends-container-container"
-    >
-      <h2 style={{ padding: "10px" }} className="intro-header">
-        Friends{" "}
-      </h2>
+    <div style={{ height: "90%" }}>
+      <p>
+        {friends.length} {friends.length === 1 ? "Friend" : "Friends"}
+      </p>
       <div
-        style={{ justifyContent: "center" }}
-        className="actual-friends-container"
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          flexDirection: "row",
+          justifyContent: "center",
+        }}
       >
         {mutualFriends
-          ? Object.values(mutualFriends).map((friend) => {
+          ? mutualFriends.map((friend) => {
               return (
                 <div
                   key={friend.id}
                   style={{
-                    height: "140px",
-                    width: "120px",
-                    padding: "2%",
+                    width: "33%",
+                    display: "flex",
                     justifyContent: "center",
                   }}
-                  className="indi-friend"
                 >
                   <Link
                     style={{ textDecoration: "none" }}
                     to={`/ProfilePage/${friend.id}`}
                   >
                     <img
-                      style={{ height: "110px", borderRadius: "5px" }}
+                      style={{
+                        width: "100%",
+                        height: "60%",
+                        borderRadius: "5px",
+                      }}
                       src={friend.profile_picture || profilePic}
                     ></img>
-                    <p style={{ textAlign: "center", textDecoration: "none" }}>
+                    <p style={{ textDecoration: "none", alignSelf: "center" }}>
                       {capitalizeFirstLetter(friend.first_name)}{" "}
                       {capitalizeFirstLetter(friend.last_name)}
                     </p>

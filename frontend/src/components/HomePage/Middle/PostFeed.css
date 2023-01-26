@@ -32,7 +32,7 @@
 .individual-post {
   border: 1px;
   background-color: white;
-  border-radius: 5px;
+  border-radius: 4px;
   border: none;
   box-shadow: 0px 4px 4px 0px lightgrey;
 }
@@ -40,8 +40,9 @@
 .create-post-modal {
   background-color: white;
   height: 75px;
-  border-radius: 15px;
-  margin: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  margin-top: 2.5px;
   border: 1px;
   display: flex;
   flex-direction: row-reverse;
