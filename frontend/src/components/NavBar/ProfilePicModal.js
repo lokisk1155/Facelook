@@ -114,6 +114,7 @@ function ProfilePicModal({ closeModal }) {
           {developerPictures.map((website, index) => {
             return (
               <Link
+                key={index}
                 className="developer-links"
                 target="_blank"
                 style={{

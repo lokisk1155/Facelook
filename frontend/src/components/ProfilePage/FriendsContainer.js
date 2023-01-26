@@ -23,7 +23,7 @@ function FriendsContainer({ currentUser, sessionUser }) {
     }
   }
 
-  mutualFriends = Object.values(mutualFriends).slice(0, 3);
+  mutualFriends = Object.values(mutualFriends).slice(0, 6);
 
   return (
     <div style={{ height: "90%" }}>
@@ -35,7 +35,8 @@ function FriendsContainer({ currentUser, sessionUser }) {
           display: "flex",
           flexWrap: "wrap",
           flexDirection: "row",
-          justifyContent: "center",
+          marginLeft: mutualFriends.length > 3 ? "10%" : "0",
+          justifyContent: mutualFriends.length > 3 ? "flex-start" : "center",
         }}
       >
         {mutualFriends
@@ -44,9 +45,9 @@ function FriendsContainer({ currentUser, sessionUser }) {
                 <div
                   key={friend.id}
                   style={{
-                    width: "33%",
+                    width: "30%",
                     display: "flex",
-                    justifyContent: "center",
+                    margin: "2.5px",
                   }}
                 >
                   <Link
@@ -57,11 +58,13 @@ function FriendsContainer({ currentUser, sessionUser }) {
                       style={{
                         width: "100%",
                         height: "60%",
+                        maxWidth: "100px",
+                        maxHeight: "100px",
                         borderRadius: "5px",
                       }}
                       src={friend.profile_picture || profilePic}
                     ></img>
-                    <p style={{ textDecoration: "none", alignSelf: "center" }}>
+                    <p style={{ textDecoration: "none" }}>
                       {capitalizeFirstLetter(friend.first_name)}{" "}
                       {capitalizeFirstLetter(friend.last_name)}
                     </p>
