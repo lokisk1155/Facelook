@@ -35,7 +35,6 @@ function FriendsContainer({ currentUser, sessionUser }) {
           display: "flex",
           flexWrap: "wrap",
           flexDirection: "row",
-          marginLeft: mutualFriends.length > 3 ? "10%" : "0",
           justifyContent: mutualFriends.length > 3 ? "flex-start" : "center",
         }}
       >
@@ -45,28 +44,43 @@ function FriendsContainer({ currentUser, sessionUser }) {
                 <div
                   key={friend.id}
                   style={{
-                    width: "30%",
+                    width: "31%",
                     display: "flex",
                     margin: "2.5px",
                   }}
                 >
                   <Link
-                    style={{ textDecoration: "none" }}
+                    style={{
+                      textDecoration: "none",
+                      margin: 0,
+                      padding: 0,
+                      width: "100%",
+                    }}
                     to={`/ProfilePage/${friend.id}`}
                   >
                     <img
                       style={{
-                        width: "100%",
-                        height: "60%",
-                        maxWidth: "100px",
-                        maxHeight: "100px",
+                        width: "95%",
+                        height: "75%",
                         borderRadius: "5px",
+                        margin: "5px",
+                        padding: 0,
                       }}
                       src={friend.profile_picture || profilePic}
                     ></img>
-                    <p style={{ textDecoration: "none" }}>
-                      {capitalizeFirstLetter(friend.first_name)}{" "}
-                      {capitalizeFirstLetter(friend.last_name)}
+                    <p
+                      style={{
+                        textDecoration: "none",
+                        color: "black",
+                        margin: "0",
+                        marginLeft: "3px",
+                        width: "100%",
+                        height: "12%",
+                        fontSize: "0.8rem",
+                        transform: "translateY(-5px)",
+                      }}
+                    >
+                      {friend.first_name} {friend.last_name}
                     </p>
                   </Link>
                 </div>
