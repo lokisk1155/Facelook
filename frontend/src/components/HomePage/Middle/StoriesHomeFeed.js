@@ -38,11 +38,10 @@ function StoriesHomeFeed({ stories }) {
           justifyContent: "space-evenly",
           backgroundColor: "#fff",
           padding: "10px",
-          marginLeft: "10px",
-          marginRight: "10px",
           borderEndStartRadius: "10px",
           borderEndEndRadius: "10px",
           boxShadow: "0px 6px 6px 0px lightgrey",
+          marginBottom: "10px",
         }}
       >
         <div
