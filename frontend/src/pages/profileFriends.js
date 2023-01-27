@@ -1,10 +1,9 @@
-import ProfileTop from "../components/ProfilePage/ProfileTop";
-import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Friends from "../components/ProfilePage/Friends";
 import { profilePage } from "../store/profilePage";
-import { useState } from "react";
+import Friends from "../components/ProfilePage/Friends";
+import ProfileTop from "../components/ProfilePage/ProfileTop";
 
 function ProfileFriends() {
   const { id } = useParams();
@@ -17,11 +16,9 @@ function ProfileFriends() {
 
   const friends = useSelector((state) => state.friends);
 
-  const noPosts = true;
-
   useEffect(() => {
     dispatch(profilePage(id));
-  }, [id]);
+  }, [id, dispatch]);
 
   if (!currentUser || !sessionUser || !id || !friends) {
     return null;
