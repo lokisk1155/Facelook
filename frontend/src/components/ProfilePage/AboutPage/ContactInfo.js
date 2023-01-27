@@ -34,8 +34,13 @@ function ContactInfo() {
     setTogglePhone(false);
     setTogglePhoneEdit(false);
     let phone_number = fakePhoneNumber;
+    let cloneWithoutRedux = { ...currentUser };
+    delete cloneWithoutRedux.friends;
+    delete cloneWithoutRedux.profile_picture;
+    delete cloneWithoutRedux.cover_photo;
+    delete cloneWithoutRedux.password;
     const user = {
-      ...currentUser,
+      ...cloneWithoutRedux,
       phone_number,
     };
     return dispatch(updateUser(user));
@@ -44,8 +49,13 @@ function ContactInfo() {
   const handleEmail = () => {
     setToggleEmailEdit(false);
     let email = fakeEmail;
+    let cloneWithoutRedux = { ...currentUser };
+    delete cloneWithoutRedux.friends;
+    delete cloneWithoutRedux.profile_picture;
+    delete cloneWithoutRedux.cover_photo;
+    delete cloneWithoutRedux.password;
     const user = {
-      ...currentUser,
+      ...cloneWithoutRedux,
       email,
     };
     return dispatch(updateUser(user));
@@ -54,8 +64,13 @@ function ContactInfo() {
   const handleGender = () => {
     setToggleEditGender(false);
     let gender = fakeGender;
+    let cloneWithoutRedux = { ...currentUser };
+    delete cloneWithoutRedux.friends;
+    delete cloneWithoutRedux.profile_picture;
+    delete cloneWithoutRedux.cover_photo;
+    delete cloneWithoutRedux.password;
     const user = {
-      ...currentUser,
+      ...cloneWithoutRedux,
       gender,
     };
     return dispatch(updateUser(user));
@@ -65,8 +80,13 @@ function ContactInfo() {
     setTogggleWebsite(false);
     setToggleEditWebsite(false);
     let website = fakeWebsite;
+    let cloneWithoutRedux = { ...currentUser };
+    delete cloneWithoutRedux.friends;
+    delete cloneWithoutRedux.profile_picture;
+    delete cloneWithoutRedux.cover_photo;
+    delete cloneWithoutRedux.password;
     const user = {
-      ...currentUser,
+      ...cloneWithoutRedux,
       website,
     };
     return dispatch(updateUser(user));
@@ -76,15 +96,20 @@ function ContactInfo() {
     setToggleSocial(false);
     setToggleEditSocial(false);
     const social_link = fakeSocial;
+    let cloneWithoutRedux = { ...currentUser };
+    delete cloneWithoutRedux.friends;
+    delete cloneWithoutRedux.profile_picture;
+    delete cloneWithoutRedux.cover_photo;
+    delete cloneWithoutRedux.password;
     const user = {
-      ...currentUser,
+      ...cloneWithoutRedux,
       social_link,
     };
     return dispatch(updateUser(user));
   };
 
   return (
-    <div>
+    <>
       <div>
         {currentUser.email ? <p>{currentUser.email}</p> : null}
         {isUser && currentUser.email && (
@@ -268,7 +293,7 @@ function ContactInfo() {
 
       <p>birth date: {`${currentUser.month} ${currentUser.day}`}</p>
       <p>birth year: {currentUser.year}</p>
-    </div>
+    </>
   );
 }
 

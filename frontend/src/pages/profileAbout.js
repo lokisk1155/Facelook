@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import AboutPage from "../components/ProfilePage/AboutPage/AboutPage";
 import ContactInfo from "../components/ProfilePage/AboutPage/ContactInfo";
 import Overview from "../components/ProfilePage/AboutPage/Overview";
-import PlacesLived from "../components/ProfilePage/AboutPage/PlacesLived";
 import Relationship from "../components/ProfilePage/AboutPage/relationship";
 import WorkEd from "../components/ProfilePage/AboutPage/WorkEd";
 import { profilePage } from "../store/profilePage";
@@ -40,9 +39,43 @@ function ProfileAbout({ about }) {
         currentUser={currentUser}
         friends={friends}
       />
-      <div className="about-page-container">
-        <div className="about-page-block">
+      <div
+        style={{
+          display: "flex",
+          width: "100%",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "25vw",
+          marginTop: "15px",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-evenly",
+            width: "20%",
+            height: "100%",
+            justifyContent: "center",
+            backgroundColor: "#fff",
+            border: "1px solid lightgrey",
+            borderRight: "3px solidLightgrey",
+          }}
+        >
           <AboutPage />
+        </div>
+        <div
+          style={{
+            width: "40%",
+            backgroundColor: "#fff",
+            border: "1px solid lightgrey",
+            display: "flex",
+            height: "100%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-around",
+          }}
+        >
           {about === "Overview" ? (
             <Overview sessionUser={sessionUser} currentUser={currentUser} />
           ) : null}
@@ -51,9 +84,6 @@ function ProfileAbout({ about }) {
           ) : null}
           {about === "Relationship" ? (
             <Relationship sessionUser={sessionUser} currentUser={currentUser} />
-          ) : null}
-          {about === "PlacesLived" ? (
-            <PlacesLived sessionUser={sessionUser} currentUser={currentUser} />
           ) : null}
           {about === "WorkEd" ? (
             <WorkEd sessionUser={sessionUser} currentUser={currentUser} />

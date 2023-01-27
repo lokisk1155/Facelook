@@ -4,35 +4,70 @@ function AboutPage({}) {
   const { id } = useParams();
 
   return (
-    <div className="about-page-button-container">
-      <Link to={`/ProfilePage/${id}/about`}>
-        <button tabIndex="1" className="about-page-button-style">
+    <>
+      <h3>About</h3>
+      <Link
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          textDecoration: "none",
+          height: "20%",
+          width: "100%",
+        }}
+        to={`/ProfilePage/${id}/about`}
+      >
+        <button style={{ width: "90%", height: "90%", textDecoration: "none" }}>
           Overview
         </button>
       </Link>
 
-      <Link to={`/ProfilePage/${id}/about/work_and_education`}>
-        <button tabIndex="2" className="about-page-button-style">
+      <Link
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          textDecoration: "none",
+          height: "20%",
+          width: "100%",
+        }}
+        to={`/ProfilePage/${id}/about/work_and_education`}
+      >
+        <button style={{ width: "90%", height: "90%", textDecoration: "none" }}>
           Work and Education
         </button>
       </Link>
-
-      <Link to={`/ProfilePage/${id}/about/places_lived`}>
-        <button tabIndex="3" className="about-page-button-style">
-          Places Lived
-        </button>
-      </Link>
-      <Link to={`/ProfilePage/${id}/about/contact_info`}>
-        <button tabIndex="4" className="about-page-button-style">
+      <Link
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          textDecoration: "none",
+          height: "20%",
+          width: "100%",
+        }}
+        to={`/ProfilePage/${id}/about/contact_info`}
+      >
+        <button style={{ width: "90%", height: "90%", textDecoration: "none" }}>
           Contact Info
         </button>
       </Link>
-      <Link to={`/ProfilePage/${id}/about/family_and_relationships`}>
-        <button tabIndex="5" className="about-page-button-style">
+      <Link
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          textDecoration: "none",
+          height: "20%",
+          width: "100%",
+        }}
+        to={`/ProfilePage/${id}/about/family_and_relationships`}
+      >
+        <button style={{ width: "90%", height: "90%", textDecoration: "none" }}>
           Family and Relationships
         </button>
       </Link>
-    </div>
+    </>
   );
 }
 

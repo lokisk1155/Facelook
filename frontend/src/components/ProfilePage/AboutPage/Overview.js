@@ -27,8 +27,13 @@ function Overview({ currentUser, sessionUser }) {
   const handleWork = (e) => {
     e.preventDefault();
     let work = fakeWork;
+    let cloneWithoutRedux = { ...currentUser };
+    delete cloneWithoutRedux.friends;
+    delete cloneWithoutRedux.profile_picture;
+    delete cloneWithoutRedux.cover_photo;
+    delete cloneWithoutRedux.password;
     const user = {
-      ...currentUser,
+      ...cloneWithoutRedux,
       work,
     };
     return dispatch(updateUser(user));
@@ -37,8 +42,13 @@ function Overview({ currentUser, sessionUser }) {
   const handleEducation = (e) => {
     e.preventDefault();
     let education = fakeEducation;
+    let cloneWithoutRedux = { ...currentUser };
+    delete cloneWithoutRedux.friends;
+    delete cloneWithoutRedux.profile_picture;
+    delete cloneWithoutRedux.cover_photo;
+    delete cloneWithoutRedux.password;
     const user = {
-      ...currentUser,
+      ...cloneWithoutRedux,
       education,
     };
     return dispatch(updateUser(user));
@@ -47,8 +57,13 @@ function Overview({ currentUser, sessionUser }) {
   const handleLocation = (e) => {
     e.preventDefault();
     let location = fakeLocation;
+    let cloneWithoutRedux = { ...currentUser };
+    delete cloneWithoutRedux.friends;
+    delete cloneWithoutRedux.profile_picture;
+    delete cloneWithoutRedux.cover_photo;
+    delete cloneWithoutRedux.password;
     const user = {
-      ...currentUser,
+      ...cloneWithoutRedux,
       location,
     };
     return dispatch(updateUser(user));
@@ -57,15 +72,20 @@ function Overview({ currentUser, sessionUser }) {
   const handleRelationship = (e) => {
     e.preventDefault();
     let relationship = fakeRelationship;
+    let cloneWithoutRedux = { ...currentUser };
+    delete cloneWithoutRedux.friends;
+    delete cloneWithoutRedux.profile_picture;
+    delete cloneWithoutRedux.cover_photo;
+    delete cloneWithoutRedux.password;
     const user = {
-      ...currentUser,
+      ...cloneWithoutRedux,
       relationship,
     };
     return dispatch(updateUser(user));
   };
 
   return (
-    <div className="content-container">
+    <>
       <div>
         {currentUser.work ? <p>{currentUser.work}</p> : null}
         {!currentUser.work && isUser && (
@@ -258,7 +278,7 @@ function Overview({ currentUser, sessionUser }) {
           </form>
         )}
       </div>
-    </div>
+    </>
   );
 }
 

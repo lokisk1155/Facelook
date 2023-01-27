@@ -24,8 +24,13 @@ function WorkEd({ currentUser, sessionUser }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     let work = fakeWork;
+    let cloneWithoutRedux = { ...currentUser };
+    delete cloneWithoutRedux.friends;
+    delete cloneWithoutRedux.profile_picture;
+    delete cloneWithoutRedux.cover_photo;
+    delete cloneWithoutRedux.password;
     const user = {
-      ...currentUser,
+      ...cloneWithoutRedux,
       work,
     };
     return dispatch(updateUser(user));
@@ -34,8 +39,13 @@ function WorkEd({ currentUser, sessionUser }) {
   const handleCollege = (e) => {
     e.preventDefault();
     let education = fakeCollege;
+    let cloneWithoutRedux = { ...currentUser };
+    delete cloneWithoutRedux.friends;
+    delete cloneWithoutRedux.profile_picture;
+    delete cloneWithoutRedux.cover_photo;
+    delete cloneWithoutRedux.password;
     const user = {
-      ...currentUser,
+      ...cloneWithoutRedux,
       education,
     };
     return dispatch(updateUser(user));
@@ -51,18 +61,8 @@ function WorkEd({ currentUser, sessionUser }) {
     return dispatch(updateUser(user));
   };
 
-  const handleAddWork = (e) => {
-    e.preventDefault();
-    let places_lived = currentUser.places_worked.push(fakeWork);
-    const user = {
-      ...currentUser,
-      places_lived,
-    };
-    return dispatch(updateUser(user));
-  };
-
   return (
-    <div>
+    <>
       <div>
         <h4>Work</h4>
         {currentUser.work ? <p>{currentUser.work}</p> : null}
@@ -111,7 +111,7 @@ function WorkEd({ currentUser, sessionUser }) {
           </button>
         )}
         {toggleAddWork && (
-          <form onSubmit={handleAddWork}>
+          <form onSubmit={handleSubmit}>
             <input
               type="text"
               placeholder="Company"
@@ -224,7 +224,7 @@ function WorkEd({ currentUser, sessionUser }) {
           </form>
         )}
       </div>
-    </div>
+    </>
   );
 }
 
