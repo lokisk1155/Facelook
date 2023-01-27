@@ -1,4 +1,3 @@
-import "./FriendsContainer.css";
 import profilePic from "../NavBar/imgs/blank.png";
 import { Link, useParams } from "react-router-dom";
 import capitalizeFirstLetter from "../../utils/capFirstLetter";

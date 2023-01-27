@@ -54,7 +54,6 @@ function ProfileAbout({ about }) {
             flexDirection: "column",
             justifyContent: "space-evenly",
             width: "20%",
-            justifyContent: "center",
             backgroundColor: "#fff",
             border: "1px solid lightgrey",
             borderRight: "3px solidLightgrey",

@@ -24,7 +24,7 @@ function WorkEd({ currentUser, sessionUser }) {
         {isUser ? (
           <EditEducation currentUser={currentUser} sessionUser={sessionUser} />
         ) : (
-          <p>{currentUser.email}</p>
+          <p>{currentUser.education}</p>
         )}
       </div>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -34,8 +34,6 @@ function WorkEd({ currentUser, sessionUser }) {
           <p>{currentUser.website}</p>
         )}
       </div>
-      <p>birth date: {`${currentUser.month} ${currentUser.day}`}</p>
-      <p>birth year: {currentUser.year}</p>
     </div>
   );
 }

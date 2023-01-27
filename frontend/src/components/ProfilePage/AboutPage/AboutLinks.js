@@ -33,7 +33,7 @@ function AboutPageLinks({}) {
         >
           <p
             style={{
-              fontSize: "1rem",
+              fontSize: "15px",
               padding: "0",
               margin: "0",
               justifyContent: "flex-start",
@@ -76,7 +76,7 @@ function AboutPageLinks({}) {
         >
           <p
             style={{
-              fontSize: "1rem",
+              fontSize: "15px",
               padding: "0",
               margin: "0",
               justifyContent: "flex-start",
@@ -118,7 +118,7 @@ function AboutPageLinks({}) {
         >
           <p
             style={{
-              fontSize: "1rem",
+              fontSize: "15px",
               padding: "0",
               margin: "0",
               justifyContent: "flex-start",
@@ -161,7 +161,7 @@ function AboutPageLinks({}) {
         >
           <p
             style={{
-              fontSize: "1rem",
+              fontSize: "15px",
               padding: "0",
               margin: "0",
               justifyContent: "flex-start",

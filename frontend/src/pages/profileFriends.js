@@ -39,7 +39,7 @@ function ProfileFriends() {
       <div style={{ display: "flex", justifyContent: "center" }}>
         <div
           style={{
-            width: "80vw",
+            width: "100vw",
             maxWidth: "1250px",
           }}
         >

@@ -15,7 +15,7 @@
     width: 100vw;
   }
   .about-page-links {
-    width: 65%;
+    min-width: 115px;
   }
 
   .about-page-links-results {
