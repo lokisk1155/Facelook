@@ -2,9 +2,10 @@ import { Link, useParams } from "react-router-dom";
 function AboutPageLinks({}) {
   const { id } = useParams();
 
+  console.log(window.location.href);
+
   return (
     <>
-      <h3>About</h3>
       <Link
         style={{
           display: "flex",
@@ -16,8 +17,35 @@ function AboutPageLinks({}) {
         }}
         to={`/ProfilePage/${id}/about`}
       >
-        <button style={{ width: "90%", height: "90%", textDecoration: "none" }}>
-          Overview
+        <button
+          style={{
+            width: "90%",
+            height: "90%",
+            textDecoration: "none",
+            border: "none",
+            borderRadius: "5px",
+            backgroundColor:
+              window.location.href ===
+              `http://localhost:3000/ProfilePage/${id}/about`
+                ? "#1877f2"
+                : "#fff",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "1rem",
+              padding: "0",
+              margin: "0",
+              justifyContent: "flex-start",
+              color:
+                window.location.href ===
+                `http://localhost:3000/ProfilePage/${id}/about`
+                  ? "#fff"
+                  : "grey",
+            }}
+          >
+            Overview
+          </p>
         </button>
       </Link>
 
@@ -32,8 +60,35 @@ function AboutPageLinks({}) {
         }}
         to={`/ProfilePage/${id}/about/work_and_education`}
       >
-        <button style={{ width: "90%", height: "90%", textDecoration: "none" }}>
-          Work and Education
+        <button
+          style={{
+            width: "90%",
+            height: "90%",
+            textDecoration: "none",
+            border: "none",
+            borderRadius: "5px",
+            backgroundColor:
+              window.location.href ===
+              `http://localhost:3000/ProfilePage/${id}/about/work_and_education`
+                ? "#1877f2"
+                : "#fff",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "1rem",
+              padding: "0",
+              margin: "0",
+              justifyContent: "flex-start",
+              color:
+                window.location.href ===
+                `http://localhost:3000/ProfilePage/${id}/about/work_and_education`
+                  ? "#fff"
+                  : "grey",
+            }}
+          >
+            Work and Education
+          </p>
         </button>
       </Link>
       <Link
@@ -47,8 +102,36 @@ function AboutPageLinks({}) {
         }}
         to={`/ProfilePage/${id}/about/contact_info`}
       >
-        <button style={{ width: "90%", height: "90%", textDecoration: "none" }}>
-          Contact Info
+        <button
+          style={{
+            width: "90%",
+            height: "90%",
+            textDecoration: "none",
+            border: "none",
+            borderRadius: "5px",
+            backgroundColor:
+              window.location.href ===
+              `http://localhost:3000/ProfilePage/${id}/about/contact_info`
+                ? "#1877f2"
+                : "#fff",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "1rem",
+              padding: "0",
+              margin: "0",
+              justifyContent: "flex-start",
+              color:
+                window.location.href ===
+                `http://localhost:3000/ProfilePage/${id}/about/contact_info`
+                  ? "#fff"
+                  : "grey",
+            }}
+          >
+            {" "}
+            Contact Info{" "}
+          </p>
         </button>
       </Link>
       <Link
@@ -62,8 +145,36 @@ function AboutPageLinks({}) {
         }}
         to={`/ProfilePage/${id}/about/family_and_relationships`}
       >
-        <button style={{ width: "90%", height: "90%", textDecoration: "none" }}>
-          Family and Relationships
+        <button
+          style={{
+            width: "90%",
+            height: "90%",
+            textDecoration: "none",
+            border: "none",
+            borderRadius: "5px",
+            backgroundColor:
+              window.location.href ===
+              `http://localhost:3000/ProfilePage/${id}/about/family_and_relationships`
+                ? "#1877f2"
+                : "#fff",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "1rem",
+              padding: "0",
+              margin: "0",
+              justifyContent: "flex-start",
+              color:
+                window.location.href ===
+                `http://localhost:3000/ProfilePage/${id}/about/family_and_relationships`
+                  ? "#fff"
+                  : "grey",
+            }}
+          >
+            {" "}
+            Family and Relationships{" "}
+          </p>
         </button>
       </Link>
     </>

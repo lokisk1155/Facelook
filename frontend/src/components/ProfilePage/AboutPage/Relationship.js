@@ -13,7 +13,6 @@ function Relationship({ currentUser, sessionUser }) {
         )}
       </div>
       <br></br>
-      <h3>Family</h3>
     </div>
   );
 }

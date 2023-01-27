@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 import EditBio from "./EditBio";
@@ -23,6 +23,8 @@ function SessionUserIntro({ currentUser, changeHeight }) {
       {toggleBio ? <EditBio closeModal={setToggleBio} /> : null}
       <div
         style={{
+          width: "100%",
+          height: "100%",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -42,18 +44,22 @@ function SessionUserIntro({ currentUser, changeHeight }) {
         >
           {currentUser.bio ? "Edit bio" : "Add bio"}
         </button>
-        <button
-          className="add-bio-edit-details-buttons"
-          style={{
-            width: "90%",
-            height: "40%",
-            margin: "2.5px",
-            border: "none",
-            borderRadius: "5px",
-          }}
+        <Link
+          style={{ margin: "2.5px", padding: "0", width: "90%", height: "40%" }}
+          to={`/ProfilePage/${currentUser.id}/about`}
         >
-          Edit details
-        </button>
+          <button
+            className="add-bio-edit-details-buttons"
+            style={{
+              border: "none",
+              borderRadius: "5px",
+              width: "100%",
+              height: "100%",
+            }}
+          >
+            Edit details
+          </button>
+        </Link>
       </div>
     </div>
   );
