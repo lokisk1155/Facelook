@@ -1,6 +1,5 @@
-import "./AboutPage.css";
 import { Link, useParams } from "react-router-dom";
-function AboutPage({}) {
+function AboutPageLinks({}) {
   const { id } = useParams();
 
   return (
@@ -71,4 +70,4 @@ function AboutPage({}) {
   );
 }
 
-export default AboutPage;
+export default AboutPageLinks;

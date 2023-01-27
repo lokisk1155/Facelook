@@ -1,0 +1,24 @@
+.about-content-container {
+  height: 400px;
+}
+
+.about-page-links {
+  width: 30%;
+}
+
+.about-page-links-results {
+  width: 50%;
+}
+
+@media (max-width: 600px) {
+  .about-content-container {
+    width: 100vw;
+  }
+  .about-page-links {
+    width: 65%;
+  }
+
+  .about-page-links-results {
+    width: 65%;
+  }
+}

@@ -2,12 +2,13 @@ import ProfileTop from "../components/ProfilePage/ProfileTop";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import AboutPage from "../components/ProfilePage/AboutPage/AboutPage";
+import AboutPageLinks from "../components/ProfilePage/AboutPage/AboutLinks";
 import ContactInfo from "../components/ProfilePage/AboutPage/ContactInfo";
 import Overview from "../components/ProfilePage/AboutPage/Overview";
-import Relationship from "../components/ProfilePage/AboutPage/relationship";
+import Relationship from "../components/ProfilePage/AboutPage/UserInformation/EditRelationship";
 import WorkEd from "../components/ProfilePage/AboutPage/WorkEd";
 import { profilePage } from "../store/profilePage";
+import "./profileAbout.css";
 
 function ProfileAbout({ about }) {
   const { id } = useParams();
@@ -21,8 +22,6 @@ function ProfileAbout({ about }) {
   const friends = useSelector((state) => state.friends);
 
   const noPosts = true;
-
-  const noFriends = true;
 
   useEffect(() => {
     dispatch(profilePage(id, noPosts));
@@ -40,40 +39,37 @@ function ProfileAbout({ about }) {
         friends={friends}
       />
       <div
+        className="about-content-container"
         style={{
           display: "flex",
-          width: "100%",
           alignItems: "center",
           justifyContent: "center",
-          height: "25vw",
           marginTop: "15px",
         }}
       >
         <div
+          className="about-page-links"
           style={{
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-evenly",
             width: "20%",
-            height: "100%",
             justifyContent: "center",
             backgroundColor: "#fff",
             border: "1px solid lightgrey",
             borderRight: "3px solidLightgrey",
+            height: "100%",
           }}
         >
-          <AboutPage />
+          <AboutPageLinks />
         </div>
         <div
+          className="about-page-links-results"
           style={{
-            width: "40%",
             backgroundColor: "#fff",
             border: "1px solid lightgrey",
-            display: "flex",
+
             height: "100%",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-around",
           }}
         >
           {about === "Overview" ? (
