@@ -31,10 +31,14 @@ function EditSocial({ currentUser }) {
         <>
           {" "}
           <p>{currentUser.social_link}</p>{" "}
-          <button onClick={() => setToggle(true)}>Edit Social</button>
+          <button style={{ margin: "5px" }} onClick={() => setToggle(true)}>
+            Edit Social
+          </button>
         </>
       ) : (
-        <button onClick={() => setToggle(true)}>Add Social</button>
+        <button style={{ margin: "5px" }} onClick={() => setToggle(true)}>
+          Add Social
+        </button>
       )}
       {toggle && (
         <form onSubmit={handleSocial}>
@@ -43,8 +47,12 @@ function EditSocial({ currentUser }) {
             onChange={(e) => setFakeSocial(e.target.value)}
             default="Social"
           ></input>
-          <button onClick={() => setToggle(false)}>Cancel</button>
-          <button type="submit">Submit</button>
+          <button style={{ margin: "5px" }} onClick={() => setToggle(false)}>
+            Cancel
+          </button>
+          <button style={{ margin: "5px" }} type="submit">
+            Submit
+          </button>
         </form>
       )}
     </>

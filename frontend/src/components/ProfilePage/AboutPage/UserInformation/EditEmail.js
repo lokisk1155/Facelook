@@ -31,10 +31,14 @@ function EditEmail({ currentUser }) {
         <>
           {" "}
           <p>{currentUser.email}</p>{" "}
-          <button onClick={() => setToggle(true)}>Edit Email</button>
+          <button style={{ margin: "5px" }} onClick={() => setToggle(true)}>
+            Edit Email
+          </button>
         </>
       ) : (
-        <button onClick={() => setToggle(true)}>Add Email</button>
+        <button style={{ margin: "5px" }} onClick={() => setToggle(true)}>
+          Add Email
+        </button>
       )}
       {toggle && (
         <form onSubmit={handleEmail}>
@@ -43,8 +47,12 @@ function EditEmail({ currentUser }) {
             onChange={(e) => setFakeEmail(e.target.value)}
             default="Email"
           ></input>
-          <button onClick={() => setToggle(false)}>Cancel</button>
-          <button type="submit">Submit</button>
+          <button style={{ margin: "5px" }} onClick={() => setToggle(false)}>
+            Cancel
+          </button>
+          <button style={{ margin: "5px" }} type="submit">
+            Submit
+          </button>
         </form>
       )}
     </>

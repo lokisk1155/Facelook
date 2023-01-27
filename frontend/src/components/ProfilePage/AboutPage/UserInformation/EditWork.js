@@ -31,11 +31,14 @@ function EditWork({ currentUser }) {
         <>
           <p>{currentUser.work}</p>{" "}
           {toggle ? null : (
-            <button onClick={() => setToggle(true)}>Edit work</button>
+            <button style={{ margin: "5px" }} onClick={() => setToggle(true)}>
+              Edit work
+            </button>
           )}
         </>
       ) : (
         <button
+          style={{ margin: "5px" }}
           onClick={() => {
             setToggle(true);
           }}
@@ -50,7 +53,9 @@ function EditWork({ currentUser }) {
             placeholder="Company"
             onChange={(e) => setFakeWork(e.target.value)}
           />
-          <button onClick={() => setToggle(false)}>cancel</button>
+          <button style={{ margin: "5px" }} onClick={() => setToggle(false)}>
+            cancel
+          </button>
           <input type="submit" value="save" />
         </form>
       )}

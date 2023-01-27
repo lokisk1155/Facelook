@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import AboutPageLinks from "../components/ProfilePage/AboutPage/AboutLinks";
 import ContactInfo from "../components/ProfilePage/AboutPage/ContactInfo";
 import Overview from "../components/ProfilePage/AboutPage/Overview";
-import Relationship from "../components/ProfilePage/AboutPage/UserInformation/EditRelationship";
+import Relationship from "../components/ProfilePage/AboutPage/Relationship";
 import WorkEd from "../components/ProfilePage/AboutPage/WorkEd";
 import { profilePage } from "../store/profilePage";
 import "./profileAbout.css";

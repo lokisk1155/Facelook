@@ -33,13 +33,17 @@ function EditRelationship({ currentUser }) {
           {" "}
           <p>{currentUser.relationship}</p>{" "}
           {toggle ? null : (
-            <button onClick={() => setToggle(true)}>Edit Relationship</button>
+            <button style={{ margin: "5px" }} onClick={() => setToggle(true)}>
+              Edit Relationship
+            </button>
           )}
         </>
       ) : (
         <>
           {toggle ? null : (
-            <button onClick={() => setToggle(true)}>Add Relationship</button>
+            <button style={{ margin: "5px" }} onClick={() => setToggle(true)}>
+              Add Relationship
+            </button>
           )}
         </>
       )}

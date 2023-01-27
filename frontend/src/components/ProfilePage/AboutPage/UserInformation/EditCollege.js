@@ -31,10 +31,14 @@ function EditEducation({ currentUser }) {
         <>
           {" "}
           <p>{currentUser.education}</p>{" "}
-          <button onClick={() => setToggle(true)}>Edit Education</button>
+          <button style={{ margin: "5px" }} onClick={() => setToggle(true)}>
+            Edit Education
+          </button>
         </>
       ) : (
-        <button onClick={() => setToggle(true)}>Add Education</button>
+        <button style={{ margin: "5px" }} onClick={() => setToggle(true)}>
+          Add Education
+        </button>
       )}
       {toggle && (
         <form onSubmit={handleEducation}>
@@ -43,8 +47,12 @@ function EditEducation({ currentUser }) {
             onChange={(e) => setFakeEducation(e.target.value)}
             default="Education"
           ></input>
-          <button onClick={() => setToggle(false)}>Cancel</button>
-          <button type="submit">Submit</button>
+          <button style={{ margin: "5px" }} onClick={() => setToggle(false)}>
+            Cancel
+          </button>
+          <button style={{ margin: "5px" }} type="submit">
+            Submit
+          </button>
         </form>
       )}
     </>
