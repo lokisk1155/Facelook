@@ -1,4 +1,4 @@
-# [Faceooooooooooooooooooooooooooooooooooooooooooooook](https://faceooook.herokuapp.com/)
+# [Faceooooooooooooooooooooooooooooooooooook](https://faceooook.herokuapp.com/)
         Mobile First Facebook clone
         stack: React - Redux - Rails - Postgres 
 <p float="left">
