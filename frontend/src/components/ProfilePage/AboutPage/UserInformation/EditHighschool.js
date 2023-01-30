@@ -31,9 +31,11 @@ function EditHighschool({ currentUser }) {
         <>
           {" "}
           <p>{currentUser.highschool}</p>{" "}
-          <button style={{ margin: "5px" }} onClick={() => setToggle(true)}>
-            Edit Highschool
-          </button>
+          {toggle ? null : (
+            <button style={{ margin: "5px" }} onClick={() => setToggle(true)}>
+              Edit highschool
+            </button>
+          )}
         </>
       ) : (
         <button style={{ margin: "5px" }} onClick={() => setToggle(true)}>

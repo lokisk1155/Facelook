@@ -11,6 +11,7 @@ function HomePage() {
   const dispatch = useDispatch();
 
   const stories = useSelector((state) => state.stories);
+
   const posts = useSelector((state) => state.posts);
 
   let limit = 3;

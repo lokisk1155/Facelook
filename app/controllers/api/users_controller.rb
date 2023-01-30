@@ -32,16 +32,16 @@ class Api::UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = User.find(current_user.id)
     photoAttached = false
 
-    if params.has_key?(:profile_pic)
-      @user.profile_pic.attach(params[:profile_pic])
+    if params[:user].has_key?(:profile_pic)
+      @user.profile_pic.attach(params[:user][:profile_pic])
       photoAttached = true
     end
 
-    if params.has_key?(:cover_photo)
-      @user.cover_photo.attach(params[:cover_photo])
+    if params[:user].has_key?(:cover_photo)
+      @user.cover_photo.attach(params[:user][:cover_photo])
       photoAttached = true
     end
 

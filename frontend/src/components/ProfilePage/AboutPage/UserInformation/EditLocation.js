@@ -31,9 +31,11 @@ function Editlocation({ currentUser }) {
         <>
           {" "}
           <p>{currentUser.location}</p>{" "}
-          <button style={{ margin: "5px" }} onClick={() => setToggle(true)}>
-            Edit location
-          </button>
+          {toggle ? null : (
+            <button style={{ margin: "5px" }} onClick={() => setToggle(true)}>
+              Edit location
+            </button>
+          )}
         </>
       ) : (
         <button style={{ margin: "5px" }} onClick={() => setToggle(true)}>

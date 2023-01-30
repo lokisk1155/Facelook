@@ -31,9 +31,11 @@ function EditWebsite({ currentUser }) {
         <>
           {" "}
           <p>{currentUser.website}</p>{" "}
-          <button style={{ margin: "5px" }} onClick={() => setToggle(true)}>
-            Edit Website
-          </button>
+          {toggle ? null : (
+            <button style={{ margin: "5px" }} onClick={() => setToggle(true)}>
+              Edit website
+            </button>
+          )}
         </>
       ) : (
         <button style={{ margin: "5px" }} onClick={() => setToggle(true)}>

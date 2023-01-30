@@ -2,16 +2,15 @@ import "./EditProfile.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "../../store/user";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
+// import ProfileCrop from "../crop/ProfileCrop";
+// import CoverCrop from "../crop/CoverCrop";
+// import { Modal } from "../../context/Modal";
 
 function EditProfile({ closeModal, cover, profile }) {
   const dispatch = useDispatch();
 
-  const { id } = useParams();
-
-  const currentUser = useSelector((state) => state.user[id]);
-
-  console.log(currentUser);
+  const id = useSelector((state) => state.session.user.id);
 
   const [photoFile, setPhotoFile] = useState(null);
 
@@ -21,13 +20,19 @@ function EditProfile({ closeModal, cover, profile }) {
 
   const [photoUrlCover, setPhotoUrlCover] = useState(null);
 
+  const [toggleCrop, setToggleCrop] = useState(false);
+
   const handleUpdateProfile = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     if (photoFile) {
       formData.append("user[profile_pic]", photoFile);
     }
-    dispatch(updateUser(currentUser, formData));
+    const user = {
+      id: id,
+    };
+    dispatch(updateUser(user, formData));
+    return closeModal(false);
   };
 
   const handleUpdateCoverPhoto = async (e) => {
@@ -36,11 +41,16 @@ function EditProfile({ closeModal, cover, profile }) {
     if (photoFileCover) {
       formData.append("user[cover_photo]", photoFileCover);
     }
-    dispatch(updateUser(currentUser, formData));
+    const user = {
+      id: id,
+    };
+    dispatch(updateUser(user, formData));
+    return closeModal(false);
   };
 
   const handleFile = (e) => {
     const file = e.target.files[0];
+    setToggleCrop(true);
     if (file) {
       const fileReader = new FileReader();
       fileReader.readAsDataURL(file);
@@ -53,6 +63,7 @@ function EditProfile({ closeModal, cover, profile }) {
 
   const handleFileCover = (e) => {
     const file = e.target.files[0];
+    setToggleCrop(true);
     if (file) {
       const fileReader = new FileReader();
       fileReader.readAsDataURL(file);
@@ -80,21 +91,75 @@ function EditProfile({ closeModal, cover, profile }) {
         }}
       ></div>
       <div style={{ display: "flex", flexDirection: "column" }}>
-        <h3 style={{}}>Profile Picture</h3>
-        <input type="file" onChange={handleFile} />
-        <button onClick={handleUpdateProfile}>upload</button>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
+        >
+          <h3 style={{ paddingTop: "0", marginTop: "0" }}>Profile Picture</h3>
+
+          {photoUrl ? (
+            <button onClick={handleUpdateProfile}>upload</button>
+          ) : !toggleCrop ? (
+            <label
+              style={{
+                height: "100%",
+                width: "10%",
+                color: "blue",
+                textAlign: "center",
+                cursor: "pointer",
+              }}
+            >
+              edit
+              <input
+                style={{ visibility: "hidden" }}
+                type="file"
+                onChange={handleFile}
+              />
+            </label>
+          ) : null}
+        </div>
         <img
           style={{
-            height: "75px",
-            width: "75px",
+            height: "115px",
+            width: "115px",
             borderRadius: "50%",
             alignSelf: "center",
+            marginBottom: "10px",
           }}
-          src={photoFile || profile}
+          src={photoUrl || profile}
         />
-        <h3 style={{}}>Cover Photo</h3>
-        <input type="file" onChange={handleFileCover} />
-        <button onClick={handleUpdateCoverPhoto}>upload</button>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
+        >
+          <h3 style={{ paddingTop: "0", marginTop: "0" }}>Cover Photo</h3>
+          {photoUrlCover ? (
+            <button onClick={handleUpdateCoverPhoto}>upload</button>
+          ) : !toggleCrop ? (
+            <label
+              style={{
+                height: "100%",
+                width: "10%",
+                color: "blue",
+                textAlign: "center",
+                cursor: "pointer",
+              }}
+            >
+              edit
+              <input
+                style={{ visibility: "hidden" }}
+                type="file"
+                onChange={handleFileCover}
+              />
+            </label>
+          ) : null}
+        </div>
         <img
           style={{
             height: "150px",
@@ -102,7 +167,7 @@ function EditProfile({ closeModal, cover, profile }) {
             backgroundColor: "grey",
             alignSelf: "center",
           }}
-          src={photoFileCover || cover}
+          src={photoUrlCover || cover}
         />
       </div>
     </div>

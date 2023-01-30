@@ -31,9 +31,11 @@ function EditPhoneNumber({ currentUser }) {
         <>
           {" "}
           <p>{currentUser.phone_number}</p>{" "}
-          <button style={{ margin: "5px" }} onClick={() => setToggle(true)}>
-            Edit Phone Number
-          </button>
+          {toggle ? null : (
+            <button style={{ margin: "5px" }} onClick={() => setToggle(true)}>
+              Edit phone number
+            </button>
+          )}
         </>
       ) : (
         <button style={{ margin: "5px" }} onClick={() => setToggle(true)}>
