@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { profilePage } from "../store/profilePage";
 import Friends from "../components/ProfilePage/Friends";
 import ProfileTop from "../components/ProfilePage/ProfileTop";
-import "./profileFriends.css"
+import "./profileFriends.css";
 
 function ProfileFriends() {
   const { id } = useParams();
@@ -34,7 +34,10 @@ function ProfileFriends() {
           friends={friends}
         />
       ) : null}
-      <div className="friends-profile-page-page-container" style={{ display: "flex", justifyContent: "center" }}>
+      <div
+        className="friends-profile-page-page-container"
+        style={{ display: "flex", justifyContent: "center" }}
+      >
         <div
           style={{
             width: "100vw",

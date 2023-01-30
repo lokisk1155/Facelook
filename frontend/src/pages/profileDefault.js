@@ -40,9 +40,7 @@ function ProfileDefault() {
       />
       <div className="content-container-profile-default">
         <div className="flex-or-nah-profile">
-          <div
-            className="boxes-container-profile-default"
-          >
+          <div className="boxes-container-profile-default">
             <div
               className="intro-container"
               style={{ height: `${introContainerHeight}px` }}
@@ -72,7 +70,13 @@ function ProfileDefault() {
                 boxShadow: "0px 6px 6px 0px lightgrey",
               }}
             >
-              <div style={{ fontSize: "1.5rem", padding: "2.5px", paddingTop: "10px" }}>
+              <div
+                style={{
+                  fontSize: "1.5rem",
+                  padding: "2.5px",
+                  paddingTop: "10px",
+                }}
+              >
                 {"Friends"}
               </div>
               <FriendsContainer
