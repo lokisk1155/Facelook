@@ -42,7 +42,6 @@ function ProfileDefault() {
         <div className="flex-or-nah-profile">
           <div
             className="boxes-container-profile-default"
-            style={{ margin: "10px" }}
           >
             <div
               className="intro-container"
@@ -70,13 +69,10 @@ function ProfileDefault() {
               className="friends-box-profile-default"
               style={{
                 backgroundColor: "#fff",
-                borderRadius: "10px",
-                width: "100%",
-                marginTop: "15px",
                 boxShadow: "0px 6px 6px 0px lightgrey",
               }}
             >
-              <div style={{ fontSize: "1.5rem", padding: "2.5px" }}>
+              <div style={{ fontSize: "1.5rem", padding: "2.5px", paddingTop: "10px" }}>
                 {"Friends"}
               </div>
               <FriendsContainer

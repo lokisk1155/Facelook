@@ -43,7 +43,7 @@ function FriendsContainer({ currentUser, sessionUser }) {
                 <div
                   key={friend.id}
                   style={{
-                    width: "31%",
+                    width: "31.9%",
                     display: "flex",
                     margin: "2.5px",
                   }}

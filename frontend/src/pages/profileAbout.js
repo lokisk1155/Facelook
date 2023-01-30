@@ -44,7 +44,6 @@ function ProfileAbout({ about }) {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          marginTop: "15px",
         }}
       >
         <div

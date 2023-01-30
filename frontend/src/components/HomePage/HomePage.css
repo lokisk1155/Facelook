@@ -41,10 +41,10 @@
 
 @media (max-width: 625px) {
   .middle {
-    width: 86%;
+    width: 96%;
   }
 
   .column {
-    width: 8%;
+    width: 2%;
   }
 }

@@ -1,0 +1,11 @@
+.friends-profile-page-page-container {
+    margin-top: 20px;
+}
+
+
+@media (max-width: 600px) {
+
+    .friends-profile-page-page-container {
+        margin-top: 0px;
+    } 
+}
