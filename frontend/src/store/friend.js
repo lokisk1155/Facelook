@@ -42,14 +42,14 @@ export const addFriend = (friendRequest) => async (dispatch) => {
 
 export const deleteFriend = (userId) => async (dispatch) => {
   await csrfFetch(`/api/friends/${userId}`, { method: "DELETE" });
-  dispatch(removeFriend(userId))
+  dispatch(removeFriend(userId));
 };
 
 const friendReducer = (previousState = {}, action) => {
   let newState = { ...previousState };
   switch (action.type) {
     case RECEIVE_FRIEND:
-      newState = { ...action.friend };
+      newState = { ...action.payload };
       return newState;
     case REMOVE_FRIEND:
       delete newState[action.payload];

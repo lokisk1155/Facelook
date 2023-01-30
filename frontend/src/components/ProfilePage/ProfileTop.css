@@ -160,18 +160,15 @@
     width: 100%;
   }
 
+  .profile-picture-and-name-container {
+    display: flex;
+    width: "100%";
+  }
 
-.profile-picture-and-name-container {
-  display: flex;
-  width: "100%"
-}
-
-
-.toggle-friends-button {
-  cursor: pointer;
-  height: 40px;
-  width: 75px;
-  margin: 0
-}
-
+  .toggle-friends-button {
+    cursor: pointer;
+    height: 40px;
+    width: 75px;
+    margin: 0;
+  }
 }

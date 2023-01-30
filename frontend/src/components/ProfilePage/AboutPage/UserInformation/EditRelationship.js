@@ -68,9 +68,9 @@ function EditRelationship({ currentUser }) {
             <option value="Divorced">Divorced</option>
             <option value="Widowed">Widowed</option>
           </select>
-          <div style={{ display: "flex"}}>
-          <button onClick={() => setToggle(false)}>cancel</button>
-          <button type="submit">save</button>
+          <div style={{ display: "flex" }}>
+            <button onClick={() => setToggle(false)}>cancel</button>
+            <button type="submit">save</button>
           </div>
         </form>
       )}

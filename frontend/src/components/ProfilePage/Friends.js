@@ -17,7 +17,7 @@ function Friends({ friends, setDeletedFriend }) {
 
   const sessionUserId = useSelector((state) => state.session.user.id);
 
-  const currentUserFriends = useSelector((state) => state.user[id].friends)
+  const currentUserFriends = useSelector((state) => state.user[id].friends);
 
   let divHeight;
 
@@ -53,16 +53,16 @@ function Friends({ friends, setDeletedFriend }) {
     dispatch(deleteFriend(userId));
   };
 
-  function MutualFriendCount({ friends}) {
-    let count = 0
+  function MutualFriendCount({ friends }) {
+    let count = 0;
     for (const idUser in currentUserFriends) {
-      for (const idFriends in friends) { 
+      for (const idFriends in friends) {
         if (currentUserFriends[idUser] === friends[idFriends]) {
-          count += 1
+          count += 1;
         }
       }
     }
-    return `${count} mutual friends`
+    return `${count} mutual friends`;
   }
 
   return (
@@ -86,18 +86,45 @@ function Friends({ friends, setDeletedFriend }) {
           {Object.values(friends).map((friend) => {
             return (
               <div key={friend.id} className="actual-friend-container">
-                <Link style={{ display: "flex", textDecoration: "none", height: "80%", justifyContent: "space-around"}} to={`/ProfilePage/${friend.id}`}>
+                <Link
+                  style={{
+                    display: "flex",
+                    textDecoration: "none",
+                    height: "80%",
+                    justifyContent: "space-around",
+                  }}
+                  to={`/ProfilePage/${friend.id}`}
+                >
                   <img
-                    style={{ height: "95%", margin: "auto", marginLeft: "10px", maxHeight: "100px"}}
+                    style={{
+                      height: "95%",
+                      margin: "auto",
+                      marginLeft: "10px",
+                      maxHeight: "100px",
+                    }}
                     src={friend.profile_picture || profilePic}
                   ></img>
-                <div style={{ display: "flex", flexDirection: "column" }}>  
-                <p style={{ fontSize: "0.8rem", color: "black", margin: "0"}}>{`${capitalizeFirstLetter(
-                  friend.first_name
-                )} ${capitalizeFirstLetter(friend.last_name)}`}</p>
-                <p style={{ fontSize: "0.6rem", color: "black", margin: "0" }}>{MutualFriendCount(friend)}</p>
-                </div>  
-                  </Link>
+                  <div style={{ display: "flex", flexDirection: "column" }}>
+                    <p
+                      style={{
+                        fontSize: "0.8rem",
+                        color: "black",
+                        margin: "0",
+                      }}
+                    >{`${capitalizeFirstLetter(
+                      friend.first_name
+                    )} ${capitalizeFirstLetter(friend.last_name)}`}</p>
+                    <p
+                      style={{
+                        fontSize: "0.6rem",
+                        color: "black",
+                        margin: "0",
+                      }}
+                    >
+                      {MutualFriendCount(friend)}
+                    </p>
+                  </div>
+                </Link>
                 {sessionUserId == id ? (
                   <button
                     className="delete-on-friend"

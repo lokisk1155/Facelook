@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import "./AboutLinks.css"
+import "./AboutLinks.css";
 
 function AboutPageLinks({}) {
   const { id } = useParams();
@@ -32,7 +32,7 @@ function AboutPageLinks({}) {
           }}
         >
           <p
-          className="text-inside-about-link-buttons"
+            className="text-inside-about-link-buttons"
             style={{
               fontSize: ".9rem",
               padding: "0",
@@ -75,7 +75,7 @@ function AboutPageLinks({}) {
           }}
         >
           <p
-          className="text-inside-about-link-buttons"
+            className="text-inside-about-link-buttons"
             style={{
               fontSize: ".9rem",
               padding: "0",
@@ -117,7 +117,7 @@ function AboutPageLinks({}) {
           }}
         >
           <p
-          className="text-inside-about-link-buttons"
+            className="text-inside-about-link-buttons"
             style={{
               fontSize: ".9rem",
               padding: "0",
@@ -160,7 +160,7 @@ function AboutPageLinks({}) {
           }}
         >
           <p
-          className="text-inside-about-link-buttons"
+            className="text-inside-about-link-buttons"
             style={{
               fontSize: ".9rem",
               padding: "0",

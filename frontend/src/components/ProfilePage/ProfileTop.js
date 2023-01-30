@@ -99,14 +99,23 @@ function ProfileTop({ currentUser, sessionUser, friends }) {
         <div className="profile-page-header">
           <div className="profile-picture-and-name-container">
             <img className="profile-top-profile-pic" src={preview} />
-            <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-around"}}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-around",
+              }}
+            >
               <p style={{ margin: 0 }}>{currentUserName}</p>
               <p style={{ margin: 0 }}>{friendsHeader}</p>
             </div>
           </div>
 
           {notSelf ? (
-            <div className="friends-toggle-button-container" style={{ maxWidth: ""}}>
+            <div
+              className="friends-toggle-button-container"
+              style={{ maxWidth: "" }}
+            >
               {!toggleDropDown && isFriend ? (
                 <button
                   className="toggle-friends-button"
@@ -175,7 +184,7 @@ function ProfileTop({ currentUser, sessionUser, friends }) {
           />
         </Modal>
       ) : null}
-    <div className="profile-top-container-links">
+      <div className="profile-top-container-links">
         <div className="profile-selectors">
           <Link className="post-selector-link" to={`/ProfilePage/${id}`}>
             <button className="post-selector-button">Posts</button>
@@ -191,7 +200,7 @@ function ProfileTop({ currentUser, sessionUser, friends }) {
           >
             <button className="about-selector-button">Friends</button>
           </Link>
-          </div>
+        </div>
       </div>
     </>
   );

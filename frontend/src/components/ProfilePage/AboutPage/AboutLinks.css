@@ -1,11 +1,9 @@
 .text-inside-about-link-buttons {
-    justify-content: flex-start;
+  justify-content: flex-start;
 }
 
-
 @media (max-width: 600px) {
-    .text-inside-about-link-buttons {
-        justify-content: center;
-    }
-
+  .text-inside-about-link-buttons {
+    justify-content: center;
+  }
 }
