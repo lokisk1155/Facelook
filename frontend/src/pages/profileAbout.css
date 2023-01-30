@@ -14,13 +14,13 @@
 @media (max-width: 600px) {
   .about-content-container {
     width: 100vw;
-    margin-top: 0px;
+    margin: 0px;
   }
   .about-page-links {
-    min-width: 115px;
+    min-width: 100px;
   }
 
   .about-page-links-results {
-    width: 65%;
+    width: 73%;
   }
 }

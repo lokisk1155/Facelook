@@ -5,9 +5,9 @@ export const REMOVE_FRIEND = "friends/REMOVE_FRIEND";
 export const RECEIVE_FRIEND = "friends/RECEIVE_FRIEND";
 export const RECEIVE_FRIENDS = "friends/RECEIVE_FRIENDS";
 
-export const removeFriend = (friendship) => ({
+export const removeFriend = (userId) => ({
   type: REMOVE_FRIEND,
-  friendship,
+  payload: userId,
 });
 export const receiveFriend = (friend) => ({
   type: RECEIVE_FRIEND,
@@ -42,7 +42,7 @@ export const addFriend = (friendRequest) => async (dispatch) => {
 
 export const deleteFriend = (userId) => async (dispatch) => {
   await csrfFetch(`/api/friends/${userId}`, { method: "DELETE" });
-  dispatch(profilePage(userId));
+  dispatch(removeFriend(userId))
 };
 
 const friendReducer = (previousState = {}, action) => {
@@ -52,7 +52,7 @@ const friendReducer = (previousState = {}, action) => {
       newState = { ...action.friend };
       return newState;
     case REMOVE_FRIEND:
-      delete newState[action.friendship.id];
+      delete newState[action.payload];
       return newState;
     case RECEIVE_FRIENDS:
       newState = { ...action.payload };

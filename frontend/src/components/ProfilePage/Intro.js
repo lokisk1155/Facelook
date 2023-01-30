@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 function Intro({ currentUser, changeHeight }) {
   let count = 40;
 
@@ -32,8 +34,11 @@ function Intro({ currentUser, changeHeight }) {
   if (relationship) {
     count += 55;
   }
+  useEffect(() => {
+    changeHeight(count);
+  }, [])
 
-  changeHeight(count);
+ 
 
   return (
     <div

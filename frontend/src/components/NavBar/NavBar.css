@@ -166,11 +166,12 @@
 
 @media (max-width: 550px) {
   .left-container-navbar {
-    width: 50vw;
+    width: 48vw;
   }
 
   .middle-column-navbar {
-    width: 20vw;
+    width: 22vw;
+    justify-content: flex-start;
   }
 
   .right-container-navbar {

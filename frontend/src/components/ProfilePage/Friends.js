@@ -17,6 +17,8 @@ function Friends({ friends, setDeletedFriend }) {
 
   const sessionUserId = useSelector((state) => state.session.user.id);
 
+  const currentUserFriends = useSelector((state) => state.user[id].friends)
+
   let divHeight;
 
   const [filteredUsers, setFilteredUsers] = useState(null);
@@ -24,13 +26,6 @@ function Friends({ friends, setDeletedFriend }) {
   const [typed, setTyped] = useState("");
 
   const [friendDeleted, setFriendDeleted] = useState(false);
-
-  useEffect(() => {
-    dispatch(profilePage(id));
-    if (friendDeleted) {
-      setFriendDeleted(false);
-    }
-  }, [friendDeleted]);
 
   useEffect(() => {
     if (typed.length > 0) {
@@ -56,8 +51,19 @@ function Friends({ friends, setDeletedFriend }) {
     e.preventDefault();
     setTyped("");
     dispatch(deleteFriend(userId));
-    setFriendDeleted(true);
   };
+
+  function MutualFriendCount({ friends}) {
+    let count = 0
+    for (const idUser in currentUserFriends) {
+      for (const idFriends in friends) { 
+        if (currentUserFriends[idUser] === friends[idFriends]) {
+          count += 1
+        }
+      }
+    }
+    return `${count} mutual friends`
+  }
 
   return (
     <div className="friends-container" style={{ height: divHeight }}>
@@ -80,15 +86,18 @@ function Friends({ friends, setDeletedFriend }) {
           {Object.values(friends).map((friend) => {
             return (
               <div key={friend.id} className="actual-friend-container">
-                <Link to={`/ProfilePage/${friend.id}`}>
+                <Link style={{ display: "flex", textDecoration: "none", height: "80%", justifyContent: "space-around"}} to={`/ProfilePage/${friend.id}`}>
                   <img
-                    className="friend-profile-pic"
+                    style={{ height: "95%", margin: "auto", marginLeft: "10px", maxHeight: "100px"}}
                     src={friend.profile_picture || profilePic}
                   ></img>
-                </Link>
-                <p className="friend-profile-name">{`${capitalizeFirstLetter(
+                <div style={{ display: "flex", flexDirection: "column" }}>  
+                <p style={{ fontSize: "0.8rem", color: "black", margin: "0"}}>{`${capitalizeFirstLetter(
                   friend.first_name
                 )} ${capitalizeFirstLetter(friend.last_name)}`}</p>
+                <p style={{ fontSize: "0.6rem", color: "black", margin: "0" }}>{MutualFriendCount(friend)}</p>
+                </div>  
+                  </Link>
                 {sessionUserId == id ? (
                   <button
                     className="delete-on-friend"

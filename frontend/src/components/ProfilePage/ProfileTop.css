@@ -43,16 +43,18 @@
 
 .profile-selectors {
   height: 60px;
-  width: 100%;
+  width: 80%;
   border-top: 1px solid lightgrey;
   justify-content: space-evenly;
   display: flex;
 }
 
-.col-container-links {
+.profile-top-container-links {
   display: flex;
+  justify-content: center;
   background-color: #fff;
   box-shadow: 0px 1px 1px 0px lightgrey;
+  width: 100vw;
 }
 
 .page-link-col {
@@ -154,4 +156,22 @@
     margin: 0;
     padding: 1px;
   }
+  .profile-selectors {
+    width: 100%;
+  }
+
+
+.profile-picture-and-name-container {
+  display: flex;
+  width: "100%"
+}
+
+
+.toggle-friends-button {
+  cursor: pointer;
+  height: 40px;
+  width: 75px;
+  margin: 0
+}
+
 }

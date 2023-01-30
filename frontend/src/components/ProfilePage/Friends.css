@@ -49,37 +49,45 @@
   background-size: 21px 168px;
   width: 20px;
   height: 20px;
-  justify-content: flex-end;
   display: inline-block;
 }
 
 .delete-on-friend {
   border: none;
   background-color: white;
-  justify-content: flex-end;
   cursor: pointer;
+  padding-right: 10px;
 }
 
 .actual-friend-container {
   height: 85px;
   display: flex;
   border: 0.1px solid lightgrey;
+  justify-content: space-between;
   align-items: center;
   border-radius: 15px;
   width: 98%;
   margin: 5px;
 }
 
-@media (max-width: 550px) {
+@media (max-width: 600px) {
   .friends-search-bar-container {
     margin: 0;
     margin-top: 7.5%;
-    width: 125px;
+    width: 200px;
   }
 
-  /* .friends-search-input {
-    width: 100px;
-  } */
+  
+.friends-headers {
+  border-top: 1px solid lightgrey;
+  display: flex;
+  margin: 0;
+}
+
+
+  .friends-search-input {
+    width: 200px;
+  }
 
   .friend-profile-pic {
     height: 30px;

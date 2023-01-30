@@ -1,8 +1,8 @@
 import { Link, useParams } from "react-router-dom";
+import "./AboutLinks.css"
+
 function AboutPageLinks({}) {
   const { id } = useParams();
-
-  console.log(window.location.href);
 
   return (
     <>
@@ -32,11 +32,11 @@ function AboutPageLinks({}) {
           }}
         >
           <p
+          className="text-inside-about-link-buttons"
             style={{
-              fontSize: "15px",
+              fontSize: ".9rem",
               padding: "0",
               margin: "0",
-              justifyContent: "flex-start",
               color:
                 window.location.href ===
                 `http://localhost:3000/ProfilePage/${id}/about`
@@ -75,11 +75,11 @@ function AboutPageLinks({}) {
           }}
         >
           <p
+          className="text-inside-about-link-buttons"
             style={{
-              fontSize: "15px",
+              fontSize: ".9rem",
               padding: "0",
               margin: "0",
-              justifyContent: "flex-start",
               color:
                 window.location.href ===
                 `http://localhost:3000/ProfilePage/${id}/about/work_and_education`
@@ -117,11 +117,11 @@ function AboutPageLinks({}) {
           }}
         >
           <p
+          className="text-inside-about-link-buttons"
             style={{
-              fontSize: "15px",
+              fontSize: ".9rem",
               padding: "0",
               margin: "0",
-              justifyContent: "flex-start",
               color:
                 window.location.href ===
                 `http://localhost:3000/ProfilePage/${id}/about/contact_info`
@@ -160,11 +160,11 @@ function AboutPageLinks({}) {
           }}
         >
           <p
+          className="text-inside-about-link-buttons"
             style={{
-              fontSize: "15px",
+              fontSize: ".9rem",
               padding: "0",
               margin: "0",
-              justifyContent: "flex-start",
               color:
                 window.location.href ===
                 `http://localhost:3000/ProfilePage/${id}/about/family_and_relationships`
