@@ -3,7 +3,7 @@ import profilePic from "./imgs/blank.png";
 import { useState } from "react";
 import ProfilePicModal from "./ProfilePicModal";
 import { useSelector } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Facebook from "./imgs/Facebook.png";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
@@ -29,7 +29,6 @@ function NavBar() {
     if (location.pathname !== "/") {
       setFillColor("#ffffff");
     }
-
     if (fillColor === "#ffffff") {
       setStroke("#2c2c2c");
     } else {

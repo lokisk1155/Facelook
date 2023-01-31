@@ -8,9 +8,8 @@ import { Link } from "react-router-dom";
 import { deleteFriend } from "../../store/friend";
 import capitalizeFirstLetter from "../../utils/capFirstLetter";
 import "./Friends.css";
-import { profilePage } from "../../store/profilePage";
 
-function Friends({ friends, currentUserFriends, setDeletedFriend }) {
+function Friends({ friends, currentUserFriends }) {
   const dispatch = useDispatch();
 
   const { id } = useParams();
@@ -22,8 +21,6 @@ function Friends({ friends, currentUserFriends, setDeletedFriend }) {
   const [filteredUsers, setFilteredUsers] = useState(null);
 
   const [typed, setTyped] = useState("");
-
-  const [friendDeleted, setFriendDeleted] = useState(false);
 
   useEffect(() => {
     if (typed.length > 0) {

@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { fetchPosts, updatePost, deletePost } from "../../../store/post";
+import { updatePost, deletePost } from "../../../store/post";
 import { Modal } from "../../../context/Modal";
 import CreatePost from "../../Post/CreatePost";
 import profilePic from "../../NavBar/imgs/blank.png";
@@ -12,10 +12,6 @@ function PostFeed({ profilePage, currentUser }) {
 
   const { id } = useParams();
 
-  const [postDeleted, setPostDeleted] = useState(false);
-
-  const [checkPost, setCheckPost] = useState(false);
-
   const [togglePost, setTogglePost] = useState(false);
 
   const [editPost, setEditPost] = useState(null);
@@ -23,13 +19,6 @@ function PostFeed({ profilePage, currentUser }) {
   const [editContent, setEditContent] = useState("");
 
   const [editId, setEditId] = useState(null);
-
-  useEffect(() => {
-    dispatch(fetchPosts());
-    if (postDeleted) {
-      setPostDeleted(false);
-    }
-  }, [postDeleted, checkPost]);
 
   const postsFromState = useSelector((state) => state.posts);
 
@@ -62,10 +51,7 @@ function PostFeed({ profilePage, currentUser }) {
 
   const handleDeletePost = (post) => (e) => {
     e.preventDefault();
-    if (post.user_id === sessionUser.id) {
-      dispatch(deletePost(post.id));
-      setPostDeleted(true);
-    }
+    dispatch(deletePost(post.id));
   };
 
   function formatDateTime(comparedTime) {

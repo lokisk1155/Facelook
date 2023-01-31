@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchStories } from "../../store/story";
 import { fetchPosts } from "../../store/post";
@@ -19,9 +18,12 @@ function HomePage() {
 
   const number = 6;
 
-  useEffect(() => {
-    Promise.all([dispatch(fetchStories(limit)), dispatch(fetchPosts())]);
-  }, []);
+  let loading = true 
+
+  if (Object.keys(stories).length < 1 || Object.keys(posts).length < 1) {
+    loading = false 
+    Promise.all([dispatch(fetchStories(limit)), dispatch(fetchPosts())])
+  } 
 
   return (
     <>
@@ -29,7 +31,7 @@ function HomePage() {
       <div className="home-page-container">
         <div className="column"></div>
         <div className="middle">
-          {Object.keys(stories).length > 0 ? (
+          {loading ? (
             <StoriesHomeFeed stories={stories} />
           ) : (
             <>
@@ -51,12 +53,13 @@ function HomePage() {
               />
             </>
           )}
-          {Object.keys(posts).length > 0 ? (
+          {loading ? (
             <PostFeed />
           ) : (
-            [...Array(number)].map(() => {
+            [...Array(number)].map((n, idx) => {
               return (
                 <div
+                  key={idx}
                   className="skeleton"
                   style={{
                     height: "300px",

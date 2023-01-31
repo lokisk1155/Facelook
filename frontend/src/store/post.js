@@ -77,7 +77,7 @@ export const deletePost = (postId, id, location) => async (dispatch) => {
   if (location === "profile") {
     return dispatch(profilePage(id));
   }
-  return dispatch(removePost(postId));
+  return dispatch(fetchPosts());
 };
 
 const postsReducer = (previousState = {}, action) => {

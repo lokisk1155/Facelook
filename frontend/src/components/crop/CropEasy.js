@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Cropper from "react-easy-crop";
 import getCroppedImg from "../../utils/cropImage";
 import "./index.css";

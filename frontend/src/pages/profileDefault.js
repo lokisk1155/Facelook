@@ -1,6 +1,5 @@
 import ProfileTop from "../components/ProfilePage/ProfileTop";
 import { useState } from "react";
-import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Intro from "../components/ProfilePage/Intro";
