@@ -9,6 +9,7 @@ import Relationship from "../components/ProfilePage/AboutPage/Relationship";
 import WorkEd from "../components/ProfilePage/AboutPage/WorkEd";
 import { profilePage } from "../store/profilePage";
 import "./profileAbout.css";
+import ProfileTopLoading from "../components/loading/profileTopLoading";
 
 function ProfileAbout({ about }) {
   const { id } = useParams();
@@ -23,21 +24,20 @@ function ProfileAbout({ about }) {
 
   const noPosts = true;
 
-  useEffect(() => {
-    dispatch(profilePage(id, noPosts));
-  }, [id]);
+  let loading = true
 
-  if (!currentUser || !sessionUser || !id) {
-    return null;
+  if (!currentUser || !sessionUser) {
+    loading = false 
+    dispatch(profilePage(id, noPosts))
   }
 
   return (
     <>
-      <ProfileTop
+      {loading ? <ProfileTop
         sessionUser={sessionUser}
         currentUser={currentUser}
         friends={friends}
-      />
+      /> : <ProfileTopLoading />}
       <div
         className="about-content-container"
         style={{
@@ -69,7 +69,7 @@ function ProfileAbout({ about }) {
 
             height: "100%",
           }}
-        >
+        > {loading ? <>
           {about === "Overview" ? (
             <Overview sessionUser={sessionUser} currentUser={currentUser} />
           ) : null}
@@ -82,6 +82,7 @@ function ProfileAbout({ about }) {
           {about === "WorkEd" ? (
             <WorkEd sessionUser={sessionUser} currentUser={currentUser} />
           ) : null}
+          </> : <div className="skeleton" style={{ height: "400px", width: "80vw", alignSelf: "center"}} />}
         </div>
       </div>
     </>

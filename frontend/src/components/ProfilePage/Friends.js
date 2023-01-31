@@ -10,14 +10,12 @@ import capitalizeFirstLetter from "../../utils/capFirstLetter";
 import "./Friends.css";
 import { profilePage } from "../../store/profilePage";
 
-function Friends({ friends, setDeletedFriend }) {
+function Friends({ friends, currentUserFriends, setDeletedFriend }) {
   const dispatch = useDispatch();
 
   const { id } = useParams();
 
   const sessionUserId = useSelector((state) => state.session.user.id);
-
-  const currentUserFriends = useSelector((state) => state.user[id].friends);
 
   let divHeight;
 

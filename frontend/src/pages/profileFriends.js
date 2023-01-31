@@ -5,6 +5,7 @@ import { profilePage } from "../store/profilePage";
 import Friends from "../components/ProfilePage/Friends";
 import ProfileTop from "../components/ProfilePage/ProfileTop";
 import "./profileFriends.css";
+import ProfileTopLoading from "../components/loading/profileTopLoading";
 
 function ProfileFriends() {
   const { id } = useParams();
@@ -17,23 +18,24 @@ function ProfileFriends() {
 
   const friends = useSelector((state) => state.friends);
 
-  useEffect(() => {
-    dispatch(profilePage(id));
-  }, [id, dispatch]);
+  const currentUserFriends = useSelector((state) => state.user[id]?.friends);
 
-  if (!currentUser || !sessionUser || !id || !friends) {
-    return null;
+  let loading = true 
+
+  if (!currentUser || !sessionUser || !friends || !currentUserFriends) {
+    loading = false 
+    dispatch(profilePage(id));
   }
 
   return (
     <>
-      {friends ? (
+      {loading ? (
         <ProfileTop
           sessionUser={sessionUser}
           currentUser={currentUser}
           friends={friends}
         />
-      ) : null}
+      ) : <ProfileTopLoading />}
       <div
         className="friends-profile-page-page-container"
         style={{ display: "flex", justifyContent: "center" }}
@@ -49,6 +51,7 @@ function ProfileFriends() {
               sessionUser={sessionUser}
               currentUser={currentUser}
               friends={friends}
+              currentUserFriends={currentUserFriends}
             />
           ) : null}
         </div>
