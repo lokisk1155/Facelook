@@ -20,10 +20,10 @@ function ProfileFriends() {
 
   const currentUserFriends = useSelector((state) => state.user[id]?.friends);
 
-  let loading = true 
+  let loading = true;
 
   if (!currentUser || !sessionUser || !friends || !currentUserFriends) {
-    loading = false 
+    loading = false;
     dispatch(profilePage(id));
   }
 
@@ -35,7 +35,9 @@ function ProfileFriends() {
           currentUser={currentUser}
           friends={friends}
         />
-      ) : <ProfileTopLoading />}
+      ) : (
+        <ProfileTopLoading />
+      )}
       <div
         className="friends-profile-page-page-container"
         style={{ display: "flex", justifyContent: "center" }}

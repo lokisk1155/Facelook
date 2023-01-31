@@ -24,20 +24,24 @@ function ProfileAbout({ about }) {
 
   const noPosts = true;
 
-  let loading = true
+  let loading = true;
 
   if (!currentUser || !sessionUser) {
-    loading = false 
-    dispatch(profilePage(id, noPosts))
+    loading = false;
+    dispatch(profilePage(id, noPosts));
   }
 
   return (
     <>
-      {loading ? <ProfileTop
-        sessionUser={sessionUser}
-        currentUser={currentUser}
-        friends={friends}
-      /> : <ProfileTopLoading />}
+      {loading ? (
+        <ProfileTop
+          sessionUser={sessionUser}
+          currentUser={currentUser}
+          friends={friends}
+        />
+      ) : (
+        <ProfileTopLoading />
+      )}
       <div
         className="about-content-container"
         style={{
@@ -69,20 +73,35 @@ function ProfileAbout({ about }) {
 
             height: "100%",
           }}
-        > {loading ? <>
-          {about === "Overview" ? (
-            <Overview sessionUser={sessionUser} currentUser={currentUser} />
-          ) : null}
-          {about === "Contact" ? (
-            <ContactInfo sessionUser={sessionUser} currentUser={currentUser} />
-          ) : null}
-          {about === "Relationship" ? (
-            <Relationship sessionUser={sessionUser} currentUser={currentUser} />
-          ) : null}
-          {about === "WorkEd" ? (
-            <WorkEd sessionUser={sessionUser} currentUser={currentUser} />
-          ) : null}
-          </> : <div className="skeleton" style={{ height: "400px", width: "80vw", alignSelf: "center"}} />}
+        >
+          {" "}
+          {loading ? (
+            <>
+              {about === "Overview" ? (
+                <Overview sessionUser={sessionUser} currentUser={currentUser} />
+              ) : null}
+              {about === "Contact" ? (
+                <ContactInfo
+                  sessionUser={sessionUser}
+                  currentUser={currentUser}
+                />
+              ) : null}
+              {about === "Relationship" ? (
+                <Relationship
+                  sessionUser={sessionUser}
+                  currentUser={currentUser}
+                />
+              ) : null}
+              {about === "WorkEd" ? (
+                <WorkEd sessionUser={sessionUser} currentUser={currentUser} />
+              ) : null}
+            </>
+          ) : (
+            <div
+              className="skeleton"
+              style={{ height: "400px", width: "80vw", alignSelf: "center" }}
+            />
+          )}
         </div>
       </div>
     </>

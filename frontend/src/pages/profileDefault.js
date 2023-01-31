@@ -29,7 +29,7 @@ function ProfileDefault() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [])
+  }, []);
 
   if (!currentUser || !sessionUser) {
     loading = false;
