@@ -9,6 +9,8 @@ import { profilePage } from "../store/profilePage";
 import PostFeed from "../components/HomePage/Middle/PostFeed";
 import SessionUserIntro from "../components/ProfilePage/SessionUserIntro";
 import "./ProfileDefault.css";
+import ProfileTopLoading from "../components/loading/profileTopLoading";
+import ProfileDefaultLoading from "../components/loading/profileDefaultLoading";
 
 function ProfileDefault() {
   const { id } = useParams();
@@ -23,22 +25,21 @@ function ProfileDefault() {
 
   const friends = useSelector((state) => state.friends);
 
-  useEffect(() => {
-    dispatch(profilePage(id));
-  }, [id]);
+  let loading = true
 
-  if (!currentUser || !sessionUser || !id || !friends) {
-    return null;
+  if (!currentUser  || !sessionUser) {
+    loading = false
+    dispatch(profilePage(id))
   }
 
   return (
     <>
-      <ProfileTop
+      {loading ? <ProfileTop
         sessionUser={sessionUser}
         currentUser={currentUser}
         friends={friends}
-      />
-      <div className="content-container-profile-default">
+      /> : <ProfileTopLoading />}
+      {loading ? <div className="content-container-profile-default">
         <div className="flex-or-nah-profile">
           <div className="boxes-container-profile-default">
             <div
@@ -96,7 +97,7 @@ function ProfileDefault() {
             <PostFeed profilePage={true} currentUser={currentUser} />
           </div>
         </div>
-      </div>
+      </div> : <ProfileDefaultLoading />}
     </>
   );
 }
