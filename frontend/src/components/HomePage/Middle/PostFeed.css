@@ -95,3 +95,17 @@
 .save-cancel-individual-post-buttons {
   height: 10%;
 }
+
+
+.skeleton {
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: #919191;
+  }
+  100% {
+    background-color: #fff;
+  }
+}
