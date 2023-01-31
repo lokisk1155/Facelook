@@ -26,7 +26,7 @@ function AboutPageLinks({}) {
             borderRadius: "5px",
             backgroundColor:
               window.location.href ===
-              `http://localhost:3000/ProfilePage/${id}/about`
+              `https://faceooook.herokuapp.com/ProfilePage/${id}/about`
                 ? "#1877f2"
                 : "#fff",
           }}
@@ -39,7 +39,7 @@ function AboutPageLinks({}) {
               margin: "0",
               color:
                 window.location.href ===
-                `http://localhost:3000/ProfilePage/${id}/about`
+                `https://faceooook.herokuapp.com/ProfilePage/${id}/about`
                   ? "#fff"
                   : "grey",
             }}
@@ -69,7 +69,7 @@ function AboutPageLinks({}) {
             borderRadius: "5px",
             backgroundColor:
               window.location.href ===
-              `http://localhost:3000/ProfilePage/${id}/about/work_and_education`
+              `https://faceooook.herokuapp.com/ProfilePage/${id}/about/work_and_education`
                 ? "#1877f2"
                 : "#fff",
           }}
@@ -82,7 +82,7 @@ function AboutPageLinks({}) {
               margin: "0",
               color:
                 window.location.href ===
-                `http://localhost:3000/ProfilePage/${id}/about/work_and_education`
+                `https://faceooook.herokuapp.com/ProfilePage/${id}/about/work_and_education`
                   ? "#fff"
                   : "grey",
             }}
@@ -111,7 +111,7 @@ function AboutPageLinks({}) {
             borderRadius: "5px",
             backgroundColor:
               window.location.href ===
-              `http://localhost:3000/ProfilePage/${id}/about/contact_info`
+              `https://faceooook.herokuapp.com/ProfilePage/${id}/about/contact_info`
                 ? "#1877f2"
                 : "#fff",
           }}
@@ -124,7 +124,7 @@ function AboutPageLinks({}) {
               margin: "0",
               color:
                 window.location.href ===
-                `http://localhost:3000/ProfilePage/${id}/about/contact_info`
+                `https://faceooook.herokuapp.com/ProfilePage/${id}/about/contact_info`
                   ? "#fff"
                   : "grey",
             }}
