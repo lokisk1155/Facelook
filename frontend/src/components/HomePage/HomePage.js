@@ -30,7 +30,7 @@ function HomePage() {
       <div className="home-page-container">
         <div className="column"></div>
         <div className="middle">
-          {/* <StoriesHomeFeed stories={stories} /> */}
+          <StoriesHomeFeed stories={stories} />
           <PostFeed />
         </div>
 

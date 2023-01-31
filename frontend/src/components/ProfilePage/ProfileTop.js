@@ -141,7 +141,7 @@ function ProfileTop({ currentUser, sessionUser, friends }) {
             </div>
           ) : (
             <div className="edit-details-and-add-story-container">
-              {/* <button
+              <button
                 className="edit-profile-add-story-buttons"
                 style={{
                   alignSelf: "center",
@@ -155,7 +155,7 @@ function ProfileTop({ currentUser, sessionUser, friends }) {
                 onClick={() => history.push("/stories/create")}
               >
                 Add Story
-              </button> */}
+              </button>
               <button
                 className="edit-profile-add-story-buttons"
                 onClick={() => setEditProfile(true)}
