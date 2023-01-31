@@ -8,7 +8,7 @@ import Li from "./imgs/Li.png";
 import wellfound from "./imgs/wellfound.png";
 
 function ProfilePicModal({ closeModal }) {
-  const history = useHistory()
+  const history = useHistory();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
   const name = useSelector((state) => state.simpleUsers[user.id].name);
@@ -25,10 +25,10 @@ function ProfilePicModal({ closeModal }) {
     "Creator's Wellfound",
   ];
 
-  const handleLogout =() => {
-    dispatch(logout(user))
-    history.push("/")
-  }
+  const handleLogout = () => {
+    dispatch(logout(user));
+    history.push("/");
+  };
 
   return (
     <div className="omega-profile-modal-container">
