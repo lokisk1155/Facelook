@@ -60,8 +60,10 @@ function NavBar() {
               type="text"
               placeholder={typed ? typed : "Search FaceLook"}
               className="search-input"
-              onClick={() => {setToggleSearch(true) 
-              setProfileModal(false)}}
+              onClick={() => {
+                setToggleSearch(true);
+                setProfileModal(false);
+              }}
             ></input>
           </div>
         )}
@@ -118,9 +120,10 @@ function NavBar() {
             alt="profile-pic"
             className="profile-pic-modal"
             onClick={() => {
-              {setProfileModal(true)
-              setToggleSearch(false
-                )};
+              {
+                setProfileModal(true);
+                setToggleSearch(false);
+              }
             }}
           />
         </div>
