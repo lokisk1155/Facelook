@@ -40,9 +40,9 @@ export const addFriend = (friendRequest) => async (dispatch) => {
   return dispatch(profilePage(friendRequest.receiver_id));
 };
 
-export const deleteFriend = (userId) => async (dispatch) => {
-  await csrfFetch(`/api/friends/${userId}`, { method: "DELETE" });
-  dispatch(profilePage(userId));
+export const deleteFriend = (friendId, userId) => async (dispatch) => {
+  await csrfFetch(`/api/friends/${friendId}`, { method: "DELETE" });
+  dispatch(profilePage(userId ? userId : friendId));
 };
 
 const friendReducer = (previousState = {}, action) => {

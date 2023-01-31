@@ -50,7 +50,7 @@ function Friends({ friends, setDeletedFriend }) {
   const handleDelete = (userId) => (e) => {
     e.preventDefault();
     setTyped("");
-    dispatch(deleteFriend(userId));
+    dispatch(deleteFriend(userId, sessionUserId));
   };
 
   function MutualFriendCount({ friends }) {
