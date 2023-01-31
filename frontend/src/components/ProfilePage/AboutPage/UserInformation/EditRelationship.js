@@ -9,6 +9,8 @@ function EditRelationship({ currentUser }) {
 
   const [toggleRelationshipEdit, setToggleRelationshipEdit] = useState(false);
 
+  console.log(fakeRelationship)
+
   const [toggle, setToggle] = useState(false);
 
   const handleRelationship = () => {
@@ -33,7 +35,8 @@ function EditRelationship({ currentUser }) {
           {" "}
           <p>{currentUser.relationship}</p>{" "}
           {toggle ? null : (
-            <button style={{ margin: "5px" }} onClick={() => setToggle(true)}>
+            <button style={{ margin: "5px" }} onClick={() => {setToggle(true)
+              setFakeRelationship("single")}}>
               Edit Relationship
             </button>
           )}
@@ -41,7 +44,8 @@ function EditRelationship({ currentUser }) {
       ) : (
         <>
           {toggle ? null : (
-            <button style={{ margin: "5px" }} onClick={() => setToggle(true)}>
+            <button style={{ margin: "5px" }} onClick={() => {setToggle(true)
+            setFakeRelationship("single")}}>
               Add Relationship
             </button>
           )}
