@@ -29,7 +29,7 @@ function ProfileTopLoading() {
           display: "flex",
           width: "100vw",
           backgroundColor: "#fff",
-          justifyContent: "space-around"
+          justifyContent: "space-around",
         }}
       >
         <div
@@ -44,7 +44,7 @@ function ProfileTopLoading() {
             transform: "translateY(-100px)",
           }}
         />
-        <div style={{ width: "65px", height: "100%"}}></div>
+        <div style={{ width: "65px", height: "100%" }}></div>
       </div>
     </div>
   );

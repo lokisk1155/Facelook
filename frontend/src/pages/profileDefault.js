@@ -25,79 +25,91 @@ function ProfileDefault() {
 
   const friends = useSelector((state) => state.friends);
 
-  let loading = true
+  let loading = true;
 
-  if (!currentUser  || !sessionUser) {
-    loading = false
-    dispatch(profilePage(id))
+  if (!currentUser || !sessionUser) {
+    loading = false;
+    dispatch(profilePage(id));
   }
 
   return (
     <>
-      {loading ? <ProfileTop
-        sessionUser={sessionUser}
-        currentUser={currentUser}
-        friends={friends}
-      /> : <ProfileTopLoading />}
-      {loading ? <div className="content-container-profile-default">
-        <div className="flex-or-nah-profile">
-          <div className="boxes-container-profile-default">
-            <div
-              className="intro-container"
-              style={{ height: `${introContainerHeight}px` }}
-            >
+      {loading ? (
+        <ProfileTop
+          sessionUser={sessionUser}
+          currentUser={currentUser}
+          friends={friends}
+        />
+      ) : (
+        <ProfileTopLoading />
+      )}
+      {loading ? (
+        <div className="content-container-profile-default">
+          <div className="flex-or-nah-profile">
+            <div className="boxes-container-profile-default">
               <div
-                style={{ fontSize: "1.5rem", margin: "1px", padding: "2.5px" }}
+                className="intro-container"
+                style={{ height: `${introContainerHeight}px` }}
               >
-                {"Intro"}
+                <div
+                  style={{
+                    fontSize: "1.5rem",
+                    margin: "1px",
+                    padding: "2.5px",
+                  }}
+                >
+                  {"Intro"}
+                </div>
+                {id == sessionUser.id ? (
+                  <SessionUserIntro
+                    currentUser={currentUser}
+                    changeHeight={setIntroContainerHeight}
+                  />
+                ) : (
+                  <Intro
+                    currentUser={currentUser}
+                    changeHeight={setIntroContainerHeight}
+                  />
+                )}
               </div>
-              {id == sessionUser.id ? (
-                <SessionUserIntro
-                  currentUser={currentUser}
-                  changeHeight={setIntroContainerHeight}
-                />
-              ) : (
-                <Intro
-                  currentUser={currentUser}
-                  changeHeight={setIntroContainerHeight}
-                />
-              )}
-            </div>
 
-            <div
-              className="friends-box-profile-default"
-              style={{
-                backgroundColor: "#fff",
-                boxShadow: "0px 6px 6px 0px lightgrey",
-              }}
-            >
               <div
+                className="friends-box-profile-default"
                 style={{
-                  fontSize: "1.5rem",
-                  padding: "2.5px",
-                  paddingTop: "10px",
+                  backgroundColor: "#fff",
+                  boxShadow: "0px 6px 6px 0px lightgrey",
                 }}
               >
-                {"Friends"}
+                <div
+                  style={{
+                    fontSize: "1.5rem",
+                    padding: "2.5px",
+                    paddingTop: "10px",
+                  }}
+                >
+                  {"Friends"}
+                </div>
+                <FriendsContainer
+                  currentUser={currentUser}
+                  sessionUser={sessionUser}
+                />
               </div>
-              <FriendsContainer
-                currentUser={currentUser}
-                sessionUser={sessionUser}
-              />
+            </div>
+            <div
+              className="post-feed-profile-default"
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                margin: "10px",
+              }}
+            >
+              <PostFeed profilePage={true} currentUser={currentUser} />
             </div>
           </div>
-          <div
-            className="post-feed-profile-default"
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              margin: "10px",
-            }}
-          >
-            <PostFeed profilePage={true} currentUser={currentUser} />
-          </div>
         </div>
-      </div> : <ProfileDefaultLoading />}
+      ) : (
+        <ProfileDefaultLoading />
+      )}
     </>
   );
 }
