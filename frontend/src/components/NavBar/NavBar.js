@@ -35,7 +35,8 @@ function NavBar() {
     } else {
       setStroke("none");
     }
-  }, [location, fillColor]);
+    window.scrollTo(0, 0);
+  }, [location, fillColor, profileModal, toggleSearch]);
 
   const navbarPic = simpleUsers[user?.id]?.profile_picture || profilePic;
 
@@ -59,7 +60,8 @@ function NavBar() {
               type="text"
               placeholder={typed ? typed : "Search FaceLook"}
               className="search-input"
-              onClick={() => setToggleSearch(true)}
+              onClick={() => {setToggleSearch(true) 
+              setProfileModal(false)}}
             ></input>
           </div>
         )}
@@ -116,7 +118,9 @@ function NavBar() {
             alt="profile-pic"
             className="profile-pic-modal"
             onClick={() => {
-              setProfileModal(true);
+              {setProfileModal(true)
+              setToggleSearch(false
+                )};
             }}
           />
         </div>

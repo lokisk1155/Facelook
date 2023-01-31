@@ -27,11 +27,8 @@ function ProfileDefault() {
 
   let loading = true;
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   if (!currentUser || !sessionUser) {
+    window.scrollTo(0, 0);
     loading = false;
     dispatch(profilePage(id));
   }

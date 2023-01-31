@@ -123,7 +123,7 @@ function PostFeed({ profilePage, currentUser }) {
   }
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
+    <div style={{ display: "flex", flexDirection: "column", width: "100%", overflow: "scroll" }}>
       {profilePage === undefined || id == sessionUser.id ? (
         <div className="create-post-modal">
           <button className="new-post-button" onClick={handleNewPost}>
