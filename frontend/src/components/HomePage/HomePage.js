@@ -18,12 +18,12 @@ function HomePage() {
 
   const number = 6;
 
-  let loading = true 
+  let loading = true;
 
   if (Object.keys(stories).length < 1 || Object.keys(posts).length < 1) {
-    loading = false 
-    Promise.all([dispatch(fetchStories(limit)), dispatch(fetchPosts())])
-  } 
+    loading = false;
+    Promise.all([dispatch(fetchStories(limit)), dispatch(fetchPosts())]);
+  }
 
   return (
     <>
