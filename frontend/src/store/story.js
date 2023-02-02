@@ -1,5 +1,4 @@
 import csrfFetch from "./csrf";
-import { profilePage } from "./profilePage";
 
 const ADD_STORY = "stories/ADD_STORY";
 
@@ -15,7 +14,7 @@ export const addAll = (stories) => ({
   payload: stories,
 });
 
-export const createStory = (story, formData, history) => async (dispatch) => {
+export const createStory = (story, formData) => async (dispatch) => {
   await csrfFetch(`/api/stories`, {
     method: "POST",
     body: formData instanceof FormData ? formData : JSON.stringify(story),

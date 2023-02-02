@@ -16,7 +16,6 @@ const CoverCrop = ({ photoURL, setPhotoURL, setFile, closeModal }) => {
     e.preventDefault();
     try {
       const { file, url } = await getCroppedImg(photoURL, croppedAreaPixels);
-      debugger;
       setPhotoURL(url);
       setFile(file);
       closeModal(false);

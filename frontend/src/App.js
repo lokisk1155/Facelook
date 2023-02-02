@@ -18,7 +18,7 @@ function App() {
 
   useEffect(() => {
     dispatch(getSimpleUsers());
-  }, [id]);
+  }, [id, dispatch]);
 
   return (
     <>

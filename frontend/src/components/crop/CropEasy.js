@@ -7,7 +7,6 @@ const CropEasy = ({ photoURL, setOpenCrop, setPhotoURL, setFile }) => {
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
-  const [loading, setLoading] = useState(false);
 
   const onCropComplete = (croppedArea, croppedAreaPixels) => {
     setCroppedAreaPixels(croppedAreaPixels);
@@ -51,18 +50,10 @@ const CropEasy = ({ photoURL, setOpenCrop, setPhotoURL, setFile }) => {
             className="zoom-range"
           />
           <div className="action-buttons">
-            <button
-              className="save-cancel"
-              role="button"
-              onClick={() => setOpenCrop(false)}
-            >
+            <button className="save-cancel" onClick={() => setOpenCrop(false)}>
               cancel
             </button>
-            <button
-              className="save-cancel"
-              role="button"
-              onClick={(e) => cropImage(e)}
-            >
+            <button className="save-cancel" onClick={(e) => cropImage(e)}>
               save
             </button>
           </div>
@@ -73,7 +64,3 @@ const CropEasy = ({ photoURL, setOpenCrop, setPhotoURL, setFile }) => {
 };
 
 export default CropEasy;
-
-const zoomPercent = (value) => {
-  return `${Math.round(value * 100)}%`;
-};

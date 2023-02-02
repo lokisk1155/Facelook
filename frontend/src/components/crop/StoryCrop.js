@@ -56,14 +56,10 @@ const StoryCrop = ({ photoURL, setPhotoURL, setFile, fileSaved }) => {
             className="zoom-range"
           />
           <div className="action-buttons">
-            <button className="save-cancel" role="button" onClick={close}>
+            <button className="save-cancel" onClick={close}>
               cancel
             </button>
-            <button
-              className="save-cancel"
-              role="button"
-              onClick={(e) => cropImage(e)}
-            >
+            <button className="save-cancel" onClick={(e) => cropImage(e)}>
               save
             </button>
           </div>
