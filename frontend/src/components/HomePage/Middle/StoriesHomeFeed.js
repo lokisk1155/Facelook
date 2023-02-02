@@ -11,6 +11,8 @@ function StoriesHomeFeed({ stories }) {
 
   const simpleUsers = useSelector((state) => state.simpleUsers);
 
+  const stories = useSelector((state) => state.stories);
+
   const sessionUserPicture = useSelector(
     (state) => state.simpleUsers[sessionUser.id]?.profile_picture
   );

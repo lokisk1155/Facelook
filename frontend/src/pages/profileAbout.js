@@ -21,15 +21,11 @@ function ProfileAbout({ about }) {
 
   const friends = useSelector((state) => state.friends);
 
-  const noPosts = true;
-
   let loading = true;
 
   if (!currentUser || !sessionUser) {
     loading = false;
-    setTimeout(() => {
-      dispatch(profilePage(id, noPosts));
-    }, 500);
+    dispatch(profilePage(id));
   }
 
   return (

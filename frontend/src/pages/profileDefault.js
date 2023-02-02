@@ -29,9 +29,7 @@ function ProfileDefault() {
   if (!currentUser || !sessionUser) {
     window.scrollTo(0, 0);
     loading = false;
-    setTimeout(() => {
-      dispatch(profilePage(id));
-    }, 500);
+    dispatch(profilePage(id));
   }
 
   return (

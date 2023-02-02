@@ -1,33 +1,27 @@
 import { useDispatch, useSelector } from "react-redux";
-import { fetchStories } from "../../store/story";
-import { fetchPosts } from "../../store/post";
+import { homePage } from "../../store/homePage";
 import NavBar from "../NavBar/NavBar";
 import StoriesHomeFeed from "./Middle/StoriesHomeFeed";
 import PostFeed from "./Middle/PostFeed";
 import "./HomePage.css";
 import StoriesHeader from "./Middle/StoriesHeader";
 import { useEffect } from "react";
+import { useState } from "react";
 
 function HomePage() {
   const dispatch = useDispatch();
 
-  const stories = useSelector((state) => state.stories);
-
-  const posts = useSelector((state) => state.posts);
-
-  const limit = 3;
+  const [loading, setLoading] = useState(false);
 
   const number = 6;
 
-  let loading = false;
-
   useEffect(() => {
-    Promise.all([dispatch(fetchPosts()), dispatch(fetchStories(limit))]);
-  }, [dispatch]);
-
-  if (stories && posts) {
-    loading = true;
-  }
+    dispatch(homePage()).then((data) => {
+      setTimeout(() => {
+        setLoading(data);
+      }, 500);
+    });
+  }, []);
 
   return (
     <>
@@ -36,7 +30,7 @@ function HomePage() {
         <div className="column"></div>
         <div className="middle">
           {loading ? (
-            <StoriesHomeFeed stories={stories} />
+            <StoriesHomeFeed />
           ) : (
             <>
               <StoriesHeader />
