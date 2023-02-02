@@ -22,9 +22,8 @@ function HomePage() {
   let loading = false;
 
   useEffect(() => {
-      dispatch(fetchPosts())
-      dispatch(fetchStories(limit))
-  }, [])
+      Promise.all([dispatch(fetchPosts()), dispatch(fetchStories(limit))])
+  }, [dispatch])
 
   if (stories && posts) {
     loading = true 

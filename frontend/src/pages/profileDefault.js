@@ -62,7 +62,7 @@ function ProfileDefault() {
                 >
                   {"Intro"}
                 </div>
-                {id == sessionUser.id ? (
+                {parseInt(id) === sessionUser.id ? (
                   <SessionUserIntro
                     currentUser={currentUser}
                     changeHeight={setIntroContainerHeight}
