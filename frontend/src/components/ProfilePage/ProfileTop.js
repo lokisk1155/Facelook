@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom"; /* useHistory */
 import { deleteFriend, addFriend } from "../../store/friend";
 import { Modal } from "../../context/Modal";
 import capitalizeFirstLetter from "../../utils/capFirstLetter";
@@ -11,7 +11,7 @@ import "./ProfileTop.css";
 function ProfileTop({ currentUser, sessionUser, friends }) {
   const dispatch = useDispatch();
 
-  const history = useHistory();
+  // const history = useHistory();
 
   const [toggleDropDown, setToggleDropDown] = useState(false);
 

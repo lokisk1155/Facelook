@@ -2,37 +2,52 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import profilePic from "./imgs/blank.png";
+import { useRef } from "react";
+import { useMemo } from "react";
 import "./SearchBar.css";
 
 function SearchBar({ setTyped, closeModal, setDiv }) {
-  const [filteredUsers, setFilteredUsers] = useState([]);
 
   const [frTyped, setfrTyped] = useState("");
 
   const users = useSelector((state) => state.simpleUsers);
 
+  const filteredUsers = useMemo(() => {
+    if (!users) return [];
+    
+    return filterUsers(users, frTyped);
+  }, [frTyped, users]);
+  
+  const div = useMemo(() => {
+    return calculateDiv(filteredUsers, frTyped);
+  }, [filteredUsers, frTyped]);
+  
+  const divRef = useRef(div);
+  
   useEffect(() => {
-    if (users) {
-      let currentMatches = Object.values(users).filter((user) => {
-        return user.name
-          .toLowerCase()
-          .replace(" ", "")
-          .startsWith(frTyped.replace(" ", "").toLowerCase());
-      });
-
-      if (currentMatches) {
-        setFilteredUsers(currentMatches);
-      } else {
-        setFilteredUsers(Object.values(users).slice(0, 10));
-      }
-    }
-    if (frTyped.length === 0) {
-      setDiv(0);
-    } else {
-      setDiv(Object.values(filteredUsers)?.length);
-    }
+    divRef.current = div;
     setTyped(frTyped);
-  }, [frTyped, filteredUsers, setDiv, setTyped, users]);
+  }, [filteredUsers, frTyped, setTyped]);
+  
+  useEffect(() => {
+    setDiv(divRef.current);
+  }, [setDiv]);
+  
+  function filterUsers(allUsers, filterTerm) {
+    const currentMatches = Object.values(allUsers).filter((user) => {
+      return user.name
+        .toLowerCase()
+        .replace(" ", "")
+        .startsWith(filterTerm.replace(" ", "").toLowerCase());
+    });
+  
+    return currentMatches.length > 0 ? currentMatches : Object.values(allUsers).slice(0, 10);
+  }
+  
+  function calculateDiv(filteredUsers, filterTerm) {
+    return filterTerm.length === 0 ? 0 : Object.values(filteredUsers).length;
+  }
+
 
   return (
     <>
