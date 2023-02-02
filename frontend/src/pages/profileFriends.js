@@ -23,7 +23,9 @@ function ProfileFriends() {
 
   if (!currentUser || !sessionUser || !friends || !currentUserFriends) {
     loading = false;
-    dispatch(profilePage(id));
+    setTimeout(() => {
+      dispatch(profilePage(id));
+    }, 500)
   }
 
   return (

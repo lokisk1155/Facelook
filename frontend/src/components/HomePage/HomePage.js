@@ -22,7 +22,9 @@ function HomePage() {
 
   if (Object.keys(stories).length < 1 || Object.keys(posts).length < 1) {
     loading = false;
-    Promise.all([dispatch(fetchStories(limit)), dispatch(fetchPosts())]);
+    setTimeout(() => {
+      Promise.all([dispatch(fetchStories(limit)), dispatch(fetchPosts())]);;
+    }, 500)
   }
 
   return (

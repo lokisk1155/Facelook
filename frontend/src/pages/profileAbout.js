@@ -27,7 +27,9 @@ function ProfileAbout({ about }) {
 
   if (!currentUser || !sessionUser) {
     loading = false;
-    dispatch(profilePage(id, noPosts));
+    setTimeout(() => {
+      dispatch(profilePage(id, noPosts));
+    }, 500)
   }
 
   return (
