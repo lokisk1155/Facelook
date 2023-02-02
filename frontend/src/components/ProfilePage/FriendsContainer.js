@@ -1,6 +1,5 @@
 import profilePic from "../NavBar/imgs/blank.png";
-import { Link, useParams } from "react-router-dom";
-import capitalizeFirstLetter from "../../utils/capFirstLetter";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function FriendsContainer({ currentUser, sessionUser }) {
@@ -58,6 +57,7 @@ function FriendsContainer({ currentUser, sessionUser }) {
                     to={`/ProfilePage/${friend.id}`}
                   >
                     <img
+                      alt=""
                       style={{
                         width: "95%",
                         height: "75%",

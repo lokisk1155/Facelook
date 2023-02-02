@@ -4,9 +4,11 @@ import { Link, useHistory } from "react-router-dom";
 import { createStory } from "../../store/story";
 import "./TextStory.css";
 
-function TextStory({}) {
+function TextStory() {
   const dispatch = useDispatch();
+
   const history = useHistory();
+
   const [backgroundColor, setBackgroundColor] = useState("#1b74e4");
 
   const [fontSize, setFontSize] = useState("20px");
@@ -130,6 +132,7 @@ function TextStory({}) {
           >
             <h3 style={{ padding: "0", margin: "0" }}>Your Story</h3>
             <img
+              alt=""
               style={{ height: "50px", borderRadius: "50px", padding: "5px" }}
               src={simpleUsers[sessionUser.id].profile_picture}
             />
@@ -146,7 +149,6 @@ function TextStory({}) {
                 borderRadius: "7px",
                 margin: "2%",
                 overflowWrap: "break-word",
-                fontFamily: "#4d4e53",
                 fontFamily: "Open Sans, sans-serif",
                 fontSize: "15px",
                 lineHeight: "1",
@@ -211,7 +213,6 @@ function TextStory({}) {
               </label>
               <div
                 style={{
-                  border: "0.5px solid lightgrey",
                   width: "100%",
                   height: "45%",
                   fontSize: "15px",

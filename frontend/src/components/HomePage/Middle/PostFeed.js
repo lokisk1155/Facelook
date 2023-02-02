@@ -117,7 +117,7 @@ function PostFeed({ profilePage, currentUser }) {
         overflow: "scroll",
       }}
     >
-      {profilePage === undefined || id == sessionUser.id ? (
+      {profilePage === undefined || parseInt(id) === sessionUser.id ? (
         <div className="create-post-modal">
           <button className="new-post-button" onClick={handleNewPost}>
             <p className="text-inside-new-post">What is on your mind?</p>
@@ -127,6 +127,7 @@ function PostFeed({ profilePage, currentUser }) {
             {
               <img
                 className="profile-pic-inside-create-post"
+                alt=""
                 src={simpleUsers[sessionUser.id]?.profile_picture || profilePic}
               ></img>
             }
@@ -169,6 +170,7 @@ function PostFeed({ profilePage, currentUser }) {
                       >
                         <Link to={`/ProfilePage/${post?.user_id}`}>
                           <img
+                            alt=""
                             style={{
                               height: "30px",
                               width: "30px",
@@ -243,7 +245,6 @@ function PostFeed({ profilePage, currentUser }) {
                               >
                                 <button
                                   style={{
-                                    border: "none",
                                     height: "35px",
                                     width: "85px",
                                     backgroundColor: "#fff",
@@ -260,7 +261,6 @@ function PostFeed({ profilePage, currentUser }) {
 
                                 <button
                                   style={{
-                                    border: "none",
                                     height: "35px",
                                     width: "85px",
                                     backgroundColor: "#fff",
@@ -273,7 +273,6 @@ function PostFeed({ profilePage, currentUser }) {
                                 </button>
                                 <button
                                   style={{
-                                    border: "none",
                                     height: "35px",
                                     width: "85px",
                                     backgroundColor: "#fff",
@@ -379,6 +378,7 @@ function PostFeed({ profilePage, currentUser }) {
                     </div>
                     {post?.picture ? (
                       <img
+                        alt=""
                         src={post?.picture}
                         style={{
                           width: "100%",

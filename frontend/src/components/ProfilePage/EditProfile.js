@@ -122,6 +122,7 @@ function EditProfile({ closeModal, cover, profile }) {
           ) : null}
         </div>
         <img
+          alt=""
           style={{
             height: "115px",
             width: "115px",
@@ -161,6 +162,7 @@ function EditProfile({ closeModal, cover, profile }) {
           ) : null}
         </div>
         <img
+          alt=""
           style={{
             height: "150px",
             width: "80%",

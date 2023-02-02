@@ -45,6 +45,7 @@ function StoriesHomeFeed({ stories }) {
           }}
         >
           <img
+            alt=""
             style={{
               height: "70%",
               width: "100%",
@@ -121,6 +122,7 @@ function StoriesHomeFeed({ stories }) {
                   }}
                 >
                   <img
+                    alt=""
                     style={{
                       height: "30px",
                       width: "30px",
@@ -145,6 +147,7 @@ function StoriesHomeFeed({ stories }) {
                   }}
                 >
                   <img
+                    alt=""
                     style={{
                       height: "30px",
                       width: "30px",

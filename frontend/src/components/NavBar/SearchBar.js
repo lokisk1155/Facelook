@@ -1,19 +1,15 @@
-import "./SearchBar.css";
-import { useHistory } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
-import profilePic from "./imgs/blank.png";
 import { Link } from "react-router-dom";
+import profilePic from "./imgs/blank.png";
+import "./SearchBar.css";
 
 function SearchBar({ setTyped, closeModal, setDiv }) {
-  const users = useSelector((state) => state.simpleUsers);
-
-  const history = useHistory();
   const [filteredUsers, setFilteredUsers] = useState([]);
-  const [recentSearches, setRecentSearches] = useState([]);
 
   const [frTyped, setfrTyped] = useState("");
+
+  const users = useSelector((state) => state.simpleUsers);
 
   useEffect(() => {
     if (users) {
@@ -36,7 +32,7 @@ function SearchBar({ setTyped, closeModal, setDiv }) {
       setDiv(Object.values(filteredUsers)?.length);
     }
     setTyped(frTyped);
-  }, [frTyped]);
+  }, [frTyped, filteredUsers, setDiv, setTyped, users]);
 
   return (
     <>
@@ -74,9 +70,7 @@ function SearchBar({ setTyped, closeModal, setDiv }) {
         ></input>
       </div>
 
-      {!frTyped && recentSearches.length < 1 && (
-        <h4 className="no-recent-searches">No Recent Searches</h4>
-      )}
+      {!frTyped && <h4 className="no-recent-searches">No Recent Searches</h4>}
       {filteredUsers && (
         <div className="search-results-container">
           {" "}
@@ -90,6 +84,7 @@ function SearchBar({ setTyped, closeModal, setDiv }) {
                 <div key={user?.id}>
                   <div className="result-user-div">
                     <img
+                      alt=""
                       className="result-user-profile-pic"
                       src={user.profile_picture || profilePic}
                     />

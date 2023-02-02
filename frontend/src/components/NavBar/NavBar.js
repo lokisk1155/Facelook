@@ -100,38 +100,23 @@ function NavBar() {
       </div>
 
       <div className="right-container-navbar">
-        {/* <button className="menu-button-navbar">
-          <svg fill="currentColor" viewBox="0 0 44 44" className="menu-svg">
-            <circle cx="7" cy="7" r="6"></circle>
-            <circle cx="22" cy="7" r="6"></circle>
-            <circle cx="37" cy="7" r="6"></circle>
-            <circle cx="7" cy="22" r="6"></circle>
-            <circle cx="22" cy="22" r="6"></circle>
-            <circle cx="37" cy="22" r="6"></circle>
-            <circle cx="7" cy="37" r="6"></circle>
-            <circle cx="22" cy="37" r="6"></circle>
-            <circle cx="37" cy="37" r="6"></circle>
-          </svg>
-        </button> */}
         <div className="navbar-profile-modal">
           <img
             src={navbarPic}
             alt="profile-pic"
             className="profile-pic-modal"
             onClick={() => {
-              {
-                setProfileModal(true);
-                setToggleSearch(false);
-              }
+              setProfileModal(true);
+              setToggleSearch(false);
             }}
           />
         </div>
       </div>
-      {profileModal && (
+      {profileModal ? (
         <Modal onClose={() => setProfileModal(false)}>
           <ProfilePicModal closeModal={setProfileModal} user={user} />
         </Modal>
-      )}
+      ) : null}
     </div>
   );
 }

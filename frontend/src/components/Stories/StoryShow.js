@@ -24,7 +24,7 @@ function StoryShow() {
       await dispatch(getSimpleUsers());
     };
     getData();
-  }, []);
+  }, [dispatch]);
 
   const simpleUsers = useSelector((state) => state.simpleUsers);
 
@@ -43,23 +43,25 @@ function StoryShow() {
 
   const usersWithStories = {};
   for (const id in stories) {
-    if (simpleUsers[id] !== undefined && id != sessionUserId) {
+    if (simpleUsers[id] !== undefined && parseInt(id) !== sessionUserId) {
       usersWithStories[id] = simpleUsers[id];
     }
   }
 
   const handleNext = (e) => {
     e.preventDefault();
-    if (id == sessionUserId) {
+    if (parseInt(id) === sessionUserId) {
       for (const id in stories) {
-        if (simpleUsers[id] !== undefined && id != sessionUserId) {
+        if (simpleUsers[id] !== undefined && parseInt(id) !== sessionUserId) {
           return history.push(`/stories/${id}`);
         }
       }
     } else {
       if (currentWindow === Object.values(stories[id]).length - 1) {
         const userIds = Object.keys(usersWithStories);
-        const currentIndex = userIds.findIndex((userId) => userId == id);
+        const currentIndex = userIds.findIndex(
+          (userId) => userId === parseInt(id)
+        );
         let nextIndex = currentIndex + 1;
         if (nextIndex === userIds.length) {
           nextIndex = 0;
@@ -78,7 +80,9 @@ function StoryShow() {
     e.preventDefault();
     if (currentWindow <= 1) {
       const userIds = Object.keys(usersWithStories);
-      const currentIndex = userIds.findIndex((userId) => userId === id);
+      const currentIndex = userIds.findIndex(
+        (userId) => userId === parseInt(id)
+      );
       let previousIndex = currentIndex - 1;
       if (previousIndex < 0) {
         previousIndex = userIds.length - 1;
@@ -120,6 +124,7 @@ function StoryShow() {
             X
           </button>
           <img
+            alt=""
             style={{
               height: "40px",
               width: "40px",
@@ -143,18 +148,19 @@ function StoryShow() {
             onClick={() => setCurrentWindow(0)}
             style={{
               display: "flex",
-              width: "100%",
               alignItems: "center",
               paddingLeft: "10px",
               borderRadius: "5px",
               padding: "5px",
-              backgroundColor: sessionUser.id == id ? "lightgrey" : "#fff",
+              backgroundColor:
+                sessionUser.id === parseInt(id) ? "lightgrey" : "#fff",
               height: "65px",
               width: "100%",
             }}
             to={`/stories/${sessionUser.id}`}
           >
             <img
+              alt=""
               style={{
                 height: "50px",
                 width: "50px",
@@ -184,19 +190,19 @@ function StoryShow() {
                     onClick={() => setCurrentWindow(0)}
                     style={{
                       display: "flex",
-                      width: "100%",
                       alignItems: "center",
                       paddingLeft: "10px",
                       borderRadius: "5px",
                       padding: "5px",
                       backgroundColor:
-                        user.user_id == id ? "lightgrey" : "#fff",
+                        user.user_id === parseInt(id) ? "lightgrey" : "#fff",
                       height: "65px",
                       width: "100%",
                     }}
                     to={`/stories/${user.user_id}`}
                   >
                     <img
+                      alt=""
                       style={{
                         height: "50px",
                         width: "50px",
@@ -268,6 +274,7 @@ function StoryShow() {
             </div>
           ) : (
             <img
+              alt=""
               className="actual-text-story-background"
               src={currentStory.picture}
               style={{

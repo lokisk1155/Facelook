@@ -67,6 +67,7 @@ function PreviewStory({ file, setFile, url, setUrl }) {
               >
                 <h3 style={{ padding: "0", margin: "0" }}>Your Story</h3>
                 <img
+                  alt=""
                   style={{
                     height: "50px",
                     borderRadius: "50px",
@@ -147,6 +148,7 @@ function PreviewStory({ file, setFile, url, setUrl }) {
                 }}
               >
                 <img
+                  alt=""
                   className="actual-text-story-background"
                   src={url}
                   style={{

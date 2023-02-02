@@ -32,7 +32,7 @@ function Friends({ friends, currentUserFriends }) {
     } else {
       setFilteredUsers(null);
     }
-  }, [typed]);
+  }, [typed, friends]);
 
   if (Object.values(friends).length > 2) {
     let dividedLength = Math.floor(Object.values(friends).length / 2);
@@ -91,6 +91,7 @@ function Friends({ friends, currentUserFriends }) {
                   to={`/ProfilePage/${friend.id}`}
                 >
                   <img
+                    alt=""
                     style={{
                       height: "95%",
                       margin: "auto",
@@ -120,7 +121,7 @@ function Friends({ friends, currentUserFriends }) {
                     </p>
                   </div>
                 </Link>
-                {sessionUserId == id ? (
+                {sessionUserId === parseInt(id) ? (
                   <button
                     className="delete-on-friend"
                     onClick={handleDelete(friend.id)}
@@ -143,6 +144,7 @@ function Friends({ friends, currentUserFriends }) {
               <div key={friend.id} className="actual-friend-container">
                 <Link to={`/ProfilePage/${friend.id}`}>
                   <img
+                    alt=""
                     className="friend-profile-pic"
                     src={friend.profile_picture || profilePic}
                   ></img>
@@ -150,7 +152,7 @@ function Friends({ friends, currentUserFriends }) {
                 <p className="friend-profile-name">{`${capitalizeFirstLetter(
                   friend.first_name
                 )} ${capitalizeFirstLetter(friend.last_name)}`}</p>
-                {sessionUserId == id ? (
+                {sessionUserId === parseInt(id) ? (
                   <button
                     className="delete-on-friend"
                     onClick={handleDelete(friend.id)}

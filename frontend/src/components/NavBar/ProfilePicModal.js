@@ -69,6 +69,7 @@ function ProfilePicModal({ closeModal }) {
               }}
             >
               <img
+                alt=""
                 style={{ height: "90%", borderRadius: "50%" }}
                 src={user.profile_picture || profilePic}
               />
@@ -136,7 +137,11 @@ function ProfilePicModal({ closeModal }) {
                 }}
                 to={{ pathname: developerWebsiteLinks[index] }}
               >
-                <img style={{ height: "60%", padding: "1px" }} src={website} />
+                <img
+                  alt=""
+                  style={{ height: "60%", padding: "1px" }}
+                  src={website}
+                />
                 <h3 style={{ textDecoration: "none", color: "black" }}>
                   {developerWebsiteNames[index]}
                 </h3>
@@ -150,8 +155,8 @@ function ProfilePicModal({ closeModal }) {
 }
 
 export default ProfilePicModal;
-{
-  /* <div
+
+/* <div
 className="main-buttons-of-modal"
 style={{
   height: "35%",
@@ -172,4 +177,3 @@ style={{
   }}
 ></div>
 </div> */
-}

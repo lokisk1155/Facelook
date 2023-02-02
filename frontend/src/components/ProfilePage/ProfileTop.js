@@ -1,14 +1,12 @@
 import { useDispatch } from "react-redux";
-import { deleteFriend, addFriend } from "../../store/friend";
-import { updateUser } from "../../store/user";
 import { useState } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
+import { deleteFriend, addFriend } from "../../store/friend";
+import { Modal } from "../../context/Modal";
+import capitalizeFirstLetter from "../../utils/capFirstLetter";
+import EditProfile from "./EditProfile";
 import profilePicBlank from "../NavBar/imgs/blank.png";
 import "./ProfileTop.css";
-import capitalizeFirstLetter from "../../utils/capFirstLetter";
-import { profilePage } from "../../store/profilePage";
-import { Modal } from "../../context/Modal";
-import EditProfile from "./EditProfile";
 
 function ProfileTop({ currentUser, sessionUser, friends }) {
   const dispatch = useDispatch();
@@ -21,8 +19,6 @@ function ProfileTop({ currentUser, sessionUser, friends }) {
 
   const { id } = useParams();
 
-  const [toggle, setToggle] = useState(false);
-
   if (currentUser === undefined) return null;
 
   const currentUserName = `${capitalizeFirstLetter(
@@ -34,8 +30,6 @@ function ProfileTop({ currentUser, sessionUser, friends }) {
   const isFriend = currentUser.friends.includes(sessionUser.id) ? true : false;
 
   const notSelf = currentUser.id !== sessionUser.id ? true : false;
-
-  let friendsInHeader;
 
   let friendsTemp = "Friends";
 
@@ -92,13 +86,14 @@ function ProfileTop({ currentUser, sessionUser, friends }) {
       <div className="profile-top-container">
         <div className="background-photo-container-profile-page">
           <img
+            alt=""
             src={coverPhotoPreview}
             className="background-photo-profile-page"
           />
         </div>
         <div className="profile-page-header">
           <div className="profile-picture-and-name-container">
-            <img className="profile-top-profile-pic" src={preview} />
+            <img alt="" className="profile-top-profile-pic" src={preview} />
             <div
               style={{
                 display: "flex",

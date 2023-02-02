@@ -92,6 +92,7 @@ function CreatePost({ closeModal, location }) {
             }}
           >
             <img
+              alt=""
               style={{ height: "90%", borderRadius: "50%" }}
               src={sessionUser.profile_picture || profilePic}
             ></img>
@@ -107,7 +108,11 @@ function CreatePost({ closeModal, location }) {
             onChange={(e) => setContent(e.target.value)}
           ></textarea>
           {photoFile ? (
-            <img src={photoUrl} style={{ height: "50%", width: "100%" }} />
+            <img
+              alt=""
+              src={photoUrl}
+              style={{ height: "50%", width: "100%" }}
+            />
           ) : (
             <div style={{ width: "100%", height: "15%", alignItems: "center" }}>
               <label className="custom-file-upload">
