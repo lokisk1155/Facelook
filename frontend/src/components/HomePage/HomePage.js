@@ -29,7 +29,7 @@ function HomePage() {
       <div className="home-page-container">
         <div className="column"></div>
         <div className="middle">
-          {loading ? (
+          {/* {loading ? (
             <StoriesHomeFeed />
           ) : (
             <>
@@ -50,7 +50,7 @@ function HomePage() {
                 }}
               />
             </>
-          )}
+          )} */}
           {loading ? (
             <PostFeed />
           ) : (
