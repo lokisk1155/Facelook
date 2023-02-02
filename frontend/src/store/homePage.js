@@ -3,7 +3,7 @@ import { addStory } from "./story";
 import { receivePosts } from "./post";
 
 export const homePage = () => async (dispatch) => {
-  const postRes = await csrfFetch(`/api/posts?limit=${10}`);
+  const postRes = await csrfFetch(`/api/posts`);
   const postData = await postRes.json();
   const storiesRes = await csrfFetch(`/api/stories?limit=${3}`);
   const storiesData = await storiesRes.json();
