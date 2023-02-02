@@ -5,7 +5,7 @@ import EditHighschool from "./UserInformation/EditHighschool";
 import Editlocation from "./UserInformation/EditLocation";
 
 function Overview({ currentUser, sessionUser }) {
-  console.log(currentUser)
+  console.log(currentUser);
   const isUser = currentUser.id === sessionUser.id;
   return (
     <div
