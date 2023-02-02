@@ -4,7 +4,7 @@ import profilePic from "../../NavBar/imgs/blank.png";
 import StoriesHeader from "./StoriesHeader";
 import "./StoriesHomeFeed.css";
 
-function StoriesHomeFeed({ stories }) {
+function StoriesHomeFeed() {
   const history = useHistory();
 
   const sessionUser = useSelector((state) => state.session.user);
