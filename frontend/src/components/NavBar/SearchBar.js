@@ -26,27 +26,27 @@ function SearchBar({ setTyped, closeModal, setDiv }) {
   useEffect(() => {
     divRef.current = div;
     setTyped(frTyped);
-  }, [filteredUsers, frTyped, setTyped]);
+  }, [filteredUsers, frTyped, setTyped, div]);
 
   useEffect(() => {
     setDiv(divRef.current);
   }, [setDiv]);
 
-  function filterUsers(allUsers, filterTerm) {
-    const currentMatches = Object.values(allUsers).filter((user) => {
+  function filterUsers(users, typed) {
+    const currentMatches = Object.values(users).filter((user) => {
       return user.name
         .toLowerCase()
         .replace(" ", "")
-        .startsWith(filterTerm.replace(" ", "").toLowerCase());
+        .startsWith(typed.replace(" ", "").toLowerCase());
     });
 
     return currentMatches.length > 0
       ? currentMatches
-      : Object.values(allUsers).slice(0, 10);
+      : Object.values(users).slice(0, 10);
   }
 
-  function calculateDiv(filteredUsers, filterTerm) {
-    return filterTerm.length === 0 ? 0 : Object.values(filteredUsers).length;
+  function calculateDiv(users, typed) {
+    return typed.length === 0 ? 0 : Object.values(users).length;
   }
 
   return (
