@@ -22,13 +22,13 @@ function HomePage() {
   let loading = false;
 
   useEffect(() => {
-      Promise.all([dispatch(fetchPosts()), dispatch(fetchStories(limit))])
-  }, [dispatch])
+    Promise.all([dispatch(fetchPosts()), dispatch(fetchStories(limit))]);
+  }, [dispatch]);
 
   if (stories && posts) {
-    loading = true 
+    loading = true;
   }
-  
+
   return (
     <>
       <NavBar />

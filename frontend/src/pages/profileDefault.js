@@ -31,7 +31,7 @@ function ProfileDefault() {
     loading = false;
     setTimeout(() => {
       dispatch(profilePage(id));
-    }, 500)
+    }, 500);
   }
 
   return (

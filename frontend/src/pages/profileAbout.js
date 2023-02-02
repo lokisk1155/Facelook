@@ -29,7 +29,7 @@ function ProfileAbout({ about }) {
     loading = false;
     setTimeout(() => {
       dispatch(profilePage(id, noPosts));
-    }, 500)
+    }, 500);
   }
 
   return (
