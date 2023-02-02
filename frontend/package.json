@@ -18,7 +18,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "BUILD_PATH='../public' react-scripts build",
-    "test": "react-scripts test",
+    "test": "npm run test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
