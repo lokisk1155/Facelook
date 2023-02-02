@@ -29,11 +29,11 @@ export const fetchStories = (limit) => async (dispatch) => {
     storiesReq = await csrfFetch(`/api/stories`);
   }
 
-  const storiesResponse = await storiesReq.json();
+  const storiesData = await storiesReq.json();
   if (limit) {
-    return dispatch(addStory(storiesResponse));
+    return dispatch(addStory(storiesData));
   }
-  return dispatch(addAll(storiesResponse.stories));
+  return dispatch(addAll(storiesData.stories));
 };
 
 export const storiesReducer = (previousState = {}, action) => {
