@@ -6,6 +6,7 @@ import StoriesHomeFeed from "./Middle/StoriesHomeFeed";
 import PostFeed from "./Middle/PostFeed";
 import "./HomePage.css";
 import StoriesHeader from "./Middle/StoriesHeader";
+import { useEffect } from "react";
 
 function HomePage() {
   const dispatch = useDispatch();
@@ -18,15 +19,17 @@ function HomePage() {
 
   const number = 6;
 
-  let loading = true;
+  let loading = false;
 
-  if (Object.keys(stories).length < 1 || Object.keys(posts).length < 1) {
-    loading = false;
-    setTimeout(() => {
-      Promise.all([dispatch(fetchStories(limit)), dispatch(fetchPosts())]);;
-    }, 500)
+  useEffect(() => {
+      dispatch(fetchPosts())
+      dispatch(fetchStories(limit))
+  }, [])
+
+  if (stories && posts) {
+    loading = true 
   }
-
+  
   return (
     <>
       <NavBar />
