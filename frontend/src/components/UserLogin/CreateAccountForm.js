@@ -1,14 +1,9 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
 import "./CreateAccountForm.css";
-import { Redirect } from "react-router-dom";
-import { useHistory } from "react-router-dom";
 
 function CreateAccountForm({ closeForm }) {
-  const currentUser = useSelector((state) => state.session.user);
-
-  const history = useHistory();
   const dispatch = useDispatch();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -20,7 +15,6 @@ function CreateAccountForm({ closeForm }) {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
-  const [clicked, setClicked] = useState(false);
 
   let years = [];
   for (let i = 1950; i < 2023; i++) {
@@ -195,7 +189,6 @@ function CreateAccountForm({ closeForm }) {
                     id="male"
                     name="gender"
                     onChange={() => setGender("male")}
-                    onClick={() => setClicked(false)}
                   />
                 </label>
               </div>
@@ -209,7 +202,6 @@ function CreateAccountForm({ closeForm }) {
                     id="female"
                     name="gender"
                     onChange={() => setGender("female")}
-                    onClick={() => setClicked(false)}
                   />
                 </label>
               </div>

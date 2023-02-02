@@ -7,9 +7,8 @@ function EditEducation({ currentUser }) {
 
   const [fakeEducation, setFakeEducation] = useState("");
 
-  const [toggleEducationEdit, setToggleEducationEdit] = useState(false);
-
   const [toggle, setToggle] = useState(false);
+
   const handleEducation = () => {
     let education = fakeEducation;
     let cloneWithoutRedux = { ...currentUser };

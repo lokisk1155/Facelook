@@ -7,9 +7,8 @@ function Editlocation({ currentUser }) {
 
   const [fakelocation, setFakelocation] = useState("");
 
-  const [togglelocationEdit, setTogglelocationEdit] = useState(false);
-
   const [toggle, setToggle] = useState(false);
+
   const handlelocation = () => {
     let location = fakelocation;
     let cloneWithoutRedux = { ...currentUser };

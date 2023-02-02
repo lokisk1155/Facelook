@@ -7,7 +7,7 @@ import "./SessionUserIntro.css";
 function SessionUserIntro({ currentUser, changeHeight }) {
   const [toggleBio, setToggleBio] = useState(false);
 
-  const [divHeight, setCount] = useState(200);
+  const divHeight = 200;
 
   useEffect(() => {
     if (toggleBio) {
@@ -15,7 +15,7 @@ function SessionUserIntro({ currentUser, changeHeight }) {
     } else {
       changeHeight(divHeight);
     }
-  }, [divHeight, toggleBio]);
+  }, [divHeight, toggleBio, changeHeight]);
 
   return (
     <div style={{ height: "100%", width: "100%" }}>
@@ -24,7 +24,6 @@ function SessionUserIntro({ currentUser, changeHeight }) {
       <div
         style={{
           width: "100%",
-          height: "100%",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",

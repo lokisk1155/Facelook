@@ -7,9 +7,8 @@ function EditWebsite({ currentUser }) {
 
   const [fakeWebsite, setFakeWebsite] = useState("");
 
-  const [toggleWebsiteEdit, setToggleWebsiteEdit] = useState(false);
-
   const [toggle, setToggle] = useState(false);
+
   const handleWebsite = () => {
     let website = fakeWebsite;
     let cloneWithoutRedux = { ...currentUser };

@@ -7,9 +7,8 @@ function EditSocial({ currentUser }) {
 
   const [fakeSocial, setFakeSocial] = useState("");
 
-  const [toggleSocialEdit, setToggleSocialEdit] = useState(false);
-
   const [toggle, setToggle] = useState(false);
+
   const handleSocial = () => {
     let social_link = fakeSocial;
     let cloneWithoutRedux = { ...currentUser };

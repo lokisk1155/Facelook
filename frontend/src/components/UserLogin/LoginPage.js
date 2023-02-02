@@ -1,18 +1,15 @@
 import { Link, useHistory } from "react-router-dom";
-import "./LoginPage.css";
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import CreateAccountForm from "./CreateAccountForm";
+import "./LoginPage.css";
 
 function LoginPage() {
   const dispatch = useDispatch();
-  const sessionUser = useSelector((state) => state.session.user);
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState(false);
   const [createFormOpen, setCreateFormOpen] = useState(false);
-  const [showModal, setShowModal] = useState(false);
   const history = useHistory();
   const [open, setOpen] = useState(false);
 
@@ -29,7 +26,6 @@ function LoginPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setErrors([]);
     dispatch(sessionActions.login({ credential, password }))
       .then(() => {
         history.push("/");

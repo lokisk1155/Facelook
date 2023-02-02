@@ -7,9 +7,8 @@ function EditHighschool({ currentUser }) {
 
   const [fakeHighschool, setFakeHighschool] = useState("");
 
-  const [toggleHighschoolEdit, setToggleHighschoolEdit] = useState(false);
-
   const [toggle, setToggle] = useState(false);
+
   const handleHighschool = () => {
     let highschool = fakeHighschool;
     let cloneWithoutRedux = { ...currentUser };

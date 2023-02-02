@@ -7,9 +7,8 @@ function EditPhoneNumber({ currentUser }) {
 
   const [fakePhoneNumber, setFakePhoneNumber] = useState("");
 
-  const [togglePhoneEdit, setTogglePhoneEdit] = useState(false);
-
   const [toggle, setToggle] = useState(false);
+
   const handlePhoneNumber = () => {
     let phone_number = fakePhoneNumber;
     let cloneWithoutRedux = { ...currentUser };

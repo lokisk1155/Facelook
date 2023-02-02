@@ -7,9 +7,8 @@ function EditEmail({ currentUser }) {
 
   const [fakeEmail, setFakeEmail] = useState("");
 
-  const [toggleEmailEdit, setToggleEmailEdit] = useState(false);
-
   const [toggle, setToggle] = useState(false);
+
   const handleEmail = () => {
     let email = fakeEmail;
     let cloneWithoutRedux = { ...currentUser };

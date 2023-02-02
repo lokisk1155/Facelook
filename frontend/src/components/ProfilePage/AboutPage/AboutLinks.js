@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import "./AboutLinks.css";
 
-function AboutPageLinks({}) {
+function AboutPageLinks() {
   const { id } = useParams();
 
   return (

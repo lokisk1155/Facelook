@@ -7,10 +7,6 @@ function EditRelationship({ currentUser }) {
 
   const [fakeRelationship, setFakeRelationship] = useState("");
 
-  const [toggleRelationshipEdit, setToggleRelationshipEdit] = useState(false);
-
-  console.log(fakeRelationship);
-
   const [toggle, setToggle] = useState(false);
 
   const handleRelationship = () => {

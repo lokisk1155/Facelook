@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { updateUser } from "../../store/user";
-import { profilePage } from "../../store/profilePage";
 
 function EditBio({ closeModal }) {
   const dispatch = useDispatch();

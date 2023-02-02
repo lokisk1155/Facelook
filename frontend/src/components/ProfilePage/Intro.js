@@ -36,7 +36,7 @@ function Intro({ currentUser, changeHeight }) {
   }
   useEffect(() => {
     changeHeight(count);
-  }, []);
+  }, [changeHeight, count]);
 
   return (
     <div
