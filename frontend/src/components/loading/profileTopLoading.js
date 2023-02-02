@@ -38,7 +38,6 @@ function ProfileTopLoading() {
             height: "22.5vh",
             width: "22.5vh",
             borderRadius: "50%",
-            border: "3px white",
             cursor: "pointer",
             border: "5px solid #fff",
             transform: "translateY(-100px)",
