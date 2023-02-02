@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { homePage } from "../../store/homePage";
 import NavBar from "../NavBar/NavBar";
 import StoriesHomeFeed from "./Middle/StoriesHomeFeed";
@@ -21,7 +21,7 @@ function HomePage() {
         setLoading(data);
       }, 500);
     });
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
