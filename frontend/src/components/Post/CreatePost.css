@@ -1,9 +1,8 @@
 .omega-create-post-modal {
   position: absolute;
-  top: 35%;
-  left: 36.5%;
-  margin-top: -100px;
-  margin-left: -40px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background: #fff;
   padding: 10px;
   height: 375px;
@@ -25,4 +24,11 @@
   width: 95%;
   margin: auto;
   padding: 5px;
+}
+
+@media (max-width: 600px) {
+  .omega-create-post-modal {
+    height: 80vh;
+    width: 80vw;
+  }
 }
