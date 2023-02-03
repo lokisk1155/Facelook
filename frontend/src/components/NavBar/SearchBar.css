@@ -44,18 +44,18 @@
 .no-recent-searches {
   text-align: center;
   color: grey;
+  margin: 0;
+
 }
 
 .search-results-container {
   flex-direction: column;
-  margin: 10px;
   background-color: white;
-  width: 95%;
+  box-shadow: 0px 4px 4px 0px lightgrey;
 }
 
 .result-user-div {
   height: 50px;
-  border-radius: 5px;
   position: relative;
   display: flex;
   align-items: center;
@@ -67,7 +67,7 @@
 
 .result-user-profile-pic {
   height: 35px;
-  border-radius: 15px;
+  border-radius: 50%;
   margin: 10px;
 }
 
@@ -89,9 +89,9 @@
 .search-for-typed-button {
   height: 50px;
   border-radius: 5px;
-  position: relative;
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   width: 100%;
   border: none;
   background-color: white;
@@ -103,8 +103,6 @@
 
 .search-for-typed-text {
   color: #1b74e4;
-  text-align: center;
-  margin-left: 4px;
 }
 
 #searchFor {
@@ -123,7 +121,7 @@
   border: none;
   color: white;
   cursor: pointer;
-  margin: 5px;
+  margin: 10px;
 }
 
 .back-arrow-svg {
