@@ -1,4 +1,4 @@
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
@@ -12,17 +12,6 @@ function LoginPage() {
   const [createFormOpen, setCreateFormOpen] = useState(false);
   const history = useHistory();
   const [open, setOpen] = useState(false);
-
-  const demoEmail = "ooo@aol.com";
-  const demoPassword = "12345678";
-
-  const handleClick = (e) => {
-    e.preventDefault();
-    const user = { credential: demoEmail, password: demoPassword };
-    dispatch(sessionActions.login(user)).then(() => {
-      history.push("/");
-    });
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -67,17 +56,12 @@ function LoginPage() {
                 <button className="login-button" type="submit">
                   Log In
                 </button>
-
-                <Link onClick={handleClick} className="forgot-pw">
-                  Demo User
-                </Link>
-
                 <hr id="hr" />
                 <button
                   className="create-new-account"
                   onClick={() => setCreateFormOpen(true)}
                 >
-                  Create New Account
+                  Generate Profile
                 </button>
               </div>
             </form>
@@ -85,7 +69,15 @@ function LoginPage() {
         ) : null}
 
         {createFormOpen ? (
-          <div className="create-account-container">
+          <div
+            style={{
+              height: "100vh",
+              width: "100vw",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
             <CreateAccountForm closeForm={setCreateFormOpen} />
           </div>
         ) : null}
