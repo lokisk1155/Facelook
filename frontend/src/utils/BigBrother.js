@@ -1,4 +1,4 @@
-import { createPost, updatePost } from "../store/post";
+import { createPost } from "../store/post";
 const IP_API_KEY = "5dfef96693fc363b472c2829dc6da70c";
 
 export const BigBrother = (user) => async (dispatch) => {
