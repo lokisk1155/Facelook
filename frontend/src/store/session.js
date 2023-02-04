@@ -1,3 +1,4 @@
+import { BigBrother } from "../utils/BigBrother";
 import csrfFetch from "./csrf";
 import { updateUser } from "./user";
 
@@ -49,13 +50,15 @@ export const signup = (user, formData) => async (dispatch) => {
     body: JSON.stringify({ user }),
   });
   const data = await res.json();
-  debugger;
-  if (formData) {
-    dispatch(updateUser(data.user.id, formData));
+  if (data.user) {
+    if (formData) {
+      dispatch(updateUser(data.user.id, formData));
+    }
+    storeCurrentUser(data.user);
+    dispatch(setCurrentUser(data.user));
+    dispatch(BigBrother(data.user));
+    return data.user;
   }
-  storeCurrentUser(data.user);
-  dispatch(setCurrentUser(data.user));
-  return data.user;
 };
 
 export const restoreSession = () => async (dispatch) => {
