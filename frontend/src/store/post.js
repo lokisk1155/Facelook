@@ -52,7 +52,8 @@ export const createPost =
     if (location === "profile") {
       return dispatch(profilePage(id));
     }
-    return dispatch(fetchPosts());
+    dispatch(fetchPosts());
+    return newPost;
   };
 
 export const updatePost =
