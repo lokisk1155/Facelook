@@ -306,7 +306,7 @@ function PostFeed({ profilePage, currentUser }) {
                           style={{
                             height: "100%",
                             margin: "0",
-                            padding: "2px",
+                            padding: "7.5px",
                           }}
                         >
                           {post?.content}
