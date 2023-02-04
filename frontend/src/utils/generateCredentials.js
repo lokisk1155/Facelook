@@ -14,7 +14,7 @@ export const generateCredentials = (desiredConfigs) => async (dispatch) => {
   }
 
   if (desiredConfigs.password === null) {
-    desiredConfigs.password = randomizedPassword();
+    desiredConfigs.password = randomizedPassword(8);
   }
 
   const userToBeCreated = {
@@ -158,29 +158,6 @@ const emails = [
   "donna44@gmail.com",
 ];
 
-const passwords = [
-  "james01",
-  "john02",
-  "robert03",
-  "michael04",
-  "william05",
-  "david06",
-  "richard07",
-  "joseph08",
-  "thomas09",
-  "charles10",
-  "christopher11",
-  "daniel12",
-  "matthew13",
-  "anthony14",
-  "donald15",
-  "mark16",
-  "paul17",
-  "steven18",
-  "andrew19",
-  "kenneth20",
-];
-
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
@@ -195,7 +172,11 @@ function randomizedEmail() {
   return emails[index];
 }
 
-function randomizedPassword() {
-  const index = getRandomInt(passwords.length);
-  return passwords[index];
+function generatePassword(length) {
+  const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  let password = '';
+  for (let i = 0; i < length; i++) {
+    password += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  return password;
 }
