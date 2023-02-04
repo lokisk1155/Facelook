@@ -40,9 +40,9 @@ function SearchBar({ setTyped, closeModal, setDiv }) {
         .startsWith(typed.replace(" ", "").toLowerCase());
     });
 
-    return currentMatches.length > 0
+    return currentMatches.length < 10
       ? currentMatches
-      : Object.values(users).slice(0, 10);
+      : Object.values(currentMatches).slice(0, 15);
   }
 
   function calculateDiv(users, typed) {
@@ -85,7 +85,7 @@ function SearchBar({ setTyped, closeModal, setDiv }) {
         ></input>
       </div>
 
-      {!frTyped && <h4 className="no-recent-searches">No Recent Searches</h4>}
+      {/* {!frTyped && <h4 className="no-recent-searches">No Recent Searches</h4>} */}
       {filteredUsers && (
         <div className="search-results-container">
           {" "}
