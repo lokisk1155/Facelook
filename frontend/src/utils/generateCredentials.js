@@ -172,7 +172,7 @@ function randomizedEmail() {
   return emails[index];
 }
 
-function generatePassword(length) {
+function randomizedPassword(length) {
   const characters =
     "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
   let password = "";
