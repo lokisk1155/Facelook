@@ -111,53 +111,6 @@ const names = [
   "Avery",
 ];
 
-const emails = [
-  "james01@gmail.com",
-  "john02@gmail.com",
-  "robert03@gmail.com",
-  "michael04@gmail.com",
-  "william05@gmail.com",
-  "david06@gmail.com",
-  "richard07@gmail.com",
-  "joseph08@gmail.com",
-  "thomas09@gmail.com",
-  "charles10@gmail.com",
-  "christopher11@gmail.com",
-  "daniel12@gmail.com",
-  "matthew13@gmail.com",
-  "anthony14@gmail.com",
-  "donald15@gmail.com",
-  "mark16@gmail.com",
-  "paul17@gmail.com",
-  "steven18@gmail.com",
-  "andrew19@gmail.com",
-  "kenneth20@gmail.com",
-  "george21@gmail.com",
-  "joshua22@gmail.com",
-  "kevin23@gmail.com",
-  "brian24@gmail.com",
-  "edward25@gmail.com",
-  "mary26@gmail.com",
-  "patricia27@gmail.com",
-  "jennifer28@gmail.com",
-  "elizabeth29@gmail.com",
-  "linda30@gmail.com",
-  "barbara31@gmail.com",
-  "susan32@gmail.com",
-  "jessica33@gmail.com",
-  "margaret34@gmail.com",
-  "sarah35@gmail.com",
-  "karen36@gmail.com",
-  "nancy37@gmail.com",
-  "betty38@gmail.com",
-  "dorothy39@gmail.com",
-  "lisa40@gmail.com",
-  "sandra41@gmail.com",
-  "ashley42@gmail.com",
-  "kimberly43@gmail.com",
-  "donna44@gmail.com",
-];
-
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
@@ -168,8 +121,14 @@ function randomizedName() {
 }
 
 function randomizedEmail() {
-  const index = getRandomInt(emails.length);
-  return emails[index];
+  const characters =
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  let email = "";
+  for (let i = 0; i < 10; i++) {
+    email += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  email += "@faceoook.com";
+  return email;
 }
 
 function randomizedPassword(length) {

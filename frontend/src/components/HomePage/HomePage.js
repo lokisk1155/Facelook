@@ -19,7 +19,7 @@ function HomePage() {
     dispatch(homePage()).then((data) => {
       setTimeout(() => {
         setLoading(data);
-      }, 500);
+      }, 200);
     });
   }, [dispatch]);
 

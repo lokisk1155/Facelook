@@ -6,6 +6,8 @@ import { Modal } from "../../../context/Modal";
 import CreatePost from "../../Post/CreatePost";
 import profilePic from "../../NavBar/imgs/blank.png";
 import "./PostFeed.css";
+import PostLoading from "../../loading/PostLoading";
+import PostImageLoading from "../../loading/PostImageLoading";
 
 function PostFeed({ profilePage, currentUser }) {
   const dispatch = useDispatch();
@@ -145,14 +147,14 @@ function PostFeed({ profilePage, currentUser }) {
         {posts && (
           <>
             {Object.values(posts)
-              .map((post) => {
+              .map((post, index) => {
                 return (
                   <div
-                    key={post?.id}
+                    key={index}
                     className="individual-post"
                     style={{
                       height: contentHeight(post),
-                      minHeight: post?.picture ? "400px" : "85px",
+                      minHeight: post.picture ? "400px" : "85px",
                       width: "100%",
                       marginBottom: "15px",
                     }}
@@ -160,7 +162,7 @@ function PostFeed({ profilePage, currentUser }) {
                     <div
                       className="post-header"
                       style={{
-                        height: post?.picture ? "9%" : "25%",
+                        height: post.picture ? "9%" : "25%",
                         minHeight: "33px",
                       }}
                     >
@@ -168,25 +170,18 @@ function PostFeed({ profilePage, currentUser }) {
                         className="picture-and-name"
                         style={{ display: "flex" }}
                       >
-                        <Link to={`/ProfilePage/${post?.user_id}`}>
-                          <img
-                            alt=""
-                            style={{
-                              height: "30px",
-                              width: "30px",
-                              borderRadius: "50px",
-                              padding: "7px",
-                            }}
+                        <Link to={`/ProfilePage/${post.user_id}`}>
+                          <PostLoading
                             src={
-                              simpleUsers[post?.user_id]?.profile_picture ||
+                              simpleUsers[post.user_id]?.profile_picture ||
                               profilePic
                             }
-                          ></img>
+                          />
                         </Link>
                         <div style={{ padding: "5px" }}>
                           <Link
                             style={{ textDecoration: "none" }}
-                            to={`/ProfilePage/${post?.user_id}`}
+                            to={`/ProfilePage/${post.user_id}`}
                           >
                             <h5
                               style={{
@@ -197,7 +192,7 @@ function PostFeed({ profilePage, currentUser }) {
                                 color: "black",
                               }}
                             >
-                              {simpleUsers[post?.user_id]?.name}
+                              {simpleUsers[post.user_id]?.name}
                             </h5>
                           </Link>
                           <p
@@ -209,11 +204,11 @@ function PostFeed({ profilePage, currentUser }) {
                               padding: "3px",
                             }}
                           >
-                            {getTimeElapsed(post?.created_at)}
+                            {getTimeElapsed(post.created_at)}
                           </p>
                         </div>
                       </div>
-                      {post?.user_id === sessionUser?.id ? (
+                      {post.user_id === sessionUser.id ? (
                         <div className="svg-dots">
                           <>
                             <div className="svg-container">
@@ -222,7 +217,7 @@ function PostFeed({ profilePage, currentUser }) {
                                   visibility:
                                     editPost === post.id ? "hidden" : "",
                                 }}
-                                onClick={() => setEditPost(post?.id)}
+                                onClick={() => setEditPost(post.id)}
                                 fill="currentColor"
                                 viewBox="0 0 20 20"
                                 width="1em"
@@ -236,7 +231,7 @@ function PostFeed({ profilePage, currentUser }) {
                                 </g>
                               </svg>
                             </div>
-                            {editPost === post?.id ? (
+                            {editPost === post.id ? (
                               <div
                                 className="svg-dots-dropdown-container"
                                 style={{
@@ -325,14 +320,14 @@ function PostFeed({ profilePage, currentUser }) {
                             className="post-content-textarea"
                             autoFocus={editId}
                             onChange={(e) => setEditContent(e.target.value)}
-                            placeholder={post?.content}
+                            placeholder={post.content}
                             maxLength="150"
                             style={{
                               width: "80%",
                               resize: "none",
                               fontSize: "12px",
                               minHeight: "10px",
-                              height: post?.picture ? "100%" : "75%",
+                              height: post.picture ? "100%" : "75%",
                             }}
                           ></textarea>
                           <div
@@ -368,7 +363,7 @@ function PostFeed({ profilePage, currentUser }) {
                                   editContent?.length < 1 ? "hidden" : "",
                               }}
                               className="save-cancel-individual-post-buttons"
-                              onClick={submitUpdate(post?.id)}
+                              onClick={submitUpdate(post.id)}
                             >
                               save
                             </button>
@@ -376,16 +371,10 @@ function PostFeed({ profilePage, currentUser }) {
                         </div>
                       )}
                     </div>
-                    {post?.picture ? (
-                      <img
-                        alt=""
-                        src={post?.picture}
-                        style={{
-                          width: "100%",
-                          height: imageHeight(post?.content),
-                          paddingTop: "5px",
-                        }}
-                      />
+                    {post.picture ? (
+                      <div style={{ height: imageHeight(post.content) }}>
+                        <PostImageLoading src={post.picture} />
+                      </div>
                     ) : null}
                     <div style={{ margin: "25px" }}></div>
                   </div>
