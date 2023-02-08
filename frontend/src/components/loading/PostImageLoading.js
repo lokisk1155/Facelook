@@ -6,7 +6,7 @@ function PostImageLoading({ src }) {
     setTimeout(() => {
       setImageSrc(src);
     }, 1000);
-  }, []);
+  }, [src]);
 
   return (
     <>

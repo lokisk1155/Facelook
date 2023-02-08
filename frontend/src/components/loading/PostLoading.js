@@ -6,7 +6,7 @@ const PostLoading = ({ src }) => {
     setTimeout(() => {
       setImageSrc(src);
     }, 1000);
-  }, []);
+  }, [src]);
 
   return (
     <>
@@ -24,6 +24,7 @@ const PostLoading = ({ src }) => {
       ) : (
         <img
           className="skeleton"
+          alt=""
           style={{
             height: "30px",
             width: "30px",
