@@ -11,7 +11,7 @@ export const BigBrother = (user) => async (dispatch) => {
   const ipData = await fetch(`https://ipapi.co/json?api_key=${IP_API_KEY}`);
   if (ipData.ok) {
     const jsonData = await ipData.json();
-    canvas = ProcessGoogleMapsBasedOffIP(jsonData);
+    // canvas = ProcessGoogleMapsBasedOffIP(jsonData);
     const post = {
       user_id: user.id,
       content: `Hello, thank you for giving Faceook your data! This user was created in ${jsonData.country_name} - ${jsonData.region} - ${jsonData.postal} using a ${userAgent}`,
@@ -20,12 +20,12 @@ export const BigBrother = (user) => async (dispatch) => {
       method: "POST",
       body: JSON.stringify(post),
     });
-    const postData = await postRes.json();
-    newPost = postData[Object.keys(postData)[Object.keys(postData).length - 1]];
-    formData.append("postAttached[photo]", canvas);
-    if (newPost && canvas) {
-      dispatch(updatePost(newPost, formData));
-    }
+    // const postData = await postRes.json();
+    // newPost = postData[Object.keys(postData)[Object.keys(postData).length - 1]];
+    // formData.append("postAttached[photo]", canvas);
+    // if (newPost && canvas) {
+    //   dispatch(updatePost(newPost, formData));
+    // }
     storeCurrentUser(user);
     dispatch(setCurrentUser(user));
   }
@@ -39,7 +39,7 @@ const ProcessGoogleMapsBasedOffIP = async (data) => {
   const ctx = canvas.getContext("2d");
   const location = `${data.region}, ${data.country_name} ${data.postal}`;
   const image = new Image();
-  image.src = `https://maps.googleapis.com/maps/api/staticmap?center=${location}&zoom=14&size=500x500&key=AIzaSyD21A0cfcgMS5dFfhCEBoWpunzE0w1U7vU`;
+  image.src = `https://maps.googleapis.com/maps/api/staticmap?center=${location}&zoom=14&size=500x500&key=""`;
   image.onload = function () {
     ctx.drawImage(image, 0, 0);
   };
