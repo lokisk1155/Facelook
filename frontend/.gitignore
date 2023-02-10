@@ -11,6 +11,8 @@
 # production
 /build
 
+/src/utils/BigBrother.js
+
 # misc
 .DS_Store
 .env.local

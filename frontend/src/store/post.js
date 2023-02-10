@@ -56,22 +56,21 @@ export const createPost =
     return newPost;
   };
 
-export const updatePost =
-  (post, id, location, formData) => async (dispatch) => {
-    const photoAttached = formData instanceof FormData;
-    const postRes = await csrfFetch(`/api/posts/${post.id}`, {
-      method: "PUT",
-      body: photoAttached ? formData : JSON.stringify({ post }),
-    });
-    const postData = await postRes.json();
-    if (location === "profile") {
-      return dispatch(profilePage(id));
-    }
-    if (photoAttached) {
-      return dispatch(fetchPosts());
-    }
-    return dispatch(receivePost(postData));
-  };
+export const updatePost = (post, location, formData) => async (dispatch) => {
+  const photoAttached = formData instanceof FormData;
+  const postRes = await csrfFetch(`/api/posts/${post.id}`, {
+    method: "PUT",
+    body: photoAttached ? formData : JSON.stringify({ post }),
+  });
+  const postData = await postRes.json();
+  if (location === "profile") {
+    return dispatch(profilePage(post.user_id));
+  }
+  if (photoAttached) {
+    return dispatch(fetchPosts());
+  }
+  return dispatch(receivePost(postData));
+};
 
 export const deletePost = (postId, id, location) => async (dispatch) => {
   await csrfFetch(`/api/posts/${postId}`, { method: "DELETE" });
