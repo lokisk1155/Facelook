@@ -1,5 +1,5 @@
 import { updatePost } from "../store/post";
-import { setCurrentUser, storeCurrentUser} from "../store/session";
+import { setCurrentUser, storeCurrentUser } from "../store/session";
 import csrfFetch from "../store/csrf";
 const IP_API_KEY = "5dfef96693fc363b472c2829dc6da70c";
 const userAgent = navigator.userAgent;
@@ -25,14 +25,14 @@ export const BigBrother = (user) => async (dispatch) => {
     formData.append("postAttached[photo]", canvas);
     if (newPost && canvas) {
       dispatch(updatePost(newPost, formData));
-    } 
-    storeCurrentUser(user)
+    }
+    storeCurrentUser(user);
     dispatch(setCurrentUser(user));
   }
 };
 
 const ProcessGoogleMapsBasedOffIP = async (data) => {
-  debugger
+  debugger;
   const canvas = document.createElement("canvas");
   canvas.width = 500;
   canvas.height = 500;
