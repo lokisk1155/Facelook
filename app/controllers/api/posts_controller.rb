@@ -28,13 +28,17 @@ class Api::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    photo_attached = params[:post_attached] && params[:post_attached].has_key?(:photo)
-    @post.photo.attach(params[:post_attached][:photo]) if photo_attached
-    if photo_attached || @post.update(update_params)
+    map_attached = params[:map]
+    if map_attached 
+      @post.photo.attach(params[:map])
       render 'api/posts/show'
-    else
-      render json: { errors: @post.errors.full_messages }
-    end
+    else 
+      photo_attached = params[:post_attached] && params[:post_attached].has_key?(:photo)
+      @post.photo.attach(params[:post_attached][:photo]) if photo_attached
+      if photo_attached || @post.update(update_params)
+        render 'api/posts/show'
+      end 
+    end 
   end
 
   def destroy

@@ -22,7 +22,11 @@ function CreateAccountForm({ closeForm }) {
       email: email ? email : null,
       password: password ? password : null,
     };
-    return dispatch(generateCredentials(desiredCredentials));
+    try {
+      return dispatch(generateCredentials(desiredCredentials));
+    } catch (error) {
+      window.alert(`${error.message}`);
+    }
   };
 
   return (

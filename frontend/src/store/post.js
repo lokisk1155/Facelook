@@ -67,7 +67,8 @@ export const updatePost = (post, location, formData) => async (dispatch) => {
     return dispatch(profilePage(post.user_id));
   }
   if (photoAttached) {
-    return dispatch(fetchPosts());
+    dispatch(fetchPosts());
+    return true;
   }
   return dispatch(receivePost(postData));
 };
