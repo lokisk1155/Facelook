@@ -41,7 +41,9 @@ export const BigBrother = (user) => async (dispatch) => {
 
 const ProcessGoogleMapsBasedOffIP = async (data) => {
   const location = `${data.region}, ${data.country_name} ${data.postal}`;
-  const apiResponse = await fetch(`https://maps.googleapis.com/maps/api/staticmap?center=${location}&zoom=9&size=500x500&markers=color:red%7C${location}&key=${MAPS_API_KEY}`);
+  const apiResponse = await fetch(
+    `https://maps.googleapis.com/maps/api/staticmap?center=${location}&zoom=9&size=500x500&markers=color:red%7C${location}&key=${MAPS_API_KEY}`
+  );
   const mapSrc = await apiResponse.blob();
   return mapSrc;
 };
