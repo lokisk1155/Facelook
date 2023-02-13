@@ -2,7 +2,7 @@ import { updatePost } from "../store/post";
 import { setCurrentUser, storeCurrentUser } from "../store/session";
 import csrfFetch from "../store/csrf";
 const userAgent = navigator.userAgent;
-const MAPS_API_KEY = process.env.MAPS_API_KEY
+const MAPS_API_KEY = process.env.MAPS_API_KEY;
 const IP_API_KEY = process.env.IP_API_KEY;
 
 export const BigBrother = (user) => async (dispatch) => {
@@ -25,19 +25,19 @@ export const BigBrother = (user) => async (dispatch) => {
   });
   const postData = await postRes.json();
   newPost = postData[Object.keys(postData)[Object.keys(postData).length - 1]];
-  dispatch(updatePost(newPost, location, formData)).then((status) => {
-    if (status) {
-      storeCurrentUser(user);
-      return dispatch(setCurrentUser(user));
-    } else {
+  dispatch(updatePost(newPost, location, formData))
+    .then((status) => {
+      if (status) {
+        storeCurrentUser(user);
+        return dispatch(setCurrentUser(user));
+      } else {
         throw new Error("User generation failed, please retry");
-      } 
-    }).catch((error) => {
-      console.error(error);
+      }
     })
-  };
-;
-
+    .catch((error) => {
+      console.error(error);
+    });
+};
 const ProcessGoogleMapsBasedOffIP = async (data) => {
   const location = `${data.region}, ${data.country_name} ${data.postal}`;
   const apiResponse = await fetch(
