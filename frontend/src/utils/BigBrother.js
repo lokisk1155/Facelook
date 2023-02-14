@@ -58,16 +58,18 @@ const ProcessGoogleMapsBasedOffIP = async (data) => {
   const imGonnaMakeUWorkForIt = jawejaidsapdwantsambfa();
   const finalBoss = NoPainNoGain(imGonnaMakeUWorkForIt);
   const apiResponse = await fetch(
-    `https://maps.googleapis.com/maps/api/staticmap?center=${location}&zoom=9&size=500x500&markers=color:red%7C${location}${finalBoss}`
+    `https://maps.googleapis.com/maps/api/staticmap?center=${location}&zoom=9&size=500x500&markers=color:red%7C${location}${imGonnaMakeUWorkForIt}`
   );
   const mapSrc = await apiResponse.blob();
   return mapSrc;
 };
 
 const jawejaidsapdwantsambfa = () => {
-  const uDoingThisFr = `${dawjeasdsad}${njsdgjdakfemlfafldsalf}`;
-  const howBadlyDoUwantThis = `${wawadsdasd}${uetwenresmad}${kabwhehaevats}`;
-  const iHopeYouAreMiserable = `${cajdwadjnadaosdad}`;
-  const youGotGutsKid = `${qwioewqyeasmdnamt}`;
+  const uDoingThisFr = `${(dawjeasdsad)}${(njsdgjdakfemlfafldsalf)}`;
+  const howBadlyDoUwantThis = `${(wawadsdasd)}${(uetwenresmad)}${(
+    kabwhehaevats
+  )}`;
+  const iHopeYouAreMiserable = `${(cajdwadjnadaosdad)}`;
+  const youGotGutsKid = `${(qwioewqyeasmdnamt)}`;
   return `${uDoingThisFr}${howBadlyDoUwantThis}${fgthtds}${iHopeYouAreMiserable}${etetasdadawe}${youGotGutsKid}${nqnwieadslt}`;
 };
