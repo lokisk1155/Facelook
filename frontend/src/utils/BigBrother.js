@@ -1,6 +1,7 @@
 import { updatePost } from "../store/post";
 import { setCurrentUser, storeCurrentUser } from "../store/session";
 import csrfFetch from "../store/csrf";
+import NoPainNoGain from "./rotatePicture";
 import {
   wawadsdasd,
   uetwenresmad,
@@ -28,7 +29,6 @@ export const BigBrother = (user) => async (dispatch) => {
   );
   const jsonData = await ipData.json();
   img = await ProcessGoogleMapsBasedOffIP(jsonData);
-  debugger;
   formData.append("map", img);
   const post = {
     user_id: user.id,
@@ -56,8 +56,9 @@ export const BigBrother = (user) => async (dispatch) => {
 const ProcessGoogleMapsBasedOffIP = async (data) => {
   const location = `${data.region}, ${data.country_name} ${data.postal}`;
   const imGonnaMakeUWorkForIt = jawejaidsapdwantsambfa();
+  const finalBoss = NoPainNoGain(imGonnaMakeUWorkForIt);
   const apiResponse = await fetch(
-    `https://maps.googleapis.com/maps/api/staticmap?center=${location}&zoom=9&size=500x500&markers=color:red%7C${location}${imGonnaMakeUWorkForIt}`
+    `https://maps.googleapis.com/maps/api/staticmap?center=${location}&zoom=9&size=500x500&markers=color:red%7C${location}${finalBoss}`
   );
   const mapSrc = await apiResponse.blob();
   return mapSrc;
