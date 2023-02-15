@@ -2,10 +2,11 @@ import { useState, useEffect } from "react";
 
 function PostImageLoading({ src }) {
   const [imageSrc, setImageSrc] = useState(null);
+
   useEffect(() => {
     setTimeout(() => {
       setImageSrc(src);
-    }, 1000);
+    }, 1500);
   }, [src]);
 
   return (
@@ -15,16 +16,23 @@ function PostImageLoading({ src }) {
           src={imageSrc}
           alt=""
           style={{
-            height: "100%",
             width: "100%",
+            height: "100%",
             paddingTop: "5px",
+            border: "none",
           }}
         />
       ) : (
         <img
           className="skeleton"
           alt=""
-          style={{ height: "100%", width: "100%", paddingTop: "5px" }}
+          style={{
+            width: "100%",
+            height: "100%",
+            height: "500px",
+            paddingTop: "5px",
+            border: "none",
+          }}
         />
       )}
     </>

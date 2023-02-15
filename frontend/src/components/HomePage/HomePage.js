@@ -17,9 +17,7 @@ function HomePage() {
 
   useEffect(() => {
     dispatch(homePage()).then((data) => {
-      setTimeout(() => {
-        setLoading(data);
-      }, 200);
+      setLoading(data);
     });
   }, [dispatch]);
 

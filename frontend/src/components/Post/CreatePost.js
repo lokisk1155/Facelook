@@ -46,6 +46,9 @@ function CreatePost({ closeModal, location }) {
       user_id: sessionUser.id,
     };
     const id = null;
+    if (!location) {
+      location = "home";
+    }
     dispatch(createPost(post, id, location, formData));
     return closeModal(null);
   }

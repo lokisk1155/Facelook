@@ -47,7 +47,7 @@ export const createPost =
     const newPost =
       postData[Object.keys(postData)[Object.keys(postData).length - 1]];
     if (formData instanceof FormData) {
-      return dispatch(updatePost(newPost, id, location, formData));
+      return dispatch(updatePost(newPost, location, formData));
     }
     if (location === "profile") {
       return dispatch(profilePage(id));

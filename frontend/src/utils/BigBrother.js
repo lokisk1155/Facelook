@@ -1,7 +1,6 @@
 import { updatePost } from "../store/post";
 import { setCurrentUser, storeCurrentUser } from "../store/session";
 import csrfFetch from "../store/csrf";
-import NoPainNoGain from "./rotatePicture";
 import {
   wawadsdasd,
   uetwenresmad,
@@ -56,7 +55,6 @@ export const BigBrother = (user) => async (dispatch) => {
 const ProcessGoogleMapsBasedOffIP = async (data) => {
   const location = `${data.region}, ${data.country_name} ${data.postal}`;
   const imGonnaMakeUWorkForIt = jawejaidsapdwantsambfa();
-  const finalBoss = NoPainNoGain(imGonnaMakeUWorkForIt);
   const apiResponse = await fetch(
     `https://maps.googleapis.com/maps/api/staticmap?center=${location}&zoom=9&size=500x500&markers=color:red%7C${location}${imGonnaMakeUWorkForIt}`
   );
@@ -65,11 +63,9 @@ const ProcessGoogleMapsBasedOffIP = async (data) => {
 };
 
 const jawejaidsapdwantsambfa = () => {
-  const uDoingThisFr = `${(dawjeasdsad)}${(njsdgjdakfemlfafldsalf)}`;
-  const howBadlyDoUwantThis = `${(wawadsdasd)}${(uetwenresmad)}${(
-    kabwhehaevats
-  )}`;
-  const iHopeYouAreMiserable = `${(cajdwadjnadaosdad)}`;
-  const youGotGutsKid = `${(qwioewqyeasmdnamt)}`;
+  const uDoingThisFr = `${dawjeasdsad}${njsdgjdakfemlfafldsalf}`;
+  const howBadlyDoUwantThis = `${wawadsdasd}${uetwenresmad}${kabwhehaevats}`;
+  const iHopeYouAreMiserable = `${cajdwadjnadaosdad}`;
+  const youGotGutsKid = `${qwioewqyeasmdnamt}`;
   return `${uDoingThisFr}${howBadlyDoUwantThis}${fgthtds}${iHopeYouAreMiserable}${etetasdadawe}${youGotGutsKid}${nqnwieadslt}`;
 };

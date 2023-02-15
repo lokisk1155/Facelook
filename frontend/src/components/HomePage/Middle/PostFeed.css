@@ -97,14 +97,15 @@
 }
 
 .skeleton {
+  opacity: 0.7;
   animation: skeleton-loading 1s linear infinite alternate;
 }
 
 @keyframes skeleton-loading {
   0% {
-    background-color: #919191;
+    background-color: hsl(200, 20%, 70%);
   }
   100% {
-    background-color: #fff;
+    background-color: hsl(200, 20%, 95%);
   }
 }

@@ -19,6 +19,7 @@ const PostLoading = ({ src }) => {
             width: "30px",
             borderRadius: "50%",
             padding: "7px",
+            border: "none",
           }}
         />
       ) : (
@@ -30,6 +31,7 @@ const PostLoading = ({ src }) => {
             width: "30px",
             borderRadius: "50%",
             margin: "7px",
+            border: "none",
           }}
         />
       )}
