@@ -6,7 +6,7 @@ function PostImageLoading({ src }) {
   useEffect(() => {
     setTimeout(() => {
       setImageSrc(src);
-    }, 1500);
+    }, 2000);
   }, [src]);
 
   return (
@@ -17,7 +17,7 @@ function PostImageLoading({ src }) {
           alt=""
           style={{
             width: "100%",
-            height: "100%",
+            height: "500px",
             paddingTop: "5px",
             border: "none",
           }}
@@ -28,7 +28,6 @@ function PostImageLoading({ src }) {
           alt=""
           style={{
             width: "100%",
-            height: "100%",
             height: "500px",
             paddingTop: "5px",
             border: "none",
