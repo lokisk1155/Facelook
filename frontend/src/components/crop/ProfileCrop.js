@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Cropper from "react-easy-crop";
 import getCroppedImg from "../../utils/cropImage";
-import "./ProfileCrop.css";
+import "./index.css";
 
-const ProfileCrop = ({ photoURL, setPhotoURL, setFile, closeModal }) => {
+const ProfileCrop = ({ photoURL, setOpenCrop, setPhotoURL, setFile }) => {
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
@@ -18,16 +18,16 @@ const ProfileCrop = ({ photoURL, setPhotoURL, setFile, closeModal }) => {
       const { file, url } = await getCroppedImg(photoURL, croppedAreaPixels);
       setPhotoURL(url);
       setFile(file);
-      closeModal(false);
+      setOpenCrop(false);
     } catch (error) {}
   };
 
   const close = (e) => {
     e.preventDefault();
-    setFile(null);
     setPhotoURL(null);
+    setFile(null);
+    setOpenCrop(false);
   };
-
   return (
     <>
       <div className="App">
@@ -36,7 +36,7 @@ const ProfileCrop = ({ photoURL, setPhotoURL, setFile, closeModal }) => {
             image={photoURL}
             crop={crop}
             zoom={zoom}
-            aspect={2.25 / 3.5}
+            aspect={3 / 3}
             onCropChange={setCrop}
             onCropComplete={onCropComplete}
             onZoomChange={setZoom}
@@ -56,14 +56,10 @@ const ProfileCrop = ({ photoURL, setPhotoURL, setFile, closeModal }) => {
             className="zoom-range"
           />
           <div className="action-buttons">
-            <button className="save-cancel" role="button" onClick={close}>
+            <button className="save-cancel" onClick={close}>
               cancel
             </button>
-            <button
-              className="save-cancel"
-              role="button"
-              onClick={(e) => cropImage(e)}
-            >
+            <button className="save-cancel" onClick={(e) => cropImage(e)}>
               save
             </button>
           </div>
