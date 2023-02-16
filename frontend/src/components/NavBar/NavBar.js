@@ -45,10 +45,7 @@ function NavBar() {
     } else {
       setStroke("none");
     }
-    
   }, [location, fillColor, profileModal, toggleSearch]);
-
-  
 
   return (
     <div className="navbar-container">
