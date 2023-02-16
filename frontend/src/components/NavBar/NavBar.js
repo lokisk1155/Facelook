@@ -12,32 +12,43 @@ import { useLocation } from "react-router-dom";
 import { Modal } from "../../context/Modal";
 
 function NavBar() {
+  const location = useLocation();
+
+  const history = useHistory();
+
+  const [profileModal, setProfileModal] = useState(false);
+
+  const [toggleSearch, setToggleSearch] = useState(false);
+
+  const [fillColor, setFillColor] = useState("#1B74E4");
+
+  const [stroke, setStroke] = useState("#2c2c2c");
+
+  const [typed, setTyped] = useState("");
+
+  const temp = "#2c2c2c";
+
   const user = useSelector((state) => state.session.user);
 
   const simpleUsers = useSelector((state) => state.simpleUsers);
 
-  const [profileModal, setProfileModal] = useState(false);
-  const [toggleSearch, setToggleSearch] = useState(false);
-  const [fillColor, setFillColor] = useState("#1B74E4");
-  const [stroke, setStroke] = useState("#2c2c2c");
-  const [typed, setTyped] = useState("");
-  const location = useLocation();
-  const history = useHistory();
-  const temp = "#2c2c2c";
+  const navbarPic = simpleUsers[user?.id]?.profile_picture || profilePic;
 
   useEffect(() => {
     if (location.pathname !== "/") {
       setFillColor("#ffffff");
+    } else {
+      window.scrollTo(0, 0);
     }
     if (fillColor === "#ffffff") {
       setStroke("#2c2c2c");
     } else {
       setStroke("none");
     }
-    window.scrollTo(0, 0);
+    
   }, [location, fillColor, profileModal, toggleSearch]);
 
-  const navbarPic = simpleUsers[user?.id]?.profile_picture || profilePic;
+  
 
   return (
     <div className="navbar-container">

@@ -5,7 +5,7 @@ import PostImageLoading from "../loading/PostImageLoading";
 import PostHeader from "./PostHeader";
 import PostContent from "./PostContent";
 
-function PostIndex({ post, key, sessionUser, simpleUsers }) {
+function PostIndex({ post, index, sessionUser, simpleUsers }) {
   const dispatch = useDispatch();
   const [editPost, setEditPost] = useState(null);
 
@@ -24,10 +24,9 @@ function PostIndex({ post, key, sessionUser, simpleUsers }) {
   };
 
   return (
-    <>
+    <div key={index}>
       {post.picture ? (
         <div
-          key={key}
           style={{
             minHeight: "400px",
             width: "100%",
@@ -57,7 +56,6 @@ function PostIndex({ post, key, sessionUser, simpleUsers }) {
       ) : (
         <>
           <div
-            key={key}
             style={{
               minHeight: "85px",
               width: "100%",
@@ -85,7 +83,7 @@ function PostIndex({ post, key, sessionUser, simpleUsers }) {
           </div>
         </>
       )}
-    </>
+    </div>
   );
 }
 

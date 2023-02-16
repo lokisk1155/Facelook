@@ -70,7 +70,7 @@ function PostFeed({ profilePage, currentUser }) {
             return (
               <PostIndex
                 post={post}
-                key={index}
+                index={index}
                 sessionUser={sessionUser}
                 simpleUsers={simpleUsers}
               />
