@@ -15,12 +15,10 @@ const CoverCrop = ({ photoURL, setOpenCrop, setPhotoURL, setFile }) => {
 
   const cropImage = async (e) => {
     e.preventDefault();
-    try {
-      const { file, url } = await getCroppedImg(photoURL, croppedAreaPixels);
-      setPhotoURL(url);
-      setFile(file);
-      setOpenCrop(false);
-    } catch (error) {}
+    const { file, url } = await getCroppedImg(photoURL, croppedAreaPixels);
+    setPhotoURL(url);
+    setFile(file);
+    return setOpenCrop(false);
   };
 
   const close = (e) => {

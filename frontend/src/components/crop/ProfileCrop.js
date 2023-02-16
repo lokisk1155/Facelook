@@ -28,6 +28,7 @@ const ProfileCrop = ({ photoURL, setOpenCrop, setPhotoURL, setFile }) => {
     setFile(null);
     setOpenCrop(false);
   };
+
   return (
     <>
       <div className="App">
