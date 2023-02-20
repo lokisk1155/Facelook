@@ -16,6 +16,8 @@ function StoryShow() {
 
   const [currentWindow, setCurrentWindow] = useState(0);
 
+  console.log(currentWindow)
+
   const sessionUser = useSelector((state) => state.session.user);
 
   useEffect(() => {
@@ -98,8 +100,10 @@ function StoryShow() {
             currentCount === target
           ) {
             if (id == sessionUserId) {
+              setCurrentWindow(Object.keys(stories[previousId]).length -1);
               return history.push(`/stories/${previousId}`);
             } else {
+              setCurrentWindow(Object.keys(stories[id]).length -1);
               return history.push(`/stories/${id}`);
             }
           }
@@ -114,8 +118,9 @@ function StoryShow() {
         let previousId;
         for (const userId in stories) {
           if (userId === id) {
-            setCurrentWindow(0);
             if (previousId) {
+              let newWindow = Object.values(stories[previousId]).length - 1
+              setCurrentWindow(newWindow)
               return history.push(`/stories/${previousId}`);
             } else {
               let foundId;
@@ -129,8 +134,10 @@ function StoryShow() {
                   currentCount === target
                 ) {
                   if (userId == sessionUserId) {
+                    setCurrentWindow(Object.keys(stories[foundId]).length -1);
                     return history.push(`/stories/${foundId}`);
                   } else {
+                    setCurrentWindow(Object.keys(stories[userId]).length -1);
                     return history.push(`/stories/${userId}`);
                   }
                 }
