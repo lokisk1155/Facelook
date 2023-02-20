@@ -53,7 +53,10 @@ function StoryShow() {
     if (parseInt(id) === sessionUserId) {
       if (currentWindow === Object.values(stories[id]).length - 1) {
         for (const userId in stories) {
-          if (simpleUsers[userId] !== undefined && parseInt(userId) !== sessionUserId) {
+          if (
+            simpleUsers[userId] !== undefined &&
+            parseInt(userId) !== sessionUserId
+          ) {
             return history.push(`/stories/${userId}`);
           }
         }
@@ -63,14 +66,14 @@ function StoryShow() {
       }
     } else {
       if (currentWindow === Object.values(stories[id]).length - 1) {
-        let found = false 
+        let found = false;
         for (const userId in stories) {
           if (found) {
             setCurrentWindow(0);
-            return history.push(`/stories/${userId}`)
+            return history.push(`/stories/${userId}`);
           }
           if (userId === id) {
-            found = true 
+            found = true;
           }
         }
       } else {
@@ -108,12 +111,12 @@ function StoryShow() {
       }
     } else {
       if (currentWindow <= 1) {
-        let previousId; 
+        let previousId;
         for (const userId in stories) {
           if (userId === id) {
             setCurrentWindow(0);
             if (previousId) {
-              return history.push(`/stories/${previousId}`)
+              return history.push(`/stories/${previousId}`);
             } else {
               let foundId;
               let target = Object.keys(stories).length - 1;
@@ -135,7 +138,7 @@ function StoryShow() {
               }
             }
           } else {
-            previousId = userId
+            previousId = userId;
           }
         }
       } else {
