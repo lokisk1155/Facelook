@@ -51,10 +51,15 @@ function StoryShow() {
   const handleNext = (e) => {
     e.preventDefault();
     if (parseInt(id) === sessionUserId) {
-      for (const id in stories) {
-        if (simpleUsers[id] !== undefined && parseInt(id) !== sessionUserId) {
-          return history.push(`/stories/${id}`);
+      if (currentWindow === Object.values(stories[id]).length - 1) {
+        for (const id in stories) {
+          if (simpleUsers[id] !== undefined && parseInt(id) !== sessionUserId) {
+            return history.push(`/stories/${id}`);
+          }
         }
+      } else {
+        const newWindow = currentWindow + 1;
+        setCurrentWindow(newWindow);
       }
     } else {
       if (currentWindow === Object.values(stories[id]).length - 1) {
