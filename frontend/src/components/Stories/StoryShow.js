@@ -52,9 +52,9 @@ function StoryShow() {
     e.preventDefault();
     if (parseInt(id) === sessionUserId) {
       if (currentWindow === Object.values(stories[id]).length - 1) {
-        for (const id in stories) {
-          if (simpleUsers[id] !== undefined && parseInt(id) !== sessionUserId) {
-            return history.push(`/stories/${id}`);
+        for (const userId in stories) {
+          if (simpleUsers[userId] !== undefined && parseInt(userId) !== sessionUserId) {
+            return history.push(`/stories/${userId}`);
           }
         }
       } else {
@@ -63,17 +63,16 @@ function StoryShow() {
       }
     } else {
       if (currentWindow === Object.values(stories[id]).length - 1) {
-        const userIds = Object.keys(usersWithStories);
-        const currentIndex = userIds.findIndex(
-          (userId) => userId === parseInt(id)
-        );
-        let nextIndex = currentIndex + 1;
-        if (nextIndex === userIds.length) {
-          nextIndex = 0;
+        let found = false 
+        for (const userId in stories) {
+          if (found) {
+            setCurrentWindow(0);
+            return history.push(`/stories/${userId}`)
+          }
+          if (userId === id) {
+            found = true 
+          }
         }
-        const nextUserId = userIds[nextIndex];
-        setCurrentWindow(0);
-        return history.push(`/stories/${nextUserId}`);
       } else {
         const newWindow = currentWindow + 1;
         setCurrentWindow(newWindow);
@@ -82,17 +81,14 @@ function StoryShow() {
   };
 
   const handlePrevious = (e) => {
+    e.preventDefault();
     if (parseInt(id) === sessionUserId) {
       if (currentWindow === 0) {
         let previousId;
         let target = Object.keys(stories).length - 1;
         let currentCount = 0;
-        console.log(target, "target");
-        console.log(currentCount, "currentCount");
         for (const id in stories) {
           currentCount += 1;
-          // we need to check if we are in the last user in our map function,
-          // but if that user is our sessionUser, we need to go 1 further back which is really weird
           if (
             simpleUsers[id] !== undefined &&
             parseInt(id) !== sessionUserId &&
@@ -111,19 +107,37 @@ function StoryShow() {
         setCurrentWindow(newWindow);
       }
     } else {
-      e.preventDefault();
       if (currentWindow <= 1) {
-        const userIds = Object.keys(usersWithStories);
-        const currentIndex = userIds.findIndex(
-          (userId) => userId === parseInt(id)
-        );
-        let previousIndex = currentIndex - 1;
-        if (previousIndex < 0) {
-          previousIndex = userIds.length - 1;
+        let previousId; 
+        for (const userId in stories) {
+          if (userId === id) {
+            setCurrentWindow(0);
+            if (previousId) {
+              return history.push(`/stories/${previousId}`)
+            } else {
+              let foundId;
+              let target = Object.keys(stories).length - 1;
+              let currentCount = 0;
+              for (const userId in stories) {
+                currentCount += 1;
+                if (
+                  simpleUsers[userId] !== undefined &&
+                  parseInt(userId) !== sessionUserId &&
+                  currentCount === target
+                ) {
+                  if (userId == sessionUserId) {
+                    return history.push(`/stories/${foundId}`);
+                  } else {
+                    return history.push(`/stories/${userId}`);
+                  }
+                }
+                previousId = id;
+              }
+            }
+          } else {
+            previousId = userId
+          }
         }
-        const previousUserId = userIds[previousIndex];
-        setCurrentWindow(0);
-        return history.push(`/stories/${previousUserId}`);
       } else {
         const newWindow = currentWindow - 1;
         setCurrentWindow(newWindow);
