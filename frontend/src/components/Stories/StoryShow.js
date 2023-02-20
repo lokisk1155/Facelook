@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { Provider, useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams, Link } from "react-router-dom";
 import { getSimpleUsers } from "../../store/simpleUsers";
 import { fetchStories } from "../../store/story";
@@ -80,24 +80,51 @@ function StoryShow() {
       }
     }
   };
-
+  
   const handlePrevious = (e) => {
-    e.preventDefault();
-    if (currentWindow <= 1) {
-      const userIds = Object.keys(usersWithStories);
-      const currentIndex = userIds.findIndex(
-        (userId) => userId === parseInt(id)
-      );
-      let previousIndex = currentIndex - 1;
-      if (previousIndex < 0) {
-        previousIndex = userIds.length - 1;
+    if (parseInt(id) === sessionUserId) {
+      if (currentWindow === 0) {
+        let previousId;
+        let target = Object.keys(stories).length - 1
+        let currentCount = 0;
+        console.log(target, 'target')
+        console.log(currentCount, 'currentCount')
+        for (const id in stories) {
+          currentCount += 1 
+          // we need to check if we are in the last user in our map function, 
+          // but if that user is our sessionUser, we need to go 1 further back which is really weird
+          if (simpleUsers[id] !== undefined && parseInt(id) !== sessionUserId && currentCount === target) {
+            if (id == sessionUserId) {
+              return history.push(`/stories/${previousId}`);
+            } else {
+              return history.push(`/stories/${id}`);
+            }
+
+          }
+          previousId = id 
+        }
+      } else {
+        const newWindow = currentWindow - 1;
+        setCurrentWindow(newWindow);
       }
-      const previousUserId = userIds[previousIndex];
-      setCurrentWindow(0);
-      return history.push(`/stories/${previousUserId}`);
     } else {
-      const newWindow = currentWindow - 1;
-      setCurrentWindow(newWindow);
+      e.preventDefault();
+      if (currentWindow <= 1) {
+        const userIds = Object.keys(usersWithStories);
+        const currentIndex = userIds.findIndex(
+          (userId) => userId === parseInt(id)
+        );
+        let previousIndex = currentIndex - 1;
+        if (previousIndex < 0) {
+          previousIndex = userIds.length - 1;
+        }
+        const previousUserId = userIds[previousIndex];
+        setCurrentWindow(0);
+        return history.push(`/stories/${previousUserId}`);
+      } else {
+        const newWindow = currentWindow - 1;
+        setCurrentWindow(newWindow);
+      }
     }
   };
 
