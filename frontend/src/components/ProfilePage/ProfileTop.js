@@ -150,7 +150,7 @@ function ProfileTop({ currentUser, sessionUser, friends }) {
                 onClick={() => history.push("/stories/create")}
               >
                 Add Story
-              </button> 
+              </button>
               <button
                 className="edit-profile-add-story-buttons"
                 onClick={() => setEditProfile(true)}
