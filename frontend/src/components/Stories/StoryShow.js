@@ -307,7 +307,7 @@ function StoryShow() {
             minHeight: "200px",
           }}
         >
-          <ProgressBar stories={stories[id]} />
+          <ProgressBar stories={stories[id]} currentStoryId={currentStory.id} />
           {currentStory.picture === null ? (
             <div
               className="actual-story-show-background"

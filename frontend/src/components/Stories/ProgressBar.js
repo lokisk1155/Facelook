@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-function ProgressBar({ stories }) {
+function ProgressBar({ stories, currentStoryId }) {
   const { id } = useParams();
 
   const [progressBarWidth, setProgressBarWidth] = useState(null);
@@ -28,13 +28,13 @@ function ProgressBar({ stories }) {
         transform: "translate(-50%, -50%)",
       }}
     >
-      {stories.map((story, index) => (
+      {Object.values(stories).map((story, index) => (
         <div
           key={index}
           style={{
             width: `${progressBarWidth}%`,
             height: "100%",
-            backgroundColor: "red",
+            backgroundColor: story.id === currentStoryId ? "red" : "grey",
             borderRadius: "2.5px",
           }}
         ></div>
