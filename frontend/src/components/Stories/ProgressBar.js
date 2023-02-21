@@ -16,18 +16,20 @@ function ProgressBar({ stories, currentStoryId }) {
     <div
       style={{
         position: "absolute",
-        maxWidth: "65%",
         width: "65%",
-        height: "20px",
-        top: "8%",
+        height: "10px",
+        top: "15%",
         display: "flex",
         alignItems: "center",
         right: "50%",
         left: "50%",
         transform: "translate(-50%, -50%)",
+        zIndex: "20",
+        minWidth: "200px",
+        maxWidth: "30px",
       }}
     >
-      {Object.values(stories).map((story, index) => (
+      {stories.map((story, index) => (
         <>
           {story.id !== currentStoryId ? (
             <div
@@ -35,10 +37,10 @@ function ProgressBar({ stories, currentStoryId }) {
               style={{
                 width: `${progressBarWidth}%`,
                 height: "100%",
-                backgroundColor: "grey",
-                borderRadius: "2.5px",
+                backgroundColor: "rgba(0, 0, 0, 0.3)",
+                margin: "2px",
               }}
-            ></div>
+            />
           ) : (
             <LoadingBar progressBarWidth={progressBarWidth} index={index} />
           )}
