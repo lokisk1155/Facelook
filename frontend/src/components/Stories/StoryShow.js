@@ -31,6 +31,9 @@ function StoryShow() {
       if (e) {
         e.preventDefault();
       }
+      if (!stories[id]) {
+        return null 
+      }
       if (parseInt(id) === sessionUserId) {
         if (currentWindow === Object.values(stories[id]).length - 1) {
           for (const userId in stories) {
@@ -138,17 +141,6 @@ function StoryShow() {
   };
 
   useEffect(() => {
-    const getData = async () => {
-      await dispatch(fetchStories());
-      await dispatch(getSimpleUsers());
-    };
-    if (
-      !sessionUser ||
-      !Object.keys(simpleUsers).length ||
-      !Object.keys(stories).length
-    ) {
-      getData();
-    }
     const intervalId = setInterval(() => {
       handleNext();
     }, 3500);
@@ -156,9 +148,21 @@ function StoryShow() {
     return () => clearInterval(intervalId);
   }, [dispatch, handleNext, id, sessionUser, simpleUsers, stories]);
 
-  if (!stories[id] || Object.values(simpleUsers).length === 0) {
-    return null;
+
+  let loading = true  
+
+  if (!stories[id]) {
+    loading = false 
+    dispatch(fetchStories())
+    return null 
   }
+
+  if (Object.values(simpleUsers).length === 0) {
+    loading = false 
+    dispatch(getSimpleUsers())
+    return null 
+  }
+
   const currentStory = stories[id][currentWindow];
 
   if (currentStory === undefined) {
@@ -173,7 +177,8 @@ function StoryShow() {
   }
 
   return (
-    <div
+    <>
+    {loading ? <div
       className="stories-show-omega-container"
       style={{
         height: "100vh",
@@ -412,7 +417,8 @@ function StoryShow() {
           </button>
         </div>
       </div>
-    </div>
+    </div> : <p>...loading</p> }
+    </> 
   );
 }
 
