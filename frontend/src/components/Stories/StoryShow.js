@@ -6,6 +6,7 @@ import { fetchStories } from "../../store/story";
 import Facebook from "../NavBar/imgs/Facebook.png";
 import profilePic from "../NavBar/imgs/blank.png";
 import "./StoryShow.css";
+import ProgressBar from "./ProgressBar";
 
 function StoryShow() {
   const dispatch = useDispatch();
@@ -306,6 +307,7 @@ function StoryShow() {
             minHeight: "200px",
           }}
         >
+          <ProgressBar stories={stories[id]} />
           {currentStory.picture === null ? (
             <div
               className="actual-story-show-background"
