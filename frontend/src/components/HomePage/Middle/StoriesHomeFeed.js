@@ -13,14 +13,12 @@ function StoriesHomeFeed() {
 
   const stories = useSelector((state) => state.stories);
 
-
-
   const sessionUserPicture = useSelector(
     (state) => state.simpleUsers[sessionUser.id]?.profile_picture
   );
 
   if (Object.keys(stories).length > 3) {
-    return null 
+    return null;
   }
 
   return (
