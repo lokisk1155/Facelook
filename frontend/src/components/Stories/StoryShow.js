@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Provider, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams, Link } from "react-router-dom";
 import { getSimpleUsers } from "../../store/simpleUsers";
 import { fetchStories } from "../../store/story";
@@ -7,7 +7,6 @@ import Facebook from "../NavBar/imgs/Facebook.png";
 import profilePic from "../NavBar/imgs/blank.png";
 import "./StoryShow.css";
 import ProgressBar from "./ProgressBar";
-
 
 // when currentStory is equal to 1 doesnt work
 
@@ -26,8 +25,6 @@ function StoryShow() {
 
   const stories = useSelector((state) => state.stories);
 
-
-
   const handleNext = (e) => {
     if (e) {
       e.preventDefault();
@@ -39,7 +36,7 @@ function StoryShow() {
             simpleUsers[userId] !== undefined &&
             parseInt(userId) !== sessionUserId
           ) {
-            setCurrentWindow(0)
+            setCurrentWindow(0);
             return history.push(`/stories/${userId}`);
           }
         }
@@ -80,7 +77,7 @@ function StoryShow() {
             parseInt(id) !== sessionUserId &&
             currentCount === target
           ) {
-            if (id == sessionUserId) {
+            if (parseInt(id) === sessionUserId) {
               setCurrentWindow(Object.keys(stories[previousId]).length - 1);
               return history.push(`/stories/${previousId}`);
             } else {
@@ -114,7 +111,7 @@ function StoryShow() {
                   parseInt(userId) !== sessionUserId &&
                   currentCount === target
                 ) {
-                  if (userId == sessionUserId) {
+                  if (parseInt(userId) === sessionUserId) {
                     setCurrentWindow(Object.keys(stories[foundId]).length - 1);
                     return history.push(`/stories/${foundId}`);
                   } else {
@@ -153,7 +150,7 @@ function StoryShow() {
     }, 3500);
 
     return () => clearInterval(intervalId);
-  }, [dispatch, handleNext]);
+  }, [dispatch, handleNext, id, sessionUser, simpleUsers, stories]);
 
   const sessionUserId = sessionUser.id;
 
@@ -161,9 +158,6 @@ function StoryShow() {
     return null;
   }
   const currentStory = stories[id][currentWindow];
-
-  console.log(currentWindow, 'currentWindow')
-  console.log(currentStory)
 
   if (currentStory === undefined) {
     return null;

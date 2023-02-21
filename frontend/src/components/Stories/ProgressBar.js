@@ -10,7 +10,7 @@ function ProgressBar({ stories, currentStoryId }) {
   useEffect(() => {
     const calc = 100 / Object.keys(stories).length;
     setProgressBarWidth(calc);
-  }, [id]);
+  }, [id, stories]);
 
   return (
     <div
@@ -24,7 +24,6 @@ function ProgressBar({ stories, currentStoryId }) {
         alignItems: "center",
         right: "50%",
         left: "50%",
-        position: "absolute",
         transform: "translate(-50%, -50%)",
       }}
     >
