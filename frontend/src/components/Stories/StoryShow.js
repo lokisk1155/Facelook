@@ -16,42 +16,16 @@ function StoryShow() {
 
   const [currentWindow, setCurrentWindow] = useState(0);
 
-  console.log(currentWindow);
-
   const sessionUser = useSelector((state) => state.session.user);
-
-  useEffect(() => {
-    const getData = async () => {
-      await dispatch(fetchStories());
-      await dispatch(getSimpleUsers());
-    };
-    getData();
-  }, [dispatch]);
 
   const simpleUsers = useSelector((state) => state.simpleUsers);
 
   const stories = useSelector((state) => state.stories);
 
-  const sessionUserId = sessionUser.id;
-
-  if (!stories[id] || Object.values(simpleUsers).length === 0) {
-    return null;
-  }
-  const currentStory = stories[id][currentWindow];
-
-  if (currentStory === undefined) {
-    return null;
-  }
-
-  const usersWithStories = {};
-  for (const id in stories) {
-    if (simpleUsers[id] !== undefined && parseInt(id) !== sessionUserId) {
-      usersWithStories[id] = simpleUsers[id];
-    }
-  }
-
   const handleNext = (e) => {
-    e.preventDefault();
+    if (e) {
+      e.preventDefault();
+    }
     if (parseInt(id) === sessionUserId) {
       if (currentWindow === Object.values(stories[id]).length - 1) {
         for (const userId in stories) {
@@ -154,6 +128,41 @@ function StoryShow() {
       }
     }
   };
+
+  useEffect(() => {
+    const getData = async () => {
+      await dispatch(fetchStories());
+      await dispatch(getSimpleUsers());
+    };
+    if (!sessionUser || !Object.keys(simpleUsers).length || !Object.keys(stories).length) {
+      getData();
+    }
+    const intervalId = setInterval(() => {
+      handleNext();
+    }, 2500);
+  
+    return () => clearInterval(intervalId);
+  }, [dispatch, handleNext])
+
+  const sessionUserId = sessionUser.id;
+
+  if (!stories[id] || Object.values(simpleUsers).length === 0) {
+    return null;
+  }
+  const currentStory = stories[id][currentWindow];
+
+  if (currentStory === undefined) {
+    return null;
+  }
+
+  const usersWithStories = {};
+  for (const id in stories) {
+    if (simpleUsers[id] !== undefined && parseInt(id) !== sessionUserId) {
+      usersWithStories[id] = simpleUsers[id];
+    }
+  }
+
+  
 
   return (
     <div
