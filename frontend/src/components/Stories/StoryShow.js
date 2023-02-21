@@ -8,6 +8,9 @@ import profilePic from "../NavBar/imgs/blank.png";
 import "./StoryShow.css";
 import ProgressBar from "./ProgressBar";
 
+
+// when currentStory is equal to 1 doesnt work
+
 function StoryShow() {
   const dispatch = useDispatch();
 
@@ -23,6 +26,8 @@ function StoryShow() {
 
   const stories = useSelector((state) => state.stories);
 
+
+
   const handleNext = (e) => {
     if (e) {
       e.preventDefault();
@@ -34,6 +39,7 @@ function StoryShow() {
             simpleUsers[userId] !== undefined &&
             parseInt(userId) !== sessionUserId
           ) {
+            setCurrentWindow(0)
             return history.push(`/stories/${userId}`);
           }
         }
@@ -89,7 +95,7 @@ function StoryShow() {
         setCurrentWindow(newWindow);
       }
     } else {
-      if (currentWindow <= 1) {
+      if (currentWindow < 1) {
         let previousId;
         for (const userId in stories) {
           if (userId === id) {
@@ -155,6 +161,9 @@ function StoryShow() {
     return null;
   }
   const currentStory = stories[id][currentWindow];
+
+  console.log(currentWindow, 'currentWindow')
+  console.log(currentStory)
 
   if (currentStory === undefined) {
     return null;
