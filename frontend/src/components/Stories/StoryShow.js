@@ -26,43 +26,46 @@ function StoryShow() {
 
   const sessionUserId = sessionUser.id;
 
-  const handleNext = useCallback((e) => {
-    if (e) {
-      e.preventDefault();
-    }
-    if (parseInt(id) === sessionUserId) {
-      if (currentWindow === Object.values(stories[id]).length - 1) {
-        for (const userId in stories) {
-          if (
-            simpleUsers[userId] !== undefined &&
-            parseInt(userId) !== sessionUserId
-          ) {
-            setCurrentWindow(0);
-            return history.push(`/stories/${userId}`);
+  const handleNext = useCallback(
+    (e) => {
+      if (e) {
+        e.preventDefault();
+      }
+      if (parseInt(id) === sessionUserId) {
+        if (currentWindow === Object.values(stories[id]).length - 1) {
+          for (const userId in stories) {
+            if (
+              simpleUsers[userId] !== undefined &&
+              parseInt(userId) !== sessionUserId
+            ) {
+              setCurrentWindow(0);
+              return history.push(`/stories/${userId}`);
+            }
           }
+        } else {
+          const newWindow = currentWindow + 1;
+          setCurrentWindow(newWindow);
         }
       } else {
-        const newWindow = currentWindow + 1;
-        setCurrentWindow(newWindow);
-      }
-    } else {
-      if (currentWindow === Object.values(stories[id]).length - 1) {
-        let found = false;
-        for (const userId in stories) {
-          if (found) {
-            setCurrentWindow(0);
-            return history.push(`/stories/${userId}`);
+        if (currentWindow === Object.values(stories[id]).length - 1) {
+          let found = false;
+          for (const userId in stories) {
+            if (found) {
+              setCurrentWindow(0);
+              return history.push(`/stories/${userId}`);
+            }
+            if (userId === id) {
+              found = true;
+            }
           }
-          if (userId === id) {
-            found = true;
-          }
+        } else {
+          const newWindow = currentWindow + 1;
+          setCurrentWindow(newWindow);
         }
-      } else {
-        const newWindow = currentWindow + 1;
-        setCurrentWindow(newWindow);
       }
-    }
-  }, [id, simpleUsers, stories, currentWindow, history, sessionUserId]);
+    },
+    [id, simpleUsers, stories, currentWindow, history, sessionUserId]
+  );
 
   const handlePrevious = (e) => {
     e.preventDefault();
