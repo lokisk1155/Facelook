@@ -1,3 +1,5 @@
+import "./LoadingBar.css";
+
 function LoadingBar({ index, progressBarWidth }) {
   return (
     <div
@@ -5,10 +7,12 @@ function LoadingBar({ index, progressBarWidth }) {
       style={{
         width: `${progressBarWidth}%`,
         height: "100%",
-        backgroundColor: "red",
+        backgroundColor: "grey",
         borderRadius: "2.5px",
       }}
-    />
+    >
+      <div className="stories-loading-bar" />
+    </div>
   );
 }
 

@@ -1,0 +1,16 @@
+.stories-loading-bar {
+  background-color: #fff;
+  height: 100%;
+  width: 100%;
+  animation: loading 3.5s forwards cubic-bezier(0, 0, 0, 0);
+}
+
+@keyframes loading {
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: 100%;
+  }
+}

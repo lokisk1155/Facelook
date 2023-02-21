@@ -144,7 +144,7 @@ function StoryShow() {
     }
     const intervalId = setInterval(() => {
       handleNext();
-    }, 2500);
+    }, 3500);
 
     return () => clearInterval(intervalId);
   }, [dispatch, handleNext]);
