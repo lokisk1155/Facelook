@@ -134,15 +134,19 @@ function StoryShow() {
       await dispatch(fetchStories());
       await dispatch(getSimpleUsers());
     };
-    if (!sessionUser || !Object.keys(simpleUsers).length || !Object.keys(stories).length) {
+    if (
+      !sessionUser ||
+      !Object.keys(simpleUsers).length ||
+      !Object.keys(stories).length
+    ) {
       getData();
     }
     const intervalId = setInterval(() => {
       handleNext();
     }, 2500);
-  
+
     return () => clearInterval(intervalId);
-  }, [dispatch, handleNext])
+  }, [dispatch, handleNext]);
 
   const sessionUserId = sessionUser.id;
 
@@ -161,8 +165,6 @@ function StoryShow() {
       usersWithStories[id] = simpleUsers[id];
     }
   }
-
-  
 
   return (
     <div
