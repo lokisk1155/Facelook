@@ -7,8 +7,7 @@ import Facebook from "../NavBar/imgs/Facebook.png";
 import profilePic from "../NavBar/imgs/blank.png";
 import "./StoryShow.css";
 import ProgressBar from "./ProgressBar";
-
-// when currentStory is equal to 1 doesnt work
+import { useCallback } from "react";
 
 function StoryShow() {
   const dispatch = useDispatch();
@@ -25,7 +24,9 @@ function StoryShow() {
 
   const stories = useSelector((state) => state.stories);
 
-  const handleNext = (e) => {
+  const sessionUserId = sessionUser.id;
+
+  const handleNext = useCallback((e) => {
     if (e) {
       e.preventDefault();
     }
@@ -61,7 +62,7 @@ function StoryShow() {
         setCurrentWindow(newWindow);
       }
     }
-  };
+  }, [id, simpleUsers, stories, currentWindow, history, sessionUserId]);
 
   const handlePrevious = (e) => {
     e.preventDefault();
@@ -151,8 +152,6 @@ function StoryShow() {
 
     return () => clearInterval(intervalId);
   }, [dispatch, handleNext, id, sessionUser, simpleUsers, stories]);
-
-  const sessionUserId = sessionUser.id;
 
   if (!stories[id] || Object.values(simpleUsers).length === 0) {
     return null;
