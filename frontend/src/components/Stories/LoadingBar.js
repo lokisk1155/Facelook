@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import "./LoadingBar.css";
 
 function LoadingBar({ progressBarWidth, index, id, window }) {
-  const [animationOn, setAnimationOn] = useState(false)
+  const [animationOn, setAnimationOn] = useState(false);
 
   useEffect(() => {
-    setAnimationOn(!animationOn)
-  }, [window, id, index])
+    setAnimationOn(!animationOn);
+  }, [window, id, index]);
 
   return (
     <div
@@ -18,7 +18,11 @@ function LoadingBar({ progressBarWidth, index, id, window }) {
         margin: "2px",
       }}
     >
-      <div className={animationOn ? `stories-loading-bar` : `stories-loading-bar-2`} />
+      <div
+        className={
+          animationOn ? `stories-loading-bar` : `stories-loading-bar-2`
+        }
+      />
     </div>
   );
 }

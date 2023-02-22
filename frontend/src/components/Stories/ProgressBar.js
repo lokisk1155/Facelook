@@ -42,7 +42,12 @@ function ProgressBar({ stories, currentStoryId, currentWindow }) {
               }}
             />
           ) : (
-            <LoadingBar progressBarWidth={progressBarWidth} index={index} id={currentStoryId} window={currentWindow} />
+            <LoadingBar
+              progressBarWidth={progressBarWidth}
+              index={index}
+              id={currentStoryId}
+              window={currentWindow}
+            />
           )}
         </>
       ))}

@@ -146,7 +146,15 @@ function StoryShow() {
     }, 3500);
 
     return () => clearInterval(intervalId);
-  }, [dispatch, handleNext, id, sessionUser, simpleUsers, stories, currentWindow]);
+  }, [
+    dispatch,
+    handleNext,
+    id,
+    sessionUser,
+    simpleUsers,
+    stories,
+    currentWindow,
+  ]);
 
   let loading = true;
 
@@ -283,8 +291,7 @@ function StoryShow() {
                               : "#fff",
                           height: "65px",
                           width: "100%",
-                        }
-                        }
+                        }}
                       >
                         <img
                           alt=""
