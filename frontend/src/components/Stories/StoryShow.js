@@ -50,11 +50,6 @@ function StoryShow() {
           setCurrentWindow(newWindow);
         }
       } else {
-        if (currentWindow === 0 && stories[id].length === 1) {
-          for (const userId in stories) {
-            return history.push(`/stories/${userId}`);
-          }
-        }
         if (currentWindow === Object.values(stories[id]).length - 1) {
           let firstId = false;
           let found = false;
@@ -78,6 +73,11 @@ function StoryShow() {
             }
           }
         } else {
+          if (currentWindow === 0 && stories[id].length === 1) {
+            for (const userId in stories) {
+              return history.push(`/stories/${userId}`);
+            }
+          }
           const newWindow = currentWindow + 1;
           setCurrentWindow(newWindow);
         }
