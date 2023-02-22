@@ -9,9 +9,9 @@ import { useEffect } from "react";
 function StoriesHomeFeed() {
   const history = useHistory();
 
-  const [currentWindow, setCurrentWindow] = useState(0)
+  const [currentWindow, setCurrentWindow] = useState(0);
 
-  const [currentStories, setCurrentStories] = useState(null)
+  const [currentStories, setCurrentStories] = useState(null);
 
   const sessionUser = useSelector((state) => state.session.user);
 
@@ -24,33 +24,34 @@ function StoriesHomeFeed() {
   );
 
   useEffect(() => {
-    const slicedStories = Object.values(stories).slice(currentWindow, currentWindow + 3)
-    setCurrentStories(slicedStories)
-  }, [currentWindow, stories])
-
-
+    const slicedStories = Object.values(stories).slice(
+      currentWindow,
+      currentWindow + 3
+    );
+    setCurrentStories(slicedStories);
+  }, [currentWindow, stories]);
 
   const moveLeft = (e) => {
     if (e) {
-      e.preventDefault()
+      e.preventDefault();
     }
-    if (currentWindow < (Object.keys(stories).length - 3)) {
-      let newWindow = currentWindow + 1 
-      setCurrentWindow(newWindow)
+    if (currentWindow < Object.keys(stories).length - 3) {
+      let newWindow = currentWindow + 1;
+      setCurrentWindow(newWindow);
     }
-  }
+  };
   const moveRight = (e) => {
     if (e) {
-      e.preventDefault()
+      e.preventDefault();
     }
     if (currentWindow - 2 > 0) {
-      let newWindow = currentWindow - 1
-      setCurrentWindow(newWindow)
+      let newWindow = currentWindow - 1;
+      setCurrentWindow(newWindow);
     }
-  }
+  };
 
   if (!currentStories) {
-    return null 
+    return null;
   }
 
   return (
