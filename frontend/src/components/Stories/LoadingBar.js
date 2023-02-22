@@ -1,12 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import "./LoadingBar.css";
 
 function LoadingBar({ progressBarWidth, index, id, window }) {
   const [animationOn, setAnimationOn] = useState(false);
 
+  const toggleAnimation = useCallback(() => {
+    setAnimationOn(prevAnimationOn => !prevAnimationOn);
+  }, []);
+  
   useEffect(() => {
-    setAnimationOn(!animationOn);
-  }, [window, id, index]);
+    toggleAnimation();
+  }, [toggleAnimation, id]);
 
   return (
     <div
