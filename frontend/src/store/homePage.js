@@ -7,7 +7,7 @@ export const homePage = () => async (dispatch) => {
   dispatch(getSimpleUsers());
   const postRes = await csrfFetch(`/api/posts`);
   const postData = await postRes.json();
-  const storiesRes = await csrfFetch(`/api/stories?limit=${3}`);
+  const storiesRes = await csrfFetch(`/api/stories?limit=${10}`);
   const storiesData = await storiesRes.json();
   if (!postRes.ok || !storiesRes.ok) {
     return false;

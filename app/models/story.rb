@@ -3,13 +3,13 @@ class Story < ApplicationRecord
   belongs_to :user
   has_one_attached :photo
 
-  def self.by_user(user_id)
-    stories = Story.where(user_id:).order(created_at: :desc).limit(3)
+  def self.by_user(user_id, limit)
+    stories = Story.where(user_id:).order(created_at: :desc).limit(limit)
     count = stories.count
-    if count < 3
+    if count < limit
       additional_stories = Story.where.not(user_id:)
                                 .order(created_at: :desc)
-                                .limit(3 - count)
+                                .limit(limit - count)
       stories += additional_stories
     end
     stories

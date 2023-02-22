@@ -18,8 +18,9 @@ class Api::StoriesController < ApplicationController
         @stories = Story.all
         @homepage = false
         @all = false 
-        if params[:limit]
-          @stories = Story.by_user(current_user.id)
+        limit = params[:limit]
+        if limit
+          @stories = Story.by_user(current_user.id, limit.to_i)
           @homepage = true
         else
           @storiesNestedUnderUser = {}

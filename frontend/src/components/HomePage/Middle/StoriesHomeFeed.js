@@ -1,11 +1,17 @@
 import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useState } from "react";
 import profilePic from "../../NavBar/imgs/blank.png";
 import StoriesHeader from "./StoriesHeader";
 import "./StoriesHomeFeed.css";
+import { useEffect } from "react";
 
 function StoriesHomeFeed() {
   const history = useHistory();
+
+  const [currentWindow, setCurrentWindow] = useState(0)
+
+  const [currentStories, setCurrentStories] = useState(null)
 
   const sessionUser = useSelector((state) => state.session.user);
 
@@ -17,8 +23,34 @@ function StoriesHomeFeed() {
     (state) => state.simpleUsers[sessionUser.id]?.profile_picture
   );
 
-  if (Object.keys(stories).length > 3) {
-    return null;
+  useEffect(() => {
+    const slicedStories = Object.values(stories).slice(currentWindow, currentWindow + 3)
+    setCurrentStories(slicedStories)
+  }, [currentWindow])
+
+
+
+  const moveLeft = (e) => {
+    if (e) {
+      e.preventDefault()
+    }
+    if (currentWindow < (Object.keys(stories).length - 3)) {
+      let newWindow = currentWindow + 1 
+      setCurrentWindow(newWindow)
+    }
+  }
+  const moveRight = (e) => {
+    if (e) {
+      e.preventDefault()
+    }
+    if (currentWindow - 2 > 0) {
+      let newWindow = currentWindow - 1
+      setCurrentWindow(newWindow)
+    }
+  }
+
+  if (!Object.keys(currentStories).length) {
+    return null 
   }
 
   return (
@@ -106,7 +138,7 @@ function StoriesHomeFeed() {
           </div>
         </div>
 
-        {Object.values(stories).map((story, index) => {
+        {Object.values(currentStories).map((story, index) => {
           return (
             <Link
               key={index}
@@ -170,6 +202,8 @@ function StoriesHomeFeed() {
             </Link>
           );
         })}
+        <button onClick={moveLeft}>left</button>
+        <button onClick={moveRight}>Right</button>
       </div>
     </>
   );
