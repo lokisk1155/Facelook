@@ -8,6 +8,7 @@ import profilePic from "../NavBar/imgs/blank.png";
 import "./StoryShow.css";
 import ProgressBar from "./ProgressBar";
 import { useCallback } from "react";
+import PreviewCurrentStory from "./PreviewCurrentStory";
 
 function StoryShow() {
   const dispatch = useDispatch();
@@ -201,216 +202,156 @@ function StoryShow() {
 
   return (
     <>
-      {loading ? (
+      <div
+        className="stories-show-omega-container"
+        style={{
+          height: "100vh",
+          width: "100vw",
+          display: "flex",
+          backgroundColor: "#fff",
+        }}
+      >
         <div
-          className="stories-show-omega-container"
-          style={{
-            height: "100vh",
-            width: "100vw",
-            display: "flex",
-            backgroundColor: "#fff",
-          }}
+          className="story-show-side-bar"
+          style={{ width: "20%", minWidth: "150px" }}
         >
-          <div
-            className="story-show-side-bar"
-            style={{ width: "20%", minWidth: "150px" }}
-          >
-            <div style={{ display: "flex" }}>
-              <button
-                style={{
-                  height: "40px",
-                  width: "40px",
-                  borderRadius: "50px",
-                  backgroundColor: "#fff",
-                  border: "none",
-                }}
-                onClick={() => history.push("/")}
-              >
-                X
-              </button>
+          <div style={{ display: "flex" }}>
+            <button
+              style={{
+                height: "40px",
+                width: "40px",
+                borderRadius: "50px",
+                backgroundColor: "#fff",
+                border: "none",
+              }}
+              onClick={() => history.push("/")}
+            >
+              X
+            </button>
+            <img
+              alt=""
+              style={{
+                height: "40px",
+                width: "40px",
+                borderRadius: "50px",
+                backgroundColor: "#fff",
+                border: "none",
+              }}
+              onClick={() => history.push("/")}
+              src={Facebook}
+            />
+          </div>
+          <br></br>
+          <div className="your-stories-show">
+            <h4>Your Story</h4>
+            <button onClick={() => history.push("/stories/create")}>
+              Create Story
+            </button>
+          </div>
+          {stories[sessionUserId] !== undefined ? (
+            <Link
+              onClick={() => setCurrentWindow(0)}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                paddingLeft: "10px",
+                borderRadius: "5px",
+                padding: "5px",
+                backgroundColor:
+                  sessionUser.id === parseInt(id) ? "lightgrey" : "#fff",
+                height: "65px",
+                width: "100%",
+              }}
+              to={`/stories/${sessionUser.id}`}
+            >
               <img
                 alt=""
                 style={{
-                  height: "40px",
-                  width: "40px",
+                  height: "50px",
+                  width: "50px",
                   borderRadius: "50px",
-                  backgroundColor: "#fff",
-                  border: "none",
                 }}
-                onClick={() => history.push("/")}
-                src={Facebook}
+                src={simpleUsers[sessionUser.id].profile_picture || profilePic}
               />
-            </div>
-            <br></br>
-            <div className="your-stories-show">
-              <h4>Your Story</h4>
-              <button onClick={() => history.push("/stories/create")}>
-                Create Story
-              </button>
-            </div>
-            {stories[sessionUserId] !== undefined ? (
-              <Link
-                onClick={() => setCurrentWindow(0)}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  paddingLeft: "10px",
-                  borderRadius: "5px",
-                  padding: "5px",
-                  backgroundColor:
-                    sessionUser.id === parseInt(id) ? "lightgrey" : "#fff",
-                  height: "65px",
-                  width: "100%",
-                }}
-                to={`/stories/${sessionUser.id}`}
-              >
-                <img
-                  alt=""
-                  style={{
-                    height: "50px",
-                    width: "50px",
-                    borderRadius: "50px",
-                  }}
-                  src={
-                    simpleUsers[sessionUser.id].profile_picture || profilePic
-                  }
-                />
-                <p>{simpleUsers[sessionUser.id].name}</p>
-              </Link>
-            ) : null}
-            <br></br>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                overflow: "scroll",
-                height: "75%",
-              }}
-            >
-              <h4>All Stories</h4>
-              {stories &&
-                Object.values(usersWithStories).map((user, index) => {
-                  return (
-                    <div onClick={() => setCurrentWindow(0)} key={index}>
-                      <Link
-                        className="all-stories-mapped"
-                        to={`/stories/${user.user_id}`}
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          paddingLeft: "10px",
-                          borderRadius: "5px",
-                          padding: "5px",
-                          backgroundColor:
-                            user.user_id === parseInt(id)
-                              ? "lightgrey"
-                              : "#fff",
-                          height: "65px",
-                          width: "100%",
-                        }}
-                      >
-                        <img
-                          alt=""
-                          style={{
-                            height: "50px",
-                            width: "50px",
-                            borderRadius: "50px",
-                          }}
-                          src={user.profile_picture || profilePic}
-                        />
-                        <p>{user.name}</p>
-                      </Link>
-                    </div>
-                  );
-                })}
-            </div>
-          </div>
-
+              <p>{simpleUsers[sessionUser.id].name}</p>
+            </Link>
+          ) : null}
+          <br></br>
           <div
-            className="story-show-preview-container"
             style={{
-              width: "80%",
-              backgroundColor: "black",
-              position: "relative",
+              display: "flex",
+              flexDirection: "column",
+              overflow: "scroll",
+              height: "75%",
             }}
           >
-            <div
-              style={{
-                height: "90%",
-                width: "60%",
-                top: "50%",
-                right: "50%",
-                bottom: "50%",
-                left: "50%",
-                position: "absolute",
-                transform: "translate(-50%, -50%)",
-                minWidth: "200px",
-                minHeight: "200px",
-              }}
-            >
-              <ProgressBar
-                stories={stories[id]}
-                currentStoryId={currentStory.id}
-                currentWindow={currentWindow}
-              />
-              {currentStory.picture === null ? (
-                <div
-                  className="actual-story-show-background"
-                  style={{
-                    height: "75%",
-                    width: "65%",
-                    position: "absolute",
-                    borderRadius: "7px",
-                    minWidth: "200px",
-                    minHeight: "200px",
-                    top: "50%",
-                    right: "50%",
-                    bottom: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    maxWidth: "300px",
-                    backgroundColor: currentStory.background_color,
-                  }}
-                >
-                  <p
-                    className="actual-story-show-text"
-                    style={{
-                      fontSize: currentStory.font_size,
-                      justifyContent: "center",
-                      paddingTop: `${currentStory.padding_top}px`,
-                      paddingLeft: `${currentStory.padding_left}px`,
-                      paddingRight: `${currentStory.padding_right}px`,
-                      color: "black",
-                      minWidth: "150px",
-                      minHeight: "200px",
-                      position: "absolute",
-                    }}
-                  >
-                    {currentStory.text_content}
-                  </p>
-                </div>
-              ) : (
-                <img
-                  alt=""
-                  className="actual-text-story-background"
-                  src={currentStory.picture}
-                  style={{
-                    height: "75%",
-                    width: "65%",
-                    position: "absolute",
-                    borderRadius: "7px",
-                    minWidth: "200px",
-                    minHeight: "200px",
-                    top: "50%",
-                    right: "50%",
-                    bottom: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    maxWidth: "300px",
-                  }}
-                ></img>
-              )}
-            </div>
+            <h4>All Stories</h4>
+            {stories &&
+              Object.values(usersWithStories).map((user, index) => {
+                return (
+                  <div onClick={() => setCurrentWindow(0)} key={index}>
+                    <Link
+                      className="all-stories-mapped"
+                      to={`/stories/${user.user_id}`}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        paddingLeft: "10px",
+                        borderRadius: "5px",
+                        padding: "5px",
+                        backgroundColor:
+                          user.user_id === parseInt(id) ? "lightgrey" : "#fff",
+                        height: "65px",
+                        width: "100%",
+                      }}
+                    >
+                      <img
+                        alt=""
+                        style={{
+                          height: "50px",
+                          width: "50px",
+                          borderRadius: "50px",
+                        }}
+                        src={user.profile_picture || profilePic}
+                      />
+                      <p>{user.name}</p>
+                    </Link>
+                  </div>
+                );
+              })}
+          </div>
+        </div>
+
+        <div
+          className="story-show-preview-container"
+          style={{
+            width: "80%",
+            backgroundColor: "black",
+            position: "relative",
+          }}
+        >
+          <div
+            style={{
+              height: "90%",
+              width: "60%",
+              top: "50%",
+              right: "50%",
+              bottom: "50%",
+              left: "50%",
+              position: "absolute",
+              transform: "translate(-50%, -50%)",
+              minWidth: "200px",
+              minHeight: "200px",
+            }}
+          >
+            <ProgressBar
+              stories={stories[id]}
+              currentStoryId={currentStory.id}
+              currentWindow={currentWindow}
+            />
+            <PreviewCurrentStory
+              currentStory={currentStory}
+            />
             <div
               style={{
                 display: "flex",
@@ -453,9 +394,7 @@ function StoryShow() {
             </div>
           </div>
         </div>
-      ) : (
-        <p>...loading</p>
-      )}
+      </div>
     </>
   );
 }
