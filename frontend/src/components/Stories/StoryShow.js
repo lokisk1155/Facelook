@@ -50,14 +50,30 @@ function StoryShow() {
           setCurrentWindow(newWindow);
         }
       } else {
-        if (currentWindow === Object.values(stories[id]).length - 1) {
-          let found = false;
+        if (currentWindow === 0 && stories[id].length === 1) {
           for (const userId in stories) {
+            return history.push(`/stories/${userId}`)
+          }
+        }
+        if (currentWindow === Object.values(stories[id]).length - 1) {
+          let firstId = false 
+          let found = false;
+          let target = Object.keys(stories).length - 1
+          let current = 0 
+          for (const userId in stories) {
+            if (!firstId) {
+              firstId = userId
+            }
+            current += 1
             if (found) {
               setCurrentWindow(0);
               return history.push(`/stories/${userId}`);
             }
             if (userId === id) {
+              if (current === target) {
+                setCurrentWindow(0);
+                return history.push(`/stories/${firstId}`)
+              } 
               found = true;
             }
           }
