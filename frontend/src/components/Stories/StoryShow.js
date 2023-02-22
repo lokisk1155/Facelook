@@ -146,7 +146,7 @@ function StoryShow() {
     }, 3500);
 
     return () => clearInterval(intervalId);
-  }, [dispatch, handleNext, id, sessionUser, simpleUsers, stories]);
+  }, [dispatch, handleNext, id, sessionUser, simpleUsers, stories, currentWindow]);
 
   let loading = true;
 
@@ -267,10 +267,10 @@ function StoryShow() {
               {stories &&
                 Object.values(usersWithStories).map((user, index) => {
                   return (
-                    <div key={index}>
+                    <div onClick={() => setCurrentWindow(0)} key={index}>
                       <Link
                         className="all-stories-mapped"
-                        onClick={() => setCurrentWindow(0)}
+                        to={`/stories/${user.user_id}`}
                         style={{
                           display: "flex",
                           alignItems: "center",
@@ -283,8 +283,8 @@ function StoryShow() {
                               : "#fff",
                           height: "65px",
                           width: "100%",
-                        }}
-                        to={`/stories/${user.user_id}`}
+                        }
+                        }
                       >
                         <img
                           alt=""
@@ -328,6 +328,7 @@ function StoryShow() {
               <ProgressBar
                 stories={stories[id]}
                 currentStoryId={currentStory.id}
+                currentWindow={currentWindow}
               />
               {currentStory.picture === null ? (
                 <div

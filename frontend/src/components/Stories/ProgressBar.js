@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import LoadingBar from "./LoadingBar";
 
-function ProgressBar({ stories, currentStoryId }) {
+function ProgressBar({ stories, currentStoryId, currentWindow }) {
   const { id } = useParams();
 
   const [progressBarWidth, setProgressBarWidth] = useState(null);
@@ -42,7 +42,7 @@ function ProgressBar({ stories, currentStoryId }) {
               }}
             />
           ) : (
-            <LoadingBar progressBarWidth={progressBarWidth} index={index} />
+            <LoadingBar progressBarWidth={progressBarWidth} index={index} id={currentStoryId} window={currentWindow} />
           )}
         </>
       ))}
