@@ -5,9 +5,9 @@ function LoadingBar({ progressBarWidth, index, id, window }) {
   const [animationOn, setAnimationOn] = useState(false);
 
   const toggleAnimation = useCallback(() => {
-    setAnimationOn(prevAnimationOn => !prevAnimationOn);
+    setAnimationOn((prevAnimationOn) => !prevAnimationOn);
   }, []);
-  
+
   useEffect(() => {
     toggleAnimation();
   }, [toggleAnimation, id]);
