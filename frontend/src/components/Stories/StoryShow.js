@@ -349,9 +349,7 @@ function StoryShow() {
               currentStoryId={currentStory.id}
               currentWindow={currentWindow}
             />
-            <PreviewCurrentStory
-              currentStory={currentStory}
-            />
+            <PreviewCurrentStory currentStory={currentStory} />
             <div
               style={{
                 display: "flex",
