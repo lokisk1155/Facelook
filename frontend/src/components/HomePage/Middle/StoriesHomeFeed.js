@@ -44,7 +44,7 @@ function StoriesHomeFeed() {
     if (e) {
       e.preventDefault();
     }
-    if (currentWindow - 2 > 0) {
+    if (currentWindow > 0) {
       let newWindow = currentWindow - 1;
       setCurrentWindow(newWindow);
     }
@@ -56,7 +56,7 @@ function StoriesHomeFeed() {
 
   return (
     <>
-      <StoriesHeader />
+      <StoriesHeader /> 
       <div
         style={{
           display: "flex",
@@ -71,7 +71,7 @@ function StoriesHomeFeed() {
           marginBottom: "10px",
         }}
       >
-        <div
+        {currentWindow === 0 ? <div
           className="story-img"
           onClick={() => history.push("/stories/create")}
           style={{
@@ -137,7 +137,7 @@ function StoriesHomeFeed() {
               </g>
             </svg>
           </div>
-        </div>
+        </div> : null}
 
         {Object.values(currentStories).map((story, index) => {
           return (
