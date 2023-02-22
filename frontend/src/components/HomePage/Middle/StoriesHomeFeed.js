@@ -26,7 +26,7 @@ function StoriesHomeFeed() {
   useEffect(() => {
     const slicedStories = Object.values(stories).slice(currentWindow, currentWindow + 3)
     setCurrentStories(slicedStories)
-  }, [currentWindow])
+  }, [currentWindow, stories])
 
 
 
@@ -49,7 +49,7 @@ function StoriesHomeFeed() {
     }
   }
 
-  if (!Object.keys(currentStories).length) {
+  if (!currentStories) {
     return null 
   }
 
