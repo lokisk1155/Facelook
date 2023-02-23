@@ -23,7 +23,7 @@ function StoriesHomeFeed() {
     (state) => state.simpleUsers[sessionUser.id]?.profile_picture
   );
 
-  let currentStories; 
+  let currentStories;
 
   if (currentWindow === 0) {
     currentStories = Object.values(stories).slice(
@@ -62,7 +62,7 @@ function StoriesHomeFeed() {
 
   return (
     <>
-      <StoriesHeader /> 
+      <StoriesHeader />
       <div
         style={{
           display: "flex",
@@ -75,79 +75,93 @@ function StoriesHomeFeed() {
           borderEndEndRadius: "10px",
           boxShadow: "0px 6px 6px 0px lightgrey",
           marginBottom: "10px",
-          position: "relative"
+          position: "relative",
         }}
       >
-       {currentWindow < Object.keys(stories).length - 4 ? <button style={{ position: "absolute", right: 0, top: "50%", transform: "translateY(-50%)" }} onClick={moveLeft}>{'---->'}</button> : null}
-        {currentWindow === 0 ? <div
-          className="story-img"
-          onClick={() => history.push("/stories/create")}
-          style={{
-            width: "21%",
-            height: "108%",
-            margin: "2.5px",
-            padding: "0",
-            borderRadius: "5px",
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
-          <img
-            alt=""
+        {currentWindow < Object.keys(stories).length - 4 ? (
+          <button
             style={{
-              height: "70%",
-              width: "100%",
-              borderTopLeftRadius: "10px",
-              borderTopRightRadius: "10px",
-              margin: "0",
-              padding: "0",
-              borderTop: "0.3px solid lightgrey",
-              borderLeft: "0.3px solid lightgrey",
-              borderRight: "0.3px solid lightgrey",
-              objectFit: "cover",
+              position: "absolute",
+              right: 0,
+              top: "50%",
+              transform: "translateY(-50%)",
             }}
-            src={sessionUserPicture || profilePic}
-          ></img>
+            onClick={moveLeft}
+          >
+            {"---->"}
+          </button>
+        ) : null}
+        {currentWindow === 0 ? (
           <div
+            className="story-img"
+            onClick={() => history.push("/stories/create")}
             style={{
-              transform: "translate(0, -15px)",
-              height: "60px",
-              borderBottomLeftRadius: "10px",
-              borderBottomRightRadius: "10px",
-              borderBottom: "0.3px solid lightgrey",
-              borderLeft: "0.3px solid lightgrey",
-              borderRight: "0.3px solid lightgrey",
+              width: "21%",
+              height: "108%",
+              margin: "2.5px",
+              padding: "0",
+              borderRadius: "5px",
               display: "flex",
+              flexDirection: "column",
             }}
           >
-            <svg
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              className="story-create-button-the-acutal-button"
+            <img
+              alt=""
               style={{
-                height: "45px",
-                borderRadius: "50%",
-                backgroundColor: "rgb(27, 116, 228)",
-                color: "#fff",
-                border: "4px solid #fff",
-                width: "50px", 
+                height: "70%",
+                width: "100%",
+                borderTopLeftRadius: "10px",
+                borderTopRightRadius: "10px",
+                margin: "0",
+                padding: "0",
+                borderTop: "0.3px solid lightgrey",
+                borderLeft: "0.3px solid lightgrey",
+                borderRight: "0.3px solid lightgrey",
+                objectFit: "cover",
+              }}
+              src={sessionUserPicture || profilePic}
+            ></img>
+            <div
+              style={{
+                transform: "translate(0, -15px)",
+                height: "60px",
+                borderBottomLeftRadius: "10px",
+                borderBottomRightRadius: "10px",
+                borderBottom: "0.3px solid lightgrey",
+                borderLeft: "0.3px solid lightgrey",
+                borderRight: "0.3px solid lightgrey",
+                display: "flex",
               }}
             >
-              <g fillRule="evenodd" transform="translate(-446 -350)">
-                <g fillRule="nonzero">
-                  <path
-                    d="M95 201.5h13a1 1 0 1 0 0-2H95a1 1 0 1 0 0 2z"
-                    transform="translate(354.5 159.5)"
-                  ></path>
-                  <path
-                    d="M102.5 207v-13a1 1 0 1 0-2 0v13a1 1 0 1 0 2 0z"
-                    transform="translate(354.5 159.5)"
-                  ></path>
+              <svg
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                className="story-create-button-the-acutal-button"
+                style={{
+                  height: "45px",
+                  borderRadius: "50%",
+                  backgroundColor: "rgb(27, 116, 228)",
+                  color: "#fff",
+                  border: "4px solid #fff",
+                  width: "50px",
+                }}
+              >
+                <g fillRule="evenodd" transform="translate(-446 -350)">
+                  <g fillRule="nonzero">
+                    <path
+                      d="M95 201.5h13a1 1 0 1 0 0-2H95a1 1 0 1 0 0 2z"
+                      transform="translate(354.5 159.5)"
+                    ></path>
+                    <path
+                      d="M102.5 207v-13a1 1 0 1 0-2 0v13a1 1 0 1 0 2 0z"
+                      transform="translate(354.5 159.5)"
+                    ></path>
+                  </g>
                 </g>
-              </g>
-            </svg>
+              </svg>
+            </div>
           </div>
-        </div> : null}
+        ) : null}
 
         {Object.values(currentStories).map((story, index) => {
           return (
@@ -213,8 +227,19 @@ function StoriesHomeFeed() {
             </Link>
           );
         })}
-          {currentWindow !== 0 ? <button style={{ position: "absolute", left: 0, top: "50%", transform: "translateY(-50%)" }} onClick={moveRight}>{'<---'}</button> : null }
-
+        {currentWindow !== 0 ? (
+          <button
+            style={{
+              position: "absolute",
+              left: 0,
+              top: "50%",
+              transform: "translateY(-50%)",
+            }}
+            onClick={moveRight}
+          >
+            {"<---"}
+          </button>
+        ) : null}
       </div>
     </>
   );

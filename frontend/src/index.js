@@ -46,5 +46,3 @@ if (
 } else {
   renderApplication();
 }
-
-
