@@ -11,7 +11,7 @@ function StoriesHomeFeed() {
 
   const [currentWindow, setCurrentWindow] = useState(0);
 
-  const [currentStories, setCurrentStories] = useState(null);
+  // const [currentStories, setCurrentStories] = useState(null);
 
   const sessionUser = useSelector((state) => state.session.user);
 
@@ -23,19 +23,25 @@ function StoriesHomeFeed() {
     (state) => state.simpleUsers[sessionUser.id]?.profile_picture
   );
 
-  useEffect(() => {
-    const slicedStories = Object.values(stories).slice(
+  let currentStories; 
+
+  if (currentWindow === 0) {
+    currentStories = Object.values(stories).slice(
       currentWindow,
       currentWindow + 3
     );
-    setCurrentStories(slicedStories);
-  }, [currentWindow, stories]);
+  } else {
+    currentStories = Object.values(stories).slice(
+      currentWindow,
+      currentWindow + 4
+    );
+  }
 
   const moveLeft = (e) => {
     if (e) {
       e.preventDefault();
     }
-    if (currentWindow < Object.keys(stories).length - 3) {
+    if (currentWindow < Object.keys(stories).length - 4) {
       let newWindow = currentWindow + 1;
       setCurrentWindow(newWindow);
     }
@@ -60,7 +66,7 @@ function StoriesHomeFeed() {
       <div
         style={{
           display: "flex",
-          height: "175px",
+          height: "225px",
           minHeight: "75px",
           justifyContent: "space-evenly",
           backgroundColor: "#fff",
@@ -69,13 +75,16 @@ function StoriesHomeFeed() {
           borderEndEndRadius: "10px",
           boxShadow: "0px 6px 6px 0px lightgrey",
           marginBottom: "10px",
+          position: "relative"
         }}
       >
+       {currentWindow < Object.keys(stories).length - 4 ? <button style={{ position: "absolute", right: 0, top: "50%", transform: "translateY(-50%)" }} onClick={moveLeft}>{'---->'}</button> : null}
         {currentWindow === 0 ? <div
           className="story-img"
           onClick={() => history.push("/stories/create")}
           style={{
-            width: "20%",
+            width: "21%",
+            height: "108%",
             margin: "2.5px",
             padding: "0",
             borderRadius: "5px",
@@ -116,11 +125,12 @@ function StoriesHomeFeed() {
               viewBox="0 0 20 20"
               className="story-create-button-the-acutal-button"
               style={{
-                height: "30px",
-                borderRadius: "100px",
+                height: "45px",
+                borderRadius: "50%",
                 backgroundColor: "rgb(27, 116, 228)",
                 color: "#fff",
                 border: "4px solid #fff",
+                width: "50px", 
               }}
             >
               <g fillRule="evenodd" transform="translate(-446 -350)">
@@ -144,14 +154,14 @@ function StoriesHomeFeed() {
             <Link
               key={index}
               to={`/stories/${story?.user_id}`}
-              style={{ width: "20%" }}
+              style={{ width: "21%" }}
             >
               {story?.picture !== null ? (
                 <div
                   className="story-img"
                   style={{
                     width: "100%",
-                    height: "150px",
+                    height: "95%",
                     paddingTop: "5px",
                     borderRadius: "10px",
                     backgroundImage: `url(${story?.picture})`,
@@ -180,7 +190,7 @@ function StoriesHomeFeed() {
                   style={{
                     backgroundColor: story?.background_color,
                     width: "100%",
-                    height: "85%",
+                    height: "95%",
                     paddingTop: "5px",
                     borderRadius: "10px",
                   }}
@@ -203,8 +213,8 @@ function StoriesHomeFeed() {
             </Link>
           );
         })}
-        <button onClick={moveLeft}>left</button>
-        <button onClick={moveRight}>Right</button>
+          {currentWindow !== 0 ? <button style={{ position: "absolute", left: 0, top: "50%", transform: "translateY(-50%)" }} onClick={moveRight}>{'<---'}</button> : null }
+
       </div>
     </>
   );
