@@ -2,7 +2,7 @@ if @homepage
     @stories.each do |story|
       json.set! story.id do
         json.extract! story, :id, :user_id, :background_color, :font_size, :padding_left, :padding_right, :padding_y,
-                      :color, :text_content
+                      :color, :text_content, :font_type
         json.picture story.photo.url
       end
     end
@@ -14,7 +14,7 @@ if @homepage
         json.set! user_id do
           json.array! stories do |story|
             json.extract! story, :id, :background_color, :font_size, :padding_left, :padding_right, :padding_y, :color,
-                          :text_content, :user_id
+                          :text_content, :user_id, :font_type
             json.picture story.photo.url
           end
         end
