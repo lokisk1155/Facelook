@@ -1,3 +1,4 @@
+import "./PreviewCurrentStory.css"
 function PreviewCurrentStory({ currentStory }) {
   return (
     <>
@@ -5,18 +6,6 @@ function PreviewCurrentStory({ currentStory }) {
         <div
           className="actual-story-show-background"
           style={{
-            height: "75%",
-            width: "65%",
-            position: "absolute",
-            borderRadius: "7px",
-            minWidth: "200px",
-            minHeight: "200px",
-            top: "50%",
-            right: "50%",
-            bottom: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            maxWidth: "300px",
             backgroundColor: currentStory.background_color,
           }}
         >
@@ -42,20 +31,6 @@ function PreviewCurrentStory({ currentStory }) {
           alt=""
           className="actual-text-story-background"
           src={currentStory.picture}
-          style={{
-            height: "75%",
-            width: "65%",
-            position: "absolute",
-            borderRadius: "7px",
-            minWidth: "200px",
-            minHeight: "200px",
-            top: "50%",
-            right: "50%",
-            bottom: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            maxWidth: "300px",
-          }}
         ></img>
       )}
     </>
