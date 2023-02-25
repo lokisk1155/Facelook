@@ -2,9 +2,12 @@ import { useParams } from "react-router-dom";
 import profilePic from "../NavBar/imgs/blank.png";
 import { Link } from "react-router-dom";
 
-function StoriesSideBar({ usersWithStories, setCurrentWindow, mostRecentStoryTime }) {
+function StoriesSideBar({
+  usersWithStories,
+  setCurrentWindow,
+  mostRecentStoryTime,
+}) {
   const { id } = useParams();
-
 
   function getTimeElapsed(createdAt) {
     const previous = new Date(createdAt);
