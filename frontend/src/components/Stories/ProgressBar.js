@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import LoadingBar from "./LoadingBar";
 import profilePic from "../NavBar/imgs/blank.png";
+import "./ProgressBar.css";
 
 function ProgressBar({ stories, currentStoryId, currentWindow }) {
   const { id } = useParams();
@@ -62,17 +63,9 @@ function ProgressBar({ stories, currentStoryId, currentWindow }) {
           </>
         ))}
       </div>
-      <img
-        style={{
-          position: "absolute",
-          top: "5%",
-          marginLeft: "20px",
-          height: "50px",
-          width: "50px",
-          borderRadius: "50%",
-        }}
-        src={profilePicture}
-      />
+      <Link to={`/ProfilePage/${id}`}>
+        <img className="profile-picture-on-actual-story" src={profilePicture} />
+      </Link>
     </>
   );
 }

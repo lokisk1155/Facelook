@@ -1,0 +1,10 @@
+.profile-picture-on-actual-story {
+  position: absolute;
+  top: 5%;
+  margin-left: 15px;
+  height: 0px;
+  width: 0px;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
