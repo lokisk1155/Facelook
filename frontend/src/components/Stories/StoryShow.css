@@ -90,35 +90,13 @@
   background-color: lightgrey;
 }
 
-@media (max-width: 1400px) {
-  .story-preview-container {
-  }
-}
-
-@media (max-width: 1100px) {
-  .story-preview-container {
-  }
-}
-
-@media (max-width: 950px) {
-  .story-preview-container {
-  }
-}
 
 @media (max-width: 800px) {
-  .story-show-preview-container {
-  }
 
-  .story-preview-container {
-  }
-
-  .story-show-side-bar {
-  }
 }
 
 @media (max-width: 700px) {
-  .story-preview-container {
-  }
+
 }
 
 @media (max-width: 625) {

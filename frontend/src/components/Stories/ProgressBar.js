@@ -100,11 +100,14 @@ function ProgressBar({
         to={`/ProfilePage/${id}`}
       >
         <img className="pic-on-actual-story" src={profilePicture} />
-        <u className="name-on-actual-story">{simpleUsers[id].name}</u>
-        <u className="how-long-ago-on-story">
-          {getTimeElapsed(currentStoryCreatedAt)}
-        </u>
-      </Link>
+
+        <ul className="name-and-date-container-story">
+          <p className="name-on-actual-story">{simpleUsers[id].name}</p>
+          <p className="how-long-ago-on-story">
+            {getTimeElapsed(currentStoryCreatedAt)}
+          </p>
+        </ul>
+      </Link> 
     </>
   );
 }
