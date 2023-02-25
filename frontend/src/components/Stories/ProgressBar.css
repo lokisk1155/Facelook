@@ -15,14 +15,14 @@
 }
 
 .name-on-actual-story {
-    font-size: 1.5rem;
-    width: 60%;
-    padding: 5px;
-    color: black;
+  font-size: 1.5rem;
+  width: 60%;
+  padding: 5px;
+  color: black;
 }
 
 .pic-on-actual-story {
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
 }
