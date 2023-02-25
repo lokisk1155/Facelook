@@ -13,6 +13,7 @@ function PreviewCurrentStory({ stories, currentStory, currentWindow }) {
           <ProgressBar
             stories={stories}
             currentStoryId={currentStory.id}
+            currentStoryCreatedAt={currentStory.created_at}
             currentWindow={currentWindow}
           />
           <p

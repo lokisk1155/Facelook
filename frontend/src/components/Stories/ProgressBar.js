@@ -5,7 +5,7 @@ import LoadingBar from "./LoadingBar";
 import profilePic from "../NavBar/imgs/blank.png";
 import "./ProgressBar.css";
 
-function ProgressBar({ stories, currentStoryId, currentWindow }) {
+function ProgressBar({ stories, currentStoryId, currentStoryCreatedAt, currentWindow }) {
   const { id } = useParams();
 
   const [progressBarWidth, setProgressBarWidth] = useState(null);
@@ -23,6 +23,33 @@ function ProgressBar({ stories, currentStoryId, currentWindow }) {
       setProfilePicture(profilePic);
     }
   }, [id, stories]);
+
+  function getTimeElapsed(createdAt) {
+    const previous = new Date(createdAt);
+    const now = new Date();
+    const comparedTime = now.valueOf() - previous.valueOf();
+    return formatDateTime(comparedTime);
+  }
+
+  function formatDateTime(comparedTime) {
+    const sec = Math.floor(comparedTime / 1000);
+    if (sec < 60) {
+      return `${sec}s`;
+    }
+    const min = Math.floor(sec / 60);
+    if (min < 60) {
+      return `${min}m`;
+    }
+    const hr = Math.floor(min / 60);
+    if (hr < 24) {
+      return `${hr}h`;
+    }
+    const day = Math.floor(hr / 24);
+    if (day < 7) {
+      return `${day}d`;
+    }
+    return `${Math.floor(day / 7)}w`;
+  }
 
   return (
     <>
@@ -63,8 +90,10 @@ function ProgressBar({ stories, currentStoryId, currentWindow }) {
           </>
         ))}
       </div>
-      <Link to={`/ProfilePage/${id}`}>
-        <img className="profile-picture-on-actual-story" src={profilePicture} />
+      <Link className="link-profile-picture-on-actual-story" to={`/ProfilePage/${id}`}>
+        <img className="pic-on-actual-story" src={profilePicture} />
+        <u className="name-on-actual-story">{simpleUsers[id].name}</u>
+        <u className="how-long-ago-on-story">{getTimeElapsed(currentStoryCreatedAt)}</u>
       </Link>
     </>
   );

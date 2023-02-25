@@ -1,10 +1,28 @@
-.profile-picture-on-actual-story {
+.link-profile-picture-on-actual-story {
   position: absolute;
-  top: 5%;
+  top: 8%;
   margin-left: 15px;
   height: 0px;
   width: 0px;
   border-radius: 50%;
-  height: 50px;
-  width: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  padding: 5px;
+  text-decoration: none;
+}
+
+.name-on-actual-story {
+    font-size: 1.5rem;
+    width: 60%;
+    padding: 5px;
+    color: black;
+}
+
+.pic-on-actual-story {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
 }
