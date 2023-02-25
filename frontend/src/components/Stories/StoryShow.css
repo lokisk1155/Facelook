@@ -68,20 +68,14 @@
 }
 
 @media (max-width: 800px) {
+  .story-show-preview-container {
+  }
 
-.story-show-preview-container {
+  .story-preview-container {
+  }
 
-
-}
-
-.story-preview-container {
-
-}
-
-.story-show-side-bar {
-
-}
-
+  .story-show-side-bar {
+  }
 }
 
 @media (max-width: 700px) {

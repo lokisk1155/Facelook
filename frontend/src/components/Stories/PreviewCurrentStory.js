@@ -1,4 +1,4 @@
-import "./PreviewCurrentStory.css"
+import "./PreviewCurrentStory.css";
 function PreviewCurrentStory({ currentStory }) {
   return (
     <>
