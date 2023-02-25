@@ -203,12 +203,8 @@ function StoryShow() {
 
   return (
     <>
-      <div
-        className="stories-show-omega-container"
-      >
-        <div
-          className="story-show-side-bar"
-        >
+      <div className="stories-show-omega-container">
+        <div className="story-show-side-bar">
           <div style={{ display: "flex" }}>
             <button
               className="back-to-home-button"
@@ -268,16 +264,15 @@ function StoryShow() {
             }}
           >
             <h4>All Stories</h4>
-            <StoriesSideBar usersWithStories={usersWithStories} setCurrentWindow={setCurrentWindow}/>
+            <StoriesSideBar
+              usersWithStories={usersWithStories}
+              setCurrentWindow={setCurrentWindow}
+            />
           </div>
         </div>
 
-        <div
-          className="story-show-preview-container"
-        >
-          <div
-            className="story-preview-container"
-          >
+        <div className="story-show-preview-container">
+          <div className="story-preview-container">
             <ProgressBar
               stories={stories[id]}
               currentStoryId={currentStory.id}
