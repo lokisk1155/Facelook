@@ -80,15 +80,20 @@ function StoriesHomeFeed() {
       >
         {currentWindow < Object.keys(stories).length - 4 ? (
           <button
+            className="control-button-story-home"
             style={{
               position: "absolute",
               right: 0,
               top: "50%",
               transform: "translateY(-50%)",
+              borderRadius: "50%",
+              height: "50px", 
+              width: "50px",
+              border: "0.5px solid grey",
             }}
             onClick={moveLeft}
           >
-            {"---->"}
+            <svg style={{  }} fill="currentColor" viewBox="0 0 20 20" width="1em" height="1em" class="x1lliihq x1k90msu x2h7rmj x1qfuztq xcza8v6 xxk0z11 xvy4d1p"><path d="M7.8 4.53 13.273 10 7.8 15.47a.75.75 0 0 0 1.061 1.06l6-6a.751.751 0 0 0 0-1.06l-6-6A.75.75 0 0 0 7.8 4.53z"></path></svg>
           </button>
         ) : null}
         {currentWindow === 0 ? (
@@ -229,15 +234,20 @@ function StoriesHomeFeed() {
         })}
         {currentWindow !== 0 ? (
           <button
+          className="control-button-story-home"
             style={{
               position: "absolute",
               left: 0,
               top: "50%",
+              height: "50px",
+              width: "50px",
+              borderRadius: "50%",
+              border: "0.5px solid grey",
               transform: "translateY(-50%)",
             }}
             onClick={moveRight}
           >
-            {"<---"}
+            <svg fill="currentColor" viewBox="0 0 20 20" width="1em" height="1em" class="x1lliihq x1k90msu x2h7rmj x1qfuztq xcza8v6 xxk0z11 xvy4d1p"><path d="M12.2 4.53 6.727 10l5.47 5.47a.75.75 0 0 1-1.061 1.06l-6-6a.751.751 0 0 1 0-1.06l6-6A.75.75 0 1 1 12.2 4.53z"></path></svg>
           </button>
         ) : null}
       </div>
