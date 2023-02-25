@@ -107,7 +107,7 @@ function ProgressBar({
             {getTimeElapsed(currentStoryCreatedAt)}
           </p>
         </ul>
-      </Link> 
+      </Link>
     </>
   );
 }
