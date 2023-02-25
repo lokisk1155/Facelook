@@ -183,6 +183,11 @@ function StoryShow() {
     return null;
   }
 
+  if (!stories[id]) {
+    dispatch(fetchStories());
+    return null;
+  }
+
   const currentStory = stories[id][currentWindow];
 
   if (currentStory === undefined) {
@@ -261,6 +266,7 @@ function StoryShow() {
             <h4>All Stories</h4>
             <StoriesSideBar
               usersWithStories={usersWithStories}
+              mostRecentStoryTime={stories[id][0].created_at}
               setCurrentWindow={setCurrentWindow}
             />
           </div>
