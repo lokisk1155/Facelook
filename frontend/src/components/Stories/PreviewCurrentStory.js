@@ -1,5 +1,6 @@
 import "./PreviewCurrentStory.css";
-function PreviewCurrentStory({ currentStory }) {
+import ProgressBar from "./ProgressBar";
+function PreviewCurrentStory({ stories, currentStory, currentWindow }) {
   return (
     <>
       {!currentStory.picture ? (
@@ -9,6 +10,11 @@ function PreviewCurrentStory({ currentStory }) {
             backgroundColor: currentStory.background_color,
           }}
         >
+          <ProgressBar
+            stories={stories}
+            currentStoryId={currentStory.id}
+            currentWindow={currentWindow}
+          />
           <p
             className="actual-story-show-text"
             style={{
@@ -27,11 +33,18 @@ function PreviewCurrentStory({ currentStory }) {
           </p>
         </div>
       ) : (
-        <img
-          alt=""
-          className="actual-text-story-background"
-          src={currentStory.picture}
-        ></img>
+        <div className="actual-story-show-background">
+          <ProgressBar
+            stories={stories}
+            currentStoryId={currentStory.id}
+            currentWindow={currentWindow}
+          />
+          <img
+            alt=""
+            src={currentStory.picture}
+            style={{width: "100%", height: "100%"}}
+          ></img>
+        </div>
       )}
     </>
   );

@@ -52,6 +52,44 @@
   background-color: lightgrey;
 }
 
+.stories-show-handle-next {
+  top: 50%;
+  bottom: 50%;
+  right: 12%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 75px;
+  border-radius: 50%;
+  background-color: #fff;
+  color: black;
+  opacity: 0.75;
+  height: 75px;
+  border: none;
+}
+
+.stories-show-handle-previous {
+  top: 50%;
+  bottom: 50%;
+  left: 20%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 75px;
+  border-radius: 50%;
+  background-color: #fff;
+  color: black;
+  opacity: 0.75;
+  height: 75px;
+  border: none;
+}
+
+.stories-show-handle-previous:hover {
+  background-color: lightgrey;
+}
+
+.stories-show-handle-next:hover {
+  background-color: lightgrey;
+}
+
 @media (max-width: 1400px) {
   .story-preview-container {
   }

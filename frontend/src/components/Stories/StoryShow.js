@@ -174,17 +174,12 @@ function StoryShow() {
     currentWindow,
   ]);
 
-  let loading = true;
-
-  if (!stories[id]) {
-    loading = false;
-    dispatch(fetchStories());
-    return null;
-  }
-
   if (Object.values(simpleUsers).length === 0) {
-    loading = false;
     dispatch(getSimpleUsers());
+    if (!stories[id]) {
+      dispatch(fetchStories());
+      return null;
+    }
     return null;
   }
 
@@ -273,52 +268,20 @@ function StoryShow() {
 
         <div className="story-show-preview-container">
           <div className="story-preview-container">
-            <ProgressBar
+            <button
+              className="stories-show-handle-previous"
+              onClick={handlePrevious}
+            >
+              &#8249;
+            </button>
+            <PreviewCurrentStory
+              currentStory={currentStory}
               stories={stories[id]}
-              currentStoryId={currentStory.id}
               currentWindow={currentWindow}
             />
-            <PreviewCurrentStory currentStory={currentStory} />
-            <div
-              style={{
-                display: "flex",
-                width: "200px",
-                maxWidth: "30%",
-                minHeight: "50px",
-                height: "70px",
-              }}
-            >
-              <button
-                style={{
-                  width: "50%",
-                  minWidth: "45px",
-                  maxWidth: "65px",
-                  borderRadius: "50%",
-                  backgroundColor: "#1b74e4",
-                  margin: "5px",
-                  color: "#fff",
-                  border: "none",
-                }}
-                onClick={handlePrevious}
-              >
-                &#8249;
-              </button>
-              <button
-                style={{
-                  width: "50%",
-                  minWidth: "45px",
-                  maxWidth: "65px",
-                  borderRadius: "50%",
-                  backgroundColor: "#1b74e4",
-                  margin: "5px",
-                  color: "#fff",
-                  border: "none",
-                }}
-                onClick={handleNext}
-              >
-                &#8250;
-              </button>
-            </div>
+            <button className="stories-show-handle-next" onClick={handleNext}>
+              &#8250;
+            </button>
           </div>
         </div>
       </div>
