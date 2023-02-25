@@ -9,6 +9,7 @@ import "./StoryShow.css";
 import ProgressBar from "./ProgressBar";
 import { useCallback } from "react";
 import PreviewCurrentStory from "./PreviewCurrentStory";
+import StoriesSideBar from "./StoriesSideBar";
 
 function StoryShow() {
   const dispatch = useDispatch();
@@ -204,39 +205,20 @@ function StoryShow() {
     <>
       <div
         className="stories-show-omega-container"
-        style={{
-          height: "100vh",
-          width: "100vw",
-          display: "flex",
-          backgroundColor: "#fff",
-        }}
       >
         <div
           className="story-show-side-bar"
-          style={{ width: "20%", minWidth: "150px" }}
         >
           <div style={{ display: "flex" }}>
             <button
-              style={{
-                height: "40px",
-                width: "40px",
-                borderRadius: "50px",
-                backgroundColor: "#fff",
-                border: "none",
-              }}
+              className="back-to-home-button"
               onClick={() => history.push("/")}
             >
               X
             </button>
             <img
-              alt=""
-              style={{
-                height: "40px",
-                width: "40px",
-                borderRadius: "50px",
-                backgroundColor: "#fff",
-                border: "none",
-              }}
+              className="facebook-button-story-show"
+              alt="facebook"
               onClick={() => history.push("/")}
               src={Facebook}
             />
@@ -286,63 +268,15 @@ function StoryShow() {
             }}
           >
             <h4>All Stories</h4>
-            {stories &&
-              Object.values(usersWithStories).map((user, index) => {
-                return (
-                  <div onClick={() => setCurrentWindow(0)} key={index}>
-                    <Link
-                      className="all-stories-mapped"
-                      to={`/stories/${user.user_id}`}
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        paddingLeft: "10px",
-                        borderRadius: "5px",
-                        padding: "5px",
-                        backgroundColor:
-                          user.user_id === parseInt(id) ? "lightgrey" : "#fff",
-                        height: "65px",
-                        width: "100%",
-                      }}
-                    >
-                      <img
-                        alt=""
-                        style={{
-                          height: "50px",
-                          width: "50px",
-                          borderRadius: "50px",
-                        }}
-                        src={user.profile_picture || profilePic}
-                      />
-                      <p>{user.name}</p>
-                    </Link>
-                  </div>
-                );
-              })}
+            <StoriesSideBar usersWithStories={usersWithStories} setCurrentWindow={setCurrentWindow}/>
           </div>
         </div>
 
         <div
           className="story-show-preview-container"
-          style={{
-            width: "80%",
-            backgroundColor: "black",
-            position: "relative",
-          }}
         >
           <div
-            style={{
-              height: "90%",
-              width: "60%",
-              top: "50%",
-              right: "50%",
-              bottom: "50%",
-              left: "50%",
-              position: "absolute",
-              transform: "translate(-50%, -50%)",
-              minWidth: "200px",
-              minHeight: "200px",
-            }}
+            className="story-preview-container"
           >
             <ProgressBar
               stories={stories[id]}
