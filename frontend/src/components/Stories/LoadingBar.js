@@ -17,15 +17,17 @@ function LoadingBar({ progressBarWidth, index, id, window }) {
       key={index}
       style={{
         width: `${progressBarWidth}%`,
-        height: "100%",
+        height: "70%",
         backgroundColor: "rgba(0, 0, 0, 0.2)",
         margin: "2px",
+        borderRadius: "50px",
       }}
     >
       <div
         className={
           animationOn ? `stories-loading-bar` : `stories-loading-bar-2`
         }
+        style={{ borderRadius: "50px" }}
       />
     </div>
   );

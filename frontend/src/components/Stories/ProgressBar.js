@@ -79,9 +79,10 @@ function ProgressBar({
                 key={index}
                 style={{
                   width: `${progressBarWidth}%`,
-                  height: "100%",
+                  height: "70%",
                   backgroundColor: "rgba(0, 0, 0, 0.3)",
                   margin: "2px",
+                  borderRadius: "50px",
                 }}
               />
             ) : (

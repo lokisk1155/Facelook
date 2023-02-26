@@ -14,7 +14,7 @@
 }
 
 .story-show-preview-container {
-  width: 80%;
+  width: 100%;
   height: 100%;
   background-color: black;
   position: relative;
@@ -55,7 +55,7 @@
 .stories-show-handle-next {
   top: 50%;
   bottom: 50%;
-  right: 12%;
+  right: 25%;
   position: absolute;
   transform: translate(-50%, -50%);
   width: 75px;
@@ -70,7 +70,7 @@
 .stories-show-handle-previous {
   top: 50%;
   bottom: 50%;
-  left: 20%;
+  left: 30.5%;
   position: absolute;
   transform: translate(-50%, -50%);
   width: 75px;
@@ -82,12 +82,31 @@
   border: none;
 }
 
+.profile-pic-in-story-show {
+  height: 55px;
+  width: 55px;
+  position: absolute;
+  border-radius: 50%;
+  margin: 25px;
+  right: 0;
+  cursor: pointer;
+}
+
 .stories-show-handle-previous:hover {
   background-color: lightgrey;
 }
 
 .stories-show-handle-next:hover {
   background-color: lightgrey;
+}
+
+.story-show-top-bar {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (max-width: 800px) {
