@@ -223,61 +223,68 @@ function StoryShow() {
             />
           )}
 
-          <div style={{ position: "absolute", margin: "25px", left: "0", display: "flex"}}>
-          <button
-                className="back-to-home-button"
-                onClick={() => history.push("/")}
-              >
-                X
-              </button>
-              <img
-                className="facebook-button-story-show"
-                alt="facebook"
-                onClick={() => history.push("/")}
-                src={Facebook}
-              />
-              <button
-                style={{ height: "42px", width: "42px", borderRadius: "50%" }}
-                onClick={() => history.push("/stories/create")}
-              >
-                {" "}
-                +
-              </button>
+          <div
+            style={{
+              position: "absolute",
+              margin: "25px",
+              left: "0",
+              display: "flex",
+            }}
+          >
+            <button
+              className="back-to-home-button"
+              onClick={() => history.push("/")}
+            >
+              X
+            </button>
+            <img
+              className="facebook-button-story-show"
+              alt="facebook"
+              onClick={() => history.push("/")}
+              src={Facebook}
+            />
+            <button
+              style={{ height: "42px", width: "42px", borderRadius: "50%" }}
+              onClick={() => history.push("/stories/create")}
+            >
+              {" "}
+              +
+            </button>
           </div>
           <div className="story-show-top-bar">
-              {stories[sessionUserId] !== undefined ? (
-                <Link
-                  onClick={() => setCurrentWindow(0)}
+            {stories[sessionUserId] !== undefined ? (
+              <Link
+                onClick={() => setCurrentWindow(0)}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  paddingLeft: "10px",
+                  borderRadius: "5px",
+                  padding: "5px",
+                  backgroundColor:
+                    sessionUser.id === parseInt(id) ? "lightgrey" : "#fff",
+                  height: "65px",
+                  width: "100%",
+                }}
+                to={`/stories/${sessionUser.id}`}
+              >
+                <img
+                  alt=""
                   style={{
-                    display: "flex",
-                    alignItems: "center",
-                    paddingLeft: "10px",
-                    borderRadius: "5px",
-                    padding: "5px",
-                    backgroundColor:
-                      sessionUser.id === parseInt(id) ? "lightgrey" : "#fff",
-                    height: "65px",
-                    width: "100%",
+                    height: "50px",
+                    width: "50px",
+                    borderRadius: "50px",
                   }}
-                  to={`/stories/${sessionUser.id}`}
-                >
-                  <img
-                    alt=""
-                    style={{
-                      height: "50px",
-                      width: "50px",
-                      borderRadius: "50px",
-                    }}
-                    src={
-                      simpleUsers[sessionUser.id].profile_picture || profilePic
-                    }
-                  />
-                </Link>
-              ) : null}
-              <StoriesSideBar
-                usersWithStories={usersWithStories}
-                setCurrentWindow={setCurrentWindow}
-              />
+                  src={
+                    simpleUsers[sessionUser.id].profile_picture || profilePic
+                  }
+                />
+              </Link>
+            ) : null}
+            <StoriesSideBar
+              usersWithStories={usersWithStories}
+              setCurrentWindow={setCurrentWindow}
+            />
           </div>
           <div className="story-preview-container">
             <button

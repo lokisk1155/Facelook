@@ -29,7 +29,9 @@ function StoriesSideBar({ usersWithStories, setCurrentWindow }) {
                   width: "50px",
                   borderRadius: "50px",
                   border:
-                  user.user_id === parseInt(id) ? "5px solid #166fe5" : "none"
+                    user.user_id === parseInt(id)
+                      ? "5px solid #166fe5"
+                      : "none",
                 }}
                 src={user.profile_picture || profilePic}
               />
