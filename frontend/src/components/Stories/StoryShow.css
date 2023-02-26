@@ -109,6 +109,18 @@
   align-items: center;
 }
 
+.btn-close {
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  background-color: rgb(55, 55, 55);
+  border: 1px solid black;
+}
+
+.btn-close:hover {
+  background-color: black;
+}
+
 .create-story-button-story-show {
 }
 

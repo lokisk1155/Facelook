@@ -212,6 +212,22 @@ function StoryShow() {
             style={{
               cursor: "pointer",
               position: "absolute",
+              left: "0",
+              margin: "10px",
+            }}
+          >
+            <button
+              onClick={() => history.push("/")}
+              type="button"
+              className="btn-close"
+            >
+              <span style={{ fontSize: "2rem", color: "lightgrey" }}>X</span>
+            </button>
+          </div>
+          <div
+            style={{
+              cursor: "pointer",
+              position: "absolute",
               right: "0",
               margin: "5px",
               marginRight: "65px",
@@ -266,7 +282,7 @@ function StoryShow() {
               setCurrentWindow={setCurrentWindow}
             />
           </div>
-          <h2 style={{ color: "#fff" }}>Your Story</h2>
+          <h2 style={{ padding: "10px" }}>Your Story</h2>
           {stories[sessionUserId] !== undefined ? (
             <Link
               onClick={() => setCurrentWindow(0)}
@@ -289,7 +305,7 @@ function StoryShow() {
                   border:
                     sessionUser.id === parseInt(id)
                       ? "5px solid #166fe5"
-                      : "none",
+                      : "5px solid black",
                 }}
                 src={simpleUsers[sessionUser.id].profile_picture || profilePic}
               />
@@ -303,13 +319,11 @@ function StoryShow() {
               </p>
             </Link>
           ) : null}
-          <h2 style={{ color: "#fff" }}>Create</h2>
+          <h2 style={{ padding: "10px" }}>Create</h2>
           <button
             className="create-story-button-story-show"
             onClick={() => history.push("/stories/create")}
-          >
-            +
-          </button>
+          ></button>
           <div className="story-preview-container">
             <button
               className="stories-show-handle-previous"
