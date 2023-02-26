@@ -7,6 +7,7 @@ import "./HomePage.css";
 import StoriesHeader from "./Middle/StoriesHeader";
 import { useEffect } from "react";
 import { useState } from "react";
+import CircleLoading from "../loading/CircleLoading";
 
 function HomePage() {
   const dispatch = useDispatch();
@@ -17,7 +18,9 @@ function HomePage() {
 
   useEffect(() => {
     dispatch(homePage()).then((data) => {
-      setLoading(data);
+      setTimeout(() => {
+        setLoading(data);
+      }, 750);
     });
   }, [dispatch]);
 
@@ -33,40 +36,21 @@ function HomePage() {
             <>
               <StoriesHeader />
               <div
-                className="skeleton"
                 style={{
-                  display: "flex",
-                  height: "175px",
-                  minHeight: "75px",
-                  justifyContent: "space-evenly",
+                  height: "80vh",
                   backgroundColor: "#fff",
                   padding: "10px",
                   borderEndStartRadius: "10px",
                   borderEndEndRadius: "10px",
                   boxShadow: "0px 6px 6px 0px lightgrey",
-                  marginBottom: "10px",
+                  position: "relative",
                 }}
-              />
+              >
+                  <CircleLoading />
+              </div>
             </>
           )}
-          {loading ? (
-            <PostFeed />
-          ) : (
-            [...Array(number)].map((n, idx) => {
-              return (
-                <div
-                  key={idx}
-                  className="skeleton"
-                  style={{
-                    height: "300px",
-                    width: "100%",
-                    marginBottom: "15px",
-                    borderRadius: "5px",
-                  }}
-                />
-              );
-            })
-          )}
+          {loading ? <PostFeed /> : null}
         </div>
 
         <div className="column"></div>
