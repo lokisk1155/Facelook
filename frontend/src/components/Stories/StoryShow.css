@@ -45,7 +45,7 @@
   width: 40px;
   border-radius: 50%;
   background-color: #fff;
-  border: none;
+  border: 1px solid black;
 }
 
 .back-to-home-button:hover {
@@ -83,11 +83,11 @@
 }
 
 .profile-pic-in-story-show {
-  height: 55px;
-  width: 55px;
+  height: 50px;
+  width: 50px;
   position: absolute;
   border-radius: 50%;
-  margin: 25px;
+  margin: 5px;
   right: 0;
   cursor: pointer;
 }
@@ -107,6 +107,9 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+
+.create-story-button-story-show {
 }
 
 @media (max-width: 800px) {

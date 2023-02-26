@@ -6,7 +6,6 @@ import { fetchStories } from "../../store/story";
 import Facebook from "../NavBar/imgs/Facebook.png";
 import profilePic from "../NavBar/imgs/blank.png";
 import "./StoryShow.css";
-import ProgressBar from "./ProgressBar";
 import { useCallback } from "react";
 import PreviewCurrentStory from "./PreviewCurrentStory";
 import StoriesSideBar from "./StoriesSideBar";
@@ -209,6 +208,45 @@ function StoryShow() {
     <>
       <div className="stories-show-omega-container">
         <div className="story-show-preview-container">
+          <div
+            style={{
+              cursor: "pointer",
+              position: "absolute",
+              right: "0",
+              margin: "5px",
+              marginRight: "65px",
+            }}
+            onClick={() => history.push("/")}
+          >
+            <svg
+              viewBox="0 0 36 36"
+              class="x1lliihq x1k90msu x2h7rmj x1qfuztq x1ssd25i"
+              height="50"
+              width="50"
+            >
+              <defs>
+                <linearGradient
+                  x1="50%"
+                  x2="50%"
+                  y1="97.0782153%"
+                  y2="0%"
+                  id="jsc_s_2"
+                >
+                  <stop offset="0%" stop-color="#0062E0"></stop>
+                  <stop offset="100%" stop-color="#19AFFF"></stop>
+                </linearGradient>
+              </defs>
+              <path
+                d="M15 35.8C6.5 34.3 0 26.9 0 18 0 8.1 8.1 0 18 0s18 8.1 18 18c0 8.9-6.5 16.3-15 17.8l-1-.8h-4l-1 .8"
+                fill="url(#jsc_s_2)"
+              ></path>
+              <path
+                class="xe3v8dz"
+                d="M25 23l.8-5H21v-3.5c0-1.4.5-2.5 2.7-2.5H26V7.4c-1.3-.2-2.7-.4-4-.4-4.1 0-7 2.5-7 7v4h-4.5v5H15v12.7c1 .2 2 .3 3 .3s2-.1 3-.3V23h4"
+                fill="#fff"
+              ></path>
+            </svg>
+          </div>
           {toggleProfileModal ? (
             <>
               <Modal onClose={() => setToggleProfileModal(false)}>
@@ -222,70 +260,56 @@ function StoryShow() {
               src={simpleUsers[sessionUserId].profile_picture || profilePic}
             />
           )}
-
-          <div
-            style={{
-              position: "absolute",
-              margin: "25px",
-              left: "0",
-              display: "flex",
-            }}
-          >
-            <button
-              className="back-to-home-button"
-              onClick={() => history.push("/")}
-            >
-              X
-            </button>
-            <img
-              className="facebook-button-story-show"
-              alt="facebook"
-              onClick={() => history.push("/")}
-              src={Facebook}
-            />
-            <button
-              style={{ height: "42px", width: "42px", borderRadius: "50%" }}
-              onClick={() => history.push("/stories/create")}
-            >
-              {" "}
-              +
-            </button>
-          </div>
           <div className="story-show-top-bar">
-            {stories[sessionUserId] !== undefined ? (
-              <Link
-                onClick={() => setCurrentWindow(0)}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  paddingLeft: "10px",
-                  borderRadius: "5px",
-                  padding: "5px",
-                  backgroundColor:
-                    sessionUser.id === parseInt(id) ? "lightgrey" : "#fff",
-                  height: "65px",
-                  width: "100%",
-                }}
-                to={`/stories/${sessionUser.id}`}
-              >
-                <img
-                  alt=""
-                  style={{
-                    height: "50px",
-                    width: "50px",
-                    borderRadius: "50px",
-                  }}
-                  src={
-                    simpleUsers[sessionUser.id].profile_picture || profilePic
-                  }
-                />
-              </Link>
-            ) : null}
             <StoriesSideBar
               usersWithStories={usersWithStories}
               setCurrentWindow={setCurrentWindow}
             />
           </div>
+          <h2 style={{ color: "#fff" }}>Your Story</h2>
+          {stories[sessionUserId] !== undefined ? (
+            <Link
+              onClick={() => setCurrentWindow(0)}
+              style={{
+                display: "flex",
+                paddingLeft: "10px",
+                borderRadius: "5px",
+                padding: "5px",
+                height: "65px",
+                textDecoration: "none",
+              }}
+              to={`/stories/${sessionUser.id}`}
+            >
+              <img
+                alt=""
+                style={{
+                  height: "50px",
+                  width: "50px",
+                  borderRadius: "50px",
+                  border:
+                    sessionUser.id === parseInt(id)
+                      ? "5px solid #166fe5"
+                      : "none",
+                }}
+                src={simpleUsers[sessionUser.id].profile_picture || profilePic}
+              />
+              <p
+                style={{
+                  color: sessionUser.id === parseInt(id) ? "#166fe5" : "#fff",
+                  fontSize: "1.5rem",
+                }}
+              >
+                {simpleUsers[sessionUser.id].name}
+              </p>
+            </Link>
+          ) : null}
+          <h2 style={{ color: "#fff" }}>Create</h2>
+          <button
+            className="create-story-button-story-show"
+            onClick={() => history.push("/stories/create")}
+          >
+            +
+          </button>
           <div className="story-preview-container">
             <button
               className="stories-show-handle-previous"
