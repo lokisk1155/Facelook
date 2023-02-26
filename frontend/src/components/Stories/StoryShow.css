@@ -122,6 +122,17 @@
 }
 
 .create-story-button-story-show {
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  border-radius: 50%;
+  background-color: darkgrey;
+  color: #fff;
+  margin: 5px;
+  border: 1px solid black;
 }
 
 @media (max-width: 800px) {

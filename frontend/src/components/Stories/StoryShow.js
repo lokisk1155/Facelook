@@ -323,7 +323,9 @@ function StoryShow() {
           <button
             className="create-story-button-story-show"
             onClick={() => history.push("/stories/create")}
-          ></button>
+          >
+            {"+"}
+          </button>
           <div className="story-preview-container">
             <button
               className="stories-show-handle-previous"
