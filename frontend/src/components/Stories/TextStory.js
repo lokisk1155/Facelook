@@ -21,6 +21,8 @@ function TextStory() {
 
   const [fakePaddingRight, setFakePaddingRight] = useState(10);
 
+  const [fontType, setFontType] = useState("'Montserrat', sans-serif;");
+
   const [paddingY, setPaddingY] = useState("");
 
   const [fakePaddingY, setFakePaddingY] = useState(0);
@@ -32,6 +34,7 @@ function TextStory() {
   const styles = {
     background_color: backgroundColor,
     font_size: fontSize,
+    font_type: fontType,
     padding_right: paddingRight,
     padding_left: paddingLeft,
     padding_y: paddingY,
@@ -201,16 +204,19 @@ function TextStory() {
                     textDecoration: "none",
                     height: "25px",
                     width: "100%",
+                    fontFamily: fontType,
                   }}
                   className="select-text-font"
+                  onChange={(e) => setFontType(e.target.value)}
                 >
-                  <option>Headline</option>
-                  <option>Simple</option>
-                  <option> Clean</option>
-                  <option>Casual</option>
-                  <option>Fancy</option>
+                  <option value="'Montserrat', sans-serif">Headline</option>
+                  <option value="'Open Sans', sans-serif">Simple</option>
+                  <option value="'Roboto', sans-serif">Clean</option>
+                  <option value="'Comic Sans MS', cursive">Casual</option>
+                  <option value="'Dancing Script', cursive">Fancy</option>
                 </select>
               </label>
+
               <div
                 style={{
                   width: "100%",
@@ -354,6 +360,7 @@ function TextStory() {
                 className="actual-text-story-text"
                 style={{
                   fontSize: fontSize,
+                  fontFamily: fontType,
                   justifyContent: "center",
                   paddingTop: paddingY,
                   paddingLeft: paddingLeft,

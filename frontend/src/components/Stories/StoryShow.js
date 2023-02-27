@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams, Link } from "react-router-dom";
-import { getSimpleUsers } from "../../store/simpleUsers";
-import { fetchStories } from "../../store/story";
-import Facebook from "../NavBar/imgs/Facebook.png";
 import profilePic from "../NavBar/imgs/blank.png";
 import "./StoryShow.css";
-import ProgressBar from "./ProgressBar";
 import { useCallback } from "react";
 import PreviewCurrentStory from "./PreviewCurrentStory";
+import StoriesSideBar from "./StoriesSideBar";
+import ProfilePicModal from "../NavBar/ProfilePicModal";
+import { Modal } from "../../context/Modal";
 
 function StoryShow() {
   const dispatch = useDispatch();
@@ -18,6 +17,8 @@ function StoryShow() {
   const { id } = useParams();
 
   const [currentWindow, setCurrentWindow] = useState(0);
+
+  const [toggleProfileModal, setToggleProfileModal] = useState(null);
 
   const sessionUser = useSelector((state) => state.session.user);
 
@@ -173,17 +174,11 @@ function StoryShow() {
     currentWindow,
   ]);
 
-  let loading = true;
-
-  if (!stories[id]) {
-    loading = false;
-    dispatch(fetchStories());
+  if (Object.values(simpleUsers).length === 0) {
     return null;
   }
 
-  if (Object.values(simpleUsers).length === 0) {
-    loading = false;
-    dispatch(getSimpleUsers());
+  if (!stories[id]) {
     return null;
   }
 
@@ -202,65 +197,94 @@ function StoryShow() {
 
   return (
     <>
-      <div
-        className="stories-show-omega-container"
-        style={{
-          height: "100vh",
-          width: "100vw",
-          display: "flex",
-          backgroundColor: "#fff",
-        }}
-      >
-        <div
-          className="story-show-side-bar"
-          style={{ width: "20%", minWidth: "150px" }}
-        >
-          <div style={{ display: "flex" }}>
+      <div className="stories-show-omega-container">
+        <div className="story-show-preview-container">
+          <div
+            style={{
+              cursor: "pointer",
+              position: "absolute",
+              left: "0",
+              margin: "10px",
+            }}
+          >
             <button
-              style={{
-                height: "40px",
-                width: "40px",
-                borderRadius: "50px",
-                backgroundColor: "#fff",
-                border: "none",
-              }}
               onClick={() => history.push("/")}
+              type="button"
+              className="btn-close"
             >
-              X
+              <span style={{ fontSize: "2rem", color: "lightgrey" }}>X</span>
             </button>
+          </div>
+          <div
+            style={{
+              cursor: "pointer",
+              position: "absolute",
+              right: "0",
+              margin: "5px",
+              marginRight: "65px",
+            }}
+            onClick={() => history.push("/")}
+          >
+            <svg
+              viewBox="0 0 36 36"
+              class="x1lliihq x1k90msu x2h7rmj x1qfuztq x1ssd25i"
+              height="50"
+              width="50"
+            >
+              <defs>
+                <linearGradient
+                  x1="50%"
+                  x2="50%"
+                  y1="97.0782153%"
+                  y2="0%"
+                  id="jsc_s_2"
+                >
+                  <stop offset="0%" stop-color="#0062E0"></stop>
+                  <stop offset="100%" stop-color="#19AFFF"></stop>
+                </linearGradient>
+              </defs>
+              <path
+                d="M15 35.8C6.5 34.3 0 26.9 0 18 0 8.1 8.1 0 18 0s18 8.1 18 18c0 8.9-6.5 16.3-15 17.8l-1-.8h-4l-1 .8"
+                fill="url(#jsc_s_2)"
+              ></path>
+              <path
+                class="xe3v8dz"
+                d="M25 23l.8-5H21v-3.5c0-1.4.5-2.5 2.7-2.5H26V7.4c-1.3-.2-2.7-.4-4-.4-4.1 0-7 2.5-7 7v4h-4.5v5H15v12.7c1 .2 2 .3 3 .3s2-.1 3-.3V23h4"
+                fill="#fff"
+              ></path>
+            </svg>
+          </div>
+          {toggleProfileModal ? (
+            <>
+              <Modal onClose={() => setToggleProfileModal(false)}>
+                <ProfilePicModal />
+              </Modal>
+            </>
+          ) : (
             <img
-              alt=""
-              style={{
-                height: "40px",
-                width: "40px",
-                borderRadius: "50px",
-                backgroundColor: "#fff",
-                border: "none",
-              }}
-              onClick={() => history.push("/")}
-              src={Facebook}
+              className="profile-pic-in-story-show"
+              alt="123131s"
+              onClick={() => setToggleProfileModal(true)}
+              src={simpleUsers[sessionUserId].profile_picture || profilePic}
+            />
+          )}
+          <div className="story-show-top-bar">
+            <StoriesSideBar
+              usersWithStories={usersWithStories}
+              setCurrentWindow={setCurrentWindow}
             />
           </div>
-          <br></br>
-          <div className="your-stories-show">
-            <h4>Your Story</h4>
-            <button onClick={() => history.push("/stories/create")}>
-              Create Story
-            </button>
-          </div>
+          <h2 style={{ padding: "10px" }}>Your Story</h2>
           {stories[sessionUserId] !== undefined ? (
             <Link
               onClick={() => setCurrentWindow(0)}
               style={{
                 display: "flex",
-                alignItems: "center",
                 paddingLeft: "10px",
                 borderRadius: "5px",
                 padding: "5px",
-                backgroundColor:
-                  sessionUser.id === parseInt(id) ? "lightgrey" : "#fff",
                 height: "65px",
-                width: "100%",
+                textDecoration: "none",
               }}
               to={`/stories/${sessionUser.id}`}
             >
@@ -270,126 +294,45 @@ function StoryShow() {
                   height: "50px",
                   width: "50px",
                   borderRadius: "50px",
+                  border:
+                    sessionUser.id === parseInt(id)
+                      ? "5px solid #166fe5"
+                      : "5px solid black",
                 }}
                 src={simpleUsers[sessionUser.id].profile_picture || profilePic}
               />
-              <p>{simpleUsers[sessionUser.id].name}</p>
+              <p
+                style={{
+                  color: sessionUser.id === parseInt(id) ? "#166fe5" : "#fff",
+                  fontSize: "1.5rem",
+                }}
+              >
+                {simpleUsers[sessionUser.id].name}
+              </p>
             </Link>
           ) : null}
-          <br></br>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              overflow: "scroll",
-              height: "75%",
-            }}
+          <h2 style={{ padding: "10px" }}>Create</h2>
+          <button
+            className="create-story-button-story-show"
+            onClick={() => history.push("/stories/create")}
           >
-            <h4>All Stories</h4>
-            {stories &&
-              Object.values(usersWithStories).map((user, index) => {
-                return (
-                  <div onClick={() => setCurrentWindow(0)} key={index}>
-                    <Link
-                      className="all-stories-mapped"
-                      to={`/stories/${user.user_id}`}
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        paddingLeft: "10px",
-                        borderRadius: "5px",
-                        padding: "5px",
-                        backgroundColor:
-                          user.user_id === parseInt(id) ? "lightgrey" : "#fff",
-                        height: "65px",
-                        width: "100%",
-                      }}
-                    >
-                      <img
-                        alt=""
-                        style={{
-                          height: "50px",
-                          width: "50px",
-                          borderRadius: "50px",
-                        }}
-                        src={user.profile_picture || profilePic}
-                      />
-                      <p>{user.name}</p>
-                    </Link>
-                  </div>
-                );
-              })}
-          </div>
-        </div>
-
-        <div
-          className="story-show-preview-container"
-          style={{
-            width: "80%",
-            backgroundColor: "black",
-            position: "relative",
-          }}
-        >
-          <div
-            style={{
-              height: "90%",
-              width: "60%",
-              top: "50%",
-              right: "50%",
-              bottom: "50%",
-              left: "50%",
-              position: "absolute",
-              transform: "translate(-50%, -50%)",
-              minWidth: "200px",
-              minHeight: "200px",
-            }}
-          >
-            <ProgressBar
+            {"+"}
+          </button>
+          <div className="story-preview-container">
+            <button
+              className="stories-show-handle-previous"
+              onClick={handlePrevious}
+            >
+              <div>&#8249;</div>
+            </button>
+            <PreviewCurrentStory
+              currentStory={currentStory}
               stories={stories[id]}
-              currentStoryId={currentStory.id}
               currentWindow={currentWindow}
             />
-            <PreviewCurrentStory currentStory={currentStory} />
-            <div
-              style={{
-                display: "flex",
-                width: "200px",
-                maxWidth: "30%",
-                minHeight: "50px",
-                height: "70px",
-              }}
-            >
-              <button
-                style={{
-                  width: "50%",
-                  minWidth: "45px",
-                  maxWidth: "65px",
-                  borderRadius: "50%",
-                  backgroundColor: "#1b74e4",
-                  margin: "5px",
-                  color: "#fff",
-                  border: "none",
-                }}
-                onClick={handlePrevious}
-              >
-                &#8249;
-              </button>
-              <button
-                style={{
-                  width: "50%",
-                  minWidth: "45px",
-                  maxWidth: "65px",
-                  borderRadius: "50%",
-                  backgroundColor: "#1b74e4",
-                  margin: "5px",
-                  color: "#fff",
-                  border: "none",
-                }}
-                onClick={handleNext}
-              >
-                &#8250;
-              </button>
-            </div>
+            <button className="stories-show-handle-next" onClick={handleNext}>
+              &#8250;
+            </button>
           </div>
         </div>
       </div>

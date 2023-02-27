@@ -3,16 +3,34 @@ import { addStory } from "./story";
 import { receivePosts } from "./post";
 import { getSimpleUsers } from "./simpleUsers";
 
-export const homePage = () => async (dispatch) => {
-  dispatch(getSimpleUsers());
-  const postRes = await csrfFetch(`/api/posts`);
-  const postData = await postRes.json();
-  const storiesRes = await csrfFetch(`/api/stories?limit=${3}`);
-  const storiesData = await storiesRes.json();
-  if (!postRes.ok || !storiesRes.ok) {
-    return false;
-  }
-  dispatch(addStory(storiesData));
-  dispatch(receivePosts(postData));
-  return true;
-};
+export const homePage =
+  (getStories, getPosts, getUsers) => async (dispatch) => {
+    console.log(getStories, getPosts, getUsers);
+    let postRes = false;
+    let postData = false;
+    let storiesRes = false;
+    let storiesData = false;
+    let simpleUsers = false;
+    if (getUsers) {
+      dispatch(getSimpleUsers());
+      simpleUsers = true;
+    }
+    if (getPosts) {
+      postRes = await csrfFetch(`/api/posts`);
+      postData = await postRes.json();
+    }
+
+    if (getStories) {
+      storiesRes = await csrfFetch(`/api/stories?limit=${10}`);
+      storiesData = await storiesRes.json();
+    }
+
+    dispatch(addStory(storiesData));
+    dispatch(receivePosts(postData));
+    const cashedResults = {
+      stories: getStories ? storiesRes : true,
+      posts: getPosts ? postRes : true,
+      users: getUsers ? simpleUsers : true,
+    };
+    return cashedResults;
+  };

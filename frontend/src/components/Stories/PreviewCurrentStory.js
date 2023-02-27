@@ -1,25 +1,21 @@
-function PreviewCurrentStory({ currentStory }) {
+import "./PreviewCurrentStory.css";
+import ProgressBar from "./ProgressBar";
+function PreviewCurrentStory({ stories, currentStory, currentWindow }) {
   return (
     <>
       {!currentStory.picture ? (
         <div
           className="actual-story-show-background"
           style={{
-            height: "75%",
-            width: "65%",
-            position: "absolute",
-            borderRadius: "7px",
-            minWidth: "200px",
-            minHeight: "200px",
-            top: "50%",
-            right: "50%",
-            bottom: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            maxWidth: "300px",
             backgroundColor: currentStory.background_color,
           }}
         >
+          <ProgressBar
+            stories={stories}
+            currentStoryId={currentStory.id}
+            currentStoryCreatedAt={currentStory.created_at}
+            currentWindow={currentWindow}
+          />
           <p
             className="actual-story-show-text"
             style={{
@@ -38,25 +34,18 @@ function PreviewCurrentStory({ currentStory }) {
           </p>
         </div>
       ) : (
-        <img
-          alt=""
-          className="actual-text-story-background"
-          src={currentStory.picture}
-          style={{
-            height: "75%",
-            width: "65%",
-            position: "absolute",
-            borderRadius: "7px",
-            minWidth: "200px",
-            minHeight: "200px",
-            top: "50%",
-            right: "50%",
-            bottom: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            maxWidth: "300px",
-          }}
-        ></img>
+        <div className="actual-story-show-background">
+          <ProgressBar
+            stories={stories}
+            currentStoryId={currentStory.id}
+            currentWindow={currentWindow}
+          />
+          <img
+            alt=""
+            src={currentStory.picture}
+            style={{ width: "100%", height: "100%" }}
+          ></img>
+        </div>
       )}
     </>
   );

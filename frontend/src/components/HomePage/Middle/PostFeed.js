@@ -7,24 +7,18 @@ import profilePic from "../../NavBar/imgs/blank.png";
 import PostIndex from "../../Post/PostIndex";
 import "./PostFeed.css";
 
-function PostFeed({ profilePage, currentUser }) {
+function PostFeed({ profilePage }) {
   const { id } = useParams();
 
   const [togglePost, setTogglePost] = useState(false);
-
-  const postsFromState = useSelector((state) => state.posts);
 
   const simpleUsers = useSelector((state) => state.simpleUsers);
 
   const sessionUser = useSelector((state) => state.session.user);
 
-  const posts = profilePage
-    ? Object.values(
-        Object.values(postsFromState).filter(
-          (post) => post.user_id === currentUser.id
-        )
-      )
-    : postsFromState;
+  const posts = useSelector((state) =>
+    profilePage ? state.userPosts : state.posts
+  );
 
   const handleNewPost = (e) => {
     e.preventDefault();

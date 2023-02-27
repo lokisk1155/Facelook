@@ -1,3 +1,147 @@
 /* .all-stories-mapped:hover {
     background-color: lightgrey;
 } */
+
+.story-preview-container {
+  height: 90%;
+  width: 80%;
+  top: 50%;
+  right: 50%;
+  bottom: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.story-show-preview-container {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  position: relative;
+}
+
+.stories-show-omega-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  background-color: #fff;
+}
+
+.story-show-side-bar {
+  width: 20%;
+  min-width: 150px;
+}
+
+.back-to-home-button {
+  height: 40px;
+  width: 40px;
+  border-radius: 50px;
+  background-color: #fff;
+  border: none;
+}
+
+.facebook-button-story-show {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 1px solid black;
+}
+
+.back-to-home-button:hover {
+  background-color: lightgrey;
+}
+
+.stories-show-handle-next {
+  top: 50%;
+  bottom: 50%;
+  right: 25%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 75px;
+  border-radius: 50%;
+  background-color: #fff;
+  color: black;
+  opacity: 0.75;
+  height: 75px;
+  border: none;
+}
+
+.stories-show-handle-previous {
+  top: 50%;
+  bottom: 50%;
+  left: 30.5%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 75px;
+  border-radius: 50%;
+  background-color: #fff;
+  color: black;
+  opacity: 0.75;
+  height: 75px;
+  border: none;
+}
+
+.profile-pic-in-story-show {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  border-radius: 50%;
+  margin: 5px;
+  right: 0;
+  cursor: pointer;
+}
+
+.stories-show-handle-previous:hover {
+  background-color: lightgrey;
+}
+
+.stories-show-handle-next:hover {
+  background-color: lightgrey;
+}
+
+.story-show-top-bar {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-close {
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  background-color: rgb(55, 55, 55);
+  border: 1px solid black;
+}
+
+.btn-close:hover {
+  background-color: black;
+}
+
+.create-story-button-story-show {
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  border-radius: 50%;
+  background-color: darkgrey;
+  color: #fff;
+  margin: 5px;
+  border: 1px solid black;
+}
+
+@media (max-width: 800px) {
+}
+
+@media (max-width: 700px) {
+}
+
+@media (max-width: 625) {
+  .story-preview-container {
+  }
+}
