@@ -8,21 +8,14 @@ import StoriesHeader from "./Middle/StoriesHeader";
 import { useEffect } from "react";
 import { useState } from "react";
 import CircleLoading from "../loading/CircleLoading";
+import GetHomePage from "../../hooks/getHomePage";
 
 function HomePage() {
   const dispatch = useDispatch();
 
-  const [loading, setLoading] = useState(false);
+  const loading = GetHomePage() 
 
   const number = 6;
-
-  useEffect(() => {
-    dispatch(homePage()).then((data) => {
-      setTimeout(() => {
-        setLoading(data);
-      }, 750);
-    });
-  }, [dispatch]);
 
   return (
     <>
