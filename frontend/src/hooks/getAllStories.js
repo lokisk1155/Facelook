@@ -11,7 +11,7 @@ export default function GetAllStories() {
 
   const { id } = useParams();
 
-  const simpleUsers = useSelector((state) => state.simpleUsers)
+  const simpleUsers = useSelector((state) => state.simpleUsers);
 
   const [cashe, setCashe] = useState(null);
 
@@ -23,7 +23,7 @@ export default function GetAllStories() {
     }
 
     if (!simpleUsers) {
-        dispatch(getSimpleUsers())
+      dispatch(getSimpleUsers());
     }
   }, [id]);
 
