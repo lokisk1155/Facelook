@@ -18,10 +18,10 @@ function PostFeed({ profilePage, currentUser }) {
 
   const sessionUser = useSelector((state) => state.session.user);
 
-  const posts = useSelector((state) => profilePage ? state.userPosts : state.posts)
+  const posts = useSelector((state) =>
+    profilePage ? state.userPosts : state.posts
+  );
 
-
-  
   const handleNewPost = (e) => {
     e.preventDefault();
     setTogglePost(true);

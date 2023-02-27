@@ -13,7 +13,7 @@ import GetHomePage from "../../hooks/getHomePage";
 function HomePage() {
   const dispatch = useDispatch();
 
-  const loading = GetHomePage() 
+  const loading = GetHomePage();
 
   const number = 6;
 
@@ -39,7 +39,7 @@ function HomePage() {
                   position: "relative",
                 }}
               >
-                  <CircleLoading />
+                <CircleLoading />
               </div>
             </>
           )}
