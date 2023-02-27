@@ -6,19 +6,19 @@ import { fetchStories } from "../store/story";
 import { useState } from "react";
 
 export default function GetAllStories() {
-    const dispatch = useDispatch() 
+  const dispatch = useDispatch();
 
-    const { id } = useParams() 
+  const { id } = useParams();
 
-    const [cashe, setCashe] = useState(null)
+  const [cashe, setCashe] = useState(null);
 
-    useEffect(() => {
-        if (!cashe) {
-            dispatch(fetchStories()).then((data) => {
-                setCashe(data)
-            })
-        }
-    }, [id])
+  useEffect(() => {
+    if (!cashe) {
+      dispatch(fetchStories()).then((data) => {
+        setCashe(data);
+      });
+    }
+  }, [id]);
 
-    return <StoryShow />
+  return <StoryShow />;
 }

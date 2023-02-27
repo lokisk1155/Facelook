@@ -22,10 +22,12 @@ export const createStory = (story, formData) => async (dispatch) => {
 };
 
 export const fetchStories = (limit) => async (dispatch) => {
-  const storiesReq = await csrfFetch(`/api/stories${limit ? `?limit=${limit}` : ""}`);
+  const storiesReq = await csrfFetch(
+    `/api/stories${limit ? `?limit=${limit}` : ""}`
+  );
   const storiesData = await storiesReq.json();
   dispatch(addStory(storiesData));
-  return storiesData
+  return storiesData;
 };
 
 export const storiesReducer = (previousState = {}, action) => {

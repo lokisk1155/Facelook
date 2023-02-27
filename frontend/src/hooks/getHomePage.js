@@ -54,7 +54,7 @@ export default function GetHomePage() {
       if (stories.ok && posts.ok && users) {
         setTimeout(() => {
           setCashedData(true);
-        }, 750)
+        }, 750);
       } else {
         setCashedData(null);
       }

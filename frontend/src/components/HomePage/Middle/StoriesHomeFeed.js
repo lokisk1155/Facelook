@@ -17,16 +17,16 @@ function StoriesHomeFeed() {
 
   const storiesFromState = useSelector((state) => state.stories);
 
-  const stories = []
+  const stories = [];
 
   for (const key in storiesFromState) {
     for (const storyKey in storiesFromState[key]) {
-      stories.push(storiesFromState[key][storyKey])
+      stories.push(storiesFromState[key][storyKey]);
     }
   }
 
   if (simpleUsers[sessionUser.id] === undefined) {
-    return null 
+    return null;
   }
 
   const sessionUserPicture = simpleUsers[sessionUser.id].profile_picture;
@@ -34,15 +34,9 @@ function StoriesHomeFeed() {
   let currentStories;
 
   if (currentWindow === 0) {
-    currentStories =stories.slice(
-      currentWindow,
-      currentWindow + 3
-    );
+    currentStories = stories.slice(currentWindow, currentWindow + 3);
   } else {
-    currentStories =stories.slice(
-      currentWindow,
-      currentWindow + 4
-    );
+    currentStories = stories.slice(currentWindow, currentWindow + 4);
   }
 
   const moveLeft = (e) => {
