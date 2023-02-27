@@ -1,5 +1,4 @@
 import csrfFetch from "./csrf";
-import { receivePosts } from "./post";
 import { setCurrentProfile } from "./user";
 import { receiveFriends } from "./friend";
 
@@ -44,9 +43,9 @@ export const profilePagePosts = (id) => async (dispatch) => {
 };
 
 export const userUpdatePost =
-  (post, location, formData) => async (dispatch) => {
+  (post, formData) => async (dispatch) => {
     const photoAttached = formData instanceof FormData;
-    const postRes = await csrfFetch(`/api/posts/${post.id}`, {
+    await csrfFetch(`/api/posts/${post.id}`, {
       method: "PUT",
       body: photoAttached ? formData : JSON.stringify({ post }),
     });
