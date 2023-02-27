@@ -4,7 +4,6 @@ import { useState } from "react";
 import profilePic from "../../NavBar/imgs/blank.png";
 import StoriesHeader from "./StoriesHeader";
 import "./StoriesHomeFeed.css";
-import { useEffect } from "react";
 
 function StoriesHomeFeed() {
   const history = useHistory();

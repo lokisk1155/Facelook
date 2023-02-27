@@ -1,5 +1,3 @@
-import React from "react";
-import { homePage } from "../store/homePage";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { fetchStories } from "../store/story";
@@ -18,7 +16,7 @@ export default function GetHomePage() {
   const [cashedData, setCashedData] = useState(null);
 
   useEffect(() => {
-    let dataFetched = false 
+    let dataFetched = false;
     if (!Object.keys(storiesData).length) {
       dispatch(fetchStories(10));
       dataFetched = true;
@@ -38,10 +36,9 @@ export default function GetHomePage() {
         setCashedData(true);
       }, 1000);
     } else {
-      setCashedData(true)
+      setCashedData(true);
     }
-
-  }, [dispatch]);
+  }, [dispatch, storiesData, postsData, simpleUsersData, cashedData]);
 
   return cashedData;
 }

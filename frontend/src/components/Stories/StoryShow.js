@@ -263,6 +263,7 @@ function StoryShow() {
           ) : (
             <img
               className="profile-pic-in-story-show"
+              alt="123131s"
               onClick={() => setToggleProfileModal(true)}
               src={simpleUsers[sessionUserId].profile_picture || profilePic}
             />

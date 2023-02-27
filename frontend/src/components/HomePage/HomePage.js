@@ -1,18 +1,13 @@
-import { useDispatch } from "react-redux";
-import { homePage } from "../../store/homePage";
 import NavBar from "../NavBar/NavBar";
 import StoriesHomeFeed from "./Middle/StoriesHomeFeed";
 import PostFeed from "./Middle/PostFeed";
-import "./HomePage.css";
 import StoriesHeader from "./Middle/StoriesHeader";
-import { useEffect } from "react";
-import { useState } from "react";
 import CircleLoading from "../loading/CircleLoading";
 import GetHomePage from "../../hooks/getHomePage";
+import "./HomePage.css";
 
 function HomePage() {
   const fetchedData = GetHomePage();
-
   return (
     <>
       <NavBar />
