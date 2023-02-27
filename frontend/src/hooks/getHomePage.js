@@ -2,63 +2,37 @@ import React from "react";
 import { homePage } from "../store/homePage";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import { fetchStories } from "../store/story";
+import { fetchPosts } from "../store/post";
+import { getSimpleUsers } from "../store/simpleUsers";
 
 export default function GetHomePage() {
   const dispatch = useDispatch();
 
-  const [storiesData, setStoriesData] = useState(null);
+  const storiesData = useSelector((state) => state.stories)
 
-  const [postsData, setPostsData] = useState(null);
+  const postsData = useSelector((state) => state.posts)
 
-  const [simpleUsersData, setSimpleUsersData] = useState(null);
+  const simpleUsersData = useSelector((state) => state.simpleUsers)
 
   const [cashedData, setCashedData] = useState(null);
 
   useEffect(() => {
-    let getStories = false;
-    let getPosts = false;
-    let getUsers = false;
-    if (!storiesData) {
-      getStories = true;
+    if (!Object.keys(storiesData).length) {
+      dispatch(fetchStories(10))
     }
 
-    if (!postsData) {
-      getPosts = true;
+    if (!Object.keys(postsData).length) {
+      dispatch(fetchPosts())
     }
 
-    if (!simpleUsersData) {
-      getUsers = true;
+    if (!Object.keys(simpleUsersData).length) {
+      dispatch(getSimpleUsers())
     }
-    dispatch(homePage(getStories, getPosts, getUsers)).then((data) => {
-      const { stories, posts, users } = data;
-      console.log(data);
-      if (stories.ok) {
-        setStoriesData(true);
-      } else {
-        setStoriesData(null);
-      }
 
-      if (posts.ok) {
-        setPostsData(true);
-      } else {
-        setPostsData(false);
-      }
-
-      if (users) {
-        setSimpleUsersData(true);
-      }
-      {
-        setSimpleUsersData(false);
-      }
-
-      if (stories.ok && posts.ok && users) {
-        setTimeout(() => {
-          setCashedData(true);
-        }, 750);
-      } else {
-        setCashedData(null);
-      }
-    });
+    setTimeout(() => {
+      setCashedData(true)
+    }, 750)
   }, [dispatch]);
 
   return cashedData;

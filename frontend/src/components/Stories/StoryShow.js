@@ -1,9 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams, Link } from "react-router-dom";
-import { getSimpleUsers } from "../../store/simpleUsers";
-import { fetchStories } from "../../store/story";
-import Facebook from "../NavBar/imgs/Facebook.png";
 import profilePic from "../NavBar/imgs/blank.png";
 import "./StoryShow.css";
 import { useCallback } from "react";
