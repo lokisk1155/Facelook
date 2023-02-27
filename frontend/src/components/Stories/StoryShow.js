@@ -178,16 +178,10 @@ function StoryShow() {
   ]);
 
   if (Object.values(simpleUsers).length === 0) {
-    dispatch(getSimpleUsers());
-    if (!stories[id]) {
-      dispatch(fetchStories());
-      return null;
-    }
     return null;
   }
 
   if (!stories[id]) {
-    dispatch(fetchStories());
     return null;
   }
 
