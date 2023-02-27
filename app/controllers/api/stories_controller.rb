@@ -14,24 +14,21 @@ class Api::StoriesController < ApplicationController
 
   end
 
-    def index
-        @stories = Story.all
-        @homepage = false
-        @all = false 
-        limit = params[:limit]
-        if limit
-          @stories = Story.by_user(current_user.id, limit.to_i)
-          @homepage = true
-        else
-          @storiesNestedUnderUser = {}
-          user_ids = Story.select(:user_id).distinct.pluck(:user_id)
-          user_ids.each do |user_id|
-            @storiesNestedUnderUser.merge!(Story.group_by_user(user_id))
-          end
-          @all = true
-          @stories = @storiesNestedUnderUser
-        end
-        render 'api/stories/index'
+  def index
+    limit = params[:limit].to_i
+    @storiesNestedUnderUser = {}
+    user_ids = Story.select(:user_id).distinct.pluck(:user_id)
+    user_ids.each do |user_id|
+      if limit > 0
+        difference = limit - @storiesNestedUnderUser.values.flatten.length
+        if (difference <= 0) 
+          break 
+        end 
+      end 
+      @storiesNestedUnderUser.merge!(Story.group_by_user(user_id))
     end
+    @stories = @storiesNestedUnderUser
+    render 'api/stories/index'
+  end  
 end 
 

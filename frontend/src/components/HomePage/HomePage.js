@@ -11,11 +11,7 @@ import CircleLoading from "../loading/CircleLoading";
 import GetHomePage from "../../hooks/getHomePage";
 
 function HomePage() {
-  const dispatch = useDispatch();
-
-  const loading = GetHomePage();
-
-  const number = 6;
+  const fetchedData = GetHomePage();
 
   return (
     <>
@@ -23,7 +19,7 @@ function HomePage() {
       <div className="home-page-container">
         <div className="column"></div>
         <div className="middle">
-          {loading ? (
+          {fetchedData ? (
             <StoriesHomeFeed />
           ) : (
             <>
@@ -43,7 +39,7 @@ function HomePage() {
               </div>
             </>
           )}
-          {loading ? <PostFeed /> : null}
+          {fetchedData ? <PostFeed /> : null}
         </div>
 
         <div className="column"></div>

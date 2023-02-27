@@ -11,27 +11,35 @@ function StoriesHomeFeed() {
 
   const [currentWindow, setCurrentWindow] = useState(0);
 
-  // const [currentStories, setCurrentStories] = useState(null);
-
   const sessionUser = useSelector((state) => state.session.user);
 
   const simpleUsers = useSelector((state) => state.simpleUsers);
 
-  const stories = useSelector((state) => state.stories);
+  const storiesFromState = useSelector((state) => state.stories);
 
-  const sessionUserPicture = useSelector(
-    (state) => state.simpleUsers[sessionUser.id]?.profile_picture
-  );
+  const stories = []
+
+  for (const key in storiesFromState) {
+    for (const storyKey in storiesFromState[key]) {
+      stories.push(storiesFromState[key][storyKey])
+    }
+  }
+
+  if (simpleUsers[sessionUser.id] === undefined) {
+    return null 
+  }
+
+  const sessionUserPicture = simpleUsers[sessionUser.id].profile_picture;
 
   let currentStories;
 
   if (currentWindow === 0) {
-    currentStories = Object.values(stories).slice(
+    currentStories =stories.slice(
       currentWindow,
       currentWindow + 3
     );
   } else {
-    currentStories = Object.values(stories).slice(
+    currentStories =stories.slice(
       currentWindow,
       currentWindow + 4
     );
@@ -41,7 +49,7 @@ function StoriesHomeFeed() {
     if (e) {
       e.preventDefault();
     }
-    if (currentWindow < Object.keys(stories).length - 4) {
+    if (currentWindow < stories.length - 4) {
       let newWindow = currentWindow + 1;
       setCurrentWindow(newWindow);
     }
@@ -55,10 +63,6 @@ function StoriesHomeFeed() {
       setCurrentWindow(newWindow);
     }
   };
-
-  if (!currentStories) {
-    return null;
-  }
 
   return (
     <>
@@ -78,7 +82,7 @@ function StoriesHomeFeed() {
           position: "relative",
         }}
       >
-        {currentWindow < Object.keys(stories).length - 4 ? (
+        {currentWindow < stories.length - 4 ? (
           <button
             className="control-button-story-home"
             style={{
@@ -181,10 +185,10 @@ function StoriesHomeFeed() {
           return (
             <Link
               key={index}
-              to={`/stories/${story?.user_id}`}
+              to={`/stories/${story.user_id}`}
               style={{ width: "21%" }}
             >
-              {story?.picture !== null ? (
+              {story.picture !== null ? (
                 <div
                   className="story-img"
                   style={{
@@ -207,7 +211,7 @@ function StoriesHomeFeed() {
                       border: "4px solid rgb(27, 116, 228)",
                     }}
                     src={
-                      simpleUsers[story?.user_id]?.profile_picture || profilePic
+                      simpleUsers[story.user_id].profile_picture || profilePic
                     }
                   ></img>
                 </div>
@@ -216,7 +220,7 @@ function StoriesHomeFeed() {
                   key={index}
                   className="indi-text-story-home-page"
                   style={{
-                    backgroundColor: story?.background_color,
+                    backgroundColor: story.background_color,
                     width: "100%",
                     height: "95%",
                     paddingTop: "5px",
@@ -233,7 +237,7 @@ function StoriesHomeFeed() {
                       border: "4px solid rgb(27, 116, 228)",
                     }}
                     src={
-                      simpleUsers[story?.user_id]?.profile_picture || profilePic
+                      simpleUsers[story.user_id].profile_picture || profilePic
                     }
                   ></img>
                 </div>

@@ -8,6 +8,7 @@ import { getSimpleUsers } from "./store/simpleUsers";
 import { useParams } from "react-router-dom";
 import CreateStoryIntro from "./components/Stories/CreateStory";
 import StoryShow from "./components/Stories/StoryShow";
+import GetAllStories from "./hooks/getAllStories";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,7 +34,7 @@ function App() {
           path="/stories/create"
           render={() => <CreateStoryIntro />}
         />
-        <Route exact path="/stories/:id" render={() => <StoryShow />} />
+        <Route exact path="/stories/:id" render={() => <GetAllStories />} />
         <ProfilePageRoutes />
       </Switch>
     </>

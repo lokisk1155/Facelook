@@ -52,12 +52,14 @@ export default function GetHomePage() {
       }
 
       if (stories.ok && posts.ok && users) {
-        setCashedData(true);
+        setTimeout(() => {
+          setCashedData(true);
+        }, 750)
       } else {
         setCashedData(null);
       }
     });
   }, [dispatch]);
 
-  return [cashedData, setCashedData];
+  return cashedData;
 }

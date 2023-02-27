@@ -3,20 +3,8 @@ class Story < ApplicationRecord
   belongs_to :user
   has_one_attached :photo
 
-  def self.by_user(user_id, limit)
-    stories = Story.where(user_id:).order(created_at: :desc).limit(limit)
-    count = stories.count
-    if count < limit
-      additional_stories = Story.where.not(user_id:)
-                                .order(created_at: :desc)
-                                .limit(limit - count)
-      stories += additional_stories
-    end
-    stories
-  end
-
   def self.group_by_user(user_id)
-    Story.where(user_id: user_id)
+   Story.where(user_id: user_id)
     .order(created_at: :desc)
     .group_by(&:user_id)
   end
