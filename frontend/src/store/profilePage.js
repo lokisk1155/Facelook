@@ -42,15 +42,14 @@ export const profilePagePosts = (id) => async (dispatch) => {
   dispatch(userReceivePosts(postData));
 };
 
-export const userUpdatePost =
-  (post, formData) => async (dispatch) => {
-    const photoAttached = formData instanceof FormData;
-    await csrfFetch(`/api/posts/${post.id}`, {
-      method: "PUT",
-      body: photoAttached ? formData : JSON.stringify({ post }),
-    });
-    dispatch(profilePagePosts(post.user_id));
-  };
+export const userUpdatePost = (post, formData) => async (dispatch) => {
+  const photoAttached = formData instanceof FormData;
+  await csrfFetch(`/api/posts/${post.id}`, {
+    method: "PUT",
+    body: photoAttached ? formData : JSON.stringify({ post }),
+  });
+  dispatch(profilePagePosts(post.user_id));
+};
 
 export const userDeletePost = (postId, id) => async (dispatch) => {
   await csrfFetch(`/api/posts/${postId}`, { method: "DELETE" });

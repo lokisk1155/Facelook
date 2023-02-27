@@ -100,7 +100,11 @@ function ProgressBar({
         className="link-profile-picture-on-actual-story"
         to={`/ProfilePage/${id}`}
       >
-        <img className="pic-on-actual-story" alt="947621" src={profilePicture} />
+        <img
+          className="pic-on-actual-story"
+          alt="947621"
+          src={profilePicture}
+        />
 
         <ul className="name-and-date-container-story">
           <p className="name-on-actual-story">{simpleUsers[id].name}</p>
