@@ -18,21 +18,29 @@ export default function GetHomePage() {
   const [cashedData, setCashedData] = useState(null);
 
   useEffect(() => {
+    let dataFetched = false 
     if (!Object.keys(storiesData).length) {
       dispatch(fetchStories(10));
+      dataFetched = true;
     }
 
     if (!Object.keys(postsData).length) {
       dispatch(fetchPosts());
+      dataFetched = true;
     }
 
     if (!Object.keys(simpleUsersData).length) {
       dispatch(getSimpleUsers());
+      dataFetched = true;
+    }
+    if (dataFetched) {
+      setTimeout(() => {
+        setCashedData(true);
+      }, 1000);
+    } else {
+      setCashedData(true)
     }
 
-    setTimeout(() => {
-      setCashedData(true);
-    }, 750);
   }, [dispatch]);
 
   return cashedData;
