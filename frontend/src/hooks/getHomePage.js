@@ -1,36 +1,43 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { fetchStories } from "../store/story";
-import { fetchPosts } from "../store/post";
-import { getSimpleUsers } from "../store/simpleUsers";
+import { addAll, fetchStories } from "../store/story";
+import { fetchPosts, receivePosts } from "../store/post";
+import { getSimpleUsers, setSimpleUsers } from "../store/simpleUsers";
 
 export default function GetHomePage() {
   const dispatch = useDispatch();
-
-  const storiesData = useSelector((state) => state.stories);
-
-  const postsData = useSelector((state) => state.posts);
-
-  const simpleUsersData = useSelector((state) => state.simpleUsers);
+  const stories = useSelector((state) => state.stories);
+  const posts = useSelector((state) => state.posts);
+  const simpleUsers = useSelector((state) => state.simpleUsers);
+  const [storiesCached, setStoriesCached] = useState(stories);
+  const [postsCached, setPostsCached] = useState(posts);
+  const [simpleUsersCached, setSimpleUsersCached] = useState(simpleUsers);
 
   const [cashedData, setCashedData] = useState(null);
 
   useEffect(() => {
     let dataFetched = false;
-    if (!Object.keys(storiesData).length) {
-      dispatch(fetchStories(10));
+    if (!Object.keys(simpleUsersCached).length) {
+      dispatch(getSimpleUsers()).then((data) => setSimpleUsersCached(data));
       dataFetched = true;
+    } else {
+      setSimpleUsers(simpleUsersCached);
     }
 
-    if (!Object.keys(postsData).length) {
-      dispatch(fetchPosts());
+    if (!Object.keys(postsCached).length) {
+      dispatch(fetchPosts()).then((data) => setPostsCached(data));
       dataFetched = true;
+    } else {
+      receivePosts(postsCached);
     }
 
-    if (!Object.keys(simpleUsersData).length) {
-      dispatch(getSimpleUsers());
+    if (!Object.keys(storiesCached).length) {
+      dispatch(fetchStories(10)).then((data) => setStoriesCached(data));
       dataFetched = true;
+    } else {
+      addAll(storiesCached);
     }
+
     if (dataFetched) {
       setTimeout(() => {
         setCashedData(true);
@@ -38,7 +45,7 @@ export default function GetHomePage() {
     } else {
       setCashedData(true);
     }
-  }, [dispatch, storiesData, postsData, simpleUsersData, cashedData]);
+  }, []);
 
   return cashedData;
 }

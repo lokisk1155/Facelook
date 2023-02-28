@@ -16,8 +16,12 @@ function App() {
 
   const sessionUser = useSelector((state) => state.session.user);
 
+  const simpleUsers = useSelector((state) => state.simpleUsers);
+
   useEffect(() => {
-    dispatch(getSimpleUsers());
+    if (!simpleUsers) {
+      dispatch(getSimpleUsers());
+    }
   }, [id, dispatch]);
 
   return (

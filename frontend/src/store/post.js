@@ -64,6 +64,7 @@ export const fetchPosts = (limit) => async (dispatch) => {
     localStorage.removeItem("posts");
   }, 10 * 60 * 500);
   dispatch(receivePosts(postData));
+  return postData;
 };
 
 export const createPost =
