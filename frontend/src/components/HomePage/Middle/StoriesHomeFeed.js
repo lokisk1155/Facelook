@@ -24,11 +24,7 @@ function StoriesHomeFeed() {
     }
   }
 
-  if (simpleUsers[sessionUser.id] === undefined) {
-    return null;
-  }
-
-  const sessionUserPicture = simpleUsers[sessionUser.id].profile_picture;
+  const sessionUserPicture = simpleUsers[sessionUser.id]?.profile_picture;
 
   let currentStories;
 

@@ -27,13 +27,19 @@ export const fetchPost = (postId) => async (dispatch) => {
 };
 
 export const fetchPosts = (limit) => async (dispatch) => {
-  let postRes;
-  if (limit) {
-    postRes = await csrfFetch(`/api/posts?limit=${limit}`);
-  } else {
-    postRes = await csrfFetch(`/api/posts`);
+  const casheData = localStorage.getItem('posts')
+
+  if (casheData) {
+    dispatch(receivePosts(JSON.parse(casheData)))
   }
+
+  const postRes = await csrfFetch(`/api/posts${limit ? `?limit=${limit}` : ""}`);
   const postData = await postRes.json();
+  
+  localStorage.setItem('posts', JSON.stringify(postData))
+  setTimeout(() => {
+    localStorage.removeItem('posts');
+  }, 10 * 60 * 1000);
   dispatch(receivePosts(postData));
 };
 

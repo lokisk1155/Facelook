@@ -8,6 +8,7 @@ import "./HomePage.css";
 
 function HomePage() {
   const fetchedData = GetHomePage();
+  console.log(fetchedData)
   return (
     <>
       <NavBar />
