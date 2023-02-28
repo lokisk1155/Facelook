@@ -41,7 +41,7 @@ export const getSimpleUsers = () => async (dispatch) => {
   localStorage.setItem("simpleUsers", encryptedData);
   setTimeout(() => {
     localStorage.removeItem("simpleUsers");
-  }, 10 * 60 * 1000);
+  }, 10 * 60 * 500);
   dispatch(setSimpleUsers(simpleUsers));
   return data;
 };
