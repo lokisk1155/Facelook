@@ -5,7 +5,7 @@ import { createStory } from "../../store/story";
 import PreviewCurrentStory from "./PreviewCurrentStory";
 import "./TextStory.css";
 
-function TextStory() {
+function TextStory({ photoUrl = null, file = null }) {
   const dispatch = useDispatch();
 
   const history = useHistory();
@@ -41,7 +41,7 @@ function TextStory() {
     padding_y: paddingY,
     color: color,
     text_content: textContent,
-    picture: null,
+    picture: photoUrl,
   };
 
   const sessionUser = useSelector((state) => state.session.user);
@@ -50,11 +50,19 @@ function TextStory() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    let formData = false;
+    if (file) {
+      formData = new FormData();
+      formData.append("story[photo]", file);
+      Object.entries(styles).forEach(([key, value]) => {
+        formData.append(`story[styles][${key}]`, value);
+      });
+    }
     let story = {
       user_id: sessionUser.id,
       ...styles,
     };
-    dispatch(createStory(story));
+    dispatch(createStory(story, formData));
     return history.push("/");
   };
 

@@ -19,6 +19,8 @@ function ProgressBar({
 
   const simpleUsers = useSelector((state) => state.simpleUsers);
 
+  const sessionUser = useSelector((state) => state.session.user);
+
   useEffect(() => {
     const calc = 100 / Object.keys(stories).length;
     setProgressBarWidth(calc);

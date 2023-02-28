@@ -306,7 +306,7 @@ function StoryShow() {
                   fontSize: "1.5rem",
                 }}
               >
-                {simpleUsers[sessionUser.id].name}
+                {`${(sessionUser.first_name, sessionUser.last_name)}`}
               </p>
             </Link>
           ) : null}

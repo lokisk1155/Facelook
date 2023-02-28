@@ -6,9 +6,7 @@ function PreviewCurrentStory({ stories, currentStory, currentWindow }) {
       {!currentStory.picture ? (
         <div
           className="actual-story-show-background"
-          style={{
-            backgroundColor: currentStory.background_color,
-          }}
+          style={{ backgroundColor: currentStory.background_color }}
         >
           {stories ? (
             <ProgressBar
@@ -49,6 +47,34 @@ function PreviewCurrentStory({ stories, currentStory, currentWindow }) {
             src={currentStory.picture}
             style={{ width: "100%", height: "100%" }}
           ></img>
+          <div
+            style={{
+              height: "100%",
+              width: "100%",
+              position: "absolute",
+              top: "0",
+              bottom: "0",
+              left: "0",
+              right: "0",
+            }}
+          >
+            <p
+              className="actual-story-show-text"
+              style={{
+                fontSize: currentStory.font_size,
+                justifyContent: "center",
+                paddingTop: `${currentStory.padding_y}`,
+                paddingLeft: `${currentStory.padding_left}`,
+                paddingRight: `${currentStory.padding_right}`,
+                color: `${currentStory.color}`,
+                minWidth: "150px",
+                minHeight: "200px",
+                position: "absolute",
+              }}
+            >
+              {currentStory.text_content}
+            </p>
+          </div>
         </div>
       )}
     </>

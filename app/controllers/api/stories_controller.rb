@@ -2,7 +2,7 @@ class Api::StoriesController < ApplicationController
   def create
     @story
     if params[:story] && params[:story].has_key?(:photo)
-      @story = Story.new(user_id: current_user.id)
+      @story = Story.new(user_id: current_user.id, padding_right: params[:story][:styles][:padding_right], padding_left: params[:story][:styles][:padding_left], color: params[:story][:styles][:color], text_content: params[:story][:styles][:text_content], font_type: params[:story][:styles][:font_type], font_size: params[:story][:styles][:font_size])
       @story.photo.attach(params[:story][:photo])
     else
       @story = false
@@ -30,5 +30,8 @@ class Api::StoriesController < ApplicationController
     @stories = @storiesNestedUnderUser
     render 'api/stories/index'
   end  
+
+  private 
+
 end 
 
