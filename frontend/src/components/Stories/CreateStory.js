@@ -51,8 +51,9 @@ function CreateStoryIntro() {
             onClick={() => history.push("/")}
             type="button"
             className="btn-close-create"
+            style={{ position: "relative", height: "50px", width: "50px" }}
           >
-            <span style={{ fontSize: "2rem", color: "black" }}>X</span>
+            <div style={{ fontSize: "2rem", textAlign: "center" }}>X</div>
           </button>
         </div>
         <div
@@ -62,6 +63,7 @@ function CreateStoryIntro() {
             right: "0",
             margin: "5px",
             marginRight: "65px",
+            zIndex: "35",
           }}
           onClick={() => history.push("/")}
         >
@@ -96,7 +98,7 @@ function CreateStoryIntro() {
         </div>
 
         <img
-          className="profile-pic-in-story-show"
+          className="profile-pic-in-create"
           alt="123131s"
           onClick={() => setToggleProfileModal((prevState) => !prevState)}
           src={simpleUsers[sessionUserId]?.profile_picture || profilePic}

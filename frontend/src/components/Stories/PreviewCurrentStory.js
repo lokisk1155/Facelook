@@ -10,12 +10,14 @@ function PreviewCurrentStory({ stories, currentStory, currentWindow }) {
             backgroundColor: currentStory.background_color,
           }}
         >
-          <ProgressBar
-            stories={stories}
-            currentStoryId={currentStory.id}
-            currentStoryCreatedAt={currentStory.created_at}
-            currentWindow={currentWindow}
-          />
+          {stories ? (
+            <ProgressBar
+              stories={stories}
+              currentStoryId={currentStory.id}
+              currentStoryCreatedAt={currentStory.created_at}
+              currentWindow={currentWindow}
+            />
+          ) : null}
           <p
             className="actual-story-show-text"
             style={{
@@ -35,11 +37,13 @@ function PreviewCurrentStory({ stories, currentStory, currentWindow }) {
         </div>
       ) : (
         <div className="actual-story-show-background">
-          <ProgressBar
-            stories={stories}
-            currentStoryId={currentStory.id}
-            currentWindow={currentWindow}
-          />
+          {stories ? (
+            <ProgressBar
+              stories={stories}
+              currentStoryId={currentStory.id}
+              currentWindow={currentWindow}
+            />
+          ) : null}
           <img
             alt=""
             src={currentStory.picture}

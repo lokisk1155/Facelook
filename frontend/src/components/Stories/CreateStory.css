@@ -27,3 +27,14 @@
   background-color: rgb(218, 218, 218);
   border: 1px solid #fff;
 }
+
+.profile-pic-in-create {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  border-radius: 50%;
+  margin: 5px;
+  right: 0;
+  cursor: pointer;
+  z-index: 35;
+}

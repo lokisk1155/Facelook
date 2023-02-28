@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { createStory } from "../../store/story";
+import PreviewCurrentStory from "./PreviewCurrentStory";
 import "./TextStory.css";
 
 function TextStory() {
@@ -40,6 +41,7 @@ function TextStory() {
     padding_y: paddingY,
     color: color,
     text_content: textContent,
+    picture: null,
   };
 
   const sessionUser = useSelector((state) => state.session.user);
@@ -338,41 +340,7 @@ function TextStory() {
               position: "relative",
             }}
           >
-            <div
-              className="actual-text-story-background"
-              style={{
-                height: "90%",
-                width: "40%",
-                position: "absolute",
-                borderRadius: "7px",
-                backgroundColor: backgroundColor,
-                minWidth: "200px",
-                minHeight: "200px",
-                top: "50%",
-                right: "50%",
-                bottom: "50%",
-                left: "50%",
-                transform: "translate(-50%, -50%)",
-                maxWidth: "300px",
-              }}
-            >
-              <p
-                className="actual-text-story-text"
-                style={{
-                  fontSize: fontSize,
-                  fontFamily: fontType,
-                  justifyContent: "center",
-                  paddingTop: paddingY,
-                  paddingLeft: paddingLeft,
-                  paddingRight: paddingRight,
-                  color: color,
-                  minWidth: "150px",
-                  minHeight: "200px",
-                }}
-              >
-                {textContent}
-              </p>
-            </div>
+            <PreviewCurrentStory currentStory={styles} />
           </div>
         </div>
       </div>
@@ -381,3 +349,39 @@ function TextStory() {
 }
 
 export default TextStory;
+
+// <div
+// className="actual-text-story-background"
+// style={{
+//   height: "90%",
+//   width: "40%",
+//   position: "absolute",
+//   borderRadius: "7px",
+//   backgroundColor: backgroundColor,
+//   minWidth: "200px",
+//   minHeight: "200px",
+//   top: "50%",
+//   right: "50%",
+//   bottom: "50%",
+//   left: "50%",
+//   transform: "translate(-50%, -50%)",
+//   maxWidth: "300px",
+// }}
+// >
+// <p
+//   className="actual-text-story-text"
+//   style={{
+//     fontSize: fontSize,
+//     fontFamily: fontType,
+//     justifyContent: "center",
+//     paddingTop: paddingY,
+//     paddingLeft: paddingLeft,
+//     paddingRight: paddingRight,
+//     color: color,
+//     minWidth: "150px",
+//     minHeight: "200px",
+//   }}
+// >
+//   {textContent}
+// </p>
+// </div>
