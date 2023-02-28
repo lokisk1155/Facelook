@@ -265,7 +265,7 @@ function StoryShow() {
               className="profile-pic-in-story-show"
               alt="123131s"
               onClick={() => setToggleProfileModal(true)}
-              src={simpleUsers[sessionUserId].profile_picture || profilePic}
+              src={simpleUsers[sessionUserId]?.profile_picture || profilePic}
             />
           )}
           <div className="story-show-top-bar">
@@ -299,7 +299,7 @@ function StoryShow() {
                       ? "5px solid #166fe5"
                       : "5px solid black",
                 }}
-                src={simpleUsers[sessionUser.id].profile_picture || profilePic}
+                src={simpleUsers[sessionUser.id]?.profile_picture || profilePic}
               />
               <p
                 style={{

@@ -7,12 +7,11 @@ import Github from "./imgs/GitHub.png";
 import Li from "./imgs/Li.png";
 import wellfound from "./imgs/wellfound.png";
 
-function ProfilePicModal({ closeModal }) {
+function ProfilePicModal() {
   const history = useHistory();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
-  const name = useSelector((state) => state.simpleUsers[user.id].name);
-
+  const name = `${user.first_name} ${user.last_name}`;
   const developerPictures = [Github, Li, wellfound];
   const developerWebsiteLinks = [
     "https://github.com/lokisk1155/FaceOok",

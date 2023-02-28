@@ -137,7 +137,7 @@ function TextStory() {
             <img
               alt=""
               style={{ height: "50px", borderRadius: "50px", padding: "5px" }}
-              src={simpleUsers[sessionUser.id].profile_picture}
+              src={simpleUsers[sessionUser.id]?.profile_picture}
             />
           </div>
           <label>
