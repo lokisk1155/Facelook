@@ -1,9 +1,9 @@
 .omega-profile-modal-container {
-  height: 300px;
   position: absolute;
-  right: 0;
-  bottom: 0;
+  height: 400px;
   top: 0;
+  padding-top: 30px;
+  right: 0;
 }
 .profile-pic-modal-container {
   margin-top: 53px;

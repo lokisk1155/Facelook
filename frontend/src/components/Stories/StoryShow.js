@@ -18,7 +18,7 @@ function StoryShow() {
 
   const [currentWindow, setCurrentWindow] = useState(0);
 
-  const [toggleProfileModal, setToggleProfileModal] = useState(null);
+  const [toggleProfileModal, setToggleProfileModal] = useState(false);
 
   const sessionUser = useSelector((state) => state.session.user);
 
@@ -254,20 +254,19 @@ function StoryShow() {
               ></path>
             </svg>
           </div>
+
+          <img
+            className="profile-pic-in-story-show"
+            alt="123131s"
+            onClick={() => setToggleProfileModal((prevState) => !prevState)}
+            src={simpleUsers[sessionUserId]?.profile_picture || profilePic}
+          />
           {toggleProfileModal ? (
-            <>
-              <Modal onClose={() => setToggleProfileModal(false)}>
-                <ProfilePicModal />
-              </Modal>
-            </>
-          ) : (
-            <img
-              className="profile-pic-in-story-show"
-              alt="123131s"
-              onClick={() => setToggleProfileModal(true)}
-              src={simpleUsers[sessionUserId]?.profile_picture || profilePic}
-            />
-          )}
+            <Modal onClose={() => setToggleProfileModal(false)}>
+              <ProfilePicModal />
+            </Modal>
+          ) : null}
+
           <div className="story-show-top-bar">
             <StoriesSideBar
               usersWithStories={usersWithStories}

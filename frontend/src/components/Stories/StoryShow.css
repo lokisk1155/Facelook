@@ -90,6 +90,7 @@
   margin: 5px;
   right: 0;
   cursor: pointer;
+  z-index: 35;
 }
 
 .stories-show-handle-previous:hover {
