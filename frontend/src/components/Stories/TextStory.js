@@ -21,13 +21,13 @@ function TextStory({ photoUrl = null, file = null }) {
 
   const [paddingRight, setPaddingRight] = useState("10px");
 
-  const [fakePaddingRight, setFakePaddingRight] = useState(10);
+  const [fakePaddingRight, setFakePaddingRight] = useState(0);
 
   const [fontType, setFontType] = useState("'Montserrat', sans-serif;");
 
-  const [paddingY, setPaddingY] = useState("");
+  const [paddingY, setPaddingY] = useState("240px");
 
-  const [fakePaddingY, setFakePaddingY] = useState(0);
+  const [fakePaddingY, setFakePaddingY] = useState(240);
 
   const [color, setColor] = useState("red");
 
@@ -180,6 +180,7 @@ function TextStory({ photoUrl = null, file = null }) {
               style={{
                 position: "absolute",
                 bottom: "0",
+                marinLeft: "5px",
               }}
             >
               <button
