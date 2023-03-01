@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { createStory } from "../../store/story";
 import PreviewCurrentStory from "./PreviewCurrentStory";
+import TextControls from "./TextControls";
 import "./TextStory.css";
 
 function TextStory({ photoUrl = null, file = null }) {
@@ -123,211 +124,19 @@ function TextStory({ photoUrl = null, file = null }) {
         style={{
           display: "flex",
           width: "100%",
+          height: "90%",
           marginTop: "100px",
         }}
       >
         <div
-          className="edit-preview-container"
-          style={{
-            width: "15%",
-            height: "100%",
-            borderRadius: "7px",
-            boxShadow: "0px 75px 75px 0px lightgrey",
-            minWidth: "115px",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              minWidth: "100px",
-              justifyContent: "space-between",
-            }}
-          >
-            <h3 style={{ padding: "0", margin: "0" }}>Your Story</h3>
-            <img
-              alt=""
-              style={{ height: "50px", borderRadius: "50px", padding: "5px" }}
-              src={simpleUsers[sessionUser.id]?.profile_picture}
-            />
-          </div>
-          <label>
-            <textarea
-              maxLength="200"
-              placeholder="Start Typing..."
-              value={textContent}
-              style={{
-                height: "10%",
-                width: "90%",
-                border: "0.5px solid lightgrey",
-                borderRadius: "7px",
-                margin: "2%",
-                overflowWrap: "break-word",
-                fontFamily: "Open Sans, sans-serif",
-                fontSize: "15px",
-                lineHeight: "1",
-              }}
-              onChange={(e) => setTextContent(e.target.value)}
-            />
-          </label>
-          <div style={{ display: "flex", width: "100%", height: "40%" }}>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                marginLeft: "2%",
-              }}
-            >
-              <input
-                style={{
-                  border: "0.5px solid lightgrey",
-                  textDecoration: "none",
-                  height: "25px",
-                  width: "95%",
-                }}
-                placeholder="Type your color..."
-                onChange={(e) => setColor(e.target.value)}
-              ></input>
-              <input
-                style={{
-                  border: "0.5px solid lightgrey",
-                  textDecoration: "none",
-                  height: "25px",
-                  width: "95%",
-                }}
-                placeholder="Pixel font height..."
-                onChange={(e) => setFontSize(`${e.target.value}px`)}
-              ></input>
-              <input
-                style={{
-                  border: "0.5px solid lightgrey",
-                  textDecoration: "none",
-                  height: "25px",
-                  width: "95%",
-                }}
-                placeholder="Background color..."
-                onChange={(e) => setBackgroundColor(`${e.target.value}`)}
-              ></input>
-              <label>
-                <select
-                  style={{
-                    border: "0.5px solid lightgrey",
-                    textDecoration: "none",
-                    height: "25px",
-                    width: "100%",
-                    fontFamily: fontType,
-                  }}
-                  className="select-text-font"
-                  onChange={(e) => setFontType(e.target.value)}
-                >
-                  <option value="'Montserrat', sans-serif">Headline</option>
-                  <option value="'Open Sans', sans-serif">Simple</option>
-                  <option value="'Roboto', sans-serif">Clean</option>
-                  <option value="'Comic Sans MS', cursive">Casual</option>
-                  <option value="'Dancing Script', cursive">Fancy</option>
-                </select>
-              </label>
-
-              <div
-                style={{
-                  width: "100%",
-                  height: "45%",
-                  fontSize: "15px",
-                  display: "grid",
-                  columnCount: "4",
-                  gridTemplateColumns: "repeat(2, 50%)",
-                  border: "1px solid lightgrey",
-                  minHeight: "50px",
-                  minWidth: "50px",
-                }}
-              >
-                <div
-                  onClick={moveUp}
-                  style={{ cursor: "pointer", margin: "auto" }}
-                  className="arrow-button arrow-button--t"
-                />
-                <div
-                  onClick={moveDown}
-                  style={{ cursor: "pointer", margin: "auto" }}
-                  className="arrow-button arrow-button--b"
-                />
-                <div
-                  onClick={moveRight}
-                  style={{ cursor: "pointer", margin: "auto" }}
-                  className="arrow-button arrow-button--r"
-                />
-                <div
-                  onClick={moveLeft}
-                  style={{ cursor: "pointer", margin: "auto" }}
-                  className="arrow-button arrow-button--l"
-                />
-              </div>
-            </div>
-          </div>
-          <div
-            className="storyButtons"
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              height: "30%",
-              justifyContent: "space-evenly",
-            }}
-          >
-            <button
-              style={{
-                height: "15%",
-                width: "65%",
-                marginLeft: "15%",
-                backgroundColor: "#1b74e4",
-                border: "none",
-                color: "#fff",
-                borderRadius: "7px",
-              }}
-              onClick={resetMoves}
-            >
-              reset
-            </button>
-            <Link style={{ height: "15%" }} to="/">
-              <button
-                style={{
-                  height: "100%",
-                  width: "65%",
-                  marginLeft: "15%",
-                  backgroundColor: "#1b74e4",
-                  border: "none",
-                  color: "#fff",
-                  borderRadius: "7px",
-                }}
-              >
-                discard
-              </button>
-            </Link>
-
-            <button
-              onClick={handleSubmit}
-              style={{
-                height: "15%",
-                width: "65%",
-                marginLeft: "15%",
-                backgroundColor: "#1b74e4",
-                border: "none",
-                color: "#fff",
-                borderRadius: "7px",
-              }}
-            >
-              save
-            </button>
-          </div>
-        </div>
-        <div
           className="text-actual-preview-container"
           style={{
-            width: "90%",
+            width: "100%",
+            height: "90%",
             borderRadius: "7px",
             marginRight: "2.5%",
             marginLeft: "2.5%",
             boxShadow: "0px 75px 75px 0px lightgrey",
-            minWidth: "315px",
-            minHeight: "275px",
           }}
         >
           <p style={{ fontSize: "15px", color: "black", marginLeft: "1%" }}>
@@ -338,7 +147,7 @@ function TextStory({ photoUrl = null, file = null }) {
             style={{
               backgroundColor: "black",
               width: "95%",
-              height: "84%",
+              height: "85%",
               marginLeft: "2.5%",
               marginRight: "2.5%",
               borderRadius: "7px",
@@ -348,7 +157,61 @@ function TextStory({ photoUrl = null, file = null }) {
               position: "relative",
             }}
           >
+            <TextControls
+              simpleUsers={simpleUsers}
+              sessionUser={sessionUser}
+              textContent={textContent}
+              fontType={fontType}
+              handleSubmit={handleSubmit}
+              setTextContent={setTextContent}
+              setColor={setColor}
+              setFontSize={setFontSize}
+              setFontType={setFontType}
+              setBackgroundColor={setBackgroundColor}
+              moveDown={moveDown}
+              moveLeft={moveLeft}
+              moveRight={moveRight}
+              moveUp={moveUp}
+              resetMoves={resetMoves}
+            />
             <PreviewCurrentStory currentStory={styles} />
+            <div
+              className="storyButtons"
+              style={{
+                position: "absolute",
+                bottom: "0",
+              }}
+            >
+              <button
+                style={{
+                  backgroundColor: "grey",
+                  border: "none",
+                  color: "#fff",
+                  margin: "5px",
+                  width: "100px",
+                  height: "35px",
+                  borderRadius: "2.5px",
+                }}
+                onClick={resetMoves}
+              >
+                reset
+              </button>
+
+              <button
+                onClick={handleSubmit}
+                style={{
+                  backgroundColor: "#1b74e4",
+                  border: "none",
+                  color: "#fff",
+                  margin: "5px",
+                  width: "100px",
+                  height: "35px",
+                  borderRadius: "2.5px",
+                }}
+              >
+                save
+              </button>
+            </div>
           </div>
         </div>
       </div>

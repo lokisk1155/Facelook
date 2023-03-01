@@ -8,6 +8,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 7px;
+  max-width: 350px;
 }
 
 .actual-text-story-background {

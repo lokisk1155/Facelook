@@ -25,8 +25,6 @@ function PreviewCurrentStory({ stories, currentStory, currentWindow }) {
               paddingLeft: `${currentStory.padding_left}`,
               paddingRight: `${currentStory.padding_right}`,
               color: `${currentStory.color}`,
-              minWidth: "150px",
-              minHeight: "200px",
               position: "absolute",
             }}
           >
