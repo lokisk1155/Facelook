@@ -53,6 +53,13 @@ function StoriesHomeFeed() {
     }
   };
 
+  function findWindowIndex(storyClicked) {
+    const index = storiesFromState[storyClicked.user_id].findIndex(
+      (story) => story.id === storyClicked.id
+    );
+    return `${index}`;
+  }
+
   return (
     <>
       <StoriesHeader />
@@ -174,7 +181,10 @@ function StoriesHomeFeed() {
           return (
             <Link
               key={index}
-              to={`/stories/${story.user_id}`}
+              to={{
+                pathname: `/stories/${story.user_id}`,
+                search: `?windowIndex=${findWindowIndex(story)}`,
+              }}
               style={{ width: "21%", textDecoration: "none" }}
             >
               {story.picture ? (

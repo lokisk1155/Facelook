@@ -8,15 +8,24 @@ import PreviewCurrentStory from "./PreviewCurrentStory";
 import StoriesSideBar from "./StoriesSideBar";
 import ProfilePicModal from "../NavBar/ProfilePicModal";
 import { Modal } from "../../context/Modal";
+import { useLocation } from "react-router-dom";
 
 function StoryShow() {
   const dispatch = useDispatch();
 
   const history = useHistory();
 
+  const location = useLocation();
+
   const { id } = useParams();
 
-  const [currentWindow, setCurrentWindow] = useState(0);
+  const query = new URLSearchParams(location.search);
+
+  const windowIndex = query.get("windowIndex");
+
+  const [currentWindow, setCurrentWindow] = useState(
+    windowIndex !== null ? parseInt(windowIndex) : 0
+  );
 
   const [toggleProfileModal, setToggleProfileModal] = useState(false);
 
@@ -33,9 +42,7 @@ function StoryShow() {
       if (e) {
         e.preventDefault();
       }
-      if (!stories[id]) {
-        return null;
-      }
+      history.replace(`/stories/${id}`);
       if (parseInt(id) === sessionUserId) {
         if (currentWindow === Object.values(stories[id]).length - 1) {
           for (const userId in stories) {
@@ -90,6 +97,7 @@ function StoryShow() {
 
   const handlePrevious = (e) => {
     e.preventDefault();
+    history.replace(`/stories/${id}`);
     if (parseInt(id) === sessionUserId) {
       if (currentWindow === 0) {
         let previousId;
