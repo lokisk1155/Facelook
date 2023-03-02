@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { addAll, fetchStories } from "../store/story";
 import { fetchPosts, receivePosts } from "../store/post";
 import { getSimpleUsers, setSimpleUsers } from "../store/simpleUsers";
@@ -14,8 +14,6 @@ export default function GetHomePage() {
   const storiesCachedRef = useRef(stories);
   const postsCachedRef = useRef(posts);
   const simpleUsersCachedRef = useRef(simpleUsers);
-
-  const [cachedData, setCachedData] = useState(false);
 
   useEffect(() => {
     let dataFetched = false;
@@ -54,7 +52,7 @@ export default function GetHomePage() {
     } else {
       setCachedData(true);
     }
-  }, []);
+  }, [dispatch]);
 
   return Object.keys(simpleUsersCachedRef.current).length ? true : null;
 }
