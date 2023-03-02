@@ -9,8 +9,10 @@ import WorkEd from "../components/ProfilePage/AboutPage/WorkEd";
 import { profilePage } from "../store/profilePage";
 import "./profileAbout.css";
 import ProfileTopLoading from "../components/loading/profileTopLoading";
+import { Route } from "react-router-dom";
 
-function ProfileAbout({ about }) {
+
+function ProfileAbout() {
   const { id } = useParams();
 
   const dispatch = useDispatch();
@@ -74,24 +76,40 @@ function ProfileAbout({ about }) {
           {" "}
           {loading ? (
             <>
-              {about === "Overview" ? (
-                <Overview sessionUser={sessionUser} currentUser={currentUser} />
-              ) : null}
-              {about === "Contact" ? (
-                <ContactInfo
-                  sessionUser={sessionUser}
-                  currentUser={currentUser}
-                />
-              ) : null}
-              {about === "Relationship" ? (
-                <Relationship
-                  sessionUser={sessionUser}
-                  currentUser={currentUser}
-                />
-              ) : null}
-              {about === "WorkEd" ? (
-                <WorkEd sessionUser={sessionUser} currentUser={currentUser} />
-              ) : null}
+              <Route
+                exact
+                path="/ProfilePage/:id/about"
+                render={() => (
+                  <Overview
+                    sessionUser={sessionUser}
+                    currentUser={currentUser}
+                  />
+                )}
+              />
+              <Route
+                path="/ProfilePage/:id/about/work_and_education"
+                render={() => (
+                  <WorkEd sessionUser={sessionUser} currentUser={currentUser} />
+                )}
+              />
+              <Route
+                path="/ProfilePage/:id/about/contact_info"
+                render={() => (
+                  <ContactInfo
+                    sessionUser={sessionUser}
+                    currentUser={currentUser}
+                  />
+                )}
+              />
+              <Route
+                path="/ProfilePage/:id/about/family_and_relationships"
+                render={() => (
+                  <Relationship
+                    sessionUser={sessionUser}
+                    currentUser={currentUser}
+                  />
+                )}
+              />
             </>
           ) : (
             <div

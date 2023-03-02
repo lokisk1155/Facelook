@@ -23,7 +23,7 @@ function App() {
           render={() => <CreateStoryIntro />}
         />
         <Route exact path="/stories/:id" render={() => <GetAllStories />} />
-        <ProfilePageRoutes />
+        <Route path="/ProfilePage/:id" render={() => <ProfilePageRoutes />} />
       </Switch>
     </>
   );
