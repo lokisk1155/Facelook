@@ -15,6 +15,12 @@ export default function GetAllStories() {
   const [storiesCached, setStoriesCached] = useState(stories);
 
   useEffect(() => {
+    if (!Object.keys(simpleUsersCached).length) {
+      dispatch(getSimpleUsers()).then((data) => setSimpleUsersCached(data));
+    } else {
+      setSimpleUsers(simpleUsersCached);
+    }
+
     if (
       !Object.keys(storiesCached).length ||
       Object.keys(storiesCached).length < 4
@@ -22,12 +28,6 @@ export default function GetAllStories() {
       dispatch(fetchStories()).then((data) => setStoriesCached(data));
     } else {
       addAll(storiesCached);
-    }
-
-    if (!Object.keys(simpleUsersCached).length) {
-      dispatch(getSimpleUsers()).then((data) => setSimpleUsersCached(data));
-    } else {
-      setSimpleUsers(simpleUsersCached);
     }
   }, [dispatch]);
 
