@@ -23,7 +23,7 @@ function TextStory({ photoUrl = null, file = null }) {
 
   const [fakePaddingRight, setFakePaddingRight] = useState(0);
 
-  const [fontType, setFontType] = useState("'Montserrat', sans-serif;");
+  const [fontType, setFontType] = useState("'Montserrat', sans-serif");
 
   const [paddingY, setPaddingY] = useState("240px");
 

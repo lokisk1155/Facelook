@@ -62,12 +62,13 @@ function PostFeed({ profilePage }) {
         {Object.values(posts)
           .map((post, index) => {
             return (
-              <PostIndex
-                post={post}
-                index={index}
-                sessionUser={sessionUser}
-                simpleUsers={simpleUsers}
-              />
+              <div key={index}>
+                <PostIndex
+                  post={post}
+                  sessionUser={sessionUser}
+                  simpleUsers={simpleUsers}
+                />
+              </div>
             );
           })
           .reverse()}

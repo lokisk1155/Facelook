@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-
 function TextControls({
   textContent,
   fontType,

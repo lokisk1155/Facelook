@@ -83,6 +83,7 @@ function StoriesHomeFeed() {
               height: "50px",
               width: "50px",
               border: "0.5px solid grey",
+              zIndex: "4",
             }}
             onClick={moveLeft}
           >
@@ -92,7 +93,6 @@ function StoriesHomeFeed() {
               viewBox="0 0 20 20"
               width="1em"
               height="1em"
-              class="x1lliihq x1k90msu x2h7rmj x1qfuztq xcza8v6 xxk0z11 xvy4d1p"
             >
               <path d="M7.8 4.53 13.273 10 7.8 15.47a.75.75 0 0 0 1.061 1.06l6-6a.751.751 0 0 0 0-1.06l-6-6A.75.75 0 0 0 7.8 4.53z"></path>
             </svg>
@@ -177,58 +177,92 @@ function StoriesHomeFeed() {
               to={`/stories/${story.user_id}`}
               style={{ width: "21%" }}
             >
-              {story.picture !== null ? (
+              {story.picture ? (
                 <div
-                  className="story-img"
                   style={{
+                    position: "relative",
+                    height: "100%",
                     width: "100%",
-                    height: "95%",
-                    paddingTop: "5px",
-                    borderRadius: "10px",
-                    backgroundImage: `url(${story?.picture})`,
-                    backgroundPosition: "center",
-                    backgroundRepeat: "no-repeat",
-                    backgroundColor: "lightgrey",
                   }}
                 >
                   <img
+                    className="story-img"
+                    src={story.picture}
+                    style={{
+                      width: "100%",
+                      height: "97%",
+                      borderRadius: "10px",
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat",
+                      backgroundColor: "lightgrey",
+                    }}
+                  />
+                  <img
                     alt=""
                     style={{
+                      position: "absolute",
                       height: "30px",
                       width: "30px",
-                      borderRadius: "50px",
+                      margin: "5px",
+                      borderRadius: "50%",
+                      top: "0",
+                      left: "0",
                       border: "4px solid rgb(27, 116, 228)",
                     }}
                     src={
                       simpleUsers[story.user_id].profile_picture || profilePic
                     }
-                  ></img>
+                  />
                 </div>
               ) : (
                 <div
-                  key={index}
-                  className="indi-text-story-home-page"
                   style={{
-                    backgroundColor: story.background_color,
+                    position: "relative",
+                    height: "100%",
                     width: "100%",
-                    height: "95%",
-                    paddingTop: "5px",
-                    borderRadius: "10px",
                   }}
                 >
+                  <div
+                    className="story-img"
+                    src={story.picture}
+                    style={{
+                      width: "100%",
+                      height: "97%",
+                      borderRadius: "10px",
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat",
+                      backgroundColor: `${story.background_color}`,
+                    }}
+                  >
+                    <p
+                      style={{
+                        fontSize: story.font_size,
+                        justifyContent: "center",
+                        color: `${story.color}`,
+                        minWidth: "150px",
+                        minHeight: "200px",
+                        position: "absolute",
+                      }}
+                    >
+                      {story.text_content}
+                    </p>
+                  </div>
                   <img
                     alt=""
                     style={{
+                      position: "absolute",
                       height: "30px",
                       width: "30px",
-                      borderRadius: "50px",
-                      marginLeft: "5px",
+                      margin: "5px",
+                      borderRadius: "50%",
+                      top: "0",
+                      left: "0",
                       border: "4px solid rgb(27, 116, 228)",
                     }}
                     src={
                       simpleUsers[story.user_id].profile_picture || profilePic
                     }
-                  ></img>
+                  />
                 </div>
               )}
             </Link>
@@ -246,6 +280,7 @@ function StoriesHomeFeed() {
               borderRadius: "50%",
               border: "0.5px solid grey",
               transform: "translateY(-50%)",
+              zIndex: "4",
             }}
             onClick={moveRight}
           >
@@ -254,7 +289,6 @@ function StoriesHomeFeed() {
               viewBox="0 0 20 20"
               width="1em"
               height="1em"
-              class="x1lliihq x1k90msu x2h7rmj x1qfuztq xcza8v6 xxk0z11 xvy4d1p"
             >
               <path d="M12.2 4.53 6.727 10l5.47 5.47a.75.75 0 0 1-1.061 1.06l-6-6a.751.751 0 0 1 0-1.06l6-6A.75.75 0 1 1 12.2 4.53z"></path>
             </svg>
