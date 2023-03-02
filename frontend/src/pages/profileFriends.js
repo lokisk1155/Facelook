@@ -5,11 +5,12 @@ import Friends from "../components/ProfilePage/Friends";
 import ProfileTop from "../components/ProfilePage/ProfileTop";
 import "./profileFriends.css";
 import ProfileTopLoading from "../components/loading/profileTopLoading";
+import GetUserProfile from "../hooks/getUserProfile";
 
 function ProfileFriends() {
   const { id } = useParams();
 
-  const dispatch = useDispatch();
+  const loading = GetUserProfile();
 
   const sessionUser = useSelector((state) => state.session.user);
 
@@ -18,13 +19,6 @@ function ProfileFriends() {
   const friends = useSelector((state) => state.friends);
 
   const currentUserFriends = useSelector((state) => state.user[id]?.friends);
-
-  let loading = true;
-
-  if (!currentUser || !sessionUser || !friends || !currentUserFriends) {
-    loading = false;
-    dispatch(profilePage(id));
-  }
 
   return (
     <>

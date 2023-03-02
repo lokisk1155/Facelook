@@ -10,11 +10,12 @@ import SessionUserIntro from "../components/ProfilePage/SessionUserIntro";
 import "./ProfileDefault.css";
 import ProfileTopLoading from "../components/loading/profileTopLoading";
 import ProfileDefaultLoading from "../components/loading/profileDefaultLoading";
+import GetUserProfile from "../hooks/getUserProfile";
 
 function ProfileDefault() {
   const { id } = useParams();
 
-  const dispatch = useDispatch();
+  const loading = GetUserProfile();
 
   const [introContainerHeight, setIntroContainerHeight] = useState(50);
 
@@ -24,12 +25,8 @@ function ProfileDefault() {
 
   const friends = useSelector((state) => state.friends);
 
-  let loading = true;
-
-  if (!currentUser || !sessionUser) {
+  if (!currentUser || !sessionUser || friends) {
     window.scrollTo(0, 0);
-    loading = false;
-    dispatch(profilePage(id));
   }
 
   return (

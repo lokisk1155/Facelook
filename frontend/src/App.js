@@ -4,8 +4,7 @@ import LoginPage from "./components/UserLogin/LoginPage";
 import { ProfilePageRoutes } from "./routes/ProfilePageRoutes";
 import { useSelector } from "react-redux";
 import HomePage from "./components/HomePage/HomePage";
-import CreateStoryIntro from "./components/Stories/CreateStory";
-import GetAllStories from "./hooks/getAllStories";
+import { StoryRoutes } from "./routes/StoryRoutes";
 
 function App() {
   const sessionUser = useSelector((state) => state.session.user);
@@ -17,12 +16,7 @@ function App() {
           path="/"
           render={() => (sessionUser ? <HomePage /> : <LoginPage />)}
         />
-        <Route
-          exact
-          path="/stories/create"
-          render={() => <CreateStoryIntro />}
-        />
-        <Route exact path="/stories/:id" render={() => <GetAllStories />} />
+        <Route exact path="/stories" render={() => <StoryRoutes />} />
         <Route path="/ProfilePage/:id" render={() => <ProfilePageRoutes />} />
       </Switch>
     </>

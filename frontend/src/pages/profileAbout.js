@@ -10,25 +10,18 @@ import { profilePage } from "../store/profilePage";
 import "./profileAbout.css";
 import ProfileTopLoading from "../components/loading/profileTopLoading";
 import { Route } from "react-router-dom";
-
+import GetUserProfile from "../hooks/getUserProfile";
 
 function ProfileAbout() {
   const { id } = useParams();
 
-  const dispatch = useDispatch();
+  const loading = GetUserProfile();
 
   const sessionUser = useSelector((state) => state.session.user);
 
   const currentUser = useSelector((state) => state.user[id]);
 
   const friends = useSelector((state) => state.friends);
-
-  let loading = true;
-
-  if (!currentUser || !sessionUser) {
-    loading = false;
-    dispatch(profilePage(id));
-  }
 
   return (
     <>
