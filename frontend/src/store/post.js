@@ -27,42 +27,10 @@ export const fetchPost = (postId) => async (dispatch) => {
 };
 
 export const fetchPosts = (limit) => async (dispatch) => {
-  const cachedData = localStorage.getItem("posts");
-
-  if (cachedData) {
-    const parsedData = JSON.parse(cachedData);
-    const decodedData = {};
-    for (const key in parsedData) {
-      const post = parsedData[key];
-      decodedData[post.id] = {
-        content: post.content,
-        picture: post.picture,
-        user_id: parseInt(window.atob(post.user_id)),
-        created_at: post.created_at,
-      };
-    }
-    dispatch(receivePosts(decodedData));
-  }
-
   const postRes = await csrfFetch(
     `/api/posts${limit ? `?limit=${limit}` : ""}`
   );
   const postData = await postRes.json();
-
-  const encodedPosts = {};
-  for (const key in postData) {
-    const post = postData[key];
-    encodedPosts[post.id] = {
-      content: post.content,
-      picture: post.picture,
-      user_id: window.btoa(post.user_id.toString()),
-      created_at: post.created_at,
-    };
-  }
-  localStorage.setItem("posts", JSON.stringify(encodedPosts));
-  setTimeout(() => {
-    localStorage.removeItem("posts");
-  }, 10 * 60 * 500);
   dispatch(receivePosts(postData));
   return postData;
 };

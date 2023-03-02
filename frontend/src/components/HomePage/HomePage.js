@@ -15,7 +15,10 @@ function HomePage() {
         <div className="column"></div>
         <div className="middle">
           {fetchedData ? (
-            <StoriesHomeFeed />
+            <>
+              <StoriesHomeFeed />
+              <PostFeed />
+            </>
           ) : (
             <>
               <StoriesHeader />
@@ -34,9 +37,7 @@ function HomePage() {
               </div>
             </>
           )}
-          {fetchedData ? <PostFeed /> : null}
         </div>
-
         <div className="column"></div>
       </div>
     </>

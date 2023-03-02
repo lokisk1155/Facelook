@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import StoryShow from "../components/Stories/StoryShow";
 import { addAll, fetchStories } from "../store/story";
-import { getSimpleUsers } from "../store/simpleUsers";
-import { useEffect, useState } from "react";
-import { setSimpleUsers } from "../store/simpleUsers";
+import { getSimpleUsers, setSimpleUsers } from "../store/simpleUsers";
+import { useEffect } from "react";
+import { useRef } from "react";
 
 export default function GetAllStories() {
   const dispatch = useDispatch();
@@ -11,25 +11,31 @@ export default function GetAllStories() {
   const simpleUsers = useSelector((state) => state.simpleUsers);
   const stories = useSelector((state) => state.stories);
 
-  const [simpleUsersCached, setSimpleUsersCached] = useState(simpleUsers);
-  const [storiesCached, setStoriesCached] = useState(stories);
+  const simpleUsersCachedRef = useRef(simpleUsers);
+  const storiesCachedRef = useRef(stories);
 
   useEffect(() => {
-    if (!Object.keys(simpleUsersCached).length) {
-      dispatch(getSimpleUsers()).then((data) => setSimpleUsersCached(data));
+    if (!Object.keys(simpleUsersCachedRef.current).length) {
+      dispatch(getSimpleUsers()).then((data) => {
+        simpleUsersCachedRef.current = data;
+      });
     } else {
-      setSimpleUsers(simpleUsersCached);
+      dispatch(setSimpleUsers(simpleUsersCachedRef.current));
     }
 
     if (
-      !Object.keys(storiesCached).length ||
-      Object.keys(storiesCached).length < 4
+      !Object.keys(storiesCachedRef.current).length ||
+      Object.keys(storiesCachedRef.current).length < 4
     ) {
-      dispatch(fetchStories()).then((data) => setStoriesCached(data));
+      dispatch(fetchStories()).then((data) => {
+        storiesCachedRef.current = data;
+      });
     } else {
-      addAll(storiesCached);
+      dispatch(addAll(storiesCachedRef.current));
     }
   }, [dispatch]);
 
-  return <StoryShow />;
+  return Object.keys(simpleUsersCachedRef.current).length ? (
+    <StoryShow />
+  ) : null;
 }

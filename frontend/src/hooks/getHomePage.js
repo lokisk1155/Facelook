@@ -3,49 +3,58 @@ import { useEffect, useState } from "react";
 import { addAll, fetchStories } from "../store/story";
 import { fetchPosts, receivePosts } from "../store/post";
 import { getSimpleUsers, setSimpleUsers } from "../store/simpleUsers";
+import { useRef } from "react";
 
 export default function GetHomePage() {
   const dispatch = useDispatch();
   const stories = useSelector((state) => state.stories);
   const posts = useSelector((state) => state.posts);
   const simpleUsers = useSelector((state) => state.simpleUsers);
-  const [storiesCached, setStoriesCached] = useState(stories);
-  const [postsCached, setPostsCached] = useState(posts);
-  const [simpleUsersCached, setSimpleUsersCached] = useState(simpleUsers);
 
-  const [cashedData, setCashedData] = useState(null);
+  const storiesCachedRef = useRef(stories);
+  const postsCachedRef = useRef(posts);
+  const simpleUsersCachedRef = useRef(simpleUsers);
+
+  const [cachedData, setCachedData] = useState(false);
 
   useEffect(() => {
     let dataFetched = false;
-    if (!Object.keys(simpleUsersCached).length) {
-      dispatch(getSimpleUsers()).then((data) => setSimpleUsersCached(data));
-      dataFetched = true;
+
+    if (!Object.keys(simpleUsersCachedRef.current).length) {
+      dispatch(getSimpleUsers()).then((data) => {
+        simpleUsersCachedRef.current = data;
+        dataFetched = true;
+      });
     } else {
-      setSimpleUsers(simpleUsersCached);
+      dispatch(setSimpleUsers(simpleUsersCachedRef.current));
     }
 
-    if (!Object.keys(postsCached).length) {
-      dispatch(fetchPosts()).then((data) => setPostsCached(data));
-      dataFetched = true;
+    if (!Object.keys(postsCachedRef.current).length) {
+      dispatch(fetchPosts()).then((data) => {
+        postsCachedRef.current = data;
+        dataFetched = true;
+      });
     } else {
-      receivePosts(postsCached);
+      dispatch(receivePosts(postsCachedRef.current));
     }
 
-    if (!Object.keys(storiesCached).length) {
-      dispatch(fetchStories(10)).then((data) => setStoriesCached(data));
-      dataFetched = true;
+    if (!Object.keys(storiesCachedRef.current).length) {
+      dispatch(fetchStories(10)).then((data) => {
+        storiesCachedRef.current = data;
+        dataFetched = true;
+      });
     } else {
-      addAll(storiesCached);
+      dispatch(addAll(storiesCachedRef.current));
     }
 
     if (dataFetched) {
       setTimeout(() => {
-        setCashedData(true);
+        setCachedData(true);
       }, 1000);
     } else {
-      setCashedData(true);
+      setCachedData(true);
     }
   }, []);
 
-  return cashedData;
+  return Object.keys(simpleUsersCachedRef.current).length ? true : null;
 }
