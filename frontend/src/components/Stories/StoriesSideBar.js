@@ -15,9 +15,9 @@ function StoriesSideBar({ usersWithStories, setCurrentWindow }) {
               style={{
                 display: "flex",
                 alignItems: "center",
-                paddingLeft: "10px",
                 borderRadius: "5px",
-                padding: "5px",
+                paddingLeft: "2.5px",
+                paddingRight: "2.5px",
                 height: "65px",
                 width: "100%",
               }}

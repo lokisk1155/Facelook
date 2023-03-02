@@ -49,8 +49,6 @@ function TextStory({ photoUrl = null, file = null }) {
 
   const simpleUsers = useSelector((state) => state.simpleUsers);
 
-  const stories = useSelector((state) => state.stories);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     let formData = false;
@@ -182,11 +180,10 @@ function TextStory({ photoUrl = null, file = null }) {
             />
             <PreviewCurrentStory currentStory={styles} />
             <div
-              className="storyButtons"
+              className="story-buttons"
               style={{
                 position: "absolute",
                 bottom: "0",
-                marinLeft: "5px",
               }}
             >
               <button
@@ -194,7 +191,7 @@ function TextStory({ photoUrl = null, file = null }) {
                   backgroundColor: "grey",
                   border: "none",
                   color: "#fff",
-                  margin: "5px",
+                  margin: "10px",
                   width: "100px",
                   height: "35px",
                   borderRadius: "2.5px",
@@ -210,7 +207,7 @@ function TextStory({ photoUrl = null, file = null }) {
                   backgroundColor: "#1b74e4",
                   border: "none",
                   color: "#fff",
-                  margin: "5px",
+                  margin: "10px",
                   width: "100px",
                   height: "35px",
                   borderRadius: "2.5px",

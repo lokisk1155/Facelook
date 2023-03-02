@@ -25,7 +25,7 @@ export default function GetAllStories() {
 
     if (
       !Object.keys(storiesCachedRef.current).length ||
-      Object.keys(storiesCachedRef.current).length < 4
+      Object.keys(storiesCachedRef.current).length < 6
     ) {
       dispatch(fetchStories()).then((data) => {
         storiesCachedRef.current = data;

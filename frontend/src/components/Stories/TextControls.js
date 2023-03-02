@@ -16,19 +16,18 @@ function TextControls({
       style={{
         height: "50%",
         width: "15%",
-        margin: "5px",
-        backgroundColor: "#fff",
+        margin: "10px",
+        backgroundColor: "black",
       }}
     >
-      <h3 style={{ color: "black" }}>Add text</h3>
+      <h3 style={{ color: "grey" }}>Add text</h3>
       <textarea
         maxLength="200"
         placeholder="Start Typing..."
         value={textContent}
         style={{
           height: "25%",
-          width: "97.5%",
-          border: "0.5px solid lightgrey",
+          width: "98%",
           overflowWrap: "break-word",
           fontFamily: "Open Sans, sans-serif",
           fontSize: "15px",
@@ -44,7 +43,6 @@ function TextControls({
           display: "grid",
           columnCount: "4",
           gridTemplateColumns: "repeat(2, 50%)",
-          border: "1px solid lightgrey",
           minHeight: "50px",
           minWidth: "50px",
         }}
@@ -105,7 +103,7 @@ function TextControls({
           style={{
             border: "0.5px solid lightgrey",
             textDecoration: "none",
-            height: "25px",
+            height: "50px",
             width: "100%",
             fontFamily: fontType,
           }}

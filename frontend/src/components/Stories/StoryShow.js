@@ -212,7 +212,7 @@ function StoryShow() {
               cursor: "pointer",
               position: "absolute",
               left: "0",
-              margin: "10px",
+              margin: "5px",
             }}
           >
             <button

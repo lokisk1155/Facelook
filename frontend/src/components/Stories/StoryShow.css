@@ -107,13 +107,12 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
 }
 
 .btn-close {
   border-radius: 50%;
-  width: 45px;
-  height: 45px;
+  width: 50px;
+  height: 50px;
   background-color: rgb(55, 55, 55);
   border: 1px solid black;
 }
