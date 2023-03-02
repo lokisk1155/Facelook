@@ -189,14 +189,15 @@ function StoriesHomeFeed() {
             >
               {story.picture ? (
                 <div
+                  className="story-img"
                   style={{
                     position: "relative",
                     height: "100%",
                     width: "100%",
+                    borderRadius: "10px",
                   }}
                 >
                   <img
-                    className="story-img"
                     alt="38242"
                     src={story.picture}
                     style={{
@@ -227,15 +228,15 @@ function StoriesHomeFeed() {
                 </div>
               ) : (
                 <div
+                  className="story-img"
                   style={{
                     position: "relative",
                     height: "100%",
                     width: "100%",
-                    overflow: "hidden",
+                    borderRadius: "10px",
                   }}
                 >
                   <div
-                    className="story-img"
                     src={story.picture}
                     style={{
                       width: "100%",

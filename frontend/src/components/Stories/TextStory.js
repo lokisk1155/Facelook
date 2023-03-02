@@ -49,6 +49,8 @@ function TextStory({ photoUrl = null, file = null }) {
 
   const simpleUsers = useSelector((state) => state.simpleUsers);
 
+  const stories = useSelector((state) => state.stories);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     let formData = false;
@@ -63,8 +65,12 @@ function TextStory({ photoUrl = null, file = null }) {
       user_id: sessionUser.id,
       ...styles,
     };
-    dispatch(createStory(story, formData));
-    return history.push("/");
+    dispatch(createStory(story, formData)).then((storyCreated) => {
+      history.push({
+        pathname: `/stories/${storyCreated.user_id}`,
+        search: `?windowIndex=0`,
+      });
+    });
   };
 
   const moveUp = (e) => {

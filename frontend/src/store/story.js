@@ -15,10 +15,14 @@ export const addAll = (stories) => ({
 });
 
 export const createStory = (story, formData) => async (dispatch) => {
-  await csrfFetch(`/api/stories`, {
+  const storyReq = await csrfFetch(`/api/stories`, {
     method: "POST",
     body: formData instanceof FormData ? formData : JSON.stringify(story),
   });
+
+  const storiesData = await storyReq.json();
+  dispatch(fetchStories());
+  return storiesData;
 };
 
 export const fetchStories = (limit) => async (dispatch) => {
@@ -26,13 +30,13 @@ export const fetchStories = (limit) => async (dispatch) => {
     `/api/stories${limit ? `?limit=${limit}` : ""}`
   );
   const storiesData = await storiesReq.json();
-  dispatch(addStory(storiesData));
+  dispatch(addAll(storiesData));
   return storiesData;
 };
 
 export const storiesReducer = (previousState = {}, action) => {
   switch (action.type) {
-    case ADD_STORY:
+    case ADD_ALL:
       return { ...action.payload };
     default:
       return previousState;

@@ -9,8 +9,9 @@ class Api::StoriesController < ApplicationController
       @story = Story.new(user_id: current_user.id, background_color: params[:background_color],
                          font_size: params[:font_size], padding_left: params[:padding_left], padding_right: params[:padding_right], padding_y: params[:padding_y], color: params[:color], text_content: params[:text_content], font_type: params[:font_type])
     end
-
-    return unless @story.save
+    if @story.save 
+      render 'api/stories/show'
+    end 
 
   end
 
