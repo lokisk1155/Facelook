@@ -175,7 +175,7 @@ function StoriesHomeFeed() {
             <Link
               key={index}
               to={`/stories/${story.user_id}`}
-              style={{ width: "21%" }}
+              style={{ width: "21%", textDecoration: "none" }}
             >
               {story.picture ? (
                 <div
@@ -221,6 +221,7 @@ function StoriesHomeFeed() {
                     position: "relative",
                     height: "100%",
                     width: "100%",
+                    overflow: "hidden",
                   }}
                 >
                   <div
@@ -233,16 +234,15 @@ function StoriesHomeFeed() {
                       backgroundPosition: "center",
                       backgroundRepeat: "no-repeat",
                       backgroundColor: `${story.background_color}`,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
                     }}
                   >
                     <p
                       style={{
-                        fontSize: story.font_size,
-                        justifyContent: "center",
+                        fontSize: "1rem",
                         color: `${story.color}`,
-                        minWidth: "150px",
-                        minHeight: "200px",
-                        position: "absolute",
                       }}
                     >
                       {story.text_content}
