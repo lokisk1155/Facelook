@@ -1,18 +1,41 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
-import { profilePage } from "../store/profilePage";
+import { useEffect, useRef } from "react";
+import { profilePage, profilePagePosts } from "../store/profilePage";
 import { useParams } from "react-router-dom";
+import { fetchUser, setCurrentProfile } from "../store/user";
+import { receivePosts } from "../store/post";
+import { useState } from "react";
 
 export default function GetUserProfile() {
   const { id } = useParams();
+
   const dispatch = useDispatch();
-  const [loading, setLoading] = useState(null);
+
+  const posts = useSelector((state) => state.posts);
+
+  const currentUserState = useSelector((state) => state.user[id])
+
+  const postsCachedRef = useRef(posts);
+
+  const currentUserCachedRef = useRef(currentUserState);
 
   useEffect(() => {
-    dispatch(profilePage(id)).then((data) => {
-      setLoading(data);
-    });
-  }, [dispatch, id]);
+    if (!currentUserState) {
+      dispatch(fetchUser(id)).then((data) => {
+        currentUserCachedRef.current = data; 
+      });
+    } else {
+        dispatch(setCurrentProfile(currentUserCachedRef.current))
+    }
 
-  return loading;
+    if (!Object.keys(postsCachedRef.current).length) {
+      dispatch(profilePagePosts()).then((data) => {
+        postsCachedRef.current = data;
+      });
+    } else {
+      dispatch(receivePosts(postsCachedRef.current));
+    }
+  }, [dispatch]);
+
+  return postsCachedRef && currentUserCachedRef ? true : false 
 }

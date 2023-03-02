@@ -41,5 +41,5 @@ export default function GetHomePage() {
     }
   }, [dispatch]);
 
-  return Object.keys(simpleUsersCachedRef.current).length ? true : null;
+  return Object.keys(simpleUsersCachedRef.current).length && Object.keys(postsCachedRef.current).length && Object.keys(storiesCachedRef.current).length ? true : null;
 }

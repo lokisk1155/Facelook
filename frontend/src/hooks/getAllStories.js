@@ -35,7 +35,7 @@ export default function GetAllStories() {
     }
   }, [dispatch]);
 
-  return Object.keys(simpleUsersCachedRef.current).length ? (
+  return Object.keys(simpleUsersCachedRef.current).length && Object.keys(storiesCachedRef.current).length ? (
     <StoryShow />
   ) : null;
 }

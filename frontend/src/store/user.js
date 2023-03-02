@@ -20,6 +20,7 @@ export const fetchUser = (userId) => async (dispatch) => {
   const userRes = await csrfFetch(`/api/users/${userId}`);
   const userData = await userRes.json();
   dispatch(setCurrentProfile(userData.user));
+  return userData.user
 };
 
 export const fetchUsers = (userIds) => async (dispatch) => {
