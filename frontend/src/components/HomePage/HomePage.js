@@ -7,14 +7,14 @@ import GetHomePage from "../../hooks/getHomePage";
 import "./HomePage.css";
 
 function HomePage() {
-  const fetchedData = GetHomePage();
+  const storeHydrated = GetHomePage();
   return (
     <>
       <NavBar />
       <div className="home-page-container">
         <div className="column"></div>
         <div className="middle">
-          {fetchedData ? (
+          {storeHydrated ? (
             <>
               <StoriesHomeFeed />
               <PostFeed />

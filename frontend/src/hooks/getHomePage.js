@@ -16,12 +16,9 @@ export default function GetHomePage() {
   const simpleUsersCachedRef = useRef(simpleUsers);
 
   useEffect(() => {
-    let dataFetched = false;
-
     if (!Object.keys(simpleUsersCachedRef.current).length) {
       dispatch(getSimpleUsers()).then((data) => {
         simpleUsersCachedRef.current = data;
-        dataFetched = true;
       });
     } else {
       dispatch(setSimpleUsers(simpleUsersCachedRef.current));
@@ -30,7 +27,6 @@ export default function GetHomePage() {
     if (!Object.keys(postsCachedRef.current).length) {
       dispatch(fetchPosts()).then((data) => {
         postsCachedRef.current = data;
-        dataFetched = true;
       });
     } else {
       dispatch(receivePosts(postsCachedRef.current));
@@ -39,18 +35,9 @@ export default function GetHomePage() {
     if (!Object.keys(storiesCachedRef.current).length) {
       dispatch(fetchStories(10)).then((data) => {
         storiesCachedRef.current = data;
-        dataFetched = true;
       });
     } else {
       dispatch(addAll(storiesCachedRef.current));
-    }
-
-    if (dataFetched) {
-      setTimeout(() => {
-        setCachedData(true);
-      }, 1000);
-    } else {
-      setCachedData(true);
     }
   }, [dispatch]);
 
