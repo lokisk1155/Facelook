@@ -6,6 +6,7 @@ import CreatePost from "../../Post/CreatePost";
 import profilePic from "../../NavBar/imgs/blank.png";
 import PostIndex from "../../Post/PostIndex";
 import "./PostFeed.css";
+import React from "react";
 
 function PostFeed({ profilePage }) {
   const { id } = useParams();
@@ -62,13 +63,13 @@ function PostFeed({ profilePage }) {
         {Object.values(posts)
           .map((post, index) => {
             return (
-              <div key={index}>
+              <React.Fragment key={index}>
                 <PostIndex
                   post={post}
                   sessionUser={sessionUser}
                   simpleUsers={simpleUsers}
                 />
-              </div>
+              </React.Fragment>
             );
           })
           .reverse()}

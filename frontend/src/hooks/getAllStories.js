@@ -29,7 +29,7 @@ export default function GetAllStories() {
     } else {
       setSimpleUsers(simpleUsersCached);
     }
-  }, [dispatch, simpleUsers]);
+  }, [dispatch]);
 
   return <StoryShow />;
 }

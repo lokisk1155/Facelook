@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import "./LoadingBar.css";
 
-function LoadingBar({ progressBarWidth, index, id, window }) {
+function LoadingBar({ progressBarWidth, id, window }) {
   const [animationOn, setAnimationOn] = useState(false);
 
   const toggleAnimation = useCallback(() => {
@@ -14,7 +14,6 @@ function LoadingBar({ progressBarWidth, index, id, window }) {
 
   return (
     <div
-      key={index}
       style={{
         width: `${progressBarWidth}%`,
         height: "70%",

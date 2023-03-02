@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import LoadingBar from "./LoadingBar";
@@ -18,8 +19,6 @@ function ProgressBar({
   const [profilePicture, setProfilePicture] = useState(null);
 
   const simpleUsers = useSelector((state) => state.simpleUsers);
-
-  const sessionUser = useSelector((state) => state.session.user);
 
   useEffect(() => {
     const calc = 100 / Object.keys(stories).length;
@@ -75,10 +74,9 @@ function ProgressBar({
         }}
       >
         {stories.map((story, index) => (
-          <>
+          <React.Fragment key={index}>
             {story.id !== currentStoryId ? (
               <div
-                key={index}
                 style={{
                   width: `${progressBarWidth}%`,
                   height: "70%",
@@ -90,12 +88,11 @@ function ProgressBar({
             ) : (
               <LoadingBar
                 progressBarWidth={progressBarWidth}
-                index={index}
                 id={currentStoryId}
                 window={currentWindow}
               />
             )}
-          </>
+          </React.Fragment>
         ))}
       </div>
       <Link

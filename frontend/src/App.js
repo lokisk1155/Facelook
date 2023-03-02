@@ -22,7 +22,7 @@ function App() {
     if (!simpleUsers) {
       dispatch(getSimpleUsers());
     }
-  }, [id, dispatch]);
+  }, [id, dispatch, simpleUsers]);
 
   return (
     <>

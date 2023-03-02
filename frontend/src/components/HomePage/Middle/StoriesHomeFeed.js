@@ -187,6 +187,7 @@ function StoriesHomeFeed() {
                 >
                   <img
                     className="story-img"
+                    alt="38242"
                     src={story.picture}
                     style={{
                       width: "100%",
