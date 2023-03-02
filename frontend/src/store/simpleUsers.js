@@ -8,18 +8,19 @@ export const setSimpleUsers = (users) => ({
 });
 
 export const getSimpleUsers = () => async (dispatch) => {
-  const res = await csrfFetch(`/api/users`);
+  const res = await csrfFetch("/api/users");
   const data = await res.json();
   const simpleUsers = {};
   for (const key in data) {
-    simpleUsers[data[key].id] = {
-      user_id: data[key].id,
-      name: `${data[key].first_name} ${data[key].last_name}`,
-      profile_picture: data[key].profile_picture,
+    const user = data[key];
+    simpleUsers[user.id] = {
+      user_id: user.id,
+      name: `${user.first_name} ${user.last_name}`,
+      profile_picture: user.profile_picture,
     };
   }
   dispatch(setSimpleUsers(simpleUsers));
-  return data;
+  return simpleUsers;
 };
 
 const simpleUsersReducer = (previousState = {}, action) => {

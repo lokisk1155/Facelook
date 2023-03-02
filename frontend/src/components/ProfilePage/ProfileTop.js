@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-import { Link, useParams } from "react-router-dom"; /* useHistory */
+import { Link, useParams, useHistory } from "react-router-dom"; /*  */
 import { deleteFriend, addFriend } from "../../store/friend";
 import { Modal } from "../../context/Modal";
 import capitalizeFirstLetter from "../../utils/capFirstLetter";
@@ -11,7 +11,7 @@ import "./ProfileTop.css";
 function ProfileTop({ currentUser, sessionUser, friends }) {
   const dispatch = useDispatch();
 
-  // const history = useHistory();
+  const history = useHistory();
 
   const [toggleDropDown, setToggleDropDown] = useState(false);
 
@@ -136,7 +136,7 @@ function ProfileTop({ currentUser, sessionUser, friends }) {
             </div>
           ) : (
             <div className="edit-details-and-add-story-container">
-              {/* <button
+              <button
                 className="edit-profile-add-story-buttons"
                 style={{
                   alignSelf: "center",
@@ -150,7 +150,7 @@ function ProfileTop({ currentUser, sessionUser, friends }) {
                 onClick={() => history.push("/stories/create")}
               >
                 Add Story
-              </button> */}
+              </button>
               <button
                 className="edit-profile-add-story-buttons"
                 onClick={() => setEditProfile(true)}

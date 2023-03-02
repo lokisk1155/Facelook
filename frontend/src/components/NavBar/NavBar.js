@@ -114,7 +114,7 @@ function NavBar() {
             alt="profile-pic"
             className="profile-pic-modal"
             onClick={() => {
-              setProfileModal(true);
+              setProfileModal(!profileModal);
               setToggleSearch(false);
             }}
           />

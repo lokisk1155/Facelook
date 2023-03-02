@@ -5,12 +5,14 @@ import postsReducer from "./post";
 import sessionReducer from "./session";
 import simpleUsersReducer from "./simpleUsers";
 import userReducer from "./user";
+import userPostsReducer from "./profilePage";
 import { storiesReducer } from "./story";
 
 export const rootReducer = combineReducers({
   session: sessionReducer,
   user: userReducer,
   posts: postsReducer,
+  userPosts: userPostsReducer,
   friends: friendReducer,
   simpleUsers: simpleUsersReducer,
   stories: storiesReducer,

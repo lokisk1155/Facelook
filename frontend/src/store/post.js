@@ -27,14 +27,12 @@ export const fetchPost = (postId) => async (dispatch) => {
 };
 
 export const fetchPosts = (limit) => async (dispatch) => {
-  let postRes;
-  if (limit) {
-    postRes = await csrfFetch(`/api/posts?limit=${limit}`);
-  } else {
-    postRes = await csrfFetch(`/api/posts`);
-  }
+  const postRes = await csrfFetch(
+    `/api/posts${limit ? `?limit=${limit}` : ""}`
+  );
   const postData = await postRes.json();
   dispatch(receivePosts(postData));
+  return postData;
 };
 
 export const createPost =

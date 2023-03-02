@@ -18,6 +18,14 @@
   transform: scale(1.1);
 }
 
+.control-button-story-home {
+  background-color: #fff;
+}
+
+.control-button-story-home:hover {
+  background-color: lightgrey;
+}
+
 @media (max-width: 1400px) {
   .story-create-button-the-acutal-button {
     margin-left: 25%;

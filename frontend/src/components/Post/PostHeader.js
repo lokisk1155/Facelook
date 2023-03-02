@@ -74,7 +74,9 @@ function PostHeader({
                 color: "black",
               }}
             >
-              {simpleUsers[post.user_id]?.name}
+              {post.user_id === sessionUser.id
+                ? `${sessionUser.first_name} ${sessionUser.last_name}`
+                : simpleUsers[post.user_id].name}
             </h5>
           </Link>
           <p

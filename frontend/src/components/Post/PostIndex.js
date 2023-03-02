@@ -5,7 +5,7 @@ import PostImageLoading from "../loading/PostImageLoading";
 import PostHeader from "./PostHeader";
 import PostContent from "./PostContent";
 
-function PostIndex({ post, index, sessionUser, simpleUsers }) {
+function PostIndex({ post, key, sessionUser, simpleUsers }) {
   const dispatch = useDispatch();
   const [editPost, setEditPost] = useState(null);
 
@@ -24,7 +24,7 @@ function PostIndex({ post, index, sessionUser, simpleUsers }) {
   };
 
   return (
-    <div key={index}>
+    <>
       {post.picture ? (
         <div
           style={{
@@ -83,7 +83,7 @@ function PostIndex({ post, index, sessionUser, simpleUsers }) {
           </div>
         </>
       )}
-    </div>
+    </>
   );
 }
 

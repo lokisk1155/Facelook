@@ -1,0 +1,37 @@
+.stories-loading-bar {
+  background-color: #fff;
+  height: 100%;
+  width: 100%;
+  animation: loading 3.5s forwards cubic-bezier(0, 0, 0, 0);
+}
+
+.stories-loading-bar-reset {
+  animation: none;
+}
+
+@keyframes loading {
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+.stories-loading-bar-2 {
+  background-color: #fff;
+  height: 100%;
+  width: 100%;
+  animation: loading2 3.5s forwards cubic-bezier(0, 0, 0, 0);
+}
+
+@keyframes loading2 {
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: 100%;
+  }
+}

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_12_193534) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_23_194442) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -93,6 +93,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_12_193534) do
     t.string "padding_y"
     t.string "color"
     t.string "text_content"
+    t.string "font_type"
     t.index ["user_id"], name: "index_stories_on_user_id"
   end
 
