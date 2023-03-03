@@ -1,41 +1,36 @@
 import { useDispatch, useSelector } from "react-redux";
-import StoryShow from "../components/Stories/StoryShow";
+import { useState, useEffect, useRef } from "react";
 import { addAll, fetchStories } from "../store/story";
-import { getSimpleUsers, setSimpleUsers } from "../store/simpleUsers";
-import { useEffect } from "react";
-import { useRef } from "react";
+import StoryShow from "../components/Stories/StoryShow";
 
 export default function GetAllStories() {
   const dispatch = useDispatch();
 
-  const simpleUsers = useSelector((state) => state.simpleUsers);
-  const stories = useSelector((state) => state.stories);
+  const [storeHydrated, setStoreHydrated] = useState(null);
 
-  const simpleUsersCachedRef = useRef(simpleUsers);
+  const stories = useSelector((state) => state.stories);
+  const simpleUsers = useSelector((state) => {
+    const isHydrated = Object.keys(state.simpleUsers).length > 0;
+    return isHydrated;
+  });
+
   const storiesCachedRef = useRef(stories);
 
   useEffect(() => {
-    if (!Object.keys(simpleUsersCachedRef.current).length) {
-      dispatch(getSimpleUsers()).then((data) => {
-        simpleUsersCachedRef.current = data;
-      });
-    } else {
-      dispatch(setSimpleUsers(simpleUsersCachedRef.current));
-    }
-
-    if (
-      !Object.keys(storiesCachedRef.current).length ||
-      Object.keys(storiesCachedRef.current).length < 6
-    ) {
+    if (!Object.keys(storiesCachedRef.current).length) {
       dispatch(fetchStories()).then((data) => {
         storiesCachedRef.current = data;
+        setStoreHydrated(true);
       });
     } else {
       dispatch(addAll(storiesCachedRef.current));
+      setStoreHydrated(true);
     }
   }, [dispatch]);
 
-  return Object.keys(simpleUsersCachedRef.current).length ? (
-    <StoryShow />
-  ) : null;
+  if (!simpleUsers) {
+    return null;
+  }
+
+  return storeHydrated ? <StoryShow /> : null;
 }
