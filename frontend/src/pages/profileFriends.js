@@ -10,8 +10,6 @@ import GetUserProfile from "../hooks/getUserProfile";
 function ProfileFriends() {
   const { id } = useParams();
 
-  const loading = GetUserProfile();
-
   const sessionUser = useSelector((state) => state.session.user);
 
   const currentUser = useSelector((state) => state.user[id]);
@@ -22,15 +20,11 @@ function ProfileFriends() {
 
   return (
     <>
-      {loading ? (
-        <ProfileTop
-          sessionUser={sessionUser}
-          currentUser={currentUser}
-          friends={friends}
-        />
-      ) : (
-        <ProfileTopLoading />
-      )}
+      <ProfileTop
+        sessionUser={sessionUser}
+        currentUser={currentUser}
+        friends={friends}
+      />
       <div
         className="friends-profile-page-page-container"
         style={{ display: "flex", justifyContent: "center" }}
@@ -41,14 +35,12 @@ function ProfileFriends() {
             maxWidth: "1250px",
           }}
         >
-          {friends ? (
-            <Friends
-              sessionUser={sessionUser}
-              currentUser={currentUser}
-              friends={friends}
-              currentUserFriends={currentUserFriends}
-            />
-          ) : null}
+          <Friends
+            sessionUser={sessionUser}
+            currentUser={currentUser}
+            friends={friends}
+            currentUserFriends={currentUserFriends}
+          />
         </div>
       </div>
     </>

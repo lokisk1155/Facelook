@@ -1,45 +1,53 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { addAll, fetchStories } from "../store/story";
 import { fetchPosts, receivePosts } from "../store/post";
-import { getSimpleUsers, setSimpleUsers } from "../store/simpleUsers";
-import { useRef } from "react";
+import StoriesHomeFeed from "../components/HomePage/Middle/StoriesHomeFeed";
+import PostFeed from "../components/HomePage/Middle/PostFeed";
+import StoriesHeader from "../components/HomePage/Middle/StoriesHeader";
+import CircleLoading from "../components/loading/CircleLoading";
 
 export default function GetHomePage() {
   const dispatch = useDispatch();
+
+  const [storiesHydrated, setStoriesHydrated] = useState(null);
+  const [postsHydrated, setPostsHydrated] = useState(null);
+
   const stories = useSelector((state) => state.stories);
   const posts = useSelector((state) => state.posts);
-  const simpleUsers = useSelector((state) => state.simpleUsers);
+  const simpleUsersHydrated = useSelector((state) => {
+    const isHydrated = Object.keys(state.simpleUsers).length > 0;
+    return isHydrated;
+  });
 
   const storiesCachedRef = useRef(stories);
   const postsCachedRef = useRef(posts);
-  const simpleUsersCachedRef = useRef(simpleUsers);
 
   useEffect(() => {
-    if (!Object.keys(simpleUsersCachedRef.current).length) {
-      dispatch(getSimpleUsers()).then((data) => {
-        simpleUsersCachedRef.current = data;
-      });
-    } else {
-      dispatch(setSimpleUsers(simpleUsersCachedRef.current));
-    }
-
     if (!Object.keys(postsCachedRef.current).length) {
       dispatch(fetchPosts()).then((data) => {
         postsCachedRef.current = data;
+        setPostsHydrated(true);
       });
     } else {
       dispatch(receivePosts(postsCachedRef.current));
+      setPostsHydrated(true);
     }
 
     if (!Object.keys(storiesCachedRef.current).length) {
-      dispatch(fetchStories(10)).then((data) => {
+      dispatch(fetchStories()).then((data) => {
         storiesCachedRef.current = data;
+        setStoriesHydrated(true);
       });
     } else {
       dispatch(addAll(storiesCachedRef.current));
+      setStoriesHydrated(true);
     }
   }, [dispatch]);
 
-  return Object.keys(simpleUsersCachedRef.current).length && Object.keys(postsCachedRef.current).length && Object.keys(storiesCachedRef.current).length ? true : null;
+  if (!storiesHydrated || !postsHydrated) {
+    return null;
+  }
+
+  return simpleUsersHydrated;
 }

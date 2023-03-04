@@ -15,8 +15,6 @@ import GetUserProfile from "../hooks/getUserProfile";
 function ProfileAbout() {
   const { id } = useParams();
 
-  const loading = GetUserProfile();
-
   const sessionUser = useSelector((state) => state.session.user);
 
   const currentUser = useSelector((state) => state.user[id]);
@@ -25,15 +23,11 @@ function ProfileAbout() {
 
   return (
     <>
-      {loading ? (
-        <ProfileTop
-          sessionUser={sessionUser}
-          currentUser={currentUser}
-          friends={friends}
-        />
-      ) : (
-        <ProfileTopLoading />
-      )}
+      <ProfileTop
+        sessionUser={sessionUser}
+        currentUser={currentUser}
+        friends={friends}
+      />
       <div
         className="about-content-container"
         style={{
@@ -66,50 +60,39 @@ function ProfileAbout() {
             height: "100%",
           }}
         >
-          {" "}
-          {loading ? (
-            <>
-              <Route
-                exact
-                path="/ProfilePage/:id/about"
-                render={() => (
-                  <Overview
-                    sessionUser={sessionUser}
-                    currentUser={currentUser}
-                  />
-                )}
-              />
-              <Route
-                path="/ProfilePage/:id/about/work_and_education"
-                render={() => (
-                  <WorkEd sessionUser={sessionUser} currentUser={currentUser} />
-                )}
-              />
-              <Route
-                path="/ProfilePage/:id/about/contact_info"
-                render={() => (
-                  <ContactInfo
-                    sessionUser={sessionUser}
-                    currentUser={currentUser}
-                  />
-                )}
-              />
-              <Route
-                path="/ProfilePage/:id/about/family_and_relationships"
-                render={() => (
-                  <Relationship
-                    sessionUser={sessionUser}
-                    currentUser={currentUser}
-                  />
-                )}
-              />
-            </>
-          ) : (
-            <div
-              className="skeleton"
-              style={{ height: "400px", width: "80vw", alignSelf: "center" }}
+          <>
+            <Route
+              exact
+              path="/ProfilePage/:id/about"
+              render={() => (
+                <Overview sessionUser={sessionUser} currentUser={currentUser} />
+              )}
             />
-          )}
+            <Route
+              path="/ProfilePage/:id/about/work_and_education"
+              render={() => (
+                <WorkEd sessionUser={sessionUser} currentUser={currentUser} />
+              )}
+            />
+            <Route
+              path="/ProfilePage/:id/about/contact_info"
+              render={() => (
+                <ContactInfo
+                  sessionUser={sessionUser}
+                  currentUser={currentUser}
+                />
+              )}
+            />
+            <Route
+              path="/ProfilePage/:id/about/family_and_relationships"
+              render={() => (
+                <Relationship
+                  sessionUser={sessionUser}
+                  currentUser={currentUser}
+                />
+              )}
+            />
+          </>
         </div>
       </div>
     </>

@@ -11,31 +11,15 @@ export default function GetUserProfile() {
 
   const dispatch = useDispatch();
 
-  const posts = useSelector((state) => state.posts);
-
-  const currentUserState = useSelector((state) => state.user[id])
-
-  const postsCachedRef = useRef(posts);
-
-  const currentUserCachedRef = useRef(currentUserState);
+  const [storeHydrated, setStoreHydrated] = useState(null);
 
   useEffect(() => {
-    if (!currentUserState) {
-      dispatch(fetchUser(id)).then((data) => {
-        currentUserCachedRef.current = data; 
-      });
-    } else {
-        dispatch(setCurrentProfile(currentUserCachedRef.current))
-    }
+    dispatch(profilePage(id)).then((data) => {
+      setTimeout(() => {
+        setStoreHydrated(data);
+      }, 750);
+    });
+  }, [dispatch, id]);
 
-    if (!Object.keys(postsCachedRef.current).length) {
-      dispatch(profilePagePosts()).then((data) => {
-        postsCachedRef.current = data;
-      });
-    } else {
-      dispatch(receivePosts(postsCachedRef.current));
-    }
-  }, [dispatch]);
-
-  return postsCachedRef && currentUserCachedRef ? true : false 
+  return storeHydrated;
 }
