@@ -1,9 +1,7 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useRef } from "react";
-import { profilePage, profilePagePosts } from "../store/profilePage";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { profilePage } from "../store/profilePage";
 import { useParams } from "react-router-dom";
-import { fetchUser, setCurrentProfile } from "../store/user";
-import { receivePosts } from "../store/post";
 import { useState } from "react";
 
 export default function GetUserProfile() {

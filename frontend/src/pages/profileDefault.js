@@ -1,16 +1,12 @@
 import ProfileTop from "../components/ProfilePage/ProfileTop";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Intro from "../components/ProfilePage/Intro";
 import FriendsContainer from "../components/ProfilePage/FriendsContainer";
-import { profilePage } from "../store/profilePage";
 import PostFeed from "../components/HomePage/Middle/PostFeed";
 import SessionUserIntro from "../components/ProfilePage/SessionUserIntro";
 import "./ProfileDefault.css";
-import ProfileTopLoading from "../components/loading/profileTopLoading";
-import ProfileDefaultLoading from "../components/loading/profileDefaultLoading";
-import GetUserProfile from "../hooks/getUserProfile";
 
 function ProfileDefault() {
   const { id } = useParams();

@@ -2,10 +2,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState, useRef, useEffect } from "react";
 import { addAll, fetchStories } from "../store/story";
 import { fetchPosts, receivePosts } from "../store/post";
-import StoriesHomeFeed from "../components/HomePage/Middle/StoriesHomeFeed";
-import PostFeed from "../components/HomePage/Middle/PostFeed";
-import StoriesHeader from "../components/HomePage/Middle/StoriesHeader";
-import CircleLoading from "../components/loading/CircleLoading";
 
 export default function GetHomePage() {
   const dispatch = useDispatch();

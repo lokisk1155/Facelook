@@ -1,11 +1,8 @@
 import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { profilePage } from "../store/profilePage";
+import { useSelector } from "react-redux";
 import Friends from "../components/ProfilePage/Friends";
 import ProfileTop from "../components/ProfilePage/ProfileTop";
 import "./profileFriends.css";
-import ProfileTopLoading from "../components/loading/profileTopLoading";
-import GetUserProfile from "../hooks/getUserProfile";
 
 function ProfileFriends() {
   const { id } = useParams();

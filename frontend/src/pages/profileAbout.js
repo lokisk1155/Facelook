@@ -1,16 +1,13 @@
 import ProfileTop from "../components/ProfilePage/ProfileTop";
 import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+import { Route } from "react-router-dom";
 import AboutPageLinks from "../components/ProfilePage/AboutPage/AboutLinks";
 import ContactInfo from "../components/ProfilePage/AboutPage/ContactInfo";
 import Overview from "../components/ProfilePage/AboutPage/Overview";
 import Relationship from "../components/ProfilePage/AboutPage/Relationship";
 import WorkEd from "../components/ProfilePage/AboutPage/WorkEd";
-import { profilePage } from "../store/profilePage";
 import "./profileAbout.css";
-import ProfileTopLoading from "../components/loading/profileTopLoading";
-import { Route } from "react-router-dom";
-import GetUserProfile from "../hooks/getUserProfile";
 
 function ProfileAbout() {
   const { id } = useParams();
