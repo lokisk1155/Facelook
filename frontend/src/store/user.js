@@ -4,7 +4,7 @@ import { profilePage } from "./profilePage";
 
 export const SET_CURRENT_PROFILE = "users/SET_CURRENT_PROFILE";
 export const RECEIVE_USERS = "users/RECEIVE_USERS";
-export const SET_CURRENT_ARRAY = "users/SET_CURRENT_ARRAY";
+export const UPDATE_USER = "users/UPDATE_USER";
 
 export const setCurrentProfile = (user) => ({
   type: SET_CURRENT_PROFILE,
@@ -14,6 +14,11 @@ export const setCurrentProfile = (user) => ({
 export const receiveUsers = (users) => ({
   type: RECEIVE_USERS,
   payload: users,
+});
+
+export const updateCurrentUser = (user) => ({
+  type: UPDATE_USER,
+  payload: user,
 });
 
 export const fetchUser = (userId) => async (dispatch) => {
@@ -39,18 +44,21 @@ export const fetchUsers = (userIds) => async (dispatch) => {
 
 export const updateUser = (user, formData) => async (dispatch) => {
   const id = user?.id ? user.id : user;
+  let postRes;
   if (formData) {
-    await csrfFetch(`/api/users/${id}`, {
+    postRes = await csrfFetch(`/api/users/${id}`, {
       method: "PUT",
       body: formData,
     });
   } else {
-    await csrfFetch(`/api/users/${id}`, {
+    postRes = await csrfFetch(`/api/users/${id}`, {
       method: "PUT",
       body: JSON.stringify({ user }),
     });
   }
-  return dispatch(profilePage(id));
+  const userData = await postRes.json();
+  dispatch(setCurrentProfile(userData.user));
+  return userData;
 };
 
 const userReducer = (previousState = {}, action) => {
