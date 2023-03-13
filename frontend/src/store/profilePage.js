@@ -65,7 +65,7 @@ const userPostsReducer = (previousState = {}, action) => {
       newState = { ...action.payload };
       return newState;
     case USER_REMOVE_POST:
-      delete newState[action.payload.postId];
+      delete newState[action.payload];
       return newState;
     default:
       return previousState;

@@ -1,8 +1,9 @@
 import { useDispatch } from "react-redux";
-import { deletePost } from "../../store/post";
-import { Link } from "react-router-dom";
+import { deletePost, removePost } from "../../store/post";
+import { Link, useParams } from "react-router-dom";
 import PostLoading from "../loading/PostLoading";
 import profilePic from "../NavBar/imgs/blank.png";
+import { userRemovePost } from "../../store/profilePage";
 function PostHeader({
   post,
   simpleUsers,
@@ -13,9 +14,17 @@ function PostHeader({
 }) {
   const dispatch = useDispatch();
 
+  const { id } = useParams();
+
   const handleDeletePost = (post) => (e) => {
     e.preventDefault();
-    dispatch(deletePost(post.id));
+    dispatch(deletePost(post.id)).then(() => {
+      if (id) {
+        dispatch(userRemovePost(post.id));
+      } else {
+        dispatch(removePost(post.id));
+      }
+    });
   };
 
   function getTimeElapsed(createdAt) {
