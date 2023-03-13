@@ -28,8 +28,6 @@ function PostHeader({
     });
   };
 
-
-
   return (
     <div
       style={{
