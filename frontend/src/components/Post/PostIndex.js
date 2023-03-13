@@ -10,7 +10,7 @@ import { useParams } from "react-router-dom";
 function PostIndex({ post, sessionUser, simpleUsers }) {
   const dispatch = useDispatch();
 
-  const { id } = useParams()
+  const { id } = useParams();
 
   const [editPost, setEditPost] = useState(null);
 
@@ -27,11 +27,11 @@ function PostIndex({ post, sessionUser, simpleUsers }) {
     setEditId(null);
     dispatch(updatePost(post)).then((data) => {
       if (id) {
-        dispatch(userReceivePost(data))
+        dispatch(userReceivePost(data));
       } else {
-        dispatch(receivePost(data))
+        dispatch(receivePost(data));
       }
-    })
+    });
   };
 
   return (

@@ -1,13 +1,12 @@
 import csrfFetch from "./csrf";
-import { profilePage } from "./profilePage";
 
 export const REMOVE_FRIEND = "friends/REMOVE_FRIEND";
 export const RECEIVE_FRIEND = "friends/RECEIVE_FRIEND";
 export const RECEIVE_FRIENDS = "friends/RECEIVE_FRIENDS";
 
-export const removeFriend = (userId) => ({
+export const removeFriend = (friendId) => ({
   type: REMOVE_FRIEND,
-  payload: userId,
+  payload: friendId,
 });
 export const receiveFriend = (friend) => ({
   type: RECEIVE_FRIEND,
@@ -18,12 +17,6 @@ export const receiveFriends = (friends) => ({
   type: RECEIVE_FRIENDS,
   payload: friends,
 });
-
-export const fetchFriend = (userId) => async (dispatch) => {
-  const friendRes = await csrfFetch(`/api/friends?userId=${userId}`);
-  const friendData = await friendRes.json();
-  dispatch(receiveFriend({ friend: { [friendData.id]: friendData } }));
-};
 
 export const fetchFriends = (userIds) => async (dispatch) => {
   const friendsRes = await csrfFetch(`/api/users?userIds=${userIds}`);
@@ -36,12 +29,16 @@ export const addFriend = (friendRequest) => async (dispatch) => {
     method: "POST",
     body: JSON.stringify(friendRequest),
   });
-  return dispatch(profilePage(friendRequest.receiver_id));
+  dispatch(fetchFriends(friendRequest.sender_id))
 };
 
-export const deleteFriend = (friendId, userId) => async (dispatch) => {
+export const deleteFriend = (friendId, sessionUserId, paramsId) => async (dispatch) => {
   await csrfFetch(`/api/friends/${friendId}`, { method: "DELETE" });
-  dispatch(profilePage(userId ? userId : friendId));
+  if (paramsId === sessionUserId) {
+    dispatch(removeFriend(friendId))
+  } else {
+    dispatch(removeFriend(sessionUserId))
+  }
 };
 
 const friendReducer = (previousState = {}, action) => {

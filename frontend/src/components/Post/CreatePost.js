@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import "./CreatePost.css";
 import profilePic from "../NavBar/imgs/blank.png";
-import { profilePagePosts, userReceivePost } from "../../store/profilePage";
+import { userReceivePost } from "../../store/profilePage";
 import CropEasy from "../crop/CropEasy";
 import { useParams } from "react-router-dom";
 

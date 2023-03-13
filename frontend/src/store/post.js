@@ -1,5 +1,4 @@
 import csrfFetch from "./csrf";
-import { profilePage, profilePagePosts } from "./profilePage";
 
 const RECEIVE_POST = "post/receivePost";
 const RECEIVE_POSTS = "post/receivePosts";

@@ -6,7 +6,6 @@ import NavBar from "../components/NavBar/NavBar";
 import GetUserProfile from "../hooks/getUserProfile";
 import ProfileTopLoading from "../components/loading/profileTopLoading";
 import ProfileDefaultLoading from "../components/loading/profileDefaultLoading";
-import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 export function ProfilePageRoutes() {
@@ -25,7 +24,9 @@ export function ProfilePageRoutes() {
       <NavBar />
       {state.loading ? (
         <>
-          <ProfileDefault />;
+          <Route exact path="/ProfilePage/:id">
+            <ProfileDefault />;
+          </Route>
           <Route path="/ProfilePage/:id/friends">
             <ProfileFriends />;
           </Route>
