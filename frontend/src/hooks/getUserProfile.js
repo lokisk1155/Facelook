@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
@@ -8,9 +8,9 @@ import csrfFetch from "../store/csrf";
 import { userReceivePosts } from "../store/profilePage";
 
 export default function GetUserProfile() {
-  const { id } = useParams();
-
   const dispatch = useDispatch();
+
+  const { id } = useParams();
 
   const [storeHydrated, setStoreHydrated] = useState(null);
 
@@ -35,5 +35,7 @@ export default function GetUserProfile() {
     });
   }, [dispatch, id]);
 
-  return storeHydrated;
+  const userState = { loading: storeHydrated, setLoading: setStoreHydrated };
+
+  return userState;
 }
