@@ -1,6 +1,5 @@
 import csrfFetch from "./csrf";
 import { RECEIVE_FRIEND } from "./friend";
-import { profilePage } from "./profilePage";
 
 export const SET_CURRENT_PROFILE = "users/SET_CURRENT_PROFILE";
 export const RECEIVE_USERS = "users/RECEIVE_USERS";
