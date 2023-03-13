@@ -5,7 +5,7 @@ import PostImageLoading from "../loading/PostImageLoading";
 import PostHeader from "./PostHeader";
 import PostContent from "./PostContent";
 
-function PostIndex({ post, key, sessionUser, simpleUsers }) {
+function PostIndex({ post, sessionUser, simpleUsers }) {
   const dispatch = useDispatch();
   const [editPost, setEditPost] = useState(null);
 

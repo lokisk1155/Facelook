@@ -1,5 +1,5 @@
 import csrfFetch from "./csrf";
-import { profilePage } from "./profilePage";
+import { profilePage, profilePagePosts } from "./profilePage";
 
 const RECEIVE_POST = "post/receivePost";
 const RECEIVE_POSTS = "post/receivePosts";
@@ -47,10 +47,11 @@ export const createPost =
     if (formData instanceof FormData) {
       return dispatch(updatePost(newPost, location, formData));
     }
-    if (location === "profile") {
-      return dispatch(profilePage(id));
+    if (location === "profile" && postRes.ok) {
+      dispatch(profilePagePosts(id));
+    } else {
+      dispatch(fetchPosts());
     }
-    dispatch(fetchPosts());
     return newPost;
   };
 

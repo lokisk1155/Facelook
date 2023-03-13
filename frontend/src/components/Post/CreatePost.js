@@ -43,9 +43,8 @@ function CreatePost({ closeModal, location }) {
     }
     const post = {
       content,
-      user_id: sessionUser.id,
     };
-    const id = null;
+    const id = sessionUser.id;
     if (!location) {
       location = "home";
     }

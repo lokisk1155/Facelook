@@ -38,7 +38,8 @@ export const profilePage = (id) => async (dispatch) => {
 export const profilePagePosts = (id) => async (dispatch) => {
   const postRes = await csrfFetch(`/api/posts/${id}`);
   const postData = await postRes.json();
-  dispatch(userReceivePosts(postData));
+  debugger;
+  return dispatch(userReceivePosts(postData));
 };
 
 export const userUpdatePost = (post, formData) => async (dispatch) => {
