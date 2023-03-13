@@ -29,17 +29,18 @@ export const addFriend = (friendRequest) => async (dispatch) => {
     method: "POST",
     body: JSON.stringify(friendRequest),
   });
-  dispatch(fetchFriends(friendRequest.sender_id))
+  dispatch(fetchFriends(friendRequest.sender_id));
 };
 
-export const deleteFriend = (friendId, sessionUserId, paramsId) => async (dispatch) => {
-  await csrfFetch(`/api/friends/${friendId}`, { method: "DELETE" });
-  if (paramsId === sessionUserId) {
-    dispatch(removeFriend(friendId))
-  } else {
-    dispatch(removeFriend(sessionUserId))
-  }
-};
+export const deleteFriend =
+  (friendId, sessionUserId, paramsId) => async (dispatch) => {
+    await csrfFetch(`/api/friends/${friendId}`, { method: "DELETE" });
+    if (paramsId === sessionUserId) {
+      dispatch(removeFriend(friendId));
+    } else {
+      dispatch(removeFriend(sessionUserId));
+    }
+  };
 
 const friendReducer = (previousState = {}, action) => {
   let newState = { ...previousState };

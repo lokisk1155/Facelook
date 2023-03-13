@@ -33,8 +33,8 @@ export const profilePage = (id) => async (dispatch) => {
   dispatch(setCurrentProfile(userData.user));
   dispatch(receiveFriends(friendsData));
   if (postData && postData && friendsData) {
-    return true 
-  } 
+    return true;
+  }
 };
 
 const userPostsReducer = (previousState = {}, action) => {

@@ -25,16 +25,16 @@ function ProfileTop({ currentUser, sessionUser, friends }) {
     currentUser.first_name
   )} ${capitalizeFirstLetter(currentUser.last_name)}`;
 
-  const friendsHeader = `${Object.keys(friends).length} Friends`
+  const friendsHeader = `${Object.keys(friends).length} Friends`;
 
   const notSelf = currentUser.id !== sessionUser.id ? true : false;
 
-  let isFriend = false
+  let isFriend = false;
 
-  console.log(friends)
+  console.log(friends);
 
   if (friends[sessionUser.id]) {
-    isFriend = true 
+    isFriend = true;
   }
 
   const handleAdd = (e) => {
