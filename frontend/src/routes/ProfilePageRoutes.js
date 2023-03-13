@@ -16,9 +16,10 @@ export function ProfilePageRoutes() {
 
   const currentUser = useSelector((state) => state.user[id]);
 
-  if (!currentUser) {
+  if (currentUser === undefined) {
     return null;
   }
+
   return (
     <>
       <NavBar />
