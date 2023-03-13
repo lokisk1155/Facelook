@@ -22,7 +22,7 @@ export function ProfilePageRoutes() {
   return (
     <>
       <NavBar />
-      {state.loading ? (
+      {state ? (
         <>
           <Route exact path="/ProfilePage/:id">
             <ProfileDefault />;

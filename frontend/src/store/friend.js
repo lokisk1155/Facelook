@@ -35,7 +35,7 @@ export const addFriend = (friendRequest) => async (dispatch) => {
 export const deleteFriend =
   (friendId, sessionUserId, paramsId) => async (dispatch) => {
     await csrfFetch(`/api/friends/${friendId}`, { method: "DELETE" });
-    if (paramsId === sessionUserId) {
+    if (parseInt(paramsId) === sessionUserId) {
       dispatch(removeFriend(friendId));
     } else {
       dispatch(removeFriend(sessionUserId));
