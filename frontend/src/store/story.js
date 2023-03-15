@@ -1,13 +1,6 @@
 import csrfFetch from "./csrf";
 
-const ADD_STORY = "stories/ADD_STORY";
-
 const ADD_ALL = "stories/ADD_ALL";
-
-export const addStory = (story) => ({
-  type: ADD_STORY,
-  payload: story,
-});
 
 export const addAll = (stories) => ({
   type: ADD_ALL,
@@ -19,9 +12,7 @@ export const createStory = (story, formData) => async (dispatch) => {
     method: "POST",
     body: formData instanceof FormData ? formData : JSON.stringify(story),
   });
-
   const storiesData = await storyReq.json();
-  dispatch(fetchStories());
   return storiesData;
 };
 
@@ -37,7 +28,7 @@ export const fetchStories = (limit) => async (dispatch) => {
 export const storiesReducer = (previousState = {}, action) => {
   switch (action.type) {
     case ADD_ALL:
-      return { ...action.payload };
+      return { ...previousState, ...action.payload };
     default:
       return previousState;
   }

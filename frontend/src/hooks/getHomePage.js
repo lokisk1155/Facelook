@@ -11,7 +11,7 @@ export default function GetHomePage() {
 
   const stories = useSelector((state) => state.stories);
   const posts = useSelector((state) => state.posts);
-  const simpleUsers = useSelector((state) => {
+  const simpleUsersHydrated = useSelector((state) => {
     const isHydrated = Object.keys(state.simpleUsers).length > 0;
     return isHydrated;
   });
@@ -41,9 +41,9 @@ export default function GetHomePage() {
     }
   }, [dispatch]);
 
-  if (!simpleUsers) {
+  if (!storiesHydrated || !postsHydrated) {
     return null;
   }
 
-  return storiesHydrated && postsHydrated ? true : null;
+  return simpleUsersHydrated;
 }

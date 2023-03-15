@@ -1,15 +1,11 @@
 import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { profilePage } from "../store/profilePage";
+import { useSelector } from "react-redux";
 import Friends from "../components/ProfilePage/Friends";
 import ProfileTop from "../components/ProfilePage/ProfileTop";
 import "./profileFriends.css";
-import ProfileTopLoading from "../components/loading/profileTopLoading";
 
 function ProfileFriends() {
   const { id } = useParams();
-
-  const dispatch = useDispatch();
 
   const sessionUser = useSelector((state) => state.session.user);
 
@@ -19,24 +15,13 @@ function ProfileFriends() {
 
   const currentUserFriends = useSelector((state) => state.user[id]?.friends);
 
-  let loading = true;
-
-  if (!currentUser || !sessionUser || !friends || !currentUserFriends) {
-    loading = false;
-    dispatch(profilePage(id));
-  }
-
   return (
     <>
-      {loading ? (
-        <ProfileTop
-          sessionUser={sessionUser}
-          currentUser={currentUser}
-          friends={friends}
-        />
-      ) : (
-        <ProfileTopLoading />
-      )}
+      <ProfileTop
+        sessionUser={sessionUser}
+        currentUser={currentUser}
+        friends={friends}
+      />
       <div
         className="friends-profile-page-page-container"
         style={{ display: "flex", justifyContent: "center" }}
@@ -47,14 +32,12 @@ function ProfileFriends() {
             maxWidth: "1250px",
           }}
         >
-          {friends ? (
-            <Friends
-              sessionUser={sessionUser}
-              currentUser={currentUser}
-              friends={friends}
-              currentUserFriends={currentUserFriends}
-            />
-          ) : null}
+          <Friends
+            sessionUser={sessionUser}
+            currentUser={currentUser}
+            friends={friends}
+            currentUserFriends={currentUserFriends}
+          />
         </div>
       </div>
     </>

@@ -1,19 +1,16 @@
 import ProfileTop from "../components/ProfilePage/ProfileTop";
 import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+import { Route } from "react-router-dom";
 import AboutPageLinks from "../components/ProfilePage/AboutPage/AboutLinks";
 import ContactInfo from "../components/ProfilePage/AboutPage/ContactInfo";
 import Overview from "../components/ProfilePage/AboutPage/Overview";
 import Relationship from "../components/ProfilePage/AboutPage/Relationship";
 import WorkEd from "../components/ProfilePage/AboutPage/WorkEd";
-import { profilePage } from "../store/profilePage";
 import "./profileAbout.css";
-import ProfileTopLoading from "../components/loading/profileTopLoading";
 
-function ProfileAbout({ about }) {
+function ProfileAbout() {
   const { id } = useParams();
-
-  const dispatch = useDispatch();
 
   const sessionUser = useSelector((state) => state.session.user);
 
@@ -21,24 +18,13 @@ function ProfileAbout({ about }) {
 
   const friends = useSelector((state) => state.friends);
 
-  let loading = true;
-
-  if (!currentUser || !sessionUser) {
-    loading = false;
-    dispatch(profilePage(id));
-  }
-
   return (
     <>
-      {loading ? (
-        <ProfileTop
-          sessionUser={sessionUser}
-          currentUser={currentUser}
-          friends={friends}
-        />
-      ) : (
-        <ProfileTopLoading />
-      )}
+      <ProfileTop
+        sessionUser={sessionUser}
+        currentUser={currentUser}
+        friends={friends}
+      />
       <div
         className="about-content-container"
         style={{
@@ -71,34 +57,39 @@ function ProfileAbout({ about }) {
             height: "100%",
           }}
         >
-          {" "}
-          {loading ? (
-            <>
-              {about === "Overview" ? (
+          <>
+            <Route
+              exact
+              path="/ProfilePage/:id/about"
+              render={() => (
                 <Overview sessionUser={sessionUser} currentUser={currentUser} />
-              ) : null}
-              {about === "Contact" ? (
+              )}
+            />
+            <Route
+              path="/ProfilePage/:id/about/work_and_education"
+              render={() => (
+                <WorkEd sessionUser={sessionUser} currentUser={currentUser} />
+              )}
+            />
+            <Route
+              path="/ProfilePage/:id/about/contact_info"
+              render={() => (
                 <ContactInfo
                   sessionUser={sessionUser}
                   currentUser={currentUser}
                 />
-              ) : null}
-              {about === "Relationship" ? (
+              )}
+            />
+            <Route
+              path="/ProfilePage/:id/about/family_and_relationships"
+              render={() => (
                 <Relationship
                   sessionUser={sessionUser}
                   currentUser={currentUser}
                 />
-              ) : null}
-              {about === "WorkEd" ? (
-                <WorkEd sessionUser={sessionUser} currentUser={currentUser} />
-              ) : null}
-            </>
-          ) : (
-            <div
-              className="skeleton"
-              style={{ height: "400px", width: "80vw", alignSelf: "center" }}
+              )}
             />
-          )}
+          </>
         </div>
       </div>
     </>

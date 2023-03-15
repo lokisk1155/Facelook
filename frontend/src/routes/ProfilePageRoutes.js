@@ -1,78 +1,45 @@
-import { Switch, Route } from "react-router-dom";
+import { Route, useParams } from "react-router-dom";
 import ProfileDefault from "../pages/profileDefault";
 import ProfileFriends from "../pages/profileFriends";
 import ProfileAbout from "../pages/profileAbout";
 import NavBar from "../components/NavBar/NavBar";
+import GetUserProfile from "../hooks/getUserProfile";
+import ProfileTopLoading from "../components/loading/profileTopLoading";
+import ProfileDefaultLoading from "../components/loading/profileDefaultLoading";
+import { useSelector } from "react-redux";
 
 export function ProfilePageRoutes() {
+  const { id } = useParams();
+
+  const state = GetUserProfile();
+
+  const currentUser = useSelector((state) => state.user[id]);
+
+  if (currentUser === undefined) {
+    return null;
+  }
+
   return (
     <>
       <NavBar />
-      <Switch>
-        <Route
-          exact
-          path="/ProfilePage/:id"
-          render={() => (
-            <>
-              <ProfileDefault />
-            </>
-          )}
-        />
-        <Route
-          exact
-          path="/ProfilePage/:id/friends"
-          render={() => (
-            <>
-              <ProfileFriends />
-            </>
-          )}
-        />
-        <Route
-          exact
-          path="/ProfilePage/:id/about"
-          render={() => (
-            <>
-              <ProfileAbout about={"Overview"} />
-            </>
-          )}
-        />
-        <Route
-          exact
-          path="/ProfilePage/:id/about/work_and_education"
-          render={() => (
-            <>
-              <ProfileAbout about={"WorkEd"} />
-            </>
-          )}
-        />
-        <Route
-          exact
-          path="/ProfilePage/:id/about/places_lived"
-          render={() => (
-            <>
-              <ProfileAbout about={"PlacesLived"} />
-            </>
-          )}
-        />
-        <Route
-          exact
-          path="/ProfilePage/:id/about/contact_info"
-          render={() => (
-            <>
-              <ProfileAbout about={"Contact"} />
-            </>
-          )}
-        />
-        <Route
-          exact
-          path="/ProfilePage/:id/about/family_and_relationships"
-          render={() => (
-            <>
-              <ProfileAbout about={"Relationship"} />
-            </>
-          )}
-        />
-      </Switch>
+      {state ? (
+        <>
+          <Route exact path="/ProfilePage/:id">
+            <ProfileDefault />;
+          </Route>
+          <Route path="/ProfilePage/:id/friends">
+            <ProfileFriends />;
+          </Route>
+          <Route path="/ProfilePage/:id/about">
+            <ProfileAbout />;
+          </Route>
+        </>
+      ) : (
+        <>
+          <ProfileTopLoading />
+          <ProfileDefaultLoading />
+        </>
+      )}
     </>
   );
 }

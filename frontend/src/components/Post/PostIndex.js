@@ -1,26 +1,37 @@
-import { updatePost } from "../../store/post";
+import { receivePost, updatePost } from "../../store/post";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import PostImageLoading from "../loading/PostImageLoading";
 import PostHeader from "./PostHeader";
 import PostContent from "./PostContent";
+import { userReceivePost } from "../../store/profilePage";
+import { useParams } from "react-router-dom";
 
-function PostIndex({ post, key, sessionUser, simpleUsers }) {
+function PostIndex({ post, sessionUser, simpleUsers }) {
   const dispatch = useDispatch();
+
+  const { id } = useParams();
+
   const [editPost, setEditPost] = useState(null);
 
   const [editId, setEditId] = useState(null);
 
   const [editContent, setEditContent] = useState("");
 
-  const submitUpdate = (id) => (e) => {
+  const submitUpdate = (postId) => (e) => {
     e.preventDefault();
     const post = {
-      id: id,
+      id: postId,
       content: editContent,
     };
     setEditId(null);
-    dispatch(updatePost(post));
+    dispatch(updatePost(post)).then((data) => {
+      if (id) {
+        dispatch(userReceivePost(data));
+      } else {
+        dispatch(receivePost(data));
+      }
+    });
   };
 
   return (

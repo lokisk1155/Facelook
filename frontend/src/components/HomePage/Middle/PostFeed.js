@@ -52,7 +52,10 @@ function PostFeed({ profilePage }) {
           </div>
           {togglePost && (
             <Modal onClose={() => setTogglePost(false)}>
-              <CreatePost closeModal={setTogglePost} location={"home"} />
+              <CreatePost
+                closeModal={setTogglePost}
+                location={profilePage ? "profile" : "home"}
+              />
             </Modal>
           )}
         </div>

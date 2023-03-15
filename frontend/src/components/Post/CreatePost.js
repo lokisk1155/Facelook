@@ -1,14 +1,18 @@
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { createPost } from "../../store/post";
+import { createPost, receivePost } from "../../store/post";
 import { useState } from "react";
 import { useEffect } from "react";
 import "./CreatePost.css";
 import profilePic from "../NavBar/imgs/blank.png";
+import { userReceivePost } from "../../store/profilePage";
 import CropEasy from "../crop/CropEasy";
+import { useParams } from "react-router-dom";
 
-function CreatePost({ closeModal, location }) {
+function CreatePost({ closeModal, location = "home" }) {
   const dispatch = useDispatch();
+
+  const { id } = useParams();
 
   const sessionUser = useSelector((state) => state.session.user);
 
@@ -43,13 +47,18 @@ function CreatePost({ closeModal, location }) {
     }
     const post = {
       content,
-      user_id: sessionUser.id,
+      user_id: id ? id : sessionUser.id,
     };
-    const id = null;
-    if (!location) {
-      location = "home";
+
+    if (location === "profile") {
+      dispatch(createPost(post, formData)).then((data) => {
+        dispatch(userReceivePost(data));
+      });
+    } else {
+      dispatch(createPost(post, formData)).then((data) => {
+        dispatch(receivePost(data));
+      });
     }
-    dispatch(createPost(post, id, location, formData));
     return closeModal(null);
   }
 

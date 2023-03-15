@@ -1,5 +1,4 @@
 import csrfFetch from "./csrf";
-import { profilePage } from "./profilePage";
 
 const RECEIVE_POST = "post/receivePost";
 const RECEIVE_POSTS = "post/receivePosts";
@@ -35,48 +34,33 @@ export const fetchPosts = (limit) => async (dispatch) => {
   return postData;
 };
 
-export const createPost =
-  (post, id, location, formData) => async (dispatch) => {
-    const postRes = await csrfFetch("/api/posts", {
-      method: "POST",
-      body: JSON.stringify(post),
-    });
-    const postData = await postRes.json();
-    const newPost =
-      postData[Object.keys(postData)[Object.keys(postData).length - 1]];
-    if (formData instanceof FormData) {
-      return dispatch(updatePost(newPost, location, formData));
-    }
-    if (location === "profile") {
-      return dispatch(profilePage(id));
-    }
-    dispatch(fetchPosts());
-    return newPost;
-  };
+export const createPost = (post, formData) => async (dispatch) => {
+  const postRes = await csrfFetch("/api/posts", {
+    method: "POST",
+    body: JSON.stringify(post),
+  });
+  const postData = await postRes.json();
+  const newPost =
+    postData[Object.keys(postData)[Object.keys(postData).length - 1]];
+  if (formData instanceof FormData) {
+    return dispatch(updatePost(newPost, formData));
+  }
+  return newPost;
+};
 
-export const updatePost = (post, location, formData) => async (dispatch) => {
+export const updatePost = (post, formData) => async (dispatch) => {
   const photoAttached = formData instanceof FormData;
   const postRes = await csrfFetch(`/api/posts/${post.id}`, {
     method: "PUT",
     body: photoAttached ? formData : JSON.stringify({ post }),
   });
   const postData = await postRes.json();
-  if (location === "profile") {
-    return dispatch(profilePage(post.user_id));
-  }
-  if (photoAttached) {
-    dispatch(fetchPosts());
-    return true;
-  }
-  return dispatch(receivePost(postData));
+  dispatch(receivePost(postData));
+  return postData;
 };
 
-export const deletePost = (postId, id, location) => async (dispatch) => {
+export const deletePost = (postId) => async (dispatch) => {
   await csrfFetch(`/api/posts/${postId}`, { method: "DELETE" });
-  if (location === "profile") {
-    return dispatch(profilePage(id));
-  }
-  return dispatch(fetchPosts());
 };
 
 const postsReducer = (previousState = {}, action) => {
@@ -88,7 +72,7 @@ const postsReducer = (previousState = {}, action) => {
       newState = { ...action.payload };
       return newState;
     case REMOVE_POST:
-      delete newState[action.payload.postId];
+      delete newState[action.payload];
       return newState;
     default:
       return previousState;

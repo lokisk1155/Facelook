@@ -28,9 +28,9 @@ export default function GetAllStories() {
     }
   }, [dispatch]);
 
-  if (!simpleUsers) {
+  if (!simpleUsers || !storeHydrated) {
     return null;
   }
 
-  return storeHydrated ? <StoryShow /> : null;
+  return <StoryShow />;
 }

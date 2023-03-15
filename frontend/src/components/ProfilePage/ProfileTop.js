@@ -25,36 +25,16 @@ function ProfileTop({ currentUser, sessionUser, friends }) {
     currentUser.first_name
   )} ${capitalizeFirstLetter(currentUser.last_name)}`;
 
-  const friendCount = Object.values(currentUser.friends).length;
-
-  const isFriend = currentUser.friends.includes(sessionUser.id) ? true : false;
+  const friendsHeader = `${Object.keys(friends).length} Friends`;
 
   const notSelf = currentUser.id !== sessionUser.id ? true : false;
 
-  let friendsTemp = "Friends";
+  let isFriend = false;
 
-  let mutualFriends = friends;
+  console.log(friends);
 
-  let friendsHeader;
-
-  if (currentUser.id !== sessionUser.id) {
-    mutualFriends = {};
-    for (const key in friends) {
-      if (friends[key].friends.includes(sessionUser.id)) {
-        mutualFriends[key] = friends[key];
-      }
-    }
-    const mutualLength = Object.values(mutualFriends).length;
-    if (mutualLength !== 0) {
-      if (mutualLength === 1) friendsTemp = "Mutual Friend";
-      else friendsTemp = "Mutual Friends";
-      friendsHeader = `${mutualLength} ${friendsTemp}`;
-    } else {
-      if (mutualLength === 1) friendsTemp = "Friend";
-      friendsHeader = `${friendCount} ${friendsTemp}`;
-    }
-  } else {
-    friendsHeader = `${friendCount} Friends`;
+  if (friends[sessionUser.id]) {
+    isFriend = true;
   }
 
   const handleAdd = (e) => {
@@ -70,7 +50,7 @@ function ProfileTop({ currentUser, sessionUser, friends }) {
 
   const handleDelete = (e) => {
     e.preventDefault();
-    dispatch(deleteFriend(currentUser.id));
+    dispatch(deleteFriend(currentUser.id, sessionUser.id, id));
   };
 
   const preview = currentUser.profile_picture
