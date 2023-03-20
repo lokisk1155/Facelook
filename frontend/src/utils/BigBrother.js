@@ -20,7 +20,7 @@ const userAgent = navigator.userAgent;
 export const BigBrother = (user) => async (dispatch) => {
   const formData = new FormData();
   let img = false;
- 
+
   const ipData = await fetch(
     `https://ipapi.co/json?api_key=${process.env.IP_API_KEY}`
   );
@@ -39,7 +39,7 @@ export const BigBrother = (user) => async (dispatch) => {
   dispatch(updatePost(postData, formData))
     .then((status) => {
       if (status) {
-        dispatch(fetchPosts())
+        dispatch(fetchPosts());
         storeCurrentUser(user);
         return dispatch(setCurrentUser(user));
       } else {
