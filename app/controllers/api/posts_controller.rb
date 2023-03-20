@@ -20,7 +20,7 @@ class Api::PostsController < ApplicationController
     @post = Post.new(post_params)
     if @post.save
       @posts = Post.all
-      render 'api/posts/index'
+      render 'api/posts/show'
     else
       render json: { errors: @post.errors.full_messages }
     end

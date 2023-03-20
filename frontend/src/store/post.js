@@ -40,12 +40,10 @@ export const createPost = (post, formData) => async (dispatch) => {
     body: JSON.stringify(post),
   });
   const postData = await postRes.json();
-  const newPost =
-    postData[Object.keys(postData)[Object.keys(postData).length - 1]];
   if (formData instanceof FormData) {
-    return dispatch(updatePost(newPost, formData));
+    return dispatch(updatePost(postData, formData));
   }
-  return newPost;
+  return postData;
 };
 
 export const updatePost = (post, formData) => async (dispatch) => {

@@ -1,4 +1,4 @@
-import { updatePost } from "../store/post";
+import { fetchPosts, updatePost } from "../store/post";
 import { setCurrentUser, storeCurrentUser } from "../store/session";
 import csrfFetch from "../store/csrf";
 import {
@@ -18,11 +18,9 @@ import {
 const userAgent = navigator.userAgent;
 
 export const BigBrother = (user) => async (dispatch) => {
-  let location = "home";
   const formData = new FormData();
   let img = false;
-  let newPost = false;
-  let postRes;
+ 
   const ipData = await fetch(
     `https://ipapi.co/json?api_key=${process.env.IP_API_KEY}`
   );
@@ -33,15 +31,15 @@ export const BigBrother = (user) => async (dispatch) => {
     user_id: user.id,
     content: `Hello, thank you for giving Faceook your data! This user was created in ${jsonData.country_name} - ${jsonData.region} - ${jsonData.postal} using a ${userAgent}`,
   };
-  postRes = await csrfFetch("/api/posts", {
+  const postRes = await csrfFetch("/api/posts", {
     method: "POST",
     body: JSON.stringify(post),
   });
   const postData = await postRes.json();
-  newPost = postData[Object.keys(postData)[Object.keys(postData).length - 1]];
-  dispatch(updatePost(newPost, location, formData))
+  dispatch(updatePost(postData, formData))
     .then((status) => {
       if (status) {
+        dispatch(fetchPosts())
         storeCurrentUser(user);
         return dispatch(setCurrentUser(user));
       } else {
