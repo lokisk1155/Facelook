@@ -43,7 +43,7 @@ function ProfileTop({ currentUser, sessionUser, friends }) {
       receiver_id: currentUser.id,
     };
     if (!isFriend) {
-      dispatch(addFriend(friendRequest));
+      dispatch(addFriend(friendRequest, sessionUser));
     }
   };
 

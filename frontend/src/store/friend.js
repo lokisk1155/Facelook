@@ -24,12 +24,13 @@ export const fetchFriends = (userIds) => async (dispatch) => {
   dispatch(receiveFriends(friendsData));
 };
 
-export const addFriend = (friendRequest) => async (dispatch) => {
+export const addFriend = (friendRequest, sessionUser) => async (dispatch) => {
   await csrfFetch(`/api/friends`, {
     method: "POST",
     body: JSON.stringify(friendRequest),
+  }).then(() => {
+    dispatch(receiveFriend(sessionUser));
   });
-  dispatch(fetchFriends(friendRequest.sender_id));
 };
 
 export const deleteFriend =
@@ -46,8 +47,7 @@ const friendReducer = (previousState = {}, action) => {
   let newState = { ...previousState };
   switch (action.type) {
     case RECEIVE_FRIEND:
-      newState = { ...action.payload };
-      return newState;
+      return { ...previousState, [action.payload.id]: action.payload };
     case REMOVE_FRIEND:
       delete newState[action.payload];
       return newState;

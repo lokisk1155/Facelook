@@ -23,10 +23,15 @@ export default function GetUserProfile() {
       const friendsData = await friendsRes.json();
       const postRes = await csrfFetch(`/api/posts/${id}`);
       const postData = await postRes.json();
-      dispatch(userReceivePosts(postData));
-      dispatch(setCurrentProfile(userData.user));
-      dispatch(receiveFriends(friendsData));
-      if (postData && postData && friendsData) {
+      if (
+        Object.keys(postData).length &&
+        Object.keys(postData).length &&
+        Object.keys(friendsData).length
+      ) {
+        dispatch(setCurrentProfile(userData.user));
+        dispatch(userReceivePosts(postData));
+        dispatch(receiveFriends(friendsData));
+
         return true;
       }
     };

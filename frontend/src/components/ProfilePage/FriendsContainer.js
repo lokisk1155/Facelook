@@ -5,23 +5,19 @@ import { useSelector } from "react-redux";
 function FriendsContainer({ currentUser, sessionUser }) {
   const friends = useSelector((state) => Object.values(state.friends));
 
-  if (!friends) return null;
+  const mutualFriends = friends.slice(0, 6);
 
-  let mutualFriends = friends;
-
-  if (currentUser.id !== sessionUser.id) {
-    mutualFriends = {};
-    for (const key in friends) {
-      if (friends[key].friends.includes(sessionUser.id)) {
-        mutualFriends[key] = friends[key];
-      }
-    }
-    if (Object.keys(mutualFriends).length < 1) {
-      mutualFriends = friends;
-    }
-  }
-
-  mutualFriends = Object.values(mutualFriends).slice(0, 6);
+  // if (currentUser.id !== sessionUser.id) {
+  //   mutualFriends = {};
+  //   for (const key in friends) {
+  //     if (friends[key].friends.includes(sessionUser.id)) {
+  //       mutualFriends[key] = friends[key];
+  //     }
+  //   }
+  //   if (Object.keys(mutualFriends).length < 1) {
+  //     mutualFriends = friends;
+  //   }
+  // }
 
   return (
     <div style={{ height: "90%" }}>
