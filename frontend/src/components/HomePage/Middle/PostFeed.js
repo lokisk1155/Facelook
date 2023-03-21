@@ -61,7 +61,12 @@ function PostFeed({ profilePage }) {
         </div>
       ) : null}
       <div
-        style={{ display: "flex", flexDirection: "column", marginTop: "5px" }}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          marginTop: "5px",
+          width: "100%",
+        }}
       >
         {Object.values(posts)
           .map((post, index) => {

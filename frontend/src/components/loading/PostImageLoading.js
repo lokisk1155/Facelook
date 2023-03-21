@@ -18,19 +18,16 @@ function PostImageLoading({ src }) {
           style={{
             width: "100%",
             height: "500px",
-            paddingTop: "5px",
-            border: "none",
           }}
         />
       ) : (
-        <img
+        <div
           className="skeleton"
           alt=""
           style={{
             width: "100%",
             height: "500px",
-            paddingTop: "5px",
-            border: "none",
+            objectFit: "cover",
           }}
         />
       )}

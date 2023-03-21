@@ -12,7 +12,7 @@ function PostContent({
       style={{
         width: "100%",
         minHeight: "35px",
-        padding: "5px",
+        paddingBottom: "5px",
         overflow: "hidden",
       }}
     >

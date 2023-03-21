@@ -35,6 +35,7 @@ function PostHeader({
         minHeight: "33px",
         display: "flex",
         justifyContent: "space-between",
+        paddingTop: "5px",
       }}
     >
       <div className="picture-and-name" style={{ display: "flex" }}>

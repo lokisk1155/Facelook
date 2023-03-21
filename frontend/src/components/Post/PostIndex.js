@@ -43,6 +43,7 @@ function PostIndex({ post, sessionUser, simpleUsers }) {
             width: "100%",
             backgroundColor: "#fff",
             marginTop: "10px",
+            marginBottom: "20px",
           }}
         >
           <PostHeader

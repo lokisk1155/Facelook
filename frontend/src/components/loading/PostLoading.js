@@ -23,7 +23,7 @@ const PostLoading = ({ src }) => {
           }}
         />
       ) : (
-        <img
+        <div
           className="skeleton"
           alt=""
           style={{
