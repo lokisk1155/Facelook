@@ -31,14 +31,13 @@ function ProfileTop({ currentUser, sessionUser, friends }) {
 
   let isFriend = false;
 
-  console.log(friends);
-
   if (friends[sessionUser.id]) {
     isFriend = true;
   }
 
   const handleAdd = (e) => {
     e.preventDefault();
+    setToggleDropDown(null);
     const friendRequest = {
       sender_id: sessionUser.id,
       receiver_id: currentUser.id,
@@ -91,27 +90,26 @@ function ProfileTop({ currentUser, sessionUser, friends }) {
               className="friends-toggle-button-container"
               style={{ maxWidth: "" }}
             >
-              {!toggleDropDown && isFriend ? (
-                <button
-                  className="toggle-friends-button"
-                  onClick={() => setToggleDropDown(!toggleDropDown)}
-                >
-                  Friends
-                </button>
-              ) : (
-                (!isFriend && (
-                  <button className="toggle-friends-button" onClick={handleAdd}>
-                    Add Friend
-                  </button>
-                )) ||
-                (isFriend && (
+              {isFriend ? (
+                toggleDropDown ? (
                   <button
                     className="toogle-friends-button"
                     onClick={handleDelete}
                   >
                     delete friend
                   </button>
-                ))
+                ) : (
+                  <button
+                    className="toggle-friends-button"
+                    onClick={() => setToggleDropDown(!toggleDropDown)}
+                  >
+                    Friends
+                  </button>
+                )
+              ) : (
+                <button className="toggle-friends-button" onClick={handleAdd}>
+                  Add Friend
+                </button>
               )}
             </div>
           ) : (
