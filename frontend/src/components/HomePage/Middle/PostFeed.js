@@ -64,7 +64,6 @@ function PostFeed({ profilePage }) {
         style={{
           display: "flex",
           flexDirection: "column",
-          marginTop: "5px",
           width: "100%",
         }}
       >

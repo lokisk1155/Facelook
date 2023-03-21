@@ -42,8 +42,8 @@ function PostIndex({ post, sessionUser, simpleUsers }) {
             minHeight: "400px",
             width: "100%",
             backgroundColor: "#fff",
-            marginTop: "10px",
-            marginBottom: "20px",
+            marginBottom: "15px",
+            boxShadow: "0px 2px 2px 0px lightgrey",
           }}
         >
           <PostHeader
@@ -71,8 +71,9 @@ function PostIndex({ post, sessionUser, simpleUsers }) {
             style={{
               minHeight: "85px",
               width: "100%",
-              marginBottom: "15px",
               backgroundColor: "#fff",
+              marginBottom: "15px",
+              boxShadow: "0px 2px 2px 0px lightgrey",
             }}
           >
             <PostHeader
