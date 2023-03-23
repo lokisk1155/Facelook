@@ -10,6 +10,7 @@ gem "jbuilder"
 gem "faker"
 gem "pry-rails"
 gem "aws-sdk-s3"
+gem 'rubocop', require: false
 
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
