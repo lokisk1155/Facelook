@@ -42,7 +42,7 @@ function SearchBar({ setTyped, closeModal, setDiv }) {
 
     return currentMatches.length < 10
       ? currentMatches
-      : Object.values(currentMatches).slice(0, 15);
+      : Object.values(currentMatches).slice(0, 7);
   }
 
   function calculateDiv(users, typed) {

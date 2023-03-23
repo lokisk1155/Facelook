@@ -9,8 +9,12 @@ function SearchModal({ closeModal, typed, setTyped }) {
   const [adjustedHeightForContainer, setAdjustedHeightForContainer] =
     useState(null);
   useEffect(() => {
-    const userFilteredCountTimesHeight = userFilteredCount * 50 + 115;
-    setAdjustedHeightForContainer(`${userFilteredCountTimesHeight}px`);
+    if (userFilteredCount === 0) {
+      setAdjustedHeightForContainer("50px");
+    } else {
+      const userFilteredCountTimesHeight = userFilteredCount * 50 + 115;
+      setAdjustedHeightForContainer(`${userFilteredCountTimesHeight}px`);
+    }
   }, [userFilteredCount]);
 
   return (

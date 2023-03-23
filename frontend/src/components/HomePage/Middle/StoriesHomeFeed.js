@@ -3,11 +3,10 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import profilePic from "../../NavBar/imgs/blank.png";
 import StoriesHeader from "./StoriesHeader";
-import "./StoriesHomeFeed.css";
-import ArrowSvg from "../../svgs/ArrowRightSvg";
 import CreateButtonSvg from "../../svgs/CreateButtonSvg";
 import ArrowLeftSvg from "../../svgs/ArrowLeftSvg";
 import ArrowRightSvg from "../../svgs/ArrowRightSvg";
+import "./StoriesHomeFeed.css";
 
 function StoriesHomeFeed() {
   const history = useHistory();
