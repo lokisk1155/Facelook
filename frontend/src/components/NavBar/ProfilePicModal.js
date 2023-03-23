@@ -13,16 +13,6 @@ function ProfilePicModal() {
   const user = useSelector((state) => state.session.user);
   const name = `${user.first_name} ${user.last_name}`;
   const developerPictures = [Github, Li, wellfound];
-  const developerWebsiteLinks = [
-    "https://github.com/lokisk1155/FaceOok",
-    "https://www.linkedin.com/in/shawn-mallon/",
-    "https://angel.co/u/shawn-mallon",
-  ];
-  const developerWebsiteNames = [
-    "Project's Repo",
-    "Creator's Linkedin",
-    "Creator's Wellfound",
-  ];
 
   const handleLogout = () => {
     dispatch(logout(user));
@@ -126,10 +116,7 @@ function ProfilePicModal() {
                 style={{
                   height: "30%",
                   display: "flex",
-                  marginRight:
-                    developerPictures[index] === wellfound ? "5px" : "0px",
-                  margin:
-                    developerPictures[index] === wellfound ? "0px" : "2px",
+                  margin: "2px",
                   justifyContent: "flex-start",
                   alignItems: "center",
                   textDecoration: "none",
@@ -155,24 +142,13 @@ function ProfilePicModal() {
 
 export default ProfilePicModal;
 
-/* <div
-className="main-buttons-of-modal"
-style={{
-  height: "35%",
-  backgroundColor: "#fff",
-  width: "90%",
-  marginleft: "5%",
-  marginRight: "5%",
-}}
->
-<Link to={`/ProfilePage/${user.id}`}></Link>
-<div
-  style={{
-    height: "1px",
-    width: "90%",
-    marginLeft: "5%",
-    marginRight: "5%",
-    borderBottom: "1px solid lightgrey",
-  }}
-></div>
-</div> */
+const developerWebsiteLinks = [
+  "https://github.com/lokisk1155/FaceOok",
+  "https://www.linkedin.com/in/shawn-mallon/",
+  "https://angel.co/u/shawn-mallon",
+];
+const developerWebsiteNames = [
+  "Project's Repo",
+  "Creator's Linkedin",
+  "Creator's Wellfound",
+];

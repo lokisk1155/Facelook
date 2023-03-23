@@ -27,14 +27,7 @@ function PostFeed({ profilePage }) {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        width: "100%",
-        overflow: "scroll",
-      }}
-    >
+    <div className="post-feed-omega-container">
       {profilePage === undefined || parseInt(id) === sessionUser.id ? (
         <div className="create-post-modal">
           <button className="new-post-button" onClick={handleNewPost}>
@@ -60,13 +53,7 @@ function PostFeed({ profilePage }) {
           )}
         </div>
       ) : null}
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          width: "100%",
-        }}
-      >
+      <div className="actual-post-feed-container">
         {Object.values(posts)
           .map((post, index) => {
             return (

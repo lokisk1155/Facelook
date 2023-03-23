@@ -85,7 +85,6 @@ function SearchBar({ setTyped, closeModal, setDiv }) {
         ></input>
       </div>
 
-      {/* {!frTyped && <h4 className="no-recent-searches">No Recent Searches</h4>} */}
       {filteredUsers && (
         <div className="search-results-container">
           {" "}

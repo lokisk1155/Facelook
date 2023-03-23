@@ -19,6 +19,17 @@
   display: table;
   clear: both;
 }
+
+.stories-home-feed-loading {
+  position: relative;
+  height: 80vw;
+  background-color: #fff;
+  padding: 10px;
+  border-end-end-radius: 10px;
+  border-end-start-radius: 10px;
+  box-shadow: 0px 6px 6px 0px lightgrey;
+}
+
 @media (max-width: 1400px) {
   .middle {
     width: 50%;

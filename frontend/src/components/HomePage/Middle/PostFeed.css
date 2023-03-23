@@ -70,6 +70,13 @@
   color: gray;
 }
 
+.post-feed-omega-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: scroll;
+}
+
 .post-header {
   display: flex;
   justify-content: space-between;
@@ -83,6 +90,11 @@
   line-height: 1.5;
 }
 
+.actual-post-feed-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
 .svg-dots {
   padding: 10px;
 }
