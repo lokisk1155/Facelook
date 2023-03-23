@@ -18,10 +18,10 @@ export const receiveFriends = (friends) => ({
   payload: friends,
 });
 
-export const fetchFriends = (userIds) => async (dispatch) => {
+export const fetchFriends = async (userIds) => {
   const friendsRes = await csrfFetch(`/api/users?userIds=${userIds}`);
   const friendsData = await friendsRes.json();
-  dispatch(receiveFriends(friendsData));
+  return friendsData;
 };
 
 export const addFriend = (friendRequest, sessionUser) => async (dispatch) => {

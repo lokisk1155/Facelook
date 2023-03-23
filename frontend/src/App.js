@@ -1,24 +1,24 @@
-import React from "react";
-import { Route, Switch, useParams } from "react-router-dom";
-import LoginPage from "./components/UserLogin/LoginPage";
-import { ProfilePageRoutes } from "./routes/ProfilePageRoutes";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Route, Switch, useParams } from "react-router-dom";
+import { ProfilePageRoutes } from "./routes/ProfilePageRoutes";
+import { getSimpleUsers } from "./store/simpleUsers";
+import LoginPage from "./components/UserLogin/LoginPage";
 import HomePage from "./components/HomePage/HomePage";
 import CreateStoryIntro from "./components/Stories/CreateStory";
 import GetAllStories from "./hooks/getAllStories";
-import { useEffect } from "react";
-import { getSimpleUsers } from "./store/simpleUsers";
 
 function App() {
   const dispatch = useDispatch();
 
-  const sessionUser = useSelector((state) => state.session.user);
-
   const { id } = useParams();
+
+  const sessionUser = useSelector((state) => state.session.user);
 
   useEffect(() => {
     dispatch(getSimpleUsers());
   }, [dispatch, id]);
+
   return (
     <>
       <Switch>

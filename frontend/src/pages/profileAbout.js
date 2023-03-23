@@ -25,38 +25,11 @@ function ProfileAbout() {
         currentUser={currentUser}
         friends={friends}
       />
-      <div
-        className="about-content-container"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <div
-          className="about-page-links"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-evenly",
-            width: "20%",
-            backgroundColor: "#fff",
-            border: "1px solid lightgrey",
-            borderRight: "3px solidLightgrey",
-            height: "100%",
-          }}
-        >
+      <div className="about-content-container">
+        <div className="about-page-links">
           <AboutPageLinks />
         </div>
-        <div
-          className="about-page-links-results"
-          style={{
-            backgroundColor: "#fff",
-            border: "1px solid lightgrey",
-
-            height: "100%",
-          }}
-        >
+        <div className="about-page-links-results">
           <>
             <Route
               exact

@@ -2,10 +2,9 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
-import { userReceivePosts } from "../store/profilePage";
-import { setCurrentProfile } from "../store/user";
-import { receiveFriends } from "../store/friend";
-import csrfFetch from "../store/csrf";
+import { fetchUsersPosts, userReceivePosts } from "../store/profilePage";
+import { fetchUser, setCurrentProfile } from "../store/user";
+import { fetchFriends, receiveFriends } from "../store/friend";
 
 export default function GetUserProfile() {
   const dispatch = useDispatch();
@@ -16,21 +15,16 @@ export default function GetUserProfile() {
 
   useEffect(() => {
     const profilePage = async () => {
-      const userRes = await csrfFetch(`/api/users/${id}`);
-      const userData = await userRes.json();
-      const userIds = Object.values(userData.user.friends);
-      const friendsRes = await csrfFetch(`/api/users?userIds=${userIds}`);
-      const friendsData = await friendsRes.json();
-      const postRes = await csrfFetch(`/api/posts/${id}`);
-      const postData = await postRes.json();
-      dispatch(setCurrentProfile(userData.user));
+      const postData = fetchUsersPosts(id);
+      const userData = await fetchUser(id);
+      const friendsData = await fetchFriends(Object.values(userData.friends));
+      dispatch(setCurrentProfile(userData));
       dispatch(userReceivePosts(postData));
       dispatch(receiveFriends(friendsData));
-      return true;
     };
-    profilePage().then((storeStatus) => {
+    profilePage().then(() => {
       setTimeout(() => {
-        setStoreHydrated(storeStatus);
+        setStoreHydrated(true);
       }, 750);
     });
   }, [dispatch, id]);

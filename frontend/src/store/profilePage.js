@@ -1,3 +1,5 @@
+import csrfFetch from "./csrf";
+
 const USER_RECEIVE_POST = "userPosts/userReceivePost";
 const USER_RECEIVE_POSTS = "userPosts/userReceivePosts";
 const USER_REMOVE_POST = "userPosts/userRemovePost";
@@ -16,6 +18,12 @@ export const userRemovePost = (postId) => ({
   type: USER_REMOVE_POST,
   payload: postId,
 });
+
+export const fetchUsersPosts = async (userId) => {
+  const postRes = await csrfFetch(`/api/posts/${userId}`);
+  const postData = await postRes.json();
+  return postData;
+};
 
 const userPostsReducer = (previousState = {}, action) => {
   let newState = { ...previousState };

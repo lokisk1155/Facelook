@@ -1,6 +1,4 @@
-import getRadianAngle from "./getRadianAngle";
-import rotateSize from "./rotateSize";
-import createImage from "./createImage";
+import rotateSize, { getRadianAngle } from "./rotateSize";
 
 export default async function getCroppedImg(
   imageSrc,
@@ -53,3 +51,12 @@ export default async function getCroppedImg(
     }, "image/jpeg");
   });
 }
+
+const createImage = (url) =>
+  new Promise((resolve, reject) => {
+    const image = new Image();
+    image.addEventListener("load", () => resolve(image));
+    image.addEventListener("error", (error) => reject(error));
+    image.setAttribute("crossOrigin", "anonymous");
+    image.src = url;
+  });

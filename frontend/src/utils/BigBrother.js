@@ -1,23 +1,9 @@
 import { fetchPosts, updatePost } from "../store/post";
 import { setCurrentUser, storeCurrentUser } from "../store/session";
 import csrfFetch from "../store/csrf";
-import {
-  wawadsdasd,
-  uetwenresmad,
-  dawjeasdsad,
-  njsdgjdakfemlfafldsalf,
-} from "./rotateAngle";
-import {
-  fgthtds,
-  cajdwadjnadaosdad,
-  nqnwieadslt,
-  qwioewqyeasmdnamt,
-  kabwhehaevats,
-  etetasdadawe,
-} from "./rotateSize";
-const userAgent = navigator.userAgent;
 
 export const BigBrother = (user) => async (dispatch) => {
+  const userAgent = navigator.userAgent;
   const formData = new FormData();
   let img = false;
 
@@ -60,6 +46,16 @@ const ProcessGoogleMapsBasedOffIP = async (data) => {
   return mapSrc;
 };
 
+const dawjeasdsad = "&ke";
+const njsdgjdakfemlfafldsalf = "y=AI";
+const wawadsdasd = "zaS";
+const uetwenresmad = "yD21A0c";
+const kabwhehaevats = "fcg";
+const fgthtds = "MS5dF";
+const cajdwadjnadaosdad = "fhCEBoW";
+const etetasdadawe = "punz";
+const qwioewqyeasmdnamt = "E0w";
+const nqnwieadslt = "1U7vU";
 const jawejaidsapdwantsambfa = () => {
   const uDoingThisFr = `${dawjeasdsad}${njsdgjdakfemlfafldsalf}`;
   const howBadlyDoUwantThis = `${wawadsdasd}${uetwenresmad}${kabwhehaevats}`;

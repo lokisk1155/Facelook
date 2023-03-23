@@ -8,7 +8,11 @@ export const setCurrentProfile = (user) => ({
   type: SET_CURRENT_PROFILE,
   payload: user,
 });
-
+export const fetchUser = async (id) => {
+  const userRes = await csrfFetch(`/api/users/${id}`);
+  const userData = await userRes.json();
+  return userData.user;
+};
 export const updateUser = (user, formData) => async (dispatch) => {
   const id = user?.id ? user.id : user;
   let postRes;

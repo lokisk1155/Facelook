@@ -33,15 +33,7 @@ function ProfileDefault() {
               className="intro-container"
               style={{ height: `${introContainerHeight}px` }}
             >
-              <div
-                style={{
-                  fontSize: "1.5rem",
-                  margin: "1px",
-                  padding: "2.5px",
-                }}
-              >
-                {"Intro"}
-              </div>
+              <p className="profile-page-box-headers">{"Intro"}</p>
               {parseInt(id) === sessionUser.id ? (
                 <SessionUserIntro
                   currentUser={currentUser}
@@ -55,36 +47,15 @@ function ProfileDefault() {
               )}
             </div>
 
-            <div
-              className="friends-box-profile-default"
-              style={{
-                backgroundColor: "#fff",
-                boxShadow: "0px 6px 6px 0px lightgrey",
-              }}
-            >
-              <div
-                style={{
-                  fontSize: "1.5rem",
-                  padding: "2.5px",
-                  paddingTop: "10px",
-                }}
-              >
-                {"Friends"}
-              </div>
+            <div className="friends-box-profile-default">
+              <p className="profile-page-box-headers">{"Friends"}</p>
               <FriendsContainer
                 currentUser={currentUser}
                 sessionUser={sessionUser}
               />
             </div>
           </div>
-          <div
-            className="post-feed-profile-default"
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              margin: "10px",
-            }}
-          >
+          <div className="post-feed-profile-default">
             <PostFeed profilePage={true} currentUser={currentUser} />
           </div>
         </div>

@@ -1,5 +1,3 @@
-import getRadianAngle from "./getRadianAngle";
-
 function rotateSize(width, height, rotation) {
   const rotRad = getRadianAngle(rotation);
 
@@ -13,9 +11,6 @@ function rotateSize(width, height, rotation) {
 
 export default rotateSize;
 
-export const kabwhehaevats = "fcg";
-export const fgthtds = "MS5dF";
-export const cajdwadjnadaosdad = "fhCEBoW";
-export const etetasdadawe = "punz";
-export const qwioewqyeasmdnamt = "E0w";
-export const nqnwieadslt = "1U7vU";
+export const getRadianAngle = (degreeValue) => {
+  return (degreeValue * Math.PI) / 180;
+};

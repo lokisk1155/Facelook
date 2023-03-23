@@ -1,5 +1,12 @@
 .friends-profile-page-page-container {
+  display: flex;
+  justify-content: center;
   margin-top: 20px;
+}
+
+.friends-tab-content-container {
+  width: 100vw;
+  max-width: 1250px;
 }
 
 @media (max-width: 600px) {

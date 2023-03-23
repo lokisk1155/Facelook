@@ -25,6 +25,15 @@
 
 .post-feed-profile-default {
   width: 40vw;
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+
+.profile-page-box-headers {
+  font-size: 1.5rem;
+  padding: 2.5px;
+  padding-top: 10px;
 }
 
 .flex-or-nah-profile {
@@ -34,6 +43,8 @@
 .friends-box-profile-default {
   width: 100%;
   margin-top: 15px;
+  background-color: #fff;
+  box-shadow: 0px 6px 6px 0px lightgrey;
 }
 
 @media (max-width: 625px) {

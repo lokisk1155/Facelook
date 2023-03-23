@@ -22,16 +22,8 @@ function ProfileFriends() {
         currentUser={currentUser}
         friends={friends}
       />
-      <div
-        className="friends-profile-page-page-container"
-        style={{ display: "flex", justifyContent: "center" }}
-      >
-        <div
-          style={{
-            width: "100vw",
-            maxWidth: "1250px",
-          }}
-        >
+      <div className="friends-profile-page-page-container">
+        <div className="friends-tab-content-container">
           <Friends
             sessionUser={sessionUser}
             currentUser={currentUser}

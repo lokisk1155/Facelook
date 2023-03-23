@@ -1,20 +1,19 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import "./index.css";
-import App from "./App";
+import { ModalProvider } from "./context/Modal";
+import { Provider } from "react-redux";
+import { restoreSession } from "./store/session";
 import configureStore from "./store";
 import csrfFetch from "./store/csrf";
-import * as sessionActions from "./store/session";
-import { ModalProvider } from "./context/Modal";
+import ReactDOM from "react-dom/client";
+import React from "react";
+import App from "./App";
+import "./index.css";
 
 const store = configureStore();
 
 if (process.env.NODE_ENV !== "production") {
   window.store = store;
   window.csrfFetch = csrfFetch;
-  window.sessionActions = sessionActions;
 }
 
 function Root() {
@@ -42,7 +41,7 @@ if (
   sessionStorage.getItem("currentUser") === null ||
   sessionStorage.getItem("X-CSRF-Token") === null
 ) {
-  store.dispatch(sessionActions.restoreSession()).then(renderApplication);
+  store.dispatch(restoreSession()).then(renderApplication);
 } else {
   renderApplication();
 }
