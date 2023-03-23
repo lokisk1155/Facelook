@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateUser < ActiveRecord::Migration[7.0]
   def change
     create_table :users do |t|
@@ -6,14 +8,14 @@ class CreateUser < ActiveRecord::Migration[7.0]
       t.string :session_token, null: false
       t.string :first_name, null: false
       t.string :last_name, null: false
-      t.string :day, null: false 
-      t.string :month, null: false 
-      t.string :year, null: false 
-      t.string :gender, null: false 
+      t.string :day, null: false
+      t.string :month, null: false
+      t.string :year, null: false
+      t.string :gender, null: false
       t.text :bio
       t.boolean :featured
-      t.string :location 
-      t.string :education 
+      t.string :location
+      t.string :education
       t.string :work
       t.string :relationship
       t.string :phone_number

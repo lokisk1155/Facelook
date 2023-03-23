@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Friend < ApplicationRecord
   validates :sender_id, :receiver_id, presence: true
 

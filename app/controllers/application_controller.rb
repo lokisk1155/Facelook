@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::API
   include ActionController::RequestForgeryProtection
 
@@ -17,7 +19,7 @@ class ApplicationController < ActionController::API
   end
 
   def logout!
-    current_user.reset_session_token! if current_user
+    current_user&.reset_session_token!
     session[:session_token] = nil
     @current_user = nil
   end

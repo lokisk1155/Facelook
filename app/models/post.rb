@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Post < ApplicationRecord
   validates :content, :user_id, presence: true
 
@@ -8,5 +10,4 @@ class Post < ApplicationRecord
   has_many :likes
 
   has_one_attached :photo
-
 end

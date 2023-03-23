@@ -1,7 +1,9 @@
-require_relative "boot"
-require "rails/all"
-require "active_job/railtie"
-require "active_storage/engine"
+# frozen_string_literal: true
+
+require_relative 'boot'
+require 'rails/all'
+require 'active_job/railtie'
+require 'active_storage/engine'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -14,13 +16,13 @@ module RailsBackend
     # config.session_store :cookie_store, key: '_interslice_session'
     # config.middleware.use ActionDispatch::Cookies
     # config.middleware.use config.session_store, config.session_options
-    config.api_only = true 
-    config.railties_order = [:all, :main_app]
-    config.middleware.use ActionDispatch::Cookies 
+    config.api_only = true
+    config.railties_order = %i[all main_app]
+    config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore,
-      key: '_faceOok_session',
-      same_site: :lax,
-      secure: Rails.env.production?
+                          key: '_faceOok_session',
+                          same_site: :lax,
+                          secure: Rails.env.production?
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

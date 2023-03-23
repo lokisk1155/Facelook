@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 @users.each do |user|
   json.set! user.id do
     json.extract! user, :id, :email, :password, :first_name, :last_name, :gender, :day, :month, :year, :featured,

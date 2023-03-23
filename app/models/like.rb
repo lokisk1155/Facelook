@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Like < ApplicationRecord
   validates :liked, inclusion: { in: [true, false] }, presence: true
 

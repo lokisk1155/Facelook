@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   has_secure_password
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true, length: { in: 3..255 }
@@ -28,14 +30,12 @@ class User < ApplicationRecord
   end
 
   def friend_ids
-    friends.map do |friend|
-      friend.id
-    end
+    friends.map(&:id)
   end
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email:)
-    user && user&.authenticate(password) ? user : nil
+    user&.authenticate(password) ? user : nil
   end
 
   def reset_session_token!
