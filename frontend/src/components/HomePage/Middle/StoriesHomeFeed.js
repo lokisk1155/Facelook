@@ -33,8 +33,8 @@ function StoriesHomeFeed() {
     if (e) {
       e.preventDefault();
     }
-    if (currentWindow < stories.length - 1 && currentWindow < 15) {
-      let newWindow = currentWindow + 1;
+    if (currentWindow < (stories.length - 1) / 2) {
+      let newWindow = currentWindow + 2;
       document.querySelector(
         ".stories-mapped-out"
       ).style.transform = `translateX(-${newWindow * 300}px)`;
@@ -47,12 +47,15 @@ function StoriesHomeFeed() {
     }
 
     if (currentWindow > 2) {
-      let newWindow = currentWindow - 1;
+      let newWindow = currentWindow - 2;
       setCurrentWindow(newWindow);
       document.querySelector(
         ".stories-mapped-out"
       ).style.transform = `translateX(-${newWindow * 300}px)`;
     } else {
+      document.querySelector(
+        ".stories-mapped-out"
+      ).style.transform = `translateX(-${1}px)`;
       setCurrentWindow(0);
     }
   };
