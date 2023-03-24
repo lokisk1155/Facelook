@@ -29,20 +29,15 @@ function StoriesHomeFeed() {
 
   const sessionUserPicture = simpleUsers[sessionUser.id]?.profile_picture;
 
-  let currentStories;
-
-  if (currentWindow === 0) {
-    currentStories = stories.slice(currentWindow, currentWindow + 3);
-  } else {
-    currentStories = stories.slice(currentWindow, currentWindow + 4);
-  }
-
   const moveLeft = (e) => {
     if (e) {
       e.preventDefault();
     }
-    if (currentWindow < stories.length - 4) {
-      let newWindow = currentWindow + 1;
+    if (currentWindow < stories.length - 6) {
+      let newWindow = currentWindow + 3;
+      document.querySelector(
+        ".stories-mapped-out"
+      ).style.transform = `translateX(-${newWindow * 260}px)`;
       setCurrentWindow(newWindow);
     }
   };
@@ -50,9 +45,15 @@ function StoriesHomeFeed() {
     if (e) {
       e.preventDefault();
     }
-    if (currentWindow > 0) {
-      let newWindow = currentWindow - 1;
+
+    if (currentWindow > 2) {
+      let newWindow = currentWindow - 3;
       setCurrentWindow(newWindow);
+      document.querySelector(
+        ".stories-mapped-out"
+      ).style.transform = `translateX(-${newWindow * 260}px)`;
+    } else {
+      setCurrentWindow(0);
     }
   };
 
@@ -72,72 +73,82 @@ function StoriesHomeFeed() {
             <ArrowLeftSvg />
           </button>
         ) : null}
-        {currentWindow === 0 ? (
-          <div
-            className="create-story-post-container"
-            onClick={() => history.push("/stories/create")}
-          >
-            <img
-              className="profile-picture-on-story"
-              alt=""
-              src={sessionUserPicture || profilePic}
-            ></img>
-            <div className="create-story-container">
-              <CreateButtonSvg />
-            </div>
-          </div>
-        ) : null}
-
-        {Object.values(currentStories).map((story, index) => {
-          return (
-            <Link
-              key={index}
-              to={{
-                pathname: `/stories/${story.user_id}`,
-                search: `?windowIndex=${findWindowIndex(story)}`,
-              }}
-              style={{ width: "21%", textDecoration: "none" }}
+        <div className="stories-mapped-out">
+          {currentWindow === 0 ? (
+            <div
+              className="create-story-post-container"
+              onClick={() => history.push("/stories/create")}
             >
-              {story.picture ? (
-                <div className="photo-story-container">
-                  <img className="story-img" alt="38242" src={story.picture} />
-                  <img
-                    className="profile-picture-on-img-story"
-                    alt=""
-                    src={
-                      simpleUsers[story.user_id].profile_picture || profilePic
-                    }
-                  />
-                </div>
-              ) : (
-                <div className="photo-story-container">
-                  <div
-                    className="text-story-background"
-                    style={{
-                      backgroundColor: `${story.background_color}`,
-                    }}
-                  >
-                    <p
+              <img
+                className="profile-picture-on-story"
+                alt=""
+                src={sessionUserPicture || profilePic}
+              ></img>
+              <div className="create-story-container">
+                <CreateButtonSvg />
+              </div>
+            </div>
+          ) : null}
+
+          {Object.values(stories).map((story, index) => {
+            return (
+              <Link
+                key={index}
+                to={{
+                  pathname: `/stories/${story.user_id}`,
+                  search: `?windowIndex=${findWindowIndex(story)}`,
+                }}
+                style={{
+                  width: "250px",
+                  textDecoration: "none",
+                  margin: "5px",
+                }}
+              >
+                {story.picture ? (
+                  <div className="photo-story-container">
+                    <img
+                      className="story-img"
+                      alt="38242"
+                      src={story.picture}
+                    />
+                    <img
+                      className="profile-picture-on-img-story"
+                      alt=""
+                      src={
+                        simpleUsers[story.user_id].profile_picture || profilePic
+                      }
+                    />
+                  </div>
+                ) : (
+                  <div className="photo-story-container">
+                    <div
+                      className="text-story-background"
                       style={{
-                        fontSize: "1rem",
-                        color: `${story.color}`,
+                        backgroundColor: `${story.background_color}`,
                       }}
                     >
-                      {story.text_content}
-                    </p>
+                      <p
+                        style={{
+                          fontSize: "1rem",
+                          color: `${story.color}`,
+                        }}
+                      >
+                        {story.text_content}
+                      </p>
+                    </div>
+                    <img
+                      className="profile-picture-on-img-story"
+                      alt=""
+                      src={
+                        simpleUsers[story.user_id].profile_picture || profilePic
+                      }
+                    />
                   </div>
-                  <img
-                    className="profile-picture-on-img-story"
-                    alt=""
-                    src={
-                      simpleUsers[story.user_id].profile_picture || profilePic
-                    }
-                  />
-                </div>
-              )}
-            </Link>
-          );
-        })}
+                )}
+              </Link>
+            );
+          })}
+        </div>
         {currentWindow !== 0 ? (
           <button
             className="control-button-story-home-right"

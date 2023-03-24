@@ -16,7 +16,7 @@
 }
 
 .story-img {
-  width: 100%;
+  width: 150px;
   height: 97%;
   background-position: center;
   background-repeat: no-repeat;
@@ -28,7 +28,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 150px;
   height: 97%;
   background-position: center;
   background-repeat: no-repeat;
@@ -38,7 +38,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 150px;
   height: 100%;
   margin: 2.5px;
   padding: 0;
@@ -47,24 +47,32 @@
 
 .stories-home-feed-container {
   position: relative;
-  display: flex;
   height: 225px;
   min-height: 75px;
-  justify-content: space-evenly;
   background-color: #fff;
-  padding: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
   border-end-end-radius: 10px;
   border-end-start-radius: 10px;
   box-shadow: 0px 6px 6px 0px lightgrey;
   margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.stories-mapped-out {
+  position: relative;
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+  height: 225px;
 }
 
 .profile-picture-on-story {
   object-fit: cover;
   height: 70%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
+  width: 150px;
+  margin-top: 5px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   border-top: 0.3px solid lightgrey;
@@ -72,8 +80,8 @@
 }
 
 .create-story-post-container {
-  width: 21%;
-  height: 106%;
+  width: 150px;
+  height: 100%;
   padding-top: 1px;
 }
 
@@ -101,7 +109,7 @@
 
 .story-img-container {
   margin-top: 10px;
-  width: 100%;
+  width: 150px;
   height: 85%;
   border-radius: 10px;
   background-position: center;
@@ -114,7 +122,7 @@
 .text-story-container {
   position: relative;
   height: 100%;
-  width: 100%;
+  width: 150px;
   border-radius: 10px;
 }
 
