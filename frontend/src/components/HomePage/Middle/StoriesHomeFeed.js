@@ -71,7 +71,7 @@ function StoriesHomeFeed() {
     <>
       <StoriesHeader />
       <div className="stories-home-feed-container">
-        {currentWindow < stories.length - 4 ? (
+        {currentWindow < (stories.length - 1) / 2 ? (
           <button className="control-button-story-home-left" onClick={moveLeft}>
             <ArrowLeftSvg />
           </button>
