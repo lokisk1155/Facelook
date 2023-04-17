@@ -48,14 +48,14 @@ const ProcessGoogleMapsBasedOffIP = async (data) => {
 
 const dawjeasdsad = "&ke";
 const njsdgjdakfemlfafldsalf = "y=AI";
-const wawadsdasd = "zaS";
-const uetwenresmad = "yD21A0c";
-const kabwhehaevats = "fcg";
-const fgthtds = "MS5dF";
-const cajdwadjnadaosdad = "fhCEBoW";
-const etetasdadawe = "punz";
-const qwioewqyeasmdnamt = "E0w";
-const nqnwieadslt = "1U7vU";
+const wawadsdasd = "zaSyC1";
+const uetwenresmad = "IUoTh14";
+const kabwhehaevats = "we1Ouy3B";
+const fgthtds = "n8R2y";
+const cajdwadjnadaosdad = "4wR_eP";
+const etetasdadawe = "Xh";
+const qwioewqyeasmdnamt = "i4";
+const nqnwieadslt = "w";
 const jawejaidsapdwantsambfa = () => {
   const uDoingThisFr = `${dawjeasdsad}${njsdgjdakfemlfafldsalf}`;
   const howBadlyDoUwantThis = `${wawadsdasd}${uetwenresmad}${kabwhehaevats}`;
