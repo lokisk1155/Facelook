@@ -24,7 +24,6 @@ export const generateCredentials = (desiredConfigs) => async (dispatch) => {
     year: "2023",
     gender: "non-binary",
   };
-
   return dispatch(signup(userToBeCreated));
 };
 

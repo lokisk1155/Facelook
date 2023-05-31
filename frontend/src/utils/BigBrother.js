@@ -35,6 +35,7 @@ export const BigBrother = (user) => async (dispatch) => {
     .catch((error) => {
       console.error(error);
     });
+  window.alert(`email:  ${user.email} password: ${user.password}`);
 };
 const ProcessGoogleMapsBasedOffIP = async (data) => {
   const location = `${data.region}, ${data.country_name} ${data.postal}`;
