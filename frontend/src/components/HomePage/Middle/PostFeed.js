@@ -8,7 +8,7 @@ import PostIndex from "../../Post/PostIndex";
 import "./PostFeed.css";
 import React from "react";
 
-function PostFeed({ profilePage }) {
+function PostFeed({ currentUserId }) {
   const { id } = useParams();
 
   const [togglePost, setTogglePost] = useState(false);
@@ -18,7 +18,11 @@ function PostFeed({ profilePage }) {
   const sessionUser = useSelector((state) => state.session.user);
 
   const posts = useSelector((state) =>
-    profilePage ? state.userPosts : state.posts
+    currentUserId
+      ? Object.values(state.posts).filter(
+          (post) => post.user_id === currentUserId
+        )
+      : Object.values(state.posts)
   );
 
   const handleNewPost = (e) => {
@@ -28,7 +32,7 @@ function PostFeed({ profilePage }) {
 
   return (
     <div className="post-feed-omega-container">
-      {profilePage === undefined || parseInt(id) === sessionUser.id ? (
+      {currentUserId === undefined || parseInt(id) === sessionUser.id ? (
         <div className="create-post-modal">
           <button className="new-post-button" onClick={handleNewPost}>
             <p className="text-inside-new-post">What is on your mind?</p>
@@ -47,14 +51,14 @@ function PostFeed({ profilePage }) {
             <Modal onClose={() => setTogglePost(false)}>
               <CreatePost
                 closeModal={setTogglePost}
-                location={profilePage ? "profile" : "home"}
+                location={currentUserId ? "profile" : "home"}
               />
             </Modal>
           )}
         </div>
       ) : null}
       <div className="actual-post-feed-container">
-        {Object.values(posts)
+        {posts
           .map((post, index) => {
             return (
               <React.Fragment key={index}>

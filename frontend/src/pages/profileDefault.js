@@ -56,7 +56,7 @@ function ProfileDefault() {
             </div>
           </div>
           <div className="post-feed-profile-default">
-            <PostFeed profilePage={true} currentUser={currentUser} />
+            <PostFeed currentUserId={currentUser.id} />
           </div>
         </div>
       </div>
