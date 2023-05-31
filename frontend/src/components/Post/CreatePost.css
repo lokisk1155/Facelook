@@ -5,10 +5,11 @@
   transform: translate(-50%, -50%);
   background: #fff;
   padding: 10px;
-  height: 375px;
   width: 450px;
   border-radius: 7px;
   border: 1.25px solid lightgrey;
+  display: flex;
+  flex-direction: column;
 }
 
 .input-file-post {
@@ -20,10 +21,8 @@
   display: inline-block;
   cursor: pointer;
   display: flex;
-  justify-content: space-between;
+  align-self: center;
   width: 95%;
-  margin: auto;
-  padding: 5px;
 }
 
 @media (max-width: 600px) {

@@ -33,8 +33,8 @@ function CreatePost({ closeModal, location = "home" }) {
       setContainerHeight("600px");
       setTextareaHeight("10%");
     } else {
-      setContainerHeight("375px");
-      setTextareaHeight("30%");
+      setContainerHeight("400px");
+      setTextareaHeight("40%");
     }
   }, [photoFile]);
 
@@ -114,7 +114,11 @@ function CreatePost({ closeModal, location = "home" }) {
           </div>
           <textarea
             autoFocus={true}
-            style={{ width: "100%", height: textareaHeight }}
+            style={{
+              width: "100%",
+              height: textareaHeight,
+              paddingLeft: "7px",
+            }}
             type="text"
             placeholder={`What's on your mind ${sessionUser.first_name}?`}
             onChange={(e) => setContent(e.target.value)}
@@ -126,49 +130,30 @@ function CreatePost({ closeModal, location = "home" }) {
               style={{ height: "50%", width: "100%" }}
             />
           ) : (
-            <div style={{ width: "100%", height: "15%", alignItems: "center" }}>
-              <label className="custom-file-upload">
-                <p>Add to your post</p>
-                <i
-                  style={{
-                    height: "24px",
-                    width: "24px",
-                    backgroundImage:
-                      "url(https://static.xx.fbcdn.net/rsrc.php/v3/yH/r/IbmEpilFoF1.png)",
-                    backgroundPosition: "0px -208px",
-                    backgroundSize: "33px 605px",
-                    backgroundRepeat: "no-repeat",
-                    display: "inline-block",
-                    justifyContent: "center",
-                    alignSelf: "center",
-                    marginRight: "20px",
-                  }}
-                />
-                <input
-                  className="input-file-post"
-                  type="file"
-                  onChange={handleFile}
-                />
-              </label>
-            </div>
+            <label className="custom-file-upload">
+              <p style={{ paddingLeft: "5px" }}>Add to your post</p>
+              <input
+                className="input-file-post"
+                type="file"
+                onChange={handleFile}
+              />
+            </label>
           )}
-          <div style={{ width: "100%", height: "12%", alignItems: "center" }}>
-            <button
-              style={{
-                width: "98%",
-                margin: "1%",
-                height: "100%",
-                maxHeight: "50px",
-                border: "none",
-                backgroundColor: content.length < 1 ? "lightgrey" : "#166fe5",
-                color: content.length < 1 ? "black" : "white",
-                borderRadius: "3px",
-              }}
-              onClick={handlePostSubmit}
-            >
-              Post
-            </button>
-          </div>
+          <button
+            style={{
+              width: "95%",
+              height: "50px",
+              border: "none",
+              marginTop: "5px",
+              backgroundColor: content.length < 1 ? "lightgrey" : "#166fe5",
+              color: content.length < 1 ? "black" : "white",
+              borderRadius: "3px",
+              alignSelf: "center",
+            }}
+            onClick={handlePostSubmit}
+          >
+            Post
+          </button>
         </>
       )}
     </div>

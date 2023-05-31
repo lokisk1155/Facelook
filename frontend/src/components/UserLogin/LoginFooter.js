@@ -1,5 +1,3 @@
-import "./LoginFooter.css";
-
 function LoginFooter() {
   const styles = {
     fontFamily: "Arial, Helvetica, sans-serif",
