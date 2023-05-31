@@ -36,16 +36,10 @@ function LoginFooter() {
           ...styles,
         }}
       >
-        <a
-          style={{ ...styles }}
-          href="https://github.com/lokisk1155"
-        >
+        <a style={{ ...styles }} href="https://github.com/lokisk1155">
           GitHub
         </a>
-        <a
-          style={{ ...styles }}
-          href="https://www.linkedin.com/in/"
-        >
+        <a style={{ ...styles }} href="https://www.linkedin.com/in/">
           LinkedIn
         </a>
       </article>
