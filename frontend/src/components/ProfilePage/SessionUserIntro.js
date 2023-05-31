@@ -19,7 +19,9 @@ function SessionUserIntro({ currentUser, changeHeight }) {
 
   return (
     <div style={{ height: "100%", width: "100%" }}>
-      <p style={{ textAlign: "center" }}>{currentUser.bio}</p>
+      <p style={{ textAlign: "center" }}>
+        {currentUser.bio ? currentUser.bio : "Add a bio!"}
+      </p>
       {toggleBio ? <EditBio closeModal={setToggleBio} /> : null}
       <div
         style={{
