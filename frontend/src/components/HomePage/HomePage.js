@@ -5,6 +5,8 @@ import StoriesHeader from "./Middle/StoriesHeader";
 import CircleLoading from "../loading/CircleLoading";
 import GetHomePage from "../../hooks/getHomePage";
 import "./HomePage.css";
+import YourShortcuts from "./YourShortcuts";
+import YourContacts from "./YourContacts";
 
 function HomePage() {
   const storeHydrated = GetHomePage();
@@ -12,7 +14,9 @@ function HomePage() {
     <>
       <NavBar />
       <div className="home-page-container">
-        <div className="column"></div>
+        <div className="column">
+          <YourShortcuts />
+        </div>
         <div className="middle">
           {storeHydrated ? (
             <>
@@ -28,7 +32,9 @@ function HomePage() {
             </>
           )}
         </div>
-        <div className="column"></div>
+        <div className="column">
+          <YourContacts />
+        </div>
       </div>
     </>
   );

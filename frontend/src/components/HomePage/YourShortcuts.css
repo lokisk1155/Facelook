@@ -1,0 +1,13 @@
+.icon-links {
+  color: grey;
+  display: flex;
+  align-items: center;
+  margin-left: 4%;
+  padding: 2.5px;
+  text-decoration: none;
+}
+
+.icon-links:hover {
+  background-color: lightgrey;
+  color: #fff;
+}

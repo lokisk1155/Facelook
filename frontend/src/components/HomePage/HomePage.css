@@ -5,6 +5,8 @@
 .column {
   float: left;
   width: 32.5%;
+  display: flex;
+  justify-content: center;
 }
 .middle {
   margin-top: 65px;
