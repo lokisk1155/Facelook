@@ -53,8 +53,7 @@ function LoginFooter() {
         }}
       >
         <div style={{ ...styles }}>
-          Technologies: Ruby on Rails - PostgreSql - React - Redux - AWSs3 -
-          Javascript - jbuilder - json - HTML5 - CSS
+          Technologies: Ruby on Rails - Postgres - React - Redux - AWSs3 - Jbuilder - Json - Javascript - Html - Css 
         </div>
         <div style={{ ...styles }}>By Shawn Mallon</div>
       </section>
