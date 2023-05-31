@@ -43,11 +43,14 @@ function Intro({ currentUser, changeHeight }) {
       style={{
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-evenly",
         height: "90%",
       }}
     >
-      {bio ? <p className="user-info">{bio}</p> : null}
+      {bio ? (
+        <p style={{ textAlign: "center" }} className="user-info">
+          {bio}
+        </p>
+      ) : null}
       {work ? <p className="user-info">Works at {work}</p> : null}
       {education ? (
         <p className="user-info">Graduated from {education}</p>
