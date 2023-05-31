@@ -20,7 +20,7 @@ function FriendsContainer({ currentUser, sessionUser }) {
   // }
 
   return (
-    <div style={{ height: "90%" }}>
+    <div style={{ height: "90%", paddingLeft: "5px" }}>
       <p>
         {friends.length} {friends.length === 1 ? "Friend" : "Friends"}
       </p>

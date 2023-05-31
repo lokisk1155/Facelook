@@ -106,6 +106,7 @@ function Friends({ friends, currentUserFriends }) {
                         fontSize: "0.8rem",
                         color: "black",
                         margin: "0",
+                        paddingLeft: "5px",
                       }}
                     >{`${capitalizeFirstLetter(
                       friend.first_name
@@ -115,6 +116,7 @@ function Friends({ friends, currentUserFriends }) {
                         fontSize: "0.6rem",
                         color: "black",
                         margin: "0",
+                        padding: "5px",
                       }}
                     >
                       {MutualFriendCount(friend)}
@@ -126,7 +128,7 @@ function Friends({ friends, currentUserFriends }) {
                     className="delete-on-friend"
                     onClick={handleDelete(friend.id)}
                   >
-                    <i className="unfriend-button-in-map"></i>
+                    X
                   </button>
                 ) : null}
               </div>
@@ -149,15 +151,28 @@ function Friends({ friends, currentUserFriends }) {
                     src={friend.profile_picture || profilePic}
                   ></img>
                 </Link>
-                <p className="friend-profile-name">{`${capitalizeFirstLetter(
+                <p
+                  style={{ paddingLeft: "5px" }}
+                  className="friend-profile-name"
+                >{`${capitalizeFirstLetter(
                   friend.first_name
                 )} ${capitalizeFirstLetter(friend.last_name)}`}</p>
+                <p
+                  style={{
+                    fontSize: "0.6rem",
+                    color: "black",
+                    margin: "0",
+                    padding: "5px",
+                  }}
+                >
+                  {MutualFriendCount(friend)}
+                </p>
                 {sessionUserId === parseInt(id) ? (
                   <button
                     className="delete-on-friend"
                     onClick={handleDelete(friend.id)}
                   >
-                    <i className="unfriend-button-in-map"></i>
+                    X
                   </button>
                 ) : null}
               </div>
