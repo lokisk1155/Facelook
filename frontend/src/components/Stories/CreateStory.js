@@ -135,7 +135,7 @@ function CreateStoryIntro() {
               />
               <p
                 style={{
-                  justifyContent: "center",
+                  textAlign: "center",
                   color: "#fff",
                   marginTop: "150px",
                   fontSize: "18px",
@@ -165,6 +165,7 @@ function CreateStoryIntro() {
                   color: "#fff",
                   marginTop: "150px",
                   fontSize: "18px",
+                  textAlign: "center",
                 }}
               >
                 Create a text story
