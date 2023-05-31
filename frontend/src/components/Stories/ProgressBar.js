@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import LoadingBar from "./LoadingBar";
 import profilePic from "../NavBar/imgs/blank.png";
-import { getTimeElapsed } from "../Post/utils/Date";
 import "./ProgressBar.css";
 
 function ProgressBar({

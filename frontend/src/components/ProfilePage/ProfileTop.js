@@ -141,7 +141,7 @@ function ProfileTop({ currentUser, sessionUser, friends }) {
                   borderRadius: "7px",
                 }}
               >
-                Edit Profile
+                Edit profile/cover photo
               </button>
             </div>
           )}
