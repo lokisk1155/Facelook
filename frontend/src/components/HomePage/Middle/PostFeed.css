@@ -27,6 +27,9 @@
   margin-right: 10px;
   border: none;
   background-color: #f0f2f5;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .individual-post {
