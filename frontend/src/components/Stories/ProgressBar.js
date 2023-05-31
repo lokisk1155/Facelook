@@ -79,12 +79,9 @@ function ProgressBar({
           src={profilePicture}
         />
 
-        <ul className="name-and-date-container-story">
-          <p className="name-on-actual-story">{simpleUsers[id].name}</p>
-          <p className="how-long-ago-on-story">
-            {getTimeElapsed(currentStoryCreatedAt)}
-          </p>
-        </ul>
+        <p style={{ paddingLeft: "2px" }} className="name-on-actual-story">
+          {simpleUsers[id].name}
+        </p>
       </Link>
     </>
   );
