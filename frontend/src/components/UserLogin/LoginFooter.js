@@ -3,7 +3,7 @@ function LoginFooter() {
     fontFamily: "Arial, Helvetica, sans-serif",
     color: "rgb(145, 145, 145)",
     textDecoration: "none",
-    fontSize: "1.2rem",
+    fontSize: "1rem",
     margin: "5px",
   };
 
@@ -19,7 +19,7 @@ function LoginFooter() {
         position: "absolute",
         bottom: "0",
         width: "100%",
-        height: "25%",
+        height: "15%",
         backgroundColor: "#fff",
         display: "flex",
         flexDirection: "column",
@@ -37,7 +37,10 @@ function LoginFooter() {
         <a style={{ ...styles }} href="https://github.com/lokisk1155">
           GitHub
         </a>
-        <a style={{ ...styles }} href="https://www.linkedin.com/in/">
+        <a
+          style={{ ...styles }}
+          href="https://www.linkedin.com/in/shawn-mallon/"
+        >
           LinkedIn
         </a>
       </article>
@@ -50,10 +53,10 @@ function LoginFooter() {
         }}
       >
         <div style={{ ...styles }}>
-          Technologies: Ruby Rails(Ruby on Rails) PostgreSql JavaScript React.js
-          Redux.js AWS(S3) HTML5 CSS3{" "}
+          Technologies: Ruby on Rails - PostgreSql - React - Redux - AWSs3 -
+          Javascript - jbuilder - json - HTML5 - CSS
         </div>
-        <div style={{ ...styles }}>Shawn Mallon</div>
+        <div style={{ ...styles }}>By Shawn Mallon</div>
       </section>
     </footer>
   );

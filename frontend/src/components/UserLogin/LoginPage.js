@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import LoginFooter from "./LoginFooter";
 import { generateCredentials } from "../../utils/generateCredentials";
 import "./LoginPage.css";
+import LoginHeader from "./LoginHeader";
 
 function LoginPage() {
   const dispatch = useDispatch();
@@ -44,6 +45,7 @@ function LoginPage() {
   return (
     <>
       <div className="login-container">
+        <LoginHeader />
         <div className="login">
           <form className="login-form" onSubmit={handleSubmit}>
             <div>
