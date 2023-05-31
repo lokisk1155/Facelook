@@ -7,9 +7,12 @@ import GetHomePage from "../../hooks/getHomePage";
 import "./HomePage.css";
 import YourShortcuts from "./YourShortcuts";
 import YourContacts from "./YourContacts";
+import GetSessionUsersFriends from "../../hooks/getSessionUser";
 
 function HomePage() {
   const storeHydrated = GetHomePage();
+  const state = GetSessionUsersFriends();
+
   return (
     <>
       <NavBar />
@@ -18,7 +21,7 @@ function HomePage() {
           <YourShortcuts />
         </div>
         <div className="middle">
-          {storeHydrated ? (
+          {storeHydrated && state ? (
             <>
               <StoriesHomeFeed />
               <PostFeed />

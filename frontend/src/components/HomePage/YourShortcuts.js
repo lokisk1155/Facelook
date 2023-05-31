@@ -4,6 +4,12 @@ import { faEnvelope, faPaintBrush } from "@fortawesome/free-solid-svg-icons";
 import "./YourShortcuts.css";
 
 function YourShortcuts() {
+  const isViewportUnderCertainWidth = window.innerWidth < 768; // Adjust the width as per your needs
+
+  if (isViewportUnderCertainWidth) {
+    return null; // Render nothing if the viewport width is under the specified value
+  }
+
   return (
     <div
       style={{

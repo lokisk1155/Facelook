@@ -1,25 +1,23 @@
 .home-page-container {
   display: flex;
+  height: 100vh;
+  overflow: hidden; /* To ensure inner content doesn't overflow the container */
+  position: relative; /* Relative to position the NavBar */
 }
 
 .column {
-  float: left;
-  width: 32.5%;
+  width: 30%;
+  height: 100%; /* Full height of the container */
+  overflow-y: auto; /* Scroll when necessary */
   display: flex;
   justify-content: center;
 }
-.middle {
-  margin-top: 65px;
-  float: left;
-  width: 45%;
-  height: 100%;
-  overflow: auto;
-}
 
-.columns:after {
-  content: "";
-  display: table;
-  clear: both;
+.middle {
+  margin-top: 50px;
+  width: 39%; /* Adjusted considering three columns with some spacing */
+  height: calc(100% - 50px); /* Deducting margin-top from height */
+  overflow-y: auto; /* Scroll when necessary */
 }
 
 .stories-home-feed-loading {
@@ -29,38 +27,9 @@
   padding: 10px;
   border-end-end-radius: 10px;
   border-end-start-radius: 10px;
-  box-shadow: 0px 6px 6px 0px lightgrey;
+  box-shadow: 0px 4px 4px 0px lightgrey;
 }
 
-@media (max-width: 1400px) {
-  .middle {
-    width: 50%;
-  }
-
-  .column {
-    width: 25%;
-  }
-}
-
-@media (max-width: 1100px) {
-  .middle {
-    width: 55%;
-  }
-
-  .column {
-    width: 22.5%;
-  }
-}
-
-@media (max-width: 950px) {
-  .middle {
-    width: 65%;
-  }
-
-  .column {
-    width: 17.5%;
-  }
-}
 @media (max-width: 800px) {
   .middle {
     width: 80%;
