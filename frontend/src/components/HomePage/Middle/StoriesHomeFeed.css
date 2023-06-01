@@ -16,7 +16,7 @@
 }
 
 .story-img {
-  width: 150px;
+  width: 125px;
   height: 97%;
   background-position: center;
   background-repeat: no-repeat;
@@ -28,7 +28,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 150px;
+  width: 125px;
   height: 97%;
   background-position: center;
   background-repeat: no-repeat;
@@ -38,7 +38,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 150px;
+  width: 125px;
   height: 100%;
   margin: 2.5px;
   padding: 0;

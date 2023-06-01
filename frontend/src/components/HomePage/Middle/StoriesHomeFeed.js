@@ -23,7 +23,7 @@ function StoriesHomeFeed() {
 
   for (const key in storiesFromState) {
     for (const storyKey in storiesFromState[key]) {
-      if (stories.length < 8) {
+      if (stories.length < 10) {
         stories.push(storiesFromState[key][storyKey]);
       } else {
         break;
@@ -31,7 +31,7 @@ function StoriesHomeFeed() {
     }
   }
 
-  const sessionUserPicture = simpleUsers[sessionUser.id]?.profile_picture;
+  const sessionUserPicture = simpleUsers[sessionUser.id].profile_picture;
 
   const moveLeft = (e) => {
     if (e) {
@@ -108,7 +108,7 @@ function StoriesHomeFeed() {
                 style={{
                   width: "250px",
                   textDecoration: "none",
-                  margin: "5px",
+                  margin: "2px",
                 }}
               >
                 {story.picture ? (
@@ -125,6 +125,17 @@ function StoriesHomeFeed() {
                         simpleUsers[story.user_id].profile_picture || profilePic
                       }
                     />
+                    <p
+                      style={{
+                        position: "absolute",
+                        bottom: "0",
+                        paddingLeft: "5px",
+                        color: "#fff",
+                        fontSize: "0.9rem",
+                      }}
+                    >
+                      {simpleUsers[story.user_id].name}
+                    </p>
                   </div>
                 ) : (
                   <div className="photo-story-container">
@@ -150,6 +161,17 @@ function StoriesHomeFeed() {
                         simpleUsers[story.user_id].profile_picture || profilePic
                       }
                     />
+                    <p
+                      style={{
+                        position: "absolute",
+                        bottom: "0",
+                        paddingLeft: "5px",
+                        color: "#fff",
+                        fontSize: "0.9rem",
+                      }}
+                    >
+                      {simpleUsers[story.user_id].name}
+                    </p>
                   </div>
                 )}
               </Link>
