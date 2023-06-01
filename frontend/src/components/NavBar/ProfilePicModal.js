@@ -3,16 +3,18 @@ import { logout } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import "./profilePicModal.css";
 import profilePic from "./imgs/blank.png";
-import Github from "./imgs/GitHub.png";
-import Li from "./imgs/Li.png";
-import wellfound from "./imgs/wellfound.png";
+import {
+  faBug,
+  faComments,
+  faDoorOpen,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function ProfilePicModal() {
   const history = useHistory();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
   const name = `${user.first_name} ${user.last_name}`;
-  const developerPictures = [Github, Li, wellfound];
 
   const handleLogout = () => {
     dispatch(logout(user));
@@ -28,7 +30,7 @@ function ProfilePicModal() {
         <div
           className="container-header-profile-modal"
           style={{
-            height: "35%",
+            height: "25%",
             width: "325px",
             backgroundColor: "#fff",
             borderRadius: "10px",
@@ -77,24 +79,34 @@ function ProfilePicModal() {
             style={{
               borderBottom: "1px solid lightgrey",
               width: "98%",
+              height: "1px",
               margin: "1%",
+              display: "flex",
+              alignItems: "center",
             }}
           ></div>
-          <button
-            className="logout-button"
+          <a
+            href="https://www.facebook.com/"
             style={{
-              height: "35%",
-              width: "95%",
-              marginLeft: "2.5%",
-              marginRight: "2.5%",
-              marginTop: "1%",
-              borderRadius: "7px",
-              border: "none",
+              textDecoration: "none",
+              margin: "5px",
+              height: "27%",
+              display: "flex",
+              alignItems: "center",
             }}
-            onClick={handleLogout}
           >
-            Log Out
-          </button>
+            <p
+              style={{
+                color: "lightblue",
+                width: "160px",
+                padding: "0",
+                paddingLeft: "10px",
+                margin: "0",
+              }}
+            >
+              visit the real facebook
+            </p>
+          </a>
         </div>
         <div
           className="person-links-container"
@@ -107,33 +119,80 @@ function ProfilePicModal() {
             flexDirection: "column",
           }}
         >
-          {developerPictures.map((website, index) => {
-            return (
-              <Link
-                key={index}
-                className="developer-links"
-                target="_blank"
-                style={{
-                  height: "30%",
-                  display: "flex",
-                  margin: "2px",
-                  justifyContent: "flex-start",
-                  alignItems: "center",
-                  textDecoration: "none",
-                }}
-                to={{ pathname: developerWebsiteLinks[index] }}
-              >
-                <img
-                  alt=""
-                  style={{ height: "60%", padding: "1px" }}
-                  src={website}
-                />
-                <h3 style={{ textDecoration: "none", color: "black" }}>
-                  {developerWebsiteNames[index]}
-                </h3>
-              </Link>
-            );
-          })}
+          <a
+            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+            style={{
+              height: "31.5%",
+              width: "95%",
+              marginLeft: "2.5%",
+              marginRight: "2.5%",
+              marginTop: "1%",
+              borderRadius: "7px",
+              border: "none",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-start",
+              textDecoration: "none",
+              backgroundColor: "whitesmoke",
+            }}
+          >
+            <FontAwesomeIcon
+              style={{ paddingLeft: "10px" }}
+              color="black"
+              icon={faComments}
+            />
+            <p style={{ color: "black", fontSize: "1rem", paddingLeft: "5px" }}>
+              Give feedback
+            </p>
+          </a>
+          <a
+            href="https://www.youtube.com/watch?v=4V40BQtAGIQ"
+            style={{
+              height: "31.5%",
+              width: "95%",
+              marginLeft: "2.5%",
+              marginRight: "2.5%",
+              marginTop: "1%",
+              borderRadius: "7px",
+              border: "none",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-start",
+              textDecoration: "none",
+              backgroundColor: "whitesmoke",
+            }}
+          >
+            <FontAwesomeIcon
+              style={{ paddingLeft: "10px" }}
+              color="black"
+              icon={faBug}
+            />
+            <p style={{ color: "black", fontSize: "1rem", paddingLeft: "5px" }}>
+              Report a bug
+            </p>
+          </a>
+          <button
+            className="logout-button"
+            style={{
+              height: "31.5%",
+              width: "95%",
+              marginLeft: "2.5%",
+              marginRight: "2.5%",
+              marginTop: "1%",
+              borderRadius: "7px",
+              border: "none",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-start",
+            }}
+            onClick={handleLogout}
+          >
+            <FontAwesomeIcon
+              style={{ paddingLeft: "10px" }}
+              icon={faDoorOpen}
+            />
+            <p style={{ fontSize: "1rem", paddingLeft: "5px" }}>LogOut</p>
+          </button>
         </div>
       </div>
     </div>
@@ -141,14 +200,3 @@ function ProfilePicModal() {
 }
 
 export default ProfilePicModal;
-
-const developerWebsiteLinks = [
-  "https://github.com/lokisk1155/FaceOok",
-  "https://www.linkedin.com/in/shawn-mallon/",
-  "https://angel.co/u/shawn-mallon",
-];
-const developerWebsiteNames = [
-  "Project's Repo",
-  "Creator's Linkedin",
-  "Creator's Wellfound",
-];
