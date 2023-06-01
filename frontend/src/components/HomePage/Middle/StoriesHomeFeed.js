@@ -23,7 +23,11 @@ function StoriesHomeFeed() {
 
   for (const key in storiesFromState) {
     for (const storyKey in storiesFromState[key]) {
-      stories.push(storiesFromState[key][storyKey]);
+      if (stories.length < 8) {
+        stories.push(storiesFromState[key][storyKey]);
+      } else {
+        break;
+      }
     }
   }
 
@@ -71,7 +75,7 @@ function StoriesHomeFeed() {
     <>
       <StoriesHeader />
       <div className="stories-home-feed-container">
-        {currentWindow < (stories.length - 1) / 2 ? (
+        {currentWindow === 0 ? (
           <button className="control-button-story-home-left" onClick={moveLeft}>
             <ArrowLeftSvg />
           </button>
