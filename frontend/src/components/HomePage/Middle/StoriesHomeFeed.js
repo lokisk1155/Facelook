@@ -88,9 +88,10 @@ function StoriesHomeFeed() {
                 style={{
                   display: "flex",
                   flexDirection: "column",
-                  height: "100%",
+                  height: "220px",
                   position: "relative",
                   cursor: "pointer",
+                  width: "125px",
                 }}
               >
                 <img
