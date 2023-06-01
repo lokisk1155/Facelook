@@ -82,34 +82,36 @@ function StoriesHomeFeed() {
         ) : null}
         <div className="stories-mapped-out">
           {currentWindow === 0 ? (
-            <div
-              onClick={() => history.push("/stories/create")}
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                height: "98%",
-                position: "relative",
-                cursor: "pointer",
-              }}
-            >
-              <img
-                className="profile-picture-on-story"
-                alt=""
-                src={sessionUserPicture || profilePic}
-              ></img>
-              <CreateButtonSvg />
-              <div className="create-story-container">
-                <p
-                  style={{
-                    margin: "0",
-                    padding: "0",
-                    textAlign: "center",
-                    color: "grey",
-                    fontSize: "1rem",
-                  }}
-                >
-                  create a story
-                </p>
+            <div className="story-create-wrapper">
+              <div
+                onClick={() => history.push("/stories/create")}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  height: "100%",
+                  position: "relative",
+                  cursor: "pointer",
+                }}
+              >
+                <img
+                  className="profile-picture-on-story"
+                  alt=""
+                  src={sessionUserPicture || profilePic}
+                ></img>
+                <CreateButtonSvg />
+                <div className="create-story-container">
+                  <p
+                    style={{
+                      margin: "0",
+                      padding: "0",
+                      textAlign: "center",
+                      color: "grey",
+                      fontSize: "1rem",
+                    }}
+                  >
+                    create a story
+                  </p>
+                </div>
               </div>
             </div>
           ) : null}
@@ -130,11 +132,13 @@ function StoriesHomeFeed() {
               >
                 {story.picture ? (
                   <div className="photo-story-container">
-                    <img
-                      className="story-img"
-                      alt="38242"
-                      src={story.picture}
-                    />
+                    <div className="story-img-wrapper">
+                      <img
+                        className="story-img"
+                        alt="38242"
+                        src={story.picture}
+                      />
+                    </div>
                     <img
                       className="profile-picture-on-img-story"
                       alt=""
