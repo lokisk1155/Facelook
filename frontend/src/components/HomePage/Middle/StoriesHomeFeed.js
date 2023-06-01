@@ -83,16 +83,33 @@ function StoriesHomeFeed() {
         <div className="stories-mapped-out">
           {currentWindow === 0 ? (
             <div
-              className="create-story-post-container"
               onClick={() => history.push("/stories/create")}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                height: "98%",
+                position: "relative",
+                cursor: "pointer",
+              }}
             >
               <img
                 className="profile-picture-on-story"
                 alt=""
                 src={sessionUserPicture || profilePic}
               ></img>
+              <CreateButtonSvg />
               <div className="create-story-container">
-                <CreateButtonSvg />
+                <p
+                  style={{
+                    margin: "0",
+                    padding: "0",
+                    textAlign: "center",
+                    color: "grey",
+                    fontSize: "1rem",
+                  }}
+                >
+                  create a story
+                </p>
               </div>
             </div>
           ) : null}
