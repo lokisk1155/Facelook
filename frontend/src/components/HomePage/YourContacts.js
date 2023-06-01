@@ -60,11 +60,35 @@ function YourContacts() {
             }}
             to={`/ProfilePage/${friend.id}`}
           >
-            <img
-              alt="123128"
-              style={{ height: "45px", width: "45px", borderRadius: "50%" }}
-              src={friend.profile_picture ? friend.profile_picture : profilePic}
-            />
+            <div
+              style={{
+                position: "relative",
+                display: "flex",
+                height: "50px",
+                width: "50px",
+              }}
+            >
+              <img
+                alt="123128"
+                style={{ height: "45px", width: "45px", borderRadius: "50%" }}
+                src={
+                  friend.profile_picture ? friend.profile_picture : profilePic
+                }
+              />
+              <div
+                style={{
+                  backgroundColor: "rgb(3, 218, 3)",
+                  border: "0.3vw solid #ffffff",
+                  borderRadius: "50%",
+                  height: "12px",
+                  width: "12px",
+                  zIndex: 2,
+                  position: "absolute",
+                  bottom: "0",
+                  right: "0",
+                }}
+              ></div>
+            </div>
             <p
               style={{ paddingLeft: "10px", color: "grey" }}
             >{`${friend.first_name} ${friend.last_name}`}</p>
