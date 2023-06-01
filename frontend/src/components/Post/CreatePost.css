@@ -23,6 +23,9 @@
   display: flex;
   align-self: center;
   width: 95%;
+  align-items: center;
+  justify-content: space-around;
+  height: 50px;
 }
 
 @media (max-width: 600px) {

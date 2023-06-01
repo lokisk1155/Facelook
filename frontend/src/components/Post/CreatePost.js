@@ -8,6 +8,8 @@ import profilePic from "../NavBar/imgs/blank.png";
 import { userReceivePost } from "../../store/profilePage";
 import CropEasy from "../crop/CropEasy";
 import { useParams } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFileUpload } from "@fortawesome/free-solid-svg-icons";
 
 function CreatePost({ closeModal, location = "home" }) {
   const dispatch = useDispatch();
@@ -131,7 +133,7 @@ function CreatePost({ closeModal, location = "home" }) {
             />
           ) : (
             <label className="custom-file-upload">
-              <p style={{ paddingLeft: "5px" }}>Add to your post</p>
+              <FontAwesomeIcon size="xl" color="green" icon={faFileUpload} />
               <input
                 className="input-file-post"
                 type="file"
@@ -141,7 +143,7 @@ function CreatePost({ closeModal, location = "home" }) {
           )}
           <button
             style={{
-              width: "95%",
+              width: "95.5%",
               height: "50px",
               border: "none",
               marginTop: "5px",
