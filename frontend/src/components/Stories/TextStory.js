@@ -64,10 +64,12 @@ function TextStory({ photoUrl = null, file = null }) {
       ...styles,
     };
     dispatch(createStory(story, formData)).then((storyCreated) => {
-      history.push({
-        pathname: `/stories/${storyCreated.user_id}`,
-        search: `?windowIndex=0`,
-      });
+      setTimeout(() => {
+        history.push({
+          pathname: `/stories/${storyCreated.user_id}`,
+          search: `?windowIndex=0`,
+        });
+      }, 150);
     });
   };
 

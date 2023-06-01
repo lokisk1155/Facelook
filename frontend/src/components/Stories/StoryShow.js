@@ -186,7 +186,7 @@ function StoryShow() {
     return null;
   }
 
-  if (!stories[id]) {
+  if (stories[id] === undefined || stories[id] === null) {
     return null;
   }
 

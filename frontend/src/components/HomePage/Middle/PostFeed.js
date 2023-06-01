@@ -46,7 +46,7 @@ function PostFeed({ currentUserId }) {
           }}
         >
           <img
-            style={{ height: "50px", width: "50px", borderRadius: "50%" }}
+            style={{ height: "60px", width: "60px", borderRadius: "50%" }}
             alt=""
             src={simpleUsers[sessionUser.id]?.profile_picture || profilePic}
           ></img>
