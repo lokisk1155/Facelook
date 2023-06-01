@@ -32,7 +32,6 @@ function PostFeed({ currentUserId }) {
       {currentUserId === undefined ? (
         <div
           style={{
-            marginTop: "1vw",
             backgroundColor: "#fff",
             width: "100%",
             minHeight: "5vw",
@@ -43,6 +42,7 @@ function PostFeed({ currentUserId }) {
             flexDirection: "row",
             alignItems: "center",
             justifyContent: "space-evenly",
+            marginTop: "5px",
           }}
         >
           <img
