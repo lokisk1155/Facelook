@@ -1,12 +1,3 @@
-.omega-navbar {
-  display: flex;
-  justify-content: space-between;
-  height: 50px;
-  position: fixed;
-  top: 0px;
-  width: 100vw;
-}
-
 .facebook-picture {
   display: flex;
   cursor: pointer;
