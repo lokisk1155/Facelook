@@ -9,6 +9,14 @@
   margin-top: 50px;
 }
 
+.whats-on-ur-mind {
+  background-color: #f0f2f5;
+}
+
+.whats-on-ur-mind:hover {
+  background-color: lightgrey;
+}
+
 .post-feed-container-homepage {
   width: 675px;
   margin-left: 390px;

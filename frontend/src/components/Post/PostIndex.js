@@ -35,15 +35,26 @@ function PostIndex({ post, sessionUser, simpleUsers }) {
   };
 
   return (
-    <>
+    <div
+      style={{
+        marginTop: "1vw",
+        backgroundColor: "white",
+        borderRadius: "10px",
+        boxShadow: "0 0.5px 3px 1px rgb(228, 228, 228)",
+        border: "1px solid rgb(213, 213, 213)",
+        paddingLeft: "0",
+        paddingRight: "0",
+        paddingBottom: "1vw",
+        paddingTop: "0.25vw",
+        /* position:relative; */
+      }}
+    >
       {post.picture ? (
         <div
           style={{
             minHeight: "400px",
             width: "100%",
             backgroundColor: "#fff",
-            marginBottom: "15px",
-            boxShadow: "0px 2px 2px 0px lightgrey",
           }}
         >
           <PostHeader
@@ -72,8 +83,6 @@ function PostIndex({ post, sessionUser, simpleUsers }) {
               minHeight: "85px",
               width: "100%",
               backgroundColor: "#fff",
-              marginBottom: "15px",
-              boxShadow: "0px 2px 2px 0px lightgrey",
             }}
           >
             <PostHeader
@@ -96,7 +105,7 @@ function PostIndex({ post, sessionUser, simpleUsers }) {
           </div>
         </>
       )}
-    </>
+    </div>
   );
 }
 
