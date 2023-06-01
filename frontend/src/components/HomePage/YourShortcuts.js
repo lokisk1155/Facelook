@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope, faPaintBrush } from "@fortawesome/free-solid-svg-icons";
-import "./YourShortcuts.css";
+import { faEnvelope, faHeart, faDragon } from "@fortawesome/free-solid-svg-icons";
+import "./YourShortcuts.css";;
 
 function YourShortcuts() {
   const isViewportUnderCertainWidth = window.innerWidth < 768; // Adjust the width as per your needs
@@ -11,73 +11,62 @@ function YourShortcuts() {
   }
 
   return (
-    <div
-      style={{
-        width: "80%",
-        height: "300px",
-        backgroundColor: "hsla(0,0%,100%,.4)",
-        marginTop: "65px",
-        borderRadius: "15px",
-        boxShadow: "0px 4px 4px 0px lightgrey",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-      }}
-    >
-      <h2
-        style={{
-          paddingTop: "10px",
-          paddingLeft: "10px",
-          margin: "0",
-          color: "grey",
-        }}
-      >
-        Your shortcuts
-      </h2>
-      <hr color="lightgrey" width="95%"></hr>
       <article
         style={{
           display: "flex",
           flexDirection: "column",
           height: "80%",
-          justifyContent: "space-evenly",
+          width: "90%",
           cursor: "pointer",
+          marginTop: "65px"
         }}
       >
         <a
           className="icon-links"
-          href="https://github.com/lokisk1155/FaceOok"
-          style={{ width: "90%", borderRadius: "5px", height: "40px" }}
+          href="https://www.linkedin.com/in/shawn-mallon/"
+          style={{ width: "90%", borderRadius: "5px", height: "75px" }}
         >
           {" "}
-          <FontAwesomeIcon icon={faGithub} /> {":      Github"}
+          <FontAwesomeIcon size="xl" icon={faLinkedin} /> 
+          <p style={{ paddingLeft: "5px"}}>{"Linkedin"}</p>
         </a>
         <a
           className="icon-links"
-          href="https://www.linkedin.com/in/shawn-mallon/"
-          style={{ width: "90%", borderRadius: "5px", height: "40px" }}
+          href="https://github.com/lokisk1155/FaceOok"
+          style={{ width: "90%", borderRadius: "5px", height: "75px" }}
         >
           {" "}
-          <FontAwesomeIcon icon={faLinkedin} /> {":      Linkedin"}
+          <FontAwesomeIcon size="xl" icon={faGithub} /> 
+          <p style={{ paddingLeft: "5px"}}>{"Github"}</p>
         </a>
         <a
           className="icon-links"
           href="https://mailmeaa.herokuapp.com/login"
-          style={{ width: "90%", borderRadius: "5px", height: "40px" }}
+          style={{ width: "90%", borderRadius: "5px", height: "75px" }}
         >
           {" "}
-          <FontAwesomeIcon size="1x" icon={faEnvelope} /> {":      Mail"}
+          <FontAwesomeIcon size="xl" icon={faEnvelope} /> 
+          <p style={{ paddingLeft: "5px"}}>{"Mail"}</p>
         </a>
         <a
           className="icon-links"
           href="https://bejewelled-cactus-d214e5.netlify.app/"
-          style={{ width: "90%", borderRadius: "5px", height: "40px" }}
+          style={{ width: "90%", borderRadius: "5px", height: "75px" }}
         >
           {" "}
-          <FontAwesomeIcon size="sm" icon={faPaintBrush} /> {":      Threejs"}
+          <FontAwesomeIcon size="xl" icon={faDragon} /> 
+          <p style={{ paddingLeft: "5px"}}>{"Threejs"}</p>
+        </a>
+        <a
+          className="icon-links"
+          href="https://github.com/rubyforgood/human-essentials"
+          style={{ width: "90%", borderRadius: "5px", height: "75px" }}
+        >
+          {" "}
+          <FontAwesomeIcon color="red" size="xl" icon={faHeart} /> 
+          <p style={{ paddingLeft: "5px"}}>{"Ruby For Good"}</p>
         </a>
       </article>
-    </div>
   );
 }
 
