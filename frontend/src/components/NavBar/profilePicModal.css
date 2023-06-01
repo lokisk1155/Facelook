@@ -1,8 +1,8 @@
 .omega-profile-modal-container {
   position: absolute;
   height: 350px;
-  top: 25px; 
-  margin-top: 0; 
+  top: 25px;
+  margin-top: 0;
   right: 0;
   z-index: 50;
 }
