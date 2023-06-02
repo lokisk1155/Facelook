@@ -11,6 +11,7 @@
 
 .whats-on-ur-mind {
   background-color: #f0f2f5;
+  font-size: 1.15rem;
 }
 
 .whats-on-ur-mind:hover {
@@ -85,7 +86,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  overflow: scroll;
+  overflow-x: hidden;
 }
 
 .post-header {
@@ -124,11 +125,28 @@
   animation: skeleton-loading 1s linear infinite alternate;
 }
 
+.whats-on-ur-mind-pic {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+}
+
 @keyframes skeleton-loading {
   0% {
     background-color: hsl(200, 20%, 70%);
   }
   100% {
     background-color: hsl(200, 20%, 95%);
+  }
+}
+
+@media (max-width: 700px) {
+  .whats-on-ur-mind {
+    font-size: 0.6rem;
+  }
+
+  .whats-on-ur-mind-pic {
+    height: 35px;
+    width: 35px;
   }
 }

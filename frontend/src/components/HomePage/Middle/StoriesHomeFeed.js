@@ -129,7 +129,7 @@ function StoriesHomeFeed() {
                   width: "250px",
                   textDecoration: "none",
                   margin: "2px",
-                  paddingLeft: index === 0 ? "4px" : "0"
+                  paddingLeft: index === 0 ? "4px" : "0",
                 }}
               >
                 {story.picture ? (

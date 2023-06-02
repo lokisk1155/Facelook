@@ -33,8 +33,8 @@ function PostFeed({ currentUserId }) {
         <div
           style={{
             backgroundColor: "#fff",
-            width: "100%",
-            minHeight: "5vw",
+            width: "99.8%",
+            minHeight: "85px",
             borderRadius: "10px",
             border: "1px solid rgb(213, 213, 213)",
             boxShadow: "0 0.5px 3px 1px rgb(228, 228, 228)",
@@ -46,7 +46,7 @@ function PostFeed({ currentUserId }) {
           }}
         >
           <img
-            style={{ height: "60px", width: "60px", borderRadius: "50%" }}
+            className="whats-on-ur-mind-pic"
             alt=""
             src={simpleUsers[sessionUser.id]?.profile_picture || profilePic}
           ></img>
@@ -55,13 +55,11 @@ function PostFeed({ currentUserId }) {
             style={{
               width: "85%",
               marginLeft: "-0.5vw",
-              height: "3vw",
               border: "none",
               display: "flex",
               alignItems: "center",
               borderRadius: "20px",
               color: "grey",
-              fontSize: "1.4vw",
               paddingLeft: "1.3vw",
             }}
             onClick={handleNewPost}

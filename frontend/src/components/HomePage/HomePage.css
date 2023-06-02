@@ -6,7 +6,7 @@
 }
 
 .column {
-  width: 30%;
+  width: 29%;
   height: 100%; /* Full height of the container */
   overflow-y: auto; /* Scroll when necessary */
   display: flex;
@@ -15,7 +15,7 @@
 
 .middle {
   margin-top: 50px;
-  width: 39%; /* Adjusted considering three columns with some spacing */
+  width: 41%; /* Adjusted considering three columns with some spacing */
   height: calc(100% - 50px); /* Deducting margin-top from height */
   overflow-y: auto; /* Scroll when necessary */
 }

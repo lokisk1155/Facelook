@@ -25,7 +25,7 @@ function ProfilePicModal() {
     <div className="omega-profile-modal-container">
       <div
         className="profile-pic-modal-container"
-        style={{ width: "350px", padding: "2.5px" }}
+        style={{ width: "375px", padding: "2.5px" }}
       >
         <div
           className="container-header-profile-modal"
