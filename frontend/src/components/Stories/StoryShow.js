@@ -47,7 +47,7 @@ function StoryShow() {
       }
       history.replace(`/stories/${id}`);
       if (parseInt(id) === sessionUserId) {
-        if (currentWindow === Object.values(stories[id]).length - 1) {
+        if (currentWindow === Object.values(stories[id])?.length - 1) {
           for (const userId in stories) {
             if (
               simpleUsers[userId] !== undefined &&
@@ -62,7 +62,7 @@ function StoryShow() {
           setCurrentWindow(newWindow);
         }
       } else {
-        if (currentWindow === Object.values(stories[id]).length - 1) {
+        if (currentWindow === Object.values(stories[id])?.length - 1) {
           let firstId = false;
           let found = false;
           let target = Object.keys(stories).length - 1;
