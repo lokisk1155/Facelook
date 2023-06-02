@@ -31,7 +31,7 @@ function StoriesHomeFeed() {
     }
   }
 
-  const sessionUserPicture = simpleUsers[sessionUser.id].profile_picture;
+  const sessionUserPicture = simpleUsers[sessionUser.id]?.profile_picture;
 
   const moveLeft = (e) => {
     if (e) {
