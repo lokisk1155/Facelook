@@ -25,7 +25,7 @@ function ProfilePicModal() {
     <div className="omega-profile-modal-container">
       <div
         className="profile-pic-modal-container"
-        style={{ width: "375px", padding: "2.5px" }}
+        style={{ width: "350px", padding: "2.5px" }}
       >
         <div
           className="container-header-profile-modal"
@@ -123,7 +123,7 @@ function ProfilePicModal() {
             href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             style={{
               height: "31.5%",
-              width: "95%",
+              width: "96%",
               marginLeft: "2.5%",
               marginRight: "2.5%",
               marginTop: "1%",
@@ -149,7 +149,7 @@ function ProfilePicModal() {
             href="https://www.youtube.com/watch?v=4V40BQtAGIQ"
             style={{
               height: "31.5%",
-              width: "95%",
+              width: "96%",
               marginLeft: "2.5%",
               marginRight: "2.5%",
               marginTop: "1%",
@@ -175,7 +175,7 @@ function ProfilePicModal() {
             className="logout-button"
             style={{
               height: "31.5%",
-              width: "95%",
+              width: "96%",
               marginLeft: "2.5%",
               marginRight: "2.5%",
               marginTop: "1%",
