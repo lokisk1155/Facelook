@@ -77,7 +77,6 @@
 .profile-picture-on-story {
   object-fit: cover;
   height: 70%;
-  margin-top: 4px;
   width: 100%;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -227,8 +226,9 @@
 
 .story-create-wrapper {
   position: relative;
-  height: 220px;
+  height: 216px;
   width: 125px;
+  margin-top: 4px;
 }
 
 .story-create-wrapper::after {

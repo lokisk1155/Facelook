@@ -88,7 +88,7 @@ function StoriesHomeFeed() {
                 style={{
                   display: "flex",
                   flexDirection: "column",
-                  height: "220px",
+                  height: "100%",
                   position: "relative",
                   cursor: "pointer",
                   width: "125px",
