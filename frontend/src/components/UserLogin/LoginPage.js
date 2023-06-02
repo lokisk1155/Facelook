@@ -2,7 +2,6 @@ import { useHistory } from "react-router-dom";
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
-import LoginFooter from "./LoginFooter";
 import { generateCredentials } from "../../utils/generateCredentials";
 import "./LoginPage.css";
 import LoginHeader from "./LoginHeader";
@@ -80,7 +79,6 @@ function LoginPage() {
             </div>
           </form>
         </div>
-        <LoginFooter />
       </div>
     </>
   );
