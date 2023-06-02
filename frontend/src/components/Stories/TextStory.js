@@ -69,7 +69,7 @@ function TextStory({ photoUrl = null, file = null }) {
           pathname: `/stories/${storyCreated.user_id}`,
           search: `?windowIndex=0`,
         });
-      }, 150);
+      }, 250);
     });
   };
 

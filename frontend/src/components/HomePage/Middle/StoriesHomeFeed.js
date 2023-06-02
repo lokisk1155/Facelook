@@ -82,9 +82,11 @@ function StoriesHomeFeed() {
         ) : null}
         <div className="stories-mapped-out">
           {currentWindow === 0 ? (
-            <div className="story-create-wrapper">
+            <div
+              onClick={() => history.push("/stories/create")}
+              className="story-create-wrapper"
+            >
               <div
-                onClick={() => history.push("/stories/create")}
                 style={{
                   display: "flex",
                   flexDirection: "column",

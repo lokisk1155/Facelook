@@ -42,6 +42,9 @@ function StoryShow() {
       if (e) {
         e.preventDefault();
       }
+      if (stories[id] === null || stories[id] === null) {
+        return null;
+      }
       history.replace(`/stories/${id}`);
       if (parseInt(id) === sessionUserId) {
         if (currentWindow === Object.values(stories[id]).length - 1) {
