@@ -49,7 +49,7 @@ function Friends({ friends }) {
     setTyped("");
     dispatch(deleteFriend(userId, sessionUserId, id));
     if (parseInt(id) === sessionUserId) {
-      dispatch(UpdateSessionUser(sessionUser, false));
+      dispatch(UpdateSessionUser(sessionUser.id));
     } else {
       dispatch(updateUser(id));
     }

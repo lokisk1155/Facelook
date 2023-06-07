@@ -10,7 +10,7 @@ function AreFriends({ userId, sessionUser }) {
   const handleDelete = (e) => {
     e.preventDefault();
     dispatch(deleteFriend(userId, sessionUser.id, null)).then(() => {
-      dispatch(UpdateSessionUser(sessionUser, false));
+      dispatch(UpdateSessionUser(sessionUser.id));
     });
   };
 

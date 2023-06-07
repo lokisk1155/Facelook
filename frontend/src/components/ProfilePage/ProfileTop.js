@@ -7,7 +7,8 @@ import capitalizeFirstLetter from "../../utils/capFirstLetter";
 import EditProfile from "./EditProfile";
 import profilePicBlank from "../NavBar/imgs/blank.png";
 import "./ProfileTop.css";
-import { updateUser } from "../../store/user";
+import { updateUserFriends } from "../../store/user";
+import { UpdateSessionUser } from "../../store/session";
 
 function ProfileTop({ currentUser, sessionUser, friends }) {
   const dispatch = useDispatch();
@@ -36,7 +37,7 @@ function ProfileTop({ currentUser, sessionUser, friends }) {
     isFriend = true;
   }
 
-  const handleAdd = (e) => {
+  const handleAdd = async (e) => {
     e.preventDefault();
     setToggleDropDown(null);
     const friendRequest = {
@@ -45,14 +46,15 @@ function ProfileTop({ currentUser, sessionUser, friends }) {
     };
     if (!isFriend) {
       dispatch(addFriend(friendRequest, sessionUser, null));
+      dispatch(updateUserFriends(currentUser.id));
     }
   };
 
-  const handleDelete = (e) => {
+  const handleDelete = async (e) => {
     e.preventDefault();
-    dispatch(deleteFriend(currentUser.id, sessionUser, id)).then(() => {
-      dispatch(updateUser(currentUser, null, true));
-    });
+    dispatch(deleteFriend(currentUser.id, sessionUser, id));
+    dispatch(updateUserFriends(currentUser.id));
+    dispatch(UpdateSessionUser(sessionUser.id));
   };
 
   const preview = currentUser.profile_picture

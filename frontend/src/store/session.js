@@ -1,6 +1,6 @@
 import { BigBrother } from "../utils/BigBrother";
 import csrfFetch from "./csrf";
-import { updateUser } from "./user";
+import { fetchUser, updateUser } from "./user";
 
 export const SET_CURRENT_USER = "session/setCurrentUser";
 export const REMOVE_CURRENT_USER = "session/removeCurrentUser";
@@ -44,17 +44,16 @@ export const logout = () => async (dispatch) => {
   return res;
 };
 
-export const UpdateSessionUser =
-  (sessionUser, notProfilePage) => async (dispatch) => {
-    dispatch(updateUser(sessionUser, false, notProfilePage)).then((data) => {
-      dispatch(setCurrentUser(data.user));
-      if (data.user) {
-        return true;
-      } else {
-        return false;
-      }
-    });
-  };
+export const UpdateSessionUser = (sessionUserId) => async (dispatch) => {
+  dispatch(fetchUser(sessionUserId)).then((data) => {
+    dispatch(setCurrentUser(data.user));
+    if (data.user) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+};
 
 export const signup = (user, formData) => async (dispatch) => {
   const res = await csrfFetch("/api/users", {

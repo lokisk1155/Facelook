@@ -19,7 +19,7 @@ function App() {
 
   useEffect(() => {
     dispatch(getSimpleUsers());
-    dispatch(UpdateSessionUser(sessionUser, true));
+    dispatch(UpdateSessionUser(sessionUser.id));
   }, [dispatch, id]);
 
   return (

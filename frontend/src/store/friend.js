@@ -1,5 +1,6 @@
 import csrfFetch from "./csrf";
 import { UpdateSessionUser } from "./session";
+import { updateUserFriends } from "./user";
 
 export const REMOVE_FRIEND = "friends/REMOVE_FRIEND";
 export const RECEIVE_FRIEND = "friends/RECEIVE_FRIEND";
@@ -32,9 +33,10 @@ export const addFriend =
       body: JSON.stringify(friendRequest),
     });
     if (notProfilePage) {
-      return dispatch(UpdateSessionUser(sessionUser));
+      return dispatch(UpdateSessionUser(sessionUser.id));
     } else {
       dispatch(receiveFriend(sessionUser));
+      dispatch(updateUserFriends(friendRequest.receiver_id));
     }
   };
 

@@ -36,6 +36,12 @@ export const updateUser =
     return userData;
   };
 
+export const updateUserFriends = (userId) => async (dispatch) => {
+  const userRes = await csrfFetch(`/api/users/${userId}`);
+  const userData = await userRes.json();
+  dispatch(setCurrentProfile(userData.user));
+};
+
 const userReducer = (previousState = {}, action) => {
   let newState = { ...previousState };
   switch (action.type) {
