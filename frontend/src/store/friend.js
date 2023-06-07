@@ -1,4 +1,6 @@
 import csrfFetch from "./csrf";
+import { UpdateSessionUser } from "./session";
+import { fetchUser } from "./user";
 
 export const REMOVE_FRIEND = "friends/REMOVE_FRIEND";
 export const RECEIVE_FRIEND = "friends/RECEIVE_FRIEND";
@@ -24,14 +26,18 @@ export const fetchFriends = async (userIds) => {
   return friendsData;
 };
 
-export const addFriend = (friendRequest, sessionUser) => async (dispatch) => {
-  await csrfFetch(`/api/friends`, {
-    method: "POST",
-    body: JSON.stringify(friendRequest),
-  }).then(() => {
-    dispatch(receiveFriend(sessionUser));
-  });
-};
+export const addFriend =
+  (friendRequest, sessionUser, notProfilePage) => async (dispatch) => {
+    await csrfFetch(`/api/friends`, {
+      method: "POST",
+      body: JSON.stringify(friendRequest),
+    });
+    if (notProfilePage) {
+      return dispatch(UpdateSessionUser(sessionUser));
+    } else {
+      dispatch(receiveFriend(sessionUser));
+    }
+  };
 
 export const deleteFriend =
   (friendId, sessionUserId, paramsId) => async (dispatch) => {

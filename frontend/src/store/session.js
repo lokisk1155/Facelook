@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import { BigBrother } from "../utils/BigBrother";
 import csrfFetch from "./csrf";
 import { updateUser } from "./user";
@@ -42,6 +43,12 @@ export const logout = () => async (dispatch) => {
   storeCurrentUser(null);
   dispatch(removeCurrentUser());
   return res;
+};
+
+export const UpdateSessionUser = (sessionUser, notProfilePage) => async (dispatch) => {
+  dispatch(updateUser(sessionUser, false, notProfilePage)).then((data) => {
+    dispatch(setCurrentUser(data.user));
+  });
 };
 
 export const signup = (user, formData) => async (dispatch) => {

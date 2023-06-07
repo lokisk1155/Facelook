@@ -13,7 +13,7 @@ export const fetchUser = async (id) => {
   const userData = await userRes.json();
   return userData.user;
 };
-export const updateUser = (user, formData) => async (dispatch) => {
+export const updateUser = (user, formData, NotProfilePage) => async (dispatch) => {
   const id = user?.id ? user.id : user;
   let postRes;
   if (formData) {
@@ -28,6 +28,9 @@ export const updateUser = (user, formData) => async (dispatch) => {
     });
   }
   const userData = await postRes.json();
+  if (NotProfilePage) {
+    return userData;
+  }
   dispatch(setCurrentProfile(userData.user));
   return userData;
 };

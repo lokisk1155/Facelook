@@ -7,6 +7,8 @@ import LoginPage from "./components/UserLogin/LoginPage";
 import HomePage from "./components/HomePage/HomePage";
 import CreateStoryIntro from "./components/Stories/CreateStory";
 import GetAllStories from "./hooks/getAllStories";
+import AllUsersPage from "./components/AllUsers.js/AllUsersPage";
+import { UpdateSessionUser } from "./store/session";
 
 function App() {
   const dispatch = useDispatch();
@@ -17,6 +19,9 @@ function App() {
 
   useEffect(() => {
     dispatch(getSimpleUsers());
+    if (sessionUser) {
+      dispatch(UpdateSessionUser(sessionUser, true));
+    }
   }, [dispatch, id]);
 
   return (
@@ -27,6 +32,7 @@ function App() {
           path="/"
           render={() => (sessionUser ? <HomePage /> : <LoginPage />)}
         />
+        <Route exact path="/users" render={() => <AllUsersPage />} />
         <Route
           exact
           path="/stories/create"

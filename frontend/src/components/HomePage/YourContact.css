@@ -1,3 +1,7 @@
 .your-contacts-container:hover {
   background-color: lightgrey;
 }
+
+.find-contacts-link:hover {
+  background-color: lightgrey;
+}

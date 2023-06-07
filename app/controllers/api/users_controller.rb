@@ -38,6 +38,10 @@ module Api
       @user = User.find(current_user.id)
       photoAttached = false
 
+
+
+      if params[:user]
+
       if params[:user].key?(:profile_pic)
         @user.profile_pic.attach(params[:user][:profile_pic])
         photoAttached = true
@@ -47,6 +51,8 @@ module Api
         @user.cover_photo.attach(params[:user][:cover_photo])
         photoAttached = true
       end
+
+      end 
 
       result = false
 

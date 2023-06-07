@@ -49,6 +49,11 @@ function SearchBar({ setTyped, closeModal, setDiv }) {
     return typed.length === 0 ? 0 : Object.values(users).length;
   }
 
+  const SearchParams =
+    frTyped.length > 0
+      ? { pathname: `/users`, search: `?Search=${frTyped}` }
+      : "/users";
+
   return (
     <>
       <div className="search-bar-modal">
@@ -109,14 +114,14 @@ function SearchBar({ setTyped, closeModal, setDiv }) {
               </Link>
             );
           })}
-          <div className="search-for-typed-button">
+          <Link to={SearchParams} className="search-for-typed-button">
             <button className="mi-icon-holder">
               <i className="material-icons" id="searchFor">
                 search
               </i>
             </button>
             <p className="search-for-typed-text">{`Search for ${frTyped}`}</p>
-          </div>
+          </Link>
         </div>
       )}
     </>

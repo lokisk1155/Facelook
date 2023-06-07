@@ -30,7 +30,7 @@ function ProfileTop({ currentUser, sessionUser, friends }) {
   const notSelf = currentUser.id !== sessionUser.id ? true : false;
 
   let isFriend = false;
-
+  
   if (friends[sessionUser.id]) {
     isFriend = true;
   }

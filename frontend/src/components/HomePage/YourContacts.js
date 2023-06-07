@@ -4,14 +4,22 @@ import profilePic from "../NavBar/imgs/blank.png";
 import "./YourContact.css";
 
 function YourContacts() {
-  const friends = useSelector((state) => Object.values(state.friends));
+  const simpleUsers = useSelector((state) => state.simpleUsers);
+  const friends = useSelector((state) => state.session.user.friends);
+  const sessionUserFriends = {};
 
-  if (friends.length === 0) {
+  if (!simpleUsers) {
     return null;
   }
 
+  Object.values(simpleUsers).forEach((user) => {
+    if (friends.includes(user.user_id)) {
+      sessionUserFriends[user.user_id] = user;
+    }
+  });
+
   const containerHeight =
-    friends.length > 2 ? `${200 + friends.length * 50}px` : "200px";
+    friends.length > 0 ? `${200 + friends.length * 50}px` : "200px";
 
   const isViewportUnderCertainWidth = window.innerWidth < 768; // Adjust the width as per your needs
 
@@ -45,7 +53,7 @@ function YourContacts() {
         Your Contacts
       </h1>
       <hr color="lightgrey" width="95%"></hr>
-      {friends.map((friend) => {
+      {Object.values(sessionUserFriends).map((friend) => {
         return (
           <Link
             className="your-contacts-container"
@@ -58,7 +66,7 @@ function YourContacts() {
               paddingLeft: "10px",
               borderRadius: "10px",
             }}
-            to={`/ProfilePage/${friend.id}`}
+            to={`/ProfilePage/${friend.user_id}`}
           >
             <div
               style={{
@@ -89,12 +97,27 @@ function YourContacts() {
                 }}
               ></div>
             </div>
-            <p
-              style={{ paddingLeft: "10px", color: "grey" }}
-            >{`${friend.first_name} ${friend.last_name}`}</p>
+            <p style={{ paddingLeft: "10px", color: "grey" }}>{friend.name}</p>
           </Link>
         );
       })}
+      <Link
+        className="find-contacts-link"
+        to="/users"
+        style={{
+          width: "90%",
+          height: "50px",
+          color: "blue",
+          fontSize: "1rem",
+          textDecoration: "none",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          borderRadius: "10px",
+        }}
+      >
+        <p>Find contacts</p>
+      </Link>
     </section>
   );
 }

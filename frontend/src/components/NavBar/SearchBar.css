@@ -103,6 +103,7 @@
 }
 
 .search-for-typed-text {
+  text-decoration: "none";
   color: #1b74e4;
 }
 
