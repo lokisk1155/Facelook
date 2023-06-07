@@ -6,7 +6,7 @@ import UserIndex from "./UserIndex";
 function AllUsersPage() {
   const simpleUsers = useSelector((state) => state.simpleUsers);
 
-  const sessionUser = useSelector((state) => state.session.user)
+  const sessionUser = useSelector((state) => state.session.user);
 
   if (!simpleUsers || !sessionUser) {
     return null;

@@ -61,9 +61,9 @@ function UserIndex({ user }) {
         }}
       >
         {FriendsWithSession ? (
-          <AreFriends sessionUserId={sessionUser.id} currentUserId={user_id} />
+          <AreFriends sessionUser={sessionUser} userId={user_id} />
         ) : (
-          <NotFriends sessionUser={sessionUser} currentUserId={user_id} />
+          <NotFriends sessionUser={sessionUser} userId={user_id} />
         )}
       </div>
     </div>

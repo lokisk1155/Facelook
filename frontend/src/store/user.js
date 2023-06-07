@@ -13,27 +13,28 @@ export const fetchUser = async (id) => {
   const userData = await userRes.json();
   return userData.user;
 };
-export const updateUser = (user, formData, NotProfilePage) => async (dispatch) => {
-  const id = user?.id ? user.id : user;
-  let postRes;
-  if (formData) {
-    postRes = await csrfFetch(`/api/users/${id}`, {
-      method: "PUT",
-      body: formData,
-    });
-  } else {
-    postRes = await csrfFetch(`/api/users/${id}`, {
-      method: "PUT",
-      body: JSON.stringify({ user }),
-    });
-  }
-  const userData = await postRes.json();
-  if (NotProfilePage) {
+export const updateUser =
+  (user, formData, NotProfilePage) => async (dispatch) => {
+    const id = user?.id ? user.id : user;
+    let postRes;
+    if (formData) {
+      postRes = await csrfFetch(`/api/users/${id}`, {
+        method: "PUT",
+        body: formData,
+      });
+    } else {
+      postRes = await csrfFetch(`/api/users/${id}`, {
+        method: "PUT",
+        body: JSON.stringify({ user }),
+      });
+    }
+    const userData = await postRes.json();
+    if (NotProfilePage) {
+      return userData;
+    }
+    dispatch(setCurrentProfile(userData.user));
     return userData;
-  }
-  dispatch(setCurrentProfile(userData.user));
-  return userData;
-};
+  };
 
 const userReducer = (previousState = {}, action) => {
   let newState = { ...previousState };

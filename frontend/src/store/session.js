@@ -45,11 +45,12 @@ export const logout = () => async (dispatch) => {
   return res;
 };
 
-export const UpdateSessionUser = (sessionUser, notProfilePage) => async (dispatch) => {
-  dispatch(updateUser(sessionUser, false, notProfilePage)).then((data) => {
-    dispatch(setCurrentUser(data.user));
-  });
-};
+export const UpdateSessionUser =
+  (sessionUser, notProfilePage) => async (dispatch) => {
+    dispatch(updateUser(sessionUser, false, notProfilePage)).then((data) => {
+      dispatch(setCurrentUser(data.user));
+    });
+  };
 
 export const signup = (user, formData) => async (dispatch) => {
   const res = await csrfFetch("/api/users", {
