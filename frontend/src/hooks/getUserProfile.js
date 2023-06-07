@@ -17,10 +17,10 @@ export default function GetUserProfile() {
     const profilePage = async () => {
       const postData = fetchUsersPosts(id);
       const userData = await fetchUser(id);
-      const friendsData = await fetchFriends(Object.values(userData.friends));
+      // const friendsData = await fetchFriends(Object.values(userData.friends));
       dispatch(setCurrentProfile(userData));
       dispatch(userReceivePosts(postData));
-      dispatch(receiveFriends(friendsData));
+      // dispatch(receiveFriends(friendsData));
     };
     profilePage().then(() => {
       setTimeout(() => {
