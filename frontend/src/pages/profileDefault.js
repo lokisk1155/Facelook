@@ -13,18 +13,29 @@ function ProfileDefault() {
 
   const [introContainerHeight, setIntroContainerHeight] = useState(50);
 
+  const simpleUsers = useSelector((state) => state.simpleUsers);
+
   const sessionUser = useSelector((state) => state.session.user);
 
   const currentUser = useSelector((state) => state.user[id]);
 
-  const friends = useSelector((state) => state.friends);
+  const friends =
+    sessionUser.id === id ? sessionUser.friends : currentUser.friends;
+
+  const userFriends = {};
+
+  Object.values(simpleUsers).forEach((user) => {
+    if (friends.includes(user.user_id)) {
+      userFriends[user.user_id] = user;
+    }
+  });
 
   return (
     <>
       <ProfileTop
         sessionUser={sessionUser}
         currentUser={currentUser}
-        friends={friends}
+        friends={userFriends}
       />
       <div className="content-container-profile-default">
         <div className="flex-or-nah-profile">
@@ -52,6 +63,7 @@ function ProfileDefault() {
               <FriendsContainer
                 currentUser={currentUser}
                 sessionUser={sessionUser}
+                friends={userFriends}
               />
             </div>
           </div>

@@ -1,11 +1,8 @@
 import profilePic from "../NavBar/imgs/blank.png";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 
-function FriendsContainer({ currentUser, sessionUser }) {
-  const friends = useSelector((state) => Object.values(state.friends));
-
-  const mutualFriends = friends.slice(0, 6);
+function FriendsContainer({ currentUser, sessionUser, friends }) {
+  const mutualFriends = Object.values(friends).slice(0, 6);
 
   // if (currentUser.id !== sessionUser.id) {
   //   mutualFriends = {};

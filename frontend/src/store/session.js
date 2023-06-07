@@ -49,9 +49,9 @@ export const UpdateSessionUser =
     dispatch(updateUser(sessionUser, false, notProfilePage)).then((data) => {
       dispatch(setCurrentUser(data.user));
       if (data.user) {
-        return true 
+        return true;
       } else {
-        return false
+        return false;
       }
     });
   };

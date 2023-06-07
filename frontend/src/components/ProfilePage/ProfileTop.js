@@ -7,6 +7,7 @@ import capitalizeFirstLetter from "../../utils/capFirstLetter";
 import EditProfile from "./EditProfile";
 import profilePicBlank from "../NavBar/imgs/blank.png";
 import "./ProfileTop.css";
+import { updateUser } from "../../store/user";
 
 function ProfileTop({ currentUser, sessionUser, friends }) {
   const dispatch = useDispatch();
@@ -43,13 +44,15 @@ function ProfileTop({ currentUser, sessionUser, friends }) {
       receiver_id: currentUser.id,
     };
     if (!isFriend) {
-      dispatch(addFriend(friendRequest, sessionUser));
+      dispatch(addFriend(friendRequest, sessionUser, null));
     }
   };
 
   const handleDelete = (e) => {
     e.preventDefault();
-    dispatch(deleteFriend(currentUser.id, sessionUser.id, id));
+    dispatch(deleteFriend(currentUser.id, sessionUser, id)).then(() => {
+      dispatch(updateUser(currentUser, null, true));
+    });
   };
 
   const preview = currentUser.profile_picture
