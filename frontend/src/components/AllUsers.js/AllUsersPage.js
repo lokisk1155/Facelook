@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux";
-import { getSimpleUsers } from "../../store/simpleUsers";
 import NavBar from "../NavBar/NavBar";
 import UserIndex from "./UserIndex";
 

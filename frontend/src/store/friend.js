@@ -1,6 +1,5 @@
 import csrfFetch from "./csrf";
 import { UpdateSessionUser } from "./session";
-import { fetchUser } from "./user";
 
 export const REMOVE_FRIEND = "friends/REMOVE_FRIEND";
 export const RECEIVE_FRIEND = "friends/RECEIVE_FRIEND";

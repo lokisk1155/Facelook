@@ -38,6 +38,7 @@ function UserIndex({ user }) {
       >
         <img
           style={{ width: "25%", height: "100%" }}
+          alt="1231315"
           src={profile_picture ? profile_picture : profilePic}
         />
         <p

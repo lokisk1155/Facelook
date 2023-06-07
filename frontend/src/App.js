@@ -19,9 +19,7 @@ function App() {
 
   useEffect(() => {
     dispatch(getSimpleUsers());
-    if (sessionUser) {
-      dispatch(UpdateSessionUser(sessionUser, true));
-    }
+    dispatch(UpdateSessionUser(sessionUser, true));
   }, [dispatch, id]);
 
   return (
