@@ -1,11 +1,11 @@
-import React from "react";
-import { useState } from "react";
-import { useSelector } from "react-redux";
-import { Modal } from "../../../context/Modal";
-import CreatePost from "../../Post/CreatePost";
-import profilePic from "../../NavBar/imgs/blank.png";
-import PostIndex from "../../Post/PostIndex";
-import "./PostFeed.css";
+import React from 'react';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { Modal } from '../../../context/Modal';
+import CreatePost from '../../Post/CreatePost';
+import profilePic from '../../NavBar/imgs/blank.png';
+import PostIndex from '../../Post/PostIndex';
+import './PostFeed.css';
 
 function PostFeed({ currentUserId }) {
   const [togglePost, setTogglePost] = useState(false);
@@ -32,17 +32,17 @@ function PostFeed({ currentUserId }) {
       {currentUserId === undefined ? (
         <div
           style={{
-            backgroundColor: "#fff",
-            width: "99.8%",
-            minHeight: "85px",
-            borderRadius: "10px",
-            border: "1px solid rgb(213, 213, 213)",
-            boxShadow: "0 0.5px 3px 1px rgb(228, 228, 228)",
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-evenly",
-            marginTop: "5px",
+            backgroundColor: '#fff',
+            width: '99.8%',
+            minHeight: '85px',
+            borderRadius: '10px',
+            border: '1px solid rgb(213, 213, 213)',
+            boxShadow: '0 0.5px 3px 1px rgb(228, 228, 228)',
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-evenly',
+            marginTop: '5px',
           }}
         >
           <img
@@ -53,14 +53,14 @@ function PostFeed({ currentUserId }) {
           <button
             className="whats-on-ur-mind"
             style={{
-              width: "85%",
-              marginLeft: "-0.5vw",
-              border: "none",
-              display: "flex",
-              alignItems: "center",
-              borderRadius: "20px",
-              color: "grey",
-              paddingLeft: "1.3vw",
+              width: '85%',
+              marginLeft: '-0.5vw',
+              border: 'none',
+              display: 'flex',
+              alignItems: 'center',
+              borderRadius: '20px',
+              color: 'grey',
+              paddingLeft: '1.3vw',
             }}
             onClick={handleNewPost}
           >
@@ -87,7 +87,7 @@ function PostFeed({ currentUserId }) {
         <Modal onClose={() => setTogglePost(false)}>
           <CreatePost
             closeModal={setTogglePost}
-            location={currentUserId ? "profile" : "home"}
+            location={currentUserId ? 'profile' : 'home'}
           />
         </Modal>
       )}

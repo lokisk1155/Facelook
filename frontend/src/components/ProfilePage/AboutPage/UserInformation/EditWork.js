@@ -1,11 +1,11 @@
-import { useDispatch } from "react-redux";
-import { useState } from "react";
-import { updateUser } from "../../../../store/user";
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { updateUser } from '../../../../store/user';
 
 function EditWork({ currentUser }) {
   const dispatch = useDispatch();
 
-  const [fakeWork, setFakeWork] = useState("");
+  const [fakeWork, setFakeWork] = useState('');
 
   const [toggle, setToggle] = useState(false);
 
@@ -29,16 +29,16 @@ function EditWork({ currentUser }) {
     <>
       {currentUser.work ? (
         <>
-          <p>{currentUser.work}</p>{" "}
+          <p>{currentUser.work}</p>{' '}
           {toggle ? null : (
-            <button style={{ margin: "5px" }} onClick={() => setToggle(true)}>
+            <button style={{ margin: '5px' }} onClick={() => setToggle(true)}>
               Edit work
             </button>
           )}
         </>
       ) : (
         <button
-          style={{ margin: "5px" }}
+          style={{ margin: '5px' }}
           onClick={() => {
             setToggle(true);
           }}
@@ -53,7 +53,7 @@ function EditWork({ currentUser }) {
             placeholder="Company"
             onChange={(e) => setFakeWork(e.target.value)}
           />
-          <button style={{ margin: "5px" }} onClick={() => setToggle(false)}>
+          <button style={{ margin: '5px' }} onClick={() => setToggle(false)}>
             cancel
           </button>
           <input type="submit" value="save" />

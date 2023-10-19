@@ -1,8 +1,8 @@
-import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
-import Friends from "../components/ProfilePage/Friends";
-import ProfileTop from "../components/ProfilePage/ProfileTop";
-import "./profileFriends.css";
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import Friends from '../components/ProfilePage/Friends';
+import ProfileTop from '../components/ProfilePage/ProfileTop';
+import './profileFriends.css';
 
 function ProfileFriends() {
   const { id } = useParams();

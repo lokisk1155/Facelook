@@ -1,24 +1,24 @@
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { createPost, receivePost } from "../../store/post";
-import { useState } from "react";
-import { useEffect } from "react";
-import "./CreatePost.css";
-import profilePic from "../NavBar/imgs/blank.png";
-import { userReceivePost } from "../../store/profilePage";
-import CropEasy from "../crop/CropEasy";
-import { useParams } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFileUpload } from "@fortawesome/free-solid-svg-icons";
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { createPost, receivePost } from '../../store/post';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import './CreatePost.css';
+import profilePic from '../NavBar/imgs/blank.png';
+import { userReceivePost } from '../../store/profilePage';
+import CropEasy from '../crop/CropEasy';
+import { useParams } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFileUpload } from '@fortawesome/free-solid-svg-icons';
 
-function CreatePost({ closeModal, location = "home" }) {
+function CreatePost({ closeModal, location = 'home' }) {
   const dispatch = useDispatch();
 
   const { id } = useParams();
 
   const sessionUser = useSelector((state) => state.session.user);
 
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState('');
 
   const [photoFile, setPhotoFile] = useState(null);
 
@@ -28,15 +28,15 @@ function CreatePost({ closeModal, location = "home" }) {
 
   const [containerHeight, setContainerHeight] = useState(null);
 
-  const [textareaHeight, setTextareaHeight] = useState("30%");
+  const [textareaHeight, setTextareaHeight] = useState('30%');
 
   useEffect(() => {
     if (photoFile) {
-      setContainerHeight("600px");
-      setTextareaHeight("10%");
+      setContainerHeight('600px');
+      setTextareaHeight('10%');
     } else {
-      setContainerHeight("400px");
-      setTextareaHeight("40%");
+      setContainerHeight('400px');
+      setTextareaHeight('40%');
     }
   }, [photoFile]);
 
@@ -45,14 +45,14 @@ function CreatePost({ closeModal, location = "home" }) {
     let formData;
     if (photoFile) {
       formData = new FormData();
-      formData.append("postAttached[photo]", photoFile);
+      formData.append('postAttached[photo]', photoFile);
     }
     const post = {
       content,
       user_id: id ? id : sessionUser.id,
     };
 
-    if (location === "profile") {
+    if (location === 'profile') {
       dispatch(createPost(post, formData)).then((data) => {
         dispatch(userReceivePost(data));
       });
@@ -91,35 +91,35 @@ function CreatePost({ closeModal, location = "home" }) {
         />
       ) : (
         <>
-          {" "}
-          <h3 style={{ textAlign: "center" }}>Create Post</h3>
+          {' '}
+          <h3 style={{ textAlign: 'center' }}>Create Post</h3>
           <div
-            style={{ width: "100%", borderBottom: "1px solid lightgrey" }}
+            style={{ width: '100%', borderBottom: '1px solid lightgrey' }}
           ></div>
           <div
             style={{
-              display: "flex",
-              height: "15%",
-              maxHeight: "45px",
-              padding: "5px",
-              alignItems: "center",
+              display: 'flex',
+              height: '15%',
+              maxHeight: '45px',
+              padding: '5px',
+              alignItems: 'center',
             }}
           >
             <img
               alt=""
-              style={{ height: "90%", borderRadius: "50%" }}
+              style={{ height: '90%', borderRadius: '50%' }}
               src={sessionUser.profile_picture || profilePic}
             ></img>
             <h3
-              style={{ marginLeft: "15px" }}
+              style={{ marginLeft: '15px' }}
             >{`${sessionUser.first_name} ${sessionUser.last_name}`}</h3>
           </div>
           <textarea
             autoFocus={true}
             style={{
-              width: "100%",
+              width: '100%',
               height: textareaHeight,
-              paddingLeft: "7px",
+              paddingLeft: '7px',
             }}
             type="text"
             placeholder={`What's on your mind ${sessionUser.first_name}?`}
@@ -129,7 +129,7 @@ function CreatePost({ closeModal, location = "home" }) {
             <img
               alt=""
               src={photoUrl}
-              style={{ height: "50%", width: "100%" }}
+              style={{ height: '50%', width: '100%' }}
             />
           ) : (
             <label className="custom-file-upload">
@@ -143,14 +143,14 @@ function CreatePost({ closeModal, location = "home" }) {
           )}
           <button
             style={{
-              width: "95.5%",
-              height: "50px",
-              border: "none",
-              marginTop: "5px",
-              backgroundColor: content.length < 1 ? "lightgrey" : "#166fe5",
-              color: content.length < 1 ? "black" : "white",
-              borderRadius: "3px",
-              alignSelf: "center",
+              width: '95.5%',
+              height: '50px',
+              border: 'none',
+              marginTop: '5px',
+              backgroundColor: content.length < 1 ? 'lightgrey' : '#166fe5',
+              color: content.length < 1 ? 'black' : 'white',
+              borderRadius: '3px',
+              alignSelf: 'center',
             }}
             onClick={handlePostSubmit}
           >

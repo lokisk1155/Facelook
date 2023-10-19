@@ -1,13 +1,13 @@
-import NavBar from "../NavBar/NavBar";
-import StoriesHomeFeed from "./Middle/StoriesHomeFeed";
-import PostFeed from "./Middle/PostFeed";
-import StoriesHeader from "./Middle/StoriesHeader";
-import CircleLoading from "../loading/CircleLoading";
-import GetHomePage from "../../hooks/getHomePage";
-import "./HomePage.css";
-import YourShortcuts from "./YourShortcuts";
-import YourContacts from "./YourContacts";
-import GetSessionUsersFriends from "../../hooks/getSessionUser";
+import NavBar from '../NavBar/NavBar';
+import StoriesHomeFeed from './Middle/StoriesHomeFeed';
+import PostFeed from './Middle/PostFeed';
+import StoriesHeader from './Middle/StoriesHeader';
+import CircleLoading from '../loading/CircleLoading';
+import GetHomePage from '../../hooks/getHomePage';
+import './HomePage.css';
+import YourShortcuts from './YourShortcuts';
+import YourContacts from './YourContacts';
+import GetSessionUsersFriends from '../../hooks/getSessionUser';
 
 function HomePage() {
   const storeHydrated = GetHomePage();

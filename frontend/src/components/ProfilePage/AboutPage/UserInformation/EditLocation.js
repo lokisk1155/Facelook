@@ -1,11 +1,11 @@
-import { useDispatch } from "react-redux";
-import { useState } from "react";
-import { updateUser } from "../../../../store/user";
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { updateUser } from '../../../../store/user';
 
 function Editlocation({ currentUser }) {
   const dispatch = useDispatch();
 
-  const [fakelocation, setFakelocation] = useState("");
+  const [fakelocation, setFakelocation] = useState('');
 
   const [toggle, setToggle] = useState(false);
 
@@ -28,16 +28,16 @@ function Editlocation({ currentUser }) {
     <>
       {currentUser.location ? (
         <>
-          {" "}
-          <p>{currentUser.location}</p>{" "}
+          {' '}
+          <p>{currentUser.location}</p>{' '}
           {toggle ? null : (
-            <button style={{ margin: "5px" }} onClick={() => setToggle(true)}>
+            <button style={{ margin: '5px' }} onClick={() => setToggle(true)}>
               Edit location
             </button>
           )}
         </>
       ) : (
-        <button style={{ margin: "5px" }} onClick={() => setToggle(true)}>
+        <button style={{ margin: '5px' }} onClick={() => setToggle(true)}>
           Add location
         </button>
       )}
@@ -48,10 +48,10 @@ function Editlocation({ currentUser }) {
             onChange={(e) => setFakelocation(e.target.value)}
             default="location"
           ></input>
-          <button style={{ margin: "5px" }} onClick={() => setToggle(false)}>
+          <button style={{ margin: '5px' }} onClick={() => setToggle(false)}>
             Cancel
           </button>
-          <button style={{ margin: "5px" }} type="submit">
+          <button style={{ margin: '5px' }} type="submit">
             Submit
           </button>
         </form>

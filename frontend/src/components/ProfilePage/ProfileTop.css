@@ -162,7 +162,7 @@
 
   .profile-picture-and-name-container {
     display: flex;
-    width: "100%";
+    width: '100%';
   }
 
   .toggle-friends-button {

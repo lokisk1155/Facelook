@@ -1,15 +1,15 @@
-import { useHistory } from "react-router-dom";
-import React, { useState } from "react";
-import * as sessionActions from "../../store/session";
-import { useDispatch } from "react-redux";
-import { generateCredentials } from "../../utils/generateCredentials";
-import "./LoginPage.css";
-import LoginHeader from "./LoginHeader";
+import { useHistory } from 'react-router-dom';
+import React, { useState } from 'react';
+import * as sessionActions from '../../store/session';
+import { useDispatch } from 'react-redux';
+import { generateCredentials } from '../../utils/generateCredentials';
+import './LoginPage.css';
+import LoginHeader from './LoginHeader';
 
 function LoginPage() {
   const dispatch = useDispatch();
-  const [credential, setCredential] = useState("");
-  const [password, setPassword] = useState("");
+  const [credential, setCredential] = useState('');
+  const [password, setPassword] = useState('');
   const history = useHistory();
   const [open, setOpen] = useState(false);
 
@@ -32,12 +32,12 @@ function LoginPage() {
     e.preventDefault();
     dispatch(sessionActions.login({ credential, password }))
       .then(() => {
-        history.push("/");
+        history.push('/');
       })
       .catch(() => {
         setOpen(true);
-        setCredential("");
-        setPassword("");
+        setCredential('');
+        setPassword('');
       });
   };
 
@@ -49,10 +49,10 @@ function LoginPage() {
           <form className="login-form" onSubmit={handleSubmit}>
             <div>
               <input
-                className={`credential ${open ? "active" : "inactive"}`}
+                className={`credential ${open ? 'active' : 'inactive'}`}
                 type="text"
                 value={credential}
-                placeholder={"Email or Phone number"}
+                placeholder={'Email or Phone number'}
                 onChange={(e) => setCredential(e.target.value)}
                 required
               />
@@ -60,10 +60,10 @@ function LoginPage() {
 
             <div>
               <input
-                className={`password ${open ? "active" : "inactive"}`}
+                className={`password ${open ? 'active' : 'inactive'}`}
                 type="password"
                 value={password}
-                placeholder={"Password"}
+                placeholder={'Password'}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />

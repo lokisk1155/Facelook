@@ -1,11 +1,11 @@
-import { useDispatch } from "react-redux";
-import { useState } from "react";
-import { updateUser } from "../../../../store/user";
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { updateUser } from '../../../../store/user';
 
 function EditRelationship({ currentUser }) {
   const dispatch = useDispatch();
 
-  const [fakeRelationship, setFakeRelationship] = useState("");
+  const [fakeRelationship, setFakeRelationship] = useState('');
 
   const [toggle, setToggle] = useState(false);
 
@@ -28,14 +28,14 @@ function EditRelationship({ currentUser }) {
     <>
       {currentUser.relationship ? (
         <>
-          {" "}
-          <p>{currentUser.relationship}</p>{" "}
+          {' '}
+          <p>{currentUser.relationship}</p>{' '}
           {toggle ? null : (
             <button
-              style={{ margin: "5px" }}
+              style={{ margin: '5px' }}
               onClick={() => {
                 setToggle(true);
-                setFakeRelationship("single");
+                setFakeRelationship('single');
               }}
             >
               Edit Relationship
@@ -46,10 +46,10 @@ function EditRelationship({ currentUser }) {
         <>
           {toggle ? null : (
             <button
-              style={{ margin: "5px" }}
+              style={{ margin: '5px' }}
               onClick={() => {
                 setToggle(true);
-                setFakeRelationship("single");
+                setFakeRelationship('single');
               }}
             >
               Add Relationship
@@ -78,7 +78,7 @@ function EditRelationship({ currentUser }) {
             <option value="Divorced">Divorced</option>
             <option value="Widowed">Widowed</option>
           </select>
-          <div style={{ display: "flex" }}>
+          <div style={{ display: 'flex' }}>
             <button onClick={() => setToggle(false)}>cancel</button>
             <button type="submit">save</button>
           </div>

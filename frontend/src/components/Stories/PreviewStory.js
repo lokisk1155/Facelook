@@ -1,6 +1,6 @@
-import { useState } from "react";
-import StoryCrop from "../crop/StoryCrop";
-import TextStory from "./TextStory";
+import { useState } from 'react';
+import StoryCrop from '../crop/StoryCrop';
+import TextStory from './TextStory';
 
 function PreviewStory({ file, setFile, url, setUrl }) {
   const [fileSaved, setFileSaved] = useState(null);

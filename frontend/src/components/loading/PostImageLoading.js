@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 function PostImageLoading({ src }) {
   const [imageSrc, setImageSrc] = useState(null);
@@ -16,8 +16,8 @@ function PostImageLoading({ src }) {
           src={imageSrc}
           alt=""
           style={{
-            width: "100%",
-            height: "500px",
+            width: '100%',
+            height: '500px',
           }}
         />
       ) : (
@@ -25,9 +25,9 @@ function PostImageLoading({ src }) {
           className="skeleton"
           alt=""
           style={{
-            width: "100%",
-            height: "500px",
-            objectFit: "cover",
+            width: '100%',
+            height: '500px',
+            objectFit: 'cover',
           }}
         />
       )}

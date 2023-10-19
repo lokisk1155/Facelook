@@ -1,14 +1,14 @@
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams, Link } from "react-router-dom";
-import profilePic from "../NavBar/imgs/blank.png";
-import "./StoryShow.css";
-import { useCallback } from "react";
-import PreviewCurrentStory from "./PreviewCurrentStory";
-import StoriesSideBar from "./StoriesSideBar";
-import ProfilePicModal from "../NavBar/ProfilePicModal";
-import { Modal } from "../../context/Modal";
-import { useLocation } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useParams, Link } from 'react-router-dom';
+import profilePic from '../NavBar/imgs/blank.png';
+import './StoryShow.css';
+import { useCallback } from 'react';
+import PreviewCurrentStory from './PreviewCurrentStory';
+import StoriesSideBar from './StoriesSideBar';
+import ProfilePicModal from '../NavBar/ProfilePicModal';
+import { Modal } from '../../context/Modal';
+import { useLocation } from 'react-router-dom';
 
 function StoryShow() {
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ function StoryShow() {
 
   const query = new URLSearchParams(location.search);
 
-  const windowIndex = query.get("windowIndex");
+  const windowIndex = query.get('windowIndex');
 
   const [currentWindow, setCurrentWindow] = useState(
     windowIndex !== null ? parseInt(windowIndex) : 0
@@ -212,29 +212,29 @@ function StoryShow() {
         <div className="story-show-preview-container">
           <div
             style={{
-              cursor: "pointer",
-              position: "absolute",
-              left: "0",
-              margin: "5px",
+              cursor: 'pointer',
+              position: 'absolute',
+              left: '0',
+              margin: '5px',
             }}
           >
             <button
-              onClick={() => history.push("/")}
+              onClick={() => history.push('/')}
               type="button"
               className="btn-close"
             >
-              <span style={{ fontSize: "2rem", color: "lightgrey" }}>X</span>
+              <span style={{ fontSize: '2rem', color: 'lightgrey' }}>X</span>
             </button>
           </div>
           <div
             style={{
-              cursor: "pointer",
-              position: "absolute",
-              right: "0",
-              margin: "5px",
-              marginRight: "65px",
+              cursor: 'pointer',
+              position: 'absolute',
+              right: '0',
+              margin: '5px',
+              marginRight: '65px',
             }}
-            onClick={() => history.push("/")}
+            onClick={() => history.push('/')}
           >
             <svg viewBox="0 0 36 36" height="50" width="50">
               <defs>
@@ -278,49 +278,49 @@ function StoryShow() {
               setCurrentWindow={setCurrentWindow}
             />
           </div>
-          <h2 style={{ padding: "10px" }}>Your Story</h2>
+          <h2 style={{ padding: '10px' }}>Your Story</h2>
           {stories[sessionUserId] !== undefined ? (
             <Link
               onClick={() => setCurrentWindow(0)}
               style={{
-                display: "flex",
-                paddingLeft: "10px",
-                borderRadius: "5px",
-                padding: "5px",
-                height: "65px",
-                textDecoration: "none",
+                display: 'flex',
+                paddingLeft: '10px',
+                borderRadius: '5px',
+                padding: '5px',
+                height: '65px',
+                textDecoration: 'none',
               }}
               to={`/stories/${sessionUser.id}`}
             >
               <img
                 alt=""
                 style={{
-                  height: "50px",
-                  width: "50px",
-                  borderRadius: "50px",
+                  height: '50px',
+                  width: '50px',
+                  borderRadius: '50px',
                   border:
                     sessionUser.id === parseInt(id)
-                      ? "5px solid #166fe5"
-                      : "5px solid black",
+                      ? '5px solid #166fe5'
+                      : '5px solid black',
                 }}
                 src={simpleUsers[sessionUser.id]?.profile_picture || profilePic}
               />
               <p
                 style={{
-                  color: sessionUser.id === parseInt(id) ? "#166fe5" : "#fff",
-                  fontSize: "1.5rem",
+                  color: sessionUser.id === parseInt(id) ? '#166fe5' : '#fff',
+                  fontSize: '1.5rem',
                 }}
               >
                 {`${(sessionUser.first_name, sessionUser.last_name)}`}
               </p>
             </Link>
           ) : null}
-          <h2 style={{ padding: "10px" }}>Create</h2>
+          <h2 style={{ padding: '10px' }}>Create</h2>
           <button
             className="create-story-button-story-show"
-            onClick={() => history.push("/stories/create")}
+            onClick={() => history.push('/stories/create')}
           >
-            {"+"}
+            {'+'}
           </button>
           <div className="story-preview-container">
             <button

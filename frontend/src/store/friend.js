@@ -1,8 +1,8 @@
-import csrfFetch from "./csrf";
+import csrfFetch from './csrf';
 
-export const REMOVE_FRIEND = "friends/REMOVE_FRIEND";
-export const RECEIVE_FRIEND = "friends/RECEIVE_FRIEND";
-export const RECEIVE_FRIENDS = "friends/RECEIVE_FRIENDS";
+export const REMOVE_FRIEND = 'friends/REMOVE_FRIEND';
+export const RECEIVE_FRIEND = 'friends/RECEIVE_FRIEND';
+export const RECEIVE_FRIENDS = 'friends/RECEIVE_FRIENDS';
 
 export const removeFriend = (friendId) => ({
   type: REMOVE_FRIEND,
@@ -26,7 +26,7 @@ export const fetchFriends = async (userIds) => {
 
 export const addFriend = (friendRequest, sessionUser) => async (dispatch) => {
   await csrfFetch(`/api/friends`, {
-    method: "POST",
+    method: 'POST',
     body: JSON.stringify(friendRequest),
   }).then(() => {
     dispatch(receiveFriend(sessionUser));
@@ -35,7 +35,7 @@ export const addFriend = (friendRequest, sessionUser) => async (dispatch) => {
 
 export const deleteFriend =
   (friendId, sessionUserId, paramsId) => async (dispatch) => {
-    await csrfFetch(`/api/friends/${friendId}`, { method: "DELETE" });
+    await csrfFetch(`/api/friends/${friendId}`, { method: 'DELETE' });
     if (parseInt(paramsId) === sessionUserId) {
       dispatch(removeFriend(friendId));
     } else {

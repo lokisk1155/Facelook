@@ -1,25 +1,25 @@
-import EditWork from "./UserInformation/EditWork";
-import EditRelationship from "./UserInformation/EditRelationship";
-import EditEducation from "./UserInformation/EditCollege";
-import EditHighschool from "./UserInformation/EditHighschool";
-import Editlocation from "./UserInformation/EditLocation";
+import EditWork from './UserInformation/EditWork';
+import EditRelationship from './UserInformation/EditRelationship';
+import EditEducation from './UserInformation/EditCollege';
+import EditHighschool from './UserInformation/EditHighschool';
+import Editlocation from './UserInformation/EditLocation';
 
 function Overview({ currentUser, sessionUser }) {
   const isUser = currentUser.id === sessionUser.id;
   return (
     <div
       style={{
-        display: "flex",
-        flexDirection: "column",
-        justiftyContent: "space-evenly",
-        padding: "10px",
-        height: "30%",
+        display: 'flex',
+        flexDirection: 'column',
+        justiftyContent: 'space-evenly',
+        padding: '10px',
+        height: '30%',
       }}
     >
       <div
         style={{
-          display: "flex",
-          justifyContent: "space-between",
+          display: 'flex',
+          justifyContent: 'space-between',
         }}
       >
         {isUser ? (
@@ -31,8 +31,8 @@ function Overview({ currentUser, sessionUser }) {
 
       <div
         style={{
-          display: "flex",
-          justifyContent: "space-between",
+          display: 'flex',
+          justifyContent: 'space-between',
         }}
       >
         {isUser ? (
@@ -44,8 +44,8 @@ function Overview({ currentUser, sessionUser }) {
 
       <div
         style={{
-          display: "flex",
-          justifyContent: "space-between",
+          display: 'flex',
+          justifyContent: 'space-between',
         }}
       >
         {isUser ? (
@@ -57,8 +57,8 @@ function Overview({ currentUser, sessionUser }) {
 
       <div
         style={{
-          display: "flex",
-          justifyContent: "space-between",
+          display: 'flex',
+          justifyContent: 'space-between',
         }}
       >
         {isUser ? (
@@ -70,8 +70,8 @@ function Overview({ currentUser, sessionUser }) {
 
       <div
         style={{
-          display: "flex",
-          justifyContent: "space-between",
+          display: 'flex',
+          justifyContent: 'space-between',
         }}
       >
         {isUser ? (

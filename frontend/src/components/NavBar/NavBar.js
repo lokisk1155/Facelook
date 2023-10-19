@@ -1,15 +1,15 @@
-import "./NavBar.css";
-import profilePic from "./imgs/blank.png";
-import { useState } from "react";
-import ProfilePicModal from "./ProfilePicModal";
-import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import Facebook from "./imgs/Facebook.png";
-import { Link } from "react-router-dom";
-import { useEffect } from "react";
-import SearchModal from "./SearchModal";
-import { useLocation } from "react-router-dom";
-import { Modal } from "../../context/Modal";
+import './NavBar.css';
+import profilePic from './imgs/blank.png';
+import { useState } from 'react';
+import ProfilePicModal from './ProfilePicModal';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import Facebook from './imgs/Facebook.png';
+import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import SearchModal from './SearchModal';
+import { useLocation } from 'react-router-dom';
+import { Modal } from '../../context/Modal';
 
 function NavBar() {
   const location = useLocation();
@@ -20,13 +20,13 @@ function NavBar() {
 
   const [toggleSearch, setToggleSearch] = useState(false);
 
-  const [fillColor, setFillColor] = useState("#1B74E4");
+  const [fillColor, setFillColor] = useState('#1B74E4');
 
-  const [stroke, setStroke] = useState("#2c2c2c");
+  const [stroke, setStroke] = useState('#2c2c2c');
 
-  const [typed, setTyped] = useState("");
+  const [typed, setTyped] = useState('');
 
-  const temp = "#2c2c2c";
+  const temp = '#2c2c2c';
 
   const user = useSelector((state) => state.session.user);
 
@@ -35,15 +35,15 @@ function NavBar() {
   const navbarPic = simpleUsers[user?.id]?.profile_picture || profilePic;
 
   useEffect(() => {
-    if (location.pathname !== "/") {
-      setFillColor("#ffffff");
+    if (location.pathname !== '/') {
+      setFillColor('#ffffff');
     } else {
       window.scrollTo(0, 0);
     }
-    if (fillColor === "#ffffff") {
-      setStroke("#2c2c2c");
+    if (fillColor === '#ffffff') {
+      setStroke('#2c2c2c');
     } else {
-      setStroke("none");
+      setStroke('none');
     }
   }, [location, fillColor, profileModal, toggleSearch]);
 
@@ -56,7 +56,7 @@ function NavBar() {
             width="40px"
             height="40px"
             alt="facebook"
-            onClick={() => history.push("/")}
+            onClick={() => history.push('/')}
           ></img>
         </div>
 
@@ -65,7 +65,7 @@ function NavBar() {
             <i className="material-icons">search</i>
             <input
               type="text"
-              placeholder={typed ? typed : "Search FaceLook"}
+              placeholder={typed ? typed : 'Search FaceLook'}
               className="search-input"
               onClick={() => {
                 setToggleSearch(true);
@@ -92,7 +92,7 @@ function NavBar() {
             <Link
               to="/"
               onClick={() => {
-                setFillColor("#1b74e4");
+                setFillColor('#1b74e4');
               }}
             >
               <svg

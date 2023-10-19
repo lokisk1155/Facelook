@@ -1,12 +1,12 @@
-import { useState } from "react";
-import PreviewStory from "./PreviewStory";
-import TextStory from "./TextStory";
-import ProfilePicModal from "../NavBar/ProfilePicModal";
-import { Modal } from "../../context/Modal";
-import profilePic from "../NavBar/imgs/blank.png";
-import "./CreateStory.css";
-import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useState } from 'react';
+import PreviewStory from './PreviewStory';
+import TextStory from './TextStory';
+import ProfilePicModal from '../NavBar/ProfilePicModal';
+import { Modal } from '../../context/Modal';
+import profilePic from '../NavBar/imgs/blank.png';
+import './CreateStory.css';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 function CreateStoryIntro() {
   const history = useHistory();
@@ -33,39 +33,39 @@ function CreateStoryIntro() {
     <>
       <div
         style={{
-          height: "100px",
-          width: "100vw",
-          position: "absolute",
-          top: "0",
+          height: '100px',
+          width: '100vw',
+          position: 'absolute',
+          top: '0',
         }}
       >
         <div
           style={{
-            cursor: "pointer",
-            position: "absolute",
-            left: "0",
-            margin: "10px",
+            cursor: 'pointer',
+            position: 'absolute',
+            left: '0',
+            margin: '10px',
           }}
         >
           <button
-            onClick={() => history.push("/")}
+            onClick={() => history.push('/')}
             type="button"
             className="btn-close-create"
-            style={{ position: "relative", height: "50px", width: "50px" }}
+            style={{ position: 'relative', height: '50px', width: '50px' }}
           >
-            <div style={{ fontSize: "2rem", textAlign: "center" }}>X</div>
+            <div style={{ fontSize: '2rem', textAlign: 'center' }}>X</div>
           </button>
         </div>
         <div
           style={{
-            cursor: "pointer",
-            position: "absolute",
-            right: "0",
-            margin: "5px",
-            marginRight: "65px",
-            zIndex: "35",
+            cursor: 'pointer',
+            position: 'absolute',
+            right: '0',
+            margin: '5px',
+            marginRight: '65px',
+            zIndex: '35',
           }}
-          onClick={() => history.push("/")}
+          onClick={() => history.push('/')}
         >
           <svg viewBox="0 0 36 36" height="50" width="50">
             <defs>
@@ -108,37 +108,37 @@ function CreateStoryIntro() {
           <div
             className="story-creation-container"
             style={{
-              display: "flex",
-              justifyContent: "center",
-              marginTop: "15%",
+              display: 'flex',
+              justifyContent: 'center',
+              marginTop: '15%',
             }}
           >
             <label
               className="text-story-button"
               style={{
                 backgroundImage: `url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/eDvxJuy2gCL.png)`,
-                backgroundPosition: "0px -331px",
-                backgroundSize: "221px 687px",
-                width: "220px",
-                height: "330px",
-                backgroundRepeat: "no-repeat",
-                display: "inline-block",
-                margin: "5px",
-                borderRadius: "15px",
+                backgroundPosition: '0px -331px',
+                backgroundSize: '221px 687px',
+                width: '220px',
+                height: '330px',
+                backgroundRepeat: 'no-repeat',
+                display: 'inline-block',
+                margin: '5px',
+                borderRadius: '15px',
               }}
             >
-              {" "}
+              {' '}
               <input
                 type="file"
                 onChange={handleFile}
-                style={{ display: "none" }}
+                style={{ display: 'none' }}
               />
               <p
                 style={{
-                  textAlign: "center",
-                  color: "#fff",
-                  marginTop: "150px",
-                  fontSize: "18px",
+                  textAlign: 'center',
+                  color: '#fff',
+                  marginTop: '150px',
+                  fontSize: '18px',
                 }}
               >
                 Create a photo story
@@ -149,23 +149,23 @@ function CreateStoryIntro() {
               onClick={() => setTextStory(true)}
               style={{
                 backgroundImage: `url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/eDvxJuy2gCL.png)`,
-                backgroundPosition: "0px 0px",
-                backgroundSize: "221px 687px",
-                width: "220px",
-                height: "330px",
-                backgroundRepeat: "no-repeat",
-                display: "inline-block",
-                borderRadius: "15px",
-                margin: "5px",
+                backgroundPosition: '0px 0px',
+                backgroundSize: '221px 687px',
+                width: '220px',
+                height: '330px',
+                backgroundRepeat: 'no-repeat',
+                display: 'inline-block',
+                borderRadius: '15px',
+                margin: '5px',
               }}
             >
               <p
                 style={{
-                  justifyContent: "center",
-                  color: "#fff",
-                  marginTop: "150px",
-                  fontSize: "18px",
-                  textAlign: "center",
+                  justifyContent: 'center',
+                  color: '#fff',
+                  marginTop: '150px',
+                  fontSize: '18px',
+                  textAlign: 'center',
                 }}
               >
                 Create a text story

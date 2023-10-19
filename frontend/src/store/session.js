@@ -1,9 +1,9 @@
-import { BigBrother } from "../utils/BigBrother";
-import csrfFetch from "./csrf";
-import { updateUser } from "./user";
+import { BigBrother } from '../utils/BigBrother';
+import csrfFetch from './csrf';
+import { updateUser } from './user';
 
-export const SET_CURRENT_USER = "session/setCurrentUser";
-export const REMOVE_CURRENT_USER = "session/removeCurrentUser";
+export const SET_CURRENT_USER = 'session/setCurrentUser';
+export const REMOVE_CURRENT_USER = 'session/removeCurrentUser';
 
 export const setCurrentUser = (user) => ({
   type: SET_CURRENT_USER,
@@ -15,20 +15,20 @@ const removeCurrentUser = () => ({
 });
 
 const storeCSRFToken = (response) => {
-  const csrfToken = response.headers.get("X-CSRF-Token");
-  if (csrfToken) sessionStorage.setItem("X-CSRF-Token", csrfToken);
+  const csrfToken = response.headers.get('X-CSRF-Token');
+  if (csrfToken) sessionStorage.setItem('X-CSRF-Token', csrfToken);
 };
 
 export const storeCurrentUser = (user) => {
-  if (user) sessionStorage.setItem("currentUser", JSON.stringify(user));
-  else sessionStorage.removeItem("currentUser");
+  if (user) sessionStorage.setItem('currentUser', JSON.stringify(user));
+  else sessionStorage.removeItem('currentUser');
 };
 
 export const login =
   ({ credential, password }) =>
   async (dispatch) => {
-    const response = await csrfFetch("/api/session", {
-      method: "POST",
+    const response = await csrfFetch('/api/session', {
+      method: 'POST',
       body: JSON.stringify({ credential, password }),
     });
     const data = await response.json();
@@ -38,15 +38,15 @@ export const login =
   };
 
 export const logout = () => async (dispatch) => {
-  const res = await csrfFetch("/api/session", { method: "DELETE" });
+  const res = await csrfFetch('/api/session', { method: 'DELETE' });
   storeCurrentUser(null);
   dispatch(removeCurrentUser());
   return res;
 };
 
 export const signup = (user, formData) => async (dispatch) => {
-  const res = await csrfFetch("/api/users", {
-    method: "POST",
+  const res = await csrfFetch('/api/users', {
+    method: 'POST',
     body: JSON.stringify({ user }),
   });
   const data = await res.json();
@@ -60,7 +60,7 @@ export const signup = (user, formData) => async (dispatch) => {
 };
 
 export const restoreSession = () => async (dispatch) => {
-  const response = await csrfFetch("/api/session");
+  const response = await csrfFetch('/api/session');
   storeCSRFToken(response);
   const data = await response.json();
   storeCurrentUser(data.user);
@@ -69,7 +69,7 @@ export const restoreSession = () => async (dispatch) => {
 };
 
 const initialState = {
-  user: JSON.parse(sessionStorage.getItem("currentUser")),
+  user: JSON.parse(sessionStorage.getItem('currentUser')),
 };
 
 const sessionReducer = (previousState = initialState, action) => {

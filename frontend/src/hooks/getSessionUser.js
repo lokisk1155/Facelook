@@ -1,8 +1,8 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { useState } from "react";
-import { fetchUser } from "../store/user";
-import { fetchFriends, receiveFriends } from "../store/friend";
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { fetchUser } from '../store/user';
+import { fetchFriends, receiveFriends } from '../store/friend';
 
 export default function GetSessionUsersFriends() {
   const dispatch = useDispatch();

@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import React from "react";
-import { useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
-import LoadingBar from "./LoadingBar";
-import profilePic from "../NavBar/imgs/blank.png";
-import "./ProgressBar.css";
+import { useEffect, useState } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { Link, useParams } from 'react-router-dom';
+import LoadingBar from './LoadingBar';
+import profilePic from '../NavBar/imgs/blank.png';
+import './ProgressBar.css';
 
 function ProgressBar({
   stories,
@@ -34,16 +34,16 @@ function ProgressBar({
     <>
       <div
         style={{
-          position: "absolute",
-          width: "95%",
-          height: "10px",
-          top: "2%",
-          display: "flex",
-          alignItems: "center",
-          right: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          zIndex: "20",
+          position: 'absolute',
+          width: '95%',
+          height: '10px',
+          top: '2%',
+          display: 'flex',
+          alignItems: 'center',
+          right: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          zIndex: '20',
         }}
       >
         {stories.map((story, index) => (
@@ -52,10 +52,10 @@ function ProgressBar({
               <div
                 style={{
                   width: `${progressBarWidth}%`,
-                  height: "70%",
-                  backgroundColor: "rgba(0, 0, 0, 0.3)",
-                  margin: "2px",
-                  borderRadius: "50px",
+                  height: '70%',
+                  backgroundColor: 'rgba(0, 0, 0, 0.3)',
+                  margin: '2px',
+                  borderRadius: '50px',
                 }}
               />
             ) : (
@@ -78,7 +78,7 @@ function ProgressBar({
           src={profilePicture}
         />
 
-        <p style={{ paddingLeft: "2px" }} className="name-on-actual-story">
+        <p style={{ paddingLeft: '2px' }} className="name-on-actual-story">
           {simpleUsers[id].name}
         </p>
       </Link>

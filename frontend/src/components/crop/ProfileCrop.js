@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import Cropper from "react-easy-crop";
-import getCroppedImg from "../../utils/cropImage";
-import "./index.css";
+import React, { useState } from 'react';
+import Cropper from 'react-easy-crop';
+import getCroppedImg from '../../utils/cropImage';
+import './index.css';
 
 const ProfileCrop = ({ photoURL, setOpenCrop, setPhotoURL, setFile }) => {
   const [crop, setCrop] = useState({ x: 0, y: 0 });

@@ -1,11 +1,11 @@
-import { useDispatch } from "react-redux";
-import { useState } from "react";
-import { updateUser } from "../../../../store/user";
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { updateUser } from '../../../../store/user';
 
 function EditEmail({ currentUser }) {
   const dispatch = useDispatch();
 
-  const [fakeEmail, setFakeEmail] = useState("");
+  const [fakeEmail, setFakeEmail] = useState('');
 
   const [toggle, setToggle] = useState(false);
 
@@ -28,16 +28,16 @@ function EditEmail({ currentUser }) {
     <>
       {currentUser.email ? (
         <>
-          {" "}
-          <p>{currentUser.email}</p>{" "}
+          {' '}
+          <p>{currentUser.email}</p>{' '}
           {toggle ? null : (
-            <button style={{ margin: "5px" }} onClick={() => setToggle(true)}>
+            <button style={{ margin: '5px' }} onClick={() => setToggle(true)}>
               Edit email
             </button>
           )}
         </>
       ) : (
-        <button style={{ margin: "5px" }} onClick={() => setToggle(true)}>
+        <button style={{ margin: '5px' }} onClick={() => setToggle(true)}>
           Add Email
         </button>
       )}
@@ -48,10 +48,10 @@ function EditEmail({ currentUser }) {
             onChange={(e) => setFakeEmail(e.target.value)}
             default="Email"
           ></input>
-          <button style={{ margin: "5px" }} onClick={() => setToggle(false)}>
+          <button style={{ margin: '5px' }} onClick={() => setToggle(false)}>
             Cancel
           </button>
-          <button style={{ margin: "5px" }} type="submit">
+          <button style={{ margin: '5px' }} type="submit">
             Submit
           </button>
         </form>

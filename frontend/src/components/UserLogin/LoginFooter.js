@@ -1,10 +1,10 @@
 function LoginFooter() {
   const styles = {
-    fontFamily: "Arial, Helvetica, sans-serif",
-    color: "rgb(145, 145, 145)",
-    textDecoration: "none",
-    fontSize: "1rem",
-    margin: "5px",
+    fontFamily: 'Arial, Helvetica, sans-serif',
+    color: 'rgb(145, 145, 145)',
+    textDecoration: 'none',
+    fontSize: '1rem',
+    margin: '5px',
   };
 
   const isViewportUnderCertainWidth = window.innerWidth < 768; // Adjust the width as per your needs
@@ -16,21 +16,21 @@ function LoginFooter() {
     <footer
       className="foooooter"
       style={{
-        position: "absolute",
-        bottom: "0",
-        width: "100%",
-        height: "15%",
-        backgroundColor: "#fff",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
+        position: 'absolute',
+        bottom: '0',
+        width: '100%',
+        height: '15%',
+        backgroundColor: '#fff',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
       }}
     >
       <article
         style={{
-          display: "flex",
-          justifyContent: "flex-start",
-          width: "50%",
+          display: 'flex',
+          justifyContent: 'flex-start',
+          width: '50%',
           ...styles,
         }}
       >
@@ -46,10 +46,10 @@ function LoginFooter() {
       </article>
       <section
         style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "flex-start",
-          width: "50%",
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'flex-start',
+          width: '50%',
         }}
       >
         <div style={{ ...styles }}>

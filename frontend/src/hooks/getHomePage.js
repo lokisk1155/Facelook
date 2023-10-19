@@ -1,7 +1,7 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useState, useRef, useEffect } from "react";
-import { addAll, fetchStories } from "../store/story";
-import { fetchPosts, receivePosts } from "../store/post";
+import { useDispatch, useSelector } from 'react-redux';
+import { useState, useRef, useEffect } from 'react';
+import { addAll, fetchStories } from '../store/story';
+import { fetchPosts, receivePosts } from '../store/post';
 
 export default function GetHomePage() {
   const dispatch = useDispatch();

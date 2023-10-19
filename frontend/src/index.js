@@ -1,17 +1,17 @@
-import { BrowserRouter } from "react-router-dom";
-import { ModalProvider } from "./context/Modal";
-import { Provider } from "react-redux";
-import { restoreSession } from "./store/session";
-import configureStore from "./store";
-import csrfFetch from "./store/csrf";
-import ReactDOM from "react-dom/client";
-import React from "react";
-import App from "./App";
-import "./index.css";
+import { BrowserRouter } from 'react-router-dom';
+import { ModalProvider } from './context/Modal';
+import { Provider } from 'react-redux';
+import { restoreSession } from './store/session';
+import configureStore from './store';
+import csrfFetch from './store/csrf';
+import ReactDOM from 'react-dom/client';
+import React from 'react';
+import App from './App';
+import './index.css';
 
 const store = configureStore();
 
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV !== 'production') {
   window.store = store;
   window.csrfFetch = csrfFetch;
 }
@@ -29,7 +29,7 @@ function Root() {
 }
 
 const renderApplication = () => {
-  const root = ReactDOM.createRoot(document.getElementById("root"));
+  const root = ReactDOM.createRoot(document.getElementById('root'));
   root.render(
     <React.StrictMode>
       <Root />
@@ -38,8 +38,8 @@ const renderApplication = () => {
 };
 
 if (
-  sessionStorage.getItem("currentUser") === null ||
-  sessionStorage.getItem("X-CSRF-Token") === null
+  sessionStorage.getItem('currentUser') === null ||
+  sessionStorage.getItem('X-CSRF-Token') === null
 ) {
   store.dispatch(restoreSession()).then(renderApplication);
 } else {

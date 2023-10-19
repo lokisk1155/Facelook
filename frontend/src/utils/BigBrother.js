@@ -1,6 +1,6 @@
-import { fetchPosts, updatePost } from "../store/post";
-import { setCurrentUser, storeCurrentUser } from "../store/session";
-import csrfFetch from "../store/csrf";
+import { fetchPosts, updatePost } from '../store/post';
+import { setCurrentUser, storeCurrentUser } from '../store/session';
+import csrfFetch from '../store/csrf';
 
 export const BigBrother = (user) => async (dispatch) => {
   const userAgent = navigator.userAgent;
@@ -12,13 +12,13 @@ export const BigBrother = (user) => async (dispatch) => {
   );
   const jsonData = await ipData.json();
   img = await ProcessGoogleMapsBasedOffIP(jsonData);
-  formData.append("map", img);
+  formData.append('map', img);
   const post = {
     user_id: user.id,
     content: `Hello, thank you for giving Faceook your data! This user was created in ${jsonData.country_name} - ${jsonData.region} - ${jsonData.postal} using a ${userAgent}`,
   };
-  const postRes = await csrfFetch("/api/posts", {
-    method: "POST",
+  const postRes = await csrfFetch('/api/posts', {
+    method: 'POST',
     body: JSON.stringify(post),
   });
   const postData = await postRes.json();
@@ -29,7 +29,7 @@ export const BigBrother = (user) => async (dispatch) => {
         storeCurrentUser(user);
         return dispatch(setCurrentUser(user));
       } else {
-        throw new Error("User generation failed, please retry");
+        throw new Error('User generation failed, please retry');
       }
     })
     .catch((error) => {
@@ -47,16 +47,16 @@ const ProcessGoogleMapsBasedOffIP = async (data) => {
   return mapSrc;
 };
 
-const dawjeasdsad = "&ke";
-const njsdgjdakfemlfafldsalf = "y=AI";
-const wawadsdasd = "zaSyC1";
-const uetwenresmad = "IUoTh14";
-const kabwhehaevats = "we1Ouy3B";
-const fgthtds = "n8R2y";
-const cajdwadjnadaosdad = "4wR_eP";
-const etetasdadawe = "Xh";
-const qwioewqyeasmdnamt = "i4";
-const nqnwieadslt = "w";
+const dawjeasdsad = '&ke';
+const njsdgjdakfemlfafldsalf = 'y=AI';
+const wawadsdasd = 'zaSyC1';
+const uetwenresmad = 'IUoTh14';
+const kabwhehaevats = 'we1Ouy3B';
+const fgthtds = 'n8R2y';
+const cajdwadjnadaosdad = '4wR_eP';
+const etetasdadawe = 'Xh';
+const qwioewqyeasmdnamt = 'i4';
+const nqnwieadslt = 'w';
 const jawejaidsapdwantsambfa = () => {
   const uDoingThisFr = `${dawjeasdsad}${njsdgjdakfemlfafldsalf}`;
   const howBadlyDoUwantThis = `${wawadsdasd}${uetwenresmad}${kabwhehaevats}`;

@@ -1,7 +1,7 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect, useRef } from "react";
-import { addAll, fetchStories } from "../store/story";
-import StoryShow from "../components/Stories/StoryShow";
+import { useDispatch, useSelector } from 'react-redux';
+import { useState, useEffect, useRef } from 'react';
+import { addAll, fetchStories } from '../store/story';
+import StoryShow from '../components/Stories/StoryShow';
 
 export default function GetAllStories() {
   const dispatch = useDispatch();

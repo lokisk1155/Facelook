@@ -1,8 +1,8 @@
-import csrfFetch from "./csrf";
+import csrfFetch from './csrf';
 
-const RECEIVE_POST = "post/receivePost";
-const RECEIVE_POSTS = "post/receivePosts";
-const REMOVE_POST = "post/removePost";
+const RECEIVE_POST = 'post/receivePost';
+const RECEIVE_POSTS = 'post/receivePosts';
+const REMOVE_POST = 'post/removePost';
 
 export const receivePost = (post) => ({
   type: RECEIVE_POST,
@@ -27,7 +27,7 @@ export const fetchPost = (postId) => async (dispatch) => {
 
 export const fetchPosts = (limit) => async (dispatch) => {
   const postRes = await csrfFetch(
-    `/api/posts${limit ? `?limit=${limit}` : ""}`
+    `/api/posts${limit ? `?limit=${limit}` : ''}`
   );
   const postData = await postRes.json();
   dispatch(receivePosts(postData));
@@ -35,8 +35,8 @@ export const fetchPosts = (limit) => async (dispatch) => {
 };
 
 export const createPost = (post, formData) => async (dispatch) => {
-  const postRes = await csrfFetch("/api/posts", {
-    method: "POST",
+  const postRes = await csrfFetch('/api/posts', {
+    method: 'POST',
     body: JSON.stringify(post),
   });
   const postData = await postRes.json();
@@ -49,7 +49,7 @@ export const createPost = (post, formData) => async (dispatch) => {
 export const updatePost = (post, formData) => async (dispatch) => {
   const photoAttached = formData instanceof FormData;
   const postRes = await csrfFetch(`/api/posts/${post.id}`, {
-    method: "PUT",
+    method: 'PUT',
     body: photoAttached ? formData : JSON.stringify({ post }),
   });
   const postData = await postRes.json();
@@ -58,7 +58,7 @@ export const updatePost = (post, formData) => async (dispatch) => {
 };
 
 export const deletePost = (postId) => async (dispatch) => {
-  await csrfFetch(`/api/posts/${postId}`, { method: "DELETE" });
+  await csrfFetch(`/api/posts/${postId}`, { method: 'DELETE' });
 };
 
 const postsReducer = (previousState = {}, action) => {

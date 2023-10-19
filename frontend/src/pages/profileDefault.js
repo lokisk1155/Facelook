@@ -1,12 +1,12 @@
-import ProfileTop from "../components/ProfilePage/ProfileTop";
-import { useState } from "react";
-import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
-import Intro from "../components/ProfilePage/Intro";
-import FriendsContainer from "../components/ProfilePage/FriendsContainer";
-import PostFeed from "../components/HomePage/Middle/PostFeed";
-import SessionUserIntro from "../components/ProfilePage/SessionUserIntro";
-import "./ProfileDefault.css";
+import ProfileTop from '../components/ProfilePage/ProfileTop';
+import { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import Intro from '../components/ProfilePage/Intro';
+import FriendsContainer from '../components/ProfilePage/FriendsContainer';
+import PostFeed from '../components/HomePage/Middle/PostFeed';
+import SessionUserIntro from '../components/ProfilePage/SessionUserIntro';
+import './ProfileDefault.css';
 
 function ProfileDefault() {
   const { id } = useParams();
@@ -33,7 +33,7 @@ function ProfileDefault() {
               className="intro-container"
               style={{ height: `${introContainerHeight}px` }}
             >
-              <p className="profile-page-box-headers">{"Intro"}</p>
+              <p className="profile-page-box-headers">{'Intro'}</p>
               {parseInt(id) === sessionUser.id ? (
                 <SessionUserIntro
                   currentUser={currentUser}
@@ -48,7 +48,7 @@ function ProfileDefault() {
             </div>
 
             <div className="friends-box-profile-default">
-              <p className="profile-page-box-headers">{"Friends"}</p>
+              <p className="profile-page-box-headers">{'Friends'}</p>
               <FriendsContainer
                 currentUser={currentUser}
                 sessionUser={sessionUser}

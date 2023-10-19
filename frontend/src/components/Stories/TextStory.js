@@ -1,37 +1,37 @@
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { createStory } from "../../store/story";
-import PreviewCurrentStory from "./PreviewCurrentStory";
-import TextControls from "./TextControls";
-import "./TextStory.css";
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { createStory } from '../../store/story';
+import PreviewCurrentStory from './PreviewCurrentStory';
+import TextControls from './TextControls';
+import './TextStory.css';
 
 function TextStory({ photoUrl = null, file = null }) {
   const dispatch = useDispatch();
 
   const history = useHistory();
 
-  const [backgroundColor, setBackgroundColor] = useState("#1b74e4");
+  const [backgroundColor, setBackgroundColor] = useState('#1b74e4');
 
-  const [fontSize, setFontSize] = useState("20px");
+  const [fontSize, setFontSize] = useState('20px');
 
-  const [paddingLeft, setPaddingLeft] = useState("10px");
+  const [paddingLeft, setPaddingLeft] = useState('10px');
 
   const [fakePaddingLeft, setFakePaddingLeft] = useState(10);
 
-  const [paddingRight, setPaddingRight] = useState("10px");
+  const [paddingRight, setPaddingRight] = useState('10px');
 
   const [fakePaddingRight, setFakePaddingRight] = useState(0);
 
   const [fontType, setFontType] = useState("'Montserrat', sans-serif");
 
-  const [paddingY, setPaddingY] = useState("240px");
+  const [paddingY, setPaddingY] = useState('240px');
 
   const [fakePaddingY, setFakePaddingY] = useState(240);
 
-  const [color, setColor] = useState("red");
+  const [color, setColor] = useState('red');
 
-  const [textContent, setTextContent] = useState("");
+  const [textContent, setTextContent] = useState('');
 
   const styles = {
     background_color: backgroundColor,
@@ -54,7 +54,7 @@ function TextStory({ photoUrl = null, file = null }) {
     let formData = false;
     if (file) {
       formData = new FormData();
-      formData.append("story[photo]", file);
+      formData.append('story[photo]', file);
       Object.entries(styles).forEach(([key, value]) => {
         formData.append(`story[styles][${key}]`, value);
       });
@@ -111,16 +111,16 @@ function TextStory({ photoUrl = null, file = null }) {
 
   const resetMoves = (e) => {
     e.preventDefault();
-    setPaddingLeft("0");
-    setPaddingRight("0");
-    setPaddingY("0");
+    setPaddingLeft('0');
+    setPaddingRight('0');
+    setPaddingY('0');
     setFakePaddingLeft(0);
     setFakePaddingRight(0);
     setFakePaddingY(0);
-    setBackgroundColor("#1b74e4");
-    setFontSize("20");
-    setTextContent("");
-    setColor("");
+    setBackgroundColor('#1b74e4');
+    setFontSize('20');
+    setTextContent('');
+    setColor('');
   };
 
   return (
@@ -128,39 +128,39 @@ function TextStory({ photoUrl = null, file = null }) {
       <div
         className="text-preview-container"
         style={{
-          display: "flex",
-          width: "100%",
-          height: "90%",
-          marginTop: "100px",
+          display: 'flex',
+          width: '100%',
+          height: '90%',
+          marginTop: '100px',
         }}
       >
         <div
           className="text-actual-preview-container"
           style={{
-            width: "100%",
-            height: "90%",
-            borderRadius: "7px",
-            marginRight: "2.5%",
-            marginLeft: "2.5%",
-            boxShadow: "0px 75px 75px 0px lightgrey",
+            width: '100%',
+            height: '90%',
+            borderRadius: '7px',
+            marginRight: '2.5%',
+            marginLeft: '2.5%',
+            boxShadow: '0px 75px 75px 0px lightgrey',
           }}
         >
-          <p style={{ fontSize: "15px", color: "black", marginLeft: "1%" }}>
+          <p style={{ fontSize: '15px', color: 'black', marginLeft: '1%' }}>
             Preview
           </p>
           <div
             className="black-container"
             style={{
-              backgroundColor: "black",
-              width: "95%",
-              height: "85%",
-              marginLeft: "2.5%",
-              marginRight: "2.5%",
-              borderRadius: "7px",
-              paddingTop: "25px",
-              minWidth: "300px",
-              minHeight: "250px",
-              position: "relative",
+              backgroundColor: 'black',
+              width: '95%',
+              height: '85%',
+              marginLeft: '2.5%',
+              marginRight: '2.5%',
+              borderRadius: '7px',
+              paddingTop: '25px',
+              minWidth: '300px',
+              minHeight: '250px',
+              position: 'relative',
             }}
           >
             <TextControls
@@ -184,19 +184,19 @@ function TextStory({ photoUrl = null, file = null }) {
             <div
               className="story-buttons"
               style={{
-                position: "absolute",
-                bottom: "0",
+                position: 'absolute',
+                bottom: '0',
               }}
             >
               <button
                 style={{
-                  backgroundColor: "grey",
-                  border: "none",
-                  color: "#fff",
-                  margin: "10px",
-                  width: "100px",
-                  height: "35px",
-                  borderRadius: "2.5px",
+                  backgroundColor: 'grey',
+                  border: 'none',
+                  color: '#fff',
+                  margin: '10px',
+                  width: '100px',
+                  height: '35px',
+                  borderRadius: '2.5px',
                 }}
                 onClick={resetMoves}
               >
@@ -206,13 +206,13 @@ function TextStory({ photoUrl = null, file = null }) {
               <button
                 onClick={handleSubmit}
                 style={{
-                  backgroundColor: "#1b74e4",
-                  border: "none",
-                  color: "#fff",
-                  margin: "10px",
-                  width: "100px",
-                  height: "35px",
-                  borderRadius: "2.5px",
+                  backgroundColor: '#1b74e4',
+                  border: 'none',
+                  color: '#fff',
+                  margin: '10px',
+                  width: '100px',
+                  height: '35px',
+                  borderRadius: '2.5px',
                 }}
               >
                 save

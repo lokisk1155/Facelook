@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import Cropper from "react-easy-crop";
-import getCroppedImg from "../../utils/cropImage";
-import "./index.css";
+import React, { useState } from 'react';
+import Cropper from 'react-easy-crop';
+import getCroppedImg from '../../utils/cropImage';
+import './index.css';
 
 const StoryCrop = ({ photoURL, setPhotoURL, setFile, fileSaved }) => {
   const [crop, setCrop] = useState({ x: 0, y: 0 });

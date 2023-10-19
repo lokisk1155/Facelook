@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
 function Intro({ currentUser, changeHeight }) {
   let count = 40;
@@ -41,13 +41,13 @@ function Intro({ currentUser, changeHeight }) {
   return (
     <div
       style={{
-        display: "flex",
-        flexDirection: "column",
-        height: "90%",
+        display: 'flex',
+        flexDirection: 'column',
+        height: '90%',
       }}
     >
       {bio ? (
-        <p style={{ textAlign: "center" }} className="user-info">
+        <p style={{ textAlign: 'center' }} className="user-info">
           {bio}
         </p>
       ) : null}

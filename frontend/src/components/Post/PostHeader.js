@@ -1,10 +1,10 @@
-import { useDispatch } from "react-redux";
-import { deletePost, removePost } from "../../store/post";
-import { Link, useParams } from "react-router-dom";
-import PostLoading from "../loading/PostLoading";
-import profilePic from "../NavBar/imgs/blank.png";
-import { userRemovePost } from "../../store/profilePage";
-import { getTimeElapsed } from "./utils/Date";
+import { useDispatch } from 'react-redux';
+import { deletePost, removePost } from '../../store/post';
+import { Link, useParams } from 'react-router-dom';
+import PostLoading from '../loading/PostLoading';
+import profilePic from '../NavBar/imgs/blank.png';
+import { userRemovePost } from '../../store/profilePage';
+import { getTimeElapsed } from './utils/Date';
 function PostHeader({
   post,
   simpleUsers,
@@ -31,31 +31,31 @@ function PostHeader({
   return (
     <div
       style={{
-        height: "50px",
-        minHeight: "33px",
-        display: "flex",
-        justifyContent: "space-between",
-        paddingTop: "5px",
+        height: '50px',
+        minHeight: '33px',
+        display: 'flex',
+        justifyContent: 'space-between',
+        paddingTop: '5px',
       }}
     >
-      <div className="picture-and-name" style={{ display: "flex" }}>
+      <div className="picture-and-name" style={{ display: 'flex' }}>
         <Link to={`/ProfilePage/${post.user_id}`}>
           <PostLoading
             src={simpleUsers[post.user_id]?.profile_picture || profilePic}
           />
         </Link>
-        <div style={{ padding: "5px" }}>
+        <div style={{ padding: '5px' }}>
           <Link
-            style={{ textDecoration: "none" }}
+            style={{ textDecoration: 'none' }}
             to={`/ProfilePage/${post.user_id}`}
           >
             <h5
               style={{
-                height: "50%",
-                margin: "0",
-                padding: "2px",
-                textDecoration: "none",
-                color: "black",
+                height: '50%',
+                margin: '0',
+                padding: '2px',
+                textDecoration: 'none',
+                color: 'black',
               }}
             >
               {post.user_id === sessionUser.id
@@ -65,11 +65,11 @@ function PostHeader({
           </Link>
           <p
             style={{
-              color: "#65676b",
-              fontSize: ".55rem",
-              height: "30%",
-              margin: "0",
-              padding: "3px",
+              color: '#65676b',
+              fontSize: '.55rem',
+              height: '30%',
+              margin: '0',
+              padding: '3px',
             }}
           >
             {getTimeElapsed(post.created_at)}
@@ -83,7 +83,7 @@ function PostHeader({
               <div className="svg-container">
                 <svg
                   style={{
-                    visibility: editPost === post.id ? "hidden" : "",
+                    visibility: editPost === post.id ? 'hidden' : '',
                   }}
                   onClick={() => setEditPost(post.id)}
                   fill="currentColor"
@@ -100,16 +100,16 @@ function PostHeader({
                 <div
                   className="svg-dots-dropdown-container"
                   style={{
-                    padding: "0.5px",
+                    padding: '0.5px',
                   }}
                 >
                   <button
                     style={{
-                      height: "35px",
-                      width: "85px",
-                      backgroundColor: "#fff",
-                      border: "0.5px solid black",
-                      zIndex: "3",
+                      height: '35px',
+                      width: '85px',
+                      backgroundColor: '#fff',
+                      border: '0.5px solid black',
+                      zIndex: '3',
                     }}
                     onClick={() => {
                       setEditId(post.id);
@@ -121,11 +121,11 @@ function PostHeader({
 
                   <button
                     style={{
-                      height: "35px",
-                      width: "85px",
-                      backgroundColor: "#fff",
-                      border: "0.5px solid black",
-                      zIndex: "3",
+                      height: '35px',
+                      width: '85px',
+                      backgroundColor: '#fff',
+                      border: '0.5px solid black',
+                      zIndex: '3',
                     }}
                     onClick={handleDeletePost(post)}
                   >
@@ -133,11 +133,11 @@ function PostHeader({
                   </button>
                   <button
                     style={{
-                      height: "35px",
-                      width: "85px",
-                      backgroundColor: "#fff",
-                      border: "0.5px solid black",
-                      zIndex: "3",
+                      height: '35px',
+                      width: '85px',
+                      backgroundColor: '#fff',
+                      border: '0.5px solid black',
+                      zIndex: '3',
                     }}
                     onClick={() => setEditPost(null)}
                   >

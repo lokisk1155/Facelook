@@ -1,12 +1,12 @@
-import { Link, useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { useState } from "react";
-import profilePic from "../../NavBar/imgs/blank.png";
-import StoriesHeader from "./StoriesHeader";
-import CreateButtonSvg from "../../svgs/CreateButtonSvg";
-import ArrowLeftSvg from "../../svgs/ArrowLeftSvg";
-import ArrowRightSvg from "../../svgs/ArrowRightSvg";
-import "./StoriesHomeFeed.css";
+import { Link, useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useState } from 'react';
+import profilePic from '../../NavBar/imgs/blank.png';
+import StoriesHeader from './StoriesHeader';
+import CreateButtonSvg from '../../svgs/CreateButtonSvg';
+import ArrowLeftSvg from '../../svgs/ArrowLeftSvg';
+import ArrowRightSvg from '../../svgs/ArrowRightSvg';
+import './StoriesHomeFeed.css';
 
 function StoriesHomeFeed() {
   const history = useHistory();
@@ -40,7 +40,7 @@ function StoriesHomeFeed() {
     if (currentWindow < (stories.length - 1) / 2) {
       let newWindow = currentWindow + 2;
       document.querySelector(
-        ".stories-mapped-out"
+        '.stories-mapped-out'
       ).style.transform = `translateX(-${newWindow * 300}px)`;
       setCurrentWindow(newWindow);
     }
@@ -54,11 +54,11 @@ function StoriesHomeFeed() {
       let newWindow = currentWindow - 2;
       setCurrentWindow(newWindow);
       document.querySelector(
-        ".stories-mapped-out"
+        '.stories-mapped-out'
       ).style.transform = `translateX(-${newWindow * 300}px)`;
     } else {
       document.querySelector(
-        ".stories-mapped-out"
+        '.stories-mapped-out'
       ).style.transform = `translateX(-${1}px)`;
       setCurrentWindow(0);
     }
@@ -83,17 +83,17 @@ function StoriesHomeFeed() {
         <div className="stories-mapped-out">
           {currentWindow === 0 ? (
             <div
-              onClick={() => history.push("/stories/create")}
+              onClick={() => history.push('/stories/create')}
               className="story-create-wrapper"
             >
               <div
                 style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  height: "100%",
-                  position: "relative",
-                  cursor: "pointer",
-                  width: "125px",
+                  display: 'flex',
+                  flexDirection: 'column',
+                  height: '100%',
+                  position: 'relative',
+                  cursor: 'pointer',
+                  width: '125px',
                 }}
               >
                 <img
@@ -105,11 +105,11 @@ function StoriesHomeFeed() {
                 <div className="create-story-container">
                   <p
                     style={{
-                      margin: "0",
-                      padding: "0",
-                      textAlign: "center",
-                      color: "grey",
-                      fontSize: "1rem",
+                      margin: '0',
+                      padding: '0',
+                      textAlign: 'center',
+                      color: 'grey',
+                      fontSize: '1rem',
                     }}
                   >
                     create a story
@@ -128,10 +128,10 @@ function StoriesHomeFeed() {
                   search: `?windowIndex=${findWindowIndex(story)}`,
                 }}
                 style={{
-                  width: "250px",
-                  textDecoration: "none",
-                  margin: "2px",
-                  paddingLeft: index === 0 ? "4px" : "0",
+                  width: '250px',
+                  textDecoration: 'none',
+                  margin: '2px',
+                  paddingLeft: index === 0 ? '4px' : '0',
                 }}
               >
                 {story.picture ? (
@@ -152,11 +152,11 @@ function StoriesHomeFeed() {
                     />
                     <p
                       style={{
-                        position: "absolute",
-                        bottom: "0",
-                        paddingLeft: "5px",
-                        color: "#fff",
-                        fontSize: "0.9rem",
+                        position: 'absolute',
+                        bottom: '0',
+                        paddingLeft: '5px',
+                        color: '#fff',
+                        fontSize: '0.9rem',
                       }}
                     >
                       {simpleUsers[story.user_id].name}
@@ -172,7 +172,7 @@ function StoriesHomeFeed() {
                     >
                       <p
                         style={{
-                          fontSize: "1rem",
+                          fontSize: '1rem',
                           color: `${story.color}`,
                         }}
                       >
@@ -188,11 +188,11 @@ function StoriesHomeFeed() {
                     />
                     <p
                       style={{
-                        position: "absolute",
-                        bottom: "0",
-                        paddingLeft: "5px",
-                        color: "#fff",
-                        fontSize: "0.9rem",
+                        position: 'absolute',
+                        bottom: '0',
+                        paddingLeft: '5px',
+                        color: '#fff',
+                        fontSize: '0.9rem',
                       }}
                     >
                       {simpleUsers[story.user_id].name}

@@ -1,11 +1,11 @@
-import { useDispatch } from "react-redux";
-import { useState } from "react";
-import { updateUser } from "../../../../store/user";
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { updateUser } from '../../../../store/user';
 
 function EditEducation({ currentUser }) {
   const dispatch = useDispatch();
 
-  const [fakeEducation, setFakeEducation] = useState("");
+  const [fakeEducation, setFakeEducation] = useState('');
 
   const [toggle, setToggle] = useState(false);
 
@@ -28,16 +28,16 @@ function EditEducation({ currentUser }) {
     <>
       {currentUser.education ? (
         <>
-          {" "}
-          <p>{currentUser.education}</p>{" "}
+          {' '}
+          <p>{currentUser.education}</p>{' '}
           {toggle ? null : (
-            <button style={{ margin: "5px" }} onClick={() => setToggle(true)}>
+            <button style={{ margin: '5px' }} onClick={() => setToggle(true)}>
               Edit College
             </button>
           )}
         </>
       ) : (
-        <button style={{ margin: "5px" }} onClick={() => setToggle(true)}>
+        <button style={{ margin: '5px' }} onClick={() => setToggle(true)}>
           Add Education
         </button>
       )}
@@ -48,10 +48,10 @@ function EditEducation({ currentUser }) {
             onChange={(e) => setFakeEducation(e.target.value)}
             default="Education"
           ></input>
-          <button style={{ margin: "5px" }} onClick={() => setToggle(false)}>
+          <button style={{ margin: '5px' }} onClick={() => setToggle(false)}>
             Cancel
           </button>
-          <button style={{ margin: "5px" }} type="submit">
+          <button style={{ margin: '5px' }} type="submit">
             Submit
           </button>
         </form>

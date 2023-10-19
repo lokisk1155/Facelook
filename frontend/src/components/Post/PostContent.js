@@ -10,18 +10,18 @@ function PostContent({
     <div
       className="post-content-container"
       style={{
-        width: "100%",
-        minHeight: "35px",
-        paddingBottom: "5px",
-        overflow: "hidden",
+        width: '100%',
+        minHeight: '35px',
+        paddingBottom: '5px',
+        overflow: 'hidden',
       }}
     >
       {editId !== post.id ? (
         <p
           style={{
-            height: "100%",
-            margin: "0",
-            padding: "7.5px",
+            height: '100%',
+            margin: '0',
+            padding: '7.5px',
           }}
         >
           {post?.content}
@@ -30,10 +30,10 @@ function PostContent({
         <div
           className="edit-update-post-button-container"
           style={{
-            display: "flex",
-            paddingBottom: "10px",
-            justifyContent: "space-between",
-            height: "100%",
+            display: 'flex',
+            paddingBottom: '10px',
+            justifyContent: 'space-between',
+            height: '100%',
           }}
         >
           <textarea
@@ -43,27 +43,27 @@ function PostContent({
             placeholder={post.content}
             maxLength="150"
             style={{
-              width: "80%",
-              resize: "none",
-              fontSize: "12px",
-              minHeight: "10px",
+              width: '80%',
+              resize: 'none',
+              fontSize: '12px',
+              minHeight: '10px',
             }}
           ></textarea>
           <div
             style={{
-              display: "flex",
-              paddingRight: "15px",
-              alignItems: "center",
+              display: 'flex',
+              paddingRight: '15px',
+              alignItems: 'center',
             }}
           >
             <button
               style={{
-                minHeight: "20px",
-                backgroundColor: "#1b74e4",
-                border: "none",
-                borderRadius: "2px",
-                margin: "5px",
-                color: "white",
+                minHeight: '20px',
+                backgroundColor: '#1b74e4',
+                border: 'none',
+                borderRadius: '2px',
+                margin: '5px',
+                color: 'white',
               }}
               className="save-cancel-individual-post-buttons"
               onClick={() => setEditId(null)}
@@ -72,13 +72,13 @@ function PostContent({
             </button>
             <button
               style={{
-                minHeight: "20px",
-                backgroundColor: "#1b74e4",
-                border: "none",
-                borderRadius: "2px",
-                margin: "5px",
-                color: "white",
-                visibility: editContent?.length < 1 ? "hidden" : "",
+                minHeight: '20px',
+                backgroundColor: '#1b74e4',
+                border: 'none',
+                borderRadius: '2px',
+                margin: '5px',
+                color: 'white',
+                visibility: editContent?.length < 1 ? 'hidden' : '',
               }}
               className="save-cancel-individual-post-buttons"
               onClick={submitUpdate(post.id)}

@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Route, Switch, useParams } from "react-router-dom";
-import { ProfilePageRoutes } from "./routes/ProfilePageRoutes";
-import { getSimpleUsers } from "./store/simpleUsers";
-import LoginPage from "./components/UserLogin/LoginPage";
-import HomePage from "./components/HomePage/HomePage";
-import CreateStoryIntro from "./components/Stories/CreateStory";
-import GetAllStories from "./hooks/getAllStories";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Route, Switch, useParams } from 'react-router-dom';
+import { ProfilePageRoutes } from './routes/ProfilePageRoutes';
+import { getSimpleUsers } from './store/simpleUsers';
+import LoginPage from './components/UserLogin/LoginPage';
+import HomePage from './components/HomePage/HomePage';
+import CreateStoryIntro from './components/Stories/CreateStory';
+import GetAllStories from './hooks/getAllStories';
 
 function App() {
   const dispatch = useDispatch();

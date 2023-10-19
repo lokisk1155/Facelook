@@ -1,9 +1,5 @@
 # [Facelook (live link)](https://faceooook.herokuapp.com/)
 
-
-
-
-
 <p align="center">
 <img src="https://img.shields.io/github/contributors/lokisk1155/FaceOok" alt="GitHub contributors" />
 <img src="https://img.shields.io/github/discussions/lokisk1155/FaceOok" alt="GitHub discussions" />
@@ -16,12 +12,11 @@
 
 ## 🔍 Table of Contents
 
-* [💻 Stack](#stack)
+- [💻 Stack](#stack)
 
-* [📝 Project Summary](#project-summary)
+- [📝 Project Summary](#project-summary)
 
-* [🙌 Contributors](#contributors)
-
+- [🙌 Contributors](#contributors)
 
 ## 💻 Stack
 
@@ -72,5 +67,3 @@
           1 contribution
         </a>
       </td></table>
-
-

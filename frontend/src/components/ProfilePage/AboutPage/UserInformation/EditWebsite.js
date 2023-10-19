@@ -1,11 +1,11 @@
-import { useDispatch } from "react-redux";
-import { useState } from "react";
-import { updateUser } from "../../../../store/user";
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { updateUser } from '../../../../store/user';
 
 function EditWebsite({ currentUser }) {
   const dispatch = useDispatch();
 
-  const [fakeWebsite, setFakeWebsite] = useState("");
+  const [fakeWebsite, setFakeWebsite] = useState('');
 
   const [toggle, setToggle] = useState(false);
 
@@ -28,16 +28,16 @@ function EditWebsite({ currentUser }) {
     <>
       {currentUser.website ? (
         <>
-          {" "}
-          <p>{currentUser.website}</p>{" "}
+          {' '}
+          <p>{currentUser.website}</p>{' '}
           {toggle ? null : (
-            <button style={{ margin: "5px" }} onClick={() => setToggle(true)}>
+            <button style={{ margin: '5px' }} onClick={() => setToggle(true)}>
               Edit website
             </button>
           )}
         </>
       ) : (
-        <button style={{ margin: "5px" }} onClick={() => setToggle(true)}>
+        <button style={{ margin: '5px' }} onClick={() => setToggle(true)}>
           Add Website
         </button>
       )}
@@ -48,10 +48,10 @@ function EditWebsite({ currentUser }) {
             onChange={(e) => setFakeWebsite(e.target.value)}
             default="Website"
           ></input>
-          <button style={{ margin: "5px" }} onClick={() => setToggle(false)}>
+          <button style={{ margin: '5px' }} onClick={() => setToggle(false)}>
             Cancel
           </button>
-          <button style={{ margin: "5px" }} type="submit">
+          <button style={{ margin: '5px' }} type="submit">
             Submit
           </button>
         </form>

@@ -1,4 +1,4 @@
-import rotateSize, { getRadianAngle } from "./rotateSize";
+import rotateSize, { getRadianAngle } from './rotateSize';
 
 export default async function getCroppedImg(
   imageSrc,
@@ -7,8 +7,8 @@ export default async function getCroppedImg(
   flip = { horizontal: false, vertical: false }
 ) {
   const image = await createImage(imageSrc);
-  const canvas = document.createElement("canvas");
-  const ctx = canvas.getContext("2d");
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
 
   if (!ctx) {
     return null;
@@ -46,17 +46,17 @@ export default async function getCroppedImg(
 
   return new Promise((resolve, reject) => {
     canvas.toBlob((file) => {
-      file.name = "cropped.jpeg";
+      file.name = 'cropped.jpeg';
       resolve({ file: file, url: URL.createObjectURL(file) });
-    }, "image/jpeg");
+    }, 'image/jpeg');
   });
 }
 
 const createImage = (url) =>
   new Promise((resolve, reject) => {
     const image = new Image();
-    image.addEventListener("load", () => resolve(image));
-    image.addEventListener("error", (error) => reject(error));
-    image.setAttribute("crossOrigin", "anonymous");
+    image.addEventListener('load', () => resolve(image));
+    image.addEventListener('error', (error) => reject(error));
+    image.setAttribute('crossOrigin', 'anonymous');
     image.src = url;
   });

@@ -1,6 +1,6 @@
-import csrfFetch from "./csrf";
+import csrfFetch from './csrf';
 
-export const SET_SIMPLE_USERS = "users/SET_SIMPLE_USERS";
+export const SET_SIMPLE_USERS = 'users/SET_SIMPLE_USERS';
 
 export const setSimpleUsers = (users) => ({
   type: SET_SIMPLE_USERS,
@@ -8,7 +8,7 @@ export const setSimpleUsers = (users) => ({
 });
 
 export const getSimpleUsers = () => async (dispatch) => {
-  const res = await csrfFetch("/api/users");
+  const res = await csrfFetch('/api/users');
   const data = await res.json();
   const simpleUsers = {};
   for (const key in data) {

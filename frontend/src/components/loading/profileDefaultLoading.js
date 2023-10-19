@@ -3,12 +3,12 @@ function ProfileDefaultLoading() {
   return (
     <div
       style={{
-        display: "flex",
-        flexDirection: "column",
-        width: "100vw",
-        alignItems: "center",
-        height: "50%",
-        marginTop: "15px",
+        display: 'flex',
+        flexDirection: 'column',
+        width: '100vw',
+        alignItems: 'center',
+        height: '50%',
+        marginTop: '15px',
       }}
     >
       {[...Array(number)].map((n, idx) => {
@@ -17,10 +17,10 @@ function ProfileDefaultLoading() {
             key={idx}
             className="skeleton"
             style={{
-              height: "150px",
-              width: "50%",
-              marginBottom: "15px",
-              borderRadius: "5px",
+              height: '150px',
+              width: '50%',
+              marginBottom: '15px',
+              borderRadius: '5px',
             }}
           />
         );

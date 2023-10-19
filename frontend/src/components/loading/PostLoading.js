@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
 const PostLoading = ({ src }) => {
   const [imageSrc, setImageSrc] = useState(null);
@@ -15,11 +15,11 @@ const PostLoading = ({ src }) => {
           src={imageSrc}
           alt=""
           style={{
-            height: "30px",
-            width: "30px",
-            borderRadius: "50%",
-            padding: "7px",
-            border: "none",
+            height: '30px',
+            width: '30px',
+            borderRadius: '50%',
+            padding: '7px',
+            border: 'none',
           }}
         />
       ) : (
@@ -27,11 +27,11 @@ const PostLoading = ({ src }) => {
           className="skeleton"
           alt=""
           style={{
-            height: "30px",
-            width: "30px",
-            borderRadius: "50%",
-            margin: "7px",
-            border: "none",
+            height: '30px',
+            width: '30px',
+            borderRadius: '50%',
+            margin: '7px',
+            border: 'none',
           }}
         />
       )}

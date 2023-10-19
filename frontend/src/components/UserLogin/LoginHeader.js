@@ -8,20 +8,20 @@ function LoginHeader() {
   return (
     <header
       style={{
-        marginBottom: "20px",
-        width: "450px",
-        marginRight: "50px",
-        fontFamily: "Arial, Helvetica, sans-serif",
-        height: "80vh",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
+        marginBottom: '20px',
+        width: '450px',
+        marginRight: '50px',
+        fontFamily: 'Arial, Helvetica, sans-serif',
+        height: '80vh',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
       }}
     >
-      <h1 style={{ color: "#1877f2", fontSize: "65px", fontWeight: "bolder" }}>
+      <h1 style={{ color: '#1877f2', fontSize: '65px', fontWeight: 'bolder' }}>
         Facelook
       </h1>
-      <p style={{ margin: "10px" }}>Give us your data</p>
+      <p style={{ margin: '10px' }}>Give us your data</p>
     </header>
   );
 }

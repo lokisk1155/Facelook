@@ -1,12 +1,12 @@
-import { useDispatch } from "react-redux";
-import { useState } from "react";
-import { Link, useParams, useHistory } from "react-router-dom"; /*  */
-import { deleteFriend, addFriend } from "../../store/friend";
-import { Modal } from "../../context/Modal";
-import capitalizeFirstLetter from "../../utils/capFirstLetter";
-import EditProfile from "./EditProfile";
-import profilePicBlank from "../NavBar/imgs/blank.png";
-import "./ProfileTop.css";
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { Link, useParams, useHistory } from 'react-router-dom'; /*  */
+import { deleteFriend, addFriend } from '../../store/friend';
+import { Modal } from '../../context/Modal';
+import capitalizeFirstLetter from '../../utils/capFirstLetter';
+import EditProfile from './EditProfile';
+import profilePicBlank from '../NavBar/imgs/blank.png';
+import './ProfileTop.css';
 
 function ProfileTop({ currentUser, sessionUser, friends }) {
   const dispatch = useDispatch();
@@ -75,9 +75,9 @@ function ProfileTop({ currentUser, sessionUser, friends }) {
             <img alt="" className="profile-top-profile-pic" src={preview} />
             <div
               style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-around",
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-around',
               }}
             >
               <p style={{ margin: 0 }}>{currentUserName}</p>
@@ -88,7 +88,7 @@ function ProfileTop({ currentUser, sessionUser, friends }) {
           {notSelf ? (
             <div
               className="friends-toggle-button-container"
-              style={{ maxWidth: "" }}
+              style={{ maxWidth: '' }}
             >
               {isFriend ? (
                 toggleDropDown ? (
@@ -117,15 +117,15 @@ function ProfileTop({ currentUser, sessionUser, friends }) {
               <button
                 className="edit-profile-add-story-buttons"
                 style={{
-                  alignSelf: "center",
-                  border: "none",
-                  color: "#fff",
-                  fontSize: "1rem",
-                  backgroundColor: "#166fe5",
-                  borderRadius: "7px",
-                  margin: "10px",
+                  alignSelf: 'center',
+                  border: 'none',
+                  color: '#fff',
+                  fontSize: '1rem',
+                  backgroundColor: '#166fe5',
+                  borderRadius: '7px',
+                  margin: '10px',
                 }}
-                onClick={() => history.push("/stories/create")}
+                onClick={() => history.push('/stories/create')}
               >
                 Add Story
               </button>
@@ -133,12 +133,12 @@ function ProfileTop({ currentUser, sessionUser, friends }) {
                 className="edit-profile-add-story-buttons"
                 onClick={() => setEditProfile(true)}
                 style={{
-                  alignSelf: "center",
-                  border: "none",
-                  color: "#fff",
-                  fontSize: "1rem",
-                  backgroundColor: "#166fe5",
-                  borderRadius: "7px",
+                  alignSelf: 'center',
+                  border: 'none',
+                  color: '#fff',
+                  fontSize: '1rem',
+                  backgroundColor: '#166fe5',
+                  borderRadius: '7px',
                 }}
               >
                 Edit profile/cover photo

@@ -1,8 +1,8 @@
-import csrfFetch from "./csrf";
+import csrfFetch from './csrf';
 
-const USER_RECEIVE_POST = "userPosts/userReceivePost";
-const USER_RECEIVE_POSTS = "userPosts/userReceivePosts";
-const USER_REMOVE_POST = "userPosts/userRemovePost";
+const USER_RECEIVE_POST = 'userPosts/userReceivePost';
+const USER_RECEIVE_POSTS = 'userPosts/userReceivePosts';
+const USER_REMOVE_POST = 'userPosts/userRemovePost';
 
 export const userReceivePost = (post) => ({
   type: USER_RECEIVE_POST,

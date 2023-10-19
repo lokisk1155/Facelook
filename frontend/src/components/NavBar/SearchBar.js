@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import profilePic from "./imgs/blank.png";
-import { useRef } from "react";
-import { useMemo } from "react";
-import "./SearchBar.css";
+import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import profilePic from './imgs/blank.png';
+import { useRef } from 'react';
+import { useMemo } from 'react';
+import './SearchBar.css';
 
 function SearchBar({ setTyped, closeModal, setDiv }) {
-  const [frTyped, setfrTyped] = useState("");
+  const [frTyped, setfrTyped] = useState('');
 
   const users = useSelector((state) => state.simpleUsers);
 
@@ -36,8 +36,8 @@ function SearchBar({ setTyped, closeModal, setDiv }) {
     const currentMatches = Object.values(users).filter((user) => {
       return user.name
         .toLowerCase()
-        .replace(" ", "")
-        .startsWith(typed.replace(" ", "").toLowerCase());
+        .replace(' ', '')
+        .startsWith(typed.replace(' ', '').toLowerCase());
     });
 
     return currentMatches.length < 10
@@ -78,7 +78,7 @@ function SearchBar({ setTyped, closeModal, setDiv }) {
         <input
           type="text"
           value={frTyped}
-          placeholder={frTyped ? frTyped : "Search FaceLook"}
+          placeholder={frTyped ? frTyped : 'Search FaceLook'}
           className="search-input-modal"
           onChange={(e) => setfrTyped(e.target.value)}
           autoFocus={true}
@@ -87,13 +87,13 @@ function SearchBar({ setTyped, closeModal, setDiv }) {
 
       {filteredUsers && (
         <div className="search-results-container">
-          {" "}
+          {' '}
           {filteredUsers.map((user, index) => {
             return (
               <Link
                 key={index}
                 to={`/ProfilePage/${user?.user_id}`}
-                style={{ textDecoration: "none", color: "black" }}
+                style={{ textDecoration: 'none', color: 'black' }}
               >
                 <div key={user?.id}>
                   <div className="result-user-div">

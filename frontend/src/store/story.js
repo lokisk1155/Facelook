@@ -1,6 +1,6 @@
-import csrfFetch from "./csrf";
+import csrfFetch from './csrf';
 
-const ADD_ALL = "stories/ADD_ALL";
+const ADD_ALL = 'stories/ADD_ALL';
 
 export const addAll = (stories) => ({
   type: ADD_ALL,
@@ -9,7 +9,7 @@ export const addAll = (stories) => ({
 
 export const createStory = (story, formData) => async (dispatch) => {
   const storyReq = await csrfFetch(`/api/stories`, {
-    method: "POST",
+    method: 'POST',
     body: formData instanceof FormData ? formData : JSON.stringify(story),
   });
   const storiesData = await storyReq.json();
@@ -18,7 +18,7 @@ export const createStory = (story, formData) => async (dispatch) => {
 
 export const fetchStories = (limit) => async (dispatch) => {
   const storiesReq = await csrfFetch(
-    `/api/stories${limit ? `?limit=${limit}` : ""}`
+    `/api/stories${limit ? `?limit=${limit}` : ''}`
   );
   const storiesData = await storiesReq.json();
   dispatch(addAll(storiesData));

@@ -1,13 +1,13 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { useState } from "react";
-import profilePic from "../NavBar/imgs/blank.png";
-import { Link } from "react-router-dom";
-import { deleteFriend } from "../../store/friend";
-import capitalizeFirstLetter from "../../utils/capFirstLetter";
-import "./Friends.css";
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { useState } from 'react';
+import profilePic from '../NavBar/imgs/blank.png';
+import { Link } from 'react-router-dom';
+import { deleteFriend } from '../../store/friend';
+import capitalizeFirstLetter from '../../utils/capFirstLetter';
+import './Friends.css';
 
 function Friends({ friends, currentUserFriends }) {
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ function Friends({ friends, currentUserFriends }) {
 
   const [filteredUsers, setFilteredUsers] = useState(null);
 
-  const [typed, setTyped] = useState("");
+  const [typed, setTyped] = useState('');
 
   useEffect(() => {
     if (typed.length > 0) {
@@ -44,7 +44,7 @@ function Friends({ friends, currentUserFriends }) {
 
   const handleDelete = (userId) => (e) => {
     e.preventDefault();
-    setTyped("");
+    setTyped('');
     dispatch(deleteFriend(userId, sessionUserId, id));
   };
 
@@ -76,47 +76,47 @@ function Friends({ friends, currentUserFriends }) {
       {friends && !filteredUsers ? (
         <div
           className="please-work-oh-my"
-          style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)" }}
+          style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}
         >
           {Object.values(friends).map((friend) => {
             return (
               <div key={friend.id} className="actual-friend-container">
                 <Link
                   style={{
-                    display: "flex",
-                    textDecoration: "none",
-                    height: "80%",
-                    justifyContent: "space-around",
+                    display: 'flex',
+                    textDecoration: 'none',
+                    height: '80%',
+                    justifyContent: 'space-around',
                   }}
                   to={`/ProfilePage/${friend.id}`}
                 >
                   <img
                     alt=""
                     style={{
-                      height: "95%",
-                      margin: "auto",
-                      marginLeft: "10px",
-                      maxHeight: "100px",
+                      height: '95%',
+                      margin: 'auto',
+                      marginLeft: '10px',
+                      maxHeight: '100px',
                     }}
                     src={friend.profile_picture || profilePic}
                   ></img>
-                  <div style={{ display: "flex", flexDirection: "column" }}>
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <p
                       style={{
-                        fontSize: "0.8rem",
-                        color: "black",
-                        margin: "0",
-                        paddingLeft: "5px",
+                        fontSize: '0.8rem',
+                        color: 'black',
+                        margin: '0',
+                        paddingLeft: '5px',
                       }}
                     >{`${capitalizeFirstLetter(
                       friend.first_name
                     )} ${capitalizeFirstLetter(friend.last_name)}`}</p>
                     <p
                       style={{
-                        fontSize: "0.6rem",
-                        color: "black",
-                        margin: "0",
-                        padding: "5px",
+                        fontSize: '0.6rem',
+                        color: 'black',
+                        margin: '0',
+                        padding: '5px',
                       }}
                     >
                       {MutualFriendCount(friend)}
@@ -139,7 +139,7 @@ function Friends({ friends, currentUserFriends }) {
       {filteredUsers ? (
         <div
           className="please-work-oh-my"
-          style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)" }}
+          style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}
         >
           {Object.values(filteredUsers).map((friend) => {
             return (
@@ -152,17 +152,17 @@ function Friends({ friends, currentUserFriends }) {
                   ></img>
                 </Link>
                 <p
-                  style={{ paddingLeft: "5px" }}
+                  style={{ paddingLeft: '5px' }}
                   className="friend-profile-name"
                 >{`${capitalizeFirstLetter(
                   friend.first_name
                 )} ${capitalizeFirstLetter(friend.last_name)}`}</p>
                 <p
                   style={{
-                    fontSize: "0.6rem",
-                    color: "black",
-                    margin: "0",
-                    padding: "5px",
+                    fontSize: '0.6rem',
+                    color: 'black',
+                    margin: '0',
+                    padding: '5px',
                   }}
                 >
                   {MutualFriendCount(friend)}
