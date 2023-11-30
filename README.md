@@ -15,6 +15,57 @@ PostgreSQL is a robust, SQL-compliant database system, renowned for its advanced
 ### AWS
 Amazon Web Services (AWS) proved crucial in my project, especially through the use of S3 for robust, scalable cloud storage and IAM for secure access management, enabling efficient and secure image uploads. This integration highlights AWS's versatility and capacity to enhance web applications, ranging from straightforward hosting to complex, data-driven functionalities
 
+
+## ⚙️ Setting Up
+
+### Must Haves:
+- [Ruby 3.1.2](https://www.ruby-lang.org/en/downloads/) 
+- [Rails 7](https://guides.rubyonrails.org/v5.0/getting_started.html)
+
+  
+Create a rails database and configure the database.yml file:
+
+```
+development:
+  <<: *default
+  database: RailsBackend_development
+
+```
+Install Rails Gem's
+
+```
+Bundle install 
+```
+
+
+Run migration Files
+
+```
+rails db:migrate 
+```
+
+<br>
+
+## 🚀 Run Locally
+
+1.Clone the Fish-Hatchery-Inventory-system repository:
+
+```sh
+git clone https://github.com/lokisk1155/Facelook
+```
+
+2.Install the dependencies with one of the package managers listed below inside of the frontend folder:
+
+```bash
+npm install
+```
+
+3.Start the development mode from the root of the project:
+
+```bash
+npm start
+```
+
 ## 🙌 Contributors
 
 <table style="border:1px solid #404040;text-align:center;width:100%">
