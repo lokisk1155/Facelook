@@ -4,7 +4,8 @@
   "description": "",
   "scripts": {
     "build": "npm install --prefix frontend && npm run build --prefix frontend",
-    "test": "npm test --prefix frontend"
+    "test": "npm test --prefix frontend",
+    "start": "rails server & cd frontend && npm start"
   },
   "keywords": [],
   "author": "",
