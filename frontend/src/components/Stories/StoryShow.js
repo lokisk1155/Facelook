@@ -1,208 +1,197 @@
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams, Link } from 'react-router-dom';
-import profilePic from '../NavBar/imgs/blank.png';
-import './StoryShow.css';
-import { useCallback } from 'react';
-import PreviewCurrentStory from './PreviewCurrentStory';
-import StoriesSideBar from './StoriesSideBar';
-import ProfilePicModal from '../NavBar/ProfilePicModal';
-import { Modal } from '../../context/Modal';
-import { useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useHistory, useParams, Link } from 'react-router-dom'
+import profilePic from '../NavBar/imgs/blank.png'
+import './StoryShow.css'
+import { useCallback } from 'react'
+import PreviewCurrentStory from './PreviewCurrentStory'
+import StoriesSideBar from './StoriesSideBar'
+import ProfilePicModal from '../NavBar/ProfilePicModal'
+import { Modal } from '../../context/Modal'
+import { useLocation } from 'react-router-dom'
 
 function StoryShow() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const history = useHistory();
+  const history = useHistory()
 
-  const location = useLocation();
+  const location = useLocation()
 
-  const { id } = useParams();
+  const { id } = useParams()
 
-  const query = new URLSearchParams(location.search);
+  const query = new URLSearchParams(location.search)
 
-  const windowIndex = query.get('windowIndex');
+  const windowIndex = query.get('windowIndex')
 
   const [currentWindow, setCurrentWindow] = useState(
     windowIndex !== null ? parseInt(windowIndex) : 0
-  );
+  )
 
-  const [toggleProfileModal, setToggleProfileModal] = useState(false);
+  const [toggleProfileModal, setToggleProfileModal] = useState(false)
 
-  const sessionUser = useSelector((state) => state.session.user);
+  const sessionUser = useSelector((state) => state.session.user)
 
-  const simpleUsers = useSelector((state) => state.simpleUsers);
+  const simpleUsers = useSelector((state) => state.simpleUsers)
 
-  const stories = useSelector((state) => state.stories);
+  const stories = useSelector((state) => state.stories)
 
-  const sessionUserId = sessionUser.id;
+  const sessionUserId = sessionUser.id
 
   const handleNext = useCallback(
     (e) => {
       if (e) {
-        e.preventDefault();
+        e.preventDefault()
       }
       if (stories[id] === null || stories[id] === null) {
-        return null;
+        return null
       }
-      history.replace(`/stories/${id}`);
+      history.replace(`/stories/${id}`)
       if (parseInt(id) === sessionUserId) {
         if (currentWindow === Object.values(stories[id])?.length - 1) {
           for (const userId in stories) {
-            if (
-              simpleUsers[userId] !== undefined &&
-              parseInt(userId) !== sessionUserId
-            ) {
-              setCurrentWindow(0);
-              return history.push(`/stories/${userId}`);
+            if (simpleUsers[userId] !== undefined && parseInt(userId) !== sessionUserId) {
+              setCurrentWindow(0)
+              return history.push(`/stories/${userId}`)
             }
           }
         } else {
-          const newWindow = currentWindow + 1;
-          setCurrentWindow(newWindow);
+          const newWindow = currentWindow + 1
+          setCurrentWindow(newWindow)
         }
       } else {
         if (currentWindow === Object.values(stories[id])?.length - 1) {
-          let firstId = false;
-          let found = false;
-          let target = Object.keys(stories).length - 1;
-          let current = 0;
+          let firstId = false
+          let found = false
+          let target = Object.keys(stories).length - 1
+          let current = 0
           for (const userId in stories) {
             if (!firstId) {
-              firstId = userId;
+              firstId = userId
             }
-            current += 1;
+            current += 1
             if (found) {
-              setCurrentWindow(0);
-              return history.push(`/stories/${userId}`);
+              setCurrentWindow(0)
+              return history.push(`/stories/${userId}`)
             }
             if (userId === id) {
               if (current === target) {
-                setCurrentWindow(0);
-                return history.push(`/stories/${firstId}`);
+                setCurrentWindow(0)
+                return history.push(`/stories/${firstId}`)
               }
-              found = true;
+              found = true
             }
           }
         } else {
           if (currentWindow === 0 && stories[id].length === 1) {
             for (const userId in stories) {
-              return history.push(`/stories/${userId}`);
+              return history.push(`/stories/${userId}`)
             }
           }
-          const newWindow = currentWindow + 1;
-          setCurrentWindow(newWindow);
+          const newWindow = currentWindow + 1
+          setCurrentWindow(newWindow)
         }
       }
     },
     [id, simpleUsers, stories, currentWindow, history, sessionUserId]
-  );
+  )
 
   const handlePrevious = (e) => {
-    e.preventDefault();
-    history.replace(`/stories/${id}`);
+    e.preventDefault()
+    history.replace(`/stories/${id}`)
     if (parseInt(id) === sessionUserId) {
       if (currentWindow === 0) {
-        let previousId;
-        let target = Object.keys(stories).length - 1;
-        let currentCount = 0;
+        let previousId
+        let target = Object.keys(stories).length - 1
+        let currentCount = 0
         for (const id in stories) {
-          currentCount += 1;
+          currentCount += 1
           if (
             simpleUsers[id] !== undefined &&
             parseInt(id) !== sessionUserId &&
             currentCount === target
           ) {
             if (parseInt(id) === sessionUserId) {
-              setCurrentWindow(Object.keys(stories[previousId]).length - 1);
-              return history.push(`/stories/${previousId}`);
+              setCurrentWindow(Object.keys(stories[previousId]).length - 1)
+              return history.push(`/stories/${previousId}`)
             } else {
-              setCurrentWindow(Object.keys(stories[id]).length - 1);
-              return history.push(`/stories/${id}`);
+              setCurrentWindow(Object.keys(stories[id]).length - 1)
+              return history.push(`/stories/${id}`)
             }
           }
-          previousId = id;
+          previousId = id
         }
       } else {
-        const newWindow = currentWindow - 1;
-        setCurrentWindow(newWindow);
+        const newWindow = currentWindow - 1
+        setCurrentWindow(newWindow)
       }
     } else {
       if (currentWindow < 1) {
-        let previousId;
+        let previousId
         for (const userId in stories) {
           if (userId === id) {
             if (previousId) {
-              let newWindow = Object.values(stories[previousId]).length - 1;
-              setCurrentWindow(newWindow);
-              return history.push(`/stories/${previousId}`);
+              let newWindow = Object.values(stories[previousId]).length - 1
+              setCurrentWindow(newWindow)
+              return history.push(`/stories/${previousId}`)
             } else {
-              let foundId;
-              let target = Object.keys(stories).length - 1;
-              let currentCount = 0;
+              let foundId
+              let target = Object.keys(stories).length - 1
+              let currentCount = 0
               for (const userId in stories) {
-                currentCount += 1;
+                currentCount += 1
                 if (
                   simpleUsers[userId] !== undefined &&
                   parseInt(userId) !== sessionUserId &&
                   currentCount === target
                 ) {
                   if (parseInt(userId) === sessionUserId) {
-                    setCurrentWindow(Object.keys(stories[foundId]).length - 1);
-                    return history.push(`/stories/${foundId}`);
+                    setCurrentWindow(Object.keys(stories[foundId]).length - 1)
+                    return history.push(`/stories/${foundId}`)
                   } else {
-                    setCurrentWindow(Object.keys(stories[userId]).length - 1);
-                    return history.push(`/stories/${userId}`);
+                    setCurrentWindow(Object.keys(stories[userId]).length - 1)
+                    return history.push(`/stories/${userId}`)
                   }
                 }
-                previousId = id;
+                previousId = id
               }
             }
           } else {
-            previousId = userId;
+            previousId = userId
           }
         }
       } else {
-        const newWindow = currentWindow - 1;
-        setCurrentWindow(newWindow);
+        const newWindow = currentWindow - 1
+        setCurrentWindow(newWindow)
       }
     }
-  };
+  }
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      handleNext();
-    }, 3500);
+      handleNext()
+    }, 3500)
 
-    return () => clearInterval(intervalId);
-  }, [
-    dispatch,
-    handleNext,
-    id,
-    sessionUser,
-    simpleUsers,
-    stories,
-    currentWindow,
-  ]);
+    return () => clearInterval(intervalId)
+  }, [dispatch, handleNext, id, sessionUser, simpleUsers, stories, currentWindow])
 
   if (Object.values(simpleUsers).length === 0) {
-    return null;
+    return null
   }
 
   if (stories[id] === undefined || stories[id] === null) {
-    return null;
+    return null
   }
 
-  const currentStory = stories[id][currentWindow];
+  const currentStory = stories[id][currentWindow]
 
   if (currentStory === undefined) {
-    return null;
+    return null
   }
 
-  const usersWithStories = {};
+  const usersWithStories = {}
   for (const id in stories) {
     if (simpleUsers[id] !== undefined && parseInt(id) !== sessionUserId) {
-      usersWithStories[id] = simpleUsers[id];
+      usersWithStories[id] = simpleUsers[id]
     }
   }
 
@@ -218,11 +207,7 @@ function StoryShow() {
               margin: '5px',
             }}
           >
-            <button
-              onClick={() => history.push('/')}
-              type="button"
-              className="btn-close"
-            >
+            <button onClick={() => history.push('/')} type="button" className="btn-close">
               <span style={{ fontSize: '2rem', color: 'lightgrey' }}>X</span>
             </button>
           </div>
@@ -238,13 +223,7 @@ function StoryShow() {
           >
             <svg viewBox="0 0 36 36" height="50" width="50">
               <defs>
-                <linearGradient
-                  x1="50%"
-                  x2="50%"
-                  y1="97.0782153%"
-                  y2="0%"
-                  id="jsc_s_2"
-                >
+                <linearGradient x1="50%" x2="50%" y1="97.0782153%" y2="0%" id="jsc_s_2">
                   <stop offset="0%" stopColor="#0062E0"></stop>
                   <stop offset="100%" stopColor="#19AFFF"></stop>
                 </linearGradient>
@@ -298,10 +277,7 @@ function StoryShow() {
                   height: '50px',
                   width: '50px',
                   borderRadius: '50px',
-                  border:
-                    sessionUser.id === parseInt(id)
-                      ? '5px solid #166fe5'
-                      : '5px solid black',
+                  border: sessionUser.id === parseInt(id) ? '5px solid #166fe5' : '5px solid black',
                 }}
                 src={simpleUsers[sessionUser.id]?.profile_picture || profilePic}
               />
@@ -323,10 +299,7 @@ function StoryShow() {
             {'+'}
           </button>
           <div className="story-preview-container">
-            <button
-              className="stories-show-handle-previous"
-              onClick={handlePrevious}
-            >
+            <button className="stories-show-handle-previous" onClick={handlePrevious}>
               <div>&#8249;</div>
             </button>
             <PreviewCurrentStory
@@ -341,7 +314,7 @@ function StoryShow() {
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default StoryShow;
+export default StoryShow

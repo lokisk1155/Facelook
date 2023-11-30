@@ -1,28 +1,28 @@
-import { useDispatch } from 'react-redux';
-import { useState } from 'react';
-import { updateUser } from '../../../../store/user';
+import { useDispatch } from 'react-redux'
+import { useState } from 'react'
+import { updateUser } from '../../../../store/user'
 
 function EditSocial({ currentUser }) {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const [fakeSocial, setFakeSocial] = useState('');
+  const [fakeSocial, setFakeSocial] = useState('')
 
-  const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = useState(false)
 
   const handleSocial = () => {
-    let social_link = fakeSocial;
-    let cloneWithoutRedux = { ...currentUser };
-    delete cloneWithoutRedux.friends;
-    delete cloneWithoutRedux.profile_picture;
-    delete cloneWithoutRedux.cover_photo;
-    delete cloneWithoutRedux.password;
+    let social_link = fakeSocial
+    let cloneWithoutRedux = { ...currentUser }
+    delete cloneWithoutRedux.friends
+    delete cloneWithoutRedux.profile_picture
+    delete cloneWithoutRedux.cover_photo
+    delete cloneWithoutRedux.password
     const user = {
       ...cloneWithoutRedux,
       social_link,
-    };
-    dispatch(updateUser(user));
-    setToggle(false);
-  };
+    }
+    dispatch(updateUser(user))
+    setToggle(false)
+  }
 
   return (
     <>
@@ -57,7 +57,7 @@ function EditSocial({ currentUser }) {
         </form>
       )}
     </>
-  );
+  )
 }
 
-export default EditSocial;
+export default EditSocial

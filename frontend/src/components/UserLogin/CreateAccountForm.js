@@ -1,33 +1,33 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { generateCredentials } from '../../utils/generateCredentials';
-import './CreateAccountForm.css';
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { generateCredentials } from '../../utils/generateCredentials'
+import './CreateAccountForm.css'
 
 function CreateAccountForm({ closeForm }) {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const [firstName, setFirstName] = useState('');
+  const [firstName, setFirstName] = useState('')
 
-  const [lastName, setLastName] = useState('');
+  const [lastName, setLastName] = useState('')
 
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState('')
 
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState('')
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     const desiredCredentials = {
       first_name: firstName ? firstName : null,
       last_name: lastName ? lastName : null,
       email: email ? email : null,
       password: password ? password : null,
-    };
-    try {
-      return dispatch(generateCredentials(desiredCredentials));
-    } catch (error) {
-      window.alert(`${error.message}`);
     }
-  };
+    try {
+      return dispatch(generateCredentials(desiredCredentials))
+    } catch (error) {
+      window.alert(`${error.message}`)
+    }
+  }
 
   return (
     <div
@@ -140,7 +140,7 @@ function CreateAccountForm({ closeForm }) {
         </button>
       </div>
     </div>
-  );
+  )
 }
 
-export default CreateAccountForm;
+export default CreateAccountForm

@@ -1,22 +1,21 @@
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import profilePic from '../NavBar/imgs/blank.png';
-import './YourContact.css';
+import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
+import profilePic from '../NavBar/imgs/blank.png'
+import './YourContact.css'
 
 function YourContacts() {
-  const friends = useSelector((state) => Object.values(state.friends));
+  const friends = useSelector((state) => Object.values(state.friends))
 
   if (friends.length === 0) {
-    return null;
+    return null
   }
 
-  const containerHeight =
-    friends.length > 2 ? `${200 + friends.length * 50}px` : '200px';
+  const containerHeight = friends.length > 2 ? `${200 + friends.length * 50}px` : '200px'
 
-  const isViewportUnderCertainWidth = window.innerWidth < 768; // Adjust the width as per your needs
+  const isViewportUnderCertainWidth = window.innerWidth < 768 // Adjust the width as per your needs
 
   if (isViewportUnderCertainWidth) {
-    return null; // Render nothing if the viewport width is under the specified value
+    return null // Render nothing if the viewport width is under the specified value
   }
 
   return (
@@ -71,9 +70,7 @@ function YourContacts() {
               <img
                 alt="123128"
                 style={{ height: '45px', width: '45px', borderRadius: '50%' }}
-                src={
-                  friend.profile_picture ? friend.profile_picture : profilePic
-                }
+                src={friend.profile_picture ? friend.profile_picture : profilePic}
               />
               <div
                 style={{
@@ -93,10 +90,10 @@ function YourContacts() {
               style={{ paddingLeft: '10px', color: 'grey' }}
             >{`${friend.first_name} ${friend.last_name}`}</p>
           </Link>
-        );
+        )
       })}
     </section>
-  );
+  )
 }
 
-export default YourContacts;
+export default YourContacts

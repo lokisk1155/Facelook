@@ -1,28 +1,28 @@
-import { useDispatch } from 'react-redux';
-import { useState } from 'react';
-import { updateUser } from '../../../../store/user';
+import { useDispatch } from 'react-redux'
+import { useState } from 'react'
+import { updateUser } from '../../../../store/user'
 
 function EditEmail({ currentUser }) {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const [fakeEmail, setFakeEmail] = useState('');
+  const [fakeEmail, setFakeEmail] = useState('')
 
-  const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = useState(false)
 
   const handleEmail = () => {
-    let email = fakeEmail;
-    let cloneWithoutRedux = { ...currentUser };
-    delete cloneWithoutRedux.friends;
-    delete cloneWithoutRedux.profile_picture;
-    delete cloneWithoutRedux.cover_photo;
-    delete cloneWithoutRedux.password;
+    let email = fakeEmail
+    let cloneWithoutRedux = { ...currentUser }
+    delete cloneWithoutRedux.friends
+    delete cloneWithoutRedux.profile_picture
+    delete cloneWithoutRedux.cover_photo
+    delete cloneWithoutRedux.password
     const user = {
       ...cloneWithoutRedux,
       email,
-    };
-    dispatch(updateUser(user));
-    setToggle(false);
-  };
+    }
+    dispatch(updateUser(user))
+    setToggle(false)
+  }
 
   return (
     <>
@@ -43,11 +43,7 @@ function EditEmail({ currentUser }) {
       )}
       {toggle && (
         <form onSubmit={handleEmail}>
-          <input
-            type="text"
-            onChange={(e) => setFakeEmail(e.target.value)}
-            default="Email"
-          ></input>
+          <input type="text" onChange={(e) => setFakeEmail(e.target.value)} default="Email"></input>
           <button style={{ margin: '5px' }} onClick={() => setToggle(false)}>
             Cancel
           </button>
@@ -57,7 +53,7 @@ function EditEmail({ currentUser }) {
         </form>
       )}
     </>
-  );
+  )
 }
 
-export default EditEmail;
+export default EditEmail

@@ -118,7 +118,7 @@ function TextControls({
         </select>
       </div>
     </div>
-  );
+  )
 }
 
-export default TextControls;
+export default TextControls

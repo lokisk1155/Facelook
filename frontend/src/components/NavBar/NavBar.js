@@ -1,51 +1,51 @@
-import './NavBar.css';
-import profilePic from './imgs/blank.png';
-import { useState } from 'react';
-import ProfilePicModal from './ProfilePicModal';
-import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import Facebook from './imgs/Facebook.png';
-import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
-import SearchModal from './SearchModal';
-import { useLocation } from 'react-router-dom';
-import { Modal } from '../../context/Modal';
+import './NavBar.css'
+import profilePic from './imgs/blank.png'
+import { useState } from 'react'
+import ProfilePicModal from './ProfilePicModal'
+import { useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+import Facebook from './imgs/Facebook.png'
+import { Link } from 'react-router-dom'
+import { useEffect } from 'react'
+import SearchModal from './SearchModal'
+import { useLocation } from 'react-router-dom'
+import { Modal } from '../../context/Modal'
 
 function NavBar() {
-  const location = useLocation();
+  const location = useLocation()
 
-  const history = useHistory();
+  const history = useHistory()
 
-  const [profileModal, setProfileModal] = useState(false);
+  const [profileModal, setProfileModal] = useState(false)
 
-  const [toggleSearch, setToggleSearch] = useState(false);
+  const [toggleSearch, setToggleSearch] = useState(false)
 
-  const [fillColor, setFillColor] = useState('#1B74E4');
+  const [fillColor, setFillColor] = useState('#1B74E4')
 
-  const [stroke, setStroke] = useState('#2c2c2c');
+  const [stroke, setStroke] = useState('#2c2c2c')
 
-  const [typed, setTyped] = useState('');
+  const [typed, setTyped] = useState('')
 
-  const temp = '#2c2c2c';
+  const temp = '#2c2c2c'
 
-  const user = useSelector((state) => state.session.user);
+  const user = useSelector((state) => state.session.user)
 
-  const simpleUsers = useSelector((state) => state.simpleUsers);
+  const simpleUsers = useSelector((state) => state.simpleUsers)
 
-  const navbarPic = simpleUsers[user?.id]?.profile_picture || profilePic;
+  const navbarPic = simpleUsers[user?.id]?.profile_picture || profilePic
 
   useEffect(() => {
     if (location.pathname !== '/') {
-      setFillColor('#ffffff');
+      setFillColor('#ffffff')
     } else {
-      window.scrollTo(0, 0);
+      window.scrollTo(0, 0)
     }
     if (fillColor === '#ffffff') {
-      setStroke('#2c2c2c');
+      setStroke('#2c2c2c')
     } else {
-      setStroke('none');
+      setStroke('none')
     }
-  }, [location, fillColor, profileModal, toggleSearch]);
+  }, [location, fillColor, profileModal, toggleSearch])
 
   return (
     <div className="navbar-container">
@@ -68,8 +68,8 @@ function NavBar() {
               placeholder={typed ? typed : 'Search FaceLook'}
               className="search-input"
               onClick={() => {
-                setToggleSearch(true);
-                setProfileModal(false);
+                setToggleSearch(true)
+                setProfileModal(false)
               }}
             ></input>
           </div>
@@ -77,11 +77,7 @@ function NavBar() {
 
         {toggleSearch && (
           <Modal onClose={() => setToggleSearch(false)}>
-            <SearchModal
-              typed={typed}
-              setTyped={setTyped}
-              closeModal={setToggleSearch}
-            />
+            <SearchModal typed={typed} setTyped={setTyped} closeModal={setToggleSearch} />
           </Modal>
         )}
       </div>
@@ -92,14 +88,10 @@ function NavBar() {
             <Link
               to="/"
               onClick={() => {
-                setFillColor('#1b74e4');
+                setFillColor('#1b74e4')
               }}
             >
-              <svg
-                viewBox="0 0 28 28"
-                className="home-svg"
-                style={{ fill: fillColor, stroke }}
-              >
+              <svg viewBox="0 0 28 28" className="home-svg" style={{ fill: fillColor, stroke }}>
                 <path d="M25.825 12.29C25.824 12.289 25.823 12.288 25.821 12.286L15.027 2.937C14.752 2.675 14.392 2.527 13.989 2.521 13.608 2.527 13.248 2.675 13.001 2.912L2.175 12.29C1.756 12.658 1.629 13.245 1.868 13.759 2.079 14.215 2.567 14.479 3.069 14.479L5 14.479 5 23.729C5 24.695 5.784 25.479 6.75 25.479L11 25.479C11.552 25.479 12 25.031 12 24.479L12 18.309C12 18.126 12.148 17.979 12.33 17.979L15.67 17.979C15.852 17.979 16 18.126 16 18.309L16 24.479C16 25.031 16.448 25.479 17 25.479L21.25 25.479C22.217 25.479 23 24.695 23 23.729L23 14.479 24.931 14.479C25.433 14.479 25.921 14.215 26.132 13.759 26.371 13.245 26.244 12.658 25.825 12.29"></path>
               </svg>
             </Link>
@@ -114,8 +106,8 @@ function NavBar() {
             alt="profile-pic"
             className="profile-pic-modal"
             onClick={() => {
-              setProfileModal(!profileModal);
-              setToggleSearch(false);
+              setProfileModal(!profileModal)
+              setToggleSearch(false)
             }}
           />
         </div>
@@ -126,7 +118,7 @@ function NavBar() {
         </Modal>
       ) : null}
     </div>
-  );
+  )
 }
 
-export default NavBar;
+export default NavBar

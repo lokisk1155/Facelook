@@ -1,27 +1,25 @@
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
-import { useEffect } from 'react';
-import EditBio from './EditBio';
-import './SessionUserIntro.css';
+import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import { useEffect } from 'react'
+import EditBio from './EditBio'
+import './SessionUserIntro.css'
 
 function SessionUserIntro({ currentUser, changeHeight }) {
-  const [toggleBio, setToggleBio] = useState(false);
+  const [toggleBio, setToggleBio] = useState(false)
 
-  const divHeight = 200;
+  const divHeight = 200
 
   useEffect(() => {
     if (toggleBio) {
-      changeHeight(divHeight + 100);
+      changeHeight(divHeight + 100)
     } else {
-      changeHeight(divHeight);
+      changeHeight(divHeight)
     }
-  }, [divHeight, toggleBio, changeHeight]);
+  }, [divHeight, toggleBio, changeHeight])
 
   return (
     <div style={{ height: '100%', width: '100%' }}>
-      <p style={{ textAlign: 'center' }}>
-        {currentUser.bio ? currentUser.bio : 'Add a bio!'}
-      </p>
+      <p style={{ textAlign: 'center' }}>{currentUser.bio ? currentUser.bio : 'Add a bio!'}</p>
       {toggleBio ? <EditBio closeModal={setToggleBio} /> : null}
       <div
         style={{
@@ -63,7 +61,7 @@ function SessionUserIntro({ currentUser, changeHeight }) {
         </Link>
       </div>
     </div>
-  );
+  )
 }
 
-export default SessionUserIntro;
+export default SessionUserIntro

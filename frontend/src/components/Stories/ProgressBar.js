@@ -1,34 +1,29 @@
-import { useEffect, useState } from 'react';
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
-import LoadingBar from './LoadingBar';
-import profilePic from '../NavBar/imgs/blank.png';
-import './ProgressBar.css';
+import { useEffect, useState } from 'react'
+import React from 'react'
+import { useSelector } from 'react-redux'
+import { Link, useParams } from 'react-router-dom'
+import LoadingBar from './LoadingBar'
+import profilePic from '../NavBar/imgs/blank.png'
+import './ProgressBar.css'
 
-function ProgressBar({
-  stories,
-  currentStoryId,
-  currentStoryCreatedAt,
-  currentWindow,
-}) {
-  const { id } = useParams();
+function ProgressBar({ stories, currentStoryId, currentStoryCreatedAt, currentWindow }) {
+  const { id } = useParams()
 
-  const [progressBarWidth, setProgressBarWidth] = useState(null);
+  const [progressBarWidth, setProgressBarWidth] = useState(null)
 
-  const [profilePicture, setProfilePicture] = useState(null);
+  const [profilePicture, setProfilePicture] = useState(null)
 
-  const simpleUsers = useSelector((state) => state.simpleUsers);
+  const simpleUsers = useSelector((state) => state.simpleUsers)
 
   useEffect(() => {
-    const calc = 100 / Object.keys(stories).length;
-    setProgressBarWidth(calc);
+    const calc = 100 / Object.keys(stories).length
+    setProgressBarWidth(calc)
     if (simpleUsers[id].profile_picture) {
-      setProfilePicture(simpleUsers[id].profile_picture);
+      setProfilePicture(simpleUsers[id].profile_picture)
     } else {
-      setProfilePicture(profilePic);
+      setProfilePicture(profilePic)
     }
-  }, [id, stories, simpleUsers]);
+  }, [id, stories, simpleUsers])
 
   return (
     <>
@@ -68,23 +63,16 @@ function ProgressBar({
           </React.Fragment>
         ))}
       </div>
-      <Link
-        className="link-profile-picture-on-actual-story"
-        to={`/ProfilePage/${id}`}
-      >
-        <img
-          className="pic-on-actual-story"
-          alt="947621"
-          src={profilePicture}
-        />
+      <Link className="link-profile-picture-on-actual-story" to={`/ProfilePage/${id}`}>
+        <img className="pic-on-actual-story" alt="947621" src={profilePicture} />
 
         <p style={{ paddingLeft: '2px' }} className="name-on-actual-story">
           {simpleUsers[id].name}
         </p>
       </Link>
     </>
-  );
+  )
 }
 
-export default ProgressBar;
+export default ProgressBar
 // simpleUsers[currentStoryUserId].picture ||

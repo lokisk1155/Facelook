@@ -1,63 +1,63 @@
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { useState } from 'react';
-import profilePic from '../NavBar/imgs/blank.png';
-import { Link } from 'react-router-dom';
-import { deleteFriend } from '../../store/friend';
-import capitalizeFirstLetter from '../../utils/capFirstLetter';
-import './Friends.css';
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
+import { useState } from 'react'
+import profilePic from '../NavBar/imgs/blank.png'
+import { Link } from 'react-router-dom'
+import { deleteFriend } from '../../store/friend'
+import capitalizeFirstLetter from '../../utils/capFirstLetter'
+import './Friends.css'
 
 function Friends({ friends, currentUserFriends }) {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const { id } = useParams();
+  const { id } = useParams()
 
-  const sessionUserId = useSelector((state) => state.session.user.id);
+  const sessionUserId = useSelector((state) => state.session.user.id)
 
-  let divHeight;
+  let divHeight
 
-  const [filteredUsers, setFilteredUsers] = useState(null);
+  const [filteredUsers, setFilteredUsers] = useState(null)
 
-  const [typed, setTyped] = useState('');
+  const [typed, setTyped] = useState('')
 
   useEffect(() => {
     if (typed.length > 0) {
       let currentMatches = Object.values(friends).filter((user) => {
-        let userName = `${user.first_name} ${user.last_name}`.toLowerCase();
-        return userName.startsWith(typed.toLowerCase());
-      });
-      setFilteredUsers(currentMatches);
+        let userName = `${user.first_name} ${user.last_name}`.toLowerCase()
+        return userName.startsWith(typed.toLowerCase())
+      })
+      setFilteredUsers(currentMatches)
     } else {
-      setFilteredUsers(null);
+      setFilteredUsers(null)
     }
-  }, [typed, friends]);
+  }, [typed, friends])
 
   if (Object.values(friends).length > 2) {
-    let dividedLength = Math.floor(Object.values(friends).length / 2);
-    let divCalc = dividedLength * 125 + 175;
-    divHeight = `${divCalc}px`;
+    let dividedLength = Math.floor(Object.values(friends).length / 2)
+    let divCalc = dividedLength * 125 + 175
+    divHeight = `${divCalc}px`
   } else {
-    divHeight = `250px`;
+    divHeight = `250px`
   }
 
   const handleDelete = (userId) => (e) => {
-    e.preventDefault();
-    setTyped('');
-    dispatch(deleteFriend(userId, sessionUserId, id));
-  };
+    e.preventDefault()
+    setTyped('')
+    dispatch(deleteFriend(userId, sessionUserId, id))
+  }
 
   function MutualFriendCount({ friends }) {
-    let count = 0;
+    let count = 0
     for (const idUser in currentUserFriends) {
       for (const idFriends in friends) {
         if (currentUserFriends[idUser] === friends[idFriends]) {
-          count += 1;
+          count += 1
         }
       }
     }
-    return `${count} mutual friends`;
+    return `${count} mutual friends`
   }
 
   return (
@@ -108,9 +108,9 @@ function Friends({ friends, currentUserFriends }) {
                         margin: '0',
                         paddingLeft: '5px',
                       }}
-                    >{`${capitalizeFirstLetter(
-                      friend.first_name
-                    )} ${capitalizeFirstLetter(friend.last_name)}`}</p>
+                    >{`${capitalizeFirstLetter(friend.first_name)} ${capitalizeFirstLetter(
+                      friend.last_name
+                    )}`}</p>
                     <p
                       style={{
                         fontSize: '0.6rem',
@@ -124,15 +124,12 @@ function Friends({ friends, currentUserFriends }) {
                   </div>
                 </Link>
                 {sessionUserId === parseInt(id) ? (
-                  <button
-                    className="delete-on-friend"
-                    onClick={handleDelete(friend.id)}
-                  >
+                  <button className="delete-on-friend" onClick={handleDelete(friend.id)}>
                     X
                   </button>
                 ) : null}
               </div>
-            );
+            )
           })}
         </div>
       ) : null}
@@ -154,9 +151,9 @@ function Friends({ friends, currentUserFriends }) {
                 <p
                   style={{ paddingLeft: '5px' }}
                   className="friend-profile-name"
-                >{`${capitalizeFirstLetter(
-                  friend.first_name
-                )} ${capitalizeFirstLetter(friend.last_name)}`}</p>
+                >{`${capitalizeFirstLetter(friend.first_name)} ${capitalizeFirstLetter(
+                  friend.last_name
+                )}`}</p>
                 <p
                   style={{
                     fontSize: '0.6rem',
@@ -168,20 +165,17 @@ function Friends({ friends, currentUserFriends }) {
                   {MutualFriendCount(friend)}
                 </p>
                 {sessionUserId === parseInt(id) ? (
-                  <button
-                    className="delete-on-friend"
-                    onClick={handleDelete(friend.id)}
-                  >
+                  <button className="delete-on-friend" onClick={handleDelete(friend.id)}>
                     X
                   </button>
                 ) : null}
               </div>
-            );
+            )
           })}
         </div>
       ) : null}
     </div>
-  );
+  )
 }
 
-export default Friends;
+export default Friends

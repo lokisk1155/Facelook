@@ -1,16 +1,16 @@
-import { useEffect, useState, useCallback } from 'react';
-import './LoadingBar.css';
+import { useEffect, useState, useCallback } from 'react'
+import './LoadingBar.css'
 
 function LoadingBar({ progressBarWidth, id, window }) {
-  const [animationOn, setAnimationOn] = useState(false);
+  const [animationOn, setAnimationOn] = useState(false)
 
   const toggleAnimation = useCallback(() => {
-    setAnimationOn((prevAnimationOn) => !prevAnimationOn);
-  }, []);
+    setAnimationOn((prevAnimationOn) => !prevAnimationOn)
+  }, [])
 
   useEffect(() => {
-    toggleAnimation();
-  }, [toggleAnimation, id]);
+    toggleAnimation()
+  }, [toggleAnimation, id])
 
   return (
     <div
@@ -23,13 +23,11 @@ function LoadingBar({ progressBarWidth, id, window }) {
       }}
     >
       <div
-        className={
-          animationOn ? `stories-loading-bar` : `stories-loading-bar-2`
-        }
+        className={animationOn ? `stories-loading-bar` : `stories-loading-bar-2`}
         style={{ borderRadius: '50px' }}
       />
     </div>
-  );
+  )
 }
 
-export default LoadingBar;
+export default LoadingBar

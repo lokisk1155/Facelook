@@ -1,32 +1,32 @@
-import React, { useState } from 'react';
-import Cropper from 'react-easy-crop';
-import getCroppedImg from '../../utils/cropImage';
-import './index.css';
+import React, { useState } from 'react'
+import Cropper from 'react-easy-crop'
+import getCroppedImg from '../../utils/cropImage'
+import './index.css'
 
 const StoryCrop = ({ photoURL, setPhotoURL, setFile, fileSaved }) => {
-  const [crop, setCrop] = useState({ x: 0, y: 0 });
-  const [zoom, setZoom] = useState(1);
-  const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
+  const [crop, setCrop] = useState({ x: 0, y: 0 })
+  const [zoom, setZoom] = useState(1)
+  const [croppedAreaPixels, setCroppedAreaPixels] = useState(null)
 
   const onCropComplete = (croppedArea, croppedAreaPixels) => {
-    setCroppedAreaPixels(croppedAreaPixels);
-  };
+    setCroppedAreaPixels(croppedAreaPixels)
+  }
 
   const cropImage = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     try {
-      const { file, url } = await getCroppedImg(photoURL, croppedAreaPixels);
-      setPhotoURL(url);
-      setFile(file);
-      return fileSaved(true);
+      const { file, url } = await getCroppedImg(photoURL, croppedAreaPixels)
+      setPhotoURL(url)
+      setFile(file)
+      return fileSaved(true)
     } catch (error) {}
-  };
+  }
 
   const close = (e) => {
-    e.preventDefault();
-    setFile(null);
-    setPhotoURL(null);
-  };
+    e.preventDefault()
+    setFile(null)
+    setPhotoURL(null)
+  }
 
   return (
     <>
@@ -51,7 +51,7 @@ const StoryCrop = ({ photoURL, setPhotoURL, setFile, fileSaved }) => {
             step={0.1}
             aria-labelledby="Zoom"
             onChange={(e) => {
-              setZoom(e.target.value);
+              setZoom(e.target.value)
             }}
             className="zoom-range"
           />
@@ -66,7 +66,7 @@ const StoryCrop = ({ photoURL, setPhotoURL, setFile, fileSaved }) => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default StoryCrop;
+export default StoryCrop

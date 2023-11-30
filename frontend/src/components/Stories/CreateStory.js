@@ -1,33 +1,33 @@
-import { useState } from 'react';
-import PreviewStory from './PreviewStory';
-import TextStory from './TextStory';
-import ProfilePicModal from '../NavBar/ProfilePicModal';
-import { Modal } from '../../context/Modal';
-import profilePic from '../NavBar/imgs/blank.png';
-import './CreateStory.css';
-import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useState } from 'react'
+import PreviewStory from './PreviewStory'
+import TextStory from './TextStory'
+import ProfilePicModal from '../NavBar/ProfilePicModal'
+import { Modal } from '../../context/Modal'
+import profilePic from '../NavBar/imgs/blank.png'
+import './CreateStory.css'
+import { useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 
 function CreateStoryIntro() {
-  const history = useHistory();
-  const [photoFile, setPhotoFile] = useState(null);
-  const [photoUrl, setPhotoUrl] = useState(null);
-  const [textStory, setTextStory] = useState(null);
-  const [toggleProfileModal, setToggleProfileModal] = useState(false);
-  const simpleUsers = useSelector((state) => state.simpleUsers);
-  const sessionUserId = useSelector((state) => state.session.user.id);
+  const history = useHistory()
+  const [photoFile, setPhotoFile] = useState(null)
+  const [photoUrl, setPhotoUrl] = useState(null)
+  const [textStory, setTextStory] = useState(null)
+  const [toggleProfileModal, setToggleProfileModal] = useState(false)
+  const simpleUsers = useSelector((state) => state.simpleUsers)
+  const sessionUserId = useSelector((state) => state.session.user.id)
 
   const handleFile = (e) => {
-    const file = e.target.files[0];
+    const file = e.target.files[0]
     if (file) {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
+      const fileReader = new FileReader()
+      fileReader.readAsDataURL(file)
       fileReader.onload = () => {
-        setPhotoFile(file);
-        setPhotoUrl(fileReader.result);
-      };
+        setPhotoFile(file)
+        setPhotoUrl(fileReader.result)
+      }
     }
-  };
+  }
 
   return (
     <>
@@ -69,13 +69,7 @@ function CreateStoryIntro() {
         >
           <svg viewBox="0 0 36 36" height="50" width="50">
             <defs>
-              <linearGradient
-                x1="50%"
-                x2="50%"
-                y1="97.0782153%"
-                y2="0%"
-                id="jsc_s_2"
-              >
+              <linearGradient x1="50%" x2="50%" y1="97.0782153%" y2="0%" id="jsc_s_2">
                 <stop offset="0%" stopColor="#0062E0"></stop>
                 <stop offset="100%" stopColor="#19AFFF"></stop>
               </linearGradient>
@@ -128,11 +122,7 @@ function CreateStoryIntro() {
               }}
             >
               {' '}
-              <input
-                type="file"
-                onChange={handleFile}
-                style={{ display: 'none' }}
-              />
+              <input type="file" onChange={handleFile} style={{ display: 'none' }} />
               <p
                 style={{
                   textAlign: 'center',
@@ -184,7 +174,7 @@ function CreateStoryIntro() {
         {textStory ? <TextStory /> : null}
       </div>
     </>
-  );
+  )
 }
 
-export default CreateStoryIntro;
+export default CreateStoryIntro

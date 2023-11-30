@@ -1,45 +1,45 @@
-import { useHistory } from 'react-router-dom';
-import React, { useState } from 'react';
-import * as sessionActions from '../../store/session';
-import { useDispatch } from 'react-redux';
-import { generateCredentials } from '../../utils/generateCredentials';
-import './LoginPage.css';
-import LoginHeader from './LoginHeader';
+import { useHistory } from 'react-router-dom'
+import React, { useState } from 'react'
+import * as sessionActions from '../../store/session'
+import { useDispatch } from 'react-redux'
+import { generateCredentials } from '../../utils/generateCredentials'
+import './LoginPage.css'
+import LoginHeader from './LoginHeader'
 
 function LoginPage() {
-  const dispatch = useDispatch();
-  const [credential, setCredential] = useState('');
-  const [password, setPassword] = useState('');
-  const history = useHistory();
-  const [open, setOpen] = useState(false);
+  const dispatch = useDispatch()
+  const [credential, setCredential] = useState('')
+  const [password, setPassword] = useState('')
+  const history = useHistory()
+  const [open, setOpen] = useState(false)
 
   const generateUser = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     const desiredCredentials = {
       first_name: null,
       last_name: null,
       email: null,
       password: null,
-    };
-    try {
-      return dispatch(generateCredentials(desiredCredentials));
-    } catch (error) {
-      window.alert(`${error.message}`);
     }
-  };
+    try {
+      return dispatch(generateCredentials(desiredCredentials))
+    } catch (error) {
+      window.alert(`${error.message}`)
+    }
+  }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     dispatch(sessionActions.login({ credential, password }))
       .then(() => {
-        history.push('/');
+        history.push('/')
       })
       .catch(() => {
-        setOpen(true);
-        setCredential('');
-        setPassword('');
-      });
-  };
+        setOpen(true)
+        setCredential('')
+        setPassword('')
+      })
+  }
 
   return (
     <>
@@ -81,7 +81,7 @@ function LoginPage() {
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default LoginPage;
+export default LoginPage

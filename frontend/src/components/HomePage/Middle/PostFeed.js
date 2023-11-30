@@ -1,31 +1,29 @@
-import React from 'react';
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { Modal } from '../../../context/Modal';
-import CreatePost from '../../Post/CreatePost';
-import profilePic from '../../NavBar/imgs/blank.png';
-import PostIndex from '../../Post/PostIndex';
-import './PostFeed.css';
+import React from 'react'
+import { useState } from 'react'
+import { useSelector } from 'react-redux'
+import { Modal } from '../../../context/Modal'
+import CreatePost from '../../Post/CreatePost'
+import profilePic from '../../NavBar/imgs/blank.png'
+import PostIndex from '../../Post/PostIndex'
+import './PostFeed.css'
 
 function PostFeed({ currentUserId }) {
-  const [togglePost, setTogglePost] = useState(false);
+  const [togglePost, setTogglePost] = useState(false)
 
-  const simpleUsers = useSelector((state) => state.simpleUsers);
+  const simpleUsers = useSelector((state) => state.simpleUsers)
 
-  const sessionUser = useSelector((state) => state.session.user);
+  const sessionUser = useSelector((state) => state.session.user)
 
   const posts = useSelector((state) =>
     currentUserId
-      ? Object.values(state.posts).filter(
-          (post) => post.user_id === currentUserId
-        )
+      ? Object.values(state.posts).filter((post) => post.user_id === currentUserId)
       : Object.values(state.posts)
-  );
+  )
 
   const handleNewPost = (e) => {
-    e.preventDefault();
-    setTogglePost(true);
-  };
+    e.preventDefault()
+    setTogglePost(true)
+  }
 
   return (
     <div className="post-feed-omega-container">
@@ -73,26 +71,19 @@ function PostFeed({ currentUserId }) {
           .map((post, index) => {
             return (
               <React.Fragment key={index}>
-                <PostIndex
-                  post={post}
-                  sessionUser={sessionUser}
-                  simpleUsers={simpleUsers}
-                />
+                <PostIndex post={post} sessionUser={sessionUser} simpleUsers={simpleUsers} />
               </React.Fragment>
-            );
+            )
           })
           .reverse()}
       </div>
       {togglePost && (
         <Modal onClose={() => setTogglePost(false)}>
-          <CreatePost
-            closeModal={setTogglePost}
-            location={currentUserId ? 'profile' : 'home'}
-          />
+          <CreatePost closeModal={setTogglePost} location={currentUserId ? 'profile' : 'home'} />
         </Modal>
       )}
     </div>
-  );
+  )
 }
 
-export default PostFeed;
+export default PostFeed

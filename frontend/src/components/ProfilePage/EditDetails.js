@@ -1,18 +1,18 @@
-import './EditDetails.css';
-import { getCurrent } from '../../store/user';
-import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import './EditDetails.css'
+import { getCurrent } from '../../store/user'
+import { useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function EditDetails({ closeForm }) {
-  const { id } = useParams();
+  const { id } = useParams()
 
-  const currentUser = useSelector((state) => state.user[id]);
+  const currentUser = useSelector((state) => state.user[id])
 
   const handleCloseForm = (e) => {
-    e.preventDefault();
-    return closeForm(false);
-  };
+    e.preventDefault()
+    return closeForm(false)
+  }
 
   return (
     <div className="edit-details-modal">
@@ -35,9 +35,7 @@ function EditDetails({ closeForm }) {
         <div>
           <h4>Education</h4>
           <Link to={`/ProfilePage/${id}/about/work_and_education`}>
-            <button>
-              From {currentUser.high_school || 'Add your hometown'}
-            </button>
+            <button>From {currentUser.high_school || 'Add your hometown'}</button>
           </Link>
 
           <Link to={`/ProfilePage/${id}/about/work_and_education`}>
@@ -48,19 +46,14 @@ function EditDetails({ closeForm }) {
         <div>
           <h4>Current City</h4>
           <Link to={`/ProfilePage/${id}/about/places_lived`}>
-            <button>
-              Lives in {currentUser.location || 'Add your current city'}
-            </button>
+            <button>Lives in {currentUser.location || 'Add your current city'}</button>
           </Link>
         </div>
 
         <div>
           <Link to={`/ProfilePage/${id}/about/family_and_relationships`}>
             <h4>Relationship</h4>
-            <button>
-              {' '}
-              {currentUser.relationship || 'Add Relationship status'}
-            </button>
+            <button> {currentUser.relationship || 'Add Relationship status'}</button>
           </Link>
         </div>
 
@@ -78,7 +71,7 @@ function EditDetails({ closeForm }) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default EditDetails;
+export default EditDetails

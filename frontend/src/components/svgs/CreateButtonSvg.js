@@ -1,12 +1,8 @@
-import './index.css';
+import './index.css'
 
 function CreateButtonSvg() {
   return (
-    <svg
-      fill="currentColor"
-      viewBox="0 0 20 20"
-      className="story-create-button-the-acutal-button"
-    >
+    <svg fill="currentColor" viewBox="0 0 20 20" className="story-create-button-the-acutal-button">
       <g fillRule="evenodd" transform="translate(-446 -350)">
         <g fillRule="nonzero">
           <path
@@ -20,7 +16,7 @@ function CreateButtonSvg() {
         </g>
       </g>
     </svg>
-  );
+  )
 }
 
-export default CreateButtonSvg;
+export default CreateButtonSvg

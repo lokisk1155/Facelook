@@ -1,5 +1,5 @@
-import './PreviewCurrentStory.css';
-import ProgressBar from './ProgressBar';
+import './PreviewCurrentStory.css'
+import ProgressBar from './ProgressBar'
 function PreviewCurrentStory({ stories, currentStory, currentWindow }) {
   return (
     <>
@@ -40,11 +40,7 @@ function PreviewCurrentStory({ stories, currentStory, currentWindow }) {
               currentWindow={currentWindow}
             />
           ) : null}
-          <img
-            alt=""
-            src={currentStory.picture}
-            style={{ width: '100%', height: '100%' }}
-          ></img>
+          <img alt="" src={currentStory.picture} style={{ width: '100%', height: '100%' }}></img>
           <div
             style={{
               height: '100%',
@@ -76,7 +72,7 @@ function PreviewCurrentStory({ stories, currentStory, currentWindow }) {
         </div>
       )}
     </>
-  );
+  )
 }
 
-export default PreviewCurrentStory;
+export default PreviewCurrentStory

@@ -1,74 +1,66 @@
-import { useDispatch } from 'react-redux';
-import { useState } from 'react';
-import { Link, useParams, useHistory } from 'react-router-dom'; /*  */
-import { deleteFriend, addFriend } from '../../store/friend';
-import { Modal } from '../../context/Modal';
-import capitalizeFirstLetter from '../../utils/capFirstLetter';
-import EditProfile from './EditProfile';
-import profilePicBlank from '../NavBar/imgs/blank.png';
-import './ProfileTop.css';
+import { useDispatch } from 'react-redux'
+import { useState } from 'react'
+import { Link, useParams, useHistory } from 'react-router-dom' /*  */
+import { deleteFriend, addFriend } from '../../store/friend'
+import { Modal } from '../../context/Modal'
+import capitalizeFirstLetter from '../../utils/capFirstLetter'
+import EditProfile from './EditProfile'
+import profilePicBlank from '../NavBar/imgs/blank.png'
+import './ProfileTop.css'
 
 function ProfileTop({ currentUser, sessionUser, friends }) {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const history = useHistory();
+  const history = useHistory()
 
-  const [toggleDropDown, setToggleDropDown] = useState(false);
+  const [toggleDropDown, setToggleDropDown] = useState(false)
 
-  const [editProfile, setEditProfile] = useState(null);
+  const [editProfile, setEditProfile] = useState(null)
 
-  const { id } = useParams();
+  const { id } = useParams()
 
-  if (currentUser === undefined) return null;
+  if (currentUser === undefined) return null
 
-  const currentUserName = `${capitalizeFirstLetter(
-    currentUser.first_name
-  )} ${capitalizeFirstLetter(currentUser.last_name)}`;
+  const currentUserName = `${capitalizeFirstLetter(currentUser.first_name)} ${capitalizeFirstLetter(
+    currentUser.last_name
+  )}`
 
-  const friendsHeader = `${Object.keys(friends).length} Friends`;
+  const friendsHeader = `${Object.keys(friends).length} Friends`
 
-  const notSelf = currentUser.id !== sessionUser.id ? true : false;
+  const notSelf = currentUser.id !== sessionUser.id ? true : false
 
-  let isFriend = false;
+  let isFriend = false
 
   if (friends[sessionUser.id]) {
-    isFriend = true;
+    isFriend = true
   }
 
   const handleAdd = (e) => {
-    e.preventDefault();
-    setToggleDropDown(null);
+    e.preventDefault()
+    setToggleDropDown(null)
     const friendRequest = {
       sender_id: sessionUser.id,
       receiver_id: currentUser.id,
-    };
-    if (!isFriend) {
-      dispatch(addFriend(friendRequest, sessionUser));
     }
-  };
+    if (!isFriend) {
+      dispatch(addFriend(friendRequest, sessionUser))
+    }
+  }
 
   const handleDelete = (e) => {
-    e.preventDefault();
-    dispatch(deleteFriend(currentUser.id, sessionUser.id, id));
-  };
+    e.preventDefault()
+    dispatch(deleteFriend(currentUser.id, sessionUser.id, id))
+  }
 
-  const preview = currentUser.profile_picture
-    ? currentUser.profile_picture
-    : profilePicBlank;
+  const preview = currentUser.profile_picture ? currentUser.profile_picture : profilePicBlank
 
-  const coverPhotoPreview = currentUser.cover_photo
-    ? currentUser.cover_photo
-    : null;
+  const coverPhotoPreview = currentUser.cover_photo ? currentUser.cover_photo : null
 
   return (
     <>
       <div className="profile-top-container">
         <div className="background-photo-container-profile-page">
-          <img
-            alt=""
-            src={coverPhotoPreview}
-            className="background-photo-profile-page"
-          />
+          <img alt="" src={coverPhotoPreview} className="background-photo-profile-page" />
         </div>
         <div className="profile-page-header">
           <div className="profile-picture-and-name-container">
@@ -86,16 +78,10 @@ function ProfileTop({ currentUser, sessionUser, friends }) {
           </div>
 
           {notSelf ? (
-            <div
-              className="friends-toggle-button-container"
-              style={{ maxWidth: '' }}
-            >
+            <div className="friends-toggle-button-container" style={{ maxWidth: '' }}>
               {isFriend ? (
                 toggleDropDown ? (
-                  <button
-                    className="toogle-friends-button"
-                    onClick={handleDelete}
-                  >
+                  <button className="toogle-friends-button" onClick={handleDelete}>
                     delete friend
                   </button>
                 ) : (
@@ -150,11 +136,7 @@ function ProfileTop({ currentUser, sessionUser, friends }) {
 
       {editProfile ? (
         <Modal onClose={() => setEditProfile(false)}>
-          <EditProfile
-            closeModal={setEditProfile}
-            cover={coverPhotoPreview}
-            profile={preview}
-          />
+          <EditProfile closeModal={setEditProfile} cover={coverPhotoPreview} profile={preview} />
         </Modal>
       ) : null}
       <div className="profile-top-container-links">
@@ -167,16 +149,13 @@ function ProfileTop({ currentUser, sessionUser, friends }) {
             <button className="about-selector-button">About</button>
           </Link>
 
-          <Link
-            className="post-selector-link"
-            to={`/ProfilePage/${id}/Friends`}
-          >
+          <Link className="post-selector-link" to={`/ProfilePage/${id}/Friends`}>
             <button className="about-selector-button">Friends</button>
           </Link>
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default ProfileTop;
+export default ProfileTop

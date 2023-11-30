@@ -1,20 +1,20 @@
-import { signup } from '../store/session';
+import { signup } from '../store/session'
 
 export const generateCredentials = (desiredConfigs) => async (dispatch) => {
   if (desiredConfigs.first_name === null) {
-    desiredConfigs.first_name = randomizedName();
+    desiredConfigs.first_name = randomizedName()
   }
 
   if (desiredConfigs.last_name === null) {
-    desiredConfigs.last_name = randomizedName();
+    desiredConfigs.last_name = randomizedName()
   }
 
   if (desiredConfigs.email === null) {
-    desiredConfigs.email = randomizedEmail();
+    desiredConfigs.email = randomizedEmail()
   }
 
   if (desiredConfigs.password === null) {
-    desiredConfigs.password = randomizedPassword(8);
+    desiredConfigs.password = randomizedPassword(8)
   }
 
   const userToBeCreated = {
@@ -23,9 +23,9 @@ export const generateCredentials = (desiredConfigs) => async (dispatch) => {
     month: '1',
     year: '2023',
     gender: 'non-binary',
-  };
-  return dispatch(signup(userToBeCreated));
-};
+  }
+  return dispatch(signup(userToBeCreated))
+}
 
 const names = [
   'James',
@@ -108,36 +108,32 @@ const names = [
   'Madison',
   'Elizabeth',
   'Avery',
-];
+]
 
 function getRandomInt(max) {
-  return Math.floor(Math.random() * max);
+  return Math.floor(Math.random() * max)
 }
 
 function randomizedName() {
-  const index = getRandomInt(names.length);
-  return names[index];
+  const index = getRandomInt(names.length)
+  return names[index]
 }
 
 function randomizedEmail() {
-  const characters =
-    'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-  let email = '';
+  const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+  let email = ''
   for (let i = 0; i < 10; i++) {
-    email += characters.charAt(Math.floor(Math.random() * characters.length));
+    email += characters.charAt(Math.floor(Math.random() * characters.length))
   }
-  email += '@faceoook.com';
-  return email;
+  email += '@faceoook.com'
+  return email
 }
 
 function randomizedPassword(length) {
-  const characters =
-    'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-  let password = '';
+  const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+  let password = ''
   for (let i = 0; i < length; i++) {
-    password += characters.charAt(
-      Math.floor(Math.random() * characters.length)
-    );
+    password += characters.charAt(Math.floor(Math.random() * characters.length))
   }
-  return password;
+  return password
 }

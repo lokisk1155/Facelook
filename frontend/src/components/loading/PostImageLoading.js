@@ -1,13 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'
 
 function PostImageLoading({ src }) {
-  const [imageSrc, setImageSrc] = useState(null);
+  const [imageSrc, setImageSrc] = useState(null)
 
   useEffect(() => {
     setTimeout(() => {
-      setImageSrc(src);
-    }, 2000);
-  }, [src]);
+      setImageSrc(src)
+    }, 2000)
+  }, [src])
 
   return (
     <>
@@ -32,7 +32,7 @@ function PostImageLoading({ src }) {
         />
       )}
     </>
-  );
+  )
 }
 
-export default PostImageLoading;
+export default PostImageLoading

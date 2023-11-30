@@ -1,17 +1,13 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import {
-  faEnvelope,
-  faHeart,
-  faDragon,
-} from '@fortawesome/free-solid-svg-icons';
-import './YourShortcuts.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
+import { faEnvelope, faHeart, faDragon } from '@fortawesome/free-solid-svg-icons'
+import './YourShortcuts.css'
 
 function YourShortcuts() {
-  const isViewportUnderCertainWidth = window.innerWidth < 768; // Adjust the width as per your needs
+  const isViewportUnderCertainWidth = window.innerWidth < 768 // Adjust the width as per your needs
 
   if (isViewportUnderCertainWidth) {
-    return null; // Render nothing if the viewport width is under the specified value
+    return null // Render nothing if the viewport width is under the specified value
   }
 
   return (
@@ -71,7 +67,7 @@ function YourShortcuts() {
         <p style={{ paddingLeft: '5px' }}>{'Ruby For Good'}</p>
       </a>
     </article>
-  );
+  )
 }
 
-export default YourShortcuts;
+export default YourShortcuts
