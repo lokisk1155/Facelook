@@ -3,6 +3,9 @@ Welcome to Facelook, my full-stack clone of Facebook, started during my time at 
 
 ## 💻 Stack
 
+### Ruby on Rails 
+Standing as the server-side framework in this stack. Rails taught me how to manage web applications efficiently, with a clear separation of concerns – the models managing data and business logic, the views handling data presentation, and the controllers acting as an intermediary between models and views. By following established conventions, Rails automates many tasks, allowing developers to focus on the unique aspects of their application
+
 ### React 
 React has transformed UI development with its component-based architecture, streamlining the management of state and props to craft dynamic and responsive interfaces. It unified the aspects of frontend development for me, offering a sense of cohesion that was less apparent in other frameworks. Ruby on Rails shares parallels, especially with its controllers akin to the supportive role of JavaScript for the view or JSX. However, the ability to manipulate both state and presentation directly on the frontend, a shift from my experience with Ruby on Rails, felt empowering, almost like acquiring a new superpower in web development, a JS superpower that was for sure abused 
 
@@ -10,7 +13,7 @@ React has transformed UI development with its component-based architecture, stre
 Integrating Redux into my project was a pivotal learning experience, particularly with the introduction of the Redux logger middleware. This tool provided invaluable insights into the state changes and rerenders within my application, allowing me to understand and optimize the rendering process at a much deeper level. By visually tracking each action and the resulting state transition, I gained a clearer comprehension of how data flows and triggers updates in the application, significantly enhancing my debugging and development skills
 
 ### PostgreSQL 
-PostgreSQL is a robust, SQL-compliant database system, renowned for its advanced features, data integrity, and support for complex queries. It's highly scalable and extensible, making it ideal for handling diverse data types and large-scale, high-performance applications.
+PostgreSQL is a robust, SQL-compliant database system, renowned for its advanced features, data integrity, and support for complex queries. Its relational nature allows for efficient organization and manipulation of data, making it an excellent choice for platforms like Facebook that require extensive Create, Read, Update, and Delete (CRUD) operations.
 
 ### AWS
 Amazon Web Services (AWS) proved crucial in my project, especially through the use of S3 for robust, scalable cloud storage and IAM for secure access management, enabling efficient and secure image uploads. This integration highlights AWS's versatility and capacity to enhance web applications, ranging from straightforward hosting to complex, data-driven functionalities
