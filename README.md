@@ -15,6 +15,27 @@ PostgreSQL is a robust, SQL-compliant database system, renowned for its advanced
 ### AWS
 Amazon Web Services (AWS) proved crucial in my project, especially through the use of S3 for robust, scalable cloud storage and IAM for secure access management, enabling efficient and secure image uploads. This integration highlights AWS's versatility and capacity to enhance web applications, ranging from straightforward hosting to complex, data-driven functionalities
 
+# 📝 Architecture
+
+### CSRF Authorization & Validation
+
+```
+async function csrfFetch(url, options = {}) {
+  options.method = options.method || 'GET'
+  options.headers = options.headers || {}
+  options.headers['X-CSRF-Token'] = sessionStorage.getItem('X-CSRF-Token')
+
+  if (options.method.toUpperCase() !== 'GET' && !(options.body instanceof FormData)) {
+    options.headers['Content-Type'] = options.headers['Content-Type'] || 'application/json'
+  }
+
+  const res = await fetch(url, options)
+  if (res.status >= 400) throw res
+  return res
+}
+```
+
+CSRF attacks are a concern because they can trick a user into submitting a request to a web application where they are authenticated without their knowledge or intent. The CSRF token mechanism is a defense strategy against such attacks. It works by ensuring that every client-side request to the server is accompanied by a unique, secret token that the server can verify. This token is not accessible by third-party websites, thus making it difficult for attackers to forge a valid request.
 
 ## ⚙️ Setting Up
 
