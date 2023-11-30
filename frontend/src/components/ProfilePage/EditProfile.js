@@ -1,80 +1,80 @@
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { updateUser } from '../../store/user';
-import ProfileCrop from '../crop/ProfileCrop';
-import CoverCrop from '../crop/CoverCrop';
-import './EditProfile.css';
+import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { updateUser } from '../../store/user'
+import ProfileCrop from '../crop/ProfileCrop'
+import CoverCrop from '../crop/CoverCrop'
+import './EditProfile.css'
 
 function EditProfile({ closeModal, cover, profile }) {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const id = useSelector((state) => state.session.user.id);
+  const id = useSelector((state) => state.session.user.id)
 
-  const [photoFile, setPhotoFile] = useState(null);
+  const [photoFile, setPhotoFile] = useState(null)
 
-  const [photoUrl, setPhotoUrl] = useState(null);
+  const [photoUrl, setPhotoUrl] = useState(null)
 
-  const [photoFileCover, setPhotoFileCover] = useState(null);
+  const [photoFileCover, setPhotoFileCover] = useState(null)
 
-  const [photoUrlCover, setPhotoUrlCover] = useState(null);
+  const [photoUrlCover, setPhotoUrlCover] = useState(null)
 
-  const [toggleCrop, setToggleCrop] = useState(false);
+  const [toggleCrop, setToggleCrop] = useState(false)
 
   const handleUpdateProfile = async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
+    e.preventDefault()
+    const formData = new FormData()
     if (photoFile) {
-      formData.append('user[profile_pic]', photoFile);
+      formData.append('user[profile_pic]', photoFile)
     }
     const user = {
       id: id,
-    };
-    dispatch(updateUser(user, formData));
-    return closeModal(false);
-  };
+    }
+    dispatch(updateUser(user, formData))
+    return closeModal(false)
+  }
 
   const handleUpdateCoverPhoto = async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
+    e.preventDefault()
+    const formData = new FormData()
     if (photoFileCover) {
-      formData.append('user[cover_photo]', photoFileCover);
+      formData.append('user[cover_photo]', photoFileCover)
     }
     const user = {
       id: id,
-    };
-    dispatch(updateUser(user, formData));
-    return closeModal(false);
-  };
+    }
+    dispatch(updateUser(user, formData))
+    return closeModal(false)
+  }
 
   const handleFile = (e) => {
-    const file = e.target.files[0];
-    setPhotoFileCover(null);
-    setPhotoUrlCover(null);
+    const file = e.target.files[0]
+    setPhotoFileCover(null)
+    setPhotoUrlCover(null)
     if (file) {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
+      const fileReader = new FileReader()
+      fileReader.readAsDataURL(file)
       fileReader.onload = () => {
-        setPhotoFile(file);
-        setPhotoUrl(fileReader.result);
-      };
-      setToggleCrop(true);
+        setPhotoFile(file)
+        setPhotoUrl(fileReader.result)
+      }
+      setToggleCrop(true)
     }
-  };
+  }
 
   const handleFileCover = (e) => {
-    const file = e.target.files[0];
-    setPhotoFile(null);
-    setPhotoUrl(null);
+    const file = e.target.files[0]
+    setPhotoFile(null)
+    setPhotoUrl(null)
     if (file) {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
+      const fileReader = new FileReader()
+      fileReader.readAsDataURL(file)
       fileReader.onload = () => {
-        setPhotoFileCover(file);
-        setPhotoUrlCover(fileReader.result);
-      };
-      setToggleCrop(true);
+        setPhotoFileCover(file)
+        setPhotoUrlCover(fileReader.result)
+      }
+      setToggleCrop(true)
     }
-  };
+  }
 
   return (
     <>
@@ -103,9 +103,7 @@ function EditProfile({ closeModal, cover, profile }) {
                   justifyContent: 'space-between',
                 }}
               >
-                <h3 style={{ paddingTop: '0', marginTop: '0' }}>
-                  Profile Picture
-                </h3>
+                <h3 style={{ paddingTop: '0', marginTop: '0' }}>Profile Picture</h3>
 
                 {photoUrl ? (
                   <button onClick={handleUpdateProfile}>upload</button>
@@ -120,11 +118,7 @@ function EditProfile({ closeModal, cover, profile }) {
                     }}
                   >
                     edit
-                    <input
-                      style={{ visibility: 'hidden' }}
-                      type="file"
-                      onChange={handleFile}
-                    />
+                    <input style={{ visibility: 'hidden' }} type="file" onChange={handleFile} />
                   </label>
                 ) : null}
               </div>
@@ -202,7 +196,7 @@ function EditProfile({ closeModal, cover, profile }) {
         </div>
       )}
     </>
-  );
+  )
 }
 
-export default EditProfile;
+export default EditProfile

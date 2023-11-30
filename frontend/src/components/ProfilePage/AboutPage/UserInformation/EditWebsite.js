@@ -1,28 +1,28 @@
-import { useDispatch } from 'react-redux';
-import { useState } from 'react';
-import { updateUser } from '../../../../store/user';
+import { useDispatch } from 'react-redux'
+import { useState } from 'react'
+import { updateUser } from '../../../../store/user'
 
 function EditWebsite({ currentUser }) {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const [fakeWebsite, setFakeWebsite] = useState('');
+  const [fakeWebsite, setFakeWebsite] = useState('')
 
-  const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = useState(false)
 
   const handleWebsite = () => {
-    let website = fakeWebsite;
-    let cloneWithoutRedux = { ...currentUser };
-    delete cloneWithoutRedux.friends;
-    delete cloneWithoutRedux.profile_picture;
-    delete cloneWithoutRedux.cover_photo;
-    delete cloneWithoutRedux.password;
+    let website = fakeWebsite
+    let cloneWithoutRedux = { ...currentUser }
+    delete cloneWithoutRedux.friends
+    delete cloneWithoutRedux.profile_picture
+    delete cloneWithoutRedux.cover_photo
+    delete cloneWithoutRedux.password
     const user = {
       ...cloneWithoutRedux,
       website,
-    };
-    dispatch(updateUser(user));
-    setToggle(false);
-  };
+    }
+    dispatch(updateUser(user))
+    setToggle(false)
+  }
 
   return (
     <>
@@ -57,7 +57,7 @@ function EditWebsite({ currentUser }) {
         </form>
       )}
     </>
-  );
+  )
 }
 
-export default EditWebsite;
+export default EditWebsite

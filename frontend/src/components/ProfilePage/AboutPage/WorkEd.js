@@ -1,9 +1,9 @@
-import EditWork from './UserInformation/EditWork';
-import EditEducation from './UserInformation/EditCollege';
-import EditHighschool from './UserInformation/EditHighschool';
+import EditWork from './UserInformation/EditWork'
+import EditEducation from './UserInformation/EditCollege'
+import EditHighschool from './UserInformation/EditHighschool'
 
 function WorkEd({ currentUser, sessionUser }) {
-  const isUser = sessionUser.id === currentUser.id;
+  const isUser = sessionUser.id === currentUser.id
   return (
     <div
       style={{
@@ -35,7 +35,7 @@ function WorkEd({ currentUser, sessionUser }) {
         )}
       </div>
     </div>
-  );
+  )
 }
 
-export default WorkEd;
+export default WorkEd

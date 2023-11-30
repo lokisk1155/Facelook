@@ -1,28 +1,28 @@
-import { useDispatch } from 'react-redux';
-import { useState } from 'react';
-import { updateUser } from '../../../../store/user';
+import { useDispatch } from 'react-redux'
+import { useState } from 'react'
+import { updateUser } from '../../../../store/user'
 
 function EditPhoneNumber({ currentUser }) {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const [fakePhoneNumber, setFakePhoneNumber] = useState('');
+  const [fakePhoneNumber, setFakePhoneNumber] = useState('')
 
-  const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = useState(false)
 
   const handlePhoneNumber = () => {
-    let phone_number = fakePhoneNumber;
-    let cloneWithoutRedux = { ...currentUser };
-    delete cloneWithoutRedux.friends;
-    delete cloneWithoutRedux.profile_picture;
-    delete cloneWithoutRedux.cover_photo;
-    delete cloneWithoutRedux.password;
+    let phone_number = fakePhoneNumber
+    let cloneWithoutRedux = { ...currentUser }
+    delete cloneWithoutRedux.friends
+    delete cloneWithoutRedux.profile_picture
+    delete cloneWithoutRedux.cover_photo
+    delete cloneWithoutRedux.password
     const user = {
       ...cloneWithoutRedux,
       phone_number,
-    };
-    dispatch(updateUser(user));
-    setToggle(false);
-  };
+    }
+    dispatch(updateUser(user))
+    setToggle(false)
+  }
 
   return (
     <>
@@ -57,7 +57,7 @@ function EditPhoneNumber({ currentUser }) {
         </form>
       )}
     </>
-  );
+  )
 }
 
-export default EditPhoneNumber;
+export default EditPhoneNumber

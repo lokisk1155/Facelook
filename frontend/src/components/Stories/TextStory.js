@@ -1,37 +1,37 @@
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { createStory } from '../../store/story';
-import PreviewCurrentStory from './PreviewCurrentStory';
-import TextControls from './TextControls';
-import './TextStory.css';
+import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+import { createStory } from '../../store/story'
+import PreviewCurrentStory from './PreviewCurrentStory'
+import TextControls from './TextControls'
+import './TextStory.css'
 
 function TextStory({ photoUrl = null, file = null }) {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const history = useHistory();
+  const history = useHistory()
 
-  const [backgroundColor, setBackgroundColor] = useState('#1b74e4');
+  const [backgroundColor, setBackgroundColor] = useState('#1b74e4')
 
-  const [fontSize, setFontSize] = useState('20px');
+  const [fontSize, setFontSize] = useState('20px')
 
-  const [paddingLeft, setPaddingLeft] = useState('10px');
+  const [paddingLeft, setPaddingLeft] = useState('10px')
 
-  const [fakePaddingLeft, setFakePaddingLeft] = useState(10);
+  const [fakePaddingLeft, setFakePaddingLeft] = useState(10)
 
-  const [paddingRight, setPaddingRight] = useState('10px');
+  const [paddingRight, setPaddingRight] = useState('10px')
 
-  const [fakePaddingRight, setFakePaddingRight] = useState(0);
+  const [fakePaddingRight, setFakePaddingRight] = useState(0)
 
-  const [fontType, setFontType] = useState("'Montserrat', sans-serif");
+  const [fontType, setFontType] = useState("'Montserrat', sans-serif")
 
-  const [paddingY, setPaddingY] = useState('240px');
+  const [paddingY, setPaddingY] = useState('240px')
 
-  const [fakePaddingY, setFakePaddingY] = useState(240);
+  const [fakePaddingY, setFakePaddingY] = useState(240)
 
-  const [color, setColor] = useState('red');
+  const [color, setColor] = useState('red')
 
-  const [textContent, setTextContent] = useState('');
+  const [textContent, setTextContent] = useState('')
 
   const styles = {
     background_color: backgroundColor,
@@ -43,85 +43,85 @@ function TextStory({ photoUrl = null, file = null }) {
     color: color,
     text_content: textContent,
     picture: photoUrl,
-  };
+  }
 
-  const sessionUser = useSelector((state) => state.session.user);
+  const sessionUser = useSelector((state) => state.session.user)
 
-  const simpleUsers = useSelector((state) => state.simpleUsers);
+  const simpleUsers = useSelector((state) => state.simpleUsers)
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    let formData = false;
+    e.preventDefault()
+    let formData = false
     if (file) {
-      formData = new FormData();
-      formData.append('story[photo]', file);
+      formData = new FormData()
+      formData.append('story[photo]', file)
       Object.entries(styles).forEach(([key, value]) => {
-        formData.append(`story[styles][${key}]`, value);
-      });
+        formData.append(`story[styles][${key}]`, value)
+      })
     }
     let story = {
       user_id: sessionUser.id,
       ...styles,
-    };
+    }
     dispatch(createStory(story, formData)).then((storyCreated) => {
       setTimeout(() => {
         history.push({
           pathname: `/stories/${storyCreated.user_id}`,
           search: `?windowIndex=0`,
-        });
-      }, 250);
-    });
-  };
+        })
+      }, 250)
+    })
+  }
 
   const moveUp = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     if (fakePaddingY <= 10) {
-      return;
+      return
     } else {
-      let newPadding = fakePaddingY - 10;
-      setFakePaddingY(newPadding);
-      setPaddingY(`${newPadding}px`);
+      let newPadding = fakePaddingY - 10
+      setFakePaddingY(newPadding)
+      setPaddingY(`${newPadding}px`)
     }
-  };
+  }
 
   const moveDown = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     if (fakePaddingY >= 320) {
-      return;
+      return
     } else {
-      let newPadding = fakePaddingY + 10;
-      setFakePaddingY(newPadding);
-      setPaddingY(`${newPadding}px`);
+      let newPadding = fakePaddingY + 10
+      setFakePaddingY(newPadding)
+      setPaddingY(`${newPadding}px`)
     }
-  };
+  }
 
   const moveLeft = (e) => {
-    e.preventDefault();
-    let newPadding = fakePaddingRight + 10;
-    setFakePaddingRight(newPadding);
-    setPaddingRight(`${newPadding}px`);
-  };
+    e.preventDefault()
+    let newPadding = fakePaddingRight + 10
+    setFakePaddingRight(newPadding)
+    setPaddingRight(`${newPadding}px`)
+  }
 
   const moveRight = (e) => {
-    e.preventDefault();
-    let newPadding = fakePaddingLeft + 10;
-    setFakePaddingLeft(newPadding);
-    setPaddingLeft(`${newPadding}px`);
-  };
+    e.preventDefault()
+    let newPadding = fakePaddingLeft + 10
+    setFakePaddingLeft(newPadding)
+    setPaddingLeft(`${newPadding}px`)
+  }
 
   const resetMoves = (e) => {
-    e.preventDefault();
-    setPaddingLeft('0');
-    setPaddingRight('0');
-    setPaddingY('0');
-    setFakePaddingLeft(0);
-    setFakePaddingRight(0);
-    setFakePaddingY(0);
-    setBackgroundColor('#1b74e4');
-    setFontSize('20');
-    setTextContent('');
-    setColor('');
-  };
+    e.preventDefault()
+    setPaddingLeft('0')
+    setPaddingRight('0')
+    setPaddingY('0')
+    setFakePaddingLeft(0)
+    setFakePaddingRight(0)
+    setFakePaddingY(0)
+    setBackgroundColor('#1b74e4')
+    setFontSize('20')
+    setTextContent('')
+    setColor('')
+  }
 
   return (
     <>
@@ -145,9 +145,7 @@ function TextStory({ photoUrl = null, file = null }) {
             boxShadow: '0px 75px 75px 0px lightgrey',
           }}
         >
-          <p style={{ fontSize: '15px', color: 'black', marginLeft: '1%' }}>
-            Preview
-          </p>
+          <p style={{ fontSize: '15px', color: 'black', marginLeft: '1%' }}>Preview</p>
           <div
             className="black-container"
             style={{
@@ -222,10 +220,10 @@ function TextStory({ photoUrl = null, file = null }) {
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default TextStory;
+export default TextStory
 
 // <div
 // className="actual-text-story-background"

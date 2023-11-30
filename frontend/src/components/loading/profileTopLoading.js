@@ -18,10 +18,7 @@ function ProfileTopLoading() {
           backgroundColor: '#fff',
         }}
       >
-        <div
-          className="skeleton"
-          style={{ height: '100%', width: '85%', objectFit: 'cover' }}
-        />
+        <div className="skeleton" style={{ height: '100%', width: '85%', objectFit: 'cover' }} />
       </div>
       <div
         style={{
@@ -46,7 +43,7 @@ function ProfileTopLoading() {
         <div style={{ width: '65px', height: '100%' }}></div>
       </div>
     </div>
-  );
+  )
 }
 
-export default ProfileTopLoading;
+export default ProfileTopLoading

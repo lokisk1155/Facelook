@@ -1,32 +1,25 @@
-import { useDispatch } from 'react-redux';
-import { deletePost, removePost } from '../../store/post';
-import { Link, useParams } from 'react-router-dom';
-import PostLoading from '../loading/PostLoading';
-import profilePic from '../NavBar/imgs/blank.png';
-import { userRemovePost } from '../../store/profilePage';
-import { getTimeElapsed } from './utils/Date';
-function PostHeader({
-  post,
-  simpleUsers,
-  sessionUser,
-  editPost,
-  setEditPost,
-  setEditId,
-}) {
-  const dispatch = useDispatch();
+import { useDispatch } from 'react-redux'
+import { deletePost, removePost } from '../../store/post'
+import { Link, useParams } from 'react-router-dom'
+import PostLoading from '../loading/PostLoading'
+import profilePic from '../NavBar/imgs/blank.png'
+import { userRemovePost } from '../../store/profilePage'
+import { getTimeElapsed } from './utils/Date'
+function PostHeader({ post, simpleUsers, sessionUser, editPost, setEditPost, setEditId }) {
+  const dispatch = useDispatch()
 
-  const { id } = useParams();
+  const { id } = useParams()
 
   const handleDeletePost = (post) => (e) => {
-    e.preventDefault();
+    e.preventDefault()
     dispatch(deletePost(post.id)).then(() => {
       if (id) {
-        dispatch(userRemovePost(post.id));
+        dispatch(userRemovePost(post.id))
       } else {
-        dispatch(removePost(post.id));
+        dispatch(removePost(post.id))
       }
-    });
-  };
+    })
+  }
 
   return (
     <div
@@ -40,15 +33,10 @@ function PostHeader({
     >
       <div className="picture-and-name" style={{ display: 'flex' }}>
         <Link to={`/ProfilePage/${post.user_id}`}>
-          <PostLoading
-            src={simpleUsers[post.user_id]?.profile_picture || profilePic}
-          />
+          <PostLoading src={simpleUsers[post.user_id]?.profile_picture || profilePic} />
         </Link>
         <div style={{ padding: '5px' }}>
-          <Link
-            style={{ textDecoration: 'none' }}
-            to={`/ProfilePage/${post.user_id}`}
-          >
+          <Link style={{ textDecoration: 'none' }} to={`/ProfilePage/${post.user_id}`}>
             <h5
               style={{
                 height: '50%',
@@ -112,8 +100,8 @@ function PostHeader({
                       zIndex: '3',
                     }}
                     onClick={() => {
-                      setEditId(post.id);
-                      setEditPost(null);
+                      setEditId(post.id)
+                      setEditPost(null)
                     }}
                   >
                     Edit
@@ -150,7 +138,7 @@ function PostHeader({
         ) : null}
       </>
     </div>
-  );
+  )
 }
 
-export default PostHeader;
+export default PostHeader

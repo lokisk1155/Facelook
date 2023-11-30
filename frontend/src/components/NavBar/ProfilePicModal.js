@@ -1,32 +1,25 @@
-import { Link, useHistory } from 'react-router-dom';
-import { logout } from '../../store/session';
-import { useDispatch, useSelector } from 'react-redux';
-import './profilePicModal.css';
-import profilePic from './imgs/blank.png';
-import {
-  faBug,
-  faComments,
-  faDoorOpen,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link, useHistory } from 'react-router-dom'
+import { logout } from '../../store/session'
+import { useDispatch, useSelector } from 'react-redux'
+import './profilePicModal.css'
+import profilePic from './imgs/blank.png'
+import { faBug, faComments, faDoorOpen } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function ProfilePicModal() {
-  const history = useHistory();
-  const dispatch = useDispatch();
-  const user = useSelector((state) => state.session.user);
-  const name = `${user.first_name} ${user.last_name}`;
+  const history = useHistory()
+  const dispatch = useDispatch()
+  const user = useSelector((state) => state.session.user)
+  const name = `${user.first_name} ${user.last_name}`
 
   const handleLogout = () => {
-    dispatch(logout(user));
-    history.push('/');
-  };
+    dispatch(logout(user))
+    history.push('/')
+  }
 
   return (
     <div className="omega-profile-modal-container">
-      <div
-        className="profile-pic-modal-container"
-        style={{ width: '350px', padding: '2.5px' }}
-      >
+      <div className="profile-pic-modal-container" style={{ width: '350px', padding: '2.5px' }}>
         <div
           className="container-header-profile-modal"
           style={{
@@ -136,14 +129,8 @@ function ProfilePicModal() {
               backgroundColor: 'whitesmoke',
             }}
           >
-            <FontAwesomeIcon
-              style={{ paddingLeft: '10px' }}
-              color="black"
-              icon={faComments}
-            />
-            <p style={{ color: 'black', fontSize: '1rem', paddingLeft: '5px' }}>
-              Give feedback
-            </p>
+            <FontAwesomeIcon style={{ paddingLeft: '10px' }} color="black" icon={faComments} />
+            <p style={{ color: 'black', fontSize: '1rem', paddingLeft: '5px' }}>Give feedback</p>
           </a>
           <a
             href="https://www.youtube.com/watch?v=4V40BQtAGIQ"
@@ -162,14 +149,8 @@ function ProfilePicModal() {
               backgroundColor: 'whitesmoke',
             }}
           >
-            <FontAwesomeIcon
-              style={{ paddingLeft: '10px' }}
-              color="black"
-              icon={faBug}
-            />
-            <p style={{ color: 'black', fontSize: '1rem', paddingLeft: '5px' }}>
-              Report a bug
-            </p>
+            <FontAwesomeIcon style={{ paddingLeft: '10px' }} color="black" icon={faBug} />
+            <p style={{ color: 'black', fontSize: '1rem', paddingLeft: '5px' }}>Report a bug</p>
           </a>
           <button
             className="logout-button"
@@ -187,16 +168,13 @@ function ProfilePicModal() {
             }}
             onClick={handleLogout}
           >
-            <FontAwesomeIcon
-              style={{ paddingLeft: '10px' }}
-              icon={faDoorOpen}
-            />
+            <FontAwesomeIcon style={{ paddingLeft: '10px' }} icon={faDoorOpen} />
             <p style={{ fontSize: '1rem', paddingLeft: '5px' }}>LogOut</p>
           </button>
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default ProfilePicModal;
+export default ProfilePicModal

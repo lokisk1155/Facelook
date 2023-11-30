@@ -1,66 +1,57 @@
-import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import profilePic from './imgs/blank.png';
-import { useRef } from 'react';
-import { useMemo } from 'react';
-import './SearchBar.css';
+import { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
+import profilePic from './imgs/blank.png'
+import { useRef } from 'react'
+import { useMemo } from 'react'
+import './SearchBar.css'
 
 function SearchBar({ setTyped, closeModal, setDiv }) {
-  const [frTyped, setfrTyped] = useState('');
+  const [frTyped, setfrTyped] = useState('')
 
-  const users = useSelector((state) => state.simpleUsers);
+  const users = useSelector((state) => state.simpleUsers)
 
   const filteredUsers = useMemo(() => {
-    if (!users) return [];
+    if (!users) return []
 
-    return filterUsers(users, frTyped);
-  }, [frTyped, users]);
+    return filterUsers(users, frTyped)
+  }, [frTyped, users])
 
   const div = useMemo(() => {
-    return calculateDiv(filteredUsers, frTyped);
-  }, [filteredUsers, frTyped]);
+    return calculateDiv(filteredUsers, frTyped)
+  }, [filteredUsers, frTyped])
 
-  const divRef = useRef(div);
-
-  useEffect(() => {
-    divRef.current = div;
-    setTyped(frTyped);
-  }, [filteredUsers, frTyped, setTyped, div]);
+  const divRef = useRef(div)
 
   useEffect(() => {
-    setDiv(divRef.current);
-  }, [setDiv]);
+    divRef.current = div
+    setTyped(frTyped)
+  }, [filteredUsers, frTyped, setTyped, div])
+
+  useEffect(() => {
+    setDiv(divRef.current)
+  }, [setDiv])
 
   function filterUsers(users, typed) {
     const currentMatches = Object.values(users).filter((user) => {
       return user.name
         .toLowerCase()
         .replace(' ', '')
-        .startsWith(typed.replace(' ', '').toLowerCase());
-    });
+        .startsWith(typed.replace(' ', '').toLowerCase())
+    })
 
-    return currentMatches.length < 10
-      ? currentMatches
-      : Object.values(currentMatches).slice(0, 7);
+    return currentMatches.length < 10 ? currentMatches : Object.values(currentMatches).slice(0, 7)
   }
 
   function calculateDiv(users, typed) {
-    return typed.length === 0 ? 0 : Object.values(users).length;
+    return typed.length === 0 ? 0 : Object.values(users).length
   }
 
   return (
     <>
       <div className="search-bar-modal">
-        <button
-          className="back-arrow-search-bar-modal"
-          onClick={() => closeModal(false)}
-        >
-          <svg
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            className="back-arrow-svg"
-          >
+        <button className="back-arrow-search-bar-modal" onClick={() => closeModal(false)}>
+          <svg fill="currentColor" viewBox="0 0 20 20" className="back-arrow-svg">
             <g fillRule="evenodd" transform="translate(-446 -350)">
               <g fillRule="nonzero">
                 <path
@@ -107,7 +98,7 @@ function SearchBar({ setTyped, closeModal, setDiv }) {
                   </div>
                 </div>
               </Link>
-            );
+            )
           })}
           <div className="search-for-typed-button">
             <button className="mi-icon-holder">
@@ -120,7 +111,7 @@ function SearchBar({ setTyped, closeModal, setDiv }) {
         </div>
       )}
     </>
-  );
+  )
 }
 
-export default SearchBar;
+export default SearchBar

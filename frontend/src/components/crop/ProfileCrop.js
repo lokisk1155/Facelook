@@ -1,33 +1,33 @@
-import React, { useState } from 'react';
-import Cropper from 'react-easy-crop';
-import getCroppedImg from '../../utils/cropImage';
-import './index.css';
+import React, { useState } from 'react'
+import Cropper from 'react-easy-crop'
+import getCroppedImg from '../../utils/cropImage'
+import './index.css'
 
 const ProfileCrop = ({ photoURL, setOpenCrop, setPhotoURL, setFile }) => {
-  const [crop, setCrop] = useState({ x: 0, y: 0 });
-  const [zoom, setZoom] = useState(1);
-  const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
+  const [crop, setCrop] = useState({ x: 0, y: 0 })
+  const [zoom, setZoom] = useState(1)
+  const [croppedAreaPixels, setCroppedAreaPixels] = useState(null)
 
   const onCropComplete = (croppedArea, croppedAreaPixels) => {
-    setCroppedAreaPixels(croppedAreaPixels);
-  };
+    setCroppedAreaPixels(croppedAreaPixels)
+  }
 
   const cropImage = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     try {
-      const { file, url } = await getCroppedImg(photoURL, croppedAreaPixels);
-      setPhotoURL(url);
-      setFile(file);
-      setOpenCrop(false);
+      const { file, url } = await getCroppedImg(photoURL, croppedAreaPixels)
+      setPhotoURL(url)
+      setFile(file)
+      setOpenCrop(false)
     } catch (error) {}
-  };
+  }
 
   const close = (e) => {
-    e.preventDefault();
-    setPhotoURL(null);
-    setFile(null);
-    setOpenCrop(false);
-  };
+    e.preventDefault()
+    setPhotoURL(null)
+    setFile(null)
+    setOpenCrop(false)
+  }
 
   return (
     <>
@@ -52,7 +52,7 @@ const ProfileCrop = ({ photoURL, setOpenCrop, setPhotoURL, setFile }) => {
             step={0.1}
             aria-labelledby="Zoom"
             onChange={(e) => {
-              setZoom(e.target.value);
+              setZoom(e.target.value)
             }}
             className="zoom-range"
           />
@@ -67,7 +67,7 @@ const ProfileCrop = ({ photoURL, setOpenCrop, setPhotoURL, setFile }) => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default ProfileCrop;
+export default ProfileCrop

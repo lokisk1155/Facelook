@@ -1,11 +1,4 @@
-function PostContent({
-  post,
-  editId,
-  editContent,
-  setEditContent,
-  setEditId,
-  submitUpdate,
-}) {
+function PostContent({ post, editId, editContent, setEditContent, setEditId, submitUpdate }) {
   return (
     <div
       className="post-content-container"
@@ -89,7 +82,7 @@ function PostContent({
         </div>
       )}
     </div>
-  );
+  )
 }
 
-export default PostContent;
+export default PostContent

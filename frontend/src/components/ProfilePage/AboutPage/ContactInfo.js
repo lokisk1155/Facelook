@@ -1,10 +1,10 @@
-import EditPhoneNumber from './UserInformation/EditPhoneNumber';
-import EditEmail from './UserInformation/EditEmail';
-import EditWebsite from './UserInformation/EditWebsite';
-import EditSocial from './UserInformation/EditSocial';
+import EditPhoneNumber from './UserInformation/EditPhoneNumber'
+import EditEmail from './UserInformation/EditEmail'
+import EditWebsite from './UserInformation/EditWebsite'
+import EditSocial from './UserInformation/EditSocial'
 
 function ContactInfo({ currentUser, sessionUser }) {
-  const isUser = currentUser.id === sessionUser.id;
+  const isUser = currentUser.id === sessionUser.id
   return (
     <div
       style={{
@@ -16,10 +16,7 @@ function ContactInfo({ currentUser, sessionUser }) {
     >
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         {isUser ? (
-          <EditPhoneNumber
-            currentUser={currentUser}
-            sessionUser={sessionUser}
-          />
+          <EditPhoneNumber currentUser={currentUser} sessionUser={sessionUser} />
         ) : (
           <p>{currentUser.phone_number}</p>
         )}
@@ -48,7 +45,7 @@ function ContactInfo({ currentUser, sessionUser }) {
       <p>birth date: {`${currentUser.month} ${currentUser.day}`}</p>
       <p>birth year: {currentUser.year}</p>
     </div>
-  );
+  )
 }
 
-export default ContactInfo;
+export default ContactInfo

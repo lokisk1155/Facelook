@@ -1,28 +1,28 @@
-import { useDispatch } from 'react-redux';
-import { useState } from 'react';
-import { updateUser } from '../../../../store/user';
+import { useDispatch } from 'react-redux'
+import { useState } from 'react'
+import { updateUser } from '../../../../store/user'
 
 function EditRelationship({ currentUser }) {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const [fakeRelationship, setFakeRelationship] = useState('');
+  const [fakeRelationship, setFakeRelationship] = useState('')
 
-  const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = useState(false)
 
   const handleRelationship = () => {
-    let relationship = fakeRelationship;
-    let cloneWithoutRedux = { ...currentUser };
-    delete cloneWithoutRedux.friends;
-    delete cloneWithoutRedux.profile_picture;
-    delete cloneWithoutRedux.cover_photo;
-    delete cloneWithoutRedux.password;
+    let relationship = fakeRelationship
+    let cloneWithoutRedux = { ...currentUser }
+    delete cloneWithoutRedux.friends
+    delete cloneWithoutRedux.profile_picture
+    delete cloneWithoutRedux.cover_photo
+    delete cloneWithoutRedux.password
     const user = {
       ...cloneWithoutRedux,
       relationship,
-    };
-    dispatch(updateUser(user));
-    setToggle(false);
-  };
+    }
+    dispatch(updateUser(user))
+    setToggle(false)
+  }
 
   return (
     <>
@@ -34,8 +34,8 @@ function EditRelationship({ currentUser }) {
             <button
               style={{ margin: '5px' }}
               onClick={() => {
-                setToggle(true);
-                setFakeRelationship('single');
+                setToggle(true)
+                setFakeRelationship('single')
               }}
             >
               Edit Relationship
@@ -48,8 +48,8 @@ function EditRelationship({ currentUser }) {
             <button
               style={{ margin: '5px' }}
               onClick={() => {
-                setToggle(true);
-                setFakeRelationship('single');
+                setToggle(true)
+                setFakeRelationship('single')
               }}
             >
               Add Relationship
@@ -59,20 +59,13 @@ function EditRelationship({ currentUser }) {
       )}
       {toggle && (
         <form onSubmit={handleRelationship}>
-          <select
-            type="text"
-            onChange={(e) => setFakeRelationship(e.target.value)}
-          >
+          <select type="text" onChange={(e) => setFakeRelationship(e.target.value)}>
             <option value="Single">Single</option>
             <option value="In a relationship">In a relationship</option>
             <option value="Married">Married</option>
             <option value="In a civil union">In a civil union</option>
-            <option value="In a domestic partnership">
-              In a domestic partnership
-            </option>
-            <option value="In an open relationship">
-              In an open relationship
-            </option>
+            <option value="In a domestic partnership">In a domestic partnership</option>
+            <option value="In an open relationship">In an open relationship</option>
             <option value="It's complicated">It's complicated</option>
             <option value="Seperated">Seperated</option>
             <option value="Divorced">Divorced</option>
@@ -85,7 +78,7 @@ function EditRelationship({ currentUser }) {
         </form>
       )}
     </>
-  );
+  )
 }
 
-export default EditRelationship;
+export default EditRelationship

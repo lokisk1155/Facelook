@@ -1,11 +1,11 @@
-import profilePic from '../NavBar/imgs/blank.png';
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import profilePic from '../NavBar/imgs/blank.png'
+import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 function FriendsContainer({ currentUser, sessionUser }) {
-  const friends = useSelector((state) => Object.values(state.friends));
+  const friends = useSelector((state) => Object.values(state.friends))
 
-  const mutualFriends = friends.slice(0, 6);
+  const mutualFriends = friends.slice(0, 6)
 
   // if (currentUser.id !== sessionUser.id) {
   //   mutualFriends = {};
@@ -79,12 +79,12 @@ function FriendsContainer({ currentUser, sessionUser }) {
                     </p>
                   </Link>
                 </div>
-              );
+              )
             })
           : null}
       </div>
     </div>
-  );
+  )
 }
 
-export default FriendsContainer;
+export default FriendsContainer

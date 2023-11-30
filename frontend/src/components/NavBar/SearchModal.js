@@ -1,27 +1,23 @@
-import { useEffect } from 'react';
-import SearchBar from './SearchBar';
-import './SearchModal.css';
-import { useState } from 'react';
+import { useEffect } from 'react'
+import SearchBar from './SearchBar'
+import './SearchModal.css'
+import { useState } from 'react'
 
 function SearchModal({ closeModal, typed, setTyped }) {
-  const [userFilteredCount, setFilteredUserCount] = useState(0);
+  const [userFilteredCount, setFilteredUserCount] = useState(0)
 
-  const [adjustedHeightForContainer, setAdjustedHeightForContainer] =
-    useState(null);
+  const [adjustedHeightForContainer, setAdjustedHeightForContainer] = useState(null)
   useEffect(() => {
     if (userFilteredCount === 0) {
-      setAdjustedHeightForContainer('50px');
+      setAdjustedHeightForContainer('50px')
     } else {
-      const userFilteredCountTimesHeight = userFilteredCount * 50 + 115;
-      setAdjustedHeightForContainer(`${userFilteredCountTimesHeight}px`);
+      const userFilteredCountTimesHeight = userFilteredCount * 50 + 115
+      setAdjustedHeightForContainer(`${userFilteredCountTimesHeight}px`)
     }
-  }, [userFilteredCount]);
+  }, [userFilteredCount])
 
   return (
-    <div
-      className="search-modal-container"
-      style={{ height: adjustedHeightForContainer }}
-    >
+    <div className="search-modal-container" style={{ height: adjustedHeightForContainer }}>
       <SearchBar
         setDiv={setFilteredUserCount}
         typed={typed}
@@ -30,7 +26,7 @@ function SearchModal({ closeModal, typed, setTyped }) {
         closeModal={closeModal}
       />
     </div>
-  );
+  )
 }
 
-export default SearchModal;
+export default SearchModal

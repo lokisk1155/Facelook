@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 
 const PostLoading = ({ src }) => {
-  const [imageSrc, setImageSrc] = useState(null);
+  const [imageSrc, setImageSrc] = useState(null)
   useEffect(() => {
     setTimeout(() => {
-      setImageSrc(src);
-    }, 1000);
-  }, [src]);
+      setImageSrc(src)
+    }, 1000)
+  }, [src])
 
   return (
     <>
@@ -36,7 +36,7 @@ const PostLoading = ({ src }) => {
         />
       )}
     </>
-  );
-};
+  )
+}
 
-export default PostLoading;
+export default PostLoading

@@ -1,4 +1,4 @@
-import './CircleLoading.css';
+import './CircleLoading.css'
 
 function CircleLoading() {
   return (
@@ -7,7 +7,7 @@ function CircleLoading() {
       <div className="inner-circle2" />
       <div className="inner-circle3" />
     </div>
-  );
+  )
 }
 
-export default CircleLoading;
+export default CircleLoading

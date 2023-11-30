@@ -1,5 +1,5 @@
 function ProfileDefaultLoading() {
-  let number = 6;
+  let number = 6
   return (
     <div
       style={{
@@ -23,10 +23,10 @@ function ProfileDefaultLoading() {
               borderRadius: '5px',
             }}
           />
-        );
+        )
       })}
     </div>
-  );
+  )
 }
 
-export default ProfileDefaultLoading;
+export default ProfileDefaultLoading

@@ -1,8 +1,8 @@
-import { Link, useParams } from 'react-router-dom';
-import './AboutLinks.css';
+import { Link, useParams } from 'react-router-dom'
+import './AboutLinks.css'
 
 function AboutPageLinks() {
-  const { id } = useParams();
+  const { id } = useParams()
 
   return (
     <>
@@ -25,8 +25,7 @@ function AboutPageLinks() {
             border: 'none',
             borderRadius: '5px',
             backgroundColor:
-              window.location.href ===
-              `https://faceooook.herokuapp.com/ProfilePage/${id}/about`
+              window.location.href === `https://faceooook.herokuapp.com/ProfilePage/${id}/about`
                 ? '#1877f2'
                 : '#fff',
           }}
@@ -38,8 +37,7 @@ function AboutPageLinks() {
               padding: '0',
               margin: '0',
               color:
-                window.location.href ===
-                `https://faceooook.herokuapp.com/ProfilePage/${id}/about`
+                window.location.href === `https://faceooook.herokuapp.com/ProfilePage/${id}/about`
                   ? '#fff'
                   : 'grey',
             }}
@@ -178,7 +176,7 @@ function AboutPageLinks() {
         </button>
       </Link>
     </>
-  );
+  )
 }
 
-export default AboutPageLinks;
+export default AboutPageLinks

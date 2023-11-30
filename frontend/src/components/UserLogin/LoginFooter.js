@@ -5,12 +5,12 @@ function LoginFooter() {
     textDecoration: 'none',
     fontSize: '1rem',
     margin: '5px',
-  };
+  }
 
-  const isViewportUnderCertainWidth = window.innerWidth < 768; // Adjust the width as per your needs
+  const isViewportUnderCertainWidth = window.innerWidth < 768 // Adjust the width as per your needs
 
   if (isViewportUnderCertainWidth) {
-    return null; // Render nothing if the viewport width is under the specified value
+    return null // Render nothing if the viewport width is under the specified value
   }
   return (
     <footer
@@ -37,10 +37,7 @@ function LoginFooter() {
         <a style={{ ...styles }} href="https://github.com/lokisk1155">
           GitHub
         </a>
-        <a
-          style={{ ...styles }}
-          href="https://www.linkedin.com/in/shawn-mallon/"
-        >
+        <a style={{ ...styles }} href="https://www.linkedin.com/in/shawn-mallon/">
           LinkedIn
         </a>
       </article>
@@ -53,13 +50,12 @@ function LoginFooter() {
         }}
       >
         <div style={{ ...styles }}>
-          Technologies: Ruby on Rails - Postgres - React - Redux - AWSs3 -
-          Jbuilder - Json
+          Technologies: Ruby on Rails - Postgres - React - Redux - AWSs3 - Jbuilder - Json
         </div>
         <div style={{ ...styles }}>By Shawn Mallon</div>
       </section>
     </footer>
-  );
+  )
 }
 
-export default LoginFooter;
+export default LoginFooter

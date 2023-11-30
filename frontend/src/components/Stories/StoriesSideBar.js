@@ -1,9 +1,9 @@
-import { useParams } from 'react-router-dom';
-import profilePic from '../NavBar/imgs/blank.png';
-import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom'
+import profilePic from '../NavBar/imgs/blank.png'
+import { Link } from 'react-router-dom'
 
 function StoriesSideBar({ usersWithStories, setCurrentWindow }) {
-  const { id } = useParams();
+  const { id } = useParams()
   return (
     <>
       {Object.values(usersWithStories).map((user, index) => {
@@ -28,19 +28,16 @@ function StoriesSideBar({ usersWithStories, setCurrentWindow }) {
                   height: '50px',
                   width: '50px',
                   borderRadius: '50px',
-                  border:
-                    user.user_id === parseInt(id)
-                      ? '5px solid #166fe5'
-                      : 'none',
+                  border: user.user_id === parseInt(id) ? '5px solid #166fe5' : 'none',
                 }}
                 src={user.profile_picture || profilePic}
               />
             </Link>
           </div>
-        );
+        )
       })}
     </>
-  );
+  )
 }
 
-export default StoriesSideBar;
+export default StoriesSideBar

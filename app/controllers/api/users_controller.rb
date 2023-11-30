@@ -48,8 +48,6 @@ module Api
         photoAttached = true
       end
 
-      result = false
-
       result = if photoAttached
                  @user.save
                else
