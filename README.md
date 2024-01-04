@@ -40,6 +40,118 @@ async function csrfFetch(url, options = {}) {
 
 CSRF attacks are a concern because they can trick a user into submitting a request to a web application where they are authenticated without their knowledge or intent. The CSRF token mechanism is a defense strategy against such attacks. It works by ensuring that every client-side request to the server is accompanied by a unique, secret token that the server can verify. This token is not accessible by third-party websites, thus making it difficult for attackers to forge a valid request.
 
+# Redux Data Structures
+
+```
+   simpleUsers = [
+     [user_id] = {
+        id: number,
+        picture: string || null,
+        name: string,
+      }
+   ]
+```
+On application load, a simple verison of each user is fetched and stored in simpleUsers state for dynamic search 
+
+```
+  sessionUser {
+    id: number
+    /* an array of user id's that have an associated friendship are eagerloaded on user queries*/
+    friends: Array<[user_id's]>
+    language: string || null
+    email: string,
+    password: string,
+    first_name: string,
+    last_name: string,
+    bio: string || null 
+    location: string || null 
+    month: string || null,
+    phone_number: string || null, 
+    places_lived: string || null,
+    places_worked: string || null,
+    profile_picture: string,
+    gender: string || null, 
+    highschool: string || null, 
+    relationship: string || null, 
+    social_link: string || null, 
+    website: string || null,
+    work: string || null,
+    year: string || null
+    created_at: Date
+    updated_at: Date
+}
+```
+sessionUser holds the data for the user that login into the application
+
+```
+  currentUser {
+    id: number
+    /* an array of user id's that have an associated friendship are eagerloaded on user queries*/
+    friends: Array<[user_id's]>
+    language: string || null
+    email: string,
+    first_name: string,
+    last_name: string,
+    bio: string || null 
+    location: string || null 
+    month: string || null,
+    phone_number: string || null, 
+    places_lived: string || null,
+    places_worked: string || null,
+    profile_picture: string,
+    gender: string || null, 
+    highschool: string || null, 
+    relationship: string || null, 
+    social_link: string || null, 
+    website: string || null,
+    work: string || null,
+    year: string || null
+    created_at: Date
+    updated_at: Date
+}
+```
+When visiting a different users profile, the currentUser slice of state is populated with the necesscary data to display the users profile page
+
+```
+   posts = [
+     [post_id] = {
+        id: number,
+        user_id: number,
+        picture: string || null,
+        content: string || null,
+        created_at: Date,
+        updated_at: Date
+      }
+   ]
+```
+On application load, all posts are fetched and stored within an array inside the post slice of state.
+
+```
+   stories = [
+      {
+        [user_id] = [
+          [story_id] = {
+            id: number,
+            user_id: number,
+            picture: string || null,
+            /*  inline styling to replicate user creation  */
+            background_color: string || null,
+            color: string || null,
+            font_size: string || null,
+            font_type: string || null,
+            paddig_left: string || null,
+            paddig_right: string || null,
+            padding_y: string || null,
+            padding_x: string || null,
+            created_at: Date,
+            updated_at: Date
+          }
+        ]
+      }
+   ]
+```
+Stories are fetched on application and load and organized by user_id to facilitate simple iteration 
+
 ## Pages
 
 ## ⚙️ Setting Up
