@@ -163,7 +163,7 @@ On application load, all posts are fetched and stored within an array inside the
 
 Stories are fetched on application and load and organized by user_id to facilitate simple iteration
 
-# Code Examples 
+# Code Examples
 
 The handleNext function is an integral component of the user interface, essential for navigating through a collection of stories submitted by users. Designed to facilitate seamless and intuitive progression, this function adeptly utilizes the browser's URL to key into a specific user's stories within the application's state. This approach not only enhances the user experience but also ensures efficient state management and navigation consistency.
 
@@ -251,6 +251,7 @@ const handleNext = useCallback(
 ```
 
 To faciliate the code above, I organized my stories JSON response with jBuilder
+
 ```
   @stories.each do |user_id, stories|
     json.set! user_id do
