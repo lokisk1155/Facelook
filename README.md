@@ -2,27 +2,17 @@
 
 Welcome to Facelook, my full-stack clone of Facebook, started during my time at App Academy. This project encapsulates the first year of my journey in software development, showcasing both my growth and the challenges I faced. While it may have its imperfections, the experience gained in development, refactoring, and debugging has been pivotal in my evolution as a software engineer. A standout feature of this project is the dynamic User Text Stories. I innovated a method to save both text and inline CSS styles, enabling the recreation of unique user-generated content. This feature, though not groundbreaking, marked a significant milestone in my journey, giving me a profound sense of accomplishment as an engineer
 
-## 💻 Stack
+### 💾 Ruby on Rails
 
-### Ruby on Rails
+### 🌐 React
 
-Introduced me to modern web application development and the MVC framework. It taught me efficient web application management. Within its structure, models are the heart of data and logic, views elegantly present this data, and controllers seamlessly interweave the two. The Rails philosophy of 'convention over configuration' significantly streamlines routine processes, freeing me to concentrate on the distinct features of my application
+### 🔄 Redux
 
-### React
+### 🗃️ PostgreSQL
 
-Transformed my approach to crafting dynamic user interfaces. This shift to React meant embracing a more direct and interactive way of building web interfaces. With React Hooks, I found a more intuitive and efficient way to manage state and lifecycle features in my applications, enhancing the reactivity and interactivity of user interfaces. This newfound capability, akin to a JavaScript superpower, energized my development process. I embraced React's reactive paradigm with eagerness, although sometimes my enthusiasm led me to explore its limits a bit too fervently
+### ☁️ AWS S3
 
-### Redux
-
-Integrating Redux into my project was a pivotal learning experience, particularly with the introduction of the Redux logger middleware. This tool provided invaluable insights into the state changes and rerenders within my application, allowing me to understand and optimize the rendering process at a much deeper level. By visually tracking each action and the resulting state transition, I gained a clearer comprehension of how data flows and triggers updates in the application, significantly enhancing my debugging and development skills
-
-### PostgreSQL
-
-PostgreSQL is a robust, SQL-compliant database system, renowned for its advanced features, data integrity, and support for complex queries. Its relational nature allows for efficient organization and manipulation of data, making it an excellent choice for platforms like Facebook that require extensive Create, Read, Update, and Delete (CRUD) operations.
-
-### AWS
-
-Integrated S3 for robust, scalable cloud storage and IAM for secure access management, enabling efficient and secure image uploads. This integration highlights AWS's versatility and capacity to enhance web applications, ranging from straightforward hosting to complex, data-driven functionalities
+<br>
 
 # 📝 Architecture
 
