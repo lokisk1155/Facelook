@@ -163,6 +163,107 @@ On application load, all posts are fetched and stored within an array inside the
 
 Stories are fetched on application and load and organized by user_id to facilitate simple iteration
 
+# Code Examples 
+
+The handleNext function is an integral component of the user interface, essential for navigating through a collection of stories submitted by users. Designed to facilitate seamless and intuitive progression, this function adeptly utilizes the browser's URL to key into a specific user's stories within the application's state. This approach not only enhances the user experience but also ensures efficient state management and navigation consistency.
+
+Technically, the function dynamically updates the navigation state, represented by currentWindow, and interacts seamlessly with the browser's history API, utilizing methods like history.push and history.replace. This dual capability not only provides a fluid and responsive user experience across various stories and user profiles but also highlights the function's adaptability and robustness in managing complex user interactions within a dynamic web environment.
+
+```
+const { id } = useParams()
+
+const query = new URLSearchParams(location.search)
+
+/* if a user selects a story from the home page, get the index from params */
+const windowIndex = query.get('windowIndex')
+
+const [currentWindow, setCurrentWindow] = useState(
+  windowIndex !== null ? parseInt(windowIndex) : 0
+)
+
+const currentStory = stories[id][currentWindow]
+
+useEffect(() => {
+  const intervalId = setInterval(() => {
+    handleNext()
+  }, 3500)
+
+  return () => clearInterval(intervalId)
+}, [dispatch, handleNext, id, sessionUser, simpleUsers, stories, currentWindow])
+
+const handleNext = useCallback(
+    (e) => {
+      if (e) {
+        e.preventDefault()
+      }
+      if (stories[id] === null || stories[id] === null) {
+        return null
+      }
+      history.replace(`/stories/${id}`)
+      if (parseInt(id) === sessionUserId) {
+        if (currentWindow === Object.values(stories[id])?.length - 1) {
+          for (const userId in stories) {
+            if (simpleUsers[userId] !== undefined && parseInt(userId) !== sessionUserId) {
+              setCurrentWindow(0)
+              return history.push(`/stories/${userId}`)
+            }
+          }
+        } else {
+          const newWindow = currentWindow + 1
+          setCurrentWindow(newWindow)
+        }
+      } else {
+        if (currentWindow === Object.values(stories[id])?.length - 1) {
+          let firstId = false
+          let found = false
+          let target = Object.keys(stories).length - 1
+          let current = 0
+          for (const userId in stories) {
+            if (!firstId) {
+              firstId = userId
+            }
+            current += 1
+            if (found) {
+              setCurrentWindow(0)
+              return history.push(`/stories/${userId}`)
+            }
+            if (userId === id) {
+              if (current === target) {
+                setCurrentWindow(0)
+                return history.push(`/stories/${firstId}`)
+              }
+              found = true
+            }
+          }
+        } else {
+          if (currentWindow === 0 && stories[id].length === 1) {
+            for (const userId in stories) {
+              return history.push(`/stories/${userId}`)
+            }
+          }
+          const newWindow = currentWindow + 1
+          setCurrentWindow(newWindow)
+        }
+      }
+    },
+    [id, simpleUsers, stories, currentWindow, history, sessionUserId]
+  )
+```
+
+To faciliate the code above, I organized my stories JSON response with jBuilder
+```
+  @stories.each do |user_id, stories|
+    json.set! user_id do
+      json.array! stories do |story|
+        json.extract! story, :id, :background_color, :font_size, :padding_left, :padding_right, :padding_y, :color,
+                    :text_content, :user_id, :font_type, :created_at, :updated_at
+        json.picture story.photo.url
+      end
+    end
+  end
+
+```
+
 ## Pages
 
 ## ⚙️ Setting Up
